@@ -35,6 +35,7 @@
 	<link rel="stylesheet" href="{{ static_asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
 	<script src="{{ static_asset('assets/vendor/js/helpers.js') }}"></script>
 	<script src="{{ static_asset('assets/js/config.js') }}"></script>
+	@yield('style')
 	<style>
 		.card-header.flex-column.flex-md-row {
 		position: absolute;
