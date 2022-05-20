@@ -2,12 +2,17 @@
 
 @section('content')
 
-<div class="aiz-titlebar text-left mt-2 mb-3">
-    <h5 class="mb-0 h6">{{translate('Attribute Value Information')}}</h5>
-</div>
+<div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4">
+    {{translate('Attribute Value Information')}}
+  </h4>
 
-<div class="col-lg-8 mx-auto">
-    <div class="card">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card">
+
         <div class="card-body p-0">
           
           <form class="p-4" action="{{ route('update-attribute-value', $attribute_value->id) }}" method="POST">
