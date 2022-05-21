@@ -1,6 +1,368 @@
 @extends('backend.layouts.app')
 
 @section('content')
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        {{translate('Add New Product')}}
+    </h4>
+
+    <form class="browser-default-validation" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
+        <div class="row mb-4">
+            <!-- Browser Default -->
+            <div class="col-md-8 mb-4 mb-md-0">
+                <div class="card">
+                    @csrf
+                    <input type="hidden" name="added_by" value="admin">
+                    <h5 class="card-header" style="padding-bottom:0px">{{translate('Product Information')}}</h5>
+                    <hr>
+                    <div class="card-body" style="padding-top:0px">
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-name">{{translate('Product Name')}} </label>
+                            <input type="text" class="form-control" name="name" placeholder="{{ translate('Product Name') }}" onchange="update_sku()" required>
+                        </div>
+
+                       
+                        <div class="mb-3" id="category">
+                            <label class="form-label" for="basic-default-country"> {{translate('Category')}} </label>
+                            <select class="form-select" name="category_id" id="category_id" data-live-search="true" required>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
+                                    @foreach ($category->childrenCategories as $childCategory)
+                                        @include('categories.child_category', ['child_category' => $childCategory])
+                                    @endforeach
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3" id="brand">
+                            <label class="form-label" for="basic-default-country">{{translate('Brand')}}</label>
+                            <select class="form-select" name="brand_id" id="brand_id" data-live-search="true">
+                                <option value="">{{ translate('Select Brand') }}</option>
+                                @foreach (\App\Models\Brand::all() as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->getTranslation('name') }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default">Unit *</label>
+                        <input type="text" class="form-control" placeholder="Unit (eg.Kg, pc etc)" required />
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default">Minimum Purchase Qty *</label>
+                        <input type="text" class="form-control" placeholder="1" required />
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default">Tags *</label>
+                        <input type="text" class="form-control" placeholder="Type and hit enter to add a tag" required />
+                        </div>
+                        <h5 class="card-header p-0">Product Images</h5>
+                        <hr>
+                        <div class="card-body1">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Gallery Images *(600x600)</label>
+                            <input class="form-control" type="file" id="formFile">
+                            <p style="    font-size: 11px; margin-top: 10px;letter-spacing: 0.5px;">These images are visible in product details page gallery. Use 600x600 sizes images.</p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Thumbnail Image (300x300)*</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple="">
+                            <p style="    font-size: 11px; margin-top: 10px;letter-spacing: 0.5px;">This image is visible in all product box. Use 300x300 sizes image. Keep some blank space around main object of your image as we had to crop some edge in different devices to make it responsive.</p>
+                        </div>
+                        </div>
+                        <h5 class="card-header p-0">Product Videos</h5>
+                        <hr>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default-country">Video Provider</label>
+                        <select class="form-select" id="basic-default-country" required>
+                            <option value="">Youtube</option>
+                            <option value="usa">Dailymotion</option>
+                            <option value="uk">Vimeo</option>
+                        </select>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default-name">Video Link </label>
+                        <input type="text" class="form-control" id="basic-default-name" placeholder="Product Name " required />
+                        <p style="    font-size: 11px; margin-top: 10px;letter-spacing: 0.5px;">Use proper link without extra parameter. Don't use short share link/embeded iframe code.</p>
+                        </div>
+                        <h5 class="card-header p-0">Product price + stock</h5>
+                        <hr>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default">Unit price *</label>
+                        <input type="text" class="form-control" placeholder="1" required />
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default">Discount Date Range</label>
+                        <input type="text" placeholder="select date" class="form-control flatpickr-validation flatpickr-input active" id="basic-default-dob" required="">
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-default">Discount *</label>
+                            <input type="text" class="form-control" placeholder="Discount" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-default-country">Flat *</label>
+                            <select class="form-select" id="basic-default-country" required>
+                                <option value="">Flat</option>
+                                <option value="usa">Percent</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default">Quantity *</label>
+                        <input type="text" class="form-control" placeholder="1" required />
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default">SKU </label>
+                        <input type="text" class="form-control" placeholder="SKU" required />
+                        </div>
+                        <div class="mb-3">
+                        <div class="card1 mb-4">
+                            <h5 class="card-header p-0">Product Description</h5>
+                            <hr>
+                            <div class="card-body1">
+                                <div id="snow-toolbar">
+                                    <span class="ql-formats">
+                                    <select class="ql-font"></select>
+                                    <select class="ql-size"></select>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    <button class="ql-strike"></button>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <select class="ql-color"></select>
+                                    <select class="ql-background"></select>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-script" value="sub"></button>
+                                    <button class="ql-script" value="super"></button>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-header" value="1"></button>
+                                    <button class="ql-header" value="2"></button>
+                                    <button class="ql-blockquote"></button>
+                                    <button class="ql-code-block"></button>
+                                    </span>
+                                </div>
+                                <div id="snow-editor">
+                                    <h6>Quill Rich Text Editor</h6>
+                                    <p> Cupcake ipsum dolor sit amet. Halvah cheesecake chocolate bar gummi bears cupcake. Pie macaroon bear claw. Soufflé I love candy canes I love cotton candy I love. </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">PDF Specification</h5>
+                        <hr>
+                        <label for="formFile" class="form-label">PDF Specification</label>
+                        <input class="form-control" type="file" id="formFile">
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">SEO Meta Tags</h5>
+                        <hr>
+                        <label class="form-label" for="basic-default">Meta Title</label>
+                        <input type="text" class="form-control" placeholder="Meta Title" required />
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="basic-default-bio">Description</label>
+                        <textarea class="form-control" id="basic-default-bio" placeholder="Description" name="basic-default-bio" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                        <label for="formFile" class="form-label">Meta Image</label>
+                        <input class="form-control" type="file" id="formFile">
+                        </div>
+                        <div class="mb-3">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="basic-default-checkbox" required />
+                            <label class="form-check-label" for="basic-default-checkbox">Agree to our terms and conditions</label>
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                        <label class="switch switch-primary">
+                        <input type="checkbox" class="switch-input" required />
+                        <span class="switch-toggle-slider">
+                        <span class="switch-on"></span>
+                        <span class="switch-off"></span>
+                        </span>
+                        <span class="switch-label">Send me related emails</span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Browser Default --> 
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body" style="padding-top:0px;padding-bottom:0px;">
+                        <h5 class="card-header" style="padding-bottom:0px;padding-left:0px;">Flash Deal</h5>
+                        <hr>
+                        <p>Product wise shipping cost is disable. Shipping cost is configured from here Shipping Configuration</p>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">Low Stock Quantity Warning</h5>
+                        <hr>
+                        <label class="form-label" for="basic-default">Quantity</label>
+                        <input type="text" class="form-control" placeholder="1" required />
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">Stock Visibility State</h5>
+                        <hr>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Show Stock Quantity</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Show Stock With Text Only</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Hide Stock</label>
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">Cash on Delivery</h5>
+                        <hr>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Show Stock Quantity</label>
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">Featured</h5>
+                        <hr>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">Todays Deal</h5>
+                        <hr>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
+                        </div>
+                        </div>
+                    </div>
+                    <h5 class="card-header" style="padding-bottom:0px;">Flash Deal</h5>
+                    <hr>
+                    <div class="card-body" style="    padding-top: 0px;">
+                        <div class="mb-3">
+                        <label class="form-label" for="bs-validation-country">Add To Flash</label>
+                        <select class="form-select" id="bs-validation-country" required>
+                            <option value="">Choose Flash Title</option>
+                            <option value="usa">Mega Offer</option>
+                        </select>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="bs-validation-name">Discount</label>
+                        <input type="text" class="form-control" id="bs-validation-name" placeholder="Discount" required />
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="bs-validation-country">Discount Type</label>
+                        <select class="form-select" id="bs-validation-country" required>
+                            <option value="">Choose Discount Type</option>
+                            <option value="usa">Flat</option>
+                            <option value="usa">Percent</option>
+                        </select>
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">Estimate Shipping Time</h5>
+                        <hr>
+                        <label class="form-label" for="basic-default">Shipping Days </label>
+                        <input type="text" class="form-control" placeholder="Shipping Days" required />
+                        </div>
+                        <div class="mb-3">
+                        <h5 class="card-header p-0">Vat & TAX</h5>
+                        <hr>
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="basic-default">Tax</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="0" required />
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select" id="basic-default-country" required>
+                                <option value="">Flat</option>
+                                <option value="usa">Percent</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="basic-default">GST 28%</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="0" required />
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select" id="basic-default-country" required>
+                                <option value="">Flat</option>
+                                <option value="usa">Percent</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="basic-default">GST 28%</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="0" required />
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select" id="basic-default-country" required>
+                                <option value="">Flat</option>
+                                <option value="usa">Percent</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="basic-default">GST 28%</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="0" required />
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select" id="basic-default-country" required>
+                                <option value="">Flat</option>
+                                <option value="usa">Percent</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Bootstrap Validation -->
+        </div>
+
+        <div class="row" style="margin-top:30px   ; justify-content: end;width:607px;">
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary">Save As Draft</button>
+            </div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary">Save & Unpublish</button>
+            </div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-success">Save & Publish</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+               
+             
+
+
+
 <div class="aiz-titlebar text-left mt-2 mb-3">
     <h5 class="mb-0 h6">{{translate('Add New Product')}}</h5>
 </div>
@@ -26,10 +388,10 @@
                             <div class="col-md-8">
                                 <select class="form-control aiz-selectpicker" name="category_id" id="category_id" data-live-search="true" required>
                                     @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
-                                    @foreach ($category->childrenCategories as $childCategory)
-                                    @include('categories.child_category', ['child_category' => $childCategory])
-                                    @endforeach
+                                        <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
+                                        @foreach ($category->childrenCategories as $childCategory)
+                                            @include('categories.child_category', ['child_category' => $childCategory])
+                                        @endforeach
                                     @endforeach
                                 </select>
                             </div>
