@@ -18,7 +18,7 @@
     <meta name="description" content="@yield('meta_description', get_setting('meta_description') )" />
     <meta name="keywords" content="@yield('meta_keywords', get_setting('meta_keywords') )">
 
-    @yield('meta')
+    @yield('meta') 
 
     @if(!isset($detailedProduct) && !isset($customer_product) && !isset($shop) && !isset($page) && !isset($blog))
         <!-- Schema.org markup for Google+ -->
@@ -47,66 +47,20 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ static_asset('assets/css/vendors.css') }}">
-    @if(\App\Models\Language::where('code', Session::get('locale', Config::get('app.locale')))->first()->rtl == 1)
-    <link rel="stylesheet" href="{{ static_asset('assets/css/bootstrap-rtl.min.css') }}">
-    @endif
-    <link rel="stylesheet" href="{{ static_asset('assets/css/aiz-core.css') }}">
-    <!-- <link rel="stylesheet" href="{{ static_asset('assets/css/custom-style.css') }}"> -->
-    <link rel="stylesheet" href="{{ static_asset('assets/css/manual_changes.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script>
-        var AIZ = AIZ || {};
-        AIZ.local = {
-            nothing_selected: '{{ translate('Nothing selected') }}',
-            nothing_found: '{{ translate('Nothing found') }}',
-            choose_file: '{{ translate('Choose file') }}',
-            file_selected: '{{ translate('File selected') }}',
-            files_selected: '{{ translate('Files selected') }}',
-            add_more_files: '{{ translate('Add more files') }}',
-            adding_more_files: '{{ translate('Adding more files') }}',
-            drop_files_here_paste_or: '{{ translate('Drop files here, paste or') }}',
-            browse: '{{ translate('Browse') }}',
-            upload_complete: '{{ translate('Upload complete') }}',
-            upload_paused: '{{ translate('Upload paused') }}',
-            resume_upload: '{{ translate('Resume upload') }}',
-            pause_upload: '{{ translate('Pause upload') }}',
-            retry_upload: '{{ translate('Retry upload') }}',
-            cancel_upload: '{{ translate('Cancel upload') }}',
-            uploading: '{{ translate('Uploading') }}',
-            processing: '{{ translate('Processing') }}',
-            complete: '{{ translate('Complete') }}',
-            file: '{{ translate('File') }}',
-            files: '{{ translate('Files') }}',
-        }
-    </script>
-
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/bootstrap.mins.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/jquerysctipttop.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/animate.min.css')}}"/>
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/animate.compat.css')}}"/>
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/owl.carousel.css')}}"/>
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/slick.css')}}"/>
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/owl.theme.default.css')}}"/>
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/reset.css')}}"/> 
+    <link rel="stylesheet" href="{{ static_asset('assets_web/css/style.css')}}" media="all" type="text/css"/>
+    
     <style>
-        body{
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400;
-        }
-        :root{
-            --primary: {{ get_setting('base_color', '#e62d04') }};
-            --hov-primary: {{ get_setting('base_hov_color', '#c52907') }};
-            --soft-primary: {{ hex2rgba(get_setting('base_color','#e62d04'),.15) }};
-        }
-
-        #map{
-            width: 100%;
-            height: 250px;
-        }
-        #edit_map{
-            width: 100%;
-            height: 250px;
-        }
-
-        .pac-container { z-index: 100000; }
+        
     </style>
 
 @if (get_setting('google_analytics') == 1)
@@ -147,63 +101,16 @@
 
 </head>
 <body>
-    <!-- aiz-main-wrapper -->
-    <div class="aiz-main-wrapper d-flex flex-column">
+    <!-- Header -->
+    @include('frontend.inc.nav')
 
-        <!-- Header -->
-        @include('frontend.inc.nav')
+    @yield('content')
 
-        @yield('content')
-
-        @include('frontend.inc.footer')
-
-    </div>
-
-    @if (get_setting('show_cookies_agreement') == 'on')
-        <div class="aiz-cookie-alert shadow-xl">
-            <div class="p-3 bg-dark rounded">
-                <div class="text-white mb-3">
-                    @php
-                        echo get_setting('cookies_agreement_text');
-                    @endphp
-                </div>
-                <button class="btn btn-primary aiz-cookie-accept">
-                    {{ translate('Ok. I Understood') }}
-                </button>
-            </div>
-        </div>
-    @endif
-
-    @if (get_setting('show_website_popup') == 'on')
-        <div class="modal website-popup removable-session d-none" data-key="website-popup" data-value="removed">
-            <div class="absolute-full bg-black opacity-60"></div>
-            <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-md">
-                <div class="modal-content position-relative border-0 rounded-0">
-                    <div class="aiz-editor-data">
-                        {!! get_setting('website_popup_content') !!}
-                    </div>
-                    @if (get_setting('show_subscribe_form') == 'on')
-                        <div class="pb-5 pt-4 px-5">
-                            <form class="" method="POST" action="{{ route('subscribers.store') }}">
-                                @csrf
-                                <div class="form-group mb-0">
-                                    <input type="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" name="email" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block mt-3">
-                                    {{ translate('Subscribe Now') }}
-                                </button>
-                            </form>
-                        </div>
-                    @endif
-                    <button class="absolute-top-right bg-white shadow-lg btn btn-circle btn-icon mr-n3 mt-n3 set-session" data-key="website-popup" data-value="removed" data-toggle="remove-parent" data-parent=".website-popup">
-                        <i class="la la-close fs-20"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    @endif
+    @include('frontend.inc.footer')
 
     @include('frontend.partials.modal')
+
+    
 
     <div class="modal fade" id="addToCart">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
@@ -222,10 +129,6 @@
     </div>
 
     @yield('modal')
-
-    <!-- SCRIPTS -->
-    <script src="{{ static_asset('assets/js/vendors.js') }}"></script>
-    <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
 
 
 
@@ -261,7 +164,6 @@
     </script>
 
     <script>
-
         $(document).ready(function() {
             $('.category-nav-element').each(function(i, el) {
                 $(el).on('mouseover', function(){
@@ -518,7 +420,6 @@
                 $('.c-preloader').hide();
             });
         }
-
 
     </script>
 
