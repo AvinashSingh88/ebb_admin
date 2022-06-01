@@ -1012,7 +1012,7 @@
 
           if( _.options.pauseOnFocus ) {
             _.focussed = $sf.is(':focus');
-            _.autoPlay();
+            _.autoPlay(true);
           }
 
         }, 0);
