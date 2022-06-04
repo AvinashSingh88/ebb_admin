@@ -69,7 +69,20 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <a href="index.php"><img src="img/logo.png" alt="" /></a>
+
+                        <a href="{{ route('home') }}">
+                            @php
+                                $header_logo = get_setting('header_logo');
+                            @endphp
+                            <!-- @if($header_logo != null)
+                                <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}">
+                            @else
+                                <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}">
+                            @endif -->
+
+                            <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}">
+
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
