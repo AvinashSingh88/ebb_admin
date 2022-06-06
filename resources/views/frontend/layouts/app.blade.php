@@ -5,13 +5,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @endif
 <head>
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ getBaseURL() }}">
     <meta name="file-base-url" content="{{ getFileBaseURL() }}">
 
-    <title>
-        <!-- @yield('meta_title', get_setting('website_name').' | '.get_setting('site_motto')) -->
-    </title>
+    <title>@yield('meta_title', get_setting('website_name').' | '.get_setting('site_motto'))</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +18,7 @@
     <meta name="description" content="@yield('meta_description', get_setting('meta_description') )" />
     <meta name="keywords" content="@yield('meta_keywords', get_setting('meta_keywords') )">
 
-    @yield('meta') 
+    @yield('meta')
 
     @if(!isset($detailedProduct) && !isset($customer_product) && !isset($shop) && !isset($page) && !isset($blog))
         <!-- Schema.org markup for Google+ -->
@@ -48,59 +47,59 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
 
-    <link rel="stylesheet" href="{{ static_asset('assets_web/css/bootstrap.mins.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="{{ static_asset('assets_web/css/jquerysctipttop.css')}}" type="text/css">
+    <link href="{{ static_asset('assets_web/css/bootstrap.mins.css')}}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="{{ static_asset('assets_web/css/jquerysctipttop.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ static_asset('assets_web/css/animate.min.css')}}"/>
     <link rel="stylesheet" href="{{ static_asset('assets_web/css/animate.compat.css')}}"/>
     <link rel="stylesheet" href="{{ static_asset('assets_web/css/owl.carousel.css')}}"/>
     <link rel="stylesheet" href="{{ static_asset('assets_web/css/slick.css')}}"/>
     <link rel="stylesheet" href="{{ static_asset('assets_web/css/owl.theme.default.css')}}"/>
     <link rel="stylesheet" href="{{ static_asset('assets_web/css/reset.css')}}"/> 
-    <link rel="stylesheet" href="{{ static_asset('assets_web/css/style.css')}}" media="all" type="text/css"/>
+    <link href="{{ static_asset('assets_web/css/style.css')}}" media="all" rel="stylesheet" type="text/css"/>
+
     <style>
-        
+       
     </style>
 
-    @if (get_setting('google_analytics') == 1)
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
+@if (get_setting('google_analytics') == 1)
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
 
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '{{ env('TRACKING_ID') }}');
-        </script>
-    @endif
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ env('TRACKING_ID') }}');
+    </script>
+@endif
 
-    @if (get_setting('facebook_pixel') == 1)
-        <!-- Facebook Pixel Code -->
-        <script>
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
-            fbq('track', 'PageView');
-        </script>
-        <noscript>
-            <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ env('FACEBOOK_PIXEL_ID') }}&ev=PageView&noscript=1"/>
-        </noscript>
-        <!-- End Facebook Pixel Code -->
-    @endif
+@if (get_setting('facebook_pixel') == 1)
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ env('FACEBOOK_PIXEL_ID') }}&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+@endif
 
-    @php
-        echo get_setting('header_script');
-    @endphp
+@php
+    echo get_setting('header_script');
+@endphp
 
 </head>
-
 <body>
     <!-- Header -->
     @include('frontend.inc.nav')
@@ -110,6 +109,8 @@
     @include('frontend.inc.footer')
 
     @include('frontend.partials.modal')
+
+    
 
     <div class="modal fade" id="addToCart">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
@@ -128,6 +129,8 @@
     </div>
 
     @yield('modal')
+
+
 
     @if (get_setting('facebook_chat') == 1)
         <script type="text/javascript">
