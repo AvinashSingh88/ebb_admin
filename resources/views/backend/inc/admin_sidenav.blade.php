@@ -30,6 +30,9 @@
                     <a href="#" class="aiz-side-nav-link">
                         <i class="las la-tasks aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{translate('POS System')}}</span>
+                        @if (env("DEMO_MODE") == "On")
+                        <span class="badge badge-inline badge-danger">Addon</span>
+                        @endif
                         <span class="aiz-side-nav-arrow"></span>
                     </a>
                     <ul class="aiz-side-nav-list level-2">
@@ -120,6 +123,7 @@
                 </li>
                 @endif
 
+<<<<<<< HEAD
                 <!-- Upload Files -->
                 @if(Auth::user()->user_type == 'admin' || in_array('22', json_decode(Auth::user()->staff->role->permissions)))
                 <li class="aiz-side-nav-item">
@@ -273,6 +277,8 @@
                 </li>
                 @endif
 
+=======
+>>>>>>> efaf241f97db98007ce1897e78851ae92537e08c
               
 
             </ul><!-- .aiz-side-nav -->
