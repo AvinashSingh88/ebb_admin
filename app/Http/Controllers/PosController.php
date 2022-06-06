@@ -7,7 +7,7 @@ use App\Http\Controllers\OTPVerificationController;
 use App\Http\Controllers\ClubPointController;
 use App\Http\Controllers\AffiliateController;
 use App\OtpConfiguration;
-use App\BusinessSetting;
+use App\Models\BusinessSetting;
 use App\OrderDetail;
 use App\ProductStock;
 use App\Product;

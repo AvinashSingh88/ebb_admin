@@ -17,7 +17,7 @@
                                 <div class="col-md-6">
                                     <select name="poscategory" class="form-control form-control-sm aiz-selectpicker" data-live-search="true" onchange="filterProducts()">
                                         <option value="">All Categories</option>
-                                        @foreach (\App\Category::all() as $key => $category)
+                                        @foreach (\App\Models\Category::all() as $key => $category)
                                             <option value="category-{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
                                         @endforeach
                                     </select>
@@ -25,7 +25,7 @@
                                 <div class="col-md-6">
                                     <select name="brand"  class="form-control form-control-sm aiz-selectpicker" data-live-search="true" onchange="filterProducts()">
                                         <option value="">All Brands</option>
-                                        @foreach (\App\Brand::all() as $key => $brand)
+                                        @foreach (\App\Models\Brand::all() as $key => $brand)
                                             <option value="{{ $brand->id }}">{{ $brand->getTranslation('name') }}</option>
                                         @endforeach
                                     </select>
@@ -51,7 +51,7 @@
                                 <div class="flex-grow-1">
                                     <select name="user_id" class="form-control form-control-sm aiz-selectpicker pos-customer" data-live-search="true" onchange="getShippingAddress()">
                                         <option value="">{{translate('Walk In Customer')}}</option>
-                                        @foreach (\App\Customer::all() as $key => $customer)
+                                        @foreach (\App\Models\Customer::all() as $key => $customer)
                                             @if ($customer->user)
                                                 <option value="{{ $customer->user->id }}" data-contact="{{ $customer->user->email }}">{{ $customer->user->name }}</option>
                                             @endif
@@ -100,7 +100,7 @@
                                                                 <img class="mr-3" height="60" src="{{ uploaded_asset(\App\Product::find($cartItem['id'])->thumbnail_img) }}" >
                                                             </div>
                                                             <div class="media-body">
-                                                                {{ \App\Product::find($cartItem['id'])->name }} ({{ $cartItem['variant'] }})
+                                                                {{ \App\Models\Product::find($cartItem['id'])->name }} ({{ $cartItem['variant'] }})
                                                             </div>
                                                         </span>
                                                     </td>
@@ -245,7 +245,7 @@
                                 <label class="col-sm-2 control-label" for="email">{{translate('Country')}}</label>
                                 <div class="col-sm-10">
                                     <select name="country" id="country" class="form-control aiz-selectpicker" required data-placeholder="{{translate('Select country')}}">
-                                        @foreach (\App\Country::where('status',1)->get() as $key => $country)
+                                        @foreach (\App\Models\Country::where('status',1)->get() as $key => $country)
                                             <option value="{{ $country->name }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
