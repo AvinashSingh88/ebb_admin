@@ -148,7 +148,7 @@
                    </div>
                 </div>
                 <div class="col-sm-3 contactInfo">
-                   <a class="logoFotterT" href="http://orrish.com"><img src="img/orrish-logo.png" alt="Orrish"/></a>
+                   <a class="logoFotterT" href="http://orrish.com"><img src="{{static_asset('assets_web/img/orrish-logo.png')}}" alt="Orrish"/></a>
                    <hr />
                    <h3>Contact Info</h3>
                    <ul>
@@ -175,32 +175,32 @@
                 <div class="col-md-6">
                    <div class="orisishPBy">
                       <div class="pwrdBy">
-                         <a class="logoFotterB" href="http://orrish.com"><img src="img/footerLogo2.png" alt="Orrish"/></a>
+                         <a class="logoFotterB" href="http://orrish.com"><img src="{{static_asset('assets_web/img/footerLogo2.png')}}" alt="Orrish"/></a>
                          <!-- slider -->
                          <div class="footer-slider owl-carousel owl-theme">
                             <div class="item">
                                <li>
-                                  <a href="javascript:void(0);"><img src="./img/visa1.png" alt="" /> </a>
+                                  <a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/visa1.png')}}" alt="" /> </a>
                                </li>
                             </div>
                             <div class="item">
                                <li>
-                                  <a href="javascript:void(0);"><img src="./img/visa2.png" alt="" /> </a>
+                                  <a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/visa2.png')}}" alt="" /> </a>
                                </li>
                             </div>
                             <div class="item">
                                <li>
-                                  <a href="javascript:void(0);"><img src="./img/visa3.png" alt="" /> </a>
+                                  <a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/visa3.png')}}" alt="" /> </a>
                                </li>
                             </div>
                             <div class="item">
                                <li>
-                                  <a href="javascript:void(0);"><img src="./img/visa4.png" alt="" /> </a>
+                                  <a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/visa4.png')}}" alt="" /> </a>
                                </li>
                             </div>
                             <div class="item">
                                <li>
-                                  <a href="javascript:void(0);"><img src="./img/visa5.png" alt="" /> </a>
+                                  <a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/visa5.png')}}" alt="" /> </a>
                                </li>
                             </div>
                          </div>
@@ -241,7 +241,7 @@
        <a class="virtual-tour whats-happening" title="whats-happening" href="#1" style="position: absolute;">
        <span class="text-virtual"><span class="ffi">what's <br />happening</span></span>
        <span class="icon">
-       <img src="img/wts-happen-sticky.png" height="55" width="55" alt="imgicon" />
+       <img src="{{static_asset('assets_web/img/wts-happen-sticky.png')}}" height="55" width="55" alt="imgicon" />
        </span>
        </a>
        <a class="virtual-tour"
@@ -255,7 +255,7 @@
           >
        <span class="icon">
        <img
-          src="img/virtual-tour.png"
+          src="{{static_asset('assets_web/img/virtual-tour.png')}}"
           height="55"
           width="55"
           alt="imgicon"
@@ -265,7 +265,7 @@
     </div>
           <section id="fixedEstimate">
     <a href="">
-    <img src="./img/instant-estimate.png" alt="instant-estimate-graphic"
+    <img src="{{static_asset('assets_web/img/instant-estimate.png')}}" alt="instant-estimate-graphic"
        /></a>
  </section>
  </footer>

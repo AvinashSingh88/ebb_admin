@@ -73,7 +73,7 @@
                           <span></span>
                           <span></span>
                        </div>
-                       <a href="index.php"><img src="{{static_asset('assets_web
+                       <a href="{{url('')}}"><img src="{{static_asset('assets_web
                        /img/logo.png')}}" alt="" /></a>
                     </div>
                  </div>
@@ -94,12 +94,7 @@
                           </select>
                        </div>
                        <div class="select-search">
-                          <input
-                             type="search"
-                             class="form-control"
-                             placeholder="What are you looking for.."
-                             id="searchid"
-                             />
+                          <input type="search" class="form-control" placeholder="What are you looking for.."  id="searchid" />
                           <div class="search-tab">
                              <!-- tab menu start here -->
                              <div class="submenu submenu3">
@@ -288,35 +283,37 @@
                                       <div class="top_ul">
                                          <ul class="departmentdks">
                                             <li class="buildings1a...1">
-                                               <a href="product-categorys.php">
-                                               <span class="img000"><img src="img/icona1.png" alt="" /></span>
+                                               <a href="{{url('categories')}}">
+                                               <span class="img000"><img src="{{static_asset('assets_web/img/icona1.png')}}" alt="" /></span>
                                                <span class="spand-line"><b>All Products</b></span>
                                                </a>
                                             </li>
+                                            @foreach ($categories as $key => $category)
                                             <li class="buildings1a">
-                                               <a href="building-materials.php">
-                                               <span class="img000"><img src="img/icona2.png" alt="" /></span>
-                                               <span class="spand-line">Structural Material <i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                                               <a href="{{ route('products.category', $category->slug) }}">
+                                               <span class="img000"><img src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /></span>
+                                               <span class="spand-line">{{  $category->getTranslation('name') }} <i class="fa fa-angle-right" aria-hidden="true"></i></span>
                                                </a>
                                                <div class="hotkeys_sprite">
-                                                  <img src="img/new.png" alt=""> 
+                                                  <img src="{{static_asset('assets_web/img/new.png')}}" alt="New"> 
                                                </div>
                                             </li>
-                                            <li class="bricka1a">
+                                            @endforeach
+                                            {{-- <li class="bricka1a">
                                                <a href="electricals.php">
-                                               <span class="img000"><img src="img/icona3.png" alt="" /></span>
+                                               <span class="img000"><img src="{{static_asset('assets_web/img/icona3.png')}}" alt="" /></span>
                                                <span class="spand-line">Electricals <i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
                                             </li>
                                             <li class="plumbings">
-                                               <a href="plumbing.php" ><span class="img000"><img src="img/icona6.png" alt="" /></span>
+                                               <a href="plumbing.php" ><span class="img000"><img src="{{static_asset('assets_web/img/icona6.png')}}" alt="" /></span>
                                                <span class="spand-line">Plumbing   <i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
                                             </li>
                                             <li class="constructionsa1">
-                                               <a href="sanitary.php"><span class="img000"><img src="img/icona4.png" alt="" /></span>
+                                               <a href="sanitary.php"><span class="img000"><img src="img/icona4.png')}}" alt="" /></span>
                                                <span class="spand-line"> Sanitaryware & Bathrobes <i class="fa fa-angle-right" aria-hidden="true"></i></span>  </a>
                                             </li>
                                             <li class="constructionsa1a">
-                                               <a href="home-appliances.php"><span class="img000"><img src="img/icona5.png" alt="" /></span>
+                                               <a href="home-appliances.php"><span class="img000"><img src="{{static_asset('assets_web/img/icona5.png')}}" alt="" /></span>
                                                <span class="spand-line">Home Appliances & Furniture <i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
                                             </li>
                                             <li class="finishes1a">
@@ -339,7 +336,7 @@
                                             <li class="hardwarea1">
                                                <a href="javascript:void(0);"><span class="img000"><img src="img/icona12.png" alt="" /></span>
                                                <span class="spand-line">Smart Home <i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
-                                            </li>
+                                            </li> --}}
                                            
                                          </ul>
                                          <div class="dpeartmens">

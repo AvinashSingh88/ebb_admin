@@ -42,8 +42,9 @@ class HomeController extends Controller
         $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
         });
-
-        return view('frontend.index', compact('featured_categories', 'todays_deal_products'));
+        $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+       
+        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories'));
     }
 
     public function login()
