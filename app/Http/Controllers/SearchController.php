@@ -16,6 +16,7 @@ use App\Utility\CategoryUtility;
 
 class SearchController extends Controller
 {
+   
     public function index(Request $request, $category_id = null, $brand_id = null)
     {
         $query = $request->keyword;

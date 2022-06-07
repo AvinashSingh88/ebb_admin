@@ -289,15 +289,15 @@
                                                </a>
                                             </li>
                                             @foreach ($categories as $key => $category)
-                                            <li class="buildings1a">
-                                               <a href="{{ route('products.category', $category->slug) }}">
-                                               <span class="img000"><img src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /></span>
-                                               <span class="spand-line">{{  $category->getTranslation('name') }} <i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                                               </a>
-                                               <div class="hotkeys_sprite">
-                                                  <img src="{{static_asset('assets_web/img/new.png')}}" alt="New"> 
-                                               </div>
-                                            </li>
+                                                <li class="buildings1a">
+                                                   <a href="{{ route('products.category', $category->slug) }}">
+                                                   <span class="img000"><img src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /></span>
+                                                   <span class="spand-line">{{  $category->getTranslation('name') }} <i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                                                   </a>
+                                                   <div class="hotkeys_sprite">
+                                                   <img src="{{static_asset('assets_web/img/new.png')}}" alt="New"> 
+                                                   </div>
+                                                </li>
                                             @endforeach
                                             {{-- <li class="bricka1a">
                                                <a href="electricals.php">

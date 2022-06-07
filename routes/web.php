@@ -77,6 +77,9 @@ Route::get('/customer-products/admin', 'IyzicoController@initPayment')->name('pr
 Route::get('/customer-product/{slug}', 'CustomerProductController@customer_product')->name('customer.product');
 Route::get('/customer-packages', 'HomeController@premium_package_index')->name('customer_packages_list_show');
 
+//Rana routes
+Route::get('/cat/{cat_slug}', 'CatConroller@subCatbyCat')->name('category');
+
 Route::get('/search', 'SearchController@index')->name('search');
 Route::get('/search?keyword={search}', 'SearchController@index')->name('suggestion.search');
 Route::post('/ajax-search', 'SearchController@ajax_search')->name('search.ajax');

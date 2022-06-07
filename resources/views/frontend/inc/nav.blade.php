@@ -293,7 +293,7 @@
                                                <span class="spand-line"><b>All Products</b></span>
                                                </a>
                                             </li>
-                                            @foreach ($categories as $key => $category)
+                                            {{-- @foreach ($categories as $key => $category)
                                             <li class="buildings1a">
                                                <a href="{{ route('products.category', $category->slug) }}">
                                                <span class="img000"><img src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /></span>
@@ -303,7 +303,7 @@
                                                   <img src="{{static_asset('assets_web/img/new.png')}}" alt="New"> 
                                                </div>
                                             </li>
-                                            @endforeach
+                                            @endforeach --}}
                                             <li class="bricka1a">
                                                <a href="electricals.php">
                                                <span class="img000"><img src="{{static_asset('assets_web/img/icona3.png')}}" alt="" /></span>
