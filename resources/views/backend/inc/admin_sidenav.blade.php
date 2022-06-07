@@ -153,7 +153,7 @@
                                 <span class="aiz-side-nav-text">{{translate('Features activation')}}</span>
                             </a>
                         </li>
-                        <li class="aiz-side-nav-item">
+                        <!-- <li class="aiz-side-nav-item">
                             <a href="{{route('languages.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['languages.index', 'languages.create', 'languages.store', 'languages.show', 'languages.edit'])}}">
                                 <span class="aiz-side-nav-text">{{translate('Languages')}}</span>
                             </a>
@@ -163,7 +163,7 @@
                             <a href="{{route('currency.index')}}" class="aiz-side-nav-link">
                                 <span class="aiz-side-nav-text">{{translate('Currency')}}</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="aiz-side-nav-item">
                             <a href="{{route('tax.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['tax.index', 'tax.create', 'tax.store', 'tax.show', 'tax.edit'])}}">
                                 <span class="aiz-side-nav-text">{{translate('Vat & TAX')}}</span>
@@ -276,15 +276,31 @@
                 </li>
                 @endif
 
-                <!-- Addon Manager -->
-                @if(Auth::user()->user_type == 'admin' || in_array('21', json_decode(Auth::user()->staff->role->permissions)))
+
+                <!-- Staffs -->
+                @if(Auth::user()->user_type == 'admin' || in_array('20', json_decode(Auth::user()->staff->role->permissions)))
                     <li class="aiz-side-nav-item">
-                        <a href="{{route('addons.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['addons.index', 'addons.create'])}}">
-                            <i class="las la-wrench aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{translate('Addon Manager')}}</span>
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-user-tie aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{translate('Staffs')}}</span>
+                            <span class="aiz-side-nav-arrow"></span>
                         </a>
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('staffs.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['staffs.index', 'staffs.create', 'staffs.edit'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('All staffs')}}</span>
+                                </a>
+                            </li>
+                            <!-- <li class="aiz-side-nav-item">
+                                <a href="{{route('roles.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['roles.index', 'roles.create', 'roles.edit'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('Staff permissions')}}</span>
+                                </a>
+                            </li> -->
+                        </ul>
                     </li>
                 @endif
+
+               
 
             </ul><!-- .aiz-side-nav -->
         </div><!-- .aiz-side-nav-wrap -->
