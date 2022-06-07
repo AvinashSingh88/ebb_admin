@@ -19,8 +19,8 @@ use custom-style.css
     --white: #fff;
     --gray: #6c757d;
     --gray-dark: #343a40;
-    --primary: #F77B0B;
-    --hov-primary: #E56F0E;
+    --primary: #0d6efd;
+    --hov-primary: #696cff;
     --soft-primary: rgba(247, 123, 11, 0.15);
     --secondary: #8f97ab;
     --soft-secondary: rgba(143, 151, 171, 0.15);
@@ -9687,16 +9687,19 @@ div.footable-loader>span.fooicon:after {
 }
 
 .aiz-table .footable-toggle {
-    height: 16px;
-    width: 16px;
+    height: 21px;
+    width: 21px;
     line-height: 16px;
     font-size: 16px;
-    border-radius: 4px;
+    font-weight: 900;
+    border-radius: 23px;
     text-align: center;
     opacity: 1;
-    color: var(--primary);
-    background-color: var(--soft-primary);
+    color: var(--white);
+    background-color: var(--primary);
     margin-right: 10px;
+    border: 3px solid #ffffff;
+    box-shadow: 0px 0px 6px 1px #ccc;
 }
 
 .aiz-table .footable-toggle.fooicon-minus {
