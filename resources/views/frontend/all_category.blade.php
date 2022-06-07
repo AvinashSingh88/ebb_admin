@@ -35,42 +35,40 @@
                      <div class="d-xl-block col-wd-2gdot5">
                         <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
                            
-                           <li class="listing-botoms">
-                              <b> Structural Materials</b>
-                              <ul class="list-unstyled dropdown-list listing_block filter">
-                                 <li><a class="dropdown-item1" href="product.php">Cement (20)</a></li>
-								    <li><a class="dropdown-item1" href="javascript:void(0);">Steel & TMT (18)</a></li>
-									 <li><a class="dropdown-item1" href="javascript:void(0);">Bricks & Blocks (16)</a></li>
-                                 <li><a class="dropdown-item1" href="javascript:void(0);">Sand (20)</a></li>
-                                 <li><a class="dropdown-item1" href="javascript:void(0);">Stone & Gravel (20)</a></li>
-								 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Aggregate (20)</a></li>
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Wood (20)</a></li>
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Roofing Solution (20)</a></li>
-								   <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Glass (17) </a></li>
-								     <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Plaster Board (14)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">False Ceiling Painting (15)</a></li>
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Insulation (24)</a></li>
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Timber & Board (20)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Door (20)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Construction Chemical (20)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Alluminium (20)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Window (20)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Garden & Lawn (20)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Construction tools & machinery (20)</a></li> 
-                                 <li class="collapses3"><a class="dropdown-item1" href="javascript:void(0);">Safety (20)</a></li> 
-								 
-                                 <li> <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2" data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false" aria-controls="collapseBrand">
-                                    <span class="link__icon text-gray-27 bg-white">
-                                    <span class="link__icon-inner">+</span>
-                                    </span>
-                                    <span class="link-collapse__default3">Show more</span>
-                                    <span class="link-collapse__active3">Show less</span>
-                                    </a>
-                                 </li>
-                              </ul>
-                           </li>
-                           </ul>
+                             <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
+   <?php 
+  $page = basename($_SERVER['SCRIPT_NAME'],".php");
+  ?>
+    <!--<li class="link-category0">
+                           <div class="dropdown-title"></div>
+                        </li>-->
+    <li class="link-category link-category1aa">
+
+
+
+       <div id="accordion" class="accordion-container">
+          <article class="content-entry">
+             <h4 class="article-title">
+                <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
+                   Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> (9)</span> <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
+                </a>
+             </h4>
+             <div class="accordion-content">
+                <div class="link-categoryx link-category1az ">
+                   <ul class="list-unstyled dropdown-list">
+
+					  @foreach ($categories as $key => $category)
+					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} (20) </a></li>
+                     @endforeach
+                   </ul>
+                </div>
+             </div>
+          </article>
+
+       </div>
+    </li>
+	</ul>
+  
                         </div>
                        
                      </div>
@@ -80,9 +78,9 @@
                      @foreach ($categories as $key => $category)
 					 <div class="col-md-3">
                         <div class="product-box">
-                              <div class="beachs">10% Off</div>
+                              {{-- <div class="beachs">10% Off</div> --}}
                            <img src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}">
-                          <a href="{{ route('products.category', $category->slug) }}"> <div class="discrptions">
+                          <a href="{{ route('cat', $category->slug) }}"> <div class="discrptions">
                               <h5>{{  $category->getTranslation('name') }} </h5>
                            </div></a>
                           

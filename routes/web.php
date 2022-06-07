@@ -11,6 +11,7 @@
   |
  */
 // use App\Mail\SupportMailManager;
+use App\Http\Controllers\CatController;
 //demo
 Route::get('/demo/cron_1', 'DemoController@cron_1');
 Route::get('/demo/cron_2', 'DemoController@cron_2');
@@ -78,7 +79,7 @@ Route::get('/customer-product/{slug}', 'CustomerProductController@customer_produ
 Route::get('/customer-packages', 'HomeController@premium_package_index')->name('customer_packages_list_show');
 
 //Rana routes
-Route::get('/cat/{cat_slug}', 'CatConroller@subCatbyCat')->name('category');
+Route::get('/cat/{catslug}', 'CatController@subCatbyCat')->name('cat');
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::get('/search?keyword={search}', 'SearchController@index')->name('suggestion.search');

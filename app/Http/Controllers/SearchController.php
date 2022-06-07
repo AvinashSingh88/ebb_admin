@@ -119,8 +119,8 @@ class SearchController extends Controller
         }
 
         $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
-
-        return view('frontend.product_listing', compact('products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
+		$categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        return view('frontend.product_listing', compact('categories','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
     }
 
     public function listing(Request $request)
