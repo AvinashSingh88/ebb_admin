@@ -291,11 +291,11 @@
                                     <span class="aiz-side-nav-text">{{translate('All staffs')}}</span>
                                 </a>
                             </li>
-                            <!-- <li class="aiz-side-nav-item">
+                            <li class="aiz-side-nav-item">
                                 <a href="{{route('roles.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['roles.index', 'roles.create', 'roles.edit'])}}">
                                     <span class="aiz-side-nav-text">{{translate('Staff permissions')}}</span>
                                 </a>
-                            </li> -->
+                            </li>
                         </ul>
                     </li>
                 @endif
