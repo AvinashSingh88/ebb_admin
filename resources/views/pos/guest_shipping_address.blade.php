@@ -27,7 +27,7 @@
         <label class="col-sm-2 control-label" for="email">{{translate('Country')}}</label>
         <div class="col-sm-10">
             <select name="country" id="country" class="form-control demo-select2" required data-placeholder="{{translate('Select country')}}">
-                @foreach (\App\Country::where('status',1)->get() as $key => $country)
+                @foreach (\App\Models\Country::where('status',1)->get() as $key => $country)
                     <option value="{{ $country->name }}">{{ $country->name }}</option>
                 @endforeach
             </select>
