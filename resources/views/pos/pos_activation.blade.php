@@ -1,7 +1,6 @@
 @extends('backend.layouts.app')
 
 @section('content')
-
 <h4 class="text-center text-muted">{{translate('POS Activation for Seller')}}</h4>
 <div class="row">
     <div class="col-lg-4">
@@ -18,7 +17,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('script')
