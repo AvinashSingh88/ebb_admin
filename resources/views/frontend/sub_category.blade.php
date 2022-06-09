@@ -145,10 +145,13 @@
     $uri = $request->path();
 @endphp --}}
 	
-						  @foreach ($categories as $key => $category)
+						   @foreach ($categories as $key => $category)
                            <div class="item">
                               <div class="fancybox thumb1">
-                                 <a class="tablskd {{  request()->routeIs('cat.*') ? 'active' : '' }}" href="{{ route('cat', $category->slug) }}">
+                               
+                                 <a class="rana {{ (request()->is('admin/cities')) ? 'active' : 'inactive' }}"> {{ (request()->is('admin/cities')) }} </a>
+
+                                 <a class="tablskd {{ url('') }}/" href="{{ route('cat', $category->slug) }}">
                                     <img data-u="image" src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /> 
                                     <h6>{{  $category->getTranslation('name') }} </h6>
                                     <div class="triangle-down"></div>
