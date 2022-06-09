@@ -223,8 +223,8 @@ class HomeController extends Controller
 
     public function product(Request $request, $slug)
     {
-        $detailedProduct  = Product::with('reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
-
+        $detailedProduct  = Product::with('category','reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
+        $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
         if ($detailedProduct != null && $detailedProduct->published) {
             if ($request->has('product_referral_code') && addon_is_activated('affiliate_system')) {
 
@@ -242,9 +242,9 @@ class HomeController extends Controller
                 $affiliateController->processAffiliateStats($referred_by_user->id, 1, 0, 0, 0);
             }
             if ($detailedProduct->digital == 1) {
-                return view('frontend.digital_product_details', compact('detailedProduct'));
+                return view('frontend.digital_product_details', compact('detailedProduct','categories'));
             } else {
-                return view('frontend.product_details', compact('detailedProduct'));
+                return view('frontend.product_details', compact('detailedProduct','categories'));
             }
         }
         abort(404);

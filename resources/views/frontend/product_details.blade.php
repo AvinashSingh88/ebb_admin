@@ -1,243 +1,84 @@
-@extends('frontend.layouts.app')
+@extends('frontend.master') @section('meta_title'){{ $detailedProduct->meta_title }}@stop @section('meta_description'){{ $detailedProduct->meta_description }}@stop @section('meta_keywords'){{ $detailedProduct->tags }}@stop @section('meta')
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="{{ $detailedProduct->meta_title }}">
+<meta itemprop="description" content="{{ $detailedProduct->meta_description }}">
+<meta itemprop="image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="product">
+<meta name="twitter:site" content="@publisher_handle">
+<meta name="twitter:title" content="{{ $detailedProduct->meta_title }}">
+<meta name="twitter:description" content="{{ $detailedProduct->meta_description }}">
+<meta name="twitter:creator" content="@author_handle">
+<meta name="twitter:image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
+<meta name="twitter:data1" content="{{ single_price($detailedProduct->unit_price) }}">
+<meta name="twitter:label1" content="Price">
+<!-- Open Graph data -->
+<meta property="og:title" content="{{ $detailedProduct->meta_title }}" />
+<meta property="og:type" content="og:product" />
+<meta property="og:url" content="{{ route('product', $detailedProduct->slug) }}" />
+<meta property="og:image" content="{{ uploaded_asset($detailedProduct->meta_img) }}" />
+<meta property="og:description" content="{{ $detailedProduct->meta_description }}" />
+<meta property="og:site_name" content="{{ get_setting('meta_title') }}" />
+<meta property="og:price:amount" content="{{ single_price($detailedProduct->unit_price) }}" />
+<meta property="product:price:currency" content="{{ \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code }}" />
+<meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}"> @endsection @section('content')
+<style>
+	.aiz-megabox input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+							.aiz-megabox .aiz-megabox-elem {
+    border: 1px solid #e2e5ec;
+    border-radius: 0.25rem;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+}
+.aiz-megabox > input:checked ~ .aiz-megabox-elem, .aiz-megabox > input:checked ~ .aiz-megabox-elem {
+    border-color: #ff6c00;
+}
+.h-30px, .size-30px {
+    height: 30px;
+	width:30px;
+}
 
-@section('meta_title'){{ $detailedProduct->meta_title }}@stop
-
-@section('meta_description'){{ $detailedProduct->meta_description }}@stop
-
-@section('meta_keywords'){{ $detailedProduct->tags }}@stop
-
-@section('meta')
-    <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="{{ $detailedProduct->meta_title }}">
-    <meta itemprop="description" content="{{ $detailedProduct->meta_description }}">
-    <meta itemprop="image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="product">
-    <meta name="twitter:site" content="@publisher_handle">
-    <meta name="twitter:title" content="{{ $detailedProduct->meta_title }}">
-    <meta name="twitter:description" content="{{ $detailedProduct->meta_description }}">
-    <meta name="twitter:creator" content="@author_handle">
-    <meta name="twitter:image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
-    <meta name="twitter:data1" content="{{ single_price($detailedProduct->unit_price) }}">
-    <meta name="twitter:label1" content="Price">
-
-    <!-- Open Graph data -->
-    <meta property="og:title" content="{{ $detailedProduct->meta_title }}" />
-    <meta property="og:type" content="og:product" />
-    <meta property="og:url" content="{{ route('product', $detailedProduct->slug) }}" />
-    <meta property="og:image" content="{{ uploaded_asset($detailedProduct->meta_img) }}" />
-    <meta property="og:description" content="{{ $detailedProduct->meta_description }}" />
-    <meta property="og:site_name" content="{{ get_setting('meta_title') }}" />
-    <meta property="og:price:amount" content="{{ single_price($detailedProduct->unit_price) }}" />
-    <meta property="product:price:currency" content="{{ \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code }}" />
-    <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
-@endsection
-
-@section('content')
-    <section class="mb-4 pt-3">
-        <div class="container">
-            <div class="bg-white shadow-sm rounded p-3">
-                <div class="row">
-                    <div class="col-xl-5 col-lg-6 mb-4">
-                        <div class="sticky-top z-3 row gutters-10">
-                            @php
-                                $photos = explode(',', $detailedProduct->photos);
-                            @endphp
-                            <div class="col order-1 order-md-2">
-                                <div class="aiz-carousel product-gallery" data-nav-for='.product-gallery-thumb' data-fade='true' data-auto-height='true'>
-                                    @foreach ($photos as $key => $photo)
-                                        <div class="carousel-box img-zoom rounded">
-                                            <img
-                                                class="img-fluid lazyload"
-                                                src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                data-src="{{ uploaded_asset($photo) }}"
-                                                onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                            >
-                                        </div>
-                                    @endforeach
-                                    @foreach ($detailedProduct->stocks as $key => $stock)
-                                        @if ($stock->image != null)
-                                            <div class="carousel-box img-zoom rounded">
-                                                <img
-                                                    class="img-fluid lazyload"
-                                                    src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                    data-src="{{ uploaded_asset($stock->image) }}"
-                                                    onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                >
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-auto w-md-80px order-2 order-md-1 mt-3 mt-md-0">
-                                <div class="aiz-carousel product-gallery-thumb" data-items='5' data-nav-for='.product-gallery' data-vertical='true' data-vertical-sm='false' data-focus-select='true' data-arrows='true'>
-                                    @foreach ($photos as $key => $photo)
-                                    <div class="carousel-box c-pointer border p-1 rounded">
-                                        <img
-                                            class="lazyload mw-100 size-50px mx-auto"
-                                            src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                            data-src="{{ uploaded_asset($photo) }}"
-                                            onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                        >
-                                    </div>
-                                    @endforeach
-                                    @foreach ($detailedProduct->stocks as $key => $stock)
-                                        @if ($stock->image != null)
-                                            <div class="carousel-box c-pointer border p-1 rounded" data-variation="{{ $stock->variant }}">
-                                                <img
-                                                    class="lazyload mw-100 size-50px mx-auto"
-                                                    src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                    data-src="{{ uploaded_asset($stock->image) }}"
-                                                    onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                >
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-7 col-lg-6">
-                        <div class="text-left">
-                            <h1 class="mb-2 fs-20 fw-600">
-                                {{ $detailedProduct->getTranslation('name') }}
-                            </h1>
-
-                            <div class="row align-items-center">
-                                <div class="col-12">
-                                    @php
-                                        $total = 0;
-                                        $total += $detailedProduct->reviews->count();
-                                    @endphp
-                                    <span class="rating">
-                                        {{ renderStarRating($detailedProduct->rating) }}
-                                    </span>
-                                    <span class="ml-1 opacity-50">({{ $total }} {{ translate('reviews')}})</span>
-                                </div>
-                                @if ($detailedProduct->est_shipping_days)
-                                <div class="col-auto ml">
-                                    <small class="mr-2 opacity-50">{{ translate('Estimate Shipping Time')}}: </small>{{ $detailedProduct->est_shipping_days }} {{  translate('Days') }}
-                                </div>
-                                @endif
-                            </div>
-
-                            <hr>
-
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <small class="mr-2 opacity-50">{{ translate('Sold by')}}: </small><br>
-                                    @if ($detailedProduct->added_by == 'seller' && get_setting('vendor_system_activation') == 1)
-                                        <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}" class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
-                                    @else
-                                        {{  translate('Inhouse product') }}
-                                    @endif
-                                </div>
-                                @if (get_setting('conversation_system') == 1)
-                                    <div class="col-auto">
-                                        <button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">{{ translate('Message Seller')}}</button>
-                                    </div>
-                                @endif
-
-                                @if ($detailedProduct->brand != null)
-                                    <div class="col-auto">
-                                        <a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
-                                            <img src="{{ uploaded_asset($detailedProduct->brand->logo) }}" alt="{{ $detailedProduct->brand->getTranslation('name') }}" height="30">
-                                        </a>
-                                    </div>
-                                @endif
-                            </div>
-
-                            <hr>
-
-                            @if ($detailedProduct->wholesale_product)
-                                <table class="aiz-table mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>{{ translate('Min Qty') }}</th>
-                                            <th>{{ translate('Max Qty') }}</th>
-                                            <th>{{ translate('Unit Price') }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($detailedProduct->stocks->first()->wholesalePrices as $wholesalePrice)
-                                            <tr>
-                                                <td>{{ $wholesalePrice->min_qty }}</td>
-                                                <td>{{ $wholesalePrice->max_qty }}</td>
-                                                <td>{{ single_price($wholesalePrice->price) }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            @else
-                                @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
-                                    <div class="row no-gutters mt-3">
-                                        <div class="col-sm-2">
-                                            <div class="opacity-50 my-2">{{ translate('Price')}}:</div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <div class="fs-20 opacity-60">
-                                                <del>
-                                                    {{ home_price($detailedProduct) }}
-                                                    @if($detailedProduct->unit != null)
-                                                        <span>/{{ $detailedProduct->getTranslation('unit') }}</span>
-                                                    @endif
-                                                </del>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row no-gutters my-2">
-                                        <div class="col-sm-2">
-                                            <div class="opacity-50">{{ translate('Discount Price')}}:</div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <div class="">
-                                                <strong class="h2 fw-600 text-primary">
-                                                    {{ home_discounted_price($detailedProduct) }}
-                                                </strong>
-                                                @if($detailedProduct->unit != null)
-                                                    <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="row no-gutters mt-3">
-                                        <div class="col-sm-2">
-                                            <div class="opacity-50 my-2">{{ translate('Price')}}:</div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <div class="">
-                                                <strong class="h2 fw-600 text-primary">
-                                                    {{ home_discounted_price($detailedProduct) }}
-                                                </strong>
-                                                @if($detailedProduct->unit != null)
-                                                    <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endif
-
-                            @if (addon_is_activated('club_point') && $detailedProduct->earn_point > 0)
-                                <div class="row no-gutters mt-4">
-                                    <div class="col-sm-2">
-                                        <div class="opacity-50 my-2">{{  translate('Club Point') }}:</div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="d-inline-block rounded px-2 bg-soft-primary border-soft-primary border">
-                                            <span class="strong-700">{{ $detailedProduct->earn_point }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            <hr>
-
-                            <form id="option-choice-form">
+						</style>
+<section class="pageTitle" style="background-image: url({{static_asset('assets_web/img/orderbanner.png')}});height: 240px; background-size: contain;">
+	<div class="container"> </div>
+</section>
+<!--top banner end -->
+<div class="service-pros animated animate__fadeInUp wow product-categorys ulines-dps-para ">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 breadmcrumsize">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.php">Home</a></li>
+						<li class="breadcrumb-item"><a href="building-materials.php">Structural Materials</a></li>
+						<li class="breadcrumb-item"><a href="product-building.php">Cement</a></li>
+						<li class="breadcrumb-item active" aria-current="page"> {{ $detailedProduct->getTranslation('name') }} </li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="container details-product">
+		<div class="row">
+			<div class="col-xl-9 col-wd-9gdot5">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="product-box" style=" margin-bottom: 0px;">
+							<!--<div class="beachs">10% Off</div>-->
+							<div class="zoom-left"> @php $photos = explode(',', $detailedProduct->photos); @endphp @foreach ($photos as $key => $photo) <img id="zoom_03" src="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" /> @endforeach
+								<div class="clearfix"></div>
+								<div id="gallery_01"> @foreach ($detailedProduct->stocks as $key => $stock) @if ($stock->image != null) <a href="javascript:void(0);" style="height:100px;width:auto;" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($stock->image) }}" data-zoom-image="{{ uploaded_asset($stock->image) }}">
+									 <img style="height:100px;width:auto;" src="{{ uploaded_asset($stock->image) }}" width="100"  /></a> @endif @endforeach </div>
+							</div>
+						</div>
+						
+						<div class="tab-finish">
+							<form id="option-choice-form">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
 
@@ -248,7 +89,7 @@
                                         <div class="col-sm-2">
                                             <div class="opacity-50 my-2">{{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:</div>
                                         </div>
-                                        <div class="col-sm-10">
+                                         <div class="col-sm-10">
                                             <div class="aiz-radio-inline">
                                                 @foreach ($choice->values as $key => $value)
                                                 <label class="aiz-megabox pl-0 mr-2">
@@ -286,7 +127,7 @@
                                                         @if($key == 0) checked @endif
                                                     >
                                                     <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                                        <span class="size-30px d-inline-block rounded" style="background: {{ $color }};"></span>
+                                                        <span class="size-30px d-inline-block rounded" style="background-color: {{ $color }};">&nbsp;&nbsp;</span>
                                                     </span>
                                                 </label>
                                                 @endforeach
@@ -296,8 +137,8 @@
 
                                     <hr>
                                 @endif
-
-                                <!-- Quantity + Add to cart -->
+								<!---
+                                <!-- Quantity + Add to cart  
                                 <div class="row no-gutters">
                                     <div class="col-sm-2">
                                         <div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
@@ -329,6 +170,7 @@
                                         </div>
                                     </div>
                                 </div>
+								-->
 
                                 <hr>
 
@@ -346,580 +188,661 @@
                                 </div>
 
                             </form>
+						
+							
+							 
+						</div>
+						<!---<div class="tab-finish size">
+							<p class="titleFinish Finisher "> Dimensions <small>(Inches)</small> </p>
+							<ul class="final_size  secondOption">
+								<li class=" King_Size-72_x_72-5_inch 72_x_72 King_Size-5_inch " data-size="72_x_72">
+									<a href="#1">
+										<p class="finishText mattressSize"> 72" L x 72" W </p>
+									</a>
+								</li>
+								<li class=" King_Size-72_x_72-6_inch 72_x_72 King_Size-6_inch " data-size="72_x_72">
+									<a href="#1">
+										<p class="finishText mattressSize"> 72" L x 72" W </p>
+									</a>
+								</li>
+								<li class=" King_Size-72_x_72-8_inch 72_x_72 King_Size-8_inch " data-size="72_x_72">
+									<a href="#1">
+										<p class="finishText mattressSize"> 72" L x 72" W </p>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="tab-finish size">
+							<p class="titleFinish  Finisher">Height <small>(Inches)</small></p>
+							<ul class="final_size lastOption">
+								<li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="5_inch">
+									<a href="#1">
+										<p class="finishText"><span>5 feet </span><small class="pricebox">Rs 10,099</small></p>
+									</a>
+								</li>
+								<li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="6_inch">
+									<a href="#1">
+										<p class="finishText"><span>6 feet </span><small class="pricebox">Rs 13,589</small></p>
+									</a>
+								</li>
+								<li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="8_inch">
+									<a href="#1">
+										<p class="finishText"><span>8 feet </span><small class="pricebox">Rs 15,699</small></p>
+									</a>
+								</li>
+								<li class="create-set"><span class="setslink custom-scroll-bottom" data-href="#customSet" style="display:none">Create Your <br>own Set</span> </li>
+							</ul>
+						</div>-->
+						 
+					</div>
+					<div class="col-md-6">
+						<div class="product-box1">
+							<div class="discrptions">
+								<h5>{{ $detailedProduct->getTranslation('name') }} </h5>
+								<div class="pricebox"> <span class="title">
+                                    Made In India <img src="{{static_asset('assets_web/img/in.jpg')}}" style="width: 15px;margin-top: -3px;margin-left: 5px;" alt="">
+									<div class="row align-items-center">
+										<div class="col-auto">
+											<small class="mr-2 opacity-50">{{ translate('Sold by')}}: </small><br>
+											@if ($detailedProduct->added_by == 'seller' && get_setting('vendor_system_activation') == 1)
+												<a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}" class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
+											@else
+												{{  translate('Inhouse product') }}
+											@endif
+										</div>
+										@if (get_setting('conversation_system') == 1)
+											<div class="col-auto">
+												<button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">{{ translate('Message Seller')}}</button>
+											</div>
+										@endif
 
-                            <div class="mt-3">
-                                @if ($detailedProduct->external_link != null)
-                                    <a type="button" class="btn btn-primary buy-now fw-600" href="{{ $detailedProduct->external_link }}">
-                                        <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn)}}
-                                    </a>
-                                @else
-                                    <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onclick="addToCart()">
-                                        <i class="las la-shopping-bag"></i>
-                                        <span class="d-none d-md-inline-block"> {{ translate('Add to cart')}}</span>
-                                    </button>
-                                    <button type="button" class="btn btn-primary buy-now fw-600" onclick="buyNow()">
-                                        <i class="la la-shopping-cart"></i> {{ translate('Buy Now')}}
-                                    </button>
-                                @endif
-                                <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
-                                    <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock')}}
-                                </button>
-                            </div>
-
-
-
-                            <div class="d-table width-100 mt-3">
-                                <div class="d-table-cell">
-                                    <!-- Add to wishlist button -->
-                                    <button type="button" class="btn pl-0 btn-link fw-600" onclick="addToWishList({{ $detailedProduct->id }})">
-                                        {{ translate('Add to wishlist')}}
-                                    </button>
-                                    <!-- Add to compare button -->
-                                    <button type="button" class="btn btn-link btn-icon-left fw-600" onclick="addToCompare({{ $detailedProduct->id }})">
-                                        {{ translate('Add to compare')}}
-                                    </button>
-                                    @if(Auth::check() && addon_is_activated('affiliate_system') && (\App\Models\AffiliateOption::where('type', 'product_sharing')->first()->status || \App\Models\AffiliateOption::where('type', 'category_wise_affiliate')->first()->status) && Auth::user()->affiliate_user != null && Auth::user()->affiliate_user->status)
-                                        @php
-                                            if(Auth::check()){
-                                                if(Auth::user()->referral_code == null){
-                                                    Auth::user()->referral_code = substr(Auth::user()->id.Str::random(10), 0, 10);
-                                                    Auth::user()->save();
+										@if ($detailedProduct->brand != null)
+											<div class="col-auto">
+												<a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
+													<img src="{{ uploaded_asset($detailedProduct->brand->logo) }}" alt="{{ $detailedProduct->brand->getTranslation('name') }}" height="30">
+												</a>
+											</div>
+										@endif
+								</div>
+                                    <span class="clearfix"></span> @if(home_price($detailedProduct) != home_discounted_price($detailedProduct)) <strong class="h2 fw-600 text-primary">
+                                       {{ home_discounted_price($detailedProduct) }}
+                                   </strong> @if($detailedProduct->unit != null) <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span> @endif <span class="cutprice"> {{ home_price($detailedProduct) }}
+                                          @if($detailedProduct->unit != null)
+                                             <span>/{{ $detailedProduct->getTranslation('unit') }}</span> @endif</span> @else
+									<div class="row no-gutters mt-3">
+										<div class="col-sm-2">
+											<div class="opacity-50 my-2">{{ translate('Price')}}:</div>
+										</div>
+										<div class="col-sm-10">
+											<div class=""> <strong class="h2 fw-600 text-primary">
+                                             {{ home_discounted_price($detailedProduct) }}
+                                         </strong> @if($detailedProduct->unit != null) <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span> @endif </div>
+										</div>
+									</div> <strong class="h2 fw-600 text-primary">
+                                       {{ home_discounted_price($detailedProduct) }}
+                                 </strong> @if($detailedProduct->unit != null) <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span> @endif @endif <span class="offer" style="border:none">You Save  <i class="fa fa-inr"></i> 35  ( 14% ) </span> <span class="title">Inclusive of all taxes</span>
+									<p>CPVC SDR 11 CPVC Pipes 40 mm 1.50 <a href="#descriptions1">More Details</a> </p>
+									</span>
+								</div>
+							</div> <img src="{{static_asset('assets_web/img/productcoupon.jpg')}}" alt="" style="    width: 100%;  margin-bottom: 10px;">
+							<div id="accordion" class="accordion-container">
+								<article class="content-entry products_offers">
+									<h4 class="article-title"> Special offers <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i></h4>
+									<div class="accordion-content">
+										<div class="offer-section">
+											<!--<span class="title-head">Special offers</span>-->
+											<ul>
+												<li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Big Saving</b> - Apply Coupon SAVEBIG &amp; Get 20% Off (price inclusive of discount) <span class="terms">T&amp;C</span> </li>
+												<li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>5% Instant Discount - </b> on HDFC Bank Credit Cards &amp; EMI <span class="terms">T&amp;C</span></li>
+												<li class="offerlist"> <i class="fa fa-angle-right" aria-hidden="true"></i> <b>No Cost EMI - Starting from Rs. 1,214</b> on ICICI, Axis, Kotak, HDFC &amp; <span class="terms">More</span></li>
+												<li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Store Discount</b> - Visit our nearest store and get instant extra discount <span class="terms">T&amp;C</span></li>
+											</ul>
+										</div>
+									</div>
+								</article>
+								<article class="content-entry products_offers ">
+									<h4 class="article-title products_offersbto">Bought together <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i></h4>
+									<div class="accordion-content">
+										<div id="ga-product_bought_together" data-title="Bought together" class="ga ga-template_2 ga-products-box  ga-template_themeid_0">
+											<!--<h2 class="ga-title section-title "><span>Bought together</span></h2>-->
+											<div class="ga-subtitle">Get 5% off when you add one or more products.</div>
+											<div class="ga-products">
+												<div class="ga-products_image">
+													<div id="ga-product_4683826004099" class="ga-product ">
+														<a href="#1"> <img class="ga-33" id="ga-33" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt=""> </a>
+													</div>
+													<div id="ga-product_6616790696067" class="ga-product ">
+														<a href="#1"> <img class="ga-22" id="ga-22" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt=""> </a>
+													</div>
+													<div id="ga-product_5155996893315" class="ga-product last">
+														<a href="#1"> <img class="ga-111" id="ga-111" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt=""> </a>
+													</div>
+												</div>
+											</div>
+											<ul class="ga-products-input">
+												<li class="ga-product ga-deactive" data-product-id="3">
+													<input class="selectedItem" type="checkbox" value="3"> <a class="ga-product_title" href="#1">PPC Surecem 32.5R Cement per Pallet 40 bags of 50kg</a> </li>
+												<li class="ga-product ga-deactive" data-product-id="2">
+													<input class="selectedItem" type="checkbox" value="2"> <a class="ga-product_title" href="#1">Cement stock brick</a> </li>
+												<li class="ga-product ga-deactive" data-product-id="1">
+													<input class="selectedItem" type="checkbox" value="1"> <a class="ga-product_title" href="#1">KBC Kwikbuild Cement 32.5N bag 50kg</a> </li>
+											</ul>
+										</div>
+									</div>
+									<!--/.accordion-content-->
+								</article>
+							</div>
+							<div class="backtabs-dp_servicespros2">
+								<div class="optionbox">
+									<div class="clear-fix"></div>
+                              @if ($detailedProduct->brand != null)
+                                 <h4 class="dthd">Brands : <span><a href="#1" style="color: inherit;text-decoration: none;">{{ $detailedProduct->brand->getTranslation('name') }}</a></span> </h4>
+                              @endif
+{{-- 									
+                           <ul class="optbrand">
+										<!--for current product-->
+										<li>
+											<a href="javascript:void(0);" class="detbrand selected"> <img src="img/brandsa1.jpg" class="loadimg" alt=""> <span class="price">₹ 1656
+                                    </span></a>
+											<!-- detbrand -->
+										</li>
+										<!--for current product-->
+										<!--for other products-->
+										<li>
+											<a href="#1" class="detbrand"> <img src="img/brandsa2.jpg" class="loadimg" alt=""> <span class="price">₹ 1092
+                                    </span></a>
+											<!-- detbrand -->
+										</li>
+										<li>
+											<a href="#1" class="detbrand"> <img src="img/brandsa3.jpg" class="loadimg" alt=""> <span class="price">₹ 876
+                                    </span></a>
+											<!-- detbrand -->
+										</li>
+										<li>
+											<a href="#1" class="detbrand"> <img src="img/brandsa4.jpg" class="loadimg" alt=""> <span class="price">₹ 1100
+                                    </span></a>
+											<!-- detbrand -->
+										</li>
+										<li>
+											<a href="#1" class="detbrand"> <img src="img/brandsa5.jpg" class="loadimg" alt=""> <span class="price">₹ 1694
+                                    </span></a>
+											<!-- detbrand -->
+										</li>
+										<li>
+											<a href="#1" class="detbrand"> <img src="img/brandsa6.png" class="loadimg" alt=""> <span class="price">₹ 1149
+                                    </span></a>
+											<!-- detbrand -->
+										</li>
+										<li>
+											<a href="#1" class="detbrand"> <img src="img/brandsa7.png" class="loadimg" alt=""> <span class="price">₹ 1154
+                                    </span></a>
+											<!-- detbrand -->
+										</li>
+									</ul> --}}
+								</div>
+								<hr/> </div>
+							<div class="discrptions_button">
+								<div class="input-group quantity_input"> <span class="input-group-btn">
+                                 <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                                 <i class="fa fa-minus" aria-hidden="true"></i>
+                                 </button>
+                                 </span>
+									<input type="text" id="quantity" name="quantity" class="form-control input-number"  value="{{ $detailedProduct->min_qty }}" min="{{ $detailedProduct->min_qty }}" max="10"> <span class="input-group-btn">
+                                 <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                 <i class="fa fa-plus" aria-hidden="true"></i>
+                                 </button>
+                                 </span> </div>
+									
+								<h5><a href="#1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</a></h5>
+								<!--<h6><a href="quote.php">Get Quote</a></h6>-->
+								<h6><a href="bulk-order.php">Bulk Order</a></h6> </div>
+								 @php
+                                                $qty = 0;
+                                                foreach ($detailedProduct->stocks as $key => $stock) {
+                                                    $qty += $stock->qty;
                                                 }
-                                                $referral_code = Auth::user()->referral_code;
-                                                $referral_code_url = URL::to('/product').'/'.$detailedProduct->slug."?product_referral_code=$referral_code";
-                                            }
-                                        @endphp
-                                        <div>
-                                            <button type=button id="ref-cpurl-btn" class="btn btn-sm btn-secondary" data-attrcpy="{{ translate('Copied')}}" onclick="CopyToClipboard(this)" data-url="{{$referral_code_url}}">{{ translate('Copy the Promote Link')}}</button>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-
-
-                            @php
-                                $refund_sticker = get_setting('refund_sticker');
-                            @endphp
-                            @if (addon_is_activated('refund_request'))
-                                <div class="row no-gutters mt-3">
-                                    <div class="col-2">
-                                        <div class="opacity-50 mt-2">{{ translate('Refund')}}:</div>
-                                    </div>
-                                    <div class="col-10">
-                                        <a href="{{ route('returnpolicy') }}" target="_blank"> 
-                                            @if ($refund_sticker != null) 
-                                                <img src="{{ uploaded_asset($refund_sticker) }}" height="36"> 
-                                            @else 
-                                                <img src="{{ static_asset('assets/img/refund-sticker.jpg') }}" height="36"> 
-                                            @endif</a>
-                                        <a href="{{ route('returnpolicy') }}" class="ml-2" target="_blank">{{ translate('View Policy') }}</a>
-                                    </div>
-                                </div>
-                            @endif
-                            <div class="row no-gutters mt-4">
-                                <div class="col-sm-2">
-                                    <div class="opacity-50 my-2">{{ translate('Share')}}:</div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="aiz-share"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="mb-4">
-        <div class="container">
-            <div class="row gutters-10">
-                <div class="col-xl-3 order-1 order-xl-0">
-                    @if ($detailedProduct->added_by == 'seller' && $detailedProduct->user->seller != null)
-                        <div class="bg-white shadow-sm mb-3">
-                            <div class="position-relative p-3 text-left">
-                                @if ($detailedProduct->user->seller->verification_status)
-                                    <div class="absolute-top-right p-2 bg-white z-1">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 287.5 442.2" width="22" height="34">
-                                            <polygon style="fill:#F8B517;" points="223.4,442.2 143.8,376.7 64.1,442.2 64.1,215.3 223.4,215.3 "/>
-                                            <circle style="fill:#FBD303;" cx="143.8" cy="143.8" r="143.8"/>
-                                            <circle style="fill:#F8B517;" cx="143.8" cy="143.8" r="93.6"/>
-                                            <polygon style="fill:#FCFCFD;" points="143.8,55.9 163.4,116.6 227.5,116.6 175.6,154.3 195.6,215.3 143.8,177.7 91.9,215.3 111.9,154.3
-                                            60,116.6 124.1,116.6 "/>
-                                        </svg>
-                                    </div>
-                                @endif
-                                <div class="opacity-50 fs-12 border-bottom">{{ translate('Sold by')}}</div>
-                                <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}" class="text-reset d-block fw-600">
-                                    {{ $detailedProduct->user->shop->name }}
-                                    @if ($detailedProduct->user->seller->verification_status == 1)
-                                        <span class="ml-2"><i class="fa fa-check-circle" style="color:green"></i></span>
-                                    @else
-                                        <span class="ml-2"><i class="fa fa-times-circle" style="color:red"></i></span>
-                                    @endif
-                                </a>
-                                <div class="location opacity-70">{{ $detailedProduct->user->shop->address }}</div>
-                                <div class="text-center border rounded p-2 mt-3">
-                                    <div class="rating">
-                                        @if ($total > 0)
-                                            {{ renderStarRating($detailedProduct->user->seller->rating) }}
-                                        @else
-                                            {{ renderStarRating(0) }}
-                                        @endif
-                                    </div>
-                                    <div class="opacity-60 fs-12">({{ $total }} {{ translate('customer reviews')}})</div>
-                                </div>
-                            </div>
-                            <div class="row no-gutters align-items-center border-top">
-                                <div class="col">
-                                    <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}" class="d-block btn btn-soft-primary rounded-0">{{ translate('Visit Store')}}</a>
-                                </div>
-                                <div class="col">
-                                    <ul class="social list-inline mb-0">
-                                        <li class="list-inline-item mr-0">
-                                            <a href="{{ $detailedProduct->user->shop->facebook }}" class="facebook" target="_blank">
-                                                <i class="lab la-facebook-f opacity-60"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item mr-0">
-                                            <a href="{{ $detailedProduct->user->shop->google }}" class="google" target="_blank">
-                                                <i class="lab la-google opacity-60"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item mr-0">
-                                            <a href="{{ $detailedProduct->user->shop->twitter }}" class="twitter" target="_blank">
-                                                <i class="lab la-twitter opacity-60"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="{{ $detailedProduct->user->shop->youtube }}" class="youtube" target="_blank">
-                                                <i class="lab la-youtube opacity-60"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <div class="bg-white rounded shadow-sm mb-3">
-                        <div class="p-3 border-bottom fs-16 fw-600">
-                            {{ translate('Top Selling Products')}}
-                        </div>
-                        <div class="p-3">
-                            <ul class="list-group list-group-flush">
-                                @foreach (filter_products(\App\Models\Product::where('user_id', $detailedProduct->user_id)->orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key => $top_product)
-                                <li class="py-3 px-0 list-group-item border-light">
-                                    <div class="row gutters-10 align-items-center">
-                                        <div class="col-5">
-                                            <a href="{{ route('product', $top_product->slug) }}" class="d-block text-reset">
-                                                <img
-                                                    class="img-fit lazyload h-xxl-110px h-xl-80px h-120px"
-                                                    src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                    data-src="{{ uploaded_asset($top_product->thumbnail_img) }}"
-                                                    alt="{{ $top_product->getTranslation('name') }}"
-                                                    onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                >
-                                            </a>
-                                        </div>
-                                        <div class="col-7 text-left">
-                                            <h4 class="fs-13 text-truncate-2">
-                                                <a href="{{ route('product', $top_product->slug) }}" class="d-block text-reset">{{ $top_product->getTranslation('name') }}</a>
-                                            </h4>
-                                            <div class="rating rating-sm mt-1">
-                                                {{ renderStarRating($top_product->rating) }}
-                                            </div>
-                                            <div class="mt-2">
-                                                <span class="fs-17 fw-600 text-primary">{{ home_discounted_base_price($top_product) }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-9 order-0 order-xl-1">
-                    <div class="bg-white mb-3 shadow-sm rounded">
-                        <div class="nav border-bottom aiz-nav-tabs">
-                            <a href="#tab_default_1" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset active show">{{ translate('Description')}}</a>
-                            @if($detailedProduct->video_link != null)
-                                <a href="#tab_default_2" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset">{{ translate('Video')}}</a>
-                            @endif
-                            @if($detailedProduct->pdf != null)
-                                <a href="#tab_default_3" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset">{{ translate('Downloads')}}</a>
-                            @endif
-                                <a href="#tab_default_4" data-toggle="tab" class="p-3 fs-16 fw-600 text-reset">{{ translate('Reviews')}}</a>
-                        </div>
-
-                        <div class="tab-content pt-0">
-                            <div class="tab-pane fade active show" id="tab_default_1">
-                                <div class="p-4">
-                                    <div class="mw-100 overflow-hidden text-left aiz-editor-data">
-                                        <?php echo $detailedProduct->getTranslation('description'); ?>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="tab_default_2">
-                                <div class="p-4">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        @if ($detailedProduct->video_provider == 'youtube' && isset(explode('=', $detailedProduct->video_link)[1]))
-                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ explode('=', $detailedProduct->video_link)[1] }}"></iframe>
-                                        @elseif ($detailedProduct->video_provider == 'dailymotion' && isset(explode('video/', $detailedProduct->video_link)[1]))
-                                            <iframe class="embed-responsive-item" src="https://www.dailymotion.com/embed/video/{{ explode('video/', $detailedProduct->video_link)[1] }}"></iframe>
-                                        @elseif ($detailedProduct->video_provider == 'vimeo' && isset(explode('vimeo.com/', $detailedProduct->video_link)[1]))
-                                            <iframe src="https://player.vimeo.com/video/{{ explode('vimeo.com/', $detailedProduct->video_link)[1] }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_default_3">
-                                <div class="p-4 text-center ">
-                                    <a href="{{ uploaded_asset($detailedProduct->pdf) }}" class="btn btn-primary">{{  translate('Download') }}</a>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_default_4">
-                                <div class="p-4">
-                                    <ul class="list-group list-group-flush">
-                                        @foreach ($detailedProduct->reviews as $key => $review)
-                                            @if($review->user != null)
-                                            <li class="media list-group-item d-flex">
-                                                <span class="avatar avatar-md mr-3">
-                                                    <img
-                                                        class="lazyload"
-                                                        src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                        onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                        @if($review->user->avatar_original !=null)
-                                                            data-src="{{ uploaded_asset($review->user->avatar_original) }}"
-                                                        @else
-                                                            data-src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                        @endif
-                                                    >
-                                                </span>
-                                                <div class="media-body text-left">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h3 class="fs-15 fw-600 mb-0">{{ $review->user->name }}</h3>
-                                                        <span class="rating rating-sm">
-                                                            @for ($i=0; $i < $review->rating; $i++)
-                                                                <i class="las la-star active"></i>
-                                                            @endfor
-                                                            @for ($i=0; $i < 5-$review->rating; $i++)
-                                                                <i class="las la-star"></i>
-                                                            @endfor
-                                                        </span>
-                                                    </div>
-                                                    <div class="opacity-60 mb-2">{{ date('d-m-Y', strtotime($review->created_at)) }}</div>
-                                                    <p class="comment-text">
-                                                        {{ $review->comment }}
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-
-                                    @if(count($detailedProduct->reviews) <= 0)
-                                        <div class="text-center fs-18 opacity-70">
-                                            {{  translate('There have been no reviews for this product yet.') }}
-                                        </div>
-                                    @endif
-
-                                    @if(Auth::check())
-                                        @php
-                                            $commentable = false;
-                                        @endphp
-                                        @foreach ($detailedProduct->orderDetails as $key => $orderDetail)
-                                            @if($orderDetail->order != null && $orderDetail->order->user_id == Auth::user()->id && $orderDetail->delivery_status == 'delivered' && \App\Models\Review::where('user_id', Auth::user()->id)->where('product_id', $detailedProduct->id)->first() == null)
-                                                @php
-                                                    $commentable = true;
-                                                @endphp
-                                            @endif
-                                        @endforeach
-                                        @if ($commentable)
-                                            <div class="pt-4">
-                                                <div class="border-bottom mb-4">
-                                                    <h3 class="fs-17 fw-600">
-                                                        {{ translate('Write a review')}}
-                                                    </h3>
-                                                </div>
-                                                <form class="form-default" role="form" action="{{ route('reviews.store') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="product_id" value="{{ $detailedProduct->id }}">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="" class="text-uppercase c-gray-light">{{ translate('Your name')}}</label>
-                                                                <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" disabled required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="" class="text-uppercase c-gray-light">{{ translate('Email')}}</label>
-                                                                <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control" required disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="opacity-60">{{ translate('Rating')}}</label>
-                                                        <div class="rating rating-input">
-                                                            <label>
-                                                                <input type="radio" name="rating" value="1" required>
-                                                                <i class="las la-star"></i>
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="rating" value="2">
-                                                                <i class="las la-star"></i>
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="rating" value="3">
-                                                                <i class="las la-star"></i>
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="rating" value="4">
-                                                                <i class="las la-star"></i>
-                                                            </label>
-                                                            <label>
-                                                                <input type="radio" name="rating" value="5">
-                                                                <i class="las la-star"></i>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="opacity-60">{{ translate('Comment')}}</label>
-                                                        <textarea class="form-control" rows="4" name="comment" placeholder="{{ translate('Your review')}}" required></textarea>
-                                                    </div>
-
-                                                    <div class="text-right">
-                                                        <button type="submit" class="btn btn-primary mt-3">
-                                                            {{ translate('Submit review')}}
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        @endif
-                                    @endif
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="bg-white rounded shadow-sm">
-                        <div class="border-bottom p-3">
-                            <h3 class="fs-16 fw-600 mb-0">
-                                <span class="mr-4">{{ translate('Related products')}}</span>
-                            </h3>
-                        </div>
-                        <div class="p-3">
-                            <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="5" data-xl-items="3" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true' data-infinite='true'>
-                                @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
-                                <div class="carousel-box">
-                                    <div class="aiz-card-box border border-light rounded hov-shadow-md my-2 has-transition">
-                                        <div class="">
-                                            <a href="{{ route('product', $related_product->slug) }}" class="d-block">
-                                                <img
-                                                    class="img-fit lazyload mx-auto h-140px h-md-210px"
-                                                    src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                    data-src="{{ uploaded_asset($related_product->thumbnail_img) }}"
-                                                    alt="{{ $related_product->getTranslation('name') }}"
-                                                    onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                >
-                                            </a>
-                                        </div>
-                                        <div class="p-md-3 p-2 text-left">
-                                            <div class="fs-15">
-                                                @if(home_base_price($related_product) != home_discounted_base_price($related_product))
-                                                    <del class="fw-600 opacity-50 mr-1">{{ home_base_price($related_product) }}</del>
+                                            @endphp
+                                            <div class="avialable-amount opacity-60">
+                                                @if($detailedProduct->stock_visibility_state == 'quantity')
+                                                (<span id="available-quantity">{{ $qty }}</span> {{ translate('available')}})
+                                                @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
+                                                    (<span id="available-quantity">{{ translate('In Stock') }}</span>)
                                                 @endif
-                                                <span class="fw-700 text-primary">{{ home_discounted_base_price($related_product) }}</span>
                                             </div>
-                                            <div class="rating rating-sm mt-1">
-                                                {{ renderStarRating($related_product->rating) }}
-                                            </div>
-                                            <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
-                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
-                                            </h3>
-                                            @if (addon_is_activated('club_point'))
-                                                <div class="rounded px-2 mt-2 bg-soft-primary border-soft-primary border">
-                                                    {{ translate('Club Point') }}:
-                                                    <span class="fw-700 float-right">{{ $related_product->earn_point }}</span>
-                                                </div>
-                                            @endif
-                                        </div>
+							<h4>Highlights</h4>
+							<ul class="ulproducts ulproducts4">
+								<li><b>Sub Category </b>&nbsp; :&nbsp; {{ $detailedProduct->category->getTranslation('name') }}</li>
+								<li><b>Products </b>&nbsp; :&nbsp; {{ $detailedProduct->getTranslation('name') }}</li>
+								<li><b>Brand </b>&nbsp; :&nbsp; {{ $detailedProduct->brand->getTranslation('name') }}</li>
+								<li><b>SKU </b>&nbsp; :&nbsp; MK002302</li>
+							</ul>
+						</div>
+					</div>
+					<div id="descriptions1"></div>
+				</div>
+				<div class="bootstrap-accordiana">
+					<div class="backtabs-dp_servicespros2">
+						<ul class="ulines-dps">
+							<li class="ukine ukine1b active4">Description</li>
+							<li class="ukine ukine2b">Overview </li>
+							<li class="ukine ukine3b">Warranty </li>
+						</ul>
+						<ul class="ulines-dps-para ">
+							<li class="ukine ukine1b active4">
+								<div class="tab-description">
+									<h3>Product Description</h3>
+									<p><?php echo $detailedProduct->getTranslation('description'); ?> </p>
+								</div>
+							</li>
+							<li class="ukine ukine2b">
+								<div class="tab-description">
+									<h3>Product Overview</h3>
+									<div class="tab-description">
+										<table class="table table-responsive table-detail">
+											<tbody>
+												<tr>
+													<td>Product</td>
+													<td>CPVC SDR 11 CPVC Pipes 40 mm 1.50inch</td>
+												</tr>
+												<tr>
+													<td>Category</td>
+													<td>Plumbing</td>
+												</tr>
+												<tr>
+													<td>Sub Category</td>
+													<td>Pipes</td>
+												</tr>
+												<tr>
+													<td>Third Category</td>
+													<td>CPVC Pipes</td>
+												</tr>
+												<tr>
+													<td>Brand</td>
+													<td>Star</td>
+												</tr>
+												<tr>
+													<td>SKU</td>
+													<td>MK005404</td>
+												</tr>
+												<tr>
+													<td>HSN</td>
+													<td>7307</td>
+												</tr>
+												<tr>
+													<td>Made in</td>
+													<td>INDIA <img src="{{static_asset('assets_web/img/in.jpg')}}" style="width: 20px;margin-top: -3px;margin-left: 5px;"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</li>
+							<li class="ukine ukine3b">
+								<div class="tab-description">
+									<h3>Warranty Details</h3>
+									<p>All products from Ebuild Bazaar e-commerce private ltd contains warranty provided by the manufacturer. </p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="container1 cmpad youmaylike">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="service-pros" style="padding:0px;margin:0px;">
+								<div class="head-cnt work-center text-center">
+									<div class="bounceIn animated">
+										<h4>You may Like</h4>
+										<hr class="underlinskd"> </div>
+								</div>
+							</div>
+							<div class="fullline"><span></span></div>
+							<div>
+								<div class="coer" style="padding:0">
+									<div id="youmaylike">
+										
+										<div class="thiscatbox">
+											<a href="#1" class="pro-box"> <img src="{{static_asset('assest_web/img/ipcon1.svg')}}" data-src="img/ipcon1.svg" class="catloader loadimg pro-img" alt="#">
+												<p class="name ">Housing Wire <span>Min 30% Off</span></p>
+												<div class="clearfix"></div>
+											</a>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
+				<div class="md-hide">
+					<div class="deliverybox"> <span class="title"><i class="fa fa-map-marker"></i>Delivery by 24th April</span>
+						<form>
+							<input type="number" name="pincode" value="670002" placeholder="Enter Pincode"> <a href="javascript:void(0);" class="change">Change</a> </form>
+						<ul class="row delivery">
+							<li class="col-md-4"> <img src="img/shipping.svg" class="loadimg delimg" alt=""> <span class="name">Priority</span> <span class="status">Delivery</span> </li>
+							<li class="col-md-4"> <img src="img/cancellation.svg" class="loadimg delimg" alt=""> <span class="name">Cancellation</span> <span class="status">Allowed</span> </li>
+						</ul>
+						<div class="details">
+							<p style="display: none;"><i class="fa fa-inr" aria-hidden="true"></i> Cash on Delivery Available</p>
+							<p><i class="fa fa-inr" aria-hidden="true"></i> Online Payment Available</p>
+						</div>
+					</div>
+					<!-- deliverybox -->
+				</div>
+				<div class="mb-8">
+					<div class="border-bottom border-color-1 mb-3">
+						<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Complementary Products</h3> </div>
+					<ul class="list-unstyled">
+						<li class="mb-4">
+							<div class="row">
+								<div class="col-auto col-md-4">
+									<a href="javascript:void(0);" class="d-block width-75"> <img class="img-fluid" src="{{static_asset('assets_web/img/prod1.jpg')}}" alt="Image Description"> </a>
+								</div>
+								<div class="col col-md-8">
+									<h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="javascript:void(0);">OCEAN UPVC Pipe Fittings, Hydraulic Pipe</a></h3> </div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="form_rights_inner p-20 animated fadeIn">
+					<a class="dcompinfo_anchor" href="#1">
+						<div class="dcomp_imag"><img src="{{static_asset('assets_web/img/cement1.jpg')}}" class="dcomp_imgbox " alt="Ebuild Bazaar"> <span class="dcomp_thumb_icon ebuild_icon"></span> </div>
+					</a>
+					<div class="dcomp_foll mt-10">
+						<button class="dcomp_follbtn font11 fw600 color414">Follow</button>
+					</div>
+					<a class="forms_wrapper" href="#1">
+						<div class="dcomp_name mt-15 font18 fw600 color414">
+							<h3>Ebuild Bazaar</h3> </div>
+						<div class="dcomp_loct mt-15"> <span class="details_locat_icon ebuild_icon"></span> <span class="details_locat_cont font11 fw600 color414">
+                            <img src="{{static_asset('assets_web/img/in.jpg')}}" alt="alt" style="    border-radius: 50px;  width: 25px;  height: 25px;">
+                              IND
+                           </span> <span class="font15 fw400 color414">Noida</span> </div>
+					</a>
+					<div class="dcomp_rati mt-5">
+						<a class="dcomp_rati" href="#12"> <span class="dcomp_rtext mr-10 font16 fw600 color363">4.1</span> <span class="dcomp_rstar mr-10 ">
+                              <svg width="100%" height="100%" viewBox="0 0 1000 200">
+                                 <polygon id="star8371" points="100,10 40,198 190,78 10,78 160,198" fill="#FFE372"></polygon>
+                                 <defs>
+                                    <clipPath id="stars8371">
+                                       <use xlink:href="#star8371"></use>
+                                       <use xlink:href="#star8371" x="21%"></use>
+                                       <use xlink:href="#star8371" x="41%"></use>
+                                       <use xlink:href="#star8371" x="61%"></use>
+                                       <use xlink:href="#star8371" x="81%"></use>
+                                    </clipPath>
+                                 </defs>
+                                 <rect width="100%" height="100%" clip-path="url(#stars8371)" style="fill: rgb(215, 215, 215); stroke: red; stroke-width: 1; height: 100%; width: 100%;"></rect>
+                                 <rect width="82%" height="100%" clip-path="url(#stars8371)" style="fill: rgb(255, 110, 0); height: 100%;"></rect>
+                              </svg>
+                           </span> <span class="dcomp_rnumb font15 fw400 color788">129 Ratings</span> </a>
+					</div>
+					<a class="dcompinfo_anchor" href="#1">
+						<div class="dcomp_bagd mt-5"> <span class="dcomp_trust_icon ebuild_icon mr-10">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="37" height="8.818" viewBox="0 0 37 8.818">
+                                 <defs>
+                                    <style>
+                                       .cls-1{fill:#2192d9;fill-rule:evenodd}.cls-2{fill:#3d71b7}
+                                    </style>
+                                 </defs>
+                                 <g id="verified" transform="translate(-.835 -.175)">
+                                    <g id="Artboard-43" transform="translate(.835 .175)">
+                                       <g id="Group-2">
+                                          <path id="Combined-Shape" d="M4.59 6.179l4.434-6h2.846L5.48 8.993H3.424L.835 3.163h2.589z" class="cls-1" transform="translate(-.835 -.175)"/>
+                                          <path id="Combined-Shape-2" d="M13.543 2.923a1.717 1.717 0 0 1 .708.62 2.529 2.529 0 0 1 .351.969 7.838 7.838 0 0 1 .098 1.267v.349h-3.2v.484a3.278 3.278 0 0 0 .041.524 1.666 1.666 0 0 0 .135.451.856.856 0 0 0 .246.315.592.592 0 0 0 .375.118.665.665 0 0 0 .6-.282 2.021 2.021 0 0 0 .258-.856H14.6a2.374 2.374 0 0 1-.585 1.611 2.284 2.284 0 0 1-1.7.552 2.773 2.773 0 0 1-1.37-.282 1.778 1.778 0 0 1-.726-.743 2.845 2.845 0 0 1-.287-1.036c-.028-.308.006-.548 0-.856l2.48-3.428a2.612 2.612 0 0 1 1.131.223zM13.151 5.2q-.012-.349-.047-.614a1.526 1.526 0 0 0-.123-.451.636.636 0 0 0-.246-.282.769.769 0 0 0-.4-.1.706.706 0 0 0-.4.107.778.778 0 0 0-.252.282 1.356 1.356 0 0 0-.135.389 2.272 2.272 0 0 0-.041.428V5.2zm2.388-2.343h1.545v.811h.023a2.226 2.226 0 0 1 .6-.7 1.379 1.379 0 0 1 .855-.265q.07 0 .146.006t.146.017v1.487Q18.723 4.2 18.6 4.2t-.252-.006a1.626 1.626 0 0 0-.421.056 1.142 1.142 0 0 0-.386.186.938.938 0 0 0-.281.338 1.128 1.128 0 0 0-.105.513v3.634h-1.616zM19.5.788h1.615v1.329H19.5zm0 2.073h1.615v6.06H19.5zm3.1 1.059h-.819V2.861h.819v-.687a1.791 1.791 0 0 1 .117-.687 1.087 1.087 0 0 1 .334-.451 1.347 1.347 0 0 1 .533-.242 3.117 3.117 0 0 1 .7-.073q.433 0 .866.034v1.1a.917.917 0 0 0-.164-.011h-.152a.781.781 0 0 0-.48.113.449.449 0 0 0-.14.372v.529h.937V3.92h-.937v5H22.6zM25.782.788H27.4v1.329h-1.618zm0 2.073H27.4v6.06h-1.618zM31.565 5.2q-.012-.349-.047-.614a1.526 1.526 0 0 0-.123-.451.636.636 0 0 0-.246-.282.769.769 0 0 0-.4-.1.706.706 0 0 0-.4.107.778.778 0 0 0-.252.282 1.356 1.356 0 0 0-.135.389 2.272 2.272 0 0 0-.041.428V5.2zm-1.651.924v.484a3.278 3.278 0 0 0 .041.524 1.666 1.666 0 0 0 .135.451.856.856 0 0 0 .246.315.592.592 0 0 0 .375.118.665.665 0 0 0 .6-.282 2.021 2.021 0 0 0 .258-.856h1.452a2.374 2.374 0 0 1-.585 1.611 2.284 2.284 0 0 1-1.7.552 2.773 2.773 0 0 1-1.37-.282 1.778 1.778 0 0 1-.726-.743 2.845 2.845 0 0 1-.287-1.036q-.053-.571-.053-1.145a7.6 7.6 0 0 1 .088-1.172 2.754 2.754 0 0 1 .351-1 1.876 1.876 0 0 1 .755-.7A2.822 2.822 0 0 1 30.8 2.7a2.634 2.634 0 0 1 1.153.22 1.717 1.717 0 0 1 .708.62 2.529 2.529 0 0 1 .351.969 7.837 7.837 0 0 1 .094 1.267v.349zm7.27 2.152h-.023a1.588 1.588 0 0 1-.6.6 1.815 1.815 0 0 1-.825.169 1.612 1.612 0 0 1-1.463-.732 4.687 4.687 0 0 1-.473-2.422 4.786 4.786 0 0 1 .468-2.439 1.6 1.6 0 0 1 1.465-.752 1.571 1.571 0 0 1 .778.18 1.806 1.806 0 0 1 .579.541h.023V.878h1.616v8.043h-1.545zm-1.767-2.385a5.29 5.29 0 0 0 .158 1.493.657.657 0 0 0 .685.5.664.664 0 0 0 .7-.5 5.291 5.291 0 0 0 .158-1.493 5.291 5.291 0 0 0-.162-1.491.664.664 0 0 0-.7-.5.657.657 0 0 0-.685.5 5.29 5.29 0 0 0-.154 1.491z" class="cls-2" data-name="Combined-Shape" transform="translate(-1.729 -.229)"/>
+                                       </g>
+                                    </g>
+                                 </g>
+                              </svg>
+                           </span> <span class="dcomp_verify_icon ebuild_icon mr-10">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="44.521" height="15.772" viewBox="0 0 44.521 15.772">
+                                 <defs>
+                                    <style>
+                                       .cls-1,.cls-2{fill:#face32}.cls-2{stroke:#fff;fill-rule:evenodd}.cls-3{fill:#fff}.cls-4{fill:#4c4a4a}
+                                    </style>
+                                 </defs>
+                                 <g id="trusted" transform="translate(-194.479 -566.484)">
+                                    <rect id="Rectangle_7273" width="31.5" height="10" class="cls-1" data-name="Rectangle 7273" rx="1.5" transform="translate(207.5 569.5)"/>
+                                    <path id="Path_3849" d="M13.258 1.281v2.057h-2.253V.607L8.592 0 6.179.607v2.731H3.926V1.281l-2.334.71.608 10.751 6.391 1.991 6.391-1.991.609-10.751z" class="cls-2" data-name="Path 3849" transform="translate(193.408 567)"/>
+                                    <path id="Path_3853" d="M3.853-7.139H2.339v-5.879H.4v-1.26h5.391v1.26H3.853z" class="cls-3" data-name="Path 3853" transform="translate(198.9 586.139)"/>
+                                    <path id="Path_4184" d="M.176-15.4h4.551v1.042H3.062v4.4H1.833v-4.4H.176zm6.192 2.015a1.522 1.522 0 0 1 .568-.591 1.661 1.661 0 0 1 .817-.21v1.128a1.64 1.64 0 0 0-.187-.008 1.236 1.236 0 0 0-.875.3 1.036 1.036 0 0 0-.323.8v2.015H5.17v-4.189h1.2zm6.013-.755v4.185h-1.19v-.739a1.473 1.473 0 0 1-1.4.786 1.443 1.443 0 0 1-1.1-.432 1.634 1.634 0 0 1-.408-1.171v-2.629h1.2v2.287a.878.878 0 0 0 .21.622.748.748 0 0 0 .576.226.86.86 0 0 0 .677-.3 1.143 1.143 0 0 0 .249-.762v-2.073zm3.8 1.229a3.489 3.489 0 0 0-.677-.3 2.025 2.025 0 0 0-.6-.105.687.687 0 0 0-.35.078.254.254 0 0 0-.134.238.289.289 0 0 0 .179.264 3.427 3.427 0 0 0 .583.21 6.155 6.155 0 0 1 .731.261 1.364 1.364 0 0 1 .5.381 1.007 1.007 0 0 1 .21.665 1.127 1.127 0 0 1-.478.969 2.039 2.039 0 0 1-1.225.346 3.225 3.225 0 0 1-.988-.152 2.546 2.546 0 0 1-.825-.432l.389-.809a2.454 2.454 0 0 0 .712.385 2.272 2.272 0 0 0 .743.136.779.779 0 0 0 .385-.082.265.265 0 0 0 .144-.245.31.31 0 0 0-.183-.28 3.056 3.056 0 0 0-.587-.218 5.942 5.942 0 0 1-.71-.252 1.269 1.269 0 0 1-.486-.377 1.02 1.02 0 0 1-.2-.657 1.126 1.126 0 0 1 .467-.965 1.947 1.947 0 0 1 1.182-.342 3.142 3.142 0 0 1 .856.121 2.857 2.857 0 0 1 .778.346zm3.835 2.723a1.958 1.958 0 0 1-.517.214 2.261 2.261 0 0 1-.572.074 1.351 1.351 0 0 1-.949-.335 1.231 1.231 0 0 1-.366-.957v-1.937h-.583v-.825h.583V-15.1H18.8v1.151h1.136v.832H18.8v1.727q0 .482.381.482a1.347 1.347 0 0 0 .583-.156z" class="cls-4" data-name="Path 4184" transform="translate(213.324 586.9)"/>
+                                 </g>
+                              </svg>
+                           </span> <span class="dcomp_yers font11 fw700 color414">41 YRS</span> </div>
+					</a>
+					<hr>
+					<div class="dcomp_btnbox mt-15">
+						<div class="dcomp_text mt-10 mb-5 font15 fw400 color788">For more details on products</div>
+						<button class="dcomp_ebtn mt-10"> <span class="font15 fw400 color007">Contact Supplier</span></button>
+						<button class="dcomp_fbtn mt-10 font15 fw400 colorFFF">Get Best Price</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<section class="similar-pros-section">
+	   <div class="container">
+	   <div class="mb-8 similar-pros">
+                    <div class="service-pros" style="padding:0px;margin:0px;">
+		<div class="head-cnt work-center text-center">
+            <div class="bounceIn animated">
+           
+               <h4>Similar Relative</h4>
+			   <hr class="underlinskd">
+               
+            </div>
+         </div>
+         </div>
+                     <ul class="list-unstyled owl-carousel owl-theme trending021">
+                        <li class="mb-4">
+                           <div class="row">
+                              <div class="col-auto col-md-4">
+                                 <a href="javascript:void(0);" class="d-block width-75">
+                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim1.jpg')}}" alt="Image Description">
+                                 </a>
+                              </div>
+                              <div class="col col-md-8">
+                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">Finolex Selfit Pipe</a></h3>
+                                 <div class="row">
+                                    <div class="font-weight-bold col-md-7"> 
+                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
                                     </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
+                                       <p>35% off</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="mb-4">
+                           <div class="row">
+                              <div class="col-auto col-md-4">
+                                 <a href="javascript:void(0);" class="d-block width-75">
+                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim2.jpg')}}" alt="Image Description">
+                                 </a>
+                              </div>
+                              <div class="col col-md-8">
+                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">HDPE Pipes</a></h3>
+                                 <div class="row">
+                                    <div class="font-weight-bold col-md-7"> 
+                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
+                                    </div>
+                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
+                                       <p>35% off</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="mb-4">
+                           <div class="row">
+                              <div class="col-auto col-md-4">
+                                 <a href="javascript:void(0);" class="d-block width-75">
+                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim3.jpg')}}" alt="Image Description">
+                                 </a>
+                              </div>
+                              <div class="col col-md-8">
+                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">PVC Elbow</a></h3>
+                                 <div class="row">
+                                    <div class="font-weight-bold col-md-7"> 
+                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
+                                    </div>
+                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
+                                       <p>35% off</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="mb-4">
+                           <div class="row">
+                              <div class="col-auto col-md-4">
+                                 <a href="javascript:void(0);" class="d-block width-75">
+                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim4.jpg')}}" alt="Image Description">
+                                 </a>
+                              </div>
+                              <div class="col col-md-8">
+                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">CPVC SDR</a></h3>
+                                 <div class="row">
+                                    <div class="font-weight-bold col-md-7"> 
+                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
+                                    </div>
+                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
+                                       <p>35% off</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="mb-4">
+                           <div class="row">
+                              <div class="col-auto col-md-4">
+                                 <a href="javascript:void(0);" class="d-block width-75">
+                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim5.jpg')}}" alt="Image Description">
+                                 </a>
+                              </div>
+                              <div class="col col-md-8">
+                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">Heavy Pressure</a></h3>
+                                 <div class="row">
+                                    <div class="font-weight-bold col-md-7"> 
+                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
+                                    </div>
+                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
+                                       <p>35% off</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+                  </div>
+		</section>
+		
+		 <!-- Product relative Carousel -->
+            <div class="headsections111">
+            <div class="container">
+			 <div class="service-pros" style="padding:0px;margin:0px;">
+		<div class="head-cnt work-center text-center">
+            <div class="bounceIn animated">
+           
+               <h4>{{ translate('Related products')}}</h4>
+			   <hr class="underlinskd">
+               
             </div>
-        </div>
-    </section>
+         </div>
+         </div>
+              
+               <div class="owl-carousel owl-theme trending0">
+                  @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
+					  <div class="item">
+						 <div class="product-box">
+							<div class="beachs">10% Off</div>
+							<img src="{{ uploaded_asset($related_product->thumbnail_img) }}" alt="">
+							<div class="discrptions">
+							   <h5>{{ $related_product->getTranslation('name') }} </h5>
+							   <h6>{{ home_discounted_base_price($related_product) }}
+							   @if(home_base_price($related_product) != home_discounted_base_price($related_product))
+								   <strike> {{ home_base_price($related_product) }}</strike>
+							    @endif
+							   </h6>
+							</div>
+							<div class="discrptions_button">
+							   <h5><a href="{{ route('product', $related_product->slug) }}">View Detail</a></h5>
+							   <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
+							</div>
+						 </div>
+					  </div>
+				  @endforeach
+                 
+               </div>
+            </div>            </div>
+			</br><section class="banner-brand_product">
+		 <div class="container">
+		 <div class="service-pros" style="padding:0px;margin:0px;">
+		<div class="head-cnt work-center text-center" style="    margin: 0px; height: 0px;">
+            <div class="bounceIn animated">
+            <h4>Why Buy Product From eBuildBazaar?</h4>
+			   </div>
+         </div>
+         </div>
+ 
+			  <div class="brandss1">
+			   <div class="row">
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon1.png')}}" alt=""> <h3>All Under One roof</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon2.png')}}" alt=""><h3>Widest Product Range</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon3.png')}}" alt=""><h3>On Time Delivery</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon4.png')}}" alt=""><h3>Product Knowledge Support</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon5.png')}}" alt=""><h3>Genuine Products</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon6.png')}}" alt=""><h3>365 Days Wholesale Rates</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   </div>
+			   </div>
+		 </div>
+		 </section>
 
-@endsection
+ @endsection @section('script')
+<script type="text/javascript">
+$(document).ready(function() {
+	getVariantPrice();
+});
 
-@section('modal')
-    <div class="modal fade" id="chat_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
-            <div class="modal-content position-relative">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-600 h5">{{ translate('Any query about this product')}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form class="" action="{{ route('conversations.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $detailedProduct->id }}">
-                    <div class="modal-body gry-bg px-3 pt-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3" name="title" value="{{ $detailedProduct->name }}" placeholder="{{ translate('Product Name') }}" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="8" name="message" required placeholder="{{ translate('Your Question') }}">{{ route('product', $detailedProduct->slug) }}</textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary fw-600" data-dismiss="modal">{{ translate('Cancel')}}</button>
-                        <button type="submit" class="btn btn-primary fw-600">{{ translate('Send')}}</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+function CopyToClipboard(e) {
+	var url = $(e).data('url');
+	var $temp = $("<input>");
+	$("body").append($temp);
+	$temp.val(url).select();
+	try {
+		document.execCommand("copy");
+		AIZ.plugins.notify('success', '{{ translate('
+			Link copied to clipboard ') }}');
+	} catch(err) {
+		AIZ.plugins.notify('danger', '{{ translate('
+			Oops, unable to copy ') }}');
+	}
+	$temp.remove();
+	// if (document.selection) {
+	//     var range = document.body.createTextRange();
+	//     range.moveToElementText(document.getElementById(containerid));
+	//     range.select().createTextRange();
+	//     document.execCommand("Copy");
+	// } else if (window.getSelection) {
+	//     var range = document.createRange();
+	//     document.getElementById(containerid).style.display = "block";
+	//     range.selectNode(document.getElementById(containerid));
+	//     window.getSelection().addRange(range);
+	//     document.execCommand("Copy");
+	//     document.getElementById(containerid).style.display = "none";
+	// }
+	// AIZ.plugins.notify('success', 'Copied');
+}
 
-    <!-- Modal -->
-    <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-zoom" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title fw-600">{{ translate('Login')}}</h6>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="p-3">
-                        <form class="form-default" role="form" action="{{ route('cart.login.submit') }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                @if (addon_is_activated('otp_system'))
-                                    <input type="text" class="form-control h-auto form-control-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ translate('Email Or Phone')}}" name="email" id="email">
-                                @else
-                                    <input type="email" class="form-control h-auto form-control-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email">
-                                @endif
-                                @if (addon_is_activated('otp_system'))
-                                    <span class="opacity-60">{{  translate('Use country code before number') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control h-auto form-control-lg" placeholder="{{ translate('Password')}}">
-                            </div>
-
-                            <div class="row mb-2">
-                                <div class="col-6">
-                                    <label class="aiz-checkbox">
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <span class=opacity-60>{{  translate('Remember Me') }}</span>
-                                        <span class="aiz-square-check"></span>
-                                    </label>
-                                </div>
-                                <div class="col-6 text-right">
-                                    <a href="{{ route('password.request') }}" class="text-reset opacity-60 fs-14">{{ translate('Forgot password?')}}</a>
-                                </div>
-                            </div>
-
-                            <div class="mb-5">
-                                <button type="submit" class="btn btn-primary btn-block fw-600">{{  translate('Login') }}</button>
-                            </div>
-                        </form>
-
-                        <div class="text-center mb-3">
-                            <p class="text-muted mb-0">{{ translate('Dont have an account?')}}</p>
-                            <a href="{{ route('user.registration') }}">{{ translate('Register Now')}}</a>
-                        </div>
-                        @if(get_setting('google_login') == 1 ||
-                            get_setting('facebook_login') == 1 ||
-                            get_setting('twitter_login') == 1)
-                            <div class="separator mb-3">
-                                <span class="bg-white px-3 opacity-60">{{ translate('Or Login With')}}</span>
-                            </div>
-                            <ul class="list-inline social colored text-center mb-5">
-                                @if (get_setting('facebook_login') == 1)
-                                    <li class="list-inline-item">
-                                        <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="facebook">
-                                            <i class="lab la-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                @endif
-                                @if(get_setting('google_login') == 1)
-                                    <li class="list-inline-item">
-                                        <a href="{{ route('social.login', ['provider' => 'google']) }}" class="google">
-                                            <i class="lab la-google"></i>
-                                        </a>
-                                    </li>
-                                @endif
-                                @if (get_setting('twitter_login') == 1)
-                                    <li class="list-inline-item">
-                                        <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="twitter">
-                                            <i class="lab la-twitter"></i>
-                                        </a>
-                                    </li>
-                                @endif
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
-@section('script')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            getVariantPrice();
-    	});
-
-        function CopyToClipboard(e) {
-            var url = $(e).data('url');
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val(url).select();
-            try {
-                document.execCommand("copy");
-                AIZ.plugins.notify('success', '{{ translate('Link copied to clipboard') }}');
-            } catch (err) {
-                AIZ.plugins.notify('danger', '{{ translate('Oops, unable to copy') }}');
-            }
-            $temp.remove();
-            // if (document.selection) {
-            //     var range = document.body.createTextRange();
-            //     range.moveToElementText(document.getElementById(containerid));
-            //     range.select().createTextRange();
-            //     document.execCommand("Copy");
-
-            // } else if (window.getSelection) {
-            //     var range = document.createRange();
-            //     document.getElementById(containerid).style.display = "block";
-            //     range.selectNode(document.getElementById(containerid));
-            //     window.getSelection().addRange(range);
-            //     document.execCommand("Copy");
-            //     document.getElementById(containerid).style.display = "none";
-
-            // }
-            // AIZ.plugins.notify('success', 'Copied');
-        }
-        function show_chat_modal(){
-            @if (Auth::check())
-                $('#chat_modal').modal('show');
-            @else
-                $('#login_modal').modal('show');
-            @endif
-        }
-
-    </script>
-@endsection
+function show_chat_modal() {@
+	if(Auth::check()) $('#chat_modal').modal('show');@
+	else $('#login_modal').modal('show');@
+	endif
+}
+</script> @endsection
