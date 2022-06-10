@@ -12,6 +12,7 @@
  */
 // use App\Mail\SupportMailManager;
 use App\Http\Controllers\CatController;
+use App\Http\Controllers\CartController;
 //demo
 Route::get('/demo/cron_1', 'DemoController@cron_1');
 Route::get('/demo/cron_2', 'DemoController@cron_2');
@@ -92,11 +93,12 @@ Route::post('/product/variant_price', 'HomeController@variant_price')->name('pro
 Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
 Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');
 
-Route::get('/cart', 'CartController@index')->name('cart');
-Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
-Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart');
-Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
-Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
+Route::post('add-to-cart', [CartController::class,'addToUserCart']);
+// Route::get('/cart', 'CartController@index')->name('cart');
+// Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
+// Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart');
+// Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
+// Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 
 //Checkout Routes
 Route::group(['prefix' => 'checkout', 'middleware' => ['user', 'verified', 'unbanned']], function () {

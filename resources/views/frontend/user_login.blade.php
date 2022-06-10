@@ -104,7 +104,7 @@
 															</span>
 														@endif
 													</div>
-                                                    {{-- <input type="text" name="name" value="Tushar Deshpande"> --}}
+                                                    <input type="hidden" name="name" value="a">
 													<div class="js-form-message form-group col-md-6 mb-3">
 														<input type="text" class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name" autocomplete="off">
                                                         @if ($errors->has('last_name'))

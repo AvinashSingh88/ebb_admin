@@ -12,32 +12,63 @@ use Cookie;
 
 class CartController extends Controller
 {
-    public function index(Request $request)
-    {
-        //dd($cart->all());
-        $categories = Category::all();
-        if(auth()->user() != null) {
-            $user_id = Auth::user()->id;
-            if($request->session()->get('temp_user_id')) {
-                Cart::where('temp_user_id', $request->session()->get('temp_user_id'))
-                        ->update(
-                                [
-                                    'user_id' => $user_id,
-                                    'temp_user_id' => null
-                                ]
-                );
+    public function addToUserCart(Request $request){
+        $product_id = $request->input('product_id');
+        $product_qty = $request->input('product_qty');
 
-                Session::forget('temp_user_id');
-            }
-            $carts = Cart::where('user_id', $user_id)->get();
-        } else {
-            $temp_user_id = $request->session()->get('temp_user_id');
-            // $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-            $carts = ($temp_user_id != null) ? Cart::where('temp_user_id', $temp_user_id)->get() : [] ;
+        if(Auth::check())
+{
+	$prod_check = Product::where('id',$product_id)->exists();
+	if($prod_check)
+	{
+		if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists())
+		{
+		    return response()->json(['status'=>$prod_check->name.'Already Added to Cart']);
         }
-
-        return view('frontend.view_cart', compact('categories', 'carts'));
+		else{
+			
+            $cartItem = new Cart();
+            $cartItem->product_id = $product_id;
+            $cartItem->user_id =Auth::id();
+            $cartItem->quantity = $product_qty;	
+            $cartItem->save();
+            return response()->json(['status'=>$prod_check->name.'Added to Cart']);
+        }
+	}
+        
     }
+    else
+        {
+            return response()->json(['status' => "Login to Your Account"]);
+        }
+    }
+    
+    // public function index(Request $request)
+    // {
+    //     //dd($cart->all());
+    //     $categories = Category::all();
+    //     if(auth()->user() != null) {
+    //         $user_id = Auth::user()->id;
+    //         if($request->session()->get('temp_user_id')) {
+    //             Cart::where('temp_user_id', $request->session()->get('temp_user_id'))
+    //                     ->update(
+    //                             [
+    //                                 'user_id' => $user_id,
+    //                                 'temp_user_id' => null
+    //                             ]
+    //             );
+
+    //             Session::forget('temp_user_id');
+    //         }
+    //         $carts = Cart::where('user_id', $user_id)->get();
+    //     } else {
+    //         $temp_user_id = $request->session()->get('temp_user_id');
+    //         // $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+    //         $carts = ($temp_user_id != null) ? Cart::where('temp_user_id', $temp_user_id)->get() : [] ;
+    //     }
+
+    //     return view('frontend.view_cart', compact('categories', 'carts'));
+    // }
 
     public function showCartModal(Request $request)
     {

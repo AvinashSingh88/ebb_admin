@@ -142,14 +142,14 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         
         // $name = $request->first_name.' '.$request->last_name;
-        $name = "$request->first_name.' '.$request->last_name";
+        $name = $request->first_name.' '.$request->last_name;
         // $name = "Prince kr";
-        dd($name);
-        die;
+        // dd($name);
+        // die;
         
         $user = User::create([
             "first_name" => "$request->first_name",
-            "name" => "Rajan Sharma",
+            "name" => $name,
             "last_name" => "$request->last_name",
             "phone" => "$request->phone",
             "email" => "$request->email",
