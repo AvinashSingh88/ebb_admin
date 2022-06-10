@@ -133,7 +133,40 @@
                 </li>
                 @endif
 
-                  <!-- Setup & Configurations -->
+                <!-- Website Setup -->
+                @if(Auth::user()->user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions)))
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link {{ areActiveRoutes(['website.footer', 'website.header'])}}" >
+                            <i class="las la-desktop aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{translate('Website Setup')}}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('website.header') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Header')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('website.footer', ['lang'=>  App::getLocale()] ) }}" class="aiz-side-nav-link {{ areActiveRoutes(['website.footer'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('Footer')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('website.pages') }}" class="aiz-side-nav-link {{ areActiveRoutes(['website.pages', 'custom-pages.create' ,'custom-pages.edit'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('Pages')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('website.appearance') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Appearance')}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- Setup & Configurations -->
                 @if(Auth::user()->user_type == 'admin' || in_array('14', json_decode(Auth::user()->staff->role->permissions)))
                 <li class="aiz-side-nav-item">
                     <a href="#" class="aiz-side-nav-link">
