@@ -256,9 +256,35 @@
                           <li class="flot-right getquote">
                              <a href="cart.php"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> <span>1</span> <b> ₹ 200</b></a>
                           </li>
+                          @if (Auth::check()) 
                           <li class="flot-right getquote getquote-signs">
-                             <a href="cart.php"><i class="far fa-user"></i> Sign In / Login</a>
-                          </li>
+                           <a href="#1" id="SignInlogin"><i class="far fa-user"></i> {{ Auth::user()->name }}</a>
+                           <div class="tab-more tab-more2 bg-dark active">
+                             
+                              <ul class="login_signiN">
+                                 <li>
+                                    <a href="{{url('users/login')}}" class="d-flex align-items-center justify-content-around p-0 m-0">
+                                    <i class="fa fa-user-circle"></i> Login/register  <i class="fa fa-angle-right ms-2"></i>  
+                                    </a>
+                                 </li>
+                                 <li><a href="#profile.php"><i class="bg_icon-img"></i>My Profile </a> </li>
+                                 <li><a href="#product-account.php"><i class="bg_icon-img"></i> My Products</a></li>
+                                 <li><a href="#services-account.php"><i class="bg_icon-img"></i>  My Services</a></li>
+                                 <li><a href="#product_service-chates.php"><i class="bg_icon-img"></i>  My Chats</a></li>
+                                 <li><a href="#my-needy.php"><i class="bg_icon-img"></i>  My Carts</a></li>
+                                 <li><a href="#all_notifications.php"><i class="bg_icon-img"></i>  All Notification</a></li>
+                                 <li><a href="{{ route('logout') }}"><i class="bg_icon-img"></i>  Logout</a></li>
+                              </ul>
+                             
+                           </div>
+                        </li>
+                        @else
+                        <li class="flot-right getquote getquote-signs">
+                           <a href="{{url('users/login')}}"><i class="far fa-user"></i> Sign In / Login</a>
+                           
+                        </li>
+                       
+                        @endif
                           <li class="border-zero flot-right">
                              <a href="javascript:void(0);" id="imgrotate"><img src="img/services-arrow.png" alt="" /></a>
                           </li>
