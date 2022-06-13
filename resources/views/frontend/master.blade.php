@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.theme.default.css')}}" />
       <link rel="stylesheet" href="{{static_asset('assets_web/css/reset.css')}}" /> 
       <link href="{{static_asset('assets_web/css/style.css')}}" media="all" rel="stylesheet" type="text/css" />
-	 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
       @if (get_setting('google_analytics') == 1)
       <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -95,7 +95,149 @@
        @include('frontend.header')
        @yield('content')
        @include('frontend.footer')
+	   
+	   @include('frontend.partials.modal')
+
+    
+
+    <div class="modal fade" id="addToCart">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
+            <div class="modal-content position-relative">
+                <div class="c-preloader text-center p-3">
+                    <i class="las la-spinner la-spin la-3x"></i>
+                </div>
+                <button type="button" class="close absolute-top-right btn-icon close z-1" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la-2x">&times;</span>
+                </button>
+                <div id="addToCart-modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @yield('modal')
+       <script>
+            AIZ.plugins.notify('info', 'Email or Phone already exists.');
+        </script>
+		
+		<script>
+        $(document).ready(function() {
+			
+            $('.addToCartButton').click(function (e) { 
+                e.preventDefault();
+                var product_id = $(this).closest('.product_data').find('.prod_id').val();
+                var product_qty = $(this).closest('.product_data').find('.input-number').val();
+                 // alert(product_id);
+                // alert(product_qty);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: "POST",
+                    url: '{{url('add-to-cart')}}',
+                    data: {
+                       'product_id':product_id,
+                       'product_qty':product_qty,
+                    },
+                    success: function (response) {
+                        alert(response.status);
+                    }
+                });
+        });
+			
+			
+			
+			
+			
+            $('.category-nav-element').each(function(i, el) {
+                $(el).on('mouseover', function(){
+                    if(!$(el).find('.sub-cat-menu').hasClass('loaded')){
+                        $.post('{{ route('category.elements') }}', {_token: AIZ.data.csrf, id:$(el).data('id')}, function(data){
+                            $(el).find('.sub-cat-menu').addClass('loaded').html(data);
+                        });
+                    }
+                });
+            });
+            if ($('#lang-change').length > 0) {
+                $('#lang-change .dropdown-menu a').each(function() {
+                    $(this).on('click', function(e){
+                        e.preventDefault();
+                        var $this = $(this);
+                        var locale = $this.data('flag');
+                        $.post('{{ route('language.change') }}',{_token: AIZ.data.csrf, locale:locale}, function(data){
+                            location.reload();
+                        });
+
+                    });
+                });
+            }
+
+            if ($('#currency-change').length > 0) {
+                $('#currency-change .dropdown-menu a').each(function() {
+                    $(this).on('click', function(e){
+                        e.preventDefault();
+                        var $this = $(this);
+                        var currency_code = $this.data('currency');
+                        $.post('{{ route('currency.change') }}',{_token: AIZ.data.csrf, currency_code:currency_code}, function(data){
+                            location.reload();
+                        });
+
+                    });
+                });
+            }
+			
+			
+			
+			
+			
+			
+			
+        });
+
+        $('#search').on('keyup', function(){
+            search();
+        });
+
+        $('#search').on('focus', function(){
+            search();
+        });
+
+        function search(){
+            var searchKey = $('#search').val();
+            if(searchKey.length > 0){
+                $('body').addClass("typed-search-box-shown");
+
+                $('.typed-search-box').removeClass('d-none');
+                $('.search-preloader').removeClass('d-none');
+                $.post('{{ route('search.ajax') }}', { _token: AIZ.data.csrf, search:searchKey}, function(data){
+                    if(data == '0'){
+                        // $('.typed-search-box').addClass('d-none');
+                        $('#search-content').html(null);
+                        $('.typed-search-box .search-nothing').removeClass('d-none').html('Sorry, nothing found for <strong>"'+searchKey+'"</strong>');
+                        $('.search-preloader').addClass('d-none');
+
+                    }
+                    else{
+                        $('.typed-search-box .search-nothing').addClass('d-none').html(null);
+                        $('#search-content').html(data);
+                        $('.search-preloader').addClass('d-none');
+                    }
+                });
+            }
+            else {
+                $('.typed-search-box').addClass('d-none');
+                $('body').removeClass("typed-search-box-shown");
+            }
+        }
+
+       
+    </script>
+	
        <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
+       <script src="{{static_asset('assets_web/js/aiz-core.js')}}" type="text/javascript"></script>
        <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
      <!--<script src="js/bootstrap.min.js.map"></script>-->
      <script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>

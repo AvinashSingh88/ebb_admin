@@ -126,6 +126,8 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request);
+        // die;
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             if(User::where('email', $request->email)->first() != null){
                 flash(translate('Email or Phone already exists.'));
@@ -138,8 +140,27 @@ class RegisterController extends Controller
         }
 
         $this->validator($request->all())->validate();
-
-        $user = $this->create($request->all());
+        
+        // $name = $request->first_name.' '.$request->last_name;
+        $name = $request->first_name.' '.$request->last_name;
+        // $name = "Prince kr";
+        // dd($name);
+        // die;
+        
+        $user = User::create([
+            "first_name" => "$request->first_name",
+            "name" => $name,
+            "last_name" => "$request->last_name",
+            "phone" => "$request->phone",
+            "email" => "$request->email",
+            "gender" => "$request->gender",
+            "password" => Hash::make($request->password)
+        ]);
+        // $user = User::create(request(['first_name','name','last_name','phone', 'email','gender', 'password']));
+        
+        // $user = $this->create($request->all());
+        // dd($user);
+        // die;
 
         $this->guard()->login($user);
 

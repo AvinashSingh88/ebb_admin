@@ -52,7 +52,8 @@ class HomeController extends Controller
         if (Auth::check()) {
             return redirect()->route('home');
         }
-        return view('frontend.user_login');
+        $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        return view('frontend.user_login',compact('categories'));
     }
 
     public function registration(Request $request)
@@ -60,6 +61,7 @@ class HomeController extends Controller
         if (Auth::check()) {
             return redirect()->route('home');
         }
+        
         if ($request->has('referral_code') && addon_is_activated('affiliate_system')) {
             try {
                 $affiliate_validation_time = AffiliateConfig::where('type', 'validation_time')->first();
@@ -76,7 +78,8 @@ class HomeController extends Controller
             } catch (\Exception $e) {
             }
         }
-        return view('frontend.user_registration');
+        $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        return view('frontend.user_registration',compact('categories'));
     }
 
     public function cart_login(Request $request)

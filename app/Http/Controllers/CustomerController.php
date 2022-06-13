@@ -46,15 +46,27 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
-            'name'          => 'required',
+            'first_name'          => 'required',
+            'last_name'          => 'required',
+            'gender'          => 'required',
             'email'         => 'required|unique:users|email',
             'phone'         => 'required|unique:users',
         ]);
         
         $response['status'] = 'Error';
         
-        $user = User::create($request->all());
+        $user = User::create([
+            "name" => "$request->first_name.' '.$request->last_name",
+            "first_name" => "$request->first_name",
+            "last_name" => "$request->last_name",
+            "email" => "$request->email",
+            "phone" => "$request->phone",
+            "gender" => "$request->gender"
+        ]);
+
+        // $user = User::create($request->all());
         
         $customer = new Customer;
         

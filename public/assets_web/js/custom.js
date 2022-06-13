@@ -293,83 +293,7 @@ function closeAllSelect(elmnt) {
 }
 
 document.addEventListener("click", closeAllSelect);
-
-
-$(".top_ul .buildings1a1").hover(function() {
-    $('.top_ul .buildings1a1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .buildings1a").hover(function() {
-    $('.top_ul .buildings1a').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .bricka1a").hover(function() {
-    $('.top_ul .bricka1a').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .constructionsa1").hover(function() {
-    $('.top_ul .constructionsa1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .constructionsa1a").hover(function() {
-    $('.top_ul .constructionsa1a').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .plumbings").hover(function() {
-    $('.top_ul .plumbings').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .finishes1a").hover(function() {
-    $('.top_ul .finishes1a').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .electrics1a").hover(function() {
-    $('.top_ul .electrics1a').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .sanitaryware1a").hover(function() {
-    $('.top_ul .sanitaryware1a').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .painta1").hover(function() {
-    $('.top_ul .painta1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .kitchens1").hover(function() {
-    $('.top_ul .kitchens1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .hardwarea1").hover(function() {
-    $('.top_ul .hardwarea1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .steels1").hover(function() {
-    $('.top_ul .steels1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .windos1").hover(function() {
-    $('.top_ul .windos1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
-$(".top_ul .tools1").hover(function() {
-    $('.top_ul .tools1').css("display", "block");
-}, function() {
-    $('.top_ul .top-megamenu.web-mega').css("display", "none");
-});
+ 
 $('.cart_buttons1').on('click', function() {
     $('.cart_buttons1').removeClass('active');
     $('.cart-add1').addClass('active');
@@ -1603,3 +1527,47 @@ function showSlides(n) {
   $(".inputsd4").hide();
   $(".widthedits4").hide();
 });
+
+
+
+
+
+// header toggle function starts here
+
+$(document).on('click','#SignInlogin',function() {
+    $('.tab-more2').toggleClass('active');
+});
+
+// header toggle function starts here
+
+
+
+
+
+// Password Match
+$('#uconfirm_password').on('change', function() {
+    var password = $("#upassword").val();
+    var confirmPassword = $("#uconfirm_password").val();
+    if (password != confirmPassword) {
+
+        $("#passtext").removeClass("invisible");
+        $("#uconfirm_password").removeClass("is-valid");
+        $("#uconfirm_password").addClass("is-invalid");
+    } else {
+        $("#passtext").addClass("invisible");
+        $("#uconfirm_password").removeClass("is-invalid");
+        $("#uconfirm_password").addClass("is-valid");
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
