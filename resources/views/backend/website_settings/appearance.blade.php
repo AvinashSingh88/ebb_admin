@@ -40,7 +40,8 @@
         						<small class="text-muted">{{ translate('Website favicon. 32x32 .png') }}</small>
                             </div>
     					</div>
-    	                <div class="form-group row">
+
+    	                <!-- <div class="form-group row">
     	                    <label class="col-md-3 col-from-label">{{translate('Website Base Color')}}</label>
                             <div class="col-md-8">
                                 <input type="hidden" name="types[]" value="base_color">
@@ -55,7 +56,8 @@
         	                    <input type="text" name="base_hov_color" class="form-control" placeholder="#377dff" value="{{  get_setting('base_hov_color') }}">
         						<small class="text-muted">{{ translate('Hex Color Code') }}</small>
                             </div>
-    	                </div>
+    	                </div> -->
+
     					<div class="text-right">
     						<button type="submit" class="btn btn-primary">{{ translate('Update') }}</button>
     					</div>
@@ -111,7 +113,8 @@
     				</form>
     			</div>
     		</div>
-            <div class="card">
+
+            <!-- <div class="card">
     			<div class="card-header">
     				<h6 class="fw-600 mb-0">{{ translate('Cookies Agreement') }}</h6>
     			</div>
@@ -140,8 +143,9 @@
     					</div>
     				</form>
     			</div>
-    		</div>
-            <div class="card">
+    		</div> -->
+
+            <!-- <div class="card">
     			<div class="card-header">
     				<h6 class="fw-600 mb-0">{{ translate('Website Popup') }}</h6>
     			</div>
@@ -180,7 +184,8 @@
     					</div>
     				</form>
     			</div>
-    		</div>
+    		</div> -->
+
             <div class="card">
                 <div class="card-header">
                     <h6 class="fw-600 mb-0">{{ translate('Custom Script') }}</h6>
