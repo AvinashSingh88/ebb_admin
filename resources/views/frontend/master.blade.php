@@ -117,19 +117,16 @@
     </div>
 
     @yield('modal')
-       <script>
-            AIZ.plugins.notify('info', 'Email or Phone already exists.');
-        </script>
-		
+       
 		<script>
         $(document).ready(function() {
+			loadcart();
 			
             $('.addToCartButton').click(function (e) { 
                 e.preventDefault();
                 var product_id = $(this).closest('.product_data').find('.prod_id').val();
                 var product_qty = $(this).closest('.product_data').find('.input-number').val();
-                 // alert(product_id);
-                // alert(product_qty);
+                var product_price = $(this).closest('.product_data').find('.prod_price').val();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -141,17 +138,104 @@
                     data: {
                        'product_id':product_id,
                        'product_qty':product_qty,
+                       'product_price':product_price,
                     },
                     success: function (response) {
-                        alert(response.status);
+                        // alert(response.status);
+						 toastr.info(response.status);
+                         loadcart();
+						 //updateNavCart(data.nav_cart_view,data.cart_count);
                     }
                 });
         });
-			
-			
-			
-			
-			
+		
+        function loadcart(){
+            $.ajax({
+            method:"GET",
+            url: '{{url('load-cart-data')}}',
+            success: function (response) {
+                //   console.log(response.count);  
+                $('.cart_count').html('');
+                $('.cart_count').html(response.count);
+                $('.cart_amount').html('');
+                $('.cart_amount').html(response.cart_amount);
+                }
+            });
+        }
+		
+		$(document).on('click', '.button-plus', function(e) {
+			e.preventDefault();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+			var quantity = $(this).closest('.product_data').find('.qty').val();			
+			var id = $(this).closest('.product_data').find('.prod_id').val();			
+			 $.ajax({
+				url: '{{url('update-cart-qty-plus')}}',
+				method: "POST",
+				data: {
+                       'quantity':quantity,
+                       'id':id,
+                    },
+				success: function (response) {
+					// alert(response.status);
+					 // toastr.info(response.status);
+					 $('#cart-summary').html(response.cart_view);
+                     loadcart();
+				}
+			});
+		});
+
+        $(document).on('click', '.button-minus', function(e) {
+			e.preventDefault();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+			var quantity = $(this).closest('.product_data').find('.qty').val();			
+			var id = $(this).closest('.product_data').find('.prod_id').val();			
+			 $.ajax({
+				url: '{{url('update-cart-qty-minus')}}',
+				method: "POST",
+				data: {
+                       'quantity':quantity,
+                       'id':id,
+                    },
+				success: function (response) {
+					// alert(response.status);
+					 // toastr.info(response.status);
+                     loadcart();
+					 $('#cart-summary').html(response.cart_view);
+				}
+			});
+		});
+		
+        $('.delete-cart-item').click(function (e) { 
+            e.preventDefault();
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            var prod_id =  $(this).closest('.product_data').find('.prod_id').val();
+            $.ajax({
+                method: "POST",
+                url: '{{url('dele-cart-item')}}',
+                data: {
+                    'prod_id':prod_id,
+                },
+                dataType: "dataType",
+                success: function (response) {
+                    toastr.info(response.status);
+                }
+            });
+        });
+		
+
+		
             $('.category-nav-element').each(function(i, el) {
                 $(el).on('mouseover', function(){
                     if(!$(el).find('.sub-cat-menu').hasClass('loaded')){
@@ -235,7 +319,9 @@
 
        
     </script>
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">	
        <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
        <script src="{{static_asset('assets_web/js/aiz-core.js')}}" type="text/javascript"></script>
        <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>

@@ -93,12 +93,18 @@ Route::post('/product/variant_price', 'HomeController@variant_price')->name('pro
 Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
 Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');
 
+// Route::post('add-to-cart', [CartController::class,'addToCart']);
 Route::post('add-to-cart', [CartController::class,'addToUserCart']);
-// Route::get('/cart', 'CartController@index')->name('cart');
-// Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
-// Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart');
-// Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
-// Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
+Route::get('load-cart-data', [CartController::class,'cartCountFunction']);
+Route::post('dele-cart-item', [CartController::class,'deleteFromCart']);
+Route::post('update-cart-qty-plus', [CartController::class,'updateCartPlus']);
+Route::post('update-cart-qty-minus', [CartController::class,'updateCartMinus']);
+Route::get('/cart', 'CartController@index')->name('cart');
+
+Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
+Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart');
+Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
+Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 
 //Checkout Routes
 Route::group(['prefix' => 'checkout', 'middleware' => ['user', 'verified', 'unbanned']], function () {

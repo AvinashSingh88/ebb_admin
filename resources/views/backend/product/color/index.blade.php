@@ -93,7 +93,7 @@
                     </form>
                 </div>
             </div>
-            <div class="card">
+            <di v class="card">
                 <div class="card-header">
                     <h3 class="mb-0 h6">{{translate('Color filter activation')}}</h3>
                 </div>

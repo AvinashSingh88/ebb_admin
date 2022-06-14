@@ -1,3 +1,5 @@
+@if(false)
+	
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
@@ -119,3 +121,4 @@
     @endif
 </div>
 @endsection
+@endif

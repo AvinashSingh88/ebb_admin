@@ -35,7 +35,14 @@
 @endsection
 
 @section('content')
-
+<style>
+	.text-truncate-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+</style>
      <section class="pageTitle">
          <div class="container">  </div>
       </section>
@@ -136,50 +143,24 @@
 					 
 
 		<div id="accordion" class="accordion-container contentsarround">
+		@if (Route::currentRouteName() != 'products.brand')	
 				<article class="content-entry open">
 				 <h4 class="font-size-14 mb-3 font-weight-bold article-title">Brands  <i></i></h4>
 						<div class="accordion-content" style="display:block;">
-								<div class="border-topsd">
-								  <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="brandAdidas">
-                              <label class="custom-control-label" for="brandAdidas">Kohler
-                              <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                              </label>
-                           </div>
-                        </div>
+							<div class="border-topsd">
+						
+							@foreach (\App\Models\Brand::all() as $brand)							
                         <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="brandNewBalance">
-                              <label class="custom-control-label" for="brandNewBalance">Jaquar faucet 
+                              <input name="brand" onchange="filter()" value="{{ $brand->slug }}" type="checkbox" class="custom-control-input" id="brand{{$brand->id}}" @isset($brand_id) @if ($brand_id == $brand->id) checked @endif @endisset>
+                              <label class="custom-control-label" for="brand{{$brand->id}}">{{ $brand->getTranslation('name') }} 
                               <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
                               </label>
                            </div>
                         </div>
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="brandNike">
-                              <label class="custom-control-label" for="brandNike">Delta 
-                              <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                              </label>
-                           </div>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="brandFredPerry">
-                              <label class="custom-control-label" for="brandFredPerry">Grohe
-                              <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                              </label>
-                           </div>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="brandTnf">
-                              <label class="custom-control-label" for="brandTnf">Plumber 
-                              <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                              </label>
-                           </div>
-                        </div>
+							@endforeach
+						
+                         
                         <!-- End Checkboxes -->
                         <!-- View More - Collapse -->
                         <div class="collapses" id="collapseBrand1">
@@ -199,70 +180,8 @@
                                  </label>
                               </div>
                            </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Vectus  
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Grotto  
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Queo  
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Supreme  
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Hindware  
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Roca  
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Eauset 
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="brandMango">
-                                 <label class="custom-control-label" for="brandMango">Aquini  
-                                 <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span>
-                                 </label>
-                              </div>
-                           </div>
+                            
+                           
                         </div>
                         <!-- End View More - Collapse -->
                         <!-- Link -->
@@ -275,66 +194,44 @@
                         </a>
 								</div>
 						</div>
-					 
+					
 				</article>
-
+				@endif
+				
+				@if (get_setting('color_filter_activation'))
 				<article class="content-entry">
-						 <h4 class="font-size-14 mb-3 font-weight-bold article-title"> Color <i></i></h4>
+						 <h4 class="font-size-14 mb-3 font-weight-bold article-title"> {{ translate('Filter by color')}} <i></i></h4>
 						<div class="accordion-content">
 								<div class="border-topsd">
 								 <div class="border-bott"> 
                         <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="categoryTshirt">
-                              <label class="custom-control-label" for="categoryTshirt">Black <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                           </div>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="categoryShoes">
-                              <label class="custom-control-label" for="categoryShoes">Black Leather <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                           </div>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="categoryAccessories">
-                              <label class="custom-control-label" for="categoryAccessories">Black with Red <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                           </div>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="categoryTops">
-                              <label class="custom-control-label" for="categoryTops">Gold <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                           </div>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                           <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="categoryBottom">
-                              <label class="custom-control-label" for="categoryBottom">Spacegrey <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                           </div>
-                        </div>
+						@foreach ($first_five_color as $key => $color)
+							<div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
+							   <div class="custom-control custom-checkbox">
+								  <input style="background-color:{{$color->code}}" type="checkbox" class="custom-control-input" id="color{{$color->id}}" name="color"
+										value="{{ $color->code }}"
+										onchange="filter()"
+															@if(isset($selected_color) && $selected_color == $color->code) checked @endif >
+								  <label class="custom-control-label" for="color{{$color->id}}">{{$color->name}} <span class="text-gray-25 font-size-12 font-weight-normal"></span></label>
+							   </div>
+							</div>
+						 @endforeach
+                        
                         <!-- End Checkboxes -->
                         <!-- View More - Collapse -->
                         <div class="collapses2" id="collapseBrand1">
+						@foreach ($colors as $key => $color)
                            <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="categoryShorts">
-                                 <label class="custom-control-label" for="categoryShorts">Turquoise <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                              </div>
+                             <div class="custom-control custom-checkbox">
+								  <input style="background-color:{{$color->code}}" type="checkbox" class="custom-control-input" id="color{{$color->id}}" name="color"
+										value="{{ $color->code }}"
+										onchange="filter()"
+															@if(isset($selected_color) && $selected_color == $color->code) checked @endif >
+								  <label class="custom-control-label" for="color{{$color->id}}">{{$color->name}} <span class="text-gray-25 font-size-12 font-weight-normal"></span></label>
+							   </div>
                            </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="categoryHats">
-                                 <label class="custom-control-label" for="categoryHats">White <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                              </div>
-                           </div>
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                              <div class="custom-control custom-checkbox">
-                                 <input type="checkbox" class="custom-control-input" id="categorySocks">
-                                 <label class="custom-control-label" for="categorySocks">White with Gold <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
-                              </div>
-                           </div>
+						    @endforeach
+                           
                         </div>
                         <!-- End View More - Collapse -->
                         <!-- Link -->
@@ -351,7 +248,7 @@
 						</div>
 					 
 				</article>
-
+				@endif
 				<article class="content-entry">
 				 <h4 class="font-size-14 mb-3 font-weight-bold article-title">Product Line  <i></i></h4>
 						<div class="accordion-content">

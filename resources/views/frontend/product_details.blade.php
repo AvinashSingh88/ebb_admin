@@ -41,7 +41,15 @@
 .h-30px, .size-30px {
     height: 30px;
 	width:30px;
+}	
+ 
+	.text-truncate-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
+ 
 
 						</style>
 <section class="pageTitle" style="background-image: url({{static_asset('assets_web/img/orderbanner.png')}});height: 240px; background-size: contain;">
