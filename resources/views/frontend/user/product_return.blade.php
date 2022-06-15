@@ -11,10 +11,10 @@
                                
                             </div>
                            <ul class="ulines-dps justify-content-start">
-                            <li class="ukine ukine1b active4"><a href="{{url('purchase_history')}}">
+                            <li class="ukine ukine1b "><a href="{{url('purchase_history')}}">
                             Orders
                             </a></li>
-                            <li class="ukine ukine2b "><a href="{{url('product_return')}}">
+                            <li class="ukine ukine2b active4"><a href="{{url('product_return')}}">
                             Returns
                             </a>  </li>
                            </ul>

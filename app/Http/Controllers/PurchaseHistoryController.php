@@ -20,7 +20,9 @@ class PurchaseHistoryController extends Controller
         $orders = Order::where('user_id', Auth::user()->id)->orderBy('code', 'desc')->paginate(9);
         return view('frontend.user.purchase_history', compact('orders'));
     }
-
+    public function productReturn(){
+        return view('frontend.user.product_return');
+    }
     public function digital_index()
     {
         $orders = DB::table('orders')

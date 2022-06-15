@@ -1,90 +1,95 @@
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
-    <div class="aiz-titlebar mt-2 mb-4">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <b class="h4">{{ translate('Wishlist')}}</b>
-            </div>
-        </div>
-    </div>
 
-    <div class="row gutters-5">
-        @forelse ($wishlists as $key => $wishlist)
-            @if ($wishlist->product != null)
-                <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-4 col-sm-6" id="wishlist_{{ $wishlist->id }}">
-                    <div class="card mb-2 shadow-sm">
-                        <div class="card-body">
-                            <a href="{{ route('product', $wishlist->product->slug) }}" class="d-block mb-3">
-                                <img src="{{ uploaded_asset($wishlist->product->thumbnail_img) }}" class="img-fit h-140px h-md-200px">
-                            </a>
-
-                            <h5 class="fs-14 mb-0 lh-1-5 fw-600 text-truncate-2">
-                                <a href="{{ route('product', $wishlist->product->slug) }}" class="text-reset">{{ $wishlist->product->getTranslation('name') }}</a>
-                            </h5>
-                            <div class="rating rating-sm mb-1">
-                                {{ renderStarRating($wishlist->product->rating) }}
+<div class=" w-100 mb-1 mys_accounts">
+                     <div class="bootstrap-accordiana">
+                        <div class="backtabs-dp_servicespros2 backtabs-dp ">
+						 
+						  <div class="border-bottom1 border-color-111 mt-0 mb-3">
+                                <h3 class="section-title section-title__sm mb-0 pt-2 pb-0 mt-0 font-size-18">My Wishlist
+                                </h3>
+                               
                             </div>
-                            <div class=" fs-14">
-                                  @if(home_base_price($wishlist->product) != home_discounted_base_price($wishlist->product))
-                                      <del class="opacity-60 mr-1">{{ home_base_price($wishlist->product) }}</del>
-                                  @endif
-                                      <span class="fw-600 text-primary">{{ home_discounted_base_price($wishlist->product) }}</span>
-                            </div>
+                           <!-- <ul class="ulines-dps justify-content-start">
+                            <li class="ukine ukine1b active4"><a href="product-order.php">
+                            Orders
+                            </a></li>
+                            <li class="ukine ukine2b "><a href="product-return.php">
+                            Returns
+                            </a>  </li>
+                           </ul> -->
+                             
+                        <div class="hotel-form py-4 shadow-none pt-0">
+						  <ul class="ulines-dps-para">
+                            <li class="ukine ukine2b active4">
+                                <div class="mb-10 cart-table">
+                                    <form class="mb-4 border" action="#" method="post">
+                                        <table class="table" cellspacing="0">
+                    
+                                            <thead>
+                                                <tr>
+                                                    <th class="product-remove"> </th>
+                                                    <th class="product-thumbnail"> </th>
+                                                    <th class="product-name">
+                                                        <h5>Product</h5>
+                                                    </th>
+                                                    <th class="product-price">
+                                                        <h5>Item</h5>
+                                                    </th>
+                                                   
+                                                    <th class="product-subtotal">
+                                                        <h5>Total</h5>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                    
+                                            <tbody>
+                                                <tr class="">
+                                                    <td class="text-center"><a href="#" class="text-gray-32 font-size-26" style="    color: #333;">×</a></td>
+                                                    <td class="d-none d-md-table-cell img-boxpart6">
+                                                        <a href="#"><img class="img-fluid max-width-100 p-1 border" src="{{static_asset('assets_web/img/index0/pro68.png')}}" alt="Image Description"></a>
+                                                    </td>
+                                                    <td data-title="Product">
+                                                        <p class="prospre1"><a href="#" class="text-gray-90" style="color:#333e48;">  Cement</a></p>
+                                                    </td>
+                                                    <td data-title="Price">
+                                                        <p class="prospre1"> 1</p>
+                                                    </td>
+                                                    
+                                                    <td data-title="Total">
+                                                        <p class="prospre1">  1</p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td class="text-center"><a href="#" class="text-gray-32 font-size-26" style="    color: #333;">×</a></td>
+                                                    <td class="d-none d-md-table-cell">
+                                                        <a href="#"><img class="img-fluid max-width-100 p-1 border" src="{{static_asset('assets_web/img/index0/pro78.png')}}" alt="Image Description"></a>
+                                                    </td>
+                                                    <td data-title="Product">
+                                                        <p class="prospre1"><a href="#" class="text-gray-90" style="color:#333e48;">  Switches </a></p>
+                                                    </td>
+                                                    <td data-title="Price">
+                                                        <p class="prospre1">  3</p>
+                                                    </td>
+                                                   
+                                                    <td data-title="Total">
+                                                        <p class="prospre1">  3</p>
+                                                    </td>
+                                                </tr>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                </li>
+                             
+                            
+                           </ul>
+                         
+                        
                         </div>
-                        <div class="card-footer">
-                            <a href="#" class="link link--style-3" data-toggle="tooltip" data-placement="top" title="Remove from wishlist" onclick="removeFromWishlist({{ $wishlist->id }})">
-                                <i class="la la-trash la-2x"></i>
-                            </a>
-                            <button type="button" class="btn btn-sm btn-block btn-primary ml-3" onclick="showAddToCartModal({{ $wishlist->product->id }})">
-                                <i class="la la-shopping-cart mr-2"></i>{{ translate('Add to cart')}}
-                            </button>
                         </div>
-                    </div>
-                </div>
-            @endif
-        @empty
-            <div class="col">
-                <div class="text-center bg-white p-4 rounded shadow">
-                    <img class="mw-100 h-200px" src="{{ static_asset('assets/img/nothing.svg') }}" alt="Image">
-                    <h5 class="mb-0 h5 mt-3">{{ translate("There isn't anything added yet")}}</h5>
-                </div>
-            </div>
-        @endforelse
-    </div>
-    <div class="aiz-pagination">
-        {{ $wishlists->links() }}
-    </div>
-@endsection
-
-@section('modal')
-
-<div class="modal fade" id="addToCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
-        <div class="modal-content position-relative">
-            <div class="c-preloader">
-                <i class="fa fa-spin fa-spinner"></i>
-            </div>
-            <button type="button" class="close absolute-close-btn" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <div id="addToCart-modal-body">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-@endsection
-
-@section('script')
-    <script type="text/javascript">
-        function removeFromWishlist(id){
-            $.post('{{ route('wishlists.remove') }}',{_token:'{{ csrf_token() }}', id:id}, function(data){
-                $('#wishlist').html(data);
-                $('#wishlist_'+id).hide();
-                AIZ.plugins.notify('success', '{{ translate('Item has been renoved from wishlist') }}');
-            })
-        }
-    </script>
+                     </div>
+                  </div>
 @endsection

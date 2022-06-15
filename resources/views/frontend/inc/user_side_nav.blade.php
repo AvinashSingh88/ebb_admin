@@ -8,9 +8,9 @@
 	 
 		</li>
 		 
-							    <li class=""><a href="account/product-order.php"><i class="bg_icon-img"></i>My Orders</a></li>
-                                <li class=""><a href="account/product-return.php"><i class="bg_icon-img"></i>My Returns</a></li>
-                                <li class=""><a href="account/product-wishlist.php"><i class="bg_icon-img"></i><span class="w-75">Wishlist</span> <span class="float-right background_box">0</span></a></li>
+							    <li class=""><a href="{{url('purchase_history')}}"><i class="bg_icon-img"></i>My Orders</a></li>
+                                <li class=""><a href="{{url('product_return')}}"><i class="bg_icon-img"></i>My Returns</a></li>
+                                <li class=""><a href="{{url('wishlists')}}"><i class="bg_icon-img"></i><span class="w-75">Wishlist</span> <span class="float-right background_box">0</span></a></li>
                                 <li class=""><a href="{{url('profile')}}"><i class="bg_icon-img"></i>My Profile</a></li>
                                 <li class=""><a href="account/chats.php"><i class="bg_icon-img"></i>My Chat</a></li>
                                 <li class=""><a href="account/my-ebb-bucks.php"><i class="bg_icon-img"></i><span class="w-75">My CluesBucks</span> <span class="float-right background_box">0</span></a></li>
