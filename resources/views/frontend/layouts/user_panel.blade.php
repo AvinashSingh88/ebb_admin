@@ -1,7 +1,7 @@
 @extends('frontend.master')
 @section('content')
 
-<section class="pageTitle" style="background-image:url(img/banner/login.png);;height: 240px; background-size: contain;"> </section>
+<section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/banner/login.png')}});;height: 240px; background-size: contain;"> </section>
     <div class="breadcomety7u7y pt-4 pb-2">
         <div class="container">
             <div class="row">
