@@ -177,66 +177,8 @@
       </div>
    </section>
 
-   <section class="product-csteogry">
-      <div class="trend servoce_dops service_sections45 pb-0">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-12">
-                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
-                              class="fa-solid fa-chevron-right"></i> </a>
-                     </div>
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Building Material</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser16.jpg')}}" alt="" />
-                     </div>
-                     <h3>Construction Material</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser17.jpg')}}" alt="" />
-                     </div>
-                     <h3>Plumbing & sanitaryware</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser18.jpg')}}" alt="" />
-                     </div>
-                     <h3>Electrical Items</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser19.jpg')}}" alt="" />
-                     </div>
-                     <h3>Door & Window</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser20.jpg')}}" alt="" />
-                     </div>
-                     <h3>Earth Movers</h3>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
+   @include('frontend.partials.home_categories_section')
+
 
    <!--Small Banner end -->
    <section class="product-csteogry">

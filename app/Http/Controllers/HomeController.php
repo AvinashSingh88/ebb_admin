@@ -197,10 +197,10 @@ class HomeController extends Controller
 
     public function load_auction_products_section()
     {
-        if (!addon_is_activated('auction')) {
-            return;
-        }
-        return view('auction.frontend.auction_products_section');
+        // if (!addon_is_activated('auction')) {
+        //     return;
+        // }
+        // return view('auction.frontend.auction_products_section');
     }
 
     public function load_home_categories_section()
