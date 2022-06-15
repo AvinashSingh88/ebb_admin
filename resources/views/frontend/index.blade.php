@@ -114,6 +114,7 @@
 
 <div class="services_sectionssd">
 
+   <!-- Service section start  -->
    <section class="product-csteogry">
       <div class="trend servoce_dops service_sections45 pb-0">
          <div class="container">
@@ -176,134 +177,13 @@
          </div>
       </div>
    </section>
+   <!-- Service section end  -->
 
+   <!-- Category section start  -->
    @include('frontend.partials.home_categories_section')
+   <!-- Category section end  -->
 
 
-   <!--Small Banner end -->
-   <section class="product-csteogry">
-      <div class="trend servoce_dops service_sections45 pb-0">
-         <div class="container">
-            <div class="row" style="justify-content:left;">
-               <div class="col-md-12 col-sm-12 col-12">
-                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
-                              class="fa-solid fa-chevron-right"></i> </a>
-                     </div>
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Furnishing material</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser21.jpg')}}" alt="" />
-                     </div>
-                     <h3>Flooring</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser22.jpg')}}" alt="" />
-                     </div>
-                     <h3>Home Furniture</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser23.jpg')}}" alt="" />
-                     </div>
-                     <h3>Excavation</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser9.jpg')}}" alt="" />
-                     </div>
-                     <h3>Home decor</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser7.jpg')}}" alt="" />
-                     </div>
-                     <h3>Plumbing & Electrical</h3>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!--Small Banner end -->
-
-   <section class="product-csteogry">
-      <div class="trend servoce_dops service_sections45 pb-0">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-12">
-                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
-                              class="fa-solid fa-chevron-right"></i> </a>
-                     </div>
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Sanitary items</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser27.jpg')}}" alt="" />
-                     </div>
-                     <h3>Premium civil work</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser28.jpg')}}" alt="" />
-                     </div>
-                     <h3>Premium interior</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser29.jpg')}}" alt="" />
-                     </div>
-                     <h3>Premium furnishing</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser26.jpg')}}" alt="" />
-                     </div>
-                     <h3> Furniture/Woodwork</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser25.jpg')}}" alt="" />
-                     </div>
-                     <h3>Premium electric Items</h3>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!--Small Banner end -->
 </div>
 
 <div class="sample-secondary">
