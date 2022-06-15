@@ -53,18 +53,32 @@
 
                 <!-- Product -->
                 @if(Auth::user()->user_type == 'admin' || in_array('2', json_decode(Auth::user()->staff->role->permissions)))
-                
-                <li class="aiz-side-nav-item dashboard_active">
-                    <a href="{{route('admin.dashboard')}}" class="aiz-side-nav-link ">
-                        <i class="las la-home aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{translate('Dashboard')}}</span>
-                    </a>
-                </li>
 
                 <li class="aiz-side-nav-item">
                     <a href="{{route('categories.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
                         <i class="las la-home aiz-side-nav-icon"></i>    
                         <span class="aiz-side-nav-text">{{translate('Category')}}</span>
+                    </a>
+                </li>
+
+                <li class="aiz-side-nav-item">
+                    <a href="{{route('brands.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
+                        <i class="las la-folder-open aiz-side-nav-icon"></i> 
+                        <span class="aiz-side-nav-text">{{translate('Brand')}}</span>
+                    </a>
+                </li>
+
+                <li class="aiz-side-nav-item">
+                    <a href="{{route('attributes.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['attributes.index','attributes.create','attributes.edit'])}}">
+                        <i class="las la-folder-open aiz-side-nav-icon"></i> 
+                        <span class="aiz-side-nav-text">{{translate('Attribute')}}</span>
+                    </a>
+                </li>
+
+                <li class="aiz-side-nav-item">
+                    <a href="{{route('colors')}}" class="aiz-side-nav-link {{ areActiveRoutes(['attributes.index','attributes.create','attributes.edit'])}}">
+                        <i class="las la-shopping-cart aiz-side-nav-icon"></i> 
+                        <span class="aiz-side-nav-text">{{translate('Colors')}}</span>
                     </a>
                 </li>
 
@@ -110,21 +124,7 @@
                             </a>
                         </li>
                         
-                        <li class="aiz-side-nav-item">
-                            <a href="{{route('brands.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
-                                <span class="aiz-side-nav-text">{{translate('Brand')}}</span>
-                            </a>
-                        </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="{{route('attributes.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['attributes.index','attributes.create','attributes.edit'])}}">
-                                <span class="aiz-side-nav-text">{{translate('Attribute')}}</span>
-                            </a>
-                        </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="{{route('colors')}}" class="aiz-side-nav-link {{ areActiveRoutes(['attributes.index','attributes.create','attributes.edit'])}}">
-                                <span class="aiz-side-nav-text">{{translate('Colors')}}</span>
-                            </a>
-                        </li>
+                        
                         <li class="aiz-side-nav-item">
                             <a href="{{route('reviews.index')}}" class="aiz-side-nav-link">
                                 <span class="aiz-side-nav-text">{{translate('Product Reviews')}}</span>
