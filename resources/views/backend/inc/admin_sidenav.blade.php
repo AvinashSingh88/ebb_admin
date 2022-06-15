@@ -53,6 +53,21 @@
 
                 <!-- Product -->
                 @if(Auth::user()->user_type == 'admin' || in_array('2', json_decode(Auth::user()->staff->role->permissions)))
+                
+                <li class="aiz-side-nav-item dashboard_active">
+                    <a href="{{route('admin.dashboard')}}" class="aiz-side-nav-link ">
+                        <i class="las la-home aiz-side-nav-icon"></i>
+                        <span class="aiz-side-nav-text">{{translate('Dashboard')}}</span>
+                    </a>
+                </li>
+
+                <li class="aiz-side-nav-item">
+                    <a href="{{route('categories.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
+                        <i class="las la-home aiz-side-nav-icon"></i>    
+                        <span class="aiz-side-nav-text">{{translate('Category')}}</span>
+                    </a>
+                </li>
+
                 <li class="aiz-side-nav-item">
                     <a href="#" class="aiz-side-nav-link">
                         <i class="las la-shopping-cart aiz-side-nav-icon"></i>
@@ -94,11 +109,7 @@
                                 <span class="aiz-side-nav-text">{{translate('Bulk Export')}}</span>
                             </a>
                         </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="{{route('categories.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
-                                <span class="aiz-side-nav-text">{{translate('Category')}}</span>
-                            </a>
-                        </li>
+                        
                         <li class="aiz-side-nav-item">
                             <a href="{{route('brands.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['brands.index', 'brands.create', 'brands.edit'])}}">
                                 <span class="aiz-side-nav-text">{{translate('Brand')}}</span>
