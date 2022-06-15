@@ -294,294 +294,6 @@ function closeAllSelect(elmnt) {
 
 document.addEventListener("click", closeAllSelect);
  
-$('.cart_buttons1').on('click', function() {
-    $('.cart_buttons1').removeClass('active');
-    $('.cart-add1').addClass('active');
-});
-$('.cart_icons1').on('click', function() {
-    $('.cart-add1').removeClass('active');
-    $('.cart_buttons1').addClass('active');
-});
-//
-$('.cart_buttons2').on('click', function() {
-    $('.cart_buttons2').removeClass('active');
-    $('.cart-add2').addClass('active');
-});
-$('.cart_icons2').on('click', function() {
-    $('.cart-add2').removeClass('active');
-    $('.cart_buttons2').addClass('active');
-});
-//
-$('.cart_buttons3').on('click', function() {
-    $('.cart_buttons3').removeClass('active');
-    $('.cart-add3').addClass('active');
-});
-$('.cart_icons3').on('click', function() {
-    $('.cart-add3').removeClass('active');
-    $('.cart_buttons3').addClass('active');
-});
-//
-$('.cart_buttons4').on('click', function() {
-    $('.cart_buttons4').removeClass('active');
-    $('.cart-add4').addClass('active');
-});
-$('.cart_icons4').on('click', function() {
-    $('.cart-add4').removeClass('active');
-    $('.cart_buttons4').addClass('active');
-});
-//
-$('.cart_buttons5').on('click', function() {
-    $('.cart_buttons5').removeClass('active');
-    $('.cart-add5').addClass('active');
-});
-$('.cart_icons5').on('click', function() {
-    $('.cart-add5').removeClass('active');
-    $('.cart_buttons5').addClass('active');
-});
-//
-$('.cart_buttons6').on('click', function() {
-    $('.cart_buttons6').removeClass('active');
-    $('.cart-add6').addClass('active');
-});
-$('.cart_icons6').on('click', function() {
-    $('.cart-add6').removeClass('active');
-    $('.cart_buttons6').addClass('active');
-});
-//
-$('.cart_buttons7').on('click', function() {
-    $('.cart_buttons7').removeClass('active');
-    $('.cart-add7').addClass('active');
-});
-$('.cart_icons7').on('click', function() {
-    $('.cart-add7').removeClass('active');
-    $('.cart_buttons7').addClass('active');
-});
-//
-$('.cart_buttons8').on('click', function() {
-    $('.cart_buttons8').removeClass('active');
-    $('.cart-add8').addClass('active');
-});
-$('.cart_icons8').on('click', function() {
-    $('.cart-add8').removeClass('active');
-    $('.cart_buttons8').addClass('active');
-});
-//
-$('.cart_buttons9').on('click', function() {
-    $('.cart_buttons9').removeClass('active');
-    $('.cart-add9').addClass('active');
-});
-$('.cart_icons9').on('click', function() {
-    $('.cart-add9').removeClass('active');
-    $('.cart_buttons9').addClass('active');
-});
-//
-$('.cart_buttons10').on('click', function() {
-    $('.cart_buttons10').removeClass('active');
-    $('.cart-add10').addClass('active');
-});
-$('.cart_icons10').on('click', function() {
-    $('.cart-add10').removeClass('active');
-    $('.cart_buttons10').addClass('active');
-});
-//
-$('.cart_buttons11').on('click', function() {
-    $('.cart_buttons11').removeClass('active');
-    $('.cart-add11').addClass('active');
-});
-$('.cart_icons11').on('click', function() {
-    $('.cart-add11').removeClass('active');
-    $('.cart_buttons11').addClass('active');
-});
-//
-$('.cart_buttons12').on('click', function() {
-    $('.cart_buttons12').removeClass('active');
-    $('.cart-add12').addClass('active');
-});
-$('.cart_icons12').on('click', function() {
-    $('.cart-add12').removeClass('active');
-    $('.cart_buttons12').addClass('active');
-});
-//
-$('.cart_buttons13').on('click', function() {
-    $('.cart_buttons13').removeClass('active');
-    $('.cart-add13').addClass('active');
-});
-$('.cart_icons13').on('click', function() {
-    $('.cart-add13').removeClass('active');
-    $('.cart_buttons13').addClass('active');
-});
-//
-$('.cart_buttons14').on('click', function() {
-    $('.cart_buttons14').removeClass('active');
-    $('.cart-add14').addClass('active');
-});
-$('.cart_icons14').on('click', function() {
-    $('.cart-add14').removeClass('active');
-    $('.cart_buttons14').addClass('active');
-});
-//
-$('.cart_buttons15').on('click', function() {
-    $('.cart_buttons15').removeClass('active');
-    $('.cart-add15').addClass('active');
-});
-$('.cart_icons15').on('click', function() {
-    $('.cart-add15').removeClass('active');
-    $('.cart_buttons15').addClass('active');
-});
-//
-$('.cart_buttons16').on('click', function() {
-    $('.cart_buttons16').removeClass('active');
-    $('.cart-add16').addClass('active');
-});
-$('.cart_icons16').on('click', function() {
-    $('.cart-add16').removeClass('active');
-    $('.cart_buttons16').addClass('active');
-});
-//
-$('.cart_buttons17').on('click', function() {
-    $('.cart_buttons17').removeClass('active');
-    $('.cart-add17').addClass('active');
-});
-$('.cart_icons17').on('click', function() {
-    $('.cart-add17').removeClass('active');
-    $('.cart_buttons17').addClass('active');
-});
-//
-$('.cart_buttons18').on('click', function() {
-    $('.cart_buttons18').removeClass('active');
-    $('.cart-add18').addClass('active');
-});
-$('.cart_icons18').on('click', function() {
-    $('.cart-add18').removeClass('active');
-    $('.cart_buttons18').addClass('active');
-});
-//
-$('.cart_buttons19').on('click', function() {
-    $('.cart_buttons19').removeClass('active');
-    $('.cart-add19').addClass('active');
-});
-$('.cart_icons19').on('click', function() {
-    $('.cart-add19').removeClass('active');
-    $('.cart_buttons19').addClass('active');
-});
-//
-$('.cart_buttons20').on('click', function() {
-    $('.cart_buttons20').removeClass('active');
-    $('.cart-add20').addClass('active');
-});
-$('.cart_icons20').on('click', function() {
-    $('.cart-add20').removeClass('active');
-    $('.cart_buttons20').addClass('active');
-});
-//
-$('.cart_buttons21').on('click', function() {
-    $('.cart_buttons21').removeClass('active');
-    $('.cart-add21').addClass('active');
-});
-$('.cart_icons21').on('click', function() {
-    $('.cart-add21').removeClass('active');
-    $('.cart_buttons21').addClass('active');
-});
-//
-$('.cart_buttons22').on('click', function() {
-    $('.cart_buttons22').removeClass('active');
-    $('.cart-add22').addClass('active');
-});
-$('.cart_icons22').on('click', function() {
-    $('.cart-add22').removeClass('active');
-    $('.cart_buttons22').addClass('active');
-});
-//
-$('.cart_buttons23').on('click', function() {
-    $('.cart_buttons23').removeClass('active');
-    $('.cart-add23').addClass('active');
-});
-$('.cart_icons23').on('click', function() {
-    $('.cart-add23').removeClass('active');
-    $('.cart_buttons23').addClass('active');
-});
-//
-$('.cart_buttons24').on('click', function() {
-    $('.cart_buttons24').removeClass('active');
-    $('.cart-add24').addClass('active');
-});
-$('.cart_icons24').on('click', function() {
-    $('.cart-add24').removeClass('active');
-    $('.cart_buttons24').addClass('active');
-});
-//
-$('.cart_buttons25').on('click', function() {
-    $('.cart_buttons25').removeClass('active');
-    $('.cart-add25').addClass('active');
-});
-$('.cart_icons25').on('click', function() {
-    $('.cart-add25').removeClass('active');
-    $('.cart_buttons25').addClass('active');
-});
-//
-$('.cart_buttons26').on('click', function() {
-    $('.cart_buttons26').removeClass('active');
-    $('.cart-add26').addClass('active');
-});
-$('.cart_icons26').on('click', function() {
-    $('.cart-add26').removeClass('active');
-    $('.cart_buttons26').addClass('active');
-});
-//
-$('.cart_buttons27').on('click', function() {
-    $('.cart_buttons27').removeClass('active');
-    $('.cart-add27').addClass('active');
-});
-$('.cart_icons27').on('click', function() {
-    $('.cart-add27').removeClass('active');
-    $('.cart_buttons27').addClass('active');
-});
-//
-$('.cart_buttons28').on('click', function() {
-    $('.cart_buttons28').removeClass('active');
-    $('.cart-add28').addClass('active');
-});
-$('.cart_icons28').on('click', function() {
-    $('.cart-add28').removeClass('active');
-    $('.cart_buttons28').addClass('active');
-});
-//
-$('.cart_buttons29').on('click', function() {
-    $('.cart_buttons29').removeClass('active');
-    $('.cart-add29').addClass('active');
-});
-$('.cart_icons29').on('click', function() {
-    $('.cart-add29').removeClass('active');
-    $('.cart_buttons29').addClass('active');
-});
-//
-$('.cart_buttons30').on('click', function() {
-    $('.cart_buttons30').removeClass('active');
-    $('.cart-add30').addClass('active');
-});
-$('.cart_icons30').on('click', function() {
-    $('.cart-add30').removeClass('active');
-    $('.cart_buttons30').addClass('active');
-});
-//
-$('.cart_buttons31').on('click', function() {
-    $('.cart_buttons31').removeClass('active');
-    $('.cart-add31').addClass('active');
-});
-$('.cart_icons31').on('click', function() {
-    $('.cart-add31').removeClass('active');
-    $('.cart_buttons31').addClass('active');
-});
-//
-$('.cart_buttons32').on('click', function() {
-    $('.cart_buttons32').removeClass('active');
-    $('.cart-add32').addClass('active');
-});
-$('.cart_icons32').on('click', function() {
-    $('.cart-add32').removeClass('active');
-    $('.cart_buttons32').addClass('active');
-});
-
 $(".ulines-dps .ukine1 ").on("click", function() {
     $(".backtabs-dp ul li ").removeClass("active");
     $(".ukine1").addClass("active");
@@ -658,6 +370,24 @@ $(".ukine4b ").on("click", function() {
 
 });
 
+$(".ukine5b ").on("click", function() {
+    $(".backtabs-dp ul li ").removeClass('active4');
+    $(".ukine5b").addClass('active4');
+
+});
+
+$(".ukine6b ").on("click", function() {
+    $(".backtabs-dp ul li ").removeClass('active4');
+    $(".ukine6b").addClass('active4');
+
+});
+
+$(".ukine7b ").on("click", function() {
+    $(".backtabs-dp ul li ").removeClass('active4');
+    $(".ukine7b").addClass('active4');
+
+});
+
 
 $(window).on('scroll', function() {
     if ($(window).scrollTop() >= 95 && !$('header-1-top').hasClass('fixed')) {
@@ -724,45 +454,90 @@ $(document).on('click', function(event) {
     }
 });
 //quantity
-$(document).ready(function() {
-
-    var quantitiy = 0;
-    $('.quantity-right-plus').click(function(e) {
-
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-
-        // If is not undefined
-
-        $('#quantity').val(quantity + 1);
-
-
-        // Increment
-
-    });
-
-    $('.quantity-left-minus').click(function(e) {
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-
-        // If is not undefined
-
-        // Increment
-        if (quantity > 0) {
-            $('#quantity').val(quantity - 1);
-        }
-    });
-
-});
+//$(document).ready(function() {
+//  var quantitiy = 0;
+ //   $('.quantity-right-plus').click(function(e) {
+ // e.preventDefault();
+ //       var quantity = parseInt($('#quantity').val());
+//        $('#quantity').val(quantity + 1);
+//    });
+ //   $('.quantity-left-minus').click(function(e) {
+ //       e.preventDefault();
+ //       var quantity = parseInt($('#quantity').val());
+ //       if (quantity > 0) {
+ //           $('#quantity').val(quantity - 1);
+ //       }
+ //   });
+//});
 //quantitiy end js
+	
+  /*function incrementValue(e) {
+        e.preventDefault();
+        var fieldName = $(e.target).data('field');
+        var parent = $(e.target).closest('div');
+        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
 
+        if (!isNaN(currentVal)) {
+            parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+        } else {
+            parent.find('input[name=' + fieldName + ']').val(1);
+        }
+    }
 
+    function decrementValue(e) {
+        e.preventDefault();
+        var fieldName = $(e.target).data('field');
+        var parent = $(e.target).closest('div');
+        var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
 
+        if (!isNaN(currentVal) && currentVal > 1) {
+            parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+        } else {
+            parent.find('input[name=' + fieldName + ']').val(1);
+        }
+    }
+
+    $('.input-group').on('click', '.button-plus', function(e) {
+        incrementValue(e);
+    });
+
+    $('.input-group').on('click', '.button-minus', function(e) {
+        decrementValue(e);
+    });
+
+*/
 //slider product details
+$(document).on('click','.button-plus,.button-minus', function(e) {
+  e.preventDefault()
+      if($(this).hasClass("button-plus")){
+          var val = parseInt($(this).parents('.packageadd').find("[type='number']").val()) +1;
+          $(this).parents('.packageadd').find("[type='number']").val( val );         
+      }else{
+          var val = parseInt($(this).parents('.packageadd').find("[type='number']").val());
+          if (!isNaN(val) && val > 1) {
+            $(this).parents('.packageadd').find("[type='number']").val(val-1);
+          } else {
+            $(this).parents('.packageadd').find("[type='number']").val(1);
+          }
+      }
+  });
+  
+  
+      $(document).on('click', '.remove', function(e) {
+        e.preventDefault();
+        
+      //  $(this).parent('tr').remove();
+	   $(this).parent().parent().parent().parent().parent().hide();
+		
+		
+		//console.log($(this).parent(tr).parent().parent().parent().parent());
+       
+    });
+	
+	
+	
+	
+	
 //initiate the plugin and pass the id of the div containing gallery images
 $("#zoom_03").elevateZoom({
     gallery: 'gallery_01',
@@ -1562,11 +1337,316 @@ $('#uconfirm_password').on('change', function() {
 
 
 
+//////////////////////
+/*
+$('.cart_buttons1').on('click', function() {
+    $('.cart_buttons1').removeClass('active');
+    $('.cart-add1').addClass('active');
+});
+$('.cart_icons1').on('click', function() {
+    $('.cart-add1').removeClass('active');
+    $('.cart_buttons1').addClass('active');
+});
+//
+$('.cart_buttons2').on('click', function() {
+    $('.cart_buttons2').removeClass('active');
+    $('.cart-add2').addClass('active');
+});
+$('.cart_icons2').on('click', function() {
+    $('.cart-add2').removeClass('active');
+    $('.cart_buttons2').addClass('active');
+});
+//
+$('.cart_buttons3').on('click', function() {
+    $('.cart_buttons3').removeClass('active');
+    $('.cart-add3').addClass('active');
+});
+$('.cart_icons3').on('click', function() {
+    $('.cart-add3').removeClass('active');
+    $('.cart_buttons3').addClass('active');
+});
+//
+$('.cart_buttons4').on('click', function() {
+    $('.cart_buttons4').removeClass('active');
+    $('.cart-add4').addClass('active');
+});
+$('.cart_icons4').on('click', function() {
+    $('.cart-add4').removeClass('active');
+    $('.cart_buttons4').addClass('active');
+});
+//
+$('.cart_buttons5').on('click', function() {
+    $('.cart_buttons5').removeClass('active');
+    $('.cart-add5').addClass('active');
+});
+$('.cart_icons5').on('click', function() {
+    $('.cart-add5').removeClass('active');
+    $('.cart_buttons5').addClass('active');
+});
+//
+$('.cart_buttons6').on('click', function() {
+    $('.cart_buttons6').removeClass('active');
+    $('.cart-add6').addClass('active');
+});
+$('.cart_icons6').on('click', function() {
+    $('.cart-add6').removeClass('active');
+    $('.cart_buttons6').addClass('active');
+});
+//
+$('.cart_buttons7').on('click', function() {
+    $('.cart_buttons7').removeClass('active');
+    $('.cart-add7').addClass('active');
+});
+$('.cart_icons7').on('click', function() {
+    $('.cart-add7').removeClass('active');
+    $('.cart_buttons7').addClass('active');
+});
+//
+$('.cart_buttons8').on('click', function() {
+    $('.cart_buttons8').removeClass('active');
+    $('.cart-add8').addClass('active');
+});
+$('.cart_icons8').on('click', function() {
+    $('.cart-add8').removeClass('active');
+    $('.cart_buttons8').addClass('active');
+});
+//
+$('.cart_buttons9').on('click', function() {
+    $('.cart_buttons9').removeClass('active');
+    $('.cart-add9').addClass('active');
+});
+$('.cart_icons9').on('click', function() {
+    $('.cart-add9').removeClass('active');
+    $('.cart_buttons9').addClass('active');
+});
+//
+$('.cart_buttons10').on('click', function() {
+    $('.cart_buttons10').removeClass('active');
+    $('.cart-add10').addClass('active');
+});
+$('.cart_icons10').on('click', function() {
+    $('.cart-add10').removeClass('active');
+    $('.cart_buttons10').addClass('active');
+});
+//
+$('.cart_buttons11').on('click', function() {
+    $('.cart_buttons11').removeClass('active');
+    $('.cart-add11').addClass('active');
+});
+$('.cart_icons11').on('click', function() {
+    $('.cart-add11').removeClass('active');
+    $('.cart_buttons11').addClass('active');
+});
+//
+$('.cart_buttons12').on('click', function() {
+    $('.cart_buttons12').removeClass('active');
+    $('.cart-add12').addClass('active');
+});
+$('.cart_icons12').on('click', function() {
+    $('.cart-add12').removeClass('active');
+    $('.cart_buttons12').addClass('active');
+});
+//
+$('.cart_buttons13').on('click', function() {
+    $('.cart_buttons13').removeClass('active');
+    $('.cart-add13').addClass('active');
+});
+$('.cart_icons13').on('click', function() {
+    $('.cart-add13').removeClass('active');
+    $('.cart_buttons13').addClass('active');
+});
+//
+$('.cart_buttons14').on('click', function() {
+    $('.cart_buttons14').removeClass('active');
+    $('.cart-add14').addClass('active');
+});
+$('.cart_icons14').on('click', function() {
+    $('.cart-add14').removeClass('active');
+    $('.cart_buttons14').addClass('active');
+});
+//
+$('.cart_buttons15').on('click', function() {
+    $('.cart_buttons15').removeClass('active');
+    $('.cart-add15').addClass('active');
+});
+$('.cart_icons15').on('click', function() {
+    $('.cart-add15').removeClass('active');
+    $('.cart_buttons15').addClass('active');
+});
+//
+$('.cart_buttons16').on('click', function() {
+    $('.cart_buttons16').removeClass('active');
+    $('.cart-add16').addClass('active');
+});
+$('.cart_icons16').on('click', function() {
+    $('.cart-add16').removeClass('active');
+    $('.cart_buttons16').addClass('active');
+});
+//
+$('.cart_buttons17').on('click', function() {
+    $('.cart_buttons17').removeClass('active');
+    $('.cart-add17').addClass('active');
+});
+$('.cart_icons17').on('click', function() {
+    $('.cart-add17').removeClass('active');
+    $('.cart_buttons17').addClass('active');
+});
+//
+$('.cart_buttons18').on('click', function() {
+    $('.cart_buttons18').removeClass('active');
+    $('.cart-add18').addClass('active');
+});
+$('.cart_icons18').on('click', function() {
+    $('.cart-add18').removeClass('active');
+    $('.cart_buttons18').addClass('active');
+});
+//
+$('.cart_buttons19').on('click', function() {
+    $('.cart_buttons19').removeClass('active');
+    $('.cart-add19').addClass('active');
+});
+$('.cart_icons19').on('click', function() {
+    $('.cart-add19').removeClass('active');
+    $('.cart_buttons19').addClass('active');
+});
+//
+$('.cart_buttons20').on('click', function() {
+    $('.cart_buttons20').removeClass('active');
+    $('.cart-add20').addClass('active');
+});
+$('.cart_icons20').on('click', function() {
+    $('.cart-add20').removeClass('active');
+    $('.cart_buttons20').addClass('active');
+});
+//
+$('.cart_buttons21').on('click', function() {
+    $('.cart_buttons21').removeClass('active');
+    $('.cart-add21').addClass('active');
+});
+$('.cart_icons21').on('click', function() {
+    $('.cart-add21').removeClass('active');
+    $('.cart_buttons21').addClass('active');
+});
+//
+$('.cart_buttons22').on('click', function() {
+    $('.cart_buttons22').removeClass('active');
+    $('.cart-add22').addClass('active');
+});
+$('.cart_icons22').on('click', function() {
+    $('.cart-add22').removeClass('active');
+    $('.cart_buttons22').addClass('active');
+});
+//
+$('.cart_buttons23').on('click', function() {
+    $('.cart_buttons23').removeClass('active');
+    $('.cart-add23').addClass('active');
+});
+$('.cart_icons23').on('click', function() {
+    $('.cart-add23').removeClass('active');
+    $('.cart_buttons23').addClass('active');
+});
+//
+$('.cart_buttons24').on('click', function() {
+    $('.cart_buttons24').removeClass('active');
+    $('.cart-add24').addClass('active');
+});
+$('.cart_icons24').on('click', function() {
+    $('.cart-add24').removeClass('active');
+    $('.cart_buttons24').addClass('active');
+});
+//
+$('.cart_buttons25').on('click', function() {
+    $('.cart_buttons25').removeClass('active');
+    $('.cart-add25').addClass('active');
+});
+$('.cart_icons25').on('click', function() {
+    $('.cart-add25').removeClass('active');
+    $('.cart_buttons25').addClass('active');
+});
+//
+$('.cart_buttons26').on('click', function() {
+    $('.cart_buttons26').removeClass('active');
+    $('.cart-add26').addClass('active');
+});
+$('.cart_icons26').on('click', function() {
+    $('.cart-add26').removeClass('active');
+    $('.cart_buttons26').addClass('active');
+});
+//
+$('.cart_buttons27').on('click', function() {
+    $('.cart_buttons27').removeClass('active');
+    $('.cart-add27').addClass('active');
+});
+$('.cart_icons27').on('click', function() {
+    $('.cart-add27').removeClass('active');
+    $('.cart_buttons27').addClass('active');
+});
+//
+$('.cart_buttons28').on('click', function() {
+    $('.cart_buttons28').removeClass('active');
+    $('.cart-add28').addClass('active');
+});
+$('.cart_icons28').on('click', function() {
+    $('.cart-add28').removeClass('active');
+    $('.cart_buttons28').addClass('active');
+});
+//
+$('.cart_buttons29').on('click', function() {
+    $('.cart_buttons29').removeClass('active');
+    $('.cart-add29').addClass('active');
+});
+$('.cart_icons29').on('click', function() {
+    $('.cart-add29').removeClass('active');
+    $('.cart_buttons29').addClass('active');
+});
+//
+$('.cart_buttons30').on('click', function() {
+    $('.cart_buttons30').removeClass('active');
+    $('.cart-add30').addClass('active');
+});
+$('.cart_icons30').on('click', function() {
+    $('.cart-add30').removeClass('active');
+    $('.cart_buttons30').addClass('active');
+});
+//
+$('.cart_buttons31').on('click', function() {
+    $('.cart_buttons31').removeClass('active');
+    $('.cart-add31').addClass('active');
+});
+$('.cart_icons31').on('click', function() {
+    $('.cart-add31').removeClass('active');
+    $('.cart_buttons31').addClass('active');
+});
+//
+$('.cart_buttons32').on('click', function() {
+    $('.cart_buttons32').removeClass('active');
+    $('.cart-add32').addClass('active');
+});
+$('.cart_icons32').on('click', function() {
+    $('.cart-add32').removeClass('active');
+    $('.cart_buttons32').addClass('active');
+});
+*/
+/////////////////////
 
 
+   // $(document).on('click','.discrptions_button',function() {
+		//		var id = '#'+$(this).attr("id"); 
+		//		$(this).addClass('active').siblings().removeClass('active');
+		//		$('.discrptions_button').children(id).addClass('active1').siblings().removeClass('active1');
+		//});
 
 
+    $(document).on('click','.discrptions_button',function() { 
+				$(this).addClass('active');
+				
+		});
 
+   // $('.discrptions_button').on('click','.cart_buttons',function() { 
+	// $(this).parent('.discrptions_button').removeClass('active'); 
+	// console.log(this.parent(discrptions_button))
+	//	});
+ 
 
 
 

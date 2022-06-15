@@ -10,7 +10,19 @@ if(auth()->user() != null) {
 }
 
 @endphp
-<a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static" title="Cart">
+@if(isset($cart) && count($cart) > 0)
+<a href="{{url('cart')}">
+<i class="fa fa-cart-arrow-down" aria-hidden="true"></i> 
+<span> {{ count($cart)}}</span> <b> ₹ 100</b>
+</a>
+@else
+	<a href="{{url('cart')}">
+<i class="fa fa-cart-arrow-down" aria-hidden="true"></i> 
+<span> 0</span> <b> ₹ 200</b>
+</a>
+	@endif
+@if (false)
+	<a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static" title="Cart">
     <i class="fas fa-shopping-cart custom-fa-icon"></i>
     <span class="flex-grow-1 ml-1">
         @if(isset($cart) && count($cart) > 0)
@@ -94,3 +106,6 @@ if(auth()->user() != null) {
     @endif
     
 </div>
+
+    
+@endif

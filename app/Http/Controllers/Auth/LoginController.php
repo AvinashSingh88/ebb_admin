@@ -197,7 +197,7 @@ class LoginController extends Controller
             if (session('link') != null) {
                 return redirect(session('link'));
             } else {
-                return redirect()->route('dashboard');
+                return redirect()->route('profile');
             }
         }
     }

@@ -15,7 +15,8 @@ class CartController extends Controller
     public function addToUserCart(Request $request){
         $product_id = $request->input('product_id');
         $product_qty = $request->input('product_qty');
-
+        $product_price = $request->input('product_price');
+        // dd($product_price);die;
         if(Auth::check())
 {
 	$prod_check = Product::where('id',$product_id)->exists();
@@ -23,16 +24,18 @@ class CartController extends Controller
 	{
 		if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists())
 		{
-		    return response()->json(['status'=>$prod_check->name.'Already Added to Cart']);
+		    return response()->json(['status'=>'Already Added to Cart']);
         }
 		else{
 			
             $cartItem = new Cart();
             $cartItem->product_id = $product_id;
+            $cartItem->price = $product_price;
+            $cartItem->total_price = $product_price*$product_qty;
             $cartItem->user_id =Auth::id();
             $cartItem->quantity = $product_qty;	
             $cartItem->save();
-            return response()->json(['status'=>$prod_check->name.'Added to Cart']);
+            return response()->json(['status'=>'Added to Cart']);
         }
 	}
         
@@ -42,34 +45,116 @@ class CartController extends Controller
             return response()->json(['status' => "Login to Your Account"]);
         }
     }
+
+    public function cartCountFunction()
+    {
+        $cartcount = Cart::where('user_id',Auth::id())->count();
+        $sumcartamount = Cart::where('user_id',Auth::id())
+                        ->sum('total_price');
+        return response()->json(['count'=>$cartcount,'cart_amount'=>$sumcartamount]);
+    }
     
-    // public function index(Request $request)
-    // {
-    //     //dd($cart->all());
-    //     $categories = Category::all();
-    //     if(auth()->user() != null) {
-    //         $user_id = Auth::user()->id;
-    //         if($request->session()->get('temp_user_id')) {
-    //             Cart::where('temp_user_id', $request->session()->get('temp_user_id'))
-    //                     ->update(
-    //                             [
-    //                                 'user_id' => $user_id,
-    //                                 'temp_user_id' => null
-    //                             ]
-    //             );
+    public function index(Request $request)
+    {
+        //dd($cart->all());
+        $categories = Category::all();
+        if(auth()->user() != null) {
+            $user_id = Auth::user()->id;
+            if($request->session()->get('temp_user_id')) {
+                Cart::where('temp_user_id', $request->session()->get('temp_user_id'))
+                        ->update(
+                                [
+                                    'user_id' => $user_id,
+                                    'temp_user_id' => null
+                                ]
+                );
 
-    //             Session::forget('temp_user_id');
-    //         }
-    //         $carts = Cart::where('user_id', $user_id)->get();
-    //     } else {
-    //         $temp_user_id = $request->session()->get('temp_user_id');
-    //         // $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-    //         $carts = ($temp_user_id != null) ? Cart::where('temp_user_id', $temp_user_id)->get() : [] ;
-    //     }
+                Session::forget('temp_user_id');
+            }
+            $carts = Cart::where('user_id', $user_id)->get();
+        } else {
+            $temp_user_id = $request->session()->get('temp_user_id');
+            // $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+            $carts = ($temp_user_id != null) ? Cart::where('temp_user_id', $temp_user_id)->get() : [] ;
+        }
 
-    //     return view('frontend.view_cart', compact('categories', 'carts'));
-    // }
+        return view('frontend.view_cart', compact('categories', 'carts'));
+    }
 
+    public function deleteFromCart(Request $request){
+       
+        if(Auth::check())
+        {
+            $prod_id = $request->input('prod_id');
+            if(Cart::where('product_id',$prod_id)->where('user_id', Auth::id())->exists())
+            {
+                $cartItem = Cart::where('product_id',$prod_id)->where('user_id', Auth::id())->first();
+                $cartItem->delete();
+                return response()->json(['status'=>"Removed from Cart"]);
+            }
+        }
+        else
+        {
+            return response()->json(['status' => "Login to Your Account"]);
+        }
+
+    }
+    public function updateCartPlus(Request $request){
+       
+        if(Auth::check())
+        {
+            $quantity = $request->input('quantity');
+            $id = $request->input('id');
+            if(Cart::where('id',$id)->where('user_id', Auth::id())->exists())
+            {
+                $cartItem = Cart::where('id',$id)->where('user_id', Auth::id())->first();
+                $carts = Cart::where('user_id', Auth::id())->get();
+                $price = $cartItem->price;
+                $cart_update = Cart::where('id', $request->id)
+                ->update([
+                        'quantity' => $quantity,
+                        'total_price' => $quantity*$price,
+                    ]);
+                // return response()->json(['status'=>"Cart Updated!"]);
+                return array(
+                    'cart_view' => view('frontend.partials.cart_update_ajax', compact('carts'))->render(),
+                );
+            }
+        }
+        else
+        {
+            return response()->json(['status' => "Login to Your Account"]);
+        }
+
+    }
+    public function updateCartMinus(Request $request){
+       
+        if(Auth::check())
+        {
+            $quantity = $request->input('quantity');
+            $id = $request->input('id');
+            if(Cart::where('id',$id)->where('user_id', Auth::id())->exists())
+            {
+                $cartItem = Cart::where('id',$id)->where('user_id', Auth::id())->first();
+                $carts = Cart::where('user_id', Auth::id())->get();
+                $price = $cartItem->price;
+                $cart_update = Cart::where('id', $request->id)
+                            ->update([
+                                    'quantity' => $quantity,
+                                    'total_price' => $quantity*$price,
+                                ]);
+                // return response()->json(['status'=>"Cart Updated!"]);
+                return array(
+                    'cart_view' => view('frontend.partials.cart_update_ajax', compact('carts'))->render(),
+                );
+            }
+        }
+        else
+        {
+            return response()->json(['status' => "Login to Your Account"]);
+        }
+
+    }
     public function showCartModal(Request $request)
     {
         $product = Product::find($request->id);
@@ -84,7 +169,11 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $product = Product::find($request->id);
+        $product_id = $request->input('product_id');
+        $product = Product::where('id',$product_id)->first();
+        // dd($product);
+        // die;
+        // $product = Product::find($request->product_id);
         $carts = array();
         $data = array();
 
@@ -125,7 +214,7 @@ class CartController extends Controller
 
             if ($product->digital != 1) {
                 //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
-                foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
+                foreach (json_decode(Product::where('id',$product_id)->choice_options) as $key => $choice) {
                     if($str != null){
                         $str .= '-'.str_replace(' ', '', $request['attribute_id_'.$choice->attribute_id]);
                     }

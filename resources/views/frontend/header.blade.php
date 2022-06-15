@@ -253,8 +253,13 @@
                  <div class="col-md-4 col-xs-12">
                     <div class="right-menu">
                        <ul>
-                          <li class="flot-right getquote">
-                             <a href="cart.php"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> <span>1</span> <b> ₹ 200</b></a>
+                          <li class="flot-right getquote cart-count">
+                             	<a href="{{url('cart')}}">
+<i class="fa fa-cart-arrow-down" aria-hidden="true"></i> 
+<span class="cart_count"> 0</span> 
+Rs <span class="cart_amount"> <b> ₹ 0</b></span> 
+
+</a>
                           </li>
                           @if (Auth::check()) 
                           <li class="flot-right getquote getquote-signs">
@@ -267,7 +272,7 @@
                                     <i class="fa fa-user-circle"></i> Login/register  <i class="fa fa-angle-right ms-2"></i>  
                                     </a>
                                  </li>
-                                 <li><a href="#profile.php"><i class="bg_icon-img"></i>My Profile </a> </li>
+                                 <li><a href="{{url('profile')}}"><i class="bg_icon-img"></i>My Profile </a> </li>
                                  <li><a href="#product-account.php"><i class="bg_icon-img"></i> My Products</a></li>
                                  <li><a href="#services-account.php"><i class="bg_icon-img"></i>  My Services</a></li>
                                  <li><a href="#product_service-chates.php"><i class="bg_icon-img"></i>  My Chats</a></li>
@@ -314,7 +319,8 @@
                                                <span class="spand-line"><b>All Products</b></span>
                                                </a>
                                             </li>
-                                            @foreach ($categories as $key => $category)
+                                            {{-- // @foreach ($categories as $key => $category) --}}
+											@foreach (\App\Models\Category::all() as $key => $category)
 											<li class="mega_menus buildings1a">
                                                 <div class="position-relative d-flow-root">
                                                    <a href="{{ route('cat', $category->slug) }}">
@@ -331,13 +337,17 @@
 															<ul class="megamenusubs">
                                                                 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
 															   <li>
-                                                                  <a href="product-building.php"><b class="webhead2"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b></a>
+																@php
+																	$subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+																@endphp
+                                                                  <a href="{{ route('products.category', $subcatSlug) }}"><b class="webhead2"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b></a>
                                                                   <ul class="megamenusubs231 megamenusubs231a">
 																		@foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($first_level_id) as $key => $second_level_id)                                                                    
 																	<li>     @php
                                                                $cat_icon =  \App\Models\Category::find($second_level_id)->getTranslation('icon');
+															   $childcatSlug = \App\Models\Category::find($second_level_id)->slug;
                                                             @endphp
-                                                                        <a href="product-building.php"><img src="{{uploaded_asset($cat_icon)}}" alt="">  {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
+                                                                        <a href="{{ route('products.category', $childcatSlug) }}"><img src="{{uploaded_asset($cat_icon)}}" alt="">  {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
                                                                         </a>
                                                                      </li>
 																		@endforeach
@@ -691,169 +701,29 @@
                                          <div class="row">
                                             <div class="col-md-8" style="padding-right: 0px">
                                                <ul class="megamenusubs">
-                                                  <li>
-                                                     <a href="product-category.php" style="    padding: 0px;"><b class="webhead1">Building Materials</b></a>
+                                                @foreach (\App\Models\Category::all() as $key => $category)
+												  <li>
+                                                     <a href="{{ route('cat', $category->slug) }}" style="    padding: 0px;">
+														<b class="webhead1">{{  $category->getTranslation('name') }}</b>
+													 </a>
                                                      <ul class="megamenusubs231 megamenusubs231a">
-                                                        <li>
-                                                           <a href="product.php"><img src="img/mechanic-tools.png" alt="" /> Cement
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/construction.png" alt="" /> Bricks & Blocks
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/windows.png" alt="" /> Sand & Jelly
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/furnitures.png" alt="" /> Steel & Tmt
-                                                           </a>
-                                                        </li>
+                                                        @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+															<li>
+															@php
+															$subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+															@endphp
+															   <a href="{{ route('products.category', $subcatSlug) }}"><img src="img/mechanic-tools.png" alt="" /> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}
+															   </a>
+															</li>
+														@endforeach
+                                                        
                                                         <li>
                                                            <a href="product-category.php" style="color: #1274c0; font-weight: 700;letter-spacing: 0.5px;">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                                         </li>
                                                      </ul>
                                                   </li>
-                                                  <li>
-                                                     <b class="webhead2">Electrical</b>
-                                                     <ul
-                                                        class="megamenusubs231 megamenusubs231b"
-                                                        >
-                                                        <li>
-                                                           <a><img src="img/smart-lighting.png" alt="" />
-                                                           Lighting </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/cable.png" alt="" />
-                                                           Cables
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/breaker.png" alt="" />
-                                                           Circuit Breakers
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/carpenter.png" alt="" />
-                                                           Carpenter
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/electric-tower.png" alt="" />
-                                                           Conduits & Accessories
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/electrical-panel.png" alt="" />
-                                                           Distribution Board
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/switchboard.png" alt="" />
-                                                           Switches & Sockets
-                                                           </a>
-                                                        </li>
-                                                     </ul>
-                                                  </li>
-                                                  <li>
-                                                     <b class="webhead3">Plumbing</b>
-                                                     <ul
-                                                        class="megamenusubs231 megamenusubs231c"
-                                                        >
-                                                        <li>
-                                                           <a
-                                                              ><img src="img/bath.png" alt="" />
-                                                           Bathroom Fittings
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/fitting-room.png" alt="" />
-                                                           Fittings</a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/pipe.png" alt="" />
-                                                           PVC Pipes
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/pipes.png" alt="" />
-                                                           CPVC Pipes
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/natural-gas.png" alt="" />
-                                                           UPVC Pipes
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/outdoor-table.png" alt="" />
-                                                           Outdoor Fittings
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/roof.png" alt="" />
-                                                           Roof & Floor
-                                                           </a>
-                                                        </li>
-                                                     </ul>
-                                                  </li>
-                                                  <li>
-                                                     <b class="webhead4">Finishing Materials</b>
-                                                     <ul class="megamenusubs231 megamenusubs231d">
-                                                        <li>
-                                                           <a><img src="img/tiles.png" alt="" />Tiles </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/dance-floor.png" alt="" /> Flooring
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/landscape.png" alt="" /> Landscaping
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/roofs.png" alt="" /> Roofing
-                                                           </a>
-                                                        </li>
-                                                     </ul>
-                                                  </li>
-                                                  <li>
-                                                     <b class="webhead5">Material </b>
-                                                     <ul class="megamenusubs231 megamenusubs231e">
-                                                        <li>
-                                                           <a><img src="img/constructionaa.png" alt="" /> Building blocks</a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/tools.png" alt="" /> Carpentry</a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/ceiling-light.png" alt="" /> Ceilings</a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/brick.png" alt="" /> Inner walls</a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/metallic-tower.png" alt="" /> Metal structures </a>
-                                                        </li>
-                                                     </ul>
-                                                  </li>
-                                                  <li>
-                                                     <b class="webhead6">Tech</b>
-                                                     <ul class="megamenusubs231 megamenusubs231f">
-                                                        <li>
-                                                           <a><img src="img/cloud.png" alt="" /> Access and security
-                                                           </a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/audio-editing.png" alt="" /> Audio video systems</a>
-                                                        </li>
-                                                        <li>
-                                                           <a><img src="img/automation.png" alt="" /> Automation</a>
-                                                        </li>
-                                                     </ul>
-                                                  </li>
-                                               </ul>
+												@endforeach  
+                                                </ul>
                                             </div>
                                             <div class="col-md-4">
                                                <div class="divcalimmega">
@@ -861,7 +731,7 @@
                                                   <p>
                                                      Hire our dedicated team who will prove to be the biggest sources to help your businesses with cost-effective method.
                                                   </p>
-                                                  <img src="img/service-banner-1.png" />
+                                                  <img src="{{static_asset('assets_web/img/service-banner-1.png')}}" />
                                                   <a class="hire-team-btn" href="javascript:void(0);" target="_self">Hire Team</a
                                                      >
                                                </div>
