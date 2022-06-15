@@ -23,6 +23,26 @@ class PurchaseHistoryController extends Controller
     public function productReturn(){
         return view('frontend.user.product_return');
     }
+    public function helpSupport(){
+        return view('frontend.user.help_support');
+    }
+    public function favouriteStore(){
+        return view('frontend.user.favourite_store');
+    }
+    public function feedback(){
+        return view('frontend.user.feedback');
+    }
+    public function ebbbucksBalance(){
+        return view('frontend.user.ebbbucks-balance');
+    }
+    public function cluesBucks(){
+        return view('frontend.user.ebbbucks-cluesbucks');
+    }
+    public function chat(){
+        return view('frontend.user.chat');
+    }
+    
+
     public function digital_index()
     {
         $orders = DB::table('orders')

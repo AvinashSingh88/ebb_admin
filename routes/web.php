@@ -167,11 +167,23 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
     Route::post('/new-user-email', 'HomeController@update_email')->name('user.change.email');
 
     Route::post('/user/update-profile', 'HomeController@userProfileUpdate')->name('user.profile.update');
+    Route::get('edit_profile','HomeController@editProfile')->name('edit_profile');
+    Route::post('updateProfile','HomeController@updateProfile')->name('updateProfile');
+    Route::get('my_addressbook','HomeController@myAddressBook')->name('my_addressbook');
+    Route::post('addAddress','HomeController@addAddress')->name('addAddress');
+    Route::post('getaddressdetails','HomeController@getaddressdetails')->name('getaddressdetails');
+    Route::post('updateAddressDetails','HomeController@updateAddressDetails')->name('updateAddressDetails');
 
     Route::resource('purchase_history', 'PurchaseHistoryController');
     Route::post('/purchase_history/details', 'PurchaseHistoryController@purchase_history_details')->name('purchase_history.details');
     Route::get('/purchase_history/destroy/{id}', 'PurchaseHistoryController@destroy')->name('purchase_history.destroy');
     Route::get('product_return','PurchaseHistoryController@productReturn')->name('product_return');
+    Route::get('help_support','PurchaseHistoryController@helpSupport')->name('help_support');
+    Route::get('favourite_store','PurchaseHistoryController@favouriteStore')->name('favourite_store');
+    Route::get('feedback','PurchaseHistoryController@feedback')->name('feedback');
+    Route::get('ebbbucks-balance','PurchaseHistoryController@ebbbucksBalance')->name('ebbbucks-balance');
+    Route::get('ebbbucks-cluesbucks','PurchaseHistoryController@cluesBucks')->name('chat');
+    Route::get('chat','PurchaseHistoryController@chat')->name('ebbbucks-cluesbucks');
     Route::resource('wishlists', 'WishlistController');
     Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 

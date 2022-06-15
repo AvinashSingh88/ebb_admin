@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="edit_profile mt-1">
                                         <span class="profile-edit_btn">
-                                            <a href="account/edit_profile.php">
+                                            <a href="{{url('edit_profile')}}">
                                                 Edit Profile
                                             </a>
                                         </span>

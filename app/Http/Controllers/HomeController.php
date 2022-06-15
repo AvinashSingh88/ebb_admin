@@ -17,6 +17,7 @@ use App\Models\Shop;
 use App\Models\Order;
 use App\Models\BusinessSetting;
 use App\Models\Coupon;
+use App\Models\Address;
 use Cookie;
 use Illuminate\Support\Str;
 use App\Mail\SecondEmailVerifyMailManager;
@@ -139,7 +140,105 @@ class HomeController extends Controller
             return view('frontend.user.profile');
         }
     }
+    public function editProfile(){
+        return view('frontend.user.edit_profile');
+    }
+    public function myAddressBook(){
+        $userid = Auth::user()->id;
+        $myaddress = Address::where('user_id',$userid)->get();
+        return view('frontend.user.my-addressbook', compact('myaddress'));
+    }
+    public function updateProfile(Request $request){
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'phone'=>'required',
+            'email'=>'required',
+        ]);
+        $userid = Auth::user()->id;
+        $name = $request->first_name.' '.$request->last_name;
+        $upate_profile_details = User::where('id', $userid)
+                            ->update([
+                                    'first_name' => $request->first_name,
+                                    'last_name' => $request->last_name,
+                                    'name' => $name,
+                                    'phone' => $request->phone,
+                                    'email' => $request->email,
+                                    'email' => $request->email,
+                                    'gender' => $request->gender,
+                                ]);
+        if ($upate_profile_details) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Profile Updated Successfully!.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+    }
+    public function updateAddressDetails(Request $request){
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'phone'=>'required',
+            'pin'=>'required',
+            'area'=>'required',
+            'house_no'=>'required',
+            'user_id'=>'required',
+            'state'=>'required',
+            'city'=>'required',
+        ]);
+        $userid = Auth::user()->id;
+        $name = $request->first_name.' '.$request->last_name;
+        $upate_profile_details = Address::where('id', $request->id)->where('user_id',$request->user_id)
+                            ->update([
+                                    'first_name' => $request->first_name,
+                                    'last_name' => $request->last_name,
+                                    'phone' => $request->phone,
+                                    'state' => $request->state,
+                                    'city' => $request->city,
+                                    'house_no' => $request->house_no,
+                                    'area' => $request->area,
+                                    'pin' => $request->pin,
+                                ]);
+        if ($upate_profile_details) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Address Updated Successfully!.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+    }
+    public function addAddress(Request $request){
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'phone'=>'required',
+            'pin'=>'required',
+            'house_no'=>'required',
+            'area'=>'required',
+            'city'=>'required',
+            'state'=>'required',
+            'address_type'=>'required',
 
+        ]);
+        $addresspost = Address::create([
+           "first_name" => "$request->first_name",
+            "last_name" => "$request->last_name",
+            "phone" => "$request->phone",
+            "pin" => "$request->pin",
+            "house_no" => "$request->house_no",
+            "area" => "$request->area",
+            "city" => "$request->city",
+            "state" => "$request->state",
+            "address_type" => "$request->address_type",
+            "user_id" => Auth::user()->id,
+        ]);
+        if ($addresspost) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Address Added Successfully!.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+    }
+    //Address Details Get start
+    public function getaddressdetails(Request $request){
+        $address_id = $request->post('address_id');
+        $addressesss = Address::where('id', $address_id)->get()->toJson();
+        return $addressesss;
+    }
+    //Address Details Get End
     public function userProfileUpdate(Request $request)
     {
         $user = Auth::user();
