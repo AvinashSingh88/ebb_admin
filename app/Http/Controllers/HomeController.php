@@ -18,6 +18,7 @@ use App\Models\Order;
 use App\Models\BusinessSetting;
 use App\Models\Coupon;
 use App\Models\Address;
+use App\Models\Customer_payment_card;
 use Cookie;
 use Illuminate\Support\Str;
 use App\Mail\SecondEmailVerifyMailManager;
@@ -231,6 +232,34 @@ class HomeController extends Controller
             return redirect()->back()->with(session()->flash('alert-success', 'Address Added Successfully!.'));
         }
         return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+    }
+    public function managePayments(){
+        $userid = Auth::user()->id;
+        $mypaymentcard = Customer_payment_card::where('user_id',$userid)->get();
+        return view('frontend.user.manage-payments', compact('mypaymentcard'));
+    }
+    public function addPaymentCards(Request $request){
+        // dd($request);
+        // die;
+        $request->validate([
+            'credit_debit'=>'required',
+            'card_no'=>'required|max:16',
+            'expiry_month'=>'required',
+            'expiry_year'=>'required',
+        ]);
+       
+        $addcard = Customer_payment_card::create([
+           "credit_debit" => "$request->credit_debit",
+            "card_no" => "$request->card_no",
+            "expiry_month" => "$request->expiry_month",
+            "expiry_year" => "$request->expiry_year",
+            "user_id" => Auth::user()->id,
+        ]);
+        if ($addcard) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Payment Card Added Successfully!.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+    
     }
     //Address Details Get start
     public function getaddressdetails(Request $request){
