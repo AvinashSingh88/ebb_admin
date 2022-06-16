@@ -44,7 +44,7 @@ class HomeController extends Controller
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
         });
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
-       
+      
         return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories'));
     }
 
@@ -277,6 +277,7 @@ class HomeController extends Controller
     public function flash_deal_details($slug)
     {
         $flash_deal = FlashDeal::where('slug', $slug)->first();
+        // dd($flash_deal);
         if ($flash_deal != null)
             return view('frontend.flash_deal_details', compact('flash_deal'));
         else {

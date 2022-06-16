@@ -182,25 +182,31 @@
    <!-- Category section start  -->
    @include('frontend.partials.home_categories_section')
    <!-- Category section end  -->
-
-
 </div>
 
 <div class="sample-secondary">
-   <!-- section end -->
+
    <!-- The Best Premium Manufacturers st -->
-   <!-- Product relative Carousel -->
+
    <div class="headsections111 dkjfksjjksdfjis seicktioons">
       <div class="container">
+
+         @php
+         $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('featured', 1)->get();
+         @endphp
 
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
                   <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
+                     <a href="#" class="view-link">
+                        View all
+                        <i class="fa-solid fa-chevron-right"></i>
                      </a>
                   </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Offer</h3>
+                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
+                     The Best Premium Offer
+                  </h3>
                   <div class="deals">
                      <hr>
                   </div>
@@ -210,211 +216,53 @@
 
          <div class="boxoodod">
             <div class="row">
-               <div class="col-md-4">
-                  <div class="product-box">
-                     <h6><img src="{{static_asset('assets_web/img/iconsl1.png')}}" alt=""> <span>New Arrivals</span>
-                     </h6>
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> Trending Now </h5>
+               @foreach($flash_deal as $featured_deal)
+               @if($featured_deal != null && strtotime(date('Y-m-d H:i:s')) >= $featured_deal->start_date &&
+               strtotime(date('Y-m-d H:i:s')) <= $featured_deal->end_date)
+                  <div class="col-md-4">
+                     <div class="product-box">
+                        <h6>
+                           <span>
+                              <a href="{{ route('flash-deal-details', $featured_deal->slug) }}">
+                                 {{$featured_deal->title}}
+                              </a>
+                           </span>
+                        </h6>
 
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> Trending Now </h5>
+                        <ul class="image-productsll">
 
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> Trending Now </h5>
+                           @foreach ($featured_deal->flash_deal_get_products($featured_deal->id, 3) as $key =>
+                           $flash_deal_product)
+                           @php
+                           $product = \App\Models\Product::find($flash_deal_product->product_id);
+                           @endphp
+                           @if ($product->published != 0)
+                           <li>
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
+                                 alt="{{  $product->getTranslation('name')  }}">
+                              <div class="discrptions">
+                                 <h6>{{ home_discounted_base_price($product) }}</h6>
+                                 <h5> {{ $product->getTranslation('name') }} </h5>
+                              </div>
+                           </li>
+                           @endif
+                           @endforeach
 
-                           </div>
-                        </li>
 
-                     </ul>
+                           <!-- <li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt="">
+                              <div class="discrptions">
+                                 <h6>Rs.288</h6>
+                                 <h5> Trending Now </h5>
+                              </div>
+                           </li> -->
 
-
-
+                        </ul>
+                     </div>
                   </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="product-box">
-                     <h6><img src="{{static_asset('assets_web/img/icondk2.png')}}" alt=""> <span>Top-ranked
-                           Products</span></h6>
-
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/building.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/cementsss1.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/pipe.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-
-                     </ul>
-
-
-
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="product-box">
-                     <h6><img src="{{static_asset('assets_web/img/icondk3.png')}}" alt=""> <span>Summer Sale</span></h6>
-
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/dkdidk2.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/dkdidk3.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/dkdidk4.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-
-                     </ul>
-
-
-
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="product-box">
-                     <h6><img src="{{static_asset('assets_web/img/iconsl1.png')}}" alt=""> <span>999 Deals</span></h6>
-
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/Doors.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece</h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/dkdidk3.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece</h5>
-
-                           </div>
-                        </li>
-
-                     </ul>
-
-
-
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="product-box">
-                     <h6><img src="{{static_asset('assets_web/img/icondk2.png')}}" alt=""> <span>Global Original
-                           Sources</span></h6>
-
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/Hardware-Tools.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-
-                     </ul>
-
-
-
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="product-box">
-                     <h6><img src="{{static_asset('assets_web/img/icondk3.png')}}" alt=""> <span> True View</span></h6>
-
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/light.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/paints.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece</h5>
-
-                           </div>
-                        </li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/bathfitting.png')}}" alt="">
-                           <div class="discrptions">
-                              <h6>Rs.288</h6>
-                              <h5> 1 Piece </h5>
-
-                           </div>
-                        </li>
-
-                     </ul>
-
-
-
-                  </div>
-               </div>
+                  @endif
+                  @endforeach
             </div>
          </div>
-
       </div>
    </div>
    <!-- The Best Premium Manufacturers end -->
@@ -2007,16 +1855,23 @@
       </div>
    </div>
    <!-- VEHICLE PARTS & ACCESSORIES end -->
-   <!-- section end-->
+
+   <!-- banner section 2 start-->
    <div class="bannnner">
       <div class="container">
          <a href="#1">
             <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
          </a>
       </div>
+      <div class="container">
+         <a href="#1">
+            <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
+         </a>
+      </div>
    </div>
-   <!--section end-->
-   <!--product stasl -->
+   <!-- banner section 2 end-->
+
+   <!-- Product relative Carousel -->
    <!-- Product relative Carousel -->
 
 
@@ -2034,379 +1889,97 @@
                   <div class="deals">
                      <hr>
                   </div>
-                  <!--<p>Lighting Up Your Home</p>-->
                </div>
                <div class="position-absolutedk">
                   <div class="mt-md-n1ddd div-tab-dpsa">
                      <div class="mt-md-n1 border-tops border-color-1">
                         <div class="flex-horizontal-centersss">
-                           <h5 class="font-size-15 mb-0 font-weight-bold text-lh-1 mr-1">Ends in:</h5>
-                           <div class="px-1">
-                              <span class="js-cd-hours">00</span>
-                           </div>
-                           <div class="">:</div>
-                           <div class="px-1">
-                              <span class="js-cd-minutes">00</span>
-                           </div>
-                           <div class="">:</div>
-                           <div class="px-1">
-                              <span class="js-cd-seconds">00</span>
+                           <h5 class="font-size-15 mb-0 font-weight-bold text-lh-1 mr-1">Ends in &nbsp; : &nbsp;</h5>
+                           <div id="timer" class="d-flex">
+                              <div id="days"></div>
+                              <div id="hours"></div>
+                              <div id="minutes"></div>
+                              <div id="seconds"></div>
                            </div>
                         </div>
                      </div>
-
-
-                     <ul class="nav nav-pills">
-                        <li class="col-tabs-1a tabs-dps-tab active nav-item">
-                           <a class="nav-link rounded-pill">Flash Sale </a>
-                        </li>
-                        <li class="col-tabs-2a tabs-dps-tab nav-item">
-                           <a class="nav-link rounded-pill"> Combo Sale </a>
-                        </li>
-
-                        <li class="col-tabs-4a tabs-dps-tab nav-item">
-                           <a class="nav-link rounded-pill">Summer Sale </a>
-                        </li>
-                        <li class=" col-tabs-3a tabs-dps-tab nav-item">
-                           <a class="nav-link rounded-pill">999 Deals </a>
-                        </li>
-                     </ul>
-
-
                   </div>
-
                </div>
-
             </div>
-
          </div>
          <div class="div-tab-dpsa sections">
-            <ul>
-               <li class="col-tabs-1a tabs-dps-tab active">
-
-                  <div class="owl-carousel owl-theme trending0001">
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/prosts1.png')}}" alt="">
-                           </div>
-
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
+            <div class="owl-carousel owl-theme trending0001">
+               <div class="item">
+                  <div class="product-box">
+                     <div class="imllskdon">
+                        <img src="img/index0/prosts1.png" alt="">
                      </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/dkdidk2.png')}}" alt="">
-                           </div>
-
-                           <div class="discrptions">
-                              <h5> Merlin Water Mixer Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk3.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Slim Panel Light Square</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk4.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5>Carnival Clean Rim P Trap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> G-Magic 3 Pin Travel </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/prosts1.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="col-tabs-2a tabs-dps-tab">
-
-                  <div class="owl-carousel owl-theme trending0001">
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> G-Magic 3 Pin Travel </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/prosts1.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/prosts1.png')}}" alt="">
-                           </div>
-
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/dkdidk2.png')}}" alt="">
-                           </div>
-
-                           <div class="discrptions">
-                              <h5> Merlin Water Mixer Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk3.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Slim Panel Light Square</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk4.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5>Carnival Clean Rim P Trap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
+                     <div class="discrptions">
+                        <h5> Sanataryware Tap </h5>
+                        <h6> ₹567 <del> ₹699</del></h6>
                      </div>
 
                   </div>
-               </li>
-               <li class="col-tabs-3a tabs-dps-tab">
-
-                  <div class="owl-carousel owl-theme trending0001">
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk3.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Slim Panel Light Square</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk4.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5>Carnival Clean Rim P Trap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/prosts1.png')}}" alt="">
-                           </div>
-
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/dkdidk2.png')}}" alt="">
-                           </div>
-
-                           <div class="discrptions">
-                              <h5> Merlin Water Mixer Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="imllskdon">
+                        <img src="img/index0/dkdidk2.png" alt="">
                      </div>
 
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> G-Magic 3 Pin Travel </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/prosts1.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                  </div>
-               </li>
-               <li class="col-tabs-4a tabs-dps-tab">
-
-                  <div class="owl-carousel owl-theme trending0001">
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/prosts1.png')}}" alt="">
-                           </div>
-
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon">
-                              <img src="{{static_asset('assets_web/img/index0/dkdidk2.png')}}" alt="">
-                           </div>
-
-                           <div class="discrptions">
-                              <h5> Merlin Water Mixer Tap </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> G-Magic 3 Pin Travel </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/prosts1.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Sanataryware Tap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk3.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5> Slim Panel Light Square</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/dkdidk4.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <h5>Carnival Clean Rim P Trap</h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
+                     <div class="discrptions">
+                        <h5> Merlin Water Mixer Tap </h5>
+                        <h6> ₹567 <del> ₹699</del></h6>
                      </div>
 
                   </div>
-               </li>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="imllskdon"><img src="img/index0/dkdidk3.png" alt=""> </div>
 
-            </ul>
+                     <div class="discrptions">
+                        <h5> Slim Panel Light Square</h5>
+                        <h6> ₹567 <del> ₹699</del></h6>
+                     </div>
+
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="imllskdon"><img src="img/index0/dkdidk4.png" alt=""> </div>
+
+                     <div class="discrptions">
+                        <h5>Carnival Clean Rim P Trap</h5>
+                        <h6> ₹567 <del> ₹699</del></h6>
+                     </div>
+
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="imllskdon"><img src="img/index0/dfdfsd.png" alt=""> </div>
+
+                     <div class="discrptions">
+                        <h5> G-Magic 3 Pin Travel </h5>
+                        <h6> ₹567 <del> ₹699</del></h6>
+                     </div>
+
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="imllskdon"><img src="img/index0/prosts1.png" alt=""> </div>
+
+                     <div class="discrptions">
+                        <h5> Sanataryware Tap</h5>
+                        <h6> ₹567 <del> ₹699</del></h6>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+
          </div>
 
       </div>
