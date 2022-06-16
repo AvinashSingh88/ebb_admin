@@ -12,13 +12,13 @@
                                 <li class=""><a href="{{url('product_return')}}"><i class="bg_icon-img"></i>My Returns</a></li>
                                 <li class=""><a href="{{url('wishlists')}}"><i class="bg_icon-img"></i><span class="w-75">Wishlist</span> <span class="float-right background_box">0</span></a></li>
                                 <li class=""><a href="{{url('profile')}}"><i class="bg_icon-img"></i>My Profile</a></li>
-                                <li class=""><a href="account/chats.php"><i class="bg_icon-img"></i>My Chat</a></li>
-                                <li class=""><a href="account/my-ebb-bucks.php"><i class="bg_icon-img"></i><span class="w-75">My CluesBucks</span> <span class="float-right background_box">0</span></a></li>
-								<li class=""><a href="account/my-ebb-bucks-balance.php" class="d-flex"><i class="bg_icon-img"></i> <span class="w-75">My CluesBucks &nbsp;+ &nbsp;</span>  
-								<span class="float-right background_box">0</span></a></li>
-                                <li class=""><a href="account/feedback.php"><i class="bg_icon-img"></i>My Feedback</a></li>
-                                <li class=""><a href="account/my_fevorite_story.php"><i class="bg_icon-img"></i>My Favorite Stores</a></li>
-                                <li class=""><a href="account/help_support.php"><i class="bg_icon-img"></i>Help &amp; Support</a></li>
+                                {{-- <li class=""><a href="{{url('chat')}}"><i class="bg_icon-img"></i>My Chat</a></li> --}}
+                                {{-- <li class=""><a href="{{url('ebbbucks-cluesbucks')}}"><i class="bg_icon-img"></i><span class="w-75">My CluesBucks</span> <span class="float-right background_box">0</span></a></li> --}}
+								{{-- <li class=""><a href="{{url('ebbbucks-balance')}}" class="d-flex"><i class="bg_icon-img"></i> <span class="w-75">My CluesBucks &nbsp;+ &nbsp;</span>   --}}
+								{{-- <span class="float-right background_box">0</span></a></li> --}}
+                                {{-- <li class=""><a href="{{url('feedback')}}"><i class="bg_icon-img"></i>My Feedback</a></li> --}}
+                                {{-- <li class=""><a href="{{url('favourite_store')}}"><i class="bg_icon-img"></i>My Favorite Stores</a></li> --}}
+                                <li class=""><a href="{{url('help_support')}}"><i class="bg_icon-img"></i>Help &amp; Support</a></li>
 								<li><a href="{{url('logout')}}"><i class="bg_icon-img"></i>Sign Out</a></li>
 								
 		
