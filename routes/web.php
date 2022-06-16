@@ -173,6 +173,8 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
     Route::post('addAddress','HomeController@addAddress')->name('addAddress');
     Route::post('getaddressdetails','HomeController@getaddressdetails')->name('getaddressdetails');
     Route::post('updateAddressDetails','HomeController@updateAddressDetails')->name('updateAddressDetails');
+    Route::get('manage-payments','HomeController@managePayments')->name('manage-payments');
+    Route::post('addPaymentCards','HomeController@addPaymentCards')->name('addPaymentCards');
 
     Route::resource('purchase_history', 'PurchaseHistoryController');
     Route::post('/purchase_history/details', 'PurchaseHistoryController@purchase_history_details')->name('purchase_history.details');
