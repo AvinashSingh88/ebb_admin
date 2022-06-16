@@ -1089,28 +1089,30 @@
 
       </div>
    </div>
-   <!-- best service banner st -->
+
+   <!-- banner 1 section start -->
+   @if (get_setting('home_banner1_images') != null)
    <section>
       <div class="mb-5 closindig">
          <div class="container">
             <div class="row">
+
+               @php $banner_1_imags = json_decode(get_setting('home_banner1_images')); @endphp
+               @foreach ($banner_1_imags as $key => $value)
                <div class="col-lg-6 mb-4 mb-xl-0">
-                  <a href="#1" class="d-block">
-                     <img class="img-fluid" src="{{static_asset('assets_web/img/slidkie2.png')}}"
-                        alt="Image Description">
+                  <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block">
+                     <img class="img-fluid" src="{{ uploaded_asset($banner_1_imags[$key]) }}"
+                        alt="{{ env('APP_NAME') }} promo">
                   </a>
                </div>
-               <div class="col-lg-6 mb-4 mb-xl-0">
-                  <a href="#1" class="d-block">
-                     <img class="img-fluid" src="{{static_asset('assets_web/img/slidkie1.png')}}"
-                        alt="Image Description">
-                  </a>
-               </div>
+               @endforeach
             </div>
          </div>
       </div>
    </section>
-   <!--  best service banner end -->
+   @endif
+   <!-- banner 1 section end -->
+
    <!-- CONSUMER ELECTRONICS end -->
    <div class="other-categories">
       <div class="container">

@@ -296,17 +296,18 @@
 						<label>{{ translate('Categories') }}</label>
 						<div class="home-categories-target">
 							<input type="hidden" name="types[]" value="home_categories">
+
+							
 							@if (get_setting('home_categories') != null)
 								@foreach (json_decode(get_setting('home_categories'), true) as $key => $value)
 									<div class="row gutters-5">
 										<div class="col">
 											<div class="form-group">
 												<select class="form-control aiz-selectpicker" name="home_categories[]" data-live-search="true" data-selected={{ $value }} required>
-													@foreach (\App\Models\Category::where('parent_id', 0)->with('childrenCategories')->get() as $category)
+													
+													@foreach (\App\Models\Category::where('parent_id', 0)->get() as $category)
 														<option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
-														@foreach ($category->childrenCategories as $childCategory)
-															@include('categories.child_category', ['child_category' => $childCategory])
-														@endforeach
+														
 													@endforeach
 					                            </select>
 											</div>
@@ -328,7 +329,7 @@
 								<div class="col">
 									<div class="form-group">
 										<select class="form-control aiz-selectpicker" name="home_categories[]" data-live-search="true" required>
-											@foreach (\App\Models\Category::all() as $key => $category)
+											@foreach (\App\Models\Category::where('parent_id', 0)->get() as $key => $category)
 												<option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
 											@endforeach
 										</select>

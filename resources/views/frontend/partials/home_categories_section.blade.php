@@ -20,18 +20,16 @@
                             </div>
                         </div>
 
-
                         @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
                         @php
-                            $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+                            $subcat = \App\Models\Category::find($first_level_id);
                         @endphp
-
                             <div class="col-md-5c">
-                                <a href="{{ route('products.category', $subcatSlug) }}">
+                                <a href="{{ route('products.category', $subcat->slug) }}">
                                     <div class="trend-theme">
-                                        <img src="{{ \App\Models\Category::find($first_level_id)->icon }}" alt="{{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}" />
+                                        <img src="{{ uploaded_asset($subcat->icon) }}" alt="{{ $subcat->getTranslation('name') }}" />
                                     </div>
-                                    <h3> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</h3>
+                                    <h3> {{ $subcat->getTranslation('name') }}</h3>
                                 </a>
                             </div>
                         @endforeach
