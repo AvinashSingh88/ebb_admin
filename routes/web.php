@@ -175,8 +175,11 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
     Route::post('updateAddressDetails','HomeController@updateAddressDetails')->name('updateAddressDetails');
     Route::get('manage-payments','HomeController@managePayments')->name('manage-payments');
     Route::post('addPaymentCards','HomeController@addPaymentCards')->name('addPaymentCards');
+    Route::get('change-password','HomeController@changePassword')->name('change-password');
+    Route::post('userPasswordChange','HomeController@userPasswordChange')->name('userPasswordChange');
 
     Route::resource('purchase_history', 'PurchaseHistoryController');
+    Route::get('order-details/{id}', 'PurchaseHistoryController@orderDetails')->name('order-details');
     Route::post('/purchase_history/details', 'PurchaseHistoryController@purchase_history_details')->name('purchase_history.details');
     Route::get('/purchase_history/destroy/{id}', 'PurchaseHistoryController@destroy')->name('purchase_history.destroy');
     Route::get('product_return','PurchaseHistoryController@productReturn')->name('product_return');

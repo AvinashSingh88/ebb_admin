@@ -19,123 +19,132 @@
                             </a>  </li>
                            </ul>
                              
-                        <div class="hotel-form py-4 pt-0 shadow-none">
-						  <ul class="ulines-dps-para">
-                            <li class="ukine ukine2b active4">
-                                <div class="hotel-form p-0 shadow-none">
-                       <div class="border-bottom1 border-color-111 mt-0 mb-3">
-                    <!-- <h3 class="section-title section-title__sm mb-0 pt-2 pb-0 mt-0 font-size-18">Return</h3> -->
-                    <div class="deals">
-                       <!-- <hr> -->
-                    </div>
-                 </div>
-                          <div class="row">
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/cements.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5>Bharathi Cement </h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/pvcline.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5> PVC Fittings </h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/cabelse.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5> Cables &amp; Wires</h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/shawerel.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5> Sanitary Shower </h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/brandssw1.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5>  Sockets &amp; Switches</h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/aksdk.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5>  Asian Adhesives Paint  </h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/aksdk.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5> Ceramics Tiles</h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                             <div class="col-md-3 col-sm-12 col-12">
-                                <div class="product-box profile_produckt h-auto pb-2"> 
-                             <img src="{{static_asset('assets_web/img/electtt.png')}}" class="h-auto" alt="">
-                             <div class="discrptions">
-                                <a href="javascript:void(0);"><h5>  Air Conditioner </h5></a>
-                                <h6><i class="fa fa-calendar"></i> 21 Nov 2021</h6>
-                             </div>
-                        
-                             
-                             
-                          </div>
-                             </div>
-                          </div>
-                           
-                       </div>
-                                </li>
-                             
-                            
-                           </ul>
-                         
-                        
-                        </div>
+                        <div class="hotel-form py-4 shadow-none">
+                                        <ul class="ulines-dps-para">
+										@foreach ($orders as $key => $order)
+                            @if (count($order->orderDetails) > 0)
+                                            <li class="ukine ukine2b active4">
+                                                <div class="row border-bottom pb-2 mb-4">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                                        <div class="orderid_holder">
+                                                            <p class="mb-0 orderSubId m-0">
+                                                                <span class="_order ">
+                                                                    Order :
+                                                                </span>
+                                                                <a href="#1" class="ms-1 customer_id">
+                                                                    {{ $order->code }}
+                                                                </a>
+                                                            </p>
+                                                            <p class="Order_Detail m-0">
+                                                                Order Placed on {{ date('d-m-Y', $order->date) }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                                        <div class="order_detail-btn">
+
+                                                            <a href="{{url('order-details/'.$order->id)}}" class="mt-1 order_btn text-capitalize ">
+                                                                Order Detail
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                                        <a href="javascript:void(0)" target="_blank"
+                                                            class="w-100 order_detail_img-holder border d-inline-block p-1">
+                                                            <img src="../img/16mm Pipe Black ISI Medium.jpg" alt=""
+                                                                class="w-100">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-lg-7 col-md-6 col-sm-6 col-xs-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <p class="heading_ m-0 fs-7 text-dark">
+                                                                    Portronics Modesk POR-122 Universal Mobile Holder
+                                                                    (Black)
+                                                                </p>
+                                                                <p class="quantity_holder m-0">
+                                                                    <span class="total_count text-secondary">Total:
+                                                                        <span class="price_holder text-dark" id="">
+                                                                            ₹ {{ single_price($order->grand_total) }}</span>
+                                                                    </span>
+                                                                    <span>
+                                                                        |
+                                                                    </span>
+                                                                    <span class="_quantity text-secondary">
+                                                                        QTY:
+                                                                        <span class="quantity_number text-dark " id="">
+                                                                            1
+                                                                        </span>
+                                                                    </span>
+
+                                                                </p>
+                                                                <p class="delivery_full-detail text-dark fs-7 mb-0">
+                                                                    Delivery expected by Sat, 18 Jun' 22
+                                                                </p>
+                                                                <p class="order_processing m-0">
+                                                                    Order ready for processing
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                        <div class="row align-items-center flex-column">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                         <p class="order_listing text-capitalize my-1">
+                                                                             <a href="#">
+                                                                            <span class="icon rounded-circle py-1 px-1 d-inline-block bg-success text-center m-auto">
+                                                                                    <i class="fa fa-map-marker-alt mx-2 text-white"></i>
+                                                                                </span>
+                                                                                Track Order
+                                                                            </a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                         <p class="order_listing text-capitalize my-1">
+                                                                             <a href="#">
+                                                                            <span class="icon rounded-circle py-1 px-1 d-inline-block bg-primary text-center m-auto">
+                                                                                    <i class="fa fa-phone mx-2 text-white"></i>
+                                                                                </span>
+                                                                                Customer Support
+                                                                            </a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                         <p class="order_listing text-capitalize my-1">
+                                                                             <a href="{{ route('invoice.download', $order->id) }}">
+                                                                            <span class="icon rounded-circle py-1 px-1 d-inline-block bg-warning text-center m-auto">
+                                                                                    <i class="fa-solid fa-print mx-2 text-white"></i>
+                                                                                </span>
+                                                                                Print Order Detail
+                                                                            </a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                         <p class="order_listing text-capitalize my-1">
+                                                                             <a href="#">
+                                                                            <span class="icon rounded-circle py-1 px-1 d-inline-block bg-danger text-center m-auto">
+                                                                                    <i class="fa fa-times mx-2 text-white text-center"></i>
+                                                                                </span>
+                                                                                cancel order
+                                                                            </a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+											 @endif
+                        @endforeach
+                                        </ul>
+
+
+                                    </div>
                         </div>
                      </div>
                   </div>

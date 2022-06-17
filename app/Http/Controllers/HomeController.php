@@ -261,6 +261,42 @@ class HomeController extends Controller
         return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
     
     }
+    public function changePassword(){
+        return view('frontend.user.change-password');
+    }
+    public function userPasswordChange(Request $request){
+        $request->validate([
+            // 'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required',
+        ]);
+        $userid = Auth::user()->id;
+        if ($request->new_password === $request->confirm_password) {
+            // $oldpass = User::where('id', '=', $userid)->first();
+            // $inputoldpass = Hash::make($request->old_password);
+            // $oldpassword = $oldpass->password;
+            // // dd($oldpassword);die;
+            // dd($inputoldpass);die;
+            // if ($oldpass->password === $request->old_password) {
+                $uppassdata = User::where('id', '=', $userid)
+                                    ->update([
+                                        'password' => Hash::make($request->new_password),
+                                    ]);
+                if ($uppassdata) {
+                    return redirect()->back()->with(session()->flash('alert-success', 'Congratulations! You have successfully changed your password.'));
+                } else{
+                    return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+                }
+            // } else {
+            //     return redirect()->back()->with(session()->flash('alert-warning', 'Please! enter correct old password.'));
+            // }
+            
+        } else{
+            return redirect()->back()->with(session()->flash('alert-warning', 'New Password and Confirm Password not matched.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+    }
+
     //Address Details Get start
     public function getaddressdetails(Request $request){
         $address_id = $request->post('address_id');
