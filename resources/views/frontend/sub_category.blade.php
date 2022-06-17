@@ -35,9 +35,7 @@
                      <div class="d-xl-block col-wd-2gdot5">
                         <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
                            <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
-   <?php 
-  $page = basename($_SERVER['SCRIPT_NAME'],".php");
-  ?>
+  
     <li class="link-category0">
                            <div class="dropdown-title"></div>
                         </li>
@@ -149,9 +147,10 @@
                            <div class="item">
                               <div class="fancybox thumb1">
                                
-                                 <a class="rana {{ (request()->is('admin/cities')) ? 'active' : 'inactive' }}"> {{ (request()->is('admin/cities')) }} </a>
+                                 <!---<a class="rana {{ (request()->is('admin/cities')) ? 'active' : 'inactive' }}"> {{ (request()->is('admin/cities')) }} </a>-->
+                                 <a class="rana {{ Request::is('cat/'.$category->slug) ? 'active':'' }}"> {{ set_active('cat', $category->slug) }} </a>
 
-                                 <a class="tablskd {{ url('') }}/" href="{{ route('cat', $category->slug) }}">
+                                 <a class="tablskd {{ Request::is('cat/'.$category->slug) ? 'active':'' }}" href="{{ route('cat', $category->slug) }}">
                                     <img data-u="image" src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /> 
                                     <h6>{{  $category->getTranslation('name') }} </h6>
                                     <div class="triangle-down"></div>
