@@ -2039,6 +2039,7 @@ ul.megamenusubs {
     float: unset;
     height: 100%;
     padding: 15px 0px 15px 7px;
+<<<<<<< Updated upstream
 }
 
 li.menulocationds.menulocationds2.com .megamenusubs>li {
@@ -2051,8 +2052,17 @@ li.menulocationds.menulocationds2.com ul.megamenusubs {
 
 li.menulocationds.menulocationds2.com ul.megamenusubs231 {
     padding: 3px 0px;
+=======
+>>>>>>> Stashed changes
 }
+li.menulocationds.menulocationds2.com .megamenusubs >li {
+width: 33%;}
 
+li.menulocationds.menulocationds2.com ul.megamenusubs { 
+    padding: 15px 0px 15px 7px;
+}
+li.menulocationds.menulocationds2.com ul.megamenusubs231 {
+padding: 3px 0px;}
 .megamenusubs231 li {
     width: 100%;
     display: block;
@@ -14620,8 +14630,12 @@ section.categorydks_byproducts {
     line-height: 20px;
     text-transform: capitalize;
     padding-bottom: 0px;
+<<<<<<< Updated upstream
     padding-top: 0px;
     margin-bottom: 10px;
+=======
+    padding-top: 0px;    margin-bottom: 10px; 
+>>>>>>> Stashed changes
     margin-top: 0px;
 }
 
@@ -15486,11 +15500,17 @@ section.woldeens_eldeos.sdfr {
     font-size: 14px;
     letter-spacing: 0.5px;
 }
+<<<<<<< Updated upstream
 
 h5.font-size-15.mb-0.font-weight-bold.text-lh-1.mr-1 {
     line-height: 20px !important;
 }
 
+=======
+h5.font-size-15.mb-0.font-weight-bold.text-lh-1.mr-1 {
+    line-height: 20px !important;
+}
+>>>>>>> Stashed changes
 ul.nav.nav-pills.nav-tab-pill.lign-items-center.pr-0 {
     margin: 0px 0px 0px;
 }
@@ -20213,6 +20233,7 @@ li.ukine.fs-5.py-2 {
 
 
 /************/
+<<<<<<< Updated upstream
 .top_ul ul li {
     float: unset;
 }
@@ -20335,6 +20356,37 @@ ul.megamenusubs231 {
     height: 35px;
 }
 
+=======
+.top_ul ul li {  float: unset; }
+.departmentdks { overflow: unset; }
+.top_ul ul li{ position: relative; }
+.top_ul::-webkit-scrollbar { display: none; }
+.top_ul::-moz-scrollbar { display: none; }
+.top_ul{   max-height: 410px; overflow: auto;  width: 1275px !important; z-index: 0;}
+.top-megamenu.web-mega { height: 600px;}
+.top-megamenu.web-mega { top: -40px;left: 270px;}
+.top_ul { width: 100%;}
+.top_ul ul li {width: 270px;}
+.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li ul li a {  width: 100%;}
+.top_ul ul li a {  width: 270px;}
+ul.megamenusubs {   height:600px;}
+.top-megamenu.menu_list2{top: -91px;}
+.top-megamenu.menu_list3 {top: -142px;}
+.top-megamenu.menu_list4 {top: -193px;}
+.top-megamenu.menu_list5 {top: -244px;}
+.top-megamenu.menu_list6 {top: -295px;}
+.top-megamenu.menu_list7 {top: -346px;}
+.top-megamenu.menu_list8 {top: -397px;}
+.top-megamenu.menu_list9 {top: -448px;}
+.top-megamenu.menu_list10 {top: -499px;}
+.top-megamenu.menu_list11 {top: -550px;}
+.top-megamenu.menu_list12 {top: -599px;}
+.mega_menus.active2 .mega_menus.top-megamenu{display:block}
+ul.megamenusubs231{padding:3px 7px;    height: 145px;}
+.megamenu .col-md-8 { padding:0px 15px;}
+.buildsing { line-height: 20px !important;}
+.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li ul li a {padding: 5px 0px !important;    height: 35px;}
+>>>>>>> Stashed changes
 ul.megamenusubs231.megamenusubs231a a {
     line-height: 5px;
 }
@@ -20820,6 +20872,7 @@ span.float-right.background_box {
 
 
 /************** packages st  **************/
+<<<<<<< Updated upstream
 .site-header .right-menu {
     width: 100%;
 }
@@ -20833,36 +20886,68 @@ table.price-table.align-center.border {
     width: 100%;
 }
 
+=======
+.site-header .right-menu { 
+    width: 100%;
+}
+table.price-table.align-center.border {
+    border-color: #ffd7bb !important;
+}
+.right-menu ul { 
+    display: flow-root;
+    width: 100%;
+}
+>>>>>>> Stashed changes
 li.flot-right.getquote a {
     width: auto;
     text-align: center;
 }
+<<<<<<< Updated upstream
 
 .price_size img {
     filter: brightness(0.5);
     width: 50px;
     margin: 10px 0px;
 }
+=======
+.price_size img{       filter: brightness(0.5);    width:50px;
+    margin: 10px 0px;    }
+>>>>>>> Stashed changes
 
+.price-table tr td{ border: 1px solid #f7ccae;
+    border-left: 0px;
+    border-right: 0px;}
 .price-table tr td {
+<<<<<<< Updated upstream
     border: 1px solid #f7ccae;
     border-left: 0px;
     border-right: 0px;
 }
 
 .price-table tr td {
+=======
+>>>>>>> Stashed changes
     padding: 10px 25px;
     font-size: 13px;
     letter-spacing: 0px;
     line-height: 1.7;
+<<<<<<< Updated upstream
     color: #262626;
+=======
+    color:#262626;
+>>>>>>> Stashed changes
     font-weight: 400;
 }
 
 td.rttl {
+<<<<<<< Updated upstream
     color: #3e3e3e;
     font-weight: 700 !important;
     letter-spacing: 0.5px !important;
+=======
+    color: #3e3e3e;    font-weight: 700 !important;
+    letter-spacing: 0.5px !important; 
+>>>>>>> Stashed changes
 }
 
 td.s {
@@ -20872,7 +20957,11 @@ td.s {
 td.g {
     background: #ffebad;
 }
+td.p {
+    background: #d3fbff;
+}
 
+<<<<<<< Updated upstream
 td.p {
     background: #d3fbff;
 }
@@ -20881,12 +20970,16 @@ table.price-table.align-center tr:first-child {
     background: #ccc;
 }
 
+=======
+table.price-table.align-center tr:first-child{background:#ccc;}
+>>>>>>> Stashed changes
 .col-packages {
     padding: 30px;
     box-shadow: 0px 0px 3px 1px #ccc;
     border-radius: 5px;
     margin: 30px 0px;
 }
+<<<<<<< Updated upstream
 
 table.price-table.align-center tr:first-child {
     background: #f5d6c0;
@@ -21000,6 +21093,43 @@ a.py-0.invoices {
     border: none;
     border-radius: 5px;
 }
+=======
+
+table.price-table.align-center tr:first-child {
+    background: #f5d6c0;
+}
+table.price-table.align-center tr:first-child  td{font-weight:700;}
+table.price-table.align-center tr:first-child td {
+    font-weight: 700;
+    font-size: 14px;
+    background:#f0f0f0;
+    color:#222222;
+}
+
+table.price-table.align-center.border tr p{position:relative;     font-size: 13px;
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+    line-height: 20px;
+    margin-top: 3px;   font-weight: 400;}
+table.price-table.align-center.border tr p:after{
+    width: 8px;
+    height: 8px;
+    content: "";
+    position: absolute;
+    z-index: 0;
+    border: 2px solid #ff7713;
+    left: -13px;
+    border-radius: 50px;
+    top: 6px;}
+.price-table tr td:first-child{font-size:14px;}
+.price-table tr td:first-child {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+td.price_size p{font-size: 15px !important;  color:#3e342d;}
+td.price_size p:after{display:none;}
+>>>>>>> Stashed changes
 
 .class-invoice_details td {
     padding: 5px 20px;
@@ -21008,6 +21138,7 @@ a.py-0.invoices {
     line-height: 22px;
 }
 
+<<<<<<< Updated upstream
 .col.col-md-8.text-left.text-md-left table td {
     padding: 0px;
 }
@@ -21034,6 +21165,118 @@ b.sans {
 }
 
 .order_detail-btn {
+=======
+ 
+ tr.footable-header.pt-0 th {
+   line-height: 40px;
+    padding: 0px 10px;
+    height: auto !important;
+}
+ table.table.aiz-table.mb-0.footable.footable-1.breakpoint-lg td {
+    padding: 5px 10px;
+}
+.SignInlogin.active2:after {
+    width: 1367px;
+    height: 600px;
+    background: #fff0;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -1050px;
+    top: 57px;
+}
+.collapseNav.top-headers ul.first-ul #shopid.active2:after {
+width: 1367px;
+    height: 600px;
+    background: #fff0;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -74px;
+    top: -3px;
+}
+a.py-0.invoices {
+    line-height: 37px;
+    width: 120px;
+    text-align: center;
+    height: 40px;
+    padding: 0px;
+}
+.discrptions_button.text-right.align-right {
+    text-align: right;
+}
+.class_buy_again{width: 120px;
+    height: 35px;
+    letter-spacing: 0.5px;
+    background: #1274c0;
+    color: #fff;
+    line-height: 35px;
+    border: none;
+    border-radius: 5px;}
+.class-invoice_details  td {
+    padding: 5px 20px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    line-height: 22px;
+}
+.col.col-md-8.text-left.text-md-left table td {
+    padding: 0px;
+}
+b.sans {
+    font-size: 14px;
+    line-height: 30px;
+    color: #1274c0;
+}
+/* product order again css here */
+
+.orderid_holder .customer_id{
+    color:#ff7713;
+}
+
+.customer_id:hover{
+border-bottom: 1px solid #ff7713;
+}
+
+.orderid_holder .orderSubId {
+    font-size:14px;
+    font-weight: 700;
+}
+
+.order_detail-btn{
+    width: 100%;
+}
+
+.order_detail-btn .order_btn{
+    border: 1px solid #ff7713;
+    padding: 8px 15px;
+    color:#ff7713;
+    border-radius: 3px;
+    float:right;
+}
+
+.order_detail-btn .order_detail_img-holder{
+    max-width: 120px;
+    width: 25%;
+    margin: auto;
+}
+p.heading_.m-0.fs-7.text-dark {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1274c0 !important;
+}
+p.delivery_full-detail.text-dark.fs-7.mb-0 {
+    font-size: 14px;
+    color: #ff7713 !important;
+    letter-spacing: 0.5px;
+    margin: 3px 0px 0px;
+}
+/* product order again css here */
+@media(max-width:1200px) and (min-width:992px){
+	
+	.position-absolutedk .nav>li>a {
+    margin-left: 5px;}
+	.headsections111.dealsofday.dkjfksjjksdfjis .product-box img {
+>>>>>>> Stashed changes
     width: 100%;
 }
 

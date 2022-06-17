@@ -65,6 +65,11 @@ class PurchaseHistoryController extends Controller
         $order->save();
         return view('frontend.user.order_details_customer', compact('order'));
     }
+    public function orderDetails($id)
+    {
+        $order = Order::findOrFail($id)->first();
+        return view('frontend.order-details', compact('order'));
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -9,6 +9,12 @@ class Order extends Model
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
+        // return $this->belongsTo(OrderDetails::class, 'order_id','id');
+    }
+    public function Address()
+    {
+        // return $this->hasMany(Address::class);
+        return $this->belongsTo(Address::class, 'address_id','id');
     }
 
     public function refund_requests()
