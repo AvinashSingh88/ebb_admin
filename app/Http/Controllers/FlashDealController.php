@@ -202,12 +202,23 @@ class FlashDealController extends Controller
 
     public function update_featured(Request $request)
     {
-        // foreach (FlashDeal::all() as $key => $flash_deal) {
-        //     $flash_deal->featured = 0;
-        //     $flash_deal->save();
-        // }
+        foreach (FlashDeal::all() as $key => $flash_deal) {
+            $flash_deal->featured = 0;
+            $flash_deal->save();
+        }
         $flash_deal = FlashDeal::findOrFail($request->id);
         $flash_deal->featured = $request->featured;
+        if($flash_deal->save()){
+            flash(translate('Flash deal status updated successfully'))->success();
+            return 1;
+        }
+        return 0;
+    }
+
+    public function update_on_home(Request $request)
+    {
+        $flash_deal = FlashDeal::findOrFail($request->id);
+        $flash_deal->is_home = $request->is_home;
         if($flash_deal->save()){
             flash(translate('Flash deal status updated successfully'))->success();
             return 1;

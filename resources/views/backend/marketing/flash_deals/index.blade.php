@@ -39,6 +39,7 @@
                     <th data-breakpoints="lg">{{ translate('End Date') }}</th>
                     <th data-breakpoints="lg">{{ translate('Status') }}</th>
                     <th data-breakpoints="lg">{{ translate('Featured') }}</th>
+                    <th data-breakpoints="lg">{{ translate('Show On Home Page') }}</th>
                     <th data-breakpoints="lg">{{ translate('Page Link') }}</th>
                     <th class="text-right">{{translate('Options')}}</th>
                 </tr>
@@ -60,6 +61,12 @@
 						<td>
 							<label class="aiz-switch aiz-switch-success mb-0">
 								<input onchange="update_flash_deal_feature(this)" value="{{ $flash_deal->id }}" type="checkbox" <?php if($flash_deal->featured == 1) echo "checked";?> >
+								<span class="slider round"></span>
+							</label>
+						</td>
+                        <td>
+							<label class="aiz-switch aiz-switch-success mb-0">
+								<input onchange="update_flash_deal_home_page(this)" value="{{ $flash_deal->id }}" type="checkbox" <?php if($flash_deal->is_home == 1) echo "checked";?> >
 								<span class="slider round"></span>
 							</label>
 						</td>
@@ -116,6 +123,23 @@
                 var featured = 0;
             }
             $.post('{{ route('flash_deals.update_featured') }}', {_token:'{{ csrf_token() }}', id:el.value, featured:featured}, function(data){
+                if(data == 1){
+                    location.reload();
+                }
+                else{
+                    AIZ.plugins.notify('danger', '{{ translate('Something went wrong') }}');
+                }
+            });
+        }
+        function update_flash_deal_home_page(el){
+            console.log("home checked");
+            if(el.checked){
+                var is_home = 1;
+            }
+            else{
+                var is_home = 0;
+            }
+            $.post('{{ route('flash_deals.update_on_home') }}', {_token:'{{ csrf_token() }}', id:el.value, is_home:is_home}, function(data){
                 if(data == 1){
                     location.reload();
                 }
