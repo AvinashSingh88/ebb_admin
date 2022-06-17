@@ -248,14 +248,6 @@
                            @endif
                            @endforeach
 
-
-                           <!-- <li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt="">
-                              <div class="discrptions">
-                                 <h6>Rs.288</h6>
-                                 <h5> Trending Now </h5>
-                              </div>
-                           </li> -->
-
                         </ul>
                      </div>
                   </div>
