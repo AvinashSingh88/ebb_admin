@@ -206,30 +206,33 @@
 								 <div class="border-bott"> 
                         <!-- Checkboxes -->
 						@foreach ($first_five_color as $key => $color)
-							<div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-							   <div class="custom-control custom-checkbox">
-								  <input style="background-color:{{$color->code}}" type="checkbox" class="custom-control-input" id="color{{$color->id}}" name="color"
+							
+							<div class="form-group  align-items-center justify-content-between mb-2 pb-1">
+                           <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="color{{$color->id}}" name="color"
 										value="{{ $color->code }}"
 										onchange="filter()"
 															@if(isset($selected_color) && $selected_color == $color->code) checked @endif >
-								  <label class="custom-control-label" for="color{{$color->id}}">{{$color->name}} <span class="text-gray-25 font-size-12 font-weight-normal"></span></label>
-							   </div>
-							</div>
+                              <label class="custom-control-label" for="color{{$color->id}}">{{$color->name}} <span class="text-gray-25 font-size-12 font-weight-normal"></span> <span class="mx-auto color_code">
+							  <div style="background-color:{{$color->code}}" class="w-100 h-100"></div> </span></label>
+                           </div>
+                        </div>
 						 @endforeach
                         
                         <!-- End Checkboxes -->
                         <!-- View More - Collapse -->
                         <div class="collapses2" id="collapseBrand1">
 						@foreach ($colors as $key => $color)
-                           <div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
-                             <div class="custom-control custom-checkbox">
-								  <input style="background-color:{{$color->code}}" type="checkbox" class="custom-control-input" id="color{{$color->id}}" name="color"
+                          <div class="form-group  align-items-center justify-content-between mb-2 pb-1">
+                           <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="color{{$color->id}}" name="color"
 										value="{{ $color->code }}"
 										onchange="filter()"
 															@if(isset($selected_color) && $selected_color == $color->code) checked @endif >
-								  <label class="custom-control-label" for="color{{$color->id}}">{{$color->name}} <span class="text-gray-25 font-size-12 font-weight-normal"></span></label>
-							   </div>
+                              <label class="custom-control-label" for="color{{$color->id}}">{{$color->name}} <span class="text-gray-25 font-size-12 font-weight-normal"></span> <span class="mx-auto color_code">
+							  <div style="background-color:{{$color->code}}" class="w-100 h-100"></div> </span></label>
                            </div>
+                        </div>
 						    @endforeach
                            
                         </div>
@@ -571,23 +574,58 @@
 		</div>
  
  
- <div class="range-slider">
-                        <h4 class="font-size-14 mb-3 font-weight-bold">Price</h4>
-                        <div id="input-slider-range"
-                             data-range-value-min="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif"
-                             data-range-value-max="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif"></div>
-						<!-- Range Slider --> 
-                        <input type="range" class="form-range" id="customRange1">
-                        <!-- End Range Slider -->
-                        <div class="mt-1 text-gray-111 d-flex mb-4">
-                           <span class="mr-0dot5">Price &nbsp;&nbsp;:&nbsp;&nbsp; </span>
-                           <span>Rs </span>
-                           <span id="rangeSliderExample3MinResult" class=""> &nbsp;&nbsp;0 &nbsp;&nbsp;</span>
-                           <span class="mx-0dot5">&nbsp;&nbsp; — &nbsp;&nbsp;</span>
-                           <span>Rs </span>
-                           <span id="rangeSliderExample3MaxResult" class=""> &nbsp;&nbsp;3456&nbsp;&nbsp;</span>
+<div class="range-slider">
+   <h4 class="font-size-14 mb-3 font-weight-bold">Price</h4>
+	  <div class="mt-1 text-gray-111 d-flex mb-4"> 
+         <div class="wrapper pro_range w-100 position-relative aiz-range-slider">
+  <div class="values w-100 d-flow-root">
+    <span id="range1" class="float-left slide_ranges_left" >
+	 
+	@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif 
+	</span>
+    <span id="range2" class="float-right"> @if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif </span>
+  </div>
+  <div class="container1   position-absolute  mt-2 pt-1">
+    <div class="slider-track"></div>
+    <input type="range" min="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif" max="10000" @if (isset($min_price)) value="{{ $min_price }}"
+                                                        @elseif($products->min('unit_price') > 0)
+                                                            value="{{ $products->min('unit_price') }}"
+                                                        @else value="0" @endif id="slider-1" oninput="slideOne()">
+    <input type="range" min="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif" max="10000" @if (isset($min_price)) value="{{ $min_price }}"
+                                                        @elseif($products->max('unit_price') > 0)
+                                                            value="{{ $products->max('unit_price') }}"
+                                                        @else value="0" @endif id="slider-2" oninput="slideTwo()">
+  </div>
+</div>
+                        
                         </div>
-						<div class="row mt-2">
+                      
+                     </div>
+					 
+					 
+ <style>
+ .noUi-target {
+    background: #FAFAFA;
+    border-radius: 4px;
+    border: 1px solid #D3D3D3;
+    box-shadow: inset 0 1px 1px #f0f0f0, 0 3px 6px -5px #bbb;
+}
+.noUi-horizontal {
+    height: 18px;
+}
+.noUi-target {
+    position: relative;
+}
+ </style>
+                <div class="range-slider">
+				<h4 class="font-size-14 mb-3 font-weight-bold">Price range</h4>
+                                            <div
+                                                id="input-slider-range"
+                                                data-range-value-min="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif"
+                                                data-range-value-max="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif"
+                                            ></div>
+
+                                            <div class="row mt-2">
                                                 <div class="col-6">
                                                     <span class="range-slider-value value-low fs-14 fw-600 opacity-70"
                                                         @if (isset($min_price))
@@ -597,7 +635,8 @@
                                                         @else
                                                             data-range-value-low="0"
                                                         @endif
-                                                        id="input-slider-range-value-low" ></span>
+                                                        id="input-slider-range-value-low"
+                                                    ></span>
                                                 </div>
                                                 <div class="col-6 text-right">
                                                     <span class="range-slider-value value-high fs-14 fw-600 opacity-70"
@@ -612,10 +651,7 @@
                                                     ></span>
                                                 </div>
                                             </div>
-                        <!-- <button type="submit" class="btn px-4 btn-primary-dark-w py-2 rounded-lg">Filter</button>-->
-                     </div>
- 
-                
+                                        </div>
                       
                         <!-- End Link -->
                      </div>
@@ -696,6 +732,35 @@
 		 <script type="text/javascript">
         function filter(){
             $('#search-form').submit();
+        }
+		noUiSlider: function(){
+            if ($(".aiz-range-slider")[0]) {
+                $(".aiz-range-slider").each(function () {
+                    var c = document.getElementById("input-slider-range"),
+                    d = document.getElementById("input-slider-range-value-low"),
+                    e = document.getElementById("input-slider-range-value-high"),
+                    f = [d, e];
+
+                    noUiSlider.create(c, {
+                        start: [
+                            parseInt(d.getAttribute("data-range-value-low")),
+                            parseInt(e.getAttribute("data-range-value-high")),
+                        ],
+                        connect: !0,
+                        range: {
+                            min: parseInt(c.getAttribute("data-range-value-min")),
+                            max: parseInt(c.getAttribute("data-range-value-max")),
+                        },
+                    }),
+                    
+                    c.noUiSlider.on("update", function (a, b) {
+                        f[b].textContent = a[b];
+                    }),
+                    c.noUiSlider.on("change", function (a, b) {
+                        rangefilter(a);
+                    });
+                });
+            }
         }
         function rangefilter(arg){
             $('input[name=min_price]').val(arg[0]);

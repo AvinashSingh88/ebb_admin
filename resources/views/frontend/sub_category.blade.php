@@ -241,6 +241,8 @@
             </div>
          </div>
       </section>
+	  @include('frontend.partials.youmaylike')
+	  @if(false)
 	   <section class="youmayalso">
 	  
     
@@ -321,6 +323,7 @@
       </div>
       </div>
       </section>
+	  @endif
 	  	  	 <section class="banner-brand_product">
 		 <div class="container">
 		 <div class="service-pros" style="padding:0px;margin:0px;">
