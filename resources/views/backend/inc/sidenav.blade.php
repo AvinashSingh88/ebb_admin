@@ -810,6 +810,16 @@
                                     <span class="aiz-side-nav-text">{{translate('Appearance')}}</span>
                                 </a>
                             </li>
+							<li class="aiz-side-nav-item">
+                                <a href="{{ route('website.appearance') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Appearance')}}</span>
+                                </a>
+                            </li>
+							<li class="aiz-side-nav-item">
+                                <a href="{{ route('website.appearance') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Category Wise Brand')}}</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 @endif
