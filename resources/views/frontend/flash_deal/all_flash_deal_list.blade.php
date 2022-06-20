@@ -2,48 +2,38 @@
 
 @section('content')
 
-<section class="pt-4 mb-4">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-lg-6 text-center text-lg-left">
-                <h1 class="fw-600 h4">{{ translate('Flash Deals')}}</h1>
-            </div>
-            <div class="col-lg-6">
-                <ul class="breadcrumb bg-transparent p-0 justify-content-center justify-content-lg-end">
-                    <li class="breadcrumb-item opacity-50">
-                        <a class="text-reset" href="{{ route('home') }}">
-                            {{ translate('Home')}}
-                        </a>
-                    </li>
-                    <li class="text-dark fw-600 breadcrumb-item">
-                        <a class="text-reset" href="{{ route('flash-deals') }}">
-                            "{{ translate('Flash Deals') }}"
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+<div class="service-pros animated animate__fadeInUp wow product-categorys ulines-dps-para ">
 
-<section class="mb-4">
-    <div class="container">
-        <div class="row row-cols-1 row-cols-lg-2 gutters-10">
-            @foreach($all_flash_deals as $single)
-            <div class="col">
-                <div class="bg-white rounded shadow-sm mb-3">
-                    <a href="{{ route('flash-deal-details', $single->slug) }}" class="d-block text-reset">
-                        <img
-                            src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
-                            data-src="{{ uploaded_asset($single->banner) }}"
-                            alt="{{ $single->title }}"
-                            class="img-fluid lazyload rounded w-100">
-                    </a>
+        <div class="container details-product product-catpro pt-0 pb-5">
+            <div class="row">
+                <div class="col-xl-12 col-wd-9gdot5">
+                    <div class="bottom-form1 w-100 m-auto pb-2">
+                        <div class="border-bottom1 border-color-111 mt-0 mb-2">
+                            <h3 class="section-title section-title__sm mb-0 pt-2 pb-0 mt-0 font-size-18"> Flash Deal
+                            </h3>
+                            <div class="deals">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @foreach($all_flash_deals as $single)
+                            <div class="col-md-4 mb-2">
+                                <a href="{{ route('flash-deal-details', $single->slug) }}">
+                                    <div class="product-box pb-0 h-auto">
+                                        <img class="mb-0 h-auto" src="{{ uploaded_asset($single->banner) }}" alt="{{ $single->title }}">
+                                        <div class="discrptions heidk-font-size-14">
+                                            <h6>{{ $single->title }}</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-            @endforeach
-
         </div>
     </div>
-</section>
+
 @endsection

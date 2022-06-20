@@ -190,9 +190,8 @@
 
    <div class="headsections111 dkjfksjjksdfjis seicktioons">
       <div class="container">
-
          @php
-         $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('featured', 1)->get();
+         $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('is_home', 1)->get();
          @endphp
 
          <div class="row">
@@ -255,6 +254,7 @@
                   @endforeach
             </div>
          </div>
+
       </div>
    </div>
    <!-- The Best Premium Manufacturers end -->
@@ -1863,527 +1863,496 @@
    </div>
    <!-- banner section 2 end-->
 
-   <!-- Product relative Carousel -->
-   <!-- Product relative Carousel -->
+   <!-- Deals of the day section start -->
+   @php
+   $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('featured', 1)->first();
+   @endphp
+   @if($flash_deal != null && strtotime(date('Y-m-d H:i:s')) >= $flash_deal->start_date && strtotime(date('Y-m-d
+   H:i:s')) <= $flash_deal->end_date)
+      <div class=" headsections111 dealsofday dkjfksjjksdfjis">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-12">
 
-
-   <div class=" headsections111 dealsofday dkjfksjjksdfjis">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
+                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                     <div class="border-botb-3">
+                        <a href="{{ route('flash-deal-details', $flash_deal->slug) }}" class="view-link">
+                           View all
+                           <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                     </div>
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Deals Of The Day</h3>
+                     <div class="deals">
+                        <hr>
+                     </div>
                   </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Deals Of The Day</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-               <div class="position-absolutedk">
-                  <div class="mt-md-n1ddd div-tab-dpsa">
-                     <div class="mt-md-n1 border-tops border-color-1">
-                        <div class="flex-horizontal-centersss">
-                           <h5 class="font-size-15 mb-0 font-weight-bold text-lh-1 mr-1">Ends in &nbsp; : &nbsp;</h5>
-                           <div id="timer" class="d-flex">
-                              <div id="days"></div>
-                              <div id="hours"></div>
-                              <div id="minutes"></div>
-                              <div id="seconds"></div>
+
+                  <div class="position-absolutedk">
+                     <div class="mt-md-n1ddd div-tab-dpsa">
+                        <div class="mt-md-n1 border-tops border-color-1">
+                           <div class="flex-horizontal-centersss">
+                              <h5 class="font-size-15 mb-0 font-weight-bold text-lh-1 mr-1">
+                                 Ends in &nbsp; : &nbsp; {{ date('Y/m/d H:i:s', $flash_deal->end_date) }}
+                              </h5>
+                              <div id="timer" class="d-flex">
+                                 <div class="aiz-count-down ml-auto ml-lg-3 align-items-center"
+                                    data-date="{{ date('Y/m/d H:i:s', $flash_deal->end_date) }}"></div>
+
+                                 <div id="days"></div>
+                                 <div id="hours"></div>
+                                 <div id="minutes"></div>
+                                 <div id="seconds"></div>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
-               </div>
-            </div>
-         </div>
-         <div class="div-tab-dpsa sections">
-            <div class="owl-carousel owl-theme trending0001">
-               <div class="item">
-                  <div class="product-box">
-                     <div class="imllskdon">
-                        <img src="img/index0/prosts1.png" alt="">
-                     </div>
-                     <div class="discrptions">
-                        <h5> Sanataryware Tap </h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
 
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="imllskdon">
-                        <img src="img/index0/dkdidk2.png" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Merlin Water Mixer Tap </h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="img/index0/dkdidk3.png" alt=""> </div>
-
-                     <div class="discrptions">
-                        <h5> Slim Panel Light Square</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="img/index0/dkdidk4.png" alt=""> </div>
-
-                     <div class="discrptions">
-                        <h5>Carnival Clean Rim P Trap</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="img/index0/dfdfsd.png" alt=""> </div>
-
-                     <div class="discrptions">
-                        <h5> G-Magic 3 Pin Travel </h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="img/index0/prosts1.png" alt=""> </div>
-
-                     <div class="discrptions">
-                        <h5> Sanataryware Tap</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
                </div>
             </div>
 
-         </div>
+            <div class="div-tab-dpsa sections">
+               <div class="owl-carousel owl-theme trending0001">
 
+                  @foreach ($flash_deal->flash_deal_products->take(20) as $key => $flash_deal_product)
+                  @php
+                  $product = \App\Models\Product::find($flash_deal_product->product_id);
+                  @endphp
+                  @if ($product != null && $product->published != 0)
+                  <div class="item">
+                     <div class="product-box">
+                        <div class="imllskdon">
+                           <img src="{{ uploaded_asset($product->thumbnail_img) }}"
+                              alt="{{  $product->getTranslation('name')  }}">
+                        </div>
+                        <div class="discrptions">
+                           <h5> {{ $product->getTranslation('name') }} </h5>
+                           <h6> {{ home_discounted_base_price($product) }} </h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  @endif
+                  @endforeach
+
+               </div>
+            </div>
+         </div>
       </div>
-   </div>
+      @endif
+      <!-- Deals of the day section end -->
 
-   <!-- VEHICLE PARTS & ACCESSORIES st -->
-   <!-- Product relative Carousel -->
+      <!-- Product relative Carousel -->
+      <div class=" headsections111 weekinliud dkjfksjjksdfjis">
+         <div class="container">
 
-
-   <div class=" headsections111 weekinliud dkjfksjjksdfjis">
-      <div class="container">
-
-         <div class="border-bottom1 border-color-111 mt-3 mb-3 dkprojaecke">
-            <div class="border-botb-3">
-               <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i> </a>
-            </div>
-            <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Projects</h3>
-            <div class="deals">
-               <hr>
-            </div>
-            <!--<p>Let’s Brew N Binge</p>-->
-         </div>
-         <div class="owl-carousel owl-theme trending00154">
-            <div class="item">
-               <div class="product-box">
-                  <div class="discrptions">
-                     <h5> The Great India Place Mall </h5>
-                     <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                  </div>
-                  <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-c.png')}}" alt="">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
-                  </ul>
-
-
-                  <div class="discrptions_button">
-                     <h5><a href="javascript:void(0);">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <div class="discrptions">
-                     <h5> The Great India Place Mall </h5>
-                     <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                  </div>
-                  <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-b.png')}}" alt="">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
-                  </ul>
-
-
-                  <div class="discrptions_button">
-                     <h5><a href="javascript:void(0);">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <div class="discrptions">
-                     <h5> The Great India Place Mall </h5>
-                     <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                  </div>
-                  <img class="owlding" src="{{static_asset('assets_web/img/index0/interior.png')}}" alt="">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
-                  </ul>
-
-
-                  <div class="discrptions_button">
-                     <h5><a href="javascript:void(0);">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <div class="discrptions">
-                     <h5> The Great India Place Mall </h5>
-                     <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                  </div>
-                  <img class="owlding" src="{{static_asset('assets_web/img/index0/interior9bedroom.png')}}" alt="">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
-                  </ul>
-
-
-                  <div class="discrptions_button">
-                     <h5><a href="javascript:void(0);">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <div class="discrptions">
-                     <h5> The Great India Place Mall </h5>
-                     <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                  </div>
-                  <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-c.png')}}" alt="">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
-                  </ul>
-
-
-                  <div class="discrptions_button">
-                     <h5><a href="javascript:void(0);">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <div class="discrptions">
-                     <h5> The Great India Place Mall </h5>
-                     <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                  </div>
-                  <img class="owlding" src="{{static_asset('assets_web/img/index0/interior.png')}}" alt="">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
-                  </ul>
-
-
-                  <div class="discrptions_button">
-                     <h5><a href="javascript:void(0);">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-
-      </div>
-   </div>
-   <!-- VEHICLE PARTS & ACCESSORIES end -->
-   <!-- JUST FOR YOU st -->
-   <!-- Product relative Carousel -->
-
-
-   <div class=" headsections111 dkjfksjjksdfjis just-for-you">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Just For You</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-                  <!--<p>Let’s Brew N Binge</p>-->
-               </div>
-
-            </div>
-
-         </div>
-         <div class="trending00001">
-            <div class="row">
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/pipe.png')}}" alt=""> </div>
-
-                     <div class="discrptions">
-                        <h5> Pipe </h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/building.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Steel & TMT</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Hindware</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/light.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Light</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Appliances</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furnitures.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Furnitures</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/paints.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Paints </h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Kitchen</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Furniture</h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-5c">
-                  <div class="product-box">
-                     <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
-                     </div>
-
-                     <div class="discrptions">
-                        <h5> Hindware </h5>
-                        <h6> ₹567 <del> ₹699</del></h6>
-                     </div>
-
-                  </div>
-               </div>
-            </div>
-         </div>
-
-
-      </div>
-   </div>
-   <!-- JUST FOR YOU end -->
-   <!--Premium Brand Fair Partnerst -->
-
-   @if (get_setting('top10_brands') != null)
-   <section class="banner-brand_product banner-brand_product2 brankdisections ">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="{{ route('brands.all') }}" class="view-link"> View all
-                        <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Premium Brand fair partners</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="brandss">
-            <div class="row">
-
-               @php $top10_brands = json_decode(get_setting('top10_brands')); @endphp
-               @foreach ($top10_brands as $key => $value)
-               @php $brand = \App\Models\Brand::find($value); @endphp
-               @if ($brand != null)
-               <div class="col-md-2">
-                  <a href="{{ route('products.brand', $brand->slug) }}">
-                     <img src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                        alt="{{ $brand->getTranslation('name') }}">
+            <div class="border-bottom1 border-color-111 mt-3 mb-3 dkprojaecke">
+               <div class="border-botb-3">
+                  <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
                   </a>
                </div>
-               @endif
-               @endforeach
-
+               <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Projects</h3>
+               <div class="deals">
+                  <hr>
+               </div>
+               <!--<p>Let’s Brew N Binge</p>-->
             </div>
+            <div class="owl-carousel owl-theme trending00154">
+               <div class="item">
+                  <div class="product-box">
+                     <div class="discrptions">
+                        <h5> The Great India Place Mall </h5>
+                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
+                     </div>
+                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-c.png')}}" alt="">
+                     <ul class="image-productsll">
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
+                     </ul>
+
+
+                     <div class="discrptions_button">
+                        <h5><a href="javascript:void(0);">View Detail</a></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="discrptions">
+                        <h5> The Great India Place Mall </h5>
+                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
+                     </div>
+                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-b.png')}}" alt="">
+                     <ul class="image-productsll">
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
+                     </ul>
+
+
+                     <div class="discrptions_button">
+                        <h5><a href="javascript:void(0);">View Detail</a></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="discrptions">
+                        <h5> The Great India Place Mall </h5>
+                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
+                     </div>
+                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior.png')}}" alt="">
+                     <ul class="image-productsll">
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
+                     </ul>
+
+
+                     <div class="discrptions_button">
+                        <h5><a href="javascript:void(0);">View Detail</a></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="discrptions">
+                        <h5> The Great India Place Mall </h5>
+                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
+                     </div>
+                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior9bedroom.png')}}" alt="">
+                     <ul class="image-productsll">
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
+                     </ul>
+
+
+                     <div class="discrptions_button">
+                        <h5><a href="javascript:void(0);">View Detail</a></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="discrptions">
+                        <h5> The Great India Place Mall </h5>
+                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
+                     </div>
+                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-c.png')}}" alt="">
+                     <ul class="image-productsll">
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
+                     </ul>
+
+
+                     <div class="discrptions_button">
+                        <h5><a href="javascript:void(0);">View Detail</a></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="product-box">
+                     <div class="discrptions">
+                        <h5> The Great India Place Mall </h5>
+                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
+                     </div>
+                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior.png')}}" alt="">
+                     <ul class="image-productsll">
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
+                        <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
+                     </ul>
+
+
+                     <div class="discrptions_button">
+                        <h5><a href="javascript:void(0);">View Detail</a></h5>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+
          </div>
       </div>
-   </section>
-   @endif
-   <!-- Premium Brand Fair Partners end -->
-   <!-- SERVICES ARE HERE st -->
+      <!-- VEHICLE PARTS & ACCESSORIES end -->
+      <!-- JUST FOR YOU st -->
+      <!-- Product relative Carousel -->
 
-   <section class="wraper ">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Helping Services</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-            </div>
-         </div>
 
-         <div class="row r2 ">
-            <div class="col-lg-3 col-md-2 col-sm-3 col-xs-3">
-               <div class=" image-trade ">
-                  <img class="img-responsive " src="{{static_asset('assets_web/img/trade1.png')}}" alt="ngo.jpg ">
-                  <div class="row">
-                     <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                        <h5>Trade Assurance</h5>
-                        <p class="pr "> Order Protection</p>
+      <div class=" headsections111 dkjfksjjksdfjis just-for-you">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-12">
+
+                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                     <div class="border-botb-3">
+                        <a href="javascript:void(0);" class="view-link"> View all <i
+                              class="fa-solid fa-chevron-right"></i>
+                        </a>
                      </div>
-                     <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                           src="{{static_asset('assets_web/img/tradeicon1.png')}}" alt="tradeicon1"></div>
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Just For You</h3>
+                     <div class="deals">
+                        <hr>
+                     </div>
+                     <!--<p>Let’s Brew N Binge</p>-->
+                  </div>
+
+               </div>
+
+            </div>
+            <div class="trending00001">
+               <div class="row">
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/pipe.png')}}" alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Pipe </h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/building.png')}}" alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Steel & TMT</h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Hindware</h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/light.png')}}" alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Light</h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/appliances.png')}}"
+                              alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Appliances</h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furnitures.png')}}"
+                              alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Furnitures</h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/paints.png')}}" alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Paints </h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Kitchen</h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furniture.png')}}"
+                              alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Furniture</h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="col-md-5c">
+                     <div class="product-box">
+                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
+                        </div>
+
+                        <div class="discrptions">
+                           <h5> Hindware </h5>
+                           <h6> ₹567 <del> ₹699</del></h6>
+                        </div>
+
+                     </div>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-               <div class=" image-trade ">
-                  <img class="img-responsive " src="{{static_asset('assets_web/img/trade2.png')}}" alt="ngo.jpg ">
-                  <div class="row">
-                     <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                        <h5>Payment</h5>
-                        <p class="pr ">Payment Solutions</p>
-                     </div>
-                     <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                           src="{{static_asset('assets_web/img/tradeicon2.png')}}" alt="tradeicons2"></div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
-               <div class="image-trade ">
-                  <img class="img-responsive " src="{{static_asset('assets_web/img/trade3.png')}}" alt="ngo.jpg ">
-                  <div class="row">
-                     <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                        <h5>Inspection</h5>
-                        <p class="pr ">Inspection Solution</p>
-                     </div>
-                     <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                           src="{{static_asset('assets_web/img/tradeicon3.png')}}" alt="tradeicon3"></div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-               <div class="image-trade ">
-                  <img class="img-responsive " src="{{static_asset('assets_web/img/trade4.png')}}" alt="ngo.jpg ">
-                  <div class="row">
-                     <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                        <h5>Ocean and air shipping</h5>
-                        <p class="pr ">Logistic Service</p>
-                     </div>
-                     <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                           src="{{static_asset('assets_web/img/tradeicon4.png')}}" alt="tradeicon4"></div>
-                  </div>
-               </div>
-            </div>
+
+
          </div>
       </div>
-   </section>
+      <!-- JUST FOR YOU end -->
+      <!--Premium Brand Fair Partnerst -->
 
-   <!-- SERVICES ARE HERE end -->
+      @if (get_setting('top10_brands') != null)
+      <section class="banner-brand_product banner-brand_product2 brankdisections ">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-12">
+                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                     <div class="border-botb-3">
+                        <a href="{{ route('brands.all') }}" class="view-link"> View all
+                           <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                     </div>
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Premium Brand fair partners
+                     </h3>
+                     <div class="deals">
+                        <hr>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="brandss">
+               <div class="row">
+
+                  @php $top10_brands = json_decode(get_setting('top10_brands')); @endphp
+                  @foreach ($top10_brands as $key => $value)
+                  @php $brand = \App\Models\Brand::find($value); @endphp
+                  @if ($brand != null)
+                  <div class="col-md-2">
+                     <a href="{{ route('products.brand', $brand->slug) }}">
+                        <img src="{{ static_asset('assets/img/placeholder.jpg') }}"
+                           alt="{{ $brand->getTranslation('name') }}">
+                     </a>
+                  </div>
+                  @endif
+                  @endforeach
+
+               </div>
+            </div>
+         </div>
+      </section>
+      @endif
+      <!-- Premium Brand Fair Partners end -->
+      <!-- SERVICES ARE HERE st -->
+
+      <section class="wraper ">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-12">
+                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Helping Services</h3>
+                     <div class="deals">
+                        <hr>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row r2 ">
+               <div class="col-lg-3 col-md-2 col-sm-3 col-xs-3">
+                  <div class=" image-trade ">
+                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade1.png')}}" alt="ngo.jpg ">
+                     <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
+                           <h5>Trade Assurance</h5>
+                           <p class="pr "> Order Protection</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
+                              src="{{static_asset('assets_web/img/tradeicon1.png')}}" alt="tradeicon1"></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                  <div class=" image-trade ">
+                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade2.png')}}" alt="ngo.jpg ">
+                     <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
+                           <h5>Payment</h5>
+                           <p class="pr ">Payment Solutions</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
+                              src="{{static_asset('assets_web/img/tradeicon2.png')}}" alt="tradeicons2"></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+                  <div class="image-trade ">
+                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade3.png')}}" alt="ngo.jpg ">
+                     <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
+                           <h5>Inspection</h5>
+                           <p class="pr ">Inspection Solution</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
+                              src="{{static_asset('assets_web/img/tradeicon3.png')}}" alt="tradeicon3"></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                  <div class="image-trade ">
+                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade4.png')}}" alt="ngo.jpg ">
+                     <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
+                           <h5>Ocean and air shipping</h5>
+                           <p class="pr ">Logistic Service</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
+                              src="{{static_asset('assets_web/img/tradeicon4.png')}}" alt="tradeicon4"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- SERVICES ARE HERE end -->
 </div>
 <!-- CHOOSE YOUR SUPPLIERS BY REGIONS st -->
 <section class="product-csteogry kdikskon">
