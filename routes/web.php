@@ -27,6 +27,15 @@ Route::get('/refresh-csrf', function () {
     return csrf_token();
 });
 
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    return "Cache is cleared";
+});
+
 Route::post('/aiz-uploader', 'AizUploadController@show_uploader');
 Route::post('/aiz-uploader/upload', 'AizUploadController@upload');
 Route::get('/aiz-uploader/get_uploaded_files', 'AizUploadController@get_uploaded_files');
