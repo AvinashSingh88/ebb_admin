@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Category_wise_brand;
 class WebsiteController extends Controller
 {
 	public function header(Request $request)
@@ -22,5 +22,36 @@ class WebsiteController extends Controller
 	public function appearance(Request $request)
 	{
 		return view('backend.website_settings.appearance');
+	}
+	public function addCategoryWiseBrands()
+	{
+		return view('backend.website_settings.category_wise_brands.create');
+	}
+	public function uploadCatWiseBrands(Request $request)
+	{
+		$request->validate([
+            'category_id'=>'required',
+            'brand_id'=>'required|max:16',
+            'title'=>'required',
+            'url'=>'required',
+        ]);
+       
+        $addcard = Category_wise_brand::create([
+           "category_id" => "$request->category_id",
+            "brand_id" => "$request->brand_id",
+            "title" => "$request->title",
+            "url" => "$request->url",
+            "image" => "$request->thumbnail_img",
+        ]);
+        if ($addcard) {
+			flash(translate('Category wise Brand has been inserted successfully!'))->success();
+            return redirect()->back();
+        }
+		
+    }
+	public function categoryWiseBrandList()
+	{
+		$catwisebrandlist = Category_wise_brand::get();
+		return view('backend.website_settings.category_wise_brands.list', compact('catwisebrandlist'));
 	}
 }

@@ -42,14 +42,6 @@
     height: 30px;
 	width:30px;
 }	
- 
-	.text-truncate-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
- 
 
 						</style>
 <section class="pageTitle" style="background-image: url({{static_asset('assets_web/img/orderbanner.png')}});height: 240px; background-size: contain;">
@@ -494,34 +486,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="container1 cmpad youmaylike">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="service-pros" style="padding:0px;margin:0px;">
-								<div class="head-cnt work-center text-center">
-									<div class="bounceIn animated">
-										<h4>You may Like</h4>
-										<hr class="underlinskd"> </div>
-								</div>
-							</div>
-							<div class="fullline"><span></span></div>
-							<div>
-								<div class="coer" style="padding:0">
-									<div id="youmaylike">
-										
-										<div class="thiscatbox">
-											<a href="#1" class="pro-box"> <img src="{{static_asset('assest_web/img/ipcon1.svg')}}" data-src="img/ipcon1.svg" class="catloader loadimg pro-img" alt="#">
-												<p class="name ">Housing Wire <span>Min 30% Off</span></p>
-												<div class="clearfix"></div>
-											</a>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				
 			</div>
 			<div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
@@ -632,124 +597,8 @@
 		</div>
 	</div>
 </div>
-<section class="similar-pros-section">
-	   <div class="container">
-	   <div class="mb-8 similar-pros">
-                    <div class="service-pros" style="padding:0px;margin:0px;">
-		<div class="head-cnt work-center text-center">
-            <div class="bounceIn animated">
-           
-               <h4>Similar Relative</h4>
-			   <hr class="underlinskd">
-               
-            </div>
-         </div>
-         </div>
-                     <ul class="list-unstyled owl-carousel owl-theme trending021">
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim1.jpg')}}" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">Finolex Selfit Pipe</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim2.jpg')}}" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">HDPE Pipes</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim3.jpg')}}" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">PVC Elbow</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim4.jpg')}}" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">CPVC SDR</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="{{static_asset('assets_web/img/sim5.jpg')}}" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">Heavy Pressure</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                     </ul>
-                  </div>
-                  </div>
-		</section>
+
+@include('frontend.partials.youmaylike')
 		
 		 <!-- Product relative Carousel -->
             <div class="headsections111">
@@ -772,7 +621,7 @@
 							<div class="beachs">10% Off</div>
 							<img src="{{ uploaded_asset($related_product->thumbnail_img) }}" alt="">
 							<div class="discrptions">
-							   <h5>{{ $related_product->getTranslation('name') }} </h5>
+							   <h5 class="text-truncate-2">{{ $related_product->getTranslation('name') }} </h5>
 							   <h6>{{ home_discounted_base_price($related_product) }}
 							   @if(home_base_price($related_product) != home_discounted_base_price($related_product))
 								   <strike> {{ home_base_price($related_product) }}</strike>

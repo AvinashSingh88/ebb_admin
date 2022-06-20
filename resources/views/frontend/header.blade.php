@@ -254,16 +254,19 @@
                     <div class="right-menu">
                        <ul>
                           <li class="flot-right getquote cart-count">
-                             	<a href="{{url('cart')}}">
+                             	<!--<a href="{{url('cart')}}">
 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> 
 <span class="cart_count"> 0</span> 
 Rs <span class="cart_amount"> <b> ₹ 0</b></span> 
 
-</a>
+</a>-->
                           </li>
+						<li class="flot-right getquote cart-count">
+                           <a href="{{url('cart')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> <span class="cart_count">1</span> <b class="cart_amount"> ₹ 0</b></a>
+                        </li>
                           @if (Auth::check()) 
                           <li class="flot-right getquote getquote-signs">
-                           <a href="#1" id="SignInlogin"><i class="far fa-user"></i> {{ Auth::user()->name }}</a>
+                           <a href="javascript:void(0)" id="SignInlogin"><i class="far fa-user"></i> {{ Auth::user()->name }}</a>
                            <div class="tab-more tab-more2 bg-dark active">
                              
                               <ul class="login_signiN">

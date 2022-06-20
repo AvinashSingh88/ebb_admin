@@ -89,7 +89,14 @@
   @php
       echo get_setting('header_script');
   @endphp
-  
+  <style>
+  	.text-truncate-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+  </style>
    </head>
    <body>
        @include('frontend.header')
