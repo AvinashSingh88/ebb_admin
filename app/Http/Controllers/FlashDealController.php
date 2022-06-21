@@ -47,14 +47,16 @@ class FlashDealController extends Controller
     public function store(Request $request)
     {
         $flash_deal = new FlashDeal;
+        $flash_deal->type = $request->type;
         $flash_deal->title = $request->title;
-        $flash_deal->text_color = $request->text_color;
+
+        // $flash_deal->text_color = $request->text_color;
 
         $date_var               = explode(" to ", $request->date_range);
         $flash_deal->start_date = strtotime($date_var[0]);
         $flash_deal->end_date   = strtotime( $date_var[1]);
 
-        $flash_deal->background_color = $request->background_color;
+        // $flash_deal->background_color = $request->background_color;
         $flash_deal->slug = strtolower(str_replace(' ', '-', $request->title).'-'.Str::random(5));
         $flash_deal->banner = $request->banner;
         if($flash_deal->save()){
@@ -71,7 +73,6 @@ class FlashDealController extends Controller
                 $root_product->discount_end_date   = strtotime( $date_var[1]);
                 $root_product->save();
             }
-
             $flash_deal_translation = FlashDealTranslation::firstOrNew(['lang' => env('DEFAULT_LANGUAGE'), 'flash_deal_id' => $flash_deal->id]);
             $flash_deal_translation->title = $request->title;
             $flash_deal_translation->save();
@@ -119,8 +120,8 @@ class FlashDealController extends Controller
     public function update(Request $request, $id)
     {
         $flash_deal = FlashDeal::findOrFail($id);
-
         $flash_deal->text_color = $request->text_color;
+        $flash_deal->type = $request->type;
 
         $date_var               = explode(" to ", $request->date_range);
         $flash_deal->start_date = strtotime($date_var[0]);

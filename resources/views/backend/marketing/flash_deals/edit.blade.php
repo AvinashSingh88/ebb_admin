@@ -26,6 +26,21 @@
                   <input type="hidden" name="lang" value="{{ $lang }}">
 
                     <div class="form-group row">
+                        <label class="col-lg-3 control-label" for="name">{{translate('Type')}}</label>
+                        <div class="col-lg-9">
+                            <select name="type" id="type" class="form-control aiz-selectpicker" required>
+                                <option value="">{{translate('Select One')}}</option>
+                                <option value="best_premium_section" @if ($flash_deal->type == 'best_premium_section') selected @endif>{{translate('best_premium_section')}}</option>
+                                <option value="category_section" @if ($flash_deal->type == 'category_section') selected @endif>{{translate('category_section')}}</option>
+                                <option value="service_section" @if ($flash_deal->type == 'service_section') selected @endif>{{translate('service_section')}}</option>
+                                <option value="brand_section" @if ($flash_deal->type == 'brand_section') selected @endif>{{translate('brand_section')}}</option>
+                                <option value="weekly_section" @if ($flash_deal->type == 'weekly_section') selected @endif>{{translate('weekly_section')}}</option>
+                                <option value="live_section" @if ($flash_deal->type == 'live_section') selected @endif>{{translate('live_section')}}</option>
+                                <option value="small_comodity_section" @if ($flash_deal->type == 'small_comodity_section') selected @endif>{{translate('small_comodity_section')}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-3 col-from-label" for="name">{{translate('Title')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
                         <div class="col-sm-9">
                             <input type="text" placeholder="{{translate('Title')}}" id="name" name="title" value="{{ $flash_deal->getTranslation('title', $lang) }}" class="form-control" required>
@@ -34,13 +49,13 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-from-label" for="background_color">{{translate('Background Color')}}<small>(Hexa-code)</small></label>
                         <div class="col-sm-9">
-                            <input type="text" placeholder="{{translate('#0000ff')}}" id="background_color" name="background_color" value="{{ $flash_deal->background_color }}" class="form-control" required>
+                            <input type="text" placeholder="{{translate('#0000ff')}}" id="background_color" name="background_color" value="{{ $flash_deal->background_color }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-from-label" for="text_color">{{translate('Text Color')}}</label>
                         <div class="col-lg-9">
-                            <select name="text_color" id="text_color" class="form-control demo-select2" required>
+                            <select name="text_color" id="text_color" class="form-control demo-select2">
                                 <option value="">Select One</option>
                                 <option value="white" @if ($flash_deal->text_color == 'white') selected @endif>{{translate('White')}}</option>
                                 <option value="dark" @if ($flash_deal->text_color == 'dark') selected @endif>{{translate('Dark')}}</option>

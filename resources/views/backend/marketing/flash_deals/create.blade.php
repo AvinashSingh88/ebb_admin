@@ -12,6 +12,22 @@
                 <form action="{{ route('flash_deals.store') }}" method="POST">
                     @csrf
                     <div class="form-group row">
+                        <label class="col-lg-3 control-label" for="name">{{translate('Type')}}</label>
+                        <div class="col-lg-9">
+                            <select name="type" id="type" class="form-control aiz-selectpicker" required>
+                                <option value="">{{translate('Select One')}}</option>
+                                <option value="best_premium_section">{{translate('best_premium_section')}}</option>
+                                <option value="category_section">{{translate('category_section')}}</option>
+                                <option value="service_section">{{translate('service_section')}}</option>
+                                <option value="brand_section">{{translate('brand_section')}}</option>
+                                <option value="weekly_section">{{translate('weekly_section')}}</option>
+                                <option value="live_section">{{translate('live_section')}}</option>
+                                <option value="small_comodity_section">{{translate('small_comodity_section')}}</option>
+                            </select>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group row">
                         <label class="col-sm-3 control-label" for="name">{{translate('Title')}}</label>
                         <div class="col-sm-9">
                             <input type="text" placeholder="{{translate('Title')}}" id="name" name="title" class="form-control" required>
@@ -20,19 +36,21 @@
                     <div class="form-group row">
                         <label class="col-sm-3 control-label" for="background_color">{{translate('Background Color')}} <small>(Hexa-code)</small></label>
                         <div class="col-sm-9">
-                            <input type="text" placeholder="{{translate('#FFFFFF')}}" id="background_color" name="background_color" class="form-control" required>
+                            <input type="text" placeholder="{{translate('#FFFFFF')}}" id="background_color" name="background_color" class="form-control">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label class="col-lg-3 control-label" for="name">{{translate('Text Color')}}</label>
                         <div class="col-lg-9">
-                            <select name="text_color" id="text_color" class="form-control aiz-selectpicker" required>
+                            <select name="text_color" id="text_color" class="form-control aiz-selectpicker">
                                 <option value="">{{translate('Select One')}}</option>
                                 <option value="white">{{translate('White')}}</option>
                                 <option value="dark">{{translate('Dark')}}</option>
                             </select>
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="signinSrEmail">{{translate('Banner')}} <small>(1920x500)</small></label>
                         <div class="col-md-9">
