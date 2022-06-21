@@ -71,7 +71,8 @@
                           <aside id="sidebar" class="sidebar-wrap" style="margin-bottom:30px;">
    <div class="property-form-wrap">
       <div class="property-form clearfix">
-         <form method="post" action="#">
+         <form method="post" action="{{route('makeEnquiry')}}" enctype="multipart/form-data">
+			@csrf
             <div class="agent-details">
                <div class="d-flex align-items-center">
                   <div class="agent-image"><img class="rounded" src="{{static_asset('assets_web/img/forms.jpg')}}" alt="Brittany Watkins" width="70" height="70"></div>
@@ -86,7 +87,7 @@
             </div>
             <!-- form-group -->
             <div class="form-group">
-               <input class="form-control" name="mobile" value="" type="text" placeholder="Phone">
+               <input class="form-control" name="phone" value="" type="text" placeholder="Phone">
             </div>
             <!-- form-group -->
             <div class="form-group">
@@ -117,8 +118,8 @@
             </div>
             <!-- form-group -->	
     
-            <button type="button" class="houzez_agent_property_form btn btn-secondary btn-half-width">
-            <span class="btn-loader houzez-loader-js"></span>					Send Message					
+            <button type="submit" class="houzez_agent_property_form btn btn-secondary btn-half-width">
+				<span class="btn-loader houzez-loader-js"></span>					Send Message					
             </button>
             <a href="tel:999999999" class="btn btn-secondary-outlined btn-half-width">
                <!-- <button type="button" class="btn"> -->

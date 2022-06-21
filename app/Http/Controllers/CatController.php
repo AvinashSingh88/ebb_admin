@@ -19,7 +19,3 @@ class CatController extends Controller
         return view('frontend.sub_category', compact('subcatlist', 'categories','subcategories','catwisebrands'));
     }
 }
-
-function gitTest(){
-    
-}
