@@ -26,7 +26,6 @@
                         <th data-breakpoints="md">{{translate('Url')}}</th>
                         <th data-breakpoints="lg">{{translate('Category')}}</th>
                         <th data-breakpoints="lg">{{translate('Brand')}}</th>
-                        <th data-breakpoints="lg">{{translate('Featured')}}</th>
                         <th data-breakpoints="sm" class="text-right">{{translate('Options')}}</th>
                     </tr>
                 </thead>
@@ -45,8 +44,11 @@
                         </td>
 						<td>{{ $key->title}}</td>
 						<td>{{ $key->url}}</td>
-						<td>{{ $key->category_id}}</td>
-						<td>{{ $key->brand_id}}</td>
+						<td>{{ $key->category->name}}</td>
+						<td>{{ $key->brand->name}}</td>
+						<td><a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('products.admin.edit', ['id'=>$key->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+                                <i class="las la-edit"></i>
+                            </a></td>
                         
                     </tr>
                     @endforeach

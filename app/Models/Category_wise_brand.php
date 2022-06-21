@@ -9,4 +9,12 @@ class Category_wise_brand extends Model
 {
     protected $fillable = ['category_id','brand_id','title','url','','image'];
     use HasFactory;
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }
