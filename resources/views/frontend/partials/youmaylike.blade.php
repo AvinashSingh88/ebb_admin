@@ -1,41 +1,45 @@
 <section class="similar-pros-section">
     <div class="container">
-    <div class="mb-8 similar-pros">
-                 <div class="service-pros" style="padding:0px;margin:0px;">
-     <div class="head-cnt work-center text-center">
-         <div class="bounceIn animated">
-        
-            <h4>{{ translate('You May Also Like')}}</h4>
-            <hr class="underlinskd">
-            
+	<!-- Product relative Carousel -->
+            <div class="headsections111">
+            <div class="container">
+			 <div class="service-pros" style="padding:0px;margin:0px;">
+		<div class="head-cnt work-center text-center">
+            <div class="bounceIn animated">
+           
+                <h4>{{ translate('You May Also Like')}}</h4>
+			   <hr class="underlinskd">
+               
+            </div>
          </div>
-      </div>
-      </div>
-                  <ul class="list-unstyled owl-carousel owl-theme trending021">
-                      {{-- @foreach (filter_products(\App\Models\Product::where('user_id', $detailedProduct->user_id)->orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key => $top_product) --}}
-                      @foreach (filter_products(\App\Models\Product::orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key => $top_product)
-                     <li class="mb-4">
-                        <div class="row">
-                           <div class="col-auto col-md-4">
-                              <a href="{{ route('product', $top_product->slug) }}" class="d-block width-75">
-                              <img class="img-fluid" src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="Image Description">
-                              </a>
-                           </div>
-                           <div class="col col-md-8">
-                              <h3 class="text-lh-1dot2 font-size-14 mb-0 text-truncate-2"><a href="{{ route('product', $top_product->slug) }}">{{ $top_product->getTranslation('name') }}</a></h3>
-                              <div class="row">
-                                 <div class="font-weight-bold col-md-7">
-                                    <ins class="font-size-15 text-red text-decoration-none d-block">{{ home_discounted_base_price($top_product) }}</ins>
-                                 </div>
-                                 <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                    <p>{{$top_product->discount}}% off</p>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </li>
-                      @endforeach
-                  </ul>
+         </div>
+              
+             <div class="owl-carousel owl-theme trending0">
+                   @foreach (filter_products(\App\Models\Product::orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key => $top_product)
+					  <div class="item">
+						 <div class="product-box">
+							<div class="beachs">10% Off</div>
+							<img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
+							<div class="discrptions">
+							   <h5 class="text-truncate-2">{{ $top_product->getTranslation('name') }} </h5>
+							   <h6>{{ home_discounted_base_price($top_product) }}
+							   @if(home_base_price($top_product) != home_discounted_base_price($top_product))
+								   <strike> {{ home_base_price($top_product) }}</strike>
+							    @endif
+							   </h6>
+							</div>
+							<div class="discrptions_button">
+							   <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
+							   <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
+							</div>
+						 </div>
+					  </div>
+				  @endforeach
+                 
                </div>
+            </div>            </div>
+			
+			
+    
                </div>
      </section>

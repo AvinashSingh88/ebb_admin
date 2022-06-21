@@ -54,7 +54,7 @@
                 <div class="link-categoryx link-category1az ">
                    <ul class="list-unstyled dropdown-list">
                      @foreach ($categories as $key => $category)
-					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} (20) </a></li>
+					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}  </a></li>
                      @endforeach
 
                    </ul>
@@ -139,9 +139,7 @@
                           
   
     <div class="owl-carousel owl-theme category-slide">
-{{-- @php
-    $uri = $request->path();
-@endphp --}}
+ 
 	
 						   @foreach ($categories as $key => $category)
                            <div class="item">
@@ -157,6 +155,7 @@
                                  </a>
                               </div>
                            </div>
+						   
                         @endforeach
                            
                         </div>
@@ -212,118 +211,25 @@
             <div class="service-pros" style="padding:0px;margin:0px;">
                <div class="head-cnt work-center text-center">
                   <div class="bounceIn animated">
-                     <h4>Top Structural Materials Brands</h4>
+                     <h4>Top {{$subcategories->name}} Brands</h4>
                      <hr class="underlinskd">
                   </div>
                </div>
             </div>
             <div class="brandss">
-               <div class="row">
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand2.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand1.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand3.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand6.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand5.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand4.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand10.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand8.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand9.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand7.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand12.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand11.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand13.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand14.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand15.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand16.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand12.png')}}" alt=""></a></div>
-                  <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/brand11.png')}}" alt=""></a></div>
-               </div>
+				<div class="row">
+					@foreach ($catwisebrands as $key)
+						<div class="col-md-2"><a href="{{ $key->url }}"><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></a></div>
+					@endforeach
+				</div>
             </div>
          </div>
       </section>
-	  @include('frontend.partials.youmaylike')
-	  @if(false)
-	   <section class="youmayalso">
 	  
-    
-	   <div class="service-pros23 service-pros animated animate__fadeInUp wow">
-         <div class="container">
-		 <div class="service-pros" style="padding:0px;margin:0px;">
-		<div class="head-cnt work-center text-center">
-            <div class="bounceIn animated">
-           
-               <h4>You may also like</h4>
-			   <hr class="underlinskd">
-               
-            </div>
-         </div>
-         </div>
-		 	 
-         
-	  <div class="owl-carousel owl-theme trending4">
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros1.png')}}" alt="" />
-                                       
-                                       </div>
-									      <h3>Modular kitchen</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros2.jpg')}}" alt="" />
-                                      
-                                       </div>    <h3>Hardware and tools</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros3.jpg')}}" alt="" />
-                                        
-                                       </div>  <h3>Paints and surface care (PSC)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros4.jpg')}}" alt="" />
-                                         
-                                       </div> <h3>Structural materials (SMT)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros5.jpg')}}" alt="" />
-                                  
-                                       </div>        <h3>Wood materials (WMT)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros6.jpg')}}" alt="" />
-                                  
-                                       </div>        <h3>Electrical & lighting (ELT)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros7.jpg')}}" alt="" />
-                                  
-                                       </div>        <h3>Sanitary ware & bath fittings</h3>
-                                    </a>
-                                 </div>
-                              </div>
-        
-      </div>
-      </div>
-      </section>
-	  @endif
+	  @include('frontend.partials.youmaylike')
+	  
+	    
+	   
 	  	  	 <section class="banner-brand_product">
 		 <div class="container">
 		 <div class="service-pros" style="padding:0px;margin:0px;">
