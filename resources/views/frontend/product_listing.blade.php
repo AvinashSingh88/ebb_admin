@@ -299,13 +299,13 @@
 						@foreach ($attribute->attribute_values as $attribute_value)
                         <div class="form-group align-items-center justify-content-between mb-2 pb-1">
                            <div class="custom-control custom-checkbox">
-                              <input class="custom-control-input"
+                              <input id="checkbox_24{{$attribute_value->id}}" class="custom-control-input"
                                                             type="checkbox"
                                                             name="selected_attribute_values[]"
                                                             value="{{ $attribute_value->value }}" @if (in_array($attribute_value->value, $selected_attribute_values)) checked @endif
                                                             onchange="filter()"
                                                         >
-                              <label class="custom-control-label" for="checkbox_24">{{ $attribute_value->value }}  <span class="text-gray-25 font-size-12 font-weight-normal"> (56)</span></label>
+                              <label class="custom-control-label" for="checkbox_24{{$attribute_value->id}}">{{ $attribute_value->value }}  <span class="text-gray-25 font-size-12 font-weight-normal"></span></label>
                            </div>
                         </div>
                          @endforeach 

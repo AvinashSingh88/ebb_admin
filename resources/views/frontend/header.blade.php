@@ -379,9 +379,9 @@
                                                             <div class="divcalimmega">
                                                                <h3>Top Brands</h3>
                                                                <ul class="brand-menus">
-                                                                  <li><img src="img/build-logo.jpg" alt=""></li>
-                                                                  <li><img src="img/build-logo2.jpg" alt=""></li>
-                                                                  <li><img src="img/build-logo3.jpg" alt=""></li>
+															   @foreach (\App\Models\Category_wise_brand::where('category_id', $category->id)->limit(3)->get() as $key)
+                                                                  <li><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></li>
+                                                                @endforeach  
                                                                </ul>
                                                                <img src="{{static_asset('assets_web/img/service-banner-1.png')}}">
                                                                <a class="hire-team-btn" href="javascript:void(0);" target="_self">View More</a>
