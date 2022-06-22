@@ -13,9 +13,11 @@ class CatController extends Controller
         $subcategories = Category::where('slug', $catslug)->first();
         $getCatId = $subcategories->id;
         $subcatlist = Category::where('parent_id','=',$getCatId)->paginate(12);
+        $firstFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->limit(5)->get();
+        $exceptFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->take(15)->skip(5)->get();
         $catwisebrands = Category_wise_brand::where('category_id','=',$getCatId)->get();
-        // dd($catwisebrands);
+        // dd($firstFiveSubcat);
         // die;
-        return view('frontend.sub_category', compact('subcatlist', 'categories','subcategories','catwisebrands'));
+        return view('frontend.sub_category', compact('exceptFiveSubcat','firstFiveSubcat','subcatlist', 'categories','subcategories','catwisebrands'));
     }
 }

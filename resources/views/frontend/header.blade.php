@@ -254,48 +254,64 @@
                     <div class="right-menu">
                        <ul>
                           <li class="flot-right getquote cart-count">
-                             	<!--<a href="{{url('cart')}}">
-<i class="fa fa-cart-arrow-down" aria-hidden="true"></i> 
-<span class="cart_count"> 0</span> 
-Rs <span class="cart_amount"> <b> ₹ 0</b></span> 
-
-</a>-->
+                             
                           </li>
 						<li class="flot-right getquote cart-count">
                            <a href="{{url('cart')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> <span class="cart_count">1</span> <b class="cart_amount"> ₹ 0</b></a>
                         </li>
-                          @if (Auth::check()) 
-                          <li class="flot-right getquote getquote-signs">
-                           <a href="javascript:void(0)" id="SignInlogin"><i class="far fa-user"></i> {{ Auth::user()->name }}</a>
-                           <div class="tab-more tab-more2 bg-dark active">
-                             
-                              <ul class="login_signiN">
-                                 <li>
-                                    <a href="{{url('users/login')}}" class="d-flex align-items-center justify-content-around p-0 m-0">
-                                    <i class="fa fa-user-circle"></i> Login/register  <i class="fa fa-angle-right ms-2"></i>  
-                                    </a>
-                                 </li>
-                                 <li><a href="{{url('profile')}}"><i class="bg_icon-img"></i>My Profile </a> </li>
-                                 <li><a href="#product-account.php"><i class="bg_icon-img"></i> My Products</a></li>
-                                 <li><a href="#services-account.php"><i class="bg_icon-img"></i>  My Services</a></li>
-                                 <li><a href="#product_service-chates.php"><i class="bg_icon-img"></i>  My Chats</a></li>
-                                 <li><a href="#my-needy.php"><i class="bg_icon-img"></i>  My Carts</a></li>
-                                 <li><a href="#all_notifications.php"><i class="bg_icon-img"></i>  All Notification</a></li>
-                                 <li><a href="{{ route('logout') }}"><i class="bg_icon-img"></i>  Logout</a></li>
-                              </ul>
-                             
-                           </div>
-                        </li>
-                        @else
-                        <li class="flot-right getquote getquote-signs">
-                           <a href="{{url('users/login')}}"><i class="far fa-user"></i> Sign In / Login</a>
-                           
-                        </li>
-                       
-                        @endif
+						 @if (Auth::check()) 
+						<li class="flot-right getquote getquote-signs">
+			                                        <a href="#1" id="SignInlogin" class="SignInlogin"><i class="far fa-user"></i>
+			                                            {{ Auth::user()->name }}</a>
+			                                        <div class="tab-more tab-more2 bg-dark active">
+														<ul class="login_signiN">
+			                                                <li>
+			                                                    <a href="{{url('profile')}}"
+			                                                        class="d-flex align-items-center justify-content-around p-0 m-0">
+			                                                        <i class="fa fa-user-circle"></i> {{ Auth::user()->name }} <i
+			                                                            class="fa fa-angle-right ms-2"></i>
+			                                                    </a>
+			                                                </li>
+			                                                <li><a href="{{url('purchase_history')}}"><i
+			                                                            class="bg_icon-img"></i>My Orders</a></li>
+			                                                <li><a href="{{url('product_return')}}"><i
+			                                                            class="bg_icon-img"></i>My Returns</a></li>
+			                                                <!--<li><a href="account/product-wishlist.php"><i
+			                                                            class="bg_icon-img"></i>Wishlist</a></li>
+			                                                <li><a href="account/profile.php"><i
+			                                                            class="bg_icon-img"></i>My Profile</a></li>
+			                                                <li><a href="account/chats.php"><i
+			                                                            class="bg_icon-img"></i>My Chat</a></li>
+			                                                <li><a href="account/my-ebb-bucks.php"><i
+			                                                            class="bg_icon-img"></i>My CluesBucks</a></li>
+			                                                <li><a href="account/my-ebb-bucks-balance.php"><i
+			                                                            class="bg_icon-img"></i>My CluesBucks<sup>+</sup></a>
+			                                                </li>
+			                                                <li><a href="account/feedback.php"><i
+			                                                            class="bg_icon-img"></i>My Feedback</a></li>
+			                                                <li><a href="account/my_fevorite_story.php"><i
+			                                                            class="bg_icon-img"></i>My Favorite Stores</a></li>--->
+			                                                <li><a href="{{url('help_support')}}"><i
+			                                                            class="bg_icon-img"></i>Help &amp; Support</a></li>
+			                                                <li><a href="{{url('logout')}}"><i class="bg_icon-img"></i>Sign
+			                                                        Out</a></li>
+			                                            </ul>
+			                                        </div>
+			                                    </li>
+												@else
+												<li class="flot-right getquote getquote-signs">
+			                                        <a href="{{url('users/login')}}" id="SignInlogin" class="SignInlogin"><i class="far fa-user"></i>
+			                                            Sign In / Login</a>
+			                                        <div class="tab-more tab-more2 bg-dark active">
+														 
+			                                        </div>
+			                                    </li>
+												@endif
+                          
                           <li class="border-zero flot-right">
-                             <a href="javascript:void(0);" id="imgrotate"><img src="img/services-arrow.png" alt="" /></a>
-                          </li>
+			                                        <a href="javascript:void(0);" id="imgrotate"><img
+			                                                src="{{static_asset('assets_web/img/services-arrow.png')}}" alt="" /></a>
+			                                    </li>
                        </ul>
                     </div>
                  </div>
@@ -322,8 +338,7 @@ Rs <span class="cart_amount"> <b> ₹ 0</b></span>
                                                <span class="spand-line"><b>All Products</b></span>
                                                </a>
                                             </li>
-                                            {{-- // @foreach ($categories as $key => $category) --}}
-											@foreach (\App\Models\Category::all() as $key => $category)
+                                            @foreach (\App\Models\Category::all() as $key => $category)
 											<li class="mega_menus buildings1a">
                                                 <div class="position-relative d-flow-root">
                                                    <a href="{{ route('cat', $category->slug) }}">

@@ -1328,11 +1328,14 @@ $(document).on('click', '#shopid', function() {
 
 
 
+
+
 // Password Match
 $('#uconfirm_password').on('change', function() {
     var password = $("#upassword").val();
     var confirmPassword = $("#uconfirm_password").val();
     if (password != confirmPassword) {
+
         $("#passtext").removeClass("invisible");
         $("#uconfirm_password").removeClass("is-valid");
         $("#uconfirm_password").addClass("is-invalid");
@@ -1343,9 +1346,6 @@ $('#uconfirm_password').on('change', function() {
     }
 });
 
-<<<<<<< HEAD
-$(document).on('click', '.discrptions_button', function () {
-=======
 
 
 //////////////////////
@@ -1649,13 +1649,10 @@ $('.cart_icons32').on('click', function() {
 
 
 $(document).on('click', '.discrptions_button', function() {
->>>>>>> 50ae2eb1cf15507804548237544310f988954043
     $(this).addClass('active');
+
 });
 
-<<<<<<< HEAD
-$('#ckeckboxselect').on('change', '#boxselect', function () {
-=======
 // $('.discrptions_button').on('click','.cart_buttons',function() { 
 // $(this).parent('.discrptions_button').removeClass('active'); 
 // console.log(this.parent(discrptions_button))
@@ -1687,7 +1684,6 @@ $('#ckeckboxselect').on('keyup', '#txtp', function() {
 
 
 $('#ckeckboxselect').on('change', '#boxselect', function() {
->>>>>>> 50ae2eb1cf15507804548237544310f988954043
 
     var qut = $(this).parent('td').parent('tr').children('td').find("#txtp").val();
     var price = $(this).parent('td').parent('tr').find("#price").text();
