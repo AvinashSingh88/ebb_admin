@@ -227,12 +227,14 @@ class FlashDealController extends Controller
         return 0;
     }
 
-    public function product_discount(Request $request){
+    public function product_discount(Request $request)
+    {
         $product_ids = $request->product_ids;
         return view('backend.marketing.flash_deals.flash_deal_discount', compact('product_ids'));
     }
 
-    public function product_discount_edit(Request $request){
+    public function product_discount_edit(Request $request)
+    {
         $product_ids = $request->product_ids;
         $flash_deal_id = $request->flash_deal_id;
         return view('backend.marketing.flash_deals.flash_deal_discount_edit', compact('product_ids', 'flash_deal_id'));
