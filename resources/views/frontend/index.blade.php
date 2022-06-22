@@ -2117,165 +2117,40 @@
          </div>
       </div>
       <!-- VEHICLE PARTS & ACCESSORIES end -->
-      <!-- JUST FOR YOU st -->
-      <!-- Product relative Carousel -->
 
-
-      <div class=" headsections111 dkjfksjjksdfjis just-for-you">
+      <!-- JUST FOR YOU start -->
+      <div class=" headsections111 dkjfksjjksdfjis just-for-you pb-2">
          <div class="container">
+
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
-
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
-                              class="fa-solid fa-chevron-right"></i>
-                        </a>
-                     </div>
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Just For You</h3>
                      <div class="deals">
                         <hr>
                      </div>
-                     <!--<p>Let’s Brew N Binge</p>-->
-                  </div>
-
-               </div>
-
-            </div>
-            <div class="trending00001">
-               <div class="row">
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/pipe.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Pipe </h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/building.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Steel & TMT</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Hindware</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/light.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Light</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/appliances.png')}}"
-                              alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Appliances</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furnitures.png')}}"
-                              alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Furnitures</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/paints.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Paints </h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Kitchen</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furniture.png')}}"
-                              alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Furniture</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Hindware </h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
                   </div>
                </div>
             </div>
 
+            <div class="owl-carousel owl-theme trending0001">
+
+               <div class="item">
+                  <div class="product-box">
+                     <div class="imllskdon"><img src="img/index0/furnitures.png" alt=""> </div>
+                     <div class="discrptions">
+                        <h5> Furnitures</h5>
+                        <h6> ₹567 <del> ₹699</del></h6>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
 
          </div>
       </div>
       <!-- JUST FOR YOU end -->
+
       <!--Premium Brand Fair Partnerst -->
 
       @if (get_setting('top10_brands') != null)
