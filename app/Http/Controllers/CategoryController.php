@@ -60,6 +60,9 @@ class CategoryController extends Controller
         $category->digital = $request->digital;
         $category->banner = $request->banner;
         $category->icon = $request->icon;
+        $category->short_description = $request->short_description;
+        $category->page_wise_banner = $request->page_wise_banner;
+        $category->home_image = $request->home_image;
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
 
@@ -141,6 +144,9 @@ class CategoryController extends Controller
         $category->digital = $request->digital;
         $category->banner = $request->banner;
         $category->icon = $request->icon;
+        $category->short_description = $request->short_description;
+        $category->page_wise_banner = $request->page_wise_banner;
+        $category->home_image = $request->home_image;
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
 

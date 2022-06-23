@@ -1,5 +1,5 @@
 <div class="product-box product_data">
-   <div class="beachs">10% Off</div>
+   <div class="beachs">{{$product->discount}}% Off</div>
    <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{  $product->getTranslation('name')  }}"
       onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
    <div class="discrptions">

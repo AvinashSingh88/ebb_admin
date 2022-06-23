@@ -381,17 +381,12 @@
 									</ul> --}}
 								</div>
 								<hr/> </div>
-							<div class="discrptions_button">
-								<div class="input-group quantity_input"> <span class="input-group-btn">
-                                 <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
-                                 <i class="fa fa-minus" aria-hidden="true"></i>
-                                 </button>
-                                 </span>
-									<input type="text" id="quantity" name="quantity" class="form-control input-number"  value="{{ $detailedProduct->min_qty }}" min="{{ $detailedProduct->min_qty }}" max="10"> <span class="input-group-btn">
-                                 <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
-                                 <i class="fa fa-plus" aria-hidden="true"></i>
-                                 </button>
-                                 </span> </div>
+							<div class="discrptions_button product_data">
+								<div class="input-group w-auto justify-content-end align-items-center packageadd flex-nowrap">
+                                          <input type="button" value="-" class=" button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 " data-field="quantity">
+                                          <input type="number" step="1" max="10" value="1" name="quantity" class="quantity quantity-field border-0 text-center w-25">
+                                          <input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm lh-0" data-field="quantity">
+                                       </div>
 									
 								<h5><a href="#1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</a></h5>
 								<!--<h6><a href="quote.php">Get Quote</a></h6>-->
@@ -491,7 +486,11 @@
 			</div>
 			<div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
 				<div class="md-hide">
-					<div class="deliverybox"> <span class="title"><i class="fa fa-map-marker"></i>Delivery by 24th April</span>
+				@php
+				$start_date = date('d-M-Y');
+				$deliver_date = date("d-M-Y", strtotime("$start_date +$detailedProduct->est_shipping_days days"));
+				@endphp
+					<div class="deliverybox"> <span class="title"><i class="fa fa-map-marker"></i>Delivery by {{$deliver_date}}</span>
 						<form>
 							<input type="number" name="pincode" value="670002" placeholder="Enter Pincode"> <a href="javascript:void(0);" class="change">Change</a> </form>
 						<ul class="row delivery">

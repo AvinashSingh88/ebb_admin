@@ -121,10 +121,7 @@
                                                     </li>
                                                 @endforeach
                                             @endif
-@foreach (\App\Models\Category::where('parent_id', '=', '0')->get() as $key => $category)
-                             <li><a class="dropdown-item1 active"
-                                     href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}</a></li>
-@endforeach
+
                             
 
                          </ul>
