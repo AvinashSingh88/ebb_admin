@@ -30,7 +30,6 @@
 							</div>
 							<div class="discrptions_button">
 							   <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
-							   <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
 							</div>
 						 </div>
 					  </div>
