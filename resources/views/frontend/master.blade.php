@@ -44,7 +44,8 @@
        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" type="text/css" />
       <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 	<link href="{{static_asset('css/jquerysctipttop.css')}}" rel="stylesheet" type="text/css">
-    <link rel="icon" href="{{static_asset('img/logo.png')}}" />
+	 <!-- Favicon -->
+    <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
       <link rel="stylesheet" href="{{static_asset('assets_web/css/animate.min.css')}}" />
       <link rel="stylesheet" href="{{static_asset('assets_web/css/animate.compat.css')}}" />
       <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.carousel.css')}}" />
@@ -330,7 +331,6 @@
 <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">	
        <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
-       <script src="{{static_asset('assets_web/js/aiz-core.js')}}" type="text/javascript"></script>
        <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
      <!--<script src="js/bootstrap.min.js.map"></script>-->
      <script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>
@@ -344,5 +344,32 @@
        <script src="{{static_asset('assets_web/js/slider.js')}}"></script>
        <script src="{{static_asset('assets_web/js/wow.min.js')}}"></script>
        <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
-     </body>
+       <script>
+	  
+        $(".top_ul li").hover(function(){ 
+       $(this).addClass("width_menu active2");
+    
+       }, function(){ 
+       $(this).removeClass("width_menu active2");
+       });  
+         
+    
+   
+   
+   
+         </script>
+        <script type="text/javascript">
+     $(document).ready(function() {
+       $('.multiselect').multiselect({
+         buttonTitle: function(options, select) {
+           var selected = '';
+           options.each(function () {
+             selected += $(this).text() + ', ';
+           });
+           return selected.substr(0, selected.length - 2);
+         },
+       });
+     });
+   </script> 
+    </body>
      </html>

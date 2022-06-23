@@ -121,6 +121,11 @@ class SearchController extends Controller
 
         $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
 		$categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        // $subcategories = Category::where('slug', $catslug)->first();
+        // $getCatId = $subcategories->id;
+        // $subcatlist = Category::where('parent_id','=',$getCatId)->paginate(12);
+        // $firstFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->limit(5)->get();
+        // $exceptFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->take(15)->skip(5)->get();
         return view('frontend.product_listing', compact('first_five_color','categories','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
     }
 

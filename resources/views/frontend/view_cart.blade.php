@@ -156,7 +156,7 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                               </tr>
                               <tr class="amount-pay">
                                  <td class="w-75">Amount Payable</td>
-                                 <td class="w-25">₹ <span>76212</span></td>
+                                 <td class="w-25">₹ <span>{{$total+700}}</span></td>
                               </tr>
                            </tbody>
                         </table>
@@ -167,23 +167,23 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                      <div class="">
                         <div class="cartPointsPan">
                            <div class="pointsWrap">
-                              <div class="icons"><img src="img/iconcome1.svg" alt="Lowest Price Guaranteed"></div>
+                              <div class="icons"><img src="{{static_asset('assets_web/img/iconcome1.svg')}}" alt="Lowest Price Guaranteed"></div>
                               <div class="pointLabel">Lowest Price Guaranteed</div>
                            </div>
                            <div class="pointsWrap">
-                              <div class="icons"><img src="img/iconcome2.svg" alt="Worldwide Delivery"></div>
+                              <div class="icons"><img src="{{static_asset('assets_web/img/iconcome2.svg')}}" alt="Worldwide Delivery"></div>
                               <div class="pointLabel">Worldwide Delivery</div>
                            </div>
                            <div class="pointsWrap">
-                              <div class="icons"><img src="img/iconcome3.svg" alt="Easily Track your Order"></div>
+                              <div class="icons"><img src="{{static_asset('assets_web/img/iconcome3.svg')}}" alt="Easily Track your Order"></div>
                               <div class="pointLabel">Easily Track your Order</div>
                            </div>
                            <div class="pointsWrap">
-                              <div class="icons"><img src="img/iconcome4.svg" alt="Buy Products on Credit"></div>
+                              <div class="icons"><img src="{{static_asset('assets_web/img/iconcome4.svg')}}" alt="Buy Products on Credit"></div>
                               <div class="pointLabel">Buy Products on Credit</div>
                            </div>
                            <div class="scheduledCallback">
-                              <div><img src="img/iconcome5.svg" alt="scheduleCallback"></div>
+                              <div><img src="{{static_asset('assets_web/img/iconcome5.svg')}}" alt="scheduleCallback"></div>
                               <div>
                                  <div>Any Confusion "No worries"</div>
                                  <button type="button" class="btn btn-default">Request A Call Back</button>

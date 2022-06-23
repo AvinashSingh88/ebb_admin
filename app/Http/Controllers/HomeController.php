@@ -19,6 +19,7 @@ use App\Models\BusinessSetting;
 use App\Models\Coupon;
 use App\Models\Address;
 use App\Models\Customer_payment_card;
+use App\Models\Enquiry;
 use Cookie;
 use Illuminate\Support\Str;
 use App\Mail\SecondEmailVerifyMailManager;
@@ -337,6 +338,29 @@ class HomeController extends Controller
 
         flash(translate('Your Profile has been updated successfully!'))->success();
         return back();
+    }
+
+    public function makeEnquiry(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'phone'=>'required',
+            'email'=>'required',
+            'message'=>'required',
+            'user_type'=>'required',
+        ]);
+       
+        $addcard = Enquiry::create([
+            "name" => "$request->name",
+            "phone" => "$request->phone",
+            "email" => "$request->email",
+            "message" => "$request->message",
+            "user_type" => "$request->user_type",
+        ]);
+        if ($addcard) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Thank you for enquiry with us!.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+    
     }
 
     public function flash_deal_details($slug)

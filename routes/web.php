@@ -90,6 +90,7 @@ Route::get('/customer-packages', 'HomeController@premium_package_index')->name('
 
 //Rana routes
 Route::get('/cat/{catslug}', 'CatController@subCatbyCat')->name('cat');
+Route::post('makeEnquiry', 'HomeController@makeEnquiry')->name('makeEnquiry');
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::get('/search?keyword={search}', 'SearchController@index')->name('suggestion.search');

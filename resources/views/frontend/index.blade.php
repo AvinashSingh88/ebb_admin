@@ -399,535 +399,393 @@
    <!-- Product relative Carousel -->
 
 
-   <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
-                  <div class="deals">
+    <!-- Product relative Carousel -->
+ 
+ 
+            <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
+            <div class="container">
+			<div class="row">
+			 <div class="col-md-12 col-sm-12 col-12">
+					  <div class="border-bottom1 border-color-111 mt-3 mb-3">
+					       <div class="border-botb-3">
+                       <a href="javascript:void(0);" class="view-link">  View all <i class="fa-solid fa-chevron-right"></i> </a>    </div>
+                        <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
+						<div class="deals"> 
                      <hr>
                   </div>
-               </div>
-
-
-               <div class="position-absolutedk">
-                  <div class="mt-md-n1ddd div-tab-dps">
-
-                     <ul class="nav nav-pills">
-                        <li class="col-tabs-1 tabs-dps-tab active nav-item">
-                           <a class="nav-link rounded-pill">Building Material </a>
-                        </li>
-                        <li class="col-tabs-2 tabs-dps-tab nav-item">
-                           <a class="nav-link rounded-pill">Electrical </a>
-                        </li>
-
-                        <li class="col-tabs-4 tabs-dps-tab nav-item">
-                           <a class="nav-link rounded-pill">Sanitaryware </a>
-                        </li>
-                        <li class=" col-tabs-3 tabs-dps-tab nav-item">
-                           <a class="nav-link rounded-pill">Plumbing </a>
-                        </li>
-                     </ul>
-                  </div>
-
-               </div>
-            </div>
-         </div>
+                     </div>
+                     
+             
+                       <div class="position-absolutedk">
+						<div class="mt-md-n1ddd div-tab-dps">
+							<ul class="nav nav-pills">
+                                <li class="col-tabs-1 tabs-dps-tab active nav-item">
+                                    <a class="nav-link rounded-pill" >Building Material   </a>
+                                </li>
+                                <li class="col-tabs-2 tabs-dps-tab nav-item">
+                                    <a class="nav-link rounded-pill">Electrical </a>
+                                </li>
+                             
+                                <li class="col-tabs-4 tabs-dps-tab nav-item">
+                                    <a class="nav-link rounded-pill">Sanitaryware  </a>
+                                </li> 
+                                <li class=" col-tabs-3 tabs-dps-tab nav-item">
+                                    <a class="nav-link rounded-pill">Plumbing    </a>
+                                </li> 
+                            </ul>
+                        </div>
+						
+					 </div>
+                     </div>
+			</div>
          <div class="div-tab-dps sections">
-            <ul>
-               <li class="col-tabs-1 tabs-dps-tab active">
-                  <div class="owl-carousel owl-theme trending001">
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Ultratech.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro72.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro67.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro68.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro69.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro70.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro71.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Cement</h5>
-                              <h6>Building Materials</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
+                <ul>
+                    <li class="col-tabs-1 tabs-dps-tab active">
+                    <div class="owl-carousel owl-theme trending001">
+			     <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Ultratech.jpg" alt="">
+					 </div>
+					 <div class="pro_img_mens">
+					 <img src="img/product/products1.jpg" alt="">
+					 </div>
+                          
+                          <div class="discrptions">
+                           <h5>  Cement</h5>
+                           <h6>Building Materials</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
                         </div>
                      </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Ultratech.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro72.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro67.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro68.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro69.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro70.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro71.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Cement</h5>
-                              <h6>Building Materials</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Ultratech.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro72.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro67.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro68.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro69.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro70.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro71.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Cement</h5>
-                              <h6>Building Materials</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Ultratech.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro72.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro67.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro68.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro69.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro70.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro71.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Cement</h5>
-                              <h6>Building Materials</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Ultratech.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro72.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro67.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro68.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro69.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro70.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro71.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Cement</h5>
-                              <h6>Building Materials</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-
-
                   </div>
-               </li>
-               <li class="col-tabs-2 tabs-dps-tab">
-                  <div class="owl-carousel owl-theme trending001">
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Havells.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro73.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro74.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro75.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro76.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro77.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro78.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Switches , Sockets & Plugs </h5>
-                              <h6>Electrical</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Ultratech.jpg" alt="">
+					 </div>
+                         	 <div class="pro_img_mens">
+					 <img src="img/product/products1.jpg" alt="">
+					 </div>
+                          <div class="discrptions">
+                           <h5>  Cement</h5>
+                           <h6>Building Materials</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
                         </div>
                      </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Polycab.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro36.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro31.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro32.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro33.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro34.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro35.png')}}" alt=""></li>
-                           </ul>
-
-                           <div class="discrptions">
-                              <h5> Cables & Wires </h5>
-                              <h6>Electrical</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Havells.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro73.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro74.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro75.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro76.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro77.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro78.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Switches , Sockets & Plugs </h5>
-                              <h6>Electrical</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Havells.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro73.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro74.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro75.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro76.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro77.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro78.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Switches , Sockets & Plugs </h5>
-                              <h6>Electrical</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Havells.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro73.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro74.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro75.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro76.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro77.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro78.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Switches , Sockets & Plugs </h5>
-                              <h6>Electrical</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-
-
                   </div>
-               </li>
-               <li class="col-tabs-3 tabs-dps-tab">
-                  <div class="owl-carousel owl-theme trending001">
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Jaquar.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Plumbing Item</h5>
-                              <h6>Plumbing</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Ultratech.jpg" alt="">
+					 </div>
+                        	 <div class="pro_img_mens">
+					 <img src="img/product/products1.jpg" alt="">
+					 </div>
+                          <div class="discrptions">
+                           <h5>  Cement</h5>
+                           <h6>Building Materials</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
                         </div>
                      </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Jaquar.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Plumbing Item</h5>
-                              <h6>Plumbing</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Jaquar.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Plumbing Item</h5>
-                              <h6>Plumbing</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Jaquar.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/plumbing-600x600.png')}}" alt="">
-                              </li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Plumbing Item</h5>
-                              <h6>Plumbing</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-
-
                   </div>
-               </li>
-               <li class="col-tabs-4 tabs-dps-tab">
-                  <div class="owl-carousel owl-theme trending001">
-
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Cera.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro37.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro38.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro39.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro40.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro41.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro42.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Water Closet & Wash Basin </h5>
-                              <h6>Sanitaryware & Bathrobes</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
+                  <div class="item">
+                     <div class="product-box">
+					 <!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Ultratech.jpg" alt="">
+					 </div>
+                         	 <div class="pro_img_mens">
+					 <img src="img/product/products1.jpg" alt="">
+					 </div>
+                          <div class="discrptions">
+                           <h5>  Cement</h5>
+                           <h6>Building Materials</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
                         </div>
                      </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Cera.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro37.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro38.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro39.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro40.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro41.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro42.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Water Closet & Wash Basin </h5>
-                              <h6>Sanitaryware & Bathrobes</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Cera.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro37.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro38.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro39.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro40.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro41.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro42.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Water Closet & Wash Basin </h5>
-                              <h6>Sanitaryware & Bathrobes</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="item">
-                        <div class="product-box">
-                           <h6>Manufacturers</h6>
-                           <div class="box-elech">
-
-                              <img src="{{static_asset('assets_web/img/index0/Cera.jpg')}}" alt="">
-                           </div>
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro37.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro38.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro39.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro40.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro41.png')}}" alt=""></li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/pro42.png')}}" alt=""></li>
-                           </ul>
-                           <div class="discrptions">
-                              <h5> Water Closet & Wash Basin </h5>
-                              <h6>Sanitaryware & Bathrobes</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="product-detail.php">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-
-
                   </div>
-               </li>
-
-            </ul>
-         </div>
-
-      </div>
-   </div>
+                  <div class="item">
+                     <div class="product-box">
+					 <!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Ultratech.jpg" alt="">
+					 </div>
+                        	 <div class="pro_img_mens">
+					 <img src="img/product/products1.jpg" alt="">
+					 </div>
+                          <div class="discrptions">
+                           <h5>  Cement</h5>
+                           <h6>Building Materials</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                
+				 
+               </div>
+                          </li>
+                    <li class="col-tabs-2 tabs-dps-tab">
+                    <div class="owl-carousel owl-theme trending001">
+                    <div class="item">
+                     <div class="product-box">
+					 <!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Havells.jpg" alt="">
+					 </div>
+                        <img src="img/product/products11.jpg" alt="">
+                         <div class="discrptions">
+                           <h5>  Switches , Sockets & Plugs </h5>
+                           <h6>Electrical</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="product-box"> 
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Polycab.jpg" alt="">
+					 </div>
+				 <img src="img/product/products12.jpg" alt="">
+                      
+                        <div class="discrptions">
+                           <h5>  Cables & Wires </h5>
+                           <h6>Electrical</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                   <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Havells.jpg" alt="">
+					 </div>
+                        <img src="img/product/products11.jpg" alt="">
+                         <div class="discrptions">
+                           <h5>  Switches , Sockets & Plugs </h5>
+                           <h6>Electrical</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Havells.jpg" alt="">
+					 </div>
+                          <img src="img/product/products11.jpg" alt="">
+                         <div class="discrptions">
+                           <h5>  Switches , Sockets & Plugs </h5>
+                           <h6>Electrical</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Havells.jpg" alt="">
+					 </div>
+                         <img src="img/product/products11.jpg" alt="">
+                         <div class="discrptions">
+                           <h5>  Switches , Sockets & Plugs </h5>
+                           <h6>Electrical</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                
+				 
+               </div>
+                        </li>
+                    <li class="col-tabs-3 tabs-dps-tab">
+                    <div class="owl-carousel owl-theme trending001">
+                    <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Jaquar.jpg" alt="">
+					 </div>
+                         <img src="img/product/products13.jpg" alt="">
+                          <div class="discrptions">
+                           <h5> Plumbing Item</h5>
+                           <h6>Plumbing</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Jaquar.jpg" alt="">
+					 </div>
+                           <img src="img/product/products13.jpg" alt="">
+                          <div class="discrptions">
+                          <h5> Plumbing Item</h5>
+                           <h6>Plumbing</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Jaquar.jpg" alt="">
+					 </div>
+                         <img src="img/product/products13.jpg" alt="">
+                          <div class="discrptions">
+                          <h5> Plumbing Item</h5>
+                           <h6>Plumbing</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Jaquar.jpg" alt="">
+					 </div>
+                           <img src="img/product/products13.jpg" alt="">
+                          <div class="discrptions">
+                          <h5> Plumbing Item</h5>
+                           <h6>Plumbing</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                
+				 
+               </div>
+					</li>
+                      <li class="col-tabs-4 tabs-dps-tab">
+                      <div class="owl-carousel owl-theme trending001">
+			    
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Cera.jpg" alt="">
+					 </div>
+                         <img src="img/product/products14.jpg" alt="">
+                         <div class="discrptions">
+                           <h5> Water Closet & Wash Basin </h5>
+                           <h6>Sanitaryware & Bathrobes</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Cera.jpg" alt="">
+					 </div>
+                        <img src="img/product/products14.jpg" alt="">
+                         <div class="discrptions">
+                           <h5> Water Closet & Wash Basin </h5>
+                           <h6>Sanitaryware & Bathrobes</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div> <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Cera.jpg" alt="">
+					 </div>
+                        <img src="img/product/products14.jpg" alt="">
+                         <div class="discrptions">
+                           <h5> Water Closet & Wash Basin </h5>
+                           <h6>Sanitaryware & Bathrobes</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div> <div class="item">
+                     <div class="product-box">
+					 	<!-- <h6>Brand</h6>-->
+					 <div class="box-elech">
+				
+					 <img src="img/index0/Cera.jpg" alt="">
+					 </div>
+                        <img src="img/product/products14.jpg" alt="">
+                         <div class="discrptions">
+                           <h5> Water Closet & Wash Basin </h5>
+                           <h6>Sanitaryware & Bathrobes</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="product-detail.php">View Detail</a></h5>
+                        </div>
+                     </div>
+                  </div>
+                
+				 
+               </div>
+                    </li>
+				 
+				 </ul>
+				 </div>
+             
+            </div>            </div>
 
    <!-- banner 1 section start -->
    @if (get_setting('home_banner1_images') != null)

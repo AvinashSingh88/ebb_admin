@@ -33,45 +33,73 @@
                <div class="row">
                   <div class="col-md-3">
                      <div class="d-xl-block col-wd-2gdot5">
-                        <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
-                           <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
-  
-    <li class="link-category0">
+					 <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
+								<ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
+     <?php 
+  $page = basename($_SERVER['SCRIPT_NAME'],".php");
+  ?>
+     <!--<li class="link-category0">
                            <div class="dropdown-title"></div>
-                        </li>
-    <li class="link-category link-category1aa">
+                        </li>-->
+     <li class="link-category link-category1aa">
 
 
 
-       <div id="accordion" class="accordion-container">
-          <article class="content-entry">
-             <h4 class="article-title">
-                <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
-                   Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> (9)</span> <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
-                </a>
-             </h4>
-             <div class="accordion-content">
-                <div class="link-categoryx link-category1az ">
-                   <ul class="list-unstyled dropdown-list">
-                     @foreach ($categories as $key => $category)
-					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}  </a></li>
+         <div id="accordion" class="accordion-container">
+             <article class="content-entry">
+                 <h4 class="article-title">
+				 @php
+					 $total_category = \App\Models\Category::where('parent_id', '=', '0')->count();
+				 @endphp
+                     <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
+                         Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> ({{$total_category}})</span> <i
+                             class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
+                     </a>
+                 </h4>
+                 <div class="accordion-content">
+                     <div class="link-categoryx link-category1az ">
+                         <ul class="list-unstyled dropdown-list">
+					@foreach (\App\Models\Category::where('parent_id', '=', '0')->get() as $key => $category)
+					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} </a></li>
                      @endforeach
 
-                   </ul>
-                </div>
-             </div>
-          </article>
+                         </ul>
+                     </div>
+                 </div>
+             </article>
 
-       </div>
-    </li>
-	</ul>
-                           
-                            
-                        </div>
+         </div>
+     </li>
+                        
+						 <li class="listing-botoms">
+                              <b> {{$subcategories->name}}</b>
+                              <ul class="list-unstyled dropdown-list listing_block filter">
+								 @foreach ($firstFiveSubcat as $item)
+									<li><a class="dropdown-item1" href="{{ route('products.category', $item->slug) }}">{{$item->name}}</a></li>
+								 @endforeach
+								    
+								 @foreach ($exceptFiveSubcat as $item)
+									<li class="collapses3"><a class="dropdown-item1" href="{{ route('products.category', $item->slug) }}">{{$item->name}}</a></li>
+                                 @endforeach
+                                 <li> <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2" data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false" aria-controls="collapseBrand">
+                                    <span class="link__icon text-gray-27 bg-white">
+                                    <span class="link__icon-inner">+</span>
+                                    </span>
+                                    <span class="link-collapse__default3">Show more</span>
+                                    <span class="link-collapse__active3">Show less</span>
+                                    </a>
+                                 </li>
+                              </ul>
+                           </li>
+
+ </ul>
+                     </div>
+                         
                           <aside id="sidebar" class="sidebar-wrap" style="margin-bottom:30px;">
    <div class="property-form-wrap">
       <div class="property-form clearfix">
-         <form method="post" action="#">
+         <form method="post" action="{{route('makeEnquiry')}}" enctype="multipart/form-data">
+			@csrf
             <div class="agent-details">
                <div class="d-flex align-items-center">
                   <div class="agent-image"><img class="rounded" src="{{static_asset('assets_web/img/forms.jpg')}}" alt="Brittany Watkins" width="70" height="70"></div>
@@ -86,7 +114,7 @@
             </div>
             <!-- form-group -->
             <div class="form-group">
-               <input class="form-control" name="mobile" value="" type="text" placeholder="Phone">
+               <input class="form-control" name="phone" value="" type="text" placeholder="Phone">
             </div>
             <!-- form-group -->
             <div class="form-group">
@@ -117,8 +145,8 @@
             </div>
             <!-- form-group -->	
     
-            <button type="button" class="houzez_agent_property_form btn btn-secondary btn-half-width">
-            <span class="btn-loader houzez-loader-js"></span>					Send Message					
+            <button type="submit" class="houzez_agent_property_form btn btn-secondary btn-half-width">
+				<span class="btn-loader houzez-loader-js"></span>					Send Message					
             </button>
             <a href="tel:999999999" class="btn btn-secondary-outlined btn-half-width">
                <!-- <button type="button" class="btn"> -->

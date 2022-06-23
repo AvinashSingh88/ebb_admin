@@ -509,15 +509,17 @@
 					<div class="border-bottom border-color-1 mb-3">
 						<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Complementary Products</h3> </div>
 					<ul class="list-unstyled">
+					 @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
 						<li class="mb-4">
 							<div class="row">
 								<div class="col-auto col-md-4">
-									<a href="javascript:void(0);" class="d-block width-75"> <img class="img-fluid" src="{{static_asset('assets_web/img/prod1.jpg')}}" alt="Image Description"> </a>
+									<a href="{{ route('product', $related_product->slug) }}" class="d-block width-75"> <img class="img-fluid" src="{{ uploaded_asset($related_product->thumbnail_img) }}" alt="Image Description"> </a>
 								</div>
 								<div class="col col-md-8">
-									<h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="javascript:void(0);">OCEAN UPVC Pipe Fittings, Hydraulic Pipe</a></h3> </div>
+									<h3 class="text-lh-1dot2 compldy font-size-14 mb-0 text-truncate-2"><a href="{{ route('product', $related_product->slug) }}">{{$related_product->name}}</a></h3> </div>
 							</div>
 						</li>
+						@endforeach
 					</ul>
 				</div>
 				<div class="form_rights_inner p-20 animated fadeIn">
