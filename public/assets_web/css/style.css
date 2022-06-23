@@ -21645,3 +21645,47 @@ a.addto {
         right: 16%;
     }
 }
+/* product detail page +- button css here */
+
+.discrptions_button input.button-minus.border.rounded-circle.quantity-left-minus.icon-shape.icon-sm.mx-1 {
+    background: #1274c0;
+    width: 30px;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    padding: 0px;
+    margin: 0px !important;
+    height: 40px !important;
+    border-top-left-radius: 47px !important;
+    border-bottom-left-radius: 47px !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+
+.discrptions_button input.button-plus.border.rounded-circle.quantity-right-plus.icon-shape.icon-sm.lh-0 {
+    background: hsl(25.4, 100%, 50%);
+    width: 30px;
+    color: hsl(0, 0%, 100%);
+    font-size: 18px;
+    border: none;
+    box-shadow: none;
+    height: 30px;
+    text-align: center;
+    padding: 0px;
+    height: 40px !important;
+    border-top-right-radius: 47px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-right-radius: 47px !important;
+}
+
+
+.discrptions_button input.quantity.quantity-field.border-0.text-center.w-25 {
+    border: 1px solid hsl(0, 0%, 80%) !important;
+    height: 38px;
+}
+
+/* product detail page +- button css here */

@@ -13,7 +13,13 @@
 		 .product-categorys2 .product-box {box-shadow: 0px 0px 5px 1px #ccc;}
 		 </style>
  <!-- <section class="pageTitle "> </section> -->
-      <section> <img src="{{static_asset('assets_web/img/building-material.png')}}" alt="Image Description" style="width:100%;"></section>
+      <section> 
+	  @if($subcategories->page_wise_banner=='')
+	  <img src="{{static_asset('assets_web/img/building-material.png')}}" alt="Image Description" style="width:100%;">
+		@else
+			<img src="{{ uploaded_asset($subcategories->page_wise_banner) }}" alt="Image Description" style="width:100%;">
+			@endif
+	  </section>
       <!--top banner end -->
       <div class="service-pros animate__fadeInUps product-categorys product-catbsnner">
          <div class="container">
@@ -102,10 +108,9 @@
 			@csrf
             <div class="agent-details">
                <div class="d-flex align-items-center">
-                  <div class="agent-image"><img class="rounded" src="{{static_asset('assets_web/img/forms.jpg')}}" alt="Brittany Watkins" width="70" height="70"></div>
+                  <div class="agent-image"><img class="rounded" src="{{ static_asset('assets/img/avatar-place.png') }}" alt="Brittany Watkins" width="70" height="70"></div>
                   <ul class="agent-information list-unstyled">
-                     <li class="agent-name"><i class="fa fa-user-o" aria-hidden="true"></i> Pooja Batra</li>
-                     <li class="agent-link"><a href="#1">View Listings</a></li>
+                     <li class="agent-name"><i class="fa fa-user-o" aria-hidden="true"></i> Admin</li>
                   </ul>
                </div>
             </div>
