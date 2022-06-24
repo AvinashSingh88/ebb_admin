@@ -30,16 +30,11 @@
                      <span class="febslide">30000+ <b>Products Online</b></span>
                      <span class="spanls">12000+ <b>Products In Store</b></span>
                   </h2>
-                  <!-- <h4>Best moments of Your Life</h4> -->
-                  <div class="btn-two btn-center-two">
-                     <a href="#tact.html" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                     <a href="#eb.html" class="btn-wht-two" tabindex="0">
-                        Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
-         <img src="{{static_asset('assets_web/img/slider1.jpg')}}" alt="images not found" />
+         <img src="{{static_asset('assets_web/img/slider1.jpg')}}" alt="" />
       </div>
       <div class="item">
          <div class="boxcircle boxcircle34">
@@ -62,16 +57,11 @@
                      <span class="spanls spanlsa "><img src="{{static_asset('assets_web/img/price-tag.png')}}" alt="">
                         <b> Wholesale Price</b></span>
                   </h2>
-                  <!-- <h4>Best moments of Your Life</h4> -->
-                  <div class="btn-two btn-center-two">
-                     <a href="#tact.html" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                     <a href="#eb.html" class="btn-wht-two" tabindex="0">
-                        Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
-         <img src="{{static_asset('assets_web/img/slider2.jpg')}}" alt="images not found" />
+         <img src="{{static_asset('assets_web/img/slider2.jpg')}}" alt="" />
       </div>
       <div class="item">
          <div class="boxcircle boxcircle2">
@@ -94,16 +84,11 @@
                      <span class="febslideaa"><i class="fa-solid fa-indian-rupee-sign"></i> 5000 Off*<b>On Kitchen
                            Appliances </b></span>
                   </h2>
-                  <!-- <h4>Best moments of Your Life</h4> -->
-                  <div class="btn-two btn-center-two">
-                     <a href="#tact.html" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                     <a href="#eb.html" class="btn-wht-two" tabindex="0">
-                        Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
-         <img src="{{static_asset('assets_web/img/slider3.jpg')}}" alt="images not found" />
+         <img src="{{static_asset('assets_web/img/slider3.jpg')}}" alt="" />
       </div>
    </div>
    <div class="stopowl">
