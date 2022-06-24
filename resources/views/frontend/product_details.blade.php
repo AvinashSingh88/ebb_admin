@@ -68,9 +68,11 @@
 			<div class="col-xl-9 col-wd-9gdot5">
 				<div class="row">
 					<div class="col-md-6">
-						<div class="product-box" style=" margin-bottom: 0px;">
+						<div class="product-box product-gallery-thumb" style=" margin-bottom: 0px;">
 							<!--<div class="beachs">10% Off</div>-->
-							<div class="zoom-left"> @php $photos = explode(',', $detailedProduct->photos); @endphp @foreach ($photos as $key => $photo) <img id="zoom_03" src="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" /> @endforeach
+							<div class="zoom-left"> @php $photos = explode(',', $detailedProduct->photos); @endphp 
+							
+							@foreach ($photos as $key => $photo) <img id="zoom_03" src="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" /> @endforeach
 								<div class="clearfix"></div>
 								<div id="gallery_01"> @foreach ($detailedProduct->stocks as $key => $stock) @if ($stock->image != null) <a href="javascript:void(0);" style="height:100px;width:auto;" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($stock->image) }}" data-zoom-image="{{ uploaded_asset($stock->image) }}">
 									 <img style="height:100px;width:auto;" src="{{ uploaded_asset($stock->image) }}" width="100"  /></a> @endif @endforeach </div>
@@ -78,6 +80,7 @@
 						</div>
 						
 						<div class="tab-finish">
+						<?php if(false) {?>
 							<form id="option-choice-form">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
@@ -189,51 +192,137 @@
 
                             </form>
 						
-							
+							<?php } ?>
 							 
 						</div>
-						<!---<div class="tab-finish size">
-							<p class="titleFinish Finisher "> Dimensions <small>(Inches)</small> </p>
-							<ul class="final_size  secondOption">
-								<li class=" King_Size-72_x_72-5_inch 72_x_72 King_Size-5_inch " data-size="72_x_72">
-									<a href="#1">
-										<p class="finishText mattressSize"> 72" L x 72" W </p>
-									</a>
-								</li>
-								<li class=" King_Size-72_x_72-6_inch 72_x_72 King_Size-6_inch " data-size="72_x_72">
-									<a href="#1">
-										<p class="finishText mattressSize"> 72" L x 72" W </p>
-									</a>
-								</li>
-								<li class=" King_Size-72_x_72-8_inch 72_x_72 King_Size-8_inch " data-size="72_x_72">
-									<a href="#1">
-										<p class="finishText mattressSize"> 72" L x 72" W </p>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div class="tab-finish size">
-							<p class="titleFinish  Finisher">Height <small>(Inches)</small></p>
-							<ul class="final_size lastOption">
-								<li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="5_inch">
-									<a href="#1">
-										<p class="finishText"><span>5 feet </span><small class="pricebox">Rs 10,099</small></p>
-									</a>
-								</li>
-								<li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="6_inch">
-									<a href="#1">
-										<p class="finishText"><span>6 feet </span><small class="pricebox">Rs 13,589</small></p>
-									</a>
-								</li>
-								<li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="8_inch">
-									<a href="#1">
-										<p class="finishText"><span>8 feet </span><small class="pricebox">Rs 15,699</small></p>
-									</a>
-								</li>
-								<li class="create-set"><span class="setslink custom-scroll-bottom" data-href="#customSet" style="display:none">Create Your <br>own Set</span> </li>
-							</ul>
-						</div>-->
-						 
+						<hr>
+						 <form id="option-choice-form">
+                                @csrf
+                                <input type="hidden" class="prod_id" name="id" value="{{ $detailedProduct->id }}">
+
+                                @if ($detailedProduct->choice_options != null)
+                                    @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
+
+                                    <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <div class="opacity-50 my-2">{{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:</div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="aiz-radio-inline">
+                                                @foreach ($choice->values as $key => $value)
+                                                <label class="aiz-megabox pl-0 mr-2">
+                                                    <input class=""
+                                                        type="radio"
+                                                        name="attribute_id_{{ $choice->attribute_id }}"
+                                                        value="{{ $value }}"
+                                                        @if($key == 0) checked @endif
+                                                    >
+                                                    <span class="dddd aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                                        {{ $value }}
+                                                    </span>
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @endforeach
+                                @endif
+
+                                @if (count(json_decode($detailedProduct->colors)) > 0)
+                                    <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <div class="opacity-50 my-2">{{ translate('Color')}}:</div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="aiz-radio-inline">
+                                                @foreach (json_decode($detailedProduct->colors) as $key => $color)
+                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
+                                                    <input class=""
+                                                        type="radio"
+                                                        name="color"
+                                                        value="{{ \App\Models\Color::where('code', $color)->first()->name }}"
+                                                        @if($key == 0) checked @endif
+                                                    >
+                                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                                                        <span class="dddd size-30px d-inline-block rounded" style="background: {{ $color }};"></span>
+                                                    </span>
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                @endif
+
+                                <!-- Quantity + Add to cart -->
+                                <div class="row no-gutters">
+                                    <div class="col-sm-2">
+                                        <div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="product-quantity d-flex align-items-center">
+                                            <div class="row no-gutters align-items-center aiz-plus-minus mr-3" style="width: 130px;">
+                                                <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity" disabled="">
+                                                    <i class="las la-minus"></i>
+                                                </button>
+                                                <input type="number" name="quantity" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="{{ $detailedProduct->min_qty }}" min="{{ $detailedProduct->min_qty }}" max="10">
+                                                <button class="btn  col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity">
+                                                    <i class="las la-plus"></i>
+                                                </button>
+                                            </div>
+                                            @php
+                                                $qty = 0;
+                                                foreach ($detailedProduct->stocks as $key => $stock) {
+                                                    $qty += $stock->qty;
+                                                }
+                                            @endphp
+                                            <div class="avialable-amount opacity-60">
+                                                @if($detailedProduct->stock_visibility_state == 'quantity')
+                                                (<span id="available-quantity">{{ $qty }}</span> {{ translate('available')}})
+                                                @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
+                                                    (<span id="available-quantity">{{ translate('In Stock') }}</span>)
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+								<span id="chosen_price">skcb</span>
+                                <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
+                                    <div class="col-sm-2">
+                                        <div class="opacity-50 my-2">{{ translate('Total Price')}}:</div>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="product-price">
+                                            <strong id="chosen_price" class="h4 fw-600 text-primary">
+CS
+                                            </strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+							<div class="mt-3">
+                                @if ($detailedProduct->external_link != null)
+                                    <a type="button" class="btn btn-primary buy-now fw-600" href="{{ $detailedProduct->external_link }}">
+                                        <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn)}}
+                                    </a>
+                                @else
+                                    <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onclick="addToCart()">
+                                        <i class="las la-shopping-bag"></i>
+                                        <span class="d-none d-md-inline-block"> {{ translate('Add to cart')}}</span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary buy-now fw-600" onclick="buyNow()">
+                                        <i class="la la-shopping-cart"></i> {{ translate('Buy Now')}}
+                                    </button>
+                                @endif
+                                <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
+                                    <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock')}}
+                                </button>
+                            </div>
 					</div>
 					<div class="col-md-6">
 						<div class="product-box1">
@@ -387,10 +476,16 @@
                                           <input type="number" step="1" max="10" value="1" name="quantity" class="quantity quantity-field border-0 text-center w-25">
                                           <input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm lh-0" data-field="quantity">
                                        </div>
-									
-								<h5><a href="#1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</a></h5>
-								<!--<h6><a href="quote.php">Get Quote</a></h6>-->
-								<h6><a href="bulk-order.php">Bulk Order</a></h6> </div>
+										<input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
+										<input type="hidden" value=" {{ home_discounted_price($detailedProduct) }}" class="prod_price">
+									<div class="h5 cart_buttons{{$detailedProduct->id}} addToCartButton">
+                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                           Add to Cart
+                                    </div>
+
+                                    <div class="h6"><a href="bulk-order.php">Bulk Order</a></div>
+
+</div>
 								 @php
                                                 $qty = 0;
                                                 foreach ($detailedProduct->stocks as $key => $stock) {
@@ -668,6 +763,60 @@ $(document).ready(function() {
 	getVariantPrice();
 });
 
+$('#option-choice-form input').on('change', function(){
+            getVariantPrice();
+        });
+
+        function getVariantPrice(){
+            if($('#option-choice-form input[name=quantity]').val() > 0 && checkAddToCartValidity()){
+                $.ajax({
+                   type:"POST",
+                   url: '{{ route('products.variant_price') }}',
+                   data: $('#option-choice-form').serializeArray(),
+                   success: function(data){
+
+                        $('.product-gallery-thumb .carousel-box').each(function (i) {
+                            if($(this).data('variation') && data.variation == $(this).data('variation')){
+                                $('.product-gallery-thumb').slick('slickGoTo', i);
+                            }
+                        })
+
+                       $('#option-choice-form #chosen_price_div').removeClass('d-none');
+                       $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
+                       $('#available-quantity').html(data.quantity);
+                       $('.input-number').prop('max', data.max_limit);
+                       if(parseInt(data.in_stock) == 0 && data.digital  == 0){
+                           $('.buy-now').addClass('d-none');
+                           $('.add-to-cart').addClass('d-none');
+                           $('.out-of-stock').removeClass('d-none');
+                       }
+                       else{
+                           $('.buy-now').removeClass('d-none');
+                           $('.add-to-cart').removeClass('d-none');
+                           $('.out-of-stock').addClass('d-none');
+                       }
+                   }
+               });
+            }
+        }
+		
+		function checkAddToCartValidity(){
+            var names = {};
+            $('#option-choice-form input:radio').each(function() { // find unique names
+                  names[$(this).attr('name')] = true;
+            });
+            var count = 0;
+            $.each(names, function() { // then count them
+                  count++;
+            });
+
+            if($('#option-choice-form input:radio:checked').length == count){
+                return true;
+            }
+
+            return false;
+        }
+		
 function CopyToClipboard(e) {
 	var url = $(e).data('url');
 	var $temp = $("<input>");

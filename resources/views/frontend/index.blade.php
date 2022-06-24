@@ -420,7 +420,21 @@
                        <div class="position-absolutedk">
 						<div class="mt-md-n1ddd div-tab-dps">
 							<ul class="nav nav-pills">
-                                <li class="col-tabs-1 tabs-dps-tab active nav-item">
+							{{--<select class="form-control" required name="company_id" id="selectcatbrand">
+                                                                    <option value="" selected disabled>---Select Company---</option>
+                                                                    @foreach ($cat_wise_brands as $item)
+                                                                        <option value="{{$item->category_id}}">{{$item->title}}</option>                                            
+                                                                     @endforeach
+                                                                </select>--}}
+                               @foreach ($cat_wise_brands as $item)
+							   
+								<li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}" class="col-tabs-{{$item->id}} tabs-dps-tab nav-item closestbrand">
+									<a class="nav-link rounded-pill selectbrand" >{{$item->category->name}}   </a>
+								</li>
+								 <input type="hidden" value="{{$item->id}}" class="prod_id">
+							 
+                              @endforeach 
+                                {{-- <li class="col-tabs-1 tabs-dps-tab active nav-item">
                                     <a class="nav-link rounded-pill" >Building Material   </a>
                                 </li>
                                 <li class="col-tabs-2 tabs-dps-tab nav-item">
@@ -432,7 +446,7 @@
                                 </li> 
                                 <li class=" col-tabs-3 tabs-dps-tab nav-item">
                                     <a class="nav-link rounded-pill">Plumbing    </a>
-                                </li> 
+                                </li>  --}}
                             </ul>
                         </div>
 						
@@ -442,10 +456,11 @@
          <div class="div-tab-dps sections">
                 <ul>
                     <li class="col-tabs-1 tabs-dps-tab active">
-                    <div class="owl-carousel owl-theme trending001">
-			     <div class="item">
+                    <div id="catbrandslist" class="owl-carousel owl-theme trending001">
+                     {{-- <span id="title"></span> --}}
+						<!---<div class="item">
                      <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
+					 	  <h6>Brand</h6>- 
 					 <div class="box-elech">
 				
 					 <img src="img/index0/Ultratech.jpg" alt="">
@@ -456,94 +471,19 @@
                           
                           <div class="discrptions">
                            <h5>  Cement</h5>
-                           <h6>Building Materials</h6>
+                           <h6 id="title"></h6>
                         </div>
                         <div class="discrptions_button">
                            <h5><a href="product-detail.php">View Detail</a></h5>
                         </div>
                      </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Ultratech.jpg" alt="">
-					 </div>
-                         	 <div class="pro_img_mens">
-					 <img src="img/product/products1.jpg" alt="">
-					 </div>
-                          <div class="discrptions">
-                           <h5>  Cement</h5>
-                           <h6>Building Materials</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Ultratech.jpg" alt="">
-					 </div>
-                        	 <div class="pro_img_mens">
-					 <img src="img/product/products1.jpg" alt="">
-					 </div>
-                          <div class="discrptions">
-                           <h5>  Cement</h5>
-                           <h6>Building Materials</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 <!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Ultratech.jpg" alt="">
-					 </div>
-                         	 <div class="pro_img_mens">
-					 <img src="img/product/products1.jpg" alt="">
-					 </div>
-                          <div class="discrptions">
-                           <h5>  Cement</h5>
-                           <h6>Building Materials</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 <!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Ultratech.jpg" alt="">
-					 </div>
-                        	 <div class="pro_img_mens">
-					 <img src="img/product/products1.jpg" alt="">
-					 </div>
-                          <div class="discrptions">
-                           <h5>  Cement</h5>
-                           <h6>Building Materials</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
+                  </div>-->
+                  
                 
 				 
                </div>
                           </li>
-                    <li class="col-tabs-2 tabs-dps-tab">
+                    {{-- <li class="col-tabs-2 tabs-dps-tab">
                     <div class="owl-carousel owl-theme trending001">
                     <div class="item">
                      <div class="product-box">
@@ -781,7 +721,7 @@
                 
 				 
                </div>
-                    </li>
+                    </li> --}}
 				 
 				 </ul>
 				 </div>
@@ -3400,3 +3340,6 @@
 </div>
 
 @endsection
+<script>
+
+</script>
