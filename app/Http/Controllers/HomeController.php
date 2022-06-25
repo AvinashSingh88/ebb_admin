@@ -19,6 +19,7 @@ use App\Models\BusinessSetting;
 use App\Models\Coupon;
 use App\Models\Address;
 use App\Models\Customer_payment_card;
+use App\Models\Category_wise_brand;
 use App\Models\Enquiry;
 use Cookie;
 use Illuminate\Support\Str;
@@ -46,9 +47,12 @@ class HomeController extends Controller
             return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
         });
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        $cat_wise_brands = Category_wise_brand::groupBy('category_id')->get();
       
-        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories'));
+        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands'));
     }
+
+    
 
     public function login()
     {
@@ -304,6 +308,18 @@ class HomeController extends Controller
         $addressesss = Address::where('id', $address_id)->get()->toJson();
         return $addressesss;
     }
+    public function getcategorybrands(Request $request){
+        $address_id = $request->post('address_id');
+        $catebrabddetailsss = Category_wise_brand::where('category_id', $address_id)->get();
+        return $catebrabddetailsss;
+    }
+    // public function getcategorybrands(Request $request){
+    //     $companyid = $request->post('companyid');
+    //     dd($companyid);
+    //     die;
+    //     $getcategory = Category_wise_brand::where('category_id', $companyid)->get();
+    //     return $getcategory;
+    // }
     //Address Details Get End
     public function userProfileUpdate(Request $request)
     {

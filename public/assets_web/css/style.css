@@ -10088,12 +10088,13 @@ p.finishText.mattressSize {
 }
 
 .tab-finish .finish-btn {
-    padding: 4px;
+    padding: 0px;
+    width: auto;
 }
 
 .tab-finish ul li {
     display: inline-block;
-    margin: 0 8px 10px 0;
+    margin: 0px 3px 6px 0px;
     cursor: pointer;
     position: relative;
     text-align: center;
@@ -10101,6 +10102,10 @@ p.finishText.mattressSize {
     -webkit-transition: 0.3s all ease-in-out;
     transition: 0.3s all ease-in-out;
     border-radius: 5px;
+}
+
+.m-0.custom_tabs.text-white.px-3.py-2.d-flex.align-items-center.justify-content-start {
+    background: #1274c0;
 }
 
 .tab-finish .finishText {
@@ -10228,6 +10233,14 @@ ul.ga-products-input li>* {
     color: #212121;
     font-size: 13px;
     letter-spacing: 0.5px;
+}
+
+.service-sestis-det .block-content-wrap .detail-wrap {
+    padding-bottom: 0px;
+}
+
+.service-sestis-det2 .block-content-wrap .detail-wrap {
+    padding-bottom: 0px;
 }
 
 
@@ -14873,7 +14886,7 @@ section.section-titlessd {
 
 .woldeens_eldeos .info-sub {
     width: 53%;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .headsections111.weekinliud.dkjfksjjksdfjis {
@@ -14943,6 +14956,7 @@ section.section-titlessd {
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
+    height: auto;
 }
 
 .woldeens_eldeos .category-list .category-info .product-item .product-info>a {
@@ -14962,12 +14976,13 @@ section.woldeens_eldeos.sdfr {
     position: relative;
     border-top: 2px solid #ffffff;
     border-right: 2px solid #ffffff;
-    padding: 20px 16px 16px;
+    padding: 20px 10px 16px;
+    height: 159px;
     background: #f0f0f0;
 }
 
 .woldeens_eldeos .category-list .category-info .product-item .product-info>a .item-info h4 {
-    font-size: 16px;
+    font-size: 14px;
     color: #1274c0;
     margin-bottom: 4px;
     display: -ms-flexbox;
@@ -21631,6 +21646,152 @@ a.addto {
     color: var(--bs-table-hover-color);
 }
 
+.accordion-container.position-relative .accordion-content {
+    background: #fff;
+    position: absolute;
+}
+
+.time-content1.d-flex {
+    width: 210px;
+}
+
+
+/* reviews st*/
+
+.testimonial-slider .testimonial {
+    border: 1px solid #dddfe1;
+    border-top: 3px solid #f0f0f0;
+    padding: 50px 25px 80px;
+    margin-bottom: 30px;
+    position: relative;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.testimonial-slider .testimonial:after {
+    content: "\f10d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 30px;
+    color: #1274c0;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+}
+
+.testimonial-slider .testimonial .description {
+    font-size: 13px;
+    color: #666;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+}
+
+.testimonial-slider .testimonial .pic {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: -30px;
+    left: 25px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.testimonial-slider .testimonial .pic img {
+    width: 100%;
+    height: auto;
+}
+
+.testimonial-slider .testimonial .testimonial-title {
+    font-size: 16px;
+    color: #ff7713;
+    position: absolute;
+    bottom: 20px;
+    left: 150px;
+}
+
+.testimonial-slider .testimonial .testimonial-title small {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-top: 7px;
+}
+
+.sidkierls.w-100.service-sestis-det ul li .block-wrap.mt-3 {
+    box-shadow: none !important;
+    padding: 0px 2px;
+}
+
+.block-wrap.mt-4 {
+    margin-top: 35px !important;
+}
+
+
+/* reviews end */
+
+
+/* kdidgf */
+
+p.text-center.text-dark.bg-warning.text-capitalize.fw-700.rounded {
+    background: #1274c0 !important;
+    color: #fff !important;
+    text-align: left !important;
+    padding: 5px 15px;
+    margin-top: 25px;
+}
+
+b.d-flex.w-100.align-items-center.justify-content-between.border.border-1.rounded.px-2.py-2 {
+    color: #1274c0;
+    padding: 3px 14px !important;
+}
+
+.d-flow-root {
+    display: flow-root !important;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.mynewaddresss {
+    line-height: 35px !important;
+}
+
+.add-buttonser {
+    width: auto;
+    height: 20px;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 0px 10px;
+    float: right;
+    margin-top: 14px;
+}
+
+tr.amount-pay.border-bottom {
+    background: #f0f0f0;
+    border-bottom: 1px solid #cccccc59 !important;
+}
+
+button.placeholder-buttonsl.w-100.btn-danger {
+    background: #dc3545;
+}
+
+button.placeholder-buttonsl.w-100.btn-success {
+    background: #1274c0;
+}
+
+h3.section-title.section-title__sm.mb-0.pb-0.mt-3.font-size-18 {
+    font-size: 16px;
+}
+
+.payments-options.p-4.pt-0 span.text-center.d-block.fs-5 {
+    font-size: 16px !important;
+    margin-top: 8px;
+    color: #ff7713;
+}
+
+
+/* fksdjfklsd */
+
 @media (max-width: 1200px) and (min-width: 992px) {
     .position-absolutedk .nav>li>a {
         margin-left: 5px;
@@ -21645,47 +21806,3 @@ a.addto {
         right: 16%;
     }
 }
-/* product detail page +- button css here */
-
-.discrptions_button input.button-minus.border.rounded-circle.quantity-left-minus.icon-shape.icon-sm.mx-1 {
-    background: #1274c0;
-    width: 30px;
-    color: #fff;
-    font-size: 18px;
-    border: none;
-    box-shadow: none;
-    text-align: center;
-    padding: 0px;
-    margin: 0px !important;
-    height: 40px !important;
-    border-top-left-radius: 47px !important;
-    border-bottom-left-radius: 47px !important;
-    border-top-right-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-}
-
-
-.discrptions_button input.button-plus.border.rounded-circle.quantity-right-plus.icon-shape.icon-sm.lh-0 {
-    background: hsl(25.4, 100%, 50%);
-    width: 30px;
-    color: hsl(0, 0%, 100%);
-    font-size: 18px;
-    border: none;
-    box-shadow: none;
-    height: 30px;
-    text-align: center;
-    padding: 0px;
-    height: 40px !important;
-    border-top-right-radius: 47px !important;
-    border-bottom-left-radius: 10px !important;
-    border-top-left-radius: 10px !important;
-    border-bottom-right-radius: 47px !important;
-}
-
-
-.discrptions_button input.quantity.quantity-field.border-0.text-center.w-25 {
-    border: 1px solid hsl(0, 0%, 80%) !important;
-    height: 38px;
-}
-
-/* product detail page +- button css here */
