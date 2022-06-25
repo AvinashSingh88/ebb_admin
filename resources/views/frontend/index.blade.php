@@ -30,16 +30,11 @@
                      <span class="febslide">30000+ <b>Products Online</b></span>
                      <span class="spanls">12000+ <b>Products In Store</b></span>
                   </h2>
-                  <!-- <h4>Best moments of Your Life</h4> -->
-                  <div class="btn-two btn-center-two">
-                     <a href="#tact.html" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                     <a href="#eb.html" class="btn-wht-two" tabindex="0">
-                        Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
-         <img src="{{static_asset('assets_web/img/slider1.jpg')}}" alt="images not found" />
+         <img src="{{static_asset('assets_web/img/slider1.jpg')}}" alt="" />
       </div>
       <div class="item">
          <div class="boxcircle boxcircle34">
@@ -62,16 +57,11 @@
                      <span class="spanls spanlsa "><img src="{{static_asset('assets_web/img/price-tag.png')}}" alt="">
                         <b> Wholesale Price</b></span>
                   </h2>
-                  <!-- <h4>Best moments of Your Life</h4> -->
-                  <div class="btn-two btn-center-two">
-                     <a href="#tact.html" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                     <a href="#eb.html" class="btn-wht-two" tabindex="0">
-                        Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
-         <img src="{{static_asset('assets_web/img/slider2.jpg')}}" alt="images not found" />
+         <img src="{{static_asset('assets_web/img/slider2.jpg')}}" alt="" />
       </div>
       <div class="item">
          <div class="boxcircle boxcircle2">
@@ -94,16 +84,11 @@
                      <span class="febslideaa"><i class="fa-solid fa-indian-rupee-sign"></i> 5000 Off*<b>On Kitchen
                            Appliances </b></span>
                   </h2>
-                  <!-- <h4>Best moments of Your Life</h4> -->
-                  <div class="btn-two btn-center-two">
-                     <a href="#tact.html" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                     <a href="#eb.html" class="btn-wht-two" tabindex="0">
-                        Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
-         <img src="{{static_asset('assets_web/img/slider3.jpg')}}" alt="images not found" />
+         <img src="{{static_asset('assets_web/img/slider3.jpg')}}" alt="" />
       </div>
    </div>
    <div class="stopowl">
@@ -191,9 +176,11 @@
    <div class="headsections111 dkjfksjjksdfjis seicktioons">
       <div class="container">
          @php
-         $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('is_home', 1)->get();
+         $primium_offers = \App\Models\FlashDeal::where('type', '=', 'best_premium_section')->where('status',
+         1)->where('is_home', 1)->get();
          @endphp
 
+         @if(count($primium_offers) > 0)
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
@@ -215,7 +202,7 @@
 
          <div class="boxoodod">
             <div class="row">
-               @foreach($flash_deal as $featured_deal)
+               @foreach($primium_offers as $featured_deal)
                @if($featured_deal != null && strtotime(date('Y-m-d H:i:s')) >= $featured_deal->start_date &&
                strtotime(date('Y-m-d H:i:s')) <= $featured_deal->end_date)
                   <div class="col-md-4">
@@ -254,14 +241,13 @@
                   @endforeach
             </div>
          </div>
+         @endif
 
       </div>
    </div>
    <!-- The Best Premium Manufacturers end -->
-   <!-- customized_products st -->
+
    <!-- Product relative Carousel -->
-
-
    <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
       <div class="container">
          <div class="row">
@@ -396,337 +382,400 @@
    </div>
    <!-- customized_products end -->
 
-   <!-- CONSUMER ELECTRONICS st -->
+
+
    <!-- Product relative Carousel -->
 
 
-    <!-- Product relative Carousel -->
- 
- 
-            <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
-            <div class="container">
-			<div class="row">
-			 <div class="col-md-12 col-sm-12 col-12">
-					  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-					       <div class="border-botb-3">
-                       <a href="javascript:void(0);" class="view-link">  View all <i class="fa-solid fa-chevron-right"></i> </a>    </div>
-                        <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
-						<div class="deals"> 
+   <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+
+               <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                  <div class="border-botb-3">
+                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
+                     </a>
+                  </div>
+                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
+                  <div class="deals">
                      <hr>
                   </div>
-                     </div>
-                     
-             
-                       <div class="position-absolutedk">
-						<div class="mt-md-n1ddd div-tab-dps">
-							<ul class="nav nav-pills">
-							{{--<select class="form-control" required name="company_id" id="selectcatbrand">
-                                                                    <option value="" selected disabled>---Select Company---</option>
-                                                                    @foreach ($cat_wise_brands as $item)
-                                                                        <option value="{{$item->category_id}}">{{$item->title}}</option>                                            
-                                                                     @endforeach
-                                                                </select>--}}
-                               @foreach ($cat_wise_brands as $item)
-							   
-								<li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}" class="col-tabs-{{$item->id}} tabs-dps-tab nav-item closestbrand">
-									<a class="nav-link rounded-pill selectbrand" >{{$item->category->name}}   </a>
-								</li>
-								 <input type="hidden" value="{{$item->id}}" class="prod_id">
-							 
-                              @endforeach 
-                                {{-- <li class="col-tabs-1 tabs-dps-tab active nav-item">
-                                    <a class="nav-link rounded-pill" >Building Material   </a>
-                                </li>
-                                <li class="col-tabs-2 tabs-dps-tab nav-item">
-                                    <a class="nav-link rounded-pill">Electrical </a>
-                                </li>
-                             
-                                <li class="col-tabs-4 tabs-dps-tab nav-item">
-                                    <a class="nav-link rounded-pill">Sanitaryware  </a>
-                                </li> 
-                                <li class=" col-tabs-3 tabs-dps-tab nav-item">
-                                    <a class="nav-link rounded-pill">Plumbing    </a>
-                                </li>  --}}
-                            </ul>
-                        </div>
-						
-					 </div>
-                     </div>
-			</div>
-         <div class="div-tab-dps sections">
-                <ul>
-                    <li class="col-tabs-1 tabs-dps-tab active">
-                    <div id="catbrandslist" class="owl-carousel owl-theme trending001">
-                     {{-- <span id="title"></span> --}}
-						<!---<div class="item">
-                     <div class="product-box">
-					 	  <h6>Brand</h6>- 
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Ultratech.jpg" alt="">
-					 </div>
-					 <div class="pro_img_mens">
-					 <img src="img/product/products1.jpg" alt="">
-					 </div>
-                          
-                          <div class="discrptions">
-                           <h5>  Cement</h5>
-                           <h6 id="title"></h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>-->
-                  
-                
-				 
                </div>
-                          </li>
-                    {{-- <li class="col-tabs-2 tabs-dps-tab">
-                    <div class="owl-carousel owl-theme trending001">
-                    <div class="item">
-                     <div class="product-box">
-					 <!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Havells.jpg" alt="">
-					 </div>
-                        <img src="img/product/products11.jpg" alt="">
-                         <div class="discrptions">
-                           <h5>  Switches , Sockets & Plugs </h5>
-                           <h6>Electrical</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box"> 
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Polycab.jpg" alt="">
-					 </div>
-				 <img src="img/product/products12.jpg" alt="">
-                      
-                        <div class="discrptions">
-                           <h5>  Cables & Wires </h5>
-                           <h6>Electrical</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                   <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Havells.jpg" alt="">
-					 </div>
-                        <img src="img/product/products11.jpg" alt="">
-                         <div class="discrptions">
-                           <h5>  Switches , Sockets & Plugs </h5>
-                           <h6>Electrical</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Havells.jpg" alt="">
-					 </div>
-                          <img src="img/product/products11.jpg" alt="">
-                         <div class="discrptions">
-                           <h5>  Switches , Sockets & Plugs </h5>
-                           <h6>Electrical</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Havells.jpg" alt="">
-					 </div>
-                         <img src="img/product/products11.jpg" alt="">
-                         <div class="discrptions">
-                           <h5>  Switches , Sockets & Plugs </h5>
-                           <h6>Electrical</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                
-				 
-               </div>
+
+               <div class="position-absolutedk">
+                  <div class="mt-md-n1ddd div-tab-dps">
+                     <ul class="nav nav-pills">
+                        <li class="col-tabs-1 tabs-dps-tab active nav-item">
+                           <a class="nav-link rounded-pill">Building Material </a>
                         </li>
-                    <li class="col-tabs-3 tabs-dps-tab">
-                    <div class="owl-carousel owl-theme trending001">
-                    <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Jaquar.jpg" alt="">
-					 </div>
-                         <img src="img/product/products13.jpg" alt="">
-                          <div class="discrptions">
-                           <h5> Plumbing Item</h5>
-                           <h6>Plumbing</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
+                        <li class="col-tabs-2 tabs-dps-tab nav-item">
+                           <a class="nav-link rounded-pill">Electrical </a>
+                        </li>
+                        <li class="col-tabs-4 tabs-dps-tab nav-item">
+                           <a class="nav-link rounded-pill">Sanitaryware </a>
+                        </li>
+                        <li class=" col-tabs-3 tabs-dps-tab nav-item">
+                           <a class="nav-link rounded-pill">Plumbing </a>
+                        </li>
+                     </ul>
                   </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Jaquar.jpg" alt="">
-					 </div>
-                           <img src="img/product/products13.jpg" alt="">
-                          <div class="discrptions">
-                          <h5> Plumbing Item</h5>
-                           <h6>Plumbing</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Jaquar.jpg" alt="">
-					 </div>
-                         <img src="img/product/products13.jpg" alt="">
-                          <div class="discrptions">
-                          <h5> Plumbing Item</h5>
-                           <h6>Plumbing</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Jaquar.jpg" alt="">
-					 </div>
-                           <img src="img/product/products13.jpg" alt="">
-                          <div class="discrptions">
-                          <h5> Plumbing Item</h5>
-                           <h6>Plumbing</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div>
-                
-				 
                </div>
-					</li>
-                      <li class="col-tabs-4 tabs-dps-tab">
-                      <div class="owl-carousel owl-theme trending001">
-			    
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Cera.jpg" alt="">
-					 </div>
-                         <img src="img/product/products14.jpg" alt="">
-                         <div class="discrptions">
-                           <h5> Water Closet & Wash Basin </h5>
-                           <h6>Sanitaryware & Bathrobes</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
+
+            </div>
+         </div>
+
+         <div class="div-tab-dps sections">
+            <ul>
+               <li class="col-tabs-1 tabs-dps-tab active">
+                  <div class="owl-carousel owl-theme trending001">
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Ultratech.jpg" alt="">
+                           </div>
+                           <div class="pro_img_mens">
+                              <img src="img/product/products1.jpg" alt="">
+                           </div>
+
+                           <div class="discrptions">
+                              <h5> Cement</h5>
+                              <h6>Building Materials</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
                         </div>
                      </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Ultratech.jpg" alt="">
+                           </div>
+                           <div class="pro_img_mens">
+                              <img src="img/product/products1.jpg" alt="">
+                           </div>
+                           <div class="discrptions">
+                              <h5> Cement</h5>
+                              <h6>Building Materials</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Ultratech.jpg" alt="">
+                           </div>
+                           <div class="pro_img_mens">
+                              <img src="img/product/products1.jpg" alt="">
+                           </div>
+                           <div class="discrptions">
+                              <h5> Cement</h5>
+                              <h6>Building Materials</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Ultratech.jpg" alt="">
+                           </div>
+                           <div class="pro_img_mens">
+                              <img src="img/product/products1.jpg" alt="">
+                           </div>
+                           <div class="discrptions">
+                              <h5> Cement</h5>
+                              <h6>Building Materials</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Ultratech.jpg" alt="">
+                           </div>
+                           <div class="pro_img_mens">
+                              <img src="img/product/products1.jpg" alt="">
+                           </div>
+                           <div class="discrptions">
+                              <h5> Cement</h5>
+                              <h6>Building Materials</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+
+
                   </div>
-                  <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Cera.jpg" alt="">
-					 </div>
-                        <img src="img/product/products14.jpg" alt="">
-                         <div class="discrptions">
-                           <h5> Water Closet & Wash Basin </h5>
-                           <h6>Sanitaryware & Bathrobes</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
-                        </div>
-                     </div>
-                  </div> <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Cera.jpg" alt="">
-					 </div>
-                        <img src="img/product/products14.jpg" alt="">
-                         <div class="discrptions">
-                           <h5> Water Closet & Wash Basin </h5>
-                           <h6>Sanitaryware & Bathrobes</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
+               </li>
+               <li class="col-tabs-2 tabs-dps-tab">
+                  <div class="owl-carousel owl-theme trending001">
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Havells.jpg" alt="">
+                           </div>
+                           <img src="img/product/products11.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Switches , Sockets & Plugs </h5>
+                              <h6>Electrical</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
                         </div>
                      </div>
-                  </div> <div class="item">
-                     <div class="product-box">
-					 	<!-- <h6>Brand</h6>-->
-					 <div class="box-elech">
-				
-					 <img src="img/index0/Cera.jpg" alt="">
-					 </div>
-                        <img src="img/product/products14.jpg" alt="">
-                         <div class="discrptions">
-                           <h5> Water Closet & Wash Basin </h5>
-                           <h6>Sanitaryware & Bathrobes</h6>
-                        </div>
-                        <div class="discrptions_button">
-                           <h5><a href="product-detail.php">View Detail</a></h5>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Polycab.jpg" alt="">
+                           </div>
+                           <img src="img/product/products12.jpg" alt="">
+
+                           <div class="discrptions">
+                              <h5> Cables & Wires </h5>
+                              <h6>Electrical</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
                         </div>
                      </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Havells.jpg" alt="">
+                           </div>
+                           <img src="img/product/products11.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Switches , Sockets & Plugs </h5>
+                              <h6>Electrical</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Havells.jpg" alt="">
+                           </div>
+                           <img src="img/product/products11.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Switches , Sockets & Plugs </h5>
+                              <h6>Electrical</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Havells.jpg" alt="">
+                           </div>
+                           <img src="img/product/products11.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Switches , Sockets & Plugs </h5>
+                              <h6>Electrical</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+
+
                   </div>
-                
-				 
-               </div>
-                    </li> --}}
-				 
-				 </ul>
-				 </div>
-             
-            </div>            </div>
+               </li>
+               <li class="col-tabs-3 tabs-dps-tab">
+                  <div class="owl-carousel owl-theme trending001">
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Jaquar.jpg" alt="">
+                           </div>
+                           <img src="img/product/products13.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Plumbing Item</h5>
+                              <h6>Plumbing</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Jaquar.jpg" alt="">
+                           </div>
+                           <img src="img/product/products13.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Plumbing Item</h5>
+                              <h6>Plumbing</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Jaquar.jpg" alt="">
+                           </div>
+                           <img src="img/product/products13.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Plumbing Item</h5>
+                              <h6>Plumbing</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Jaquar.jpg" alt="">
+                           </div>
+                           <img src="img/product/products13.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Plumbing Item</h5>
+                              <h6>Plumbing</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+
+
+                  </div>
+               </li>
+               <li class="col-tabs-4 tabs-dps-tab">
+                  <div class="owl-carousel owl-theme trending001">
+
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Cera.jpg" alt="">
+                           </div>
+                           <img src="img/product/products14.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Water Closet & Wash Basin </h5>
+                              <h6>Sanitaryware & Bathrobes</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Cera.jpg" alt="">
+                           </div>
+                           <img src="img/product/products14.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Water Closet & Wash Basin </h5>
+                              <h6>Sanitaryware & Bathrobes</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Cera.jpg" alt="">
+                           </div>
+                           <img src="img/product/products14.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Water Closet & Wash Basin </h5>
+                              <h6>Sanitaryware & Bathrobes</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech">
+
+                              <img src="img/index0/Cera.jpg" alt="">
+                           </div>
+                           <img src="img/product/products14.jpg" alt="">
+                           <div class="discrptions">
+                              <h5> Water Closet & Wash Basin </h5>
+                              <h6>Sanitaryware & Bathrobes</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="product-detail.php">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+
+
+                  </div>
+               </li>
+
+            </ul>
+         </div>
+
+      </div>
+   </div>
 
    <!-- banner 1 section start -->
    @if (get_setting('home_banner1_images') != null)
@@ -752,27 +801,35 @@
    <!-- banner 1 section end -->
 
    <!-- CONSUMER ELECTRONICS end -->
+
    <div class="other-categories">
       <div class="container">
          <div class="other-categories-list">
             <div class="row">
+
+               @php
+               $category_offers = \App\Models\FlashDeal::where('type', '=', 'category_section')->where('status',
+               1)->where('is_home', 1)->take(4)->get();
+               @endphp
+               @if(count($category_offers) > 0)
                <div class="col-md-4">
                   <div class="category-wrpr">
                      <p>Shop Deals in Product Category | <span>Upto 55% OFF</span></p>
                      <ul class="category-list row">
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/cements.png')}}"
-                                 alt="Bunk Beds"><span>Cement</span></a></li>
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/pvcline.png')}}" alt="Bunk Beds"><span>PVC
-                                 Fittings</span></a></li>
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/cabelse.png')}}" alt="Bunk Beds"><span>Cables &
-                                 Wires</span></a></li>
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/shawerel.png')}}" alt="Bunk Beds"><span>Sanitary
-                                 Shower</span></a></li>
+                        @foreach($category_offers as $deal)
+                        @if($deal != null && strtotime(date('Y-m-d H:i:s')) >= $deal->start_date &&
+                        strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
+                           <li class="col-6">
+                              <a href="{{ route('flash-deal-details', $deal->slug) }}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
+                                    alt="{{$deal->title}}">
+                                 <span>{{$deal->title}}</span>
+                              </a>
+                           </li>
+                           @endif
+                           @endforeach
                      </ul>
+
                      <a href="javascript:void(0);" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -780,26 +837,32 @@
                               stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                      </a>
+
                   </div>
                </div>
+               @endif
+
+               @php
+               $service_offers = \App\Models\FlashDeal::where('type', '=', 'service_section')->where('status',
+               1)->where('is_home', 1)->take(4)->get();
+               @endphp
+               @if(count($service_offers) > 0)
                <div class="col-md-4">
                   <div class="category-wrpr">
                      <p class="orange-text">Top Deals on Services Offers | <span>Upto 40% OFF</span></p>
                      <ul class="category-list row">
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/arc1.png')}}" alt="Bunk Beds"><span>
-                                 Architect
-                              </span></a>
-                        </li>
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/arc3.png')}}" alt="Bunk Beds"><span> Interior
-                                 Designer</span></a></li>
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/arc2.png')}}" alt="Bunk Beds"><span> Structural
-                                 Engineer </span></a></li>
-                        <li class="col-6"><a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/arc4.png')}}" alt="Bunk Beds"><span> Vastu /
-                                 Archaeologist</span></a></li>
+                        @foreach($service_offers as $deal)
+                        @if($deal != null && strtotime(date('Y-m-d H:i:s')) >= $deal->start_date &&
+                        strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
+                           <li class="col-6">
+                              <a href="{{ route('flash-deal-details', $deal->slug) }}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
+                                    alt="{{$deal->title}}">
+                                 <span>{{$deal->title}}</span>
+                              </a>
+                           </li>
+                           @endif
+                           @endforeach
                      </ul>
                      <a href="javascript:void(0);" class="view-link">
                         View all
@@ -810,30 +873,29 @@
                      </a>
                   </div>
                </div>
+               @endif
+
+               @php
+               $brand_offers = \App\Models\FlashDeal::where('type', '=', 'brand_section')->where('status',
+               1)->where('is_home', 1)->take(4)->get();
+               @endphp
+               @if(count($brand_offers) > 0)
                <div class="col-md-4">
                   <div class="category-wrpr">
                      <p>Best Brand Offers | <span>Upto 35% OFF</span> </p>
                      <ul class="category-list row">
-                        <li class="col-6">
-                           <a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/brandssw1.png')}}" alt="Bunk Beds"><span> Sockets &
-                                 Switches</span></a>
-                        </li>
-                        <li class="col-6">
-                           <a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/aksdk.png')}}" alt="Bunk Beds"><span> Asian
-                                 Adhesives Paint </span></a>
-                        </li>
-                        <li class="col-6">
-                           <a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/tilessl.png')}}" alt="Bunk Beds"><span> Ceramics
-                                 Tiles </span></a>
-                        </li>
-                        <li class="col-6">
-                           <a href="javascript:void(0);"><img class="lazy loaded"
-                                 src="{{static_asset('assets_web/img/electtt.png')}}" alt="Bunk Beds"><span> Air
-                                 Conditioner </span></a>
-                        </li>
+                        @foreach($brand_offers as $deal)
+                        @if($deal != null && strtotime(date('Y-m-d H:i:s')) >= $deal->start_date &&
+                        strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
+                           <li class="col-6">
+                              <a href="{{ route('flash-deal-details', $deal->slug) }}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
+                                    alt="{{$deal->title}}">
+                                 <span>{{$deal->title}}</span>
+                              </a>
+                           </li>
+                           @endif
+                           @endforeach
                      </ul>
                      <a href="javascript:void(0);" class="view-link">
                         View all
@@ -844,801 +906,170 @@
                      </a>
                   </div>
                </div>
+               @endif
+
             </div>
          </div>
       </div>
    </div>
    <!-- VEHICLE PARTS & ACCESSORIES st -->
-   <!-- APPAREL st -->
 
-   <section class="woldeens_eldeos">
-      <div class="container">
-         <div class="home-category-info-norm">
-            <div class="category-list">
-               <div class="row">
-                  <div class="col-md-12 col-sm-12 col-12">
-                     <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                        <div class="border-botb-3">
-                           <a href="javascript:void(0);" class="view-link"> View all <i
-                                 class="fa-solid fa-chevron-right"></i> </a>
-                        </div>
-                        <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Plumbing & Sanitaryware</h3>
-                        <div class="deals">
-                           <hr>
-                        </div>
-                     </div>
-                  </div>
+   <!-- APPAREL start   -->
 
-               </div>
-               <div class="category-info">
-                  <a href="#1">
-                     <div class="banner-info">
-                        <canvas width="600" height="320" style="display: none;"></canvas>
-                        <!--<h3>Shopping Guide for Trending Styles</h3>-->
-                        <img class="lazyload" style="width: 320px; height: 300px;"
-                           src="{{static_asset('assets_web/img/index0/plumbing-sanitaryware.png')}}"><span>View
-                           More</span>
-                     </div>
-                  </a>
-                  <div class="product-item">
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
+   <!-- Category With Banner section start  -->
+   @include('frontend.partials.home_category_with_banner')
+   <!-- Category With Banner section end  -->
 
-                                 <span>Water Pumps</span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly</span>
 
 
-                              </div>
 
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/plumb1.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>
-                                    Showers </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/shower.png')}}" alt="">
-                           </div>
-
-                        </a>
-                     </div>
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>PVC Fittings
-                                 </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/pvcfittins.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Water Tank
-                                 </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly</span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/tank.png')}}">
-                           </div>
-
-                        </a>
-                     </div>
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>
-
-                                    Faucets</span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly</span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/faucets.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Wash Basins</span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/washbash.png')}}">
-                           </div>
-
-                        </a>
-                     </div>
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Water Closets
-                                 </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly</span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/waterclock.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Storage Tank
-                                 </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly</span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/index0/storage-t.png')}}">
-                           </div>
-
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <!-- APPAREL end -->
-   <!-- innovation design st -->
-   <!-- Product relative Carousel -->
-   <div class="headsections111 dkjfksjjksdfjis dkhgikdikdind34fvbb">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">All Others Appliances </h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-
-            </div>
-
-         </div>
-
-         <div class="owl-carousel owl-theme trending001">
-            <div class="item">
-               <div class="product-box">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro1.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro2.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro3.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro4.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro5.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro6.png')}}" alt=""></li>
-                  </ul>
-
-                  <div class="discrptions">
-                     <h5> Seating islands </h5>
-                     <h6> Furniture </h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-
-            <div class="item">
-               <div class="product-box">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro7.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro8.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro9.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro10.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro11.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro12.png')}}" alt=""></li>
-                  </ul>
-                  <div class="discrptions">
-                     <h5> Air Conditioner </h5>
-                     <h6>Home Appliances</h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro13.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro14.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro15.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro16.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro17.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro18.png')}}" alt=""></li>
-                  </ul>
-                  <div class="discrptions">
-                     <h5> Office chairs </h5>
-                     <h6>Furniture</h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro19.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro20.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro21.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro22.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro23.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro24.png')}}" alt=""></li>
-                  </ul>
-                  <div class="discrptions">
-                     <h5> Geysers </h5>
-                     <h6>Home Appliances</h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro25.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro26.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro27.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro28.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro29.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro30.png')}}" alt=""></li>
-                  </ul>
-                  <div class="discrptions">
-                     <h5> Wood Storage </h5>
-                     <h6>Furniture</h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- innovation desing end -->
-   <section class="mb-5 small-banners smalikkdin">
-      <div class="container">
-         <div class="owl-carousel owl-theme tab-product2">
-            <div class="item">
-               <div class="tab_imgss">
-                  <a href="javascript:void(0);">
-                     <img src="{{static_asset('assets_web/img/sllid1.png')}}" alt="">
-                  </a>
-               </div>
-            </div>
-            <div class="item">
-               <div class="tab_imgss">
-                  <a href="javascript:void(0);">
-                     <img src="{{static_asset('assets_web/img/sllid2.png')}}" alt="">
-                  </a>
-               </div>
-            </div>
-            <div class="item">
-               <div class="tab_imgss">
-                  <a href="javascript:void(0);">
-                     <img src="{{static_asset('assets_web/img/sllid3.png')}}" alt="">
-                  </a>
-               </div>
-            </div>
-            <div class="item">
-               <div class="tab_imgss">
-                  <a href="javascript:void(0);">
-                     <img src="{{static_asset('assets_web/img/sllid4.png')}}" alt="">
-                  </a>
-               </div>
-            </div>
-            <div class="item">
-               <div class="tab_imgss">
-                  <a href="javascript:void(0);">
-                     <img src="{{static_asset('assets_web/img/sllid5.png')}}" alt="">
-                  </a>
-               </div>
-            </div>
-            <div class="item">
-               <div class="tab_imgss">
-                  <a href="javascript:void(0);">
-                     <img src="{{static_asset('assets_web/img/sllid6.png')}}" alt="">
-                  </a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <section class="woldeens_eldeos sdfr">
-      <div class="container">
-         <div class="home-category-info-norm">
-            <div class="category-list">
-               <div class="row">
-                  <div class="col-md-12 col-sm-12 col-12">
-                     <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                        <div class="border-botb-3">
-                           <a href="javascript:void(0);" class="view-link"> View all <i
-                                 class="fa-solid fa-chevron-right"></i> </a>
-                        </div>
-                        <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Paints & Surface care</h3>
-                        <div class="deals">
-                           <hr>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="category-info">
-                  <a href="#1">
-                     <div class="banner-info">
-                        <canvas width="600" height="320" style="display: none;"></canvas>
-                        <!--<h3>Shopping Guide for Trending Styles</h3>-->
-                        <img class="lazyload" style="width: 320px; height: 300px;"
-                           src="{{static_asset('assets_web/img/paints-800x800.png')}}"><span>Source Now</span>
-                     </div>
-                  </a>
-                  <div class="product-item">
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Metal paints
-                                 </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros1.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Exterior Paints
-                                 </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros2.png')}}">
-                           </div>
-
-                        </a>
-                     </div>
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Wood paints </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros3.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span> Primer putty
-                                 </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros4.png')}}">
-                           </div>
-
-                        </a>
-                     </div>
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Interior Paints </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly</span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros5.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Enamels Paints</span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros6.png')}}">
-                           </div>
-
-                        </a>
-                     </div>
-                     <div class="product-info">
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Waterproofing</span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly </span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros7.png')}}">
-                           </div>
-
-                        </a>
-                        <a href="javascript:void(0);">
-                           <div class="item-info">
-                              <h4>
-
-                                 <span>Paint surface care </span>
-                              </h4>
-                              <div class="info-sub">
-                                 <span class="paragronid">Lorem ipsum is a placeholder text commonly</span>
-
-
-                              </div>
-
-                              <img class="zoom-in lazyload" alt=""
-                                 src="{{static_asset('assets_web/img/paint_surface_care/pros8.png')}}">
-                           </div>
-
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <!-- VEHICLE PARTS & ACCESSORIES end -->
-   <!-- Product relative Carousel -->
-   <div class="headsections111 anitaryware4d dfgj66786gggff dkjfksjjksdfjis seicktioons">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Sanitaryware & Bathrobes</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-
-            </div>
-         </div>
-
-         <div class="owl-carousel owl-theme trending001">
-            <div class="item">
-               <div class="product-box">
-
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro55.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro56.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro57.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro58.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro59.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro60.png')}}" alt=""></li>
-                  </ul>
-
-                  <div class="discrptions">
-                     <h5> Spa </h5>
-                     <h6> Wellness </h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro61.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro62.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro63.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro64.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro65.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro66.png')}}" alt=""></li>
-                  </ul>
-                  <div class="discrptions">
-                     <h5> Whirlpools </h5>
-                     <h6>Sanitaryware</h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro49.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro50.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro51.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro52.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro53.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro54.png')}}" alt=""></li>
-                  </ul>
-                  <div class="discrptions">
-                     <h5> GRID System APS </h5>
-                     <h6>Plant</h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro79.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro80.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro81.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro82.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro83.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro84.png')}}" alt=""></li>
-                  </ul>
-                  <div class="discrptions">
-                     <h5> Saunas </h5>
-                     <h6>Sanitaryware</h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-            <div class="item">
-               <div class="product-box">
-
-                  <ul class="image-productsll">
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro55.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro56.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro57.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro58.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro59.png')}}" alt=""></li>
-                     <li> <img src="{{static_asset('assets_web/img/index0/pro60.png')}}" alt=""></li>
-                  </ul>
-
-                  <div class="discrptions">
-                     <h5> Spa </h5>
-                     <h6> Sanitaryware </h6>
-                  </div>
-                  <div class="discrptions_button">
-                     <h5><a href="product-detail.php">View Detail</a></h5>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-
-
-   <!-- VEHICLE PARTS & ACCESSORIES st -->
    <!-- Product relative Carousel -->
    <div class=" headsections111 weekinliud dkjfksjjksdfjis">
       <div class="container">
          <div class="row">
+
+            @php
+            $weekly_offers = \App\Models\FlashDeal::where('type', '=', 'weekly_section')->where('status',
+            1)->where('is_home', 1)->first();
+            @endphp
+            @if($weekly_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
 
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
-
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Weekly deals</h3>
+                  <a href="{{ route('flash-deal-details', $weekly_offers->slug) }}">
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
+                        {{$weekly_offers->title}}
+                     </h3>
+                  </a>
                   <div class="deals">
                      <hr>
                   </div>
-                  <!--<p>Let’s Brew N Binge</p>-->
                </div>
+
                <div class="bkdjfoskji">
                   <div class="row">
+
+                     @foreach ($weekly_offers->flash_deal_get_products($weekly_offers->id, 2) as $key =>
+                     $flash_deal_product)
+                     @php
+                     $product = \App\Models\Product::find($flash_deal_product->product_id);
+                     @endphp
+                     @if ($product->published != 0)
                      <div class="col-md-6">
                         <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hardware.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <button class="colkdi45kkd">View More</button>
+                           <div class="imllskdon">
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
+                                 alt="{{ $product->getTranslation('name') }}">
                            </div>
-
+                           <div class="discrptions">
+                              <h5> {{ $product->getTranslation('name') }} </h5>
+                              <h6> {{ home_discounted_base_price($product) }} </h6>
+                           </div>
                         </div>
                      </div>
-                     <div class="col-md-6">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/cementsss1.png')}}"
-                                 alt=""> </div>
+                     @endif
+                     @endforeach
 
-                           <div class="discrptions">
-                              <h5> Cement, Steel & Brick </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
                   </div>
                </div>
             </div>
+            @endif
+
+            @php
+            $live_offers = \App\Models\FlashDeal::where('type', '=', 'live_section')->where('status',
+            1)->where('is_home', 1)->first();
+            @endphp
+            @if($live_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
 
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">ebuildbazaar.com livestreams</h3>
+                  <a href="{{ route('flash-deal-details', $live_offers->slug) }}">
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
+                        {{$live_offers->title}}
+                     </h3>
+                  </a>
                   <div class="deals">
                      <hr>
                   </div>
-                  <!--<p>Let’s Brew N Binge</p>-->
                </div>
+
                <div class="bkdjfoskji">
                   <div class="row">
+
+                     @foreach ($live_offers->flash_deal_get_products($live_offers->id, 2) as $key =>
+                     $flash_deal_product)
+                     @php
+                     $product = \App\Models\Product::find($flash_deal_product->product_id);
+                     @endphp
+                     @if ($product->published != 0)
                      <div class="col-md-6">
                         <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <button class="colkdi45kkd">View More</button>
+                           <div class="imllskdon">
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
+                                 alt="{{ $product->getTranslation('name') }}">
                            </div>
-
+                           <div class="discrptions">
+                              <h5> {{ $product->getTranslation('name') }} </h5>
+                              <h6> {{ home_discounted_base_price($product) }} </h6>
+                           </div>
                         </div>
                      </div>
-                     <div class="col-md-6">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/switch.png')}}"
-                                 alt=""> </div>
+                     @endif
+                     @endforeach
 
-                           <div class="discrptions">
-                              <h5> Switches & Wires </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
                   </div>
                </div>
             </div>
+            @endif
+
+            @php
+            $small_comodity_offers = \App\Models\FlashDeal::where('type', '=',
+            'small_comodity_section')->where('status', 1)->where('is_home', 1)->first();
+            @endphp
+            @if($small_comodity_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
 
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Small commodities Marketplace</h3>
+                  <a href="{{ route('flash-deal-details', $small_comodity_offers->slug) }}">
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
+                        {{$small_comodity_offers->title}}
+                     </h3>
+                  </a>
                   <div class="deals">
                      <hr>
                   </div>
-                  <!--<p>Let’s Brew N Binge</p>-->
                </div>
+
                <div class="bkdjfoskji">
                   <div class="row">
+
+                     @foreach ($small_comodity_offers->flash_deal_get_products($small_comodity_offers->id, 2) as $key =>
+                     $flash_deal_product)
+                     @php
+                     $product = \App\Models\Product::find($flash_deal_product->product_id);
+                     @endphp
+                     @if ($product->published != 0)
                      <div class="col-md-6">
                         <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/ssanitaryware.png')}}"
-                                 alt=""> </div>
-
-                           <div class="discrptions">
-                              <button class="colkdi45kkd">View More</button>
+                           <div class="imllskdon">
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
+                                 alt="{{ $product->getTranslation('name') }}">
                            </div>
-
+                           <div class="discrptions">
+                              <h5> {{ $product->getTranslation('name') }} </h5>
+                              <h6> {{ home_discounted_base_price($product) }} </h6>
+                           </div>
                         </div>
                      </div>
-                     <div class="col-md-6">
-                        <div class="product-box">
-                           <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/bathfitting.png')}}"
-                                 alt=""> </div>
+                     @endif
+                     @endforeach
 
-                           <div class="discrptions">
-                              <h5> Bath Fittings </h5>
-                              <h6> ₹567 <del> ₹699</del></h6>
-                           </div>
-
-                        </div>
-                     </div>
                   </div>
                </div>
             </div>
+            @endif
+
+
          </div>
 
 
@@ -1876,167 +1307,53 @@
          </div>
       </div>
       <!-- VEHICLE PARTS & ACCESSORIES end -->
-      <!-- JUST FOR YOU st -->
-      <!-- Product relative Carousel -->
 
-
-      <div class=" headsections111 dkjfksjjksdfjis just-for-you">
+      <!-- JUST FOR YOU start -->
+      <div class=" headsections111 dkjfksjjksdfjis just-for-you pb-2">
          <div class="container">
+
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
-
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
-                              class="fa-solid fa-chevron-right"></i>
-                        </a>
-                     </div>
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Just For You</h3>
                      <div class="deals">
                         <hr>
                      </div>
-                     <!--<p>Let’s Brew N Binge</p>-->
-                  </div>
-
-               </div>
-
-            </div>
-            <div class="trending00001">
-               <div class="row">
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/pipe.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Pipe </h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/building.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Steel & TMT</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Hindware</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/light.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Light</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/appliances.png')}}"
-                              alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Appliances</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furnitures.png')}}"
-                              alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Furnitures</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/paints.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Paints </h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Kitchen</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/furniture.png')}}"
-                              alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Furniture</h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="col-md-5c">
-                     <div class="product-box">
-                        <div class="imllskdon"><img src="{{static_asset('assets_web/img/index0/hindware.png')}}" alt="">
-                        </div>
-
-                        <div class="discrptions">
-                           <h5> Hindware </h5>
-                           <h6> ₹567 <del> ₹699</del></h6>
-                        </div>
-
-                     </div>
                   </div>
                </div>
             </div>
 
+            <div class="owl-carousel owl-theme trending0001">
+
+               @foreach (filter_products(\App\Models\Product::orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key
+               => $top_product)
+               <div class="item">
+                  <div class="product-box">
+                     <!-- <div class="beachs">10% Off</div> -->
+                     <img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
+                     <div class="discrptions">
+                        <h5 class="text-truncate-2">{{ $top_product->getTranslation('name') }} </h5>
+                        <h6>{{ home_discounted_base_price($top_product) }}
+                           @if(home_base_price($top_product) != home_discounted_base_price($top_product))
+                           <strike> {{ home_base_price($top_product) }}</strike>
+                           @endif
+                        </h6>
+                     </div>
+                     <div class="discrptions_button">
+                        <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
+                        <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
+                     </div>
+                  </div>
+               </div>
+               @endforeach
+
+            </div>
 
          </div>
       </div>
       <!-- JUST FOR YOU end -->
-      <!--Premium Brand Fair Partnerst -->
 
+      <!--Premium Brand Fair Partnerst -->
       @if (get_setting('top10_brands') != null)
       <section class="banner-brand_product banner-brand_product2 brankdisections ">
          <div class="container">
@@ -2078,8 +1395,8 @@
       </section>
       @endif
       <!-- Premium Brand Fair Partners end -->
-      <!-- SERVICES ARE HERE st -->
 
+      <!-- SERVICES ARE HERE st -->
       <section class="wraper ">
          <div class="container">
             <div class="row">
@@ -3340,6 +2657,3 @@
 </div>
 
 @endsection
-<script>
-
-</script>

@@ -31,9 +31,10 @@ Route::get('/refresh-csrf', function () {
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     Artisan::call('config:cache');
+    Artisan::call('config:clear');
     Artisan::call('view:clear');
     Artisan::call('route:clear');
-    return "Cache is cleared";
+    return "Cache is cleared by @AviSingh";
 });
 
 Route::post('/aiz-uploader', 'AizUploadController@show_uploader');

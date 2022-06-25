@@ -26,10 +26,8 @@ class FlashDeal extends Model
 
     public function flash_deal_get_products($offer_id, $limit)
     {
-   
         $deals_product_list = FlashDealProduct::where('flash_deal_id' , $offer_id)
             ->take($limit)->get();
         return $deals_product_list;
-        // return $this->FlashDealProduct::limit(2)->get();
     }
 }

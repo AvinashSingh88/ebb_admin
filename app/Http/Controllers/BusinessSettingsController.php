@@ -389,6 +389,8 @@ class BusinessSettingsController extends Controller
         }
 
         Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+
 
         flash(translate("Settings updated successfully"))->success();
         return back();
