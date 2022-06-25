@@ -920,10 +920,6 @@
    @include('frontend.partials.home_category_with_banner')
    <!-- Category With Banner section end  -->
 
-   <!-- Product relative Carousel -->
-   <!-- @include('frontend.partials.home_category_without_banner') -->
-
-   <!-- innovation desing end -->
 
 
 
