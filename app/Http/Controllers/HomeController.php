@@ -311,15 +311,14 @@ class HomeController extends Controller
     public function getcategorybrands(Request $request){
         $address_id = $request->post('address_id');
         $catebrabddetailsss = Category_wise_brand::where('category_id', $address_id)->get();
+        foreach($catebrabddetailsss AS $cat){
+            $brand = \App\Models\Brand::find($cat->brand_id);
+            $cat->brand_id = uploaded_asset($brand->logo);
+            $cat->image = uploaded_asset($cat->image);
+        }
         return $catebrabddetailsss;
     }
-    // public function getcategorybrands(Request $request){
-    //     $companyid = $request->post('companyid');
-    //     dd($companyid);
-    //     die;
-    //     $getcategory = Category_wise_brand::where('category_id', $companyid)->get();
-    //     return $getcategory;
-    // }
+
     //Address Details Get End
     public function userProfileUpdate(Request $request)
     {

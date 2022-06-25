@@ -141,10 +141,8 @@
                     } else{
                          console.log(respons);
                         $.each(respons, function (i) {
-                            datas += '<div class="item"><div class="product-box"><div class="box-elech"><img src="http://localhost/ebb_admin/public/uploads/all/VxKvxDbXZm58qfC3GGw6oxIjMY4mpRDrfPBjt5yZ.png" alt=""></div><div class="pro_img_mens"><img src="http://localhost/ebb_admin/public/uploads/all/VxKvxDbXZm58qfC3GGw6oxIjMY4mpRDrfPBjt5yZ.png" alt=""></div><div class="discrptions"><h5>  '+respons[i].title+'</h5><h6 id="title"></h6></div><div class="discrptions_button"><h5><a href="product-detail.php">View Detail-cat-'+respons[i].category_id+'</a></h5></div></div></div>';
-                            // datas += '<div class="item"><div class="product-box"><div class="box-elech"><img src="http://localhost/ebb_admin/public/uploads/all/VxKvxDbXZm58qfC3GGw6oxIjMY4mpRDrfPBjt5yZ.png" alt=""></div><div class="pro_img_mens"><img src="{{uploaded_asset("")}}'+respons[i].image+'" alt=""></div><div class="discrptions"><h5>  '+respons[i].title+'</h5><h6 id="title"></h6></div><div class="discrptions_button"><h5><a href="product-detail.php">View Detail-cat-'+respons[i].category_id+'</a></h5></div></div></div>';
-                            // datas += '<div class="col-sm-4"><div class="form-check"><input type="checkbox" name="categoryselect" class="form-check-input" id="'+result[i].project_cat_id+'" onClick="webfinicChange(this)" value="'+result[i].project_cat_id+'"><label class="form-check-label" for="'+result[i].project_cat_id+'">'+result[i].project_category+'</label></div></div>';
-                            // console.log(datas);
+                            datas += '<div class="item"><div class="product-box"><div class="box-elech"><img src="'+respons[i].brand_id+'" alt=""></div><div class="pro_img_mens"><img src="'+respons[i].image+'" alt=""></div><div class="discrptions"><h5>  '+respons[i].title+'</h5><h6 id="title"></h6></div><div class="discrptions_button"><h5><a href="product-detail.php">View Detail-cat-'+respons[i].category_id+'</a></h5></div></div></div>';
+
                             console.log(respons);
                            
                         });                    
@@ -529,11 +527,9 @@ function CopyToClipboard(e) {
 	$temp.val(url).select();
 	try {
 		document.execCommand("copy");
-		AIZ.plugins.notify('success', '{{ translate('
-			Link copied to clipboard ') }}');
+		AIZ.plugins.notify('success', '{{ translate('Link copied to clipboard') }}');
 	} catch(err) {
-		AIZ.plugins.notify('danger', '{{ translate('
-			Oops, unable to copy ') }}');
+		AIZ.plugins.notify('danger', '{{ translate('Oops, unable to copy ') }}');
 	}
 	$temp.remove();
 	// if (document.selection) {
