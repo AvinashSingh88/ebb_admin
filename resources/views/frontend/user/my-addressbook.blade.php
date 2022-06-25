@@ -13,9 +13,8 @@
                            <ul class="ulines-dps     justify-content-start">
                              <li class="ukine  "><a href="{{url('profile')}}">My Profile</li>
                               <li class="ukine active4"><a href="{{url('my_addressbook')}}">My Address Book  </a></li>
-                              <li class="ukine "><a href="my_bank_detail.php">Bank Details</a></li>
-                              <li class="ukine "><a href="change_password.php">Change Password </a></li>
-                              <li class="ukine "> <a href="manage_payments.php"> Manage Payments</a> </li> 
+                              <li class="ukine "><a href="{{url('change-password')}}">Change Password </a></li>
+                              <li class="ukine "> <a href="{{url('manage-payments')}}""> Manage Payments</a> </li> 
                            </ul>
                               <div class="flash-message mt-2">
                         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
