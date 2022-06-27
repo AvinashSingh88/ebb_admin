@@ -53,6 +53,7 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
             </div>
          </div>
          <div id="cart-summary" class="justify-content-between1">
+			@if( $carts && count($carts) > 0 )
             <div class="row p-2">
                <div class="col-md-9">
                   <div class="boxcol p-4  pt-2">
@@ -124,9 +125,9 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                         
 						<div class="d-flow-root">
 						<div class="d-flex mt-2 float-right">
-						 <div class="cont2"><a href="checkout.php" class="">  Proceed to checkout</a>
+						 <div class="cont2"><a href="{{url('checkout')}}" class="">  Proceed to checkout</a>
                                  </div>
-                                 <div class="continue "><a href="product.php" class=""><i class="fa-solid fa-cart-shopping"></i> Continue Shopping</a>
+                                 <div class="continue "><a href="{{url('')}}" class=""><i class="fa-solid fa-cart-shopping"></i> Continue Shopping</a>
                                  </div>
 						</div>
 						</div>
@@ -211,6 +212,33 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                </div>
                </div>
             </div>
+			@else
+				<div class="row p-2">
+				   <div class="col-md-12">
+					  <div class="boxcol p-4  pt-2">
+						 <div class="container1">
+						   
+						   <div class="border-bottom1 border-color-11 mt-3 mb-3">
+							<h3 class="section-title section-title__sm mb-0 pb-0 font-size-18"> <i class="fa-solid fa-cart-shopping"></i> My Cart</h3>
+							<div class="deals"> 
+						 <hr>
+					  </div>
+						 </div>
+							 
+							<div class="shadow-sm bg-white p-4 rounded">
+								<div class="text-center p-3">
+									<i class="las la-frown la-3x opacity-60 mb-3"></i>
+									<h3 class="h4 fw-700">{{translate('Your Cart is empty')}}</h3>
+								</div>
+							</div>
+							
+							
+						 </div>
+					  </div>
+				   </div>
+				   
+				</div>
+			@endif
          </div>
       </div>
    </div>

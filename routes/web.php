@@ -134,6 +134,7 @@ Route::group(['prefix' => 'checkout', 'middleware' => ['user', 'verified', 'unba
     //Club point
     Route::post('/apply-club-point', 'CheckoutController@apply_club_point')->name('checkout.apply_club_point');
     Route::post('/remove-club-point', 'CheckoutController@remove_club_point')->name('checkout.remove_club_point');
+    Route::post('pay-on-delivery', 'CheckoutController@payOnDelivery')->name('checkout.pay-on-delivery');
 });
 
 //Paypal START
@@ -186,6 +187,8 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
     Route::post('addAddress','HomeController@addAddress')->name('addAddress');
     Route::post('getaddressdetails','HomeController@getaddressdetails')->name('getaddressdetails');
     Route::post('updateAddressDetails','HomeController@updateAddressDetails')->name('updateAddressDetails');
+    Route::post('setDefaultAddress','HomeController@setDefaultAddress')->name('setDefaultAddress');
+    Route::post('removeMyAddress','HomeController@removeMyAddress')->name('removeMyAddress');
     Route::get('manage-payments','HomeController@managePayments')->name('manage-payments');
     Route::post('addPaymentCards','HomeController@addPaymentCards')->name('addPaymentCards');
     Route::get('change-password','HomeController@changePassword')->name('change-password');

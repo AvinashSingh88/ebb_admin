@@ -14,6 +14,7 @@ use App\Http\Controllers\PublicSslCommerzPaymentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaytmController;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Coupon;
 use App\Models\CouponUsage;
 use App\Models\Address;
@@ -401,5 +402,32 @@ class CheckoutController extends Controller
         }
 
         return view('frontend.order_confirmed', compact('combined_order'));
+    }
+
+    public function payOnDelivery(Request $request){
+        $order  = new Order();
+        $order->user_id = Auth::user()->id;
+        $order->address_id = $request->input('address_id');
+        $order->code = date('Ymd-His') . rand(10, 99);
+        $order->date = strtotime('now');
+        $order->save();
+       
+
+    $cartItems = Cart::where('user_id', Auth::user()->id)->get();
+    foreach($cartItems as $item)
+    {
+        OrderDetail::create([
+            'order_id' => $order->id,
+            'product_id' => $item->product_id,
+            'price'=>$item->price,
+            'tax'=>$item->tax,
+            'quantity'=>$item->quantity,
+            'variation'=>$item->variation,
+        ]);
+    }
+    $cartItems = Cart::where('user_id', Auth::user()->id)->get();
+    Cart::destroy($cartItems);
+
+    return redirect('purchase_history')->with(session()->flash('alert-success', 'Order Placed Successfully!'));
     }
 }

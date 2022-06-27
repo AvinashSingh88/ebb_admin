@@ -29,19 +29,65 @@
                         <div class="hotel-form py-4 shadow-none">
 						  <ul class="ulines-dps-para">
                               <li class="ukine active4">
+							  <div
+                                                    class="hotel-form pt-0 px-0 mb-0 mt-0 text-right pb-0 w-100 position-relative h-auto pt-2 border-none">
+                                                    <div class="d-flex">
+                                                        <div class="w-75">
+                                                            <h6 class="mynewaddresss text-left">Address</h6>
+                                                        </div>
+                                                        <div class="w-25">
+
+                                                            <div class="px-2">
+                                                                <div class="user_email edit-address_1 mt-1 d-block">
+                                                                    <a href="#edit-address1">
+                                                                        <span class="user-email d-block">
+                                                                            <b class="d-flex"> <i
+                                                                                    class="fa fa-plus p-2 border rounded-circle"
+                                                                                    aria-hidden="true"></i> Add New
+                                                                                Address</b>
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="w-100">
+                                                        <div class="deals">
+                                                            <hr class="mt-2">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
 							  <div class="d-flex position-relative">
 							<!----Repeat Start here!----->  
                             @foreach ($myaddress as $item)
                                 
                            
-                        <div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none w-33 pt-2 border">
-								<div class="px-2">
-                                    <div class="user_location mt-1 pb-2">
-                                        <span class="userf-name">
-                                          {{$item->address_type}}
-                                        </span>
-                                    </div>
-                                    <div class="user_name mt-1">
+                        
+						<div
+                                 class="hotel-form py-4 mx-1 px-2 mb-3 mt-1 shadow-none w-33 pt-2 border">
+                                                        <div class="px-2">
+                                                            <div class="d-flex">
+                                                                <div class="w-50">
+                                                                    <div class="user_location mt-1 pb-2">
+                                                                        <span class="userf-name">
+																		{{$item->address_type}}
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div onclick="showDetails(this)" id="{{$item->id}}"  class="w-50">
+                                                                    <a href="#edit-address{{$item->id}}"
+                                                                        class="w-50 user_email edit-address "> <span
+                                                                            class="user-email">
+                                                                            <b class="d-flesx">
+                                                                                <i class=" m-0 float-end fa fa-pencil p-2 border rounded-circle"
+                                                                                    aria-hidden="true"></i> </b>
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="user_name mt-1">
                                         <span class="userf-name">
                                            {{$item->first_name.' '.$item->last_name}} 
                                         </span>
@@ -56,38 +102,51 @@
                                            <i class="fa fa-map-marker p-2 border rounded-circle" aria-hidden="true"></i>    {{$item->house_no}}, {{$item->area}}, {{$item->city}}, {{$item->state}} {{$item->pin}}
                                         </span>
                                     </div>
-                                   <div onclick="showDetails(this)" id="{{$item->id}}" class="user_email edit-address mt-1">
-                                      <a href="#edit-address{{$item->id}}"> 
-									  <span class="user-email">
-                                        <b class="d-flex"> <i class="fa fa-pencil p-2 border rounded-circle" aria-hidden="true"></i> Edit Address</b>
-                                        </span>
-										</a>
-                                    </div>
-                                    </div>
-                        </div>
+                                                            <div class="mt-1 d-flgex">
+															@if($item->set_default=='0')
+															<form method="post" action="{{route('setDefaultAddress')}}" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="w-500">
+                                                                    <button class="float-start btn btn-danger add-buttonser">Set as Default</button>
+                                                                </div>
+																<input type="hidden" name="userid" value="{{$item->user_id}}">
+																<input type="hidden" name="address_id" value="{{$item->id}}">
+															</form>
+
+                                                            <form method="post" action="{{route('removeMyAddress')}}" enctype="multipart/form-data">
+                                                                @csrf
+																<div class="w-500">
+                                                                <input type="hidden" name="userid" value="{{$item->user_id}}">
+                                                                <input type="hidden" name="address_id" value="{{$item->id}}">
+                                                                <button type="submit" class="float-start btn btn-info add-buttonser">Remove</button>
+                                                                </div>
+                                                            </form>
+
+															@else
+															
+																<div class="w-500">
+                                                                    <button class="float-start btn btn-success add-buttonser"><i class="fa fa-map-pin">&nbsp;</i>Pinned</button>
+                                                                </div>
+																
+																 <form method="post" action="{{route('removeMyAddress')}}" enctype="multipart/form-data">
+                                                                @csrf
+																<div class="w-500">
+                                                                <input type="hidden" name="userid" value="{{$item->user_id}}">
+                                                                <input type="hidden" name="address_id" value="{{$item->id}}">
+                                                                <button type="submit" class="float-start btn btn-info add-buttonser">Remove</button>
+                                                                </div>
+                                                            </form>
+															@endif
+                                                            </div>
+															
+                                                        </div>
+                                                    </div>
 						<!----Repeat End here!----->
 						 <div id="edit-address"></div>
                             <div id="edit-address{{$item->id}}"></div>
 							
                         @endforeach
-                            <div class="hotel-form py-4 px-2 mb-3 mt-1 text-right w-auto h-auto pt-2 border-none">
-                         <div class="px-2">
-                                     
-                                   <div class="user_email edit-address_1 mt-1 d-block">
-								    <a href="#edit-address1"> 
-                                        <span class="user-email d-block">
-                                        <b class="d-flex"> <i class="fa fa-pencil p-2 border rounded-circle" aria-hidden="true"></i> Add New Address</b>
-                                        </span>
-										</a>
-                                    </div>
-                                    </div>
-                                   
                              
-                           
-
-                           
-
-                        </div> 
 						</div> 
 						<!---Edit Address Start ---->
 						 <div class="edit_address_form colampoxe mr-3  mx-0 px-0 py-2 shadow-none">

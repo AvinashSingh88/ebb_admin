@@ -277,12 +277,7 @@ class HomeController extends Controller
         ]);
         $userid = Auth::user()->id;
         if ($request->new_password === $request->confirm_password) {
-            // $oldpass = User::where('id', '=', $userid)->first();
-            // $inputoldpass = Hash::make($request->old_password);
-            // $oldpassword = $oldpass->password;
-            // // dd($oldpassword);die;
-            // dd($inputoldpass);die;
-            // if ($oldpass->password === $request->old_password) {
+           
                 $uppassdata = User::where('id', '=', $userid)
                                     ->update([
                                         'password' => Hash::make($request->new_password),
@@ -300,6 +295,39 @@ class HomeController extends Controller
             return redirect()->back()->with(session()->flash('alert-warning', 'New Password and Confirm Password not matched.'));
         }
         return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+    }
+
+    public function setDefaultAddress(Request $request){
+        $request->validate([
+            'userid'=>'required',
+            'address_id'=>'required',
+        ]);
+            
+      
+        $update = Address::where('user_id', '=', $request->userid)->update(['set_default' => '0']);
+        
+        $addressid = Address::where('id', '=', $request->address_id)->where('user_id','=',$request->userid)
+                ->update([
+                    'set_default' => '1',
+                ]);
+            if ($update && $addressid) {
+                return redirect()->back()->with(session()->flash('alert-success', 'Default Address Set'));
+            } else{
+                return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+            }
+    return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+    }
+    public function removeMyAddress(Request $request){
+        $request->validate([
+            'userid'=>'required',
+            'address_id'=>'required',
+        ]);
+        $addressdelete = Address::where('id', '=', $request->address_id)->where('user_id','=',$request->userid)->delete();
+        if ($addressdelete) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Address Removed Successfully'));
+        } else {
+            return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));
+        }
     }
 
     //Address Details Get start

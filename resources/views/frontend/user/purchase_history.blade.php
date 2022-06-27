@@ -10,6 +10,15 @@
                                 </h3>
                                
                             </div>
+                            <div class="flash-message mt-2 mb-2">
+                                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                    @if (Session::has('alert-' . $msg))
+                                        <div class="alert alert-{{ $msg }} alert-dismissible fade show" role="alert">
+                                            {{ Session::get('alert-' . $msg) }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    @endif
+                                @endforeach
                            <ul class="ulines-dps justify-content-start">
                             <li class="ukine ukine1b active4"><a href="{{url('purchase_history')}}">
                             Orders
