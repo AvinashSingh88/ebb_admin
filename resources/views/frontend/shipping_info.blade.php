@@ -269,7 +269,7 @@
                             </div>
 
                         </div>
-					<form method="POST" action="{{route('checkout.pay-on-delivery')}}">
+					<form method="POST" action="{{route('pay-on-delivery')}}">
 					@csrf
 							<input type="hidden" name="address_id" id="adid" value="{{$addid}}">
                         <div class="payments-options p-4 pt-0">

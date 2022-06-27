@@ -134,6 +134,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::get('/add-cat-brands', 'WebsiteController@addCategoryWiseBrands')->name('website.add-cat-brands');
         Route::get('/cat-wise-brand-list', 'WebsiteController@categoryWiseBrandList')->name('website.cat-wise-brand-list');
         Route::post('/uploadCatWiseBrands', 'WebsiteController@uploadCatWiseBrands')->name('website.uploadCatWiseBrands');
+        Route::get('/edit-cat-wise-brand/{id}', 'WebsiteController@edit_cat_wise')->name('edit-cat-wise-brand/{id}');
+        Route::post('/editcatwisebrand', 'WebsiteController@editcatwisebrand')->name('website.editcatwisebrand');
         Route::resource('custom-pages', 'PageController');
         Route::get('/custom-pages/edit/{id}', 'PageController@edit')->name('custom-pages.edit');
         Route::get('/custom-pages/destroy/{id}', 'PageController@destroy')->name('custom-pages.destroy');

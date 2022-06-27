@@ -72,7 +72,13 @@
                                 <input type="text" class="form-control aiz-tag-input" name="tags[]" id="tags" value="{{ $product->tags }}" placeholder="{{ translate('Type to add a tag') }}" data-role="tagsinput">
                             </div>
                         </div>
-                        
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">{{translate('Warranty')}} <span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="warranty" value="{{ $product->warranty }}">
+                                
+                            </div>
+                        </div>
                         @if (addon_is_activated('pos_system'))
                         <div class="form-group row">
                             <label class="col-lg-3 col-from-label">{{translate('Barcode')}}</label>
@@ -357,7 +363,19 @@
                         </div>
                     </div>
                 </div>
-
+<div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 h6">{{translate('Overview')}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-from-label">{{translate('Overview')}} <i class="las la-language text-danger"></i></label>
+                            <div class="col-lg-9">
+                                <textarea class="aiz-text-editor" name="overview">{{ $product->overview }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 <!--                <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('Product Shipping Cost')}}</h5>

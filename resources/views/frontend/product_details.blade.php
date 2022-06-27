@@ -604,51 +604,14 @@ $detailedProduct->meta_description }}@stop @section('meta_keywords'){{ $detailed
 								<div class="tab-description">
 									<h3>Product Overview</h3>
 									<div class="tab-description">
-										<table class="table table-responsive table-detail">
-											<tbody>
-												<tr>
-													<td>Product</td>
-													<td>CPVC SDR 11 CPVC Pipes 40 mm 1.50inch</td>
-												</tr>
-												<tr>
-													<td>Category</td>
-													<td>Plumbing</td>
-												</tr>
-												<tr>
-													<td>Sub Category</td>
-													<td>Pipes</td>
-												</tr>
-												<tr>
-													<td>Third Category</td>
-													<td>CPVC Pipes</td>
-												</tr>
-												<tr>
-													<td>Brand</td>
-													<td>Star</td>
-												</tr>
-												<tr>
-													<td>SKU</td>
-													<td>MK005404</td>
-												</tr>
-												<tr>
-													<td>HSN</td>
-													<td>7307</td>
-												</tr>
-												<tr>
-													<td>Made in</td>
-													<td>INDIA <img src="{{static_asset('assets_web/img/in.jpg')}}"
-															style="width: 20px;margin-top: -3px;margin-left: 5px;"></td>
-												</tr>
-											</tbody>
-										</table>
+										<?php echo $detailedProduct->overview; ?>
 									</div>
 								</div>
 							</li>
 							<li class="ukine ukine3b">
 								<div class="tab-description">
 									<h3>Warranty Details</h3>
-									<p>All products from Ebuild Bazaar e-commerce private ltd contains warranty provided
-										by the manufacturer. </p>
+									<p><?php echo $detailedProduct->warranty; ?></p>
 								</div>
 							</li>
 						</ul>

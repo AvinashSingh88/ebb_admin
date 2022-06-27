@@ -8,6 +8,12 @@
             <h4 class="fw-bold py-3 mb-4">{{translate('Category Wise Brand List')}}</h4>
         </div>
         
+        <div class="col text-right">
+            <a href="{{ url('admin/website/add-cat-brands') }}" class="btn btn-circle btn-info">
+                <span>{{translate('Add Category Wise Brannd')}}</span>
+            </a>
+        </div>
+        
     </div>
 </div>
 <br>
@@ -46,7 +52,7 @@
 						<td>{{ $key->url}}</td>
 						<td>{{ $key->category->name}}</td>
 						<td>{{ $key->brand->name}}</td>
-						<td><a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('products.admin.edit', ['id'=>$key->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+						<td><a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{url('admin/website/edit-cat-wise-brand/'.$key->id) }}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
                             </a></td>
                         
