@@ -258,7 +258,41 @@
             </div>
          </div>
       </section>
-	  
+	   <style>
+ .bannerslid .service-pros .bounceIn.animated h4::after{background:#fff;}
+ </style>
+ <section class="bannerslid mt-1 mb-1 animated animate__fadeInUp wow" style="background:#fff;padding:0px;">
+      <div class="container">
+         <div class="service-pros" style="padding:0px;margin:0px;">
+            <div class="head-cnt work-center text-center">
+               <div class="bounceIn animated">
+
+                  <h4>Exciting Offers & Discounts</h4>
+                  <hr class="underlinskd">
+
+               </div>
+            </div>
+         </div>
+		 
+         <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+               <div class="sim-product">
+                  <div class="owl-carousel owl-theme tab-product">
+                     @foreach ($catwiseoffers as $item)
+                        <div class="item">
+                           <div class="tab_imgss">
+                              <a href="{{$item->slug_url}}">
+                                 <img src="{{uploaded_asset($item->banner)}}">
+                              </a>
+                           </div>
+                        </div>
+                     @endforeach
+					   </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 	  @include('frontend.partials.youmaylike')
 	  
 	    

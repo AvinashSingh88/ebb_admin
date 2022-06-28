@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category_wise_brand;
+use App\Models\Category_wise_offer;
 class WebsiteController extends Controller
 {
 	public function header(Request $request)
@@ -76,4 +77,63 @@ class WebsiteController extends Controller
 		$catwisebrandlist = Category_wise_brand::get();
 		return view('backend.website_settings.category_wise_brands.list', compact('catwisebrandlist'));
 	}
+	public function addCategoryWiseOffers()
+	{
+		return view('backend.website_settings.category_wise_offers.create');
+	}
+	public function categoryWiseOfferList()
+	{
+		$catwiseofferlist = Category_wise_offer::get();
+		return view('backend.website_settings.category_wise_offers.list', compact('catwiseofferlist'));
+	}
+	public function editCatOffer(Request $request, $id)
+     {
+        $catwiseofferid = Category_wise_offer::findOrFail($id);
+        return view('backend.website_settings.category_wise_offers.edit_cat_offer',compact('catwiseofferid'));
+        
+     }
+	 public function uploadCatWiseOffer(Request $request){
+		$request->validate([
+            'category_id'=>'required',
+            'banner'=>'required',
+            'slug_url'=>'required',
+        ]);
+       
+        $addoffer = Category_wise_offer::create([
+           "category_id" => "$request->category_id",
+            "banner" => "$request->banner",
+            "slug_url" => "$request->slug_url",
+            
+        ]);
+        if ($addoffer) {
+			flash(translate('Offer Uploaded Successfully!'))->success();
+            return redirect()->back();
+        }
+	 }
+     public function edit_cat_offer(Request $request){
+        $editdetails = Category_wise_offer::where('id', $request->cid)
+                            ->update([
+                                    'category_id' => $request->category_id,
+                                    'banner' => $request->banner,
+                                    'slug_url' => $request->slug_url,
+                                ]);
+        if ($editdetails) {
+            flash(translate('Updated Successfully!'))->success();
+            return redirect()->back();
+        }
+     }
+     public function destroycatbrand($id)
+    {
+         Category_wise_brand::destroy($id);
+        flash(translate('Deleted successfully'))->success();
+        return redirect()->route('website.cat-wise-brand-list');
+
+    }
+    public function destroycatoffer($id)
+    {
+        category_wise_offer::destroy($id);
+        flash(translate('Deleted successfully'))->success();
+        return redirect()->route('website.cat-wise-offer-list');
+
+    }
 }

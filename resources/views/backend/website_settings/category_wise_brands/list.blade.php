@@ -54,6 +54,9 @@
 						<td>{{ $key->brand->name}}</td>
 						<td><a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{url('admin/website/edit-cat-wise-brand/'.$key->id) }}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
+								<a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('website.destroycatbrand', $key->id)}}" title="{{ translate('Delete') }}">
+		                                <i class="las la-trash"></i>
+		                            </a>
                             </a></td>
                         
                     </tr>
