@@ -51,6 +51,7 @@
       <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.carousel.css')}}" />
       <link rel="stylesheet" href="{{static_asset('assets_web/css/slick.css')}}" />
       <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.theme.default.css')}}" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
       <link rel="stylesheet" href="{{static_asset('assets_web/css/reset.css')}}" /> 
       <link href="{{static_asset('assets_web/css/style.css')}}" media="all" rel="stylesheet" type="text/css" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -367,15 +368,16 @@
        <script src="{{static_asset('assets_web/js/slider-custom.js')}}"></script>
        <script src="{{static_asset('assets_web/js/slider.js')}}"></script>
        <script src="{{static_asset('assets_web/js/wow.min.js')}}"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
        <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
+       <script src="{{static_asset('assets_web/js/script.js')}}" type="text/javascript"></script>
        <script>
 	  
         $(".top_ul li").hover(function(){ 
-       $(this).addClass("width_menu active2");
-    
-       }, function(){ 
-       $(this).removeClass("width_menu active2");
-       });  
+            $(this).addClass("width_menu active2");
+        }, function(){ 
+            $(this).removeClass("width_menu active2");
+        });  
          
     
    
