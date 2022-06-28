@@ -198,6 +198,9 @@ class ProductController extends Controller
         $product->tags = implode(',', $tags);
 
         $product->description = $request->description;
+        $product->overview = $request->overview;
+        $product->warranty = $request->warranty;
+        $product->description = $request->description;
         $product->video_provider = $request->video_provider;
         $product->video_link = $request->video_link;
         $product->unit_price = $request->unit_price;
@@ -498,6 +501,8 @@ class ProductController extends Controller
         $product->category_id       = $request->category_id;
         $product->brand_id          = $request->brand_id;
         $product->barcode           = $request->barcode;
+        $product->overview           = $request->overview;
+        $product->warranty           = $request->warranty;
         $product->cash_on_delivery = 0;
         $product->featured = 0;
         $product->todays_deal = 0;

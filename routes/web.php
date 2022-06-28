@@ -134,9 +134,9 @@ Route::group(['prefix' => 'checkout', 'middleware' => ['user', 'verified', 'unba
     //Club point
     Route::post('/apply-club-point', 'CheckoutController@apply_club_point')->name('checkout.apply_club_point');
     Route::post('/remove-club-point', 'CheckoutController@remove_club_point')->name('checkout.remove_club_point');
-    Route::post('pay-on-delivery', 'CheckoutController@payOnDelivery')->name('checkout.pay-on-delivery');
+    Route::post('pay-on-deliverys', 'CheckoutController@payOnDelivery')->name('checkout.pay-on-deliverys');
 });
-
+Route::post('pay-on-delivery', 'OrderController@payOnDelivery')->name('pay-on-delivery');
 //Paypal START
 Route::get('/paypal/payment/done', 'PaypalController@getDone')->name('payment.done');
 Route::get('/paypal/payment/cancel', 'PaypalController@getCancel')->name('payment.cancel');

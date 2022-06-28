@@ -153,11 +153,11 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                               </tr>
                               <tr class="bd-nn1 mb-3 border-0">
                                  <td class="w-75  border-0">Delivery Charge</td>
-                                 <td class="w-25  border-0">₹ <span>700</span></td>
+                                 <td class="w-25  border-0">₹ <span>0</span></td>
                               </tr>
                               <tr class="amount-pay">
                                  <td class="w-75">Amount Payable</td>
-                                 <td class="w-25">₹ <span>{{$total+700}}</span></td>
+                                 <td class="w-25">₹ <span>{{$total+0}}</span></td>
                               </tr>
                            </tbody>
                         </table>

@@ -64,6 +64,13 @@
                                 <small class="text-muted">{{translate('This is used for search. Input those words by which cutomer can find this product.')}}</small>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">{{translate('Warranty')}} <span class="text-danger">*</span></label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="warranty" placeholder="{{ translate('Warranty') }}">
+                                
+                            </div>
+                        </div>
 
                         @if (addon_is_activated('pos_system'))
                         <div class="form-group row">
@@ -286,6 +293,19 @@
                             <label class="col-md-3 col-from-label">{{translate('Description')}}</label>
                             <div class="col-md-8">
                                 <textarea class="aiz-text-editor" name="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 h6">{{translate('Product Overview')}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-md-3 col-from-label">{{translate('Overview')}}</label>
+                            <div class="col-md-8">
+                                <textarea class="aiz-text-editor" name="overview"></textarea>
                             </div>
                         </div>
                     </div>

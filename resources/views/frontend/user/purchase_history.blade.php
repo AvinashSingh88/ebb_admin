@@ -58,11 +58,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                @foreach (\App\Models\OrderDetail::where('order_id', $order->id)->get() as $key)
+												<div class="row ">
                                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
                                                         <a href="javascript:void(0)" target="_blank"
                                                             class="w-100 order_detail_img-holder border d-inline-block p-1">
-                                                            <img src="../img/16mm Pipe Black ISI Medium.jpg" alt=""
+                                                            <img src="{{ uploaded_asset($key->product->thumbnail_img) }}" alt=""
                                                                 class="w-100">
                                                         </a>
                                                     </div>
@@ -70,13 +71,12 @@
                                                         <div class="row">
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                 <p class="heading_ m-0 fs-7 text-dark">
-                                                                    Portronics Modesk POR-122 Universal Mobile Holder
-                                                                    (Black)
+																{{$key->product->name}}
                                                                 </p>
                                                                 <p class="quantity_holder m-0">
                                                                     <span class="total_count text-secondary">Total:
                                                                         <span class="price_holder text-dark" id="">
-                                                                            ₹ {{ single_price($order->grand_total) }}</span>
+                                                                            {{ single_price($key->price) }}</span>
                                                                     </span>
                                                                     <span>
                                                                         |
@@ -84,7 +84,7 @@
                                                                     <span class="_quantity text-secondary">
                                                                         QTY:
                                                                         <span class="quantity_number text-dark " id="">
-                                                                            1
+																		{{$key->quantity}}
                                                                         </span>
                                                                     </span>
 
@@ -147,6 +147,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
+													<hr>
+												@endforeach
+												
                                             </li>
 											 @endif
                         @endforeach

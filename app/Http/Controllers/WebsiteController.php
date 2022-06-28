@@ -49,6 +49,28 @@ class WebsiteController extends Controller
         }
 		
     }
+	public function edit_cat_wise(Request $request, $id)
+     {
+        $catwisebrandid = Category_wise_brand::findOrFail($id);
+        return view('backend.website_settings.category_wise_brands.edit_cat',compact('catwisebrandid'));
+        
+     }
+	public function editcatwisebrand(Request $request){
+	
+       $editdetails = Category_wise_brand::where('id', $request->cid)
+                            ->update([
+                                    'category_id' => $request->category_id,
+                                    'brand_id' => $request->brand_id,
+                                    'title' => $request->title,
+                                    'image' => $request->image,
+                                    'url' => $request->url,
+                                ]);
+        if ($editdetails) {
+            flash(translate('Updated Successfully!'))->success();
+            return redirect()->back();
+        }
+        
+	}
 	public function categoryWiseBrandList()
 	{
 		$catwisebrandlist = Category_wise_brand::get();

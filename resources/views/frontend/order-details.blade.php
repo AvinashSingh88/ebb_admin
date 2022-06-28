@@ -6,7 +6,7 @@
 
 
 @section('content')
- <section class="pageTitle" style="    background-image: url(img/orderbanner.png);height: 240px; background-size: contain;">
+ <section class="pageTitle" style="    background-image: url({{static_asset('assets_web/img/orderbanner.png')}});height: 240px; background-size: contain;">
          <div class="container">
          </div>
       </section>
@@ -17,8 +17,8 @@
                <div class="col-md-12 breadmcrumsize">
                   <nav aria-label="breadcrumb">
                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item"><a href="account/product_order.php">Order</a></li> 
+                        <li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('purchase_history')}}">Order</a></li> 
                         <li class="breadcrumb-item active" aria-current="page">Order Detail</li>
                      </ol>
                   </nav>
