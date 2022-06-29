@@ -136,6 +136,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::post('/uploadCatWiseBrands', 'WebsiteController@uploadCatWiseBrands')->name('website.uploadCatWiseBrands');
         Route::get('/edit-cat-wise-brand/{id}', 'WebsiteController@edit_cat_wise')->name('edit-cat-wise-brand/{id}');
         Route::post('/editcatwisebrand', 'WebsiteController@editcatwisebrand')->name('website.editcatwisebrand');
+        Route::get('/catwisebrand/destroy/{id}', 'WebsiteController@destroycatbrand')->name('website.destroycatbrand');
+        Route::get('/catwiseoffer/destroy/{id}', 'WebsiteController@destroycatoffer')->name('website.destroycatoffer');
+        Route::get('/cat-wise-offer-list', 'WebsiteController@categoryWiseOfferList')->name('website.cat-wise-offer-list');
+        Route::get('/add-cat-offers', 'WebsiteController@addCategoryWiseOffers')->name('website.add-cat-offers');
+        Route::post('/uploadCatWiseOffer', 'WebsiteController@uploadCatWiseOffer')->name('website.uploadCatWiseOffer');
+        Route::get('/edit-cat-wise-offer/{id}', 'WebsiteController@editCatOffer')->name('edit-cat-wise-offer/{id}');
+        Route::post('/edit_cat_offer', 'WebsiteController@edit_cat_offer')->name('website.edit_cat_offer');
         Route::resource('custom-pages', 'PageController');
         Route::get('/custom-pages/edit/{id}', 'PageController@edit')->name('custom-pages.edit');
         Route::get('/custom-pages/destroy/{id}', 'PageController@destroy')->name('custom-pages.destroy');

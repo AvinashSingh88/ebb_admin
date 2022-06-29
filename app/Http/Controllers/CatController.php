@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Category_wise_brand;
+use App\Models\Category_wise_offer;
 
 class CatController extends Controller
 {
@@ -16,8 +17,9 @@ class CatController extends Controller
         $firstFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->limit(5)->get();
         $exceptFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->take(15)->skip(5)->get();
         $catwisebrands = Category_wise_brand::where('category_id','=',$getCatId)->get();
+        $catwiseoffers = Category_wise_offer::where('category_id','=',$getCatId)->get();
         // dd($subcategories);
         // die;
-        return view('frontend.sub_category', compact('exceptFiveSubcat','firstFiveSubcat','subcatlist', 'categories','subcategories','catwisebrands'));
+        return view('frontend.sub_category', compact('exceptFiveSubcat','firstFiveSubcat','subcatlist', 'categories','subcategories','catwisebrands','catwiseoffers'));
     }
 }
