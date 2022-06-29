@@ -69,12 +69,7 @@ $meta_description = get_setting('meta_description');
             <div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
                <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
                   <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
-
-                     <!--<li class="link-category0">
-                           <div class="dropdown-title"></div>
-                        </li>-->
                      <li class="link-category link-category1aa">
-
                         @php
                         $total_category = \App\Models\Category::where('parent_id', '=', '0')->count();
                         @endphp
@@ -576,6 +571,7 @@ $meta_description = get_setting('meta_description');
                                        </div>
                                     </div>
                                     <!-- End Checkboxes -->
+
                                     <!-- View More - Collapse -->
                                     <div class="collapses8" id="collapseBrand1">
                                        <div class="form-group align-items-center justify-content-between mb-2 pb-1">
@@ -636,6 +632,7 @@ $meta_description = get_setting('meta_description');
                                        </div>
                                     </div>
                                     <!-- End View More - Collapse -->
+
                                     <!-- Link -->
                                     <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2"
                                        data-toggle="collapse" href="#collapseColor" role="button" aria-expanded="false"
@@ -647,21 +644,249 @@ $meta_description = get_setting('meta_description');
                                        <span class="link-collapse__active8">Show less</span>
                                     </a>
                                     <!-- End Link -->
+
                                  </div>
                               </div>
                            </div>
-
                         </article>
                         @endif
-
                      </div>
+                   
+               <div class="wrapper">
+                  <style>
+                     
+.filter-price {
+  width: 220px;
+  border: 0;
+  padding: 0;
+  margin: 0; 
+}
 
-                     <div class="price-range-block p-0 m-0 d-flow-root">
-                        <h4 class="font-size-14 mb-3 font-weight-bold">{{ translate('Price range')}}</h4>
-                        <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-                        <input type="number" min="0" max="9900" oninput="validity.valid||(value='100');" id="min_price" class="price-range-field float-start" />
-                        <input type="number" min="0" max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field float-end" />
-                     </div>
+.price-title {
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.2em;
+  font-weight: 400;
+}
+
+.price-field {
+  position: relative;
+  width: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  background: rgba(248, 247, 244, 0.2);
+  padding-top: 15px;
+  padding-left: 16px;
+  border-radius: 3px;
+}
+
+.price-field input[type=range] {
+    position: absolute;
+}
+
+/* Reset style for input range */
+
+.price-field input[type=range] {
+  width: 188px;
+  height: 2px; 
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  pointer-events: none;
+  -webkit-appearance: none;
+}
+
+.price-field input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+.price-field input[type=range]:active,
+.price-field input[type=range]:focus {
+  outline: 0;
+}
+
+.price-field input[type=range]::-ms-track {
+  width: 188px;
+  height: 2px; 
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  pointer-events: none;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+  border-radius: 5px;
+}
+
+/* Style toddler input range */
+
+.price-field input[type=range]::-webkit-slider-thumb { 
+  /* WebKit/Blink */
+    position: relative;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-top: -4px;
+    background-color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 100;
+}
+
+.price-field input[type=range]::-moz-range-thumb { 
+  /* Firefox */
+  position: relative;
+  appearance: none;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin-top: -5px;
+  background-color: #fff;
+  cursor: pointer;
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 100;
+}
+
+.price-field input[type=range]::-ms-thumb  { 
+  /* IE */
+  position: relative;
+  appearance: none;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin-top: -5px;
+  background-color: #fff;
+  cursor: pointer;
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 100;
+}
+
+/* Style track input range */
+
+.price-field input[type=range]::-webkit-slider-runnable-track { 
+  /* WebKit/Blink */
+  width: 188px;
+  height: 2px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.price-field input[type=range]::-moz-range-track { 
+  /* Firefox */
+  width: 188px;
+  height: 2px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.price-field input[type=range]::-ms-track { 
+  /* IE */
+  width: 188px;
+  height: 2px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 5px;
+}
+
+/* Style for input value block */
+
+.price-wrap {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.2em;
+  font-weight: 400;
+  margin-bottom: 7px;
+}
+
+.price-wrap-1, 
+.price-wrap-2 {
+  display: flex;
+}
+
+.price-title {
+  margin-right: 5px;
+  backgrund: #d58e32;
+}
+
+.price-wrap_line {
+  margin: 0 10px;
+}
+
+.price-wrap #one, 
+.price-wrap #two {
+  width: 30px;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+  background:  0;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-family: 'Karla', 'Arial', sans-serif;
+  font-size: 14px;
+  line-height: 1.2em;
+  font-weight: 400;
+}
+
+.price-wrap label {
+  text-align: right;
+}
+
+/* Style for active state input */
+    
+.price-field input[type=range]:hover::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.5px #fff;
+  transition-duration: 0.3s;
+}
+
+.price-field input[type=range]:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.5px #fff;
+  transition-duration: 0.3s;
+}
+                  </style>
+  <fieldset class="filter-price w-100 bg-secondary">
+   
+    <div class="price-field w-100">
+      <input type="range"  min="100" max="50000" value="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif" id="lower">
+      
+      <input type="range" min="100" max="50000" value="5000" id="upper">
+    </div>
+
+     <div class="price-wrap">
+       
+      <div class="price-wrap-1">
+        <input id="one">
+        <label for="one"> </label>
+      </div>
+      <div class="price-wrap_line">-</div>
+      <div class="price-wrap-2">
+        <input id="two">
+        <label for="two"> </label>
+      </div>
+    </div>
+  </fieldset> 
+</div>
 
                      <div class="bg-white shadow-sm rounded mb-3">
                         
@@ -702,6 +927,8 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </div>
 
+
+
                   </div>
                </div>
 
@@ -738,8 +965,8 @@ $meta_description = get_setting('meta_description');
                                  @endisset>{{ translate('Price high to low')}}</option>
                            </select>
                         </div>
-                        <input type="hidden" name="min_price" value="">
-                        <input type="hidden" name="max_price" value="">
+                        <input type="text" name="min_price" value="">
+                        <input type="text" name="max_price" value="">
                      </div>
                   </div>
                </div>
@@ -800,6 +1027,7 @@ $meta_description = get_setting('meta_description');
          </div>
       </div>
    </section>
+
    <script type="text/javascript">
       function filter() {
          $('#search-form').submit();
@@ -810,4 +1038,6 @@ $meta_description = get_setting('meta_description');
          filter();
       }
    </script>
+
+
    @endsection

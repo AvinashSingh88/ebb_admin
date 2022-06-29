@@ -39,22 +39,24 @@
         <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
     @endif
 
-      <link href="{{static_asset('assets_web/css/bootstrap.mins.css')}}" rel="stylesheet">
-<!--<link href="css/bootstrap.min.css.map" rel="stylesheet">-->
-       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" type="text/css" />
-      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-	<link href="{{static_asset('css/jquerysctipttop.css')}}" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link href="{{static_asset('assets_web/css/bootstrap.mins.css')}}" rel="stylesheet">
+        <link href="{{static_asset('assets_web/css/jquerysctipttop.css')}}" rel="stylesheet" type="text/css">
 	 <!-- Favicon -->
-    <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
-      <link rel="stylesheet" href="{{static_asset('assets_web/css/animate.min.css')}}" />
-      <link rel="stylesheet" href="{{static_asset('assets_web/css/animate.compat.css')}}" />
-      <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.carousel.css')}}" />
-      <link rel="stylesheet" href="{{static_asset('assets_web/css/slick.css')}}" />
-      <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.theme.default.css')}}" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
-      <link rel="stylesheet" href="{{static_asset('assets_web/css/reset.css')}}" /> 
-      <link href="{{static_asset('assets_web/css/style.css')}}" media="all" rel="stylesheet" type="text/css" />
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/animate.min.css')}}" />
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/animate.compat.css')}}" />
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.carousel.css')}}" />
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/slick.css')}}" />
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.theme.default.css')}}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/reset.css')}}" /> 
+        <link href="{{static_asset('assets_web/css/style.css')}}" media="all" rel="stylesheet" type="text/css" />
+      
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
       @if (get_setting('google_analytics') == 1)
       <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -349,29 +351,27 @@
                 $('body').removeClass("typed-search-box-shown");
             }
         }
-
        
     </script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">	
-       <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
-       <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
-     <!--<script src="js/bootstrap.min.js.map"></script>-->
-     <script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>
-     
-     <script src="{{static_asset('assets_web/js/slick.min.js')}}"></script>
-       <script src="{{static_asset('assets_web/js/owl.carousel.js')}}"></script>
-       <script src="{{static_asset('assets_web/js/plugins.js')}}" type="text/javascript"></script>
-       <script src="{{static_asset('assets_web/js/jquery.elevatezoom.min.js')}}"></script>
-       <script src="{{static_asset('assets_web/js/custom.js')}}"></script>
-       <script src="{{static_asset('assets_web/js/slider-custom.js')}}"></script>
-       <script src="{{static_asset('assets_web/js/slider.js')}}"></script>
-       <script src="{{static_asset('assets_web/js/wow.min.js')}}"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
-       <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
-       <script src="{{static_asset('assets_web/js/script.js')}}" type="text/javascript"></script>
-       <script>
+	
+  
+
+    <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/slick.min.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/owl.carousel.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/plugins.js')}}" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/jquery.elevatezoom.min.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/custom.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/slider-custom.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/slider.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/wow.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/script.js')}}" type="text/javascript"></script>
+    <script>
 	  
         $(".top_ul li").hover(function(){ 
             $(this).addClass("width_menu active2");
@@ -397,8 +397,8 @@
        });
      });
    </script> 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
    <script type="text/javascript">
 $(document).ready(function() {
 	getVariantPrice();
@@ -552,6 +552,42 @@ function show_chat_modal() {@
 
 
 
+</script>
+
+<script>
+var lowerSlider = document.querySelector('#lower');
+var  upperSlider = document.querySelector('#upper');
+
+document.querySelector('#two').value=upperSlider.value;
+document.querySelector('#one').value=lowerSlider.value;
+
+var  lowerVal = parseInt(lowerSlider.value);
+var upperVal = parseInt(upperSlider.value);
+
+upperSlider.oninput = function () {
+    lowerVal = parseInt(lowerSlider.value);
+    upperVal = parseInt(upperSlider.value);
+
+    if (upperVal < lowerVal + 4) {
+        lowerSlider.value = upperVal - 4;
+        if (lowerVal == lowerSlider.min) {
+        upperSlider.value = 4;
+        }
+    }
+    document.querySelector('#two').value=this.value
+};
+
+lowerSlider.oninput = function () {
+    lowerVal = parseInt(lowerSlider.value);
+    upperVal = parseInt(upperSlider.value);
+    if (lowerVal > upperVal - 4) {
+        upperSlider.value = lowerVal + 4;
+        if (upperVal == upperSlider.max) {
+            lowerSlider.value = parseInt(upperSlider.max) - 4;
+        }
+    }
+    document.querySelector('#one').value=this.value
+};
 </script>
     </body>
      </html>
