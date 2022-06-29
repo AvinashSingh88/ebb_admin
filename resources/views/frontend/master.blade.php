@@ -130,6 +130,7 @@
     @yield('modal')
        
 		<script type="text/javascript">
+        
 		function showCategoryWiseBrand(showCategoryWiseBrand){
         let address_id = $(showCategoryWiseBrand).attr('id');
         let datas = "";
@@ -423,8 +424,10 @@ $('#option-choice-form input').on('change', function(){
                             }
                         })
 
-                       $('#option-choice-form #chosen_price_div').removeClass('d-none');
-                       $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
+                    //    $('#option-choice-form #chosen_price_div').removeClass('d-none');
+                    //    $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
+                       $('#show_total_price').removeClass('d-none');
+                       $('#total_price').html(data.price);
                        $('#available-quantity').html(data.quantity);
                        $('.input-number').prop('max', data.max_limit);
                        if(parseInt(data.in_stock) == 0 && data.digital  == 0){
@@ -460,99 +463,8 @@ $('#option-choice-form input').on('change', function(){
         }
 </script>
 		
-		function addToCart(){
-            if(checkAddToCartValidity()) {
-                $('#addToCart').modal();
-                $('.c-preloader').show();
-                $.ajax({
-                    type:"POST",
-                    url: '{{ route('cart.addToCart') }}',
-                    data: $('#option-choice-form').serializeArray(),
-                    success: function(data){
-
-                       $('#addToCart-modal-body').html(null);
-                       $('.c-preloader').hide();
-                       $('#modal-size').removeClass('modal-lg');
-                       $('#addToCart-modal-body').html(data.modal_view);
-                       AIZ.extra.plusMinus();
-                       updateNavCart(data.nav_cart_view,data.cart_count);
-                    }
-                });
-            }
-            else{
-                AIZ.plugins.notify('warning', "{{ translate('Please choose all the options') }}");
-            }
-        }
-
-        function buyNow(){
-            if(checkAddToCartValidity()) {
-                $('#addToCart-modal-body').html(null);
-                $('#addToCart').modal();
-                $('.c-preloader').show();
-                $.ajax({
-                   type:"POST",
-                   url: '{{ route('cart.addToCart') }}',
-                   data: $('#option-choice-form').serializeArray(),
-                   success: function(data){
-                       if(data.status == 1){
-
-                            $('#addToCart-modal-body').html(data.modal_view);
-                            updateNavCart(data.nav_cart_view,data.cart_count);
-
-                            window.location.replace("{{ route('cart') }}");
-                       }
-                       else{
-                            $('#addToCart-modal-body').html(null);
-                            $('.c-preloader').hide();
-                            $('#modal-size').removeClass('modal-lg');
-                            $('#addToCart-modal-body').html(data.modal_view);
-                       }
-                   }
-               });
-            }
-            else{
-                AIZ.plugins.notify('warning', "{{ translate('Please choose all the options') }}");
-            }
-        }
 		
-function CopyToClipboard(e) {
-	var url = $(e).data('url');
-	var $temp = $("<input>");
-	$("body").append($temp);
-	$temp.val(url).select();
-	try {
-		document.execCommand("copy");
-		AIZ.plugins.notify('success', '{{ translate('Link copied to clipboard') }}');
-	} catch(err) {
-		AIZ.plugins.notify('danger', '{{ translate('Oops, unable to copy ') }}');
-	}
-	$temp.remove();
-	// if (document.selection) {
-	//     var range = document.body.createTextRange();
-	//     range.moveToElementText(document.getElementById(containerid));
-	//     range.select().createTextRange();
-	//     document.execCommand("Copy");
-	// } else if (window.getSelection) {
-	//     var range = document.createRange();
-	//     document.getElementById(containerid).style.display = "block";
-	//     range.selectNode(document.getElementById(containerid));
-	//     window.getSelection().addRange(range);
-	//     document.execCommand("Copy");
-	//     document.getElementById(containerid).style.display = "none";
-	// }
-	// AIZ.plugins.notify('success', 'Copied');
-}
-
-function show_chat_modal() {@
-	if(Auth::check()) $('#chat_modal').modal('show');@
-	else $('#login_modal').modal('show');@
-	endif
-}
-
-
-
-
-</script>
+ 
 
 <script>
 var lowerSlider = document.querySelector('#lower');
