@@ -728,15 +728,15 @@
                                                         @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
 															<li>
 															@php
-															$subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+																$subcatSlug = \App\Models\Category::find($first_level_id)->slug;
 															@endphp
-															   <a href="{{ route('products.category', $subcatSlug) }}"><img src="img/mechanic-tools.png" alt="" /> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}
+															   <a href="{{ route('products.category', $subcatSlug) }}"><img src="img/mechanic-tools.png;;;;;;;" alt="" /> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}
 															   </a>
 															</li>
 														@endforeach
                                                         
                                                         <li>
-                                                           <a href="product-category.php" style="color: #1274c0; font-weight: 700;letter-spacing: 0.5px;">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                                           <a href="{{route('cat', $category->slug)}}" style="color: #1274c0; font-weight: 700;letter-spacing: 0.5px;">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                                         </li>
                                                      </ul>
                                                   </li>

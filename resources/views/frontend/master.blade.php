@@ -403,28 +403,20 @@
 $(document).ready(function() {
 	getVariantPrice();
 });
-
+ 
 $('#option-choice-form input').on('change', function(){
             getVariantPrice();
+			
         });
 
-
-		
-
-        /*function getVariantPrice(){
+        function getVariantPrice(){
             if($('#option-choice-form input[name=quantity]').val() > 0 && checkAddToCartValidity()){
-                e.preventDefault();
-            $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-				$.ajax({
+                $.ajax({
                    type:"POST",
-                   url: '{{ url("product/variant_price") }}',
+                   url: '{{ route('products.variant_price') }}',
                    data: $('#option-choice-form').serializeArray(),
                    success: function(data){
-						console.log(data.price);
+						console.log(data);
                         $('.product-gallery-thumb .carousel-box').each(function (i) {
                             if($(this).data('variation') && data.variation == $(this).data('variation')){
                                 $('.product-gallery-thumb').slick('slickGoTo', i);
@@ -449,8 +441,8 @@ $('#option-choice-form input').on('change', function(){
                });
             }
         }
-		*/
-		function checkAddToCartValidity(){
+
+        function checkAddToCartValidity(){
             var names = {};
             $('#option-choice-form input:radio').each(function() { // find unique names
                   names[$(this).attr('name')] = true;
@@ -466,6 +458,7 @@ $('#option-choice-form input').on('change', function(){
 
             return false;
         }
+</script>
 		
 		function addToCart(){
             if(checkAddToCartValidity()) {
@@ -559,39 +552,6 @@ function show_chat_modal() {@
 
 
 
-jQuery(document).ready(function(){
-        jQuery('#selectcatbrand').change(function(){
-		let datas = "";
-            let cid=jQuery(this).val();
-            console.log(cid)
-			alert(cid);
-			// alert(brandid);
-            // $('#selecategory').empty();
-            $('#processing').removeClass("d-none");
-            $('#processing').addClass("d-block");
-            jQuery.ajax({
-                url:'{{url('getcategoryname')}}',
-                type:'post',
-                data:'companyid='+cid+'&_token={{csrf_token()}}',
-                success:function(result){
-                    // console.log(result);
-                    if (result == '') {
-                        datas += '<div class="col-sm-12"><div class="alert alert-danger">Not found. Please! select other company.</div></div>';
-                    } else{
-                        // console.log(result);
-                        $.each(result, function (i) {
-                            datas += '<div class="col-sm-4"><div class="form-check"><input type="checkbox" name="categoryselect" class="form-check-input" id="'+result[i].project_cat_id+'" onClick="webfinicChange(this)" value="'+result[i].project_cat_id+'"><label class="form-check-label" for="'+result[i].project_cat_id+'">'+result[i].project_category+'</label></div></div>';
-                            // console.log(result);
-                        });                    
-                    }
-                    jQuery('#categorylist').html(datas);
-                    jQuery('#selecategory').addClass("d-block");
-                    jQuery('#selecategory').removeClass("d-none");
-                    $('#processing').addClass("d-none");
-                }
-            });
-        });
-    });
 </script>
     </body>
      </html>
