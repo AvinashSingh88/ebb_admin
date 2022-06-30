@@ -36,8 +36,8 @@ $meta_description = get_setting('meta_description');
 
 @section('content')
 
-<section class="pageTitle">
-   <div class="container"> </div>
+<section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
+ 
 </section>
 <!--top banner end -->
 <div class="service-pros animated animate__fadeInUp wow product-categorys ulines-dps-para ">
@@ -652,219 +652,8 @@ $meta_description = get_setting('meta_description');
                         @endif
                      </div>
                    
-               <div class="wrapper">
-                  <style>
-                     
-.filter-price {
-  width: 220px;
-  border: 0;
-  padding: 0;
-  margin: 0; 
-}
-
-.price-title {
-  position: relative;
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.2em;
-  font-weight: 400;
-}
-
-.price-field {
-  position: relative;
-  width: 100%;
-  height: 36px;
-  box-sizing: border-box;
-  background: rgba(248, 247, 244, 0.2);
-  padding-top: 15px;
-  padding-left: 16px;
-  border-radius: 3px;
-}
-
-.price-field input[type=range] {
-    position: absolute;
-}
-
-/* Reset style for input range */
-
-.price-field input[type=range] {
-  width: 188px;
-  height: 2px; 
-  border: 0;
-  outline: 0;
-  box-sizing: border-box;
-  border-radius: 5px;
-  pointer-events: none;
-  -webkit-appearance: none;
-}
-
-.price-field input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-}
-
-.price-field input[type=range]:active,
-.price-field input[type=range]:focus {
-  outline: 0;
-}
-
-.price-field input[type=range]::-ms-track {
-  width: 188px;
-  height: 2px; 
-  border: 0;
-  outline: 0;
-  box-sizing: border-box;
-  border-radius: 5px;
-  pointer-events: none;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-  border-radius: 5px;
-}
-
-/* Style toddler input range */
-
-.price-field input[type=range]::-webkit-slider-thumb { 
-  /* WebKit/Blink */
-    position: relative;
-    -webkit-appearance: none;
-    margin: 0;
-    border: 0;
-    outline: 0;
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    margin-top: -4px;
-    background-color: #fff;
-    cursor: pointer;
-    cursor: pointer;
-    pointer-events: all;
-    z-index: 100;
-}
-
-.price-field input[type=range]::-moz-range-thumb { 
-  /* Firefox */
-  position: relative;
-  appearance: none;
-  margin: 0;
-  border: 0;
-  outline: 0;
-  border-radius: 50%;
-  height: 10px;
-  width: 10px;
-  margin-top: -5px;
-  background-color: #fff;
-  cursor: pointer;
-  cursor: pointer;
-  pointer-events: all;
-  z-index: 100;
-}
-
-.price-field input[type=range]::-ms-thumb  { 
-  /* IE */
-  position: relative;
-  appearance: none;
-  margin: 0;
-  border: 0;
-  outline: 0;
-  border-radius: 50%;
-  height: 10px;
-  width: 10px;
-  margin-top: -5px;
-  background-color: #fff;
-  cursor: pointer;
-  cursor: pointer;
-  pointer-events: all;
-  z-index: 100;
-}
-
-/* Style track input range */
-
-.price-field input[type=range]::-webkit-slider-runnable-track { 
-  /* WebKit/Blink */
-  width: 188px;
-  height: 2px;
-  cursor: pointer;
-  background: #fff;
-  border-radius: 5px;
-}
-
-.price-field input[type=range]::-moz-range-track { 
-  /* Firefox */
-  width: 188px;
-  height: 2px;
-  cursor: pointer;
-  background: #fff;
-  border-radius: 5px;
-}
-
-.price-field input[type=range]::-ms-track { 
-  /* IE */
-  width: 188px;
-  height: 2px;
-  cursor: pointer;
-  background: #fff;
-  border-radius: 5px;
-}
-
-/* Style for input value block */
-
-.price-wrap {
-  display: flex;
-  justify-content: center;
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.2em;
-  font-weight: 400;
-  margin-bottom: 7px;
-}
-
-.price-wrap-1, 
-.price-wrap-2 {
-  display: flex;
-}
-
-.price-title {
-  margin-right: 5px;
-  backgrund: #d58e32;
-}
-
-.price-wrap_line {
-  margin: 0 10px;
-}
-
-.price-wrap #one, 
-.price-wrap #two {
-  width: 30px;
-  text-align: right;
-  margin: 0;
-  padding: 0;
-  margin-right: 2px;
-  background:  0;
-  border: 0;
-  outline: 0;
-  color: #fff;
-  font-family: 'Karla', 'Arial', sans-serif;
-  font-size: 14px;
-  line-height: 1.2em;
-  font-weight: 400;
-}
-
-.price-wrap label {
-  text-align: right;
-}
-
-/* Style for active state input */
-    
-.price-field input[type=range]:hover::-webkit-slider-thumb {
-  box-shadow: 0 0 0 0.5px #fff;
-  transition-duration: 0.3s;
-}
-
-.price-field input[type=range]:active::-webkit-slider-thumb {
-  box-shadow: 0 0 0 0.5px #fff;
-  transition-duration: 0.3s;
-}
-                  </style>
+               <div class="wrapper prices-ranges">
+               
   <fieldset class="filter-price w-100 bg-secondary">
    
     <div class="price-field w-100">
@@ -952,7 +741,8 @@ $meta_description = get_setting('meta_description');
                            </h5>
                         </div>
                         <div class="col-md-4">
-                           <label class="mb-0 opacity-50">{{ translate('Sort by')}}</label>
+							<div class="d-flex">
+							      <label class="mb-0 opacity-50 w-20">{{ translate('Sort by')}}</label>
                            <select class="form-control form-control-sm aiz-selectpicker" name="sort_by"
                               onchange="filter()">
                               <option value="newest" @isset($sort_by) @if ($sort_by=='newest' ) selected @endif
@@ -964,9 +754,11 @@ $meta_description = get_setting('meta_description');
                               <option value="price-desc" @isset($sort_by) @if ($sort_by=='price-desc' ) selected @endif
                                  @endisset>{{ translate('Price high to low')}}</option>
                            </select>
+							</div>
+                     
                         </div>
-                        <input type="text" name="min_price" value="">
-                        <input type="text" name="max_price" value="">
+                        <!--<input type="text" name="min_price" value="">
+                        <input type="text" name="max_price" value="">-->
                      </div>
                   </div>
                </div>

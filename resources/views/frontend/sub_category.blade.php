@@ -35,6 +35,8 @@
                   <div class="col-md-3">
                      <div class="d-xl-block col-wd-2gdot5">
 					 <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
+						 
+<!--/#content-->
                 <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
      <?php 
   $page = basename($_SERVER['SCRIPT_NAME'],".php");
@@ -254,13 +256,11 @@
             </div>
          </div>
       </section>
-	   <style>
- .bannerslid .service-pros .bounceIn.animated h4::after{background:#fff;}
- </style>
- <section class="bannerslid mt-1 mb-1 animated animate__fadeInUp wow" style="background:#fff;padding:0px;">
+	 
+ <section class="bannerslid mt-1 mb-1 animated animate__fadeInUp wow p-0">
       <div class="container">
-         <div class="service-pros" style="padding:0px;margin:0px;">
-            <div class="head-cnt work-center text-center">
+         <div class="service-pros p-0 m-0">
+            <div class="head-cnt work-center text-center mb-0">
                <div class="bounceIn animated">
 
                   <h4>Exciting Offers & Discounts</h4>
@@ -316,14 +316,5 @@
 		 </div>
 		 </section>
 	  @endsection
-	 
-	 <script>
-		/*
-      $(document).ready(function() {
-			$(".tablskd").click(function () {
-				$(".tablskd").removeClass("active");
-				$(".tablskd").addClass("active");        
-			});
-		});
-      */
-	 </script>
+ 
+ 

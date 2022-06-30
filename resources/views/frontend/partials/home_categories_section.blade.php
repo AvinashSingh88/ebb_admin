@@ -29,7 +29,7 @@
                             <div class="item">
                                 <a href="{{ route('products.category', $subcat->slug) }}">
                                     <div class="trend-theme">
-                                        <img src="{{ uploaded_asset($subcat->icon) }}" alt="{{ $subcat->getTranslation('name') }}" />
+                                        <img src="{{ uploaded_asset($subcat->home_image) }}" alt="{{ $subcat->getTranslation('name') }}" />
                                     </div>
                                     <h3> {{ $subcat->getTranslation('name') }}</h3>
                                 </a>

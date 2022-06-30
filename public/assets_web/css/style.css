@@ -22203,7 +22203,6 @@ h3.section-title.section-title__sm.mb-0.pb-0.mt-3.font-size-18 {
     display: inline-block;
     height: 32px;
     border-radius: 5px;
-    float: left;
     margin-bottom: 20px;
     font-size: 16px;
 }
@@ -22238,20 +22237,281 @@ h3.section-title.section-title__sm.mb-0.pb-0.mt-3.font-size-18 {
     height: 136px;
 }
 
-.search-box .select-box select.form-control {
-    display: block;
-    border: 1px solid #a5a5a5;
-    border-radius: 30px 0px 0px 30px;
-    border-right: none;
-    color: #333;
-    font-weight: 600;
+.pros-section_prent .owl-theme .owl-nav {
+    display: none;
+}
+
+.text-truncate-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.bannerslid .service-pros .bounceIn.animated h4::after {
+    background: #fff;
+}
+
+.pros-section_prent {
+    padding-bottom: 20px;
+}
+
+label.mb-0.opacity-50.w-20 {
+    line-height: 35px;
+    margin-right: 15px;
+}
+
+.buddonjdk.discrptions_button h5.mask-overflow {
+    height: 175px;
+}
+
+select.form-control.form-control-sm.aiz-selectpicker {
+    height: 35px;
+    border-radius: 5px;
+    border-color: #1274c0;
+    padding: 0px 10px;
     font-size: 13px;
     letter-spacing: 0.5px;
-    height: 45px;
+}
+
+.products_list input.quantity.quantity-field.border-0.text-center.w-25 {
+    height: 35px;
+    width: 55px !important;
+    margin: 0px !important;
+}
+
+.products_list input.button-minus.border.rounded-circle.quantity-left-minus.icon-shape.icon-sm.mx-1 {
+    height: 35px;
+    margin-left: 0px !important;
+}
+
+.products_list input.button-plus.border.rounded-circle.quantity-right-plus.icon-shape.icon-sm.lh-0 {
+    height: 35px;
+    margin-right: 0px !important;
+}
+
+.discrptions_button.buddonjdk.active button#btn1 {
+    display: none;
+}
+
+.discrptions_button.buddonjdk.active .cart-add.products_list {
+    display: block;
 }
 
 /* update css end */
+/*price range*/
 
+.filter-price {
+    width: 220px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.price-title {
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+}
+
+.price-field {
+    position: relative;
+    width: 100%;
+    height: 36px;
+    box-sizing: border-box;
+    background: rgba(248, 247, 244, 0.2);
+    padding-top: 15px;
+    padding-left: 16px;
+    border-radius: 3px;
+}
+
+.price-field input[type=range] {
+    position: absolute;
+}
+
+/* Reset style for input range */
+
+.price-field input[type=range] {
+    width: 188px;
+    height: 2px;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    pointer-events: none;
+    -webkit-appearance: none;
+}
+
+.price-field input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+.price-field input[type=range]:active,
+.price-field input[type=range]:focus {
+    outline: 0;
+}
+
+.price-field input[type=range]::-ms-track {
+    width: 188px;
+    height: 2px;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    pointer-events: none;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    border-radius: 5px;
+}
+
+/* Style toddler input range */
+
+.price-field input[type=range]::-webkit-slider-thumb {
+    /* WebKit/Blink */
+    position: relative;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-top: -4px;
+    background-color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 100;
+}
+
+.price-field input[type=range]::-moz-range-thumb {
+    /* Firefox */
+    position: relative;
+    appearance: none;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-top: -5px;
+    background-color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 100;
+}
+
+.price-field input[type=range]::-ms-thumb {
+    /* IE */
+    position: relative;
+    appearance: none;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-top: -5px;
+    background-color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 100;
+}
+
+/* Style track input range */
+
+.price-field input[type=range]::-webkit-slider-runnable-track {
+    /* WebKit/Blink */
+    width: 188px;
+    height: 2px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.price-field input[type=range]::-moz-range-track {
+    /* Firefox */
+    width: 188px;
+    height: 2px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.price-field input[type=range]::-ms-track {
+    /* IE */
+    width: 188px;
+    height: 2px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 5px;
+}
+
+/* Style for input value block */
+
+.price-wrap {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+    margin-bottom: 7px;
+}
+
+.price-wrap-1,
+.price-wrap-2 {
+    display: flex;
+}
+
+.price-title {
+    margin-right: 5px;
+    background: #d58e32;
+}
+
+.price-wrap_line {
+    margin: 0 10px;
+}
+
+.price-wrap #one,
+.price-wrap #two {
+    width: 30px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    margin-right: 2px;
+    background: 0;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    font-family: 'Karla', 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+}
+
+.price-wrap label {
+    text-align: right;
+}
+
+/* Style for active state input */
+
+.price-field input[type=range]:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 0 0.5px #fff;
+    transition-duration: 0.3s;
+}
+
+.price-field input[type=range]:active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 0.5px #fff;
+    transition-duration: 0.3s;
+}
+
+/*price ranges end*/
 @media (max-width: 1200px) and (min-width: 992px) {
     .position-absolutedk .nav>li>a {
         margin-left: 5px;

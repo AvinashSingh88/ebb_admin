@@ -1,7 +1,7 @@
-<section class="similar-pros-section">
-    <div class="container">
+<section class="similar-pros-section mt-0">
+    <div class="pros-section_prent">
 	<!-- Product relative Carousel -->
-            <div class="headsections111">
+            <div class="headsections111 pt-0">
             <div class="container">
 			 <div class="service-pros" style="padding:0px;margin:0px;">
 		<div class="head-cnt work-center text-center">
