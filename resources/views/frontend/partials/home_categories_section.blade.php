@@ -19,12 +19,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="owl-carousel owl-theme owl-carousel_sliders">
+    
 
                         @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
                         @php
                             $subcat = \App\Models\Category::find($first_level_id);
                         @endphp
-                            <div class="col-md-5c">
+                            <div class="item">
                                 <a href="{{ route('products.category', $subcat->slug) }}">
                                     <div class="trend-theme">
                                         <img src="{{ uploaded_asset($subcat->icon) }}" alt="{{ $subcat->getTranslation('name') }}" />
@@ -33,7 +35,7 @@
                                 </a>
                             </div>
                         @endforeach
-
+                        </div>
                     </div>
                 </div>
             </div>

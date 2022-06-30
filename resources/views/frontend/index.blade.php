@@ -30,7 +30,11 @@
                      <span class="febslide">30000+ <b>Products Online</b></span>
                      <span class="spanls">12000+ <b>Products In Store</b></span>
                   </h2>
-
+                  <div class="btn-two btn-center-two">
+                                <a href="contact_us.php" class="btn-wht-one" tabindex="0">Schedule a call</a>
+                                <a href="javascript:void(0);" class="btn-wht-two" tabindex="0">
+                                    Watch video</a>
+                  </div>
                </div>
             </div>
          </div>
@@ -57,7 +61,11 @@
                      <span class="spanls spanlsa "><img src="{{static_asset('assets_web/img/price-tag.png')}}" alt="">
                         <b> Wholesale Price</b></span>
                   </h2>
-
+                  <div class="btn-two btn-center-two">
+                                <a href="contact_us.php" class="btn-wht-one" tabindex="0">Schedule a call</a>
+                                <a href="javascript:void(0);" class="btn-wht-two" tabindex="0">
+                                    Watch video</a>
+                  </div>
                </div>
             </div>
          </div>
@@ -84,7 +92,11 @@
                      <span class="febslideaa"><i class="fa-solid fa-indian-rupee-sign"></i> 5000 Off*<b>On Kitchen
                            Appliances </b></span>
                   </h2>
-
+                  <div class="btn-two btn-center-two">
+                                <a href="contact_us.php" class="btn-wht-one" tabindex="0">Schedule a call</a>
+                                <a href="javascript:void(0);" class="btn-wht-two" tabindex="0">
+                                    Watch video</a>
+                  </div>
                </div>
             </div>
          </div>
@@ -95,11 +107,12 @@
       <a class="button secondary play"><i class="fas fa-play"></i></a><a class="button secondary stop"><i
             class="fa fa-pause"></i></a>
    </div>
-</div>
+</div>  
 
 <div class="services_sectionssd">
 
    <!-- Service section start  -->
+  
    <section class="product-csteogry">
       <div class="trend servoce_dops service_sections45 pb-0">
          <div class="container">
@@ -117,8 +130,8 @@
                      </div>
                   </div>
                </div>
-
-               <div class="col-md-5c">
+               <div class="owl-carousel owl-theme owl-carousel_sliders">
+               <div class="item">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser1a.jpg')}}" alt="" />
@@ -126,7 +139,7 @@
                      <h3>End to End Consultants</h3>
                   </a>
                </div>
-               <div class="col-md-5c">
+               <div class="item">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser2.jpg')}}" alt="" />
@@ -134,7 +147,7 @@
                      <h3>Architect</h3>
                   </a>
                </div>
-               <div class="col-md-5c">
+               <div class="item">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser3.jpg')}}" alt="" />
@@ -142,7 +155,7 @@
                      <h3>Contractor</h3>
                   </a>
                </div>
-               <div class="col-md-5c">
+               <div class="item">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser4.jpg')}}" alt="" />
@@ -150,14 +163,14 @@
                      <h3>Interior design</h3>
                   </a>
                </div>
-               <div class="col-md-5c">
+               <div class="item">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser5.jpg')}}" alt="" />
                      </div>
                      <h3>Vastu</h3>
                   </a>
-               </div>
+               </div>    </div>
             </div>
          </div>
       </div>
@@ -728,11 +741,7 @@
             <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
          </a>
       </div>
-      <div class="container">
-         <a href="#1">
-            <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
-         </a>
-      </div>
+   
    </div>
    <!-- banner section 2 end-->
 
@@ -2184,7 +2193,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service12.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service12.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog1</h4>
                                     <div class="card-text">
@@ -2197,7 +2206,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service13.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service13.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog2</h4>
                                     <div class="card-text">
@@ -2210,7 +2219,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service13.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service13.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog3</h4>
                                     <div class="card-text">
@@ -2224,7 +2233,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service14.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service14.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog4</h4>
                                     <div class="card-text">
@@ -2237,7 +2246,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service15.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service15.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog5</h4>
                                     <div class="card-text">
@@ -2251,7 +2260,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service1.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service1.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog6</h4>
                                     <div class="card-text">
@@ -2265,7 +2274,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service2.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service2.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog7</h4>
                                     <div class="card-text">
@@ -2279,7 +2288,7 @@
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
                                  <img class="card-img-top" alt=""
-                                    src="./{{static_asset('assets_web/img/service3.jpg')}}" />
+                                    src="{{static_asset('assets_web/img/blog/service3.jpg')}}" />
                                  <div class="card-block">
                                     <h4 class="card-title">Blog8</h4>
                                     <div class="card-text">
