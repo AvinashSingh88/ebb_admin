@@ -38,7 +38,9 @@
 		z-index: -1;
 		opacity: 0;
 	}
-
+	.opacity{
+		opacity: 0;
+	}
 	.aiz-megabox .aiz-megabox-elem {
 		border: 1px solid #e2e5ec;
 		border-radius: 0.25rem;
@@ -89,112 +91,180 @@
                         <div class="product-box" style=" margin-bottom: 0px;">
                            <!--<div class="beachs">10% Off</div>-->
                            <div class="zoom-left">
-                              <img id="zoom_03" src="img/cement1.jpg" data-zoom-image="img/cement1.jpg"/>
+						   @php $photos = explode(',', $detailedProduct->photos); @endphp
+						   @foreach ($photos as $key => $photo)
+                              <img id="zoom_03" src="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}"/>
+							  @endforeach
                               <div class="clearfix"></div>
                               <div id="gallery_01">
-                                 <a href="javascript:void(0);" class="elevatezoom-gallery active" data-update="" data-image="img/cement1.jpg" data-zoom-image="img/cement1.jpg">
-                                 <img src="img/cement1.jpg" width="100"  /></a>
-                                 
+							  @foreach ($detailedProduct->stocks as $key => $stock)
+
+										@if($stock->image != null)
+                                 <a href="javascript:void(0);" class="elevatezoom-gallery active" 
+								 data-update="" data-image="{{ uploaded_asset($stock->image) }}" data-zoom-image="{{ uploaded_asset($stock->image) }}">
+                                 <img src="{{ uploaded_asset($stock->image) }}" width="100"  /></a>
+                                 @endif
+
+									@endforeach 
                               </div>
                            </div>
                         </div>
-						 <!---
-                           <div class="tab-finish">
-                            <p class="titleFinish">Product Size</p>
-							
-                              <ul class="finish-links   firstOption">
-                                 <li class="finish-btn King_Sizeopt">
-                                    <a href="#1">
-                                       <p class="finishText"><img src="img/cement1.jpg" title="" alt=""></p>
-                                       <p class="finish-name"><span> 20mm .75inch</span><small class="finish-price ">Rs.167</small></p>
-                                    </a>
-                                 </li>
-                                 <li class="finish-btn Queen_Sizeopt active">
-                                    <a href="#1">
-                                       <p class="finishText"><img src="img/cement1.jpg" title="" alt=""></p>
-                                       <p class="finish-name"><span> 25mm 1inch</span><small class="finish-price ">Rs.262</small></p>
-                                    </a>
-                                 </li>
-                                 <li class="finish-btn Singleopt">
-                                    <a href="#1">
-                                       <p class="finishText"><img src="img/cement1.jpg" title="" alt=""></p>
-                                       <p class="finish-name"><span> 15mm .50inch</span><small class="finish-price ">Rs.152</small></p>
-                                    </a>
-                                 </li>
-                                 <li class="finish-btn Singleopt">
-                                    <a href="#1">
-                                       <p class="finishText"><img src="img/cement1.jpg" title="" alt=""></p>
-                                       <p class="finish-name"><span> 20mm .75inch</span><small class="finish-price ">Rs.99</small></p>
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                           <div class="tab-finish size">
-                              <p class="titleFinish Finisher ">
-                                 Dimensions <small>(Inches)</small> 
-                              </p>
-                              <ul class="final_size  secondOption">
-                                 <li class=" King_Size-72_x_72-5_inch 72_x_72 King_Size-5_inch " data-size="72_x_72">
-                                    <a href="#1">
-                                       <p class="finishText mattressSize">
-                                          72" L x 72" W
-                                       </p>
-                                    </a>
-                                 </li>
-                                 <li class=" King_Size-72_x_72-6_inch 72_x_72 King_Size-6_inch " data-size="72_x_72">
-                                    <a href="#1">
-                                       <p class="finishText mattressSize">
-                                          72" L x 72" W
-                                       </p>
-                                    </a>
-                                 </li>
-                                 <li class=" King_Size-72_x_72-8_inch 72_x_72 King_Size-8_inch " data-size="72_x_72">
-                                    <a href="#1">
-                                       <p class="finishText mattressSize">
-                                          72" L x 72" W
-                                       </p>
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                           <div class="tab-finish size">
-                              <p class="titleFinish  Finisher">Height <small>(Inches)</small></p>
-                              <ul class="final_size lastOption">
-                                 <li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="5_inch">
-                                    <a href="#1">
-                                       <p class="finishText"><span>5 feet </span><small class="pricebox">Rs 10,099</small></p>
-                                    </a>
-                                 </li>
-                                 <li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="6_inch">
-                                    <a href="#1">
-                                       <p class="finishText"><span>6 feet </span><small class="pricebox">Rs 13,589</small></p>
-                                    </a>
-                                 </li>
-                                 <li class=" King_Size-72_x_72" data-finish="King_Size" data-size="72_x_72" data-storage="8_inch">
-                                    <a href="#1">
-                                       <p class="finishText"><span>8 feet </span><small class="pricebox">Rs 15,699</small></p>
-                                    </a>
-                                 </li>
-                                 <li class="create-set"><span class="setslink custom-scroll-bottom" data-href="#customSet" style="display:none">Create Your <br>own Set</span> </li>
-                              </ul>
-                           </div>
-						-->
+						<!--Last code start--->
 						
-							
-						
-						
-                     </div>
+							<form id="option-choice-form">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
+
+                                @if ($detailedProduct->choice_options != null)
+                                    @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
+								<div class="tab-finish">
+                                    <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <p class="ucfirst">{{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:</p>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="aiz-radio-inline">
+                                                @foreach ($choice->values as $key => $value)
+                                                <label class="aiz-megabox pl-0 mr-2">
+                                                    <input class="opacity"
+                                                        type="radio"
+                                                        name="attribute_id_{{ $choice->attribute_id }}"
+                                                        value="{{ $value }}"
+                                                        @if($key == 0) checked @endif
+                                                    >
+                                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                                        {{ $value }}
+                                                    </span>
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+								</div>
+                                    @endforeach
+                                @endif
+
+                                @if (count(json_decode($detailedProduct->colors)) > 0)
+                                    <div class="row no-gutters">
+                                        <div class="col-sm-2">
+                                            <div class="opacity-50 my-2">{{ translate('Color')}}:</div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="aiz-radio-inline">
+                                                @foreach (json_decode($detailedProduct->colors) as $key => $color)
+                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
+                                                    <input class="opacity"
+                                                        type="radio"
+                                                        name="color"
+                                                        value="{{ \App\Models\Color::where('code', $color)->first()->name }}"
+                                                        @if($key == 0) checked @endif
+                                                    >
+                                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                                                        <span class="size-30px d-inline-block rounded" style="background: {{ $color }};"></span>
+                                                    </span>
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                @endif
+
+                                <!-- Quantity + Add to cart -->
+                                <div class="row no-gutters d-none">
+                                    <div class="col-sm-2">
+                                        <div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="product-quantity d-flex align-items-center">
+                                            <div class="row no-gutters align-items-center aiz-plus-minus mr-3" style="width: 130px;">
+                                                <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity" disabled="">
+                                                    <i class="las la-minus"></i>
+                                                </button>
+                                                <input type="number" class="opacity" name="quantity" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="{{ $detailedProduct->min_qty }}" min="{{ $detailedProduct->min_qty }}" max="10">
+                                                <button class="btn  col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity">
+                                                    <i class="las la-plus"></i>
+                                                </button>
+                                            </div>
+                                            @php
+                                                $qty = 0;
+                                                foreach ($detailedProduct->stocks as $key => $stock) {
+                                                    $qty += $stock->qty;
+                                                }
+                                            @endphp
+                                            <div class="avialable-amount opacity-60">
+                                                @if($detailedProduct->stock_visibility_state == 'quantity')
+                                                (<span id="available-quantity">{{ $qty }}</span> {{ translate('available')}})
+                                                @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
+                                                    (<span id="available-quantity">{{ translate('In Stock') }}</span>)
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                            </form>
+							<!--Last code end--->
+					</div>
                      <div class="col-md-6">
                         <div class="product-box1">
                            <div class="discrptions">
                               <h5>{{ $detailedProduct->getTranslation('name') }} </h5>
                               <div class="pricebox">
                                  <span class="title">
-                                    Made In India <img src="{{static_asset('img/in.jpg')}}" style="width: 15px;margin-top: -3px;margin-left: 5px;" alt="">
-                                    <span class="clearfix"></span>
-                                    <span class="price">₹215</span>
-                                    <span class="cutprice">₹250</span>
-                                    <span class="offer" style="border:none">You Save  <i class="fa fa-inr"></i> 35  ( 14% ) </span>
+                                    Made In India <img src="{{static_asset('assets_web/img/in.jpg')}}" style="width: 15px;margin-top: -3px;margin-left: 5px;" alt="">
+                                    <div class="row align-items-center">
+											<div class="col-auto">
+												<span class="mr-2 opacity-50">{{ translate('Sold by')}}: </span>
+												@if ($detailedProduct->added_by == 'seller' &&
+												get_setting('vendor_system_activation') == 1)
+												<a href="" class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
+												@else
+												{{ translate('Inhouse product') }}
+												@endif
+											</div>
+
+											@if (get_setting('conversation_system') == 1)
+											<div class="col-auto">
+												<button class="btn btn-sm btn-soft-primary"
+													onclick="show_chat_modal()">{{ translate('Message
+													Seller')}}</button>
+											</div>
+											@endif
+
+											@if ($detailedProduct->brand != null)
+											<div class="col-auto">
+												<a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
+													<img src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
+														alt="{{ $detailedProduct->brand->getTranslation('name') }}"
+														height="50">
+												</a>
+											</div>
+											@endif
+										</div>
+									<span class="clearfix"></span>
+									@if(home_price($detailedProduct) != home_discounted_price($detailedProduct)) 
+											<span class="price">
+												{{ home_discounted_price($detailedProduct) }}
+											</span> 
+											{{-- @if($detailedProduct->unit != null) 
+												<span class="opacity-70">/{{$detailedProduct->getTranslation('unit') }}</span>
+										 	@endif  --}}
+                                  <span class="clearfix"></span>
+											<span class="cutprice"> 
+												{{ home_price($detailedProduct) }}
+												{{-- @if($detailedProduct->unit != null)
+													 <span>/{{ $detailedProduct->getTranslation('unit') }}</span>  
+												@endif --}}
+											</span>
+										@endif
+										<span class="clearfix"></span>
+                                  <span id="show_total_price" class="price d-none">Total Price: <span id="total_price" class=""></span></span>
+								  <span class="clearfix"></span>
+                                    {{-- <span class="offer" style="border:none">You Save  <i class="fa fa-inr"></i> 35  ( 14% ) </span> --}}
                                     <span class="title">Inclusive of all taxes</span>
                                     <p>CPVC SDR 11 CPVC Pipes 40 mm 1.50 <a href="#descriptions1">More Details</a> </p>
                                  </span>
@@ -273,7 +343,7 @@
 				</article>
 
 		</div>
-						    <div class="backtabs-dp_servicespros2">
+		{{--<div class="backtabs-dp_servicespros2">
                    
 
 						  <div class="optionbox">
@@ -331,121 +401,17 @@
                            <hr/>
                         
                         
-                     </div>
+		</div>--}}
                             
-							<!--Last code start--->
-							<form id="option-choice-form">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
-
-                                @if ($detailedProduct->choice_options != null)
-                                    @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
-
-                                    <div class="row no-gutters">
-                                        <div class="col-sm-2">
-                                            <div class="opacity-50 my-2">{{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:</div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <div class="aiz-radio-inline">
-                                                @foreach ($choice->values as $key => $value)
-                                                <label class="aiz-megabox pl-0 mr-2">
-                                                    <input
-                                                        type="radio"
-                                                        name="attribute_id_{{ $choice->attribute_id }}"
-                                                        value="{{ $value }}"
-                                                        @if($key == 0) checked @endif
-                                                    >
-                                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                                        {{ $value }}
-                                                    </span>
-                                                </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    @endforeach
-                                @endif
-
-                                @if (count(json_decode($detailedProduct->colors)) > 0)
-                                    <div class="row no-gutters">
-                                        <div class="col-sm-2">
-                                            <div class="opacity-50 my-2">{{ translate('Color')}}:</div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <div class="aiz-radio-inline">
-                                                @foreach (json_decode($detailedProduct->colors) as $key => $color)
-                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
-                                                    <input
-                                                        type="radio"
-                                                        name="color"
-                                                        value="{{ \App\Models\Color::where('code', $color)->first()->name }}"
-                                                        @if($key == 0) checked @endif
-                                                    >
-                                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                                        <span class="size-30px d-inline-block rounded" style="background: {{ $color }};"></span>
-                                                    </span>
-                                                </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <hr>
-                                @endif
-
-                                <!-- Quantity + Add to cart -->
-                                <div class="row no-gutters">
-                                    <div class="col-sm-2">
-                                        <div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="product-quantity d-flex align-items-center">
-                                            <div class="row no-gutters align-items-center aiz-plus-minus mr-3" style="width: 130px;">
-                                                <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity" disabled="">
-                                                    <i class="las la-minus"></i>
-                                                </button>
-                                                <input type="number" name="quantity" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="{{ $detailedProduct->min_qty }}" min="{{ $detailedProduct->min_qty }}" max="10">
-                                                <button class="btn  col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity">
-                                                    <i class="las la-plus"></i>
-                                                </button>
-                                            </div>
-                                            @php
-                                                $qty = 0;
-                                                foreach ($detailedProduct->stocks as $key => $stock) {
-                                                    $qty += $stock->qty;
-                                                }
-                                            @endphp
-                                            <div class="avialable-amount opacity-60">
-                                                @if($detailedProduct->stock_visibility_state == 'quantity')
-                                                (<span id="available-quantity">{{ $qty }}</span> {{ translate('available')}})
-                                                @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
-                                                    (<span id="available-quantity">{{ translate('In Stock') }}</span>)
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr>
-
-                                <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
-                                    <div class="col-sm-2">
-                                        <div class="opacity-50 my-2">{{ translate('Total Price')}}:</div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="product-price">
-                                            <strong id="chosen_price" class="h4 fw-600 text-primary">
-
-                                            </strong>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form>
-							<!--Last code end--->
 							
+							@php
+								$qty = 0;
+								foreach ($detailedProduct->stocks as $key => $stock) {
+									$qty += $stock->qty;
+								}
+							@endphp
                            <div class="discrptions_button">
+							
                               <div class="input-group quantity_input">
                                  <span class="input-group-btn">
                                  <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
@@ -460,10 +426,20 @@
                                  </span>
                               </div>
                               <h5><a href="#1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</a></h5>
+							  
                               <!--<h6><a href="quote.php">Get Quote</a></h6>-->
                               <h6><a href="bulk-order.php">Bulk Order</a></h6>
                            </div>
-                           <h4>Highlights</h4>
+						    
+						   <h4 id="available-quantity">
+							@if($detailedProduct->stock_visibility_state == 'quantity')
+							 <span id="available-quantity">{{ $qty }} </span> 
+							 {{ translate('available')}}
+							@elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
+							{{ translate('In Stock') }}
+							@endif
+							</h4>
+                           {{-- <h4>Highlights</h4>
                            <ul class="ulproducts ulproducts4">
                               <li><b>Category </b>&nbsp; :&nbsp; Plumbing</li>
                               <li><b>Sub Category </b>&nbsp; :&nbsp; Pipes</li>
@@ -471,7 +447,7 @@
                               <li><b>Brand </b>&nbsp; :&nbsp; ISI</li>
                               <li><b>HSN </b>&nbsp; :&nbsp; 8544</li>
                               <li><b>SKU </b>&nbsp; :&nbsp; MK002302</li>
-                           </ul>
+                           </ul> --}}
                         </div>
                      </div>
                      <div  id="descriptions1"></div>
@@ -489,160 +465,39 @@
                            <li class="ukine ukine1b active4">
                               <div class="tab-description">
                                  <h3>Product Description</h3>
-                                 <p>CPVC SDR 11 CPVC Pipes 40 mm 1.50inch  </p>
+                                 <p><?php echo $detailedProduct->getTranslation('description'); ?>  </p>
                               </div>
                            </li>
                            <li class="ukine ukine2b">
                               <div class="tab-description">
                                  <h3>Product Overview</h3>
                                  <div class="tab-description">
-                                    <table class="table table-responsive table-detail">
-                                       <tbody>
-                                          <tr>
-                                             <td>Product</td>
-                                             <td>CPVC SDR 11 CPVC Pipes 40 mm 1.50inch</td>
-                                          </tr>
-                                          <tr>
-                                             <td>Category</td>
-                                             <td>Plumbing</td>
-                                          </tr>
-                                          <tr>
-                                             <td>Sub Category</td>
-                                             <td>Pipes</td>
-                                          </tr>
-                                          <tr>
-                                             <td>Third Category</td>
-                                             <td>CPVC Pipes</td>
-                                          </tr>
-                                          <tr>
-                                             <td>Brand</td>
-                                             <td>Star</td>
-                                          </tr>
-                                          <tr>
-                                             <td>SKU</td>
-                                             <td>MK005404</td>
-                                          </tr>
-                                          <tr>
-                                             <td>HSN</td>
-                                             <td>7307</td>
-                                          </tr>
-                                          <tr>
-                                             <td>Made in</td>
-                                             <td>INDIA <img src="img/in.jpg" style="width: 20px;margin-top: -3px;margin-left: 5px;"></td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
+                                    {{$detailedProduct->overview}}
                                  </div>
                               </div>
                            </li>
                            <li class="ukine ukine3b">
                               <div class="tab-description">
                                  <h3>Warranty Details</h3>
-                                 <p>All products from Ebuild Bazaar e-commerce private ltd contains warranty provided by the manufacturer. </p>
+                                 <p><div class="tab-description">
+                                    <?php=$detailedProduct->overview ?> 
+                                 </p>
                               </div>
                            </li>
                         </ul>
                      </div>
                   </div>
-				  <div class="container1 cmpad youmaylike">
-         <div class="row">
-         	<div class="col-md-12">
-         		<div class="service-pros" style="padding:0px;margin:0px;">
-         <div class="head-cnt work-center text-center">
-                  <div class="bounceIn animated">
-                 
-                     <h4>You may Like</h4>
-            <hr class="underlinskd">
-                     
-                  </div>
-               </div>
-               </div>
-               <div class="fullline"><span></span></div>
-          	    <div>
-              	    <div class="coer" style="padding:0">
-              	        <div id="youmaylike">
-                                                  		 <div class="thiscatbox">
-                  			      	<a href="#1" class="pro-box">
-                  	        			<img src="img/ipcon1.svg" data-src="img/ipcon1.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Housing Wire <span>Min 30% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	                    		 <div class="thiscatbox">
-                  			      	<a href="javascript:void(0);" class="pro-box">
-                  	        			<img src="img/ipcon2.svg" data-src="img/ipcon2.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Industrial Wires <span>Min 40% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	                    		 <div class="thiscatbox">
-                  			      	<a href="javascript:void(0);" class="pro-box">
-                  	        			<img src="img/ipcon3.svg" data-src="img/ipcon3.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Co axial Cable <span>Min 50% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	                    		 <div class="thiscatbox">
-                  			      	<a href="javascript:void(0);" class="pro-box">
-                  	        			<img src="img/ipcon4.svg" data-src="img/ipcon4.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">LAN Cables <span>Min 30% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	                    		 <div class="thiscatbox">
-                  			      	<a href="javascript:void(0);" class="pro-box">
-                  	        			<img src="img/ipcon5.svg" data-src="img/ipcon5.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Telephone Cables <span>Min 40% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-								    		 <div class="thiscatbox">
-                  			      	<a href="#1" class="pro-box">
-                  	        			<img src="img/ipcon1.svg" data-src="img/ipcon1.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Housing Wire <span>Min 30% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	                    		 <div class="thiscatbox">
-                  			      	<a href="javascript:void(0);" class="pro-box">
-                  	        			<img src="img/ipcon6.svg" data-src="img/ipcon6.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">CCTV Cables <span>Min 50% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	                    		 <div class="thiscatbox">
-                  			      	<a href="javascript:void(0);" class="pro-box">
-                  	        			<img src="img/ipcon7.svg" data-src="img/ipcon7.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Speaker Cable <span>Min 30% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	                    		 <div class="thiscatbox">
-                  			      	<a href="#1" class="pro-box">
-                  	        			<img src="img/ipcon8.svg" data-src="img/ipcon8.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Flexible Cable <span>Min 40% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-								 		 <div class="thiscatbox">
-                  			      	<a href="javascript:void(0);" class="pro-box">
-                  	        			<img src="img/ipcon2.svg" data-src="img/ipcon2.svg" class="catloader loadimg pro-img" alt="#">
-                  	        			<p class="name ">Industrial Wires <span>Min 40% Off</span></p>
-                  	        		    <div class="clearfix"></div>
-                  	        		</a>
-                          		 </div>
-                          	            		</div>
-                  	</div> 
-                  </div>
-           </div>
-         </div>
-         </div>
+				  
 				
                </div>
                <div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
                   <div class="md-hide">
+                     @php
+					$start_date = date('d-M-Y');
+					$deliver_date = date("d-M-Y", strtotime("$start_date +$detailedProduct->est_shipping_days days"));
+					@endphp
                      <div class="deliverybox">
-                        <span class="title"><i class="fa fa-map-marker"></i>Delivery by 24th April</span>
+                        <span class="title"><i class="fa fa-map-marker"></i>Delivery by {{$deliver_date}}</span>
                         <form>
                            <input type="number" name="pincode" value="670002" placeholder="Enter Pincode">
                            <a href="javascript:void(0);" class="change">Change</a>
@@ -671,71 +526,26 @@
                         <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Complementary Products</h3>
                      </div>
                      <ul class="list-unstyled">
+                        @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
                         <li class="mb-4">
                            <div class="row">
                               <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/prod1.jpg" alt="Image Description">
+                                 <a href="{{ route('product', $related_product->slug) }}" class="d-block width-75">
+                                 <img class="img-fluid" src="{{ uploaded_asset($related_product->thumbnail_img) }}" alt="{{ $related_product->getTranslation('name') }}">
                                  </a>
                               </div>
                               <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="javascript:void(0);">OCEAN UPVC Pipe Fittings, Hydraulic Pipe</a></h3>
+                                 <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="{{ route('product', $related_product->slug) }}">{{ $related_product->getTranslation('name') }}</a></h3>
                               </div>
                            </div>
                         </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/prod2.jpg" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="javascript:void(0);">PP Water Fittings</a></h3>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/prod3.png" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="javascript:void(0);"> MDPE Pipe Fitting, Agriculture</a></h3>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/prod4.png" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="javascript:void(0);">Rain Water Pipes Fittings</a></h3>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/prod5.jpg" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a href="javascript:void(0);"> PVC S Trap, Packaging Type: Packet</a></h3>
-                              </div>
-                           </div>
-                        </li>
+                        @endforeach
+                        
                      </ul>
                   </div>
                   <div class="form_rights_inner p-20 animated fadeIn">
                      <a class="dcompinfo_anchor" href="#1">
-                        <div class="dcomp_imag"><img src="img/cement1.jpg" class="dcomp_imgbox " alt="Ebuild Bazaar">
+                        <div class="dcomp_imag"><img src="{{static_asset('assets_web/img/cement1.jpg')}}" class="dcomp_imgbox " alt="Ebuild Bazaar">
                            <span class="dcomp_thumb_icon ebuild_icon"></span>
                         </div>
                      </a>
@@ -749,7 +559,7 @@
                         <div class="dcomp_loct mt-15">
                            <span class="details_locat_icon ebuild_icon"></span>
                            <span class="details_locat_cont font11 fw600 color414">
-                            <img src="img/in.jpg" alt="alt" style="    border-radius: 50px;  width: 25px;  height: 25px;">
+                            <img src="{{static_asset('assets_web/img/in.jpg')}}" alt="alt" style="    border-radius: 50px;  width: 25px;  height: 25px;">
                               IND
                            </span>
                            <span class="font15 fw400 color414">Noida</span>
@@ -827,125 +637,64 @@
             </div>
          </div>
       </div>
-	  <section class="similar-pros-section">
-	   <div class="container">
-	   <div class="mb-8 similar-pros">
-                    <div class="service-pros" style="padding:0px;margin:0px;">
+	  
+ <!-- Product relative Carousel -->
+            <div class="headsections111">
+            <div class="container">
+			 <div class="service-pros" style="padding:0px;margin:0px;">
 		<div class="head-cnt work-center text-center">
             <div class="bounceIn animated">
            
-               <h4>Similar Relative</h4>
+               <h4>{{ translate('Related products')}}</h4>
 			   <hr class="underlinskd">
                
             </div>
          </div>
          </div>
-                     <ul class="list-unstyled owl-carousel owl-theme trending021">
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/sim1.jpg" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">Finolex Selfit Pipe</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/sim2.jpg" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">HDPE Pipes</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/sim3.jpg" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">PVC Elbow</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/sim4.jpg" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">CPVC SDR</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="mb-4">
-                           <div class="row">
-                              <div class="col-auto col-md-4">
-                                 <a href="javascript:void(0);" class="d-block width-75">
-                                 <img class="img-fluid" src="img/sim5.jpg" alt="Image Description">
-                                 </a>
-                              </div>
-                              <div class="col col-md-8">
-                                 <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="javascript:void(0);">Heavy Pressure</a></h3>
-                                 <div class="row">
-                                    <div class="font-weight-bold col-md-7"> 
-                                       <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                                    </div>
-                                    <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                       <p>35% off</p>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                     </ul>
+              
+               <div class="owl-carousel owl-theme trending0">
+                @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)  
+				  <div class="item">
+                     <div class="product-box">
+                        <div class="beachs">{{$related_product->discount}}% Off</div>
+                        <img src="{{ uploaded_asset($related_product->thumbnail_img) }}" alt="{{ $related_product->getTranslation('name') }}">
+                        <div class="discrptions">
+                           <h5>{{ $related_product->getTranslation('name') }} </h5>
+                           <h6>{{ home_discounted_base_price($related_product) }}</h6>
+                        </div>
+                        <div class="discrptions_button">
+                           <h5><a href="{{ route('product', $related_product->slug) }}">View Detail</a></h5>
+                           <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
+                        </div>
+                     </div>
                   </div>
-                  </div>
-	  </section>
-
-
+                 @endforeach      
+               </div>
+            </div> 
+			</div>
+@include('frontend.partials.youmaylike')
+	  
+	  	  	 <section class="banner-brand_product">
+		 <div class="container">
+		 <div class="service-pros" style="padding:0px;margin:0px;">
+		<div class="head-cnt work-center text-center" style="    margin: 0px; height: 0px;">
+            <div class="bounceIn animated">
+            <h4>Why Buy Product From eBuildBazaar?</h4>
+			   </div>
+         </div>
+         </div>
+ 
+			  <div class="brandss1">
+			   <div class="row">
+			   <div class="col-md-2"><a href="#1"><img src="img/iconon1.png" alt=""> <h3>All Under One roof</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="img/iconon2.png" alt=""><h3>Widest Product Range</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="img/iconon3.png" alt=""><h3>On Time Delivery</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="img/iconon4.png" alt=""><h3>Product Knowledge Support</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="img/iconon5.png" alt=""><h3>Genuine Products</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="img/iconon6.png" alt=""><h3>365 Days Wholesale Rates</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   </div>
+			   </div>
+		 </div>
+		 </section>
 @endsection
 

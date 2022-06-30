@@ -260,140 +260,81 @@
    </div>
    <!-- The Best Premium Manufacturers end -->
 
-   <!-- Product relative Carousel -->
-   <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium manufacturers</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-
-            </div>
-         </div>
-         <div class="boxoodod">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="second-product-box">
-                     <div class="secitonkdknvhh">
-                        <h6>Customized products </h6>
-                        <p>Partner with one of 60,000 experienced manufacturers with design & production</p>
-                     </div>
-                     <div class="climprosk"
-                        style="background-image:url({{static_asset('assets_web/img/bankjkgi.jpg')}};"></div>
-
-                     <div class="nkekoloiond">
-                        <div class="product-box">
-                           <h6> <span>Source from Factories</span></h6>
-
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/images1.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/images2.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/images3.png')}}" alt="">
-
-                              </li>
-
-                           </ul>
-
-
-
-                        </div>
-                        <div class="product-box">
-                           <h6> <span>Top-ranking suppliers</span></h6>
-
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/psldid1.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/psldid2.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/psldid3.png')}}" alt="">
-
-                              </li>
-
-                           </ul>
-
-
-
-                        </div>
-                     </div>
-
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="second-product-box">
-                     <div class="secitonkdknvhh">
-                        <h6>Ready-to-ship products</h6>
-                        <p>Source from 15 million products that are ready to ship, and leave the facility within 15
-                           days.</p>
-                     </div>
-                     <div class="climprosk"
-                        style="background-image:url({{static_asset('assets_web/img/dkdjksd.jpg')}};    background-position: center center;">
-                     </div>
-
-                     <div class="nkekoloiond">
-                        <div class="product-box">
-                           <h6> <span>Fast Dispatch</span></h6>
-
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}" alt="">
-
-                              </li>
-
-                           </ul>
-
-
-
-                        </div>
-                        <div class="product-box">
-                           <h6> <span>Weekly Deals</span></h6>
-
-                           <ul class="image-productsll">
-                              <li> <img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt="">
-
-                              </li>
-                              <li> <img src="{{static_asset('assets_web/img/index0/Doors.png')}}" alt="">
-
-                              </li>
-
-                           </ul>
-
-
-
-                        </div>
-                     </div>
-
-                  </div>
-               </div>
-
-            </div>
-
-         </div>
-
-      </div>
-   </div>
-   <!-- customized_products end -->
+    <!-- Product relative Carousel -->
+ 
+ 
+            <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-12">
+				<div class="border-bottom1 border-color-111 mt-3 mb-3">
+					<div class="border-botb-3"> <a href="javascript:void(0);" class="view-link">  View all <i class="fa-solid fa-chevron-right"></i> </a> </div>
+					<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium manufacturers</h3>
+					<div class="deals">
+						<hr> </div>
+				</div>
+			</div>
+		</div>
+		<div class="boxoodod">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="second-product-box">
+						<div class="secitonkdknvhh">
+							<h6>Customized products </h6>
+							<p>Partner with one of 60,000 experienced manufacturers with design & production</p>
+						</div>
+						<div class="climprosk" style="background-image:url({{static_asset('assets_web/img/bankjkgi.jpg')}});"></div>
+						<div class="nkekoloiond">
+							<div class="product-box">
+								<h6>  <span>Source from Factories</span></h6>
+								<ul class="image-productsll">
+									<li> <img src="{{static_asset('assets_web/img/images1.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/images2.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/images3.png')}}" alt=""> </li>
+								</ul>
+							</div>
+							<div class="product-box">
+								<h6>  <span>Top-ranking suppliers</span></h6>
+								<ul class="image-productsll">
+									<li> <img src="{{static_asset('assets_web/img/psldid1.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/psldid2.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/psldid3.png')}}" alt=""> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="second-product-box">
+						<div class="secitonkdknvhh">
+							<h6>Ready-to-ship products</h6>
+							<p>Source from 15 million products that are ready to ship, and leave the facility within 15 days.</p>
+						</div>
+						<div class="climprosk" style="background-image:url({{static_asset('assets_web/img/dkdjksd.jpg')}});    background-position: center center;"></div>
+						<div class="nkekoloiond">
+							<div class="product-box">
+								<h6>  <span>Fast Dispatch</span></h6>
+								<ul class="image-productsll">
+									<li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}" alt=""> </li>
+								</ul>
+							</div>
+							<div class="product-box">
+								<h6>  <span>Weekly Deals</span></h6>
+								<ul class="image-productsll">
+									<li> <img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt=""> </li>
+									<li> <img src="{{static_asset('assets_web/img/index0/Doors.png')}}" alt=""> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
    <!-- Product relative Carousel -->
    <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">

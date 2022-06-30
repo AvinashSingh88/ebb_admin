@@ -58,7 +58,12 @@
                    <ul class="list-unstyled dropdown-list">
 
 					  @foreach ($categories as $key => $category)
-					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} (20) </a></li>
+                     @php
+                       $productCountByCat = \App\Models\Product::where('category_id','=', $category->id)->count();
+                  
+                     @endphp
+                     
+					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} ({{ $productCountByCat}}) </a></li>
                      @endforeach
                    </ul>
                 </div>
