@@ -172,7 +172,7 @@
     <div class="owl-carousel owl-theme category-slide">
  
 	
-						   @foreach ($categories as $key => $category)
+						      @foreach ($categories as $key => $category)
                            <div class="item">
                               <div class="fancybox thumb1">
                                

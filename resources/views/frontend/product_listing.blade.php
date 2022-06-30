@@ -87,6 +87,15 @@ $meta_description = get_setting('meta_description');
                               <div class="accordion-content">
                                  <div class="link-categoryx link-category1az ">
                                     <ul class="list-unstyled dropdown-list">
+                                    @foreach (\App\Models\Category::where('parent_id', '=', '0')->get() as $key => $category)
+                                       <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}</a></li>
+                                 @endforeach
+                                    </ul>
+                                 </div>
+                              </div>
+                              <!-- <div class="accordion-content">
+                                 <div class="link-categoryx link-category1az ">
+                                    <ul class="list-unstyled dropdown-list">
                                        @if (!isset($category_id))
                                        @foreach (\App\Models\Category::where('level', 0)->get() as $category)
                                        <li class="mb-2 ml-2">
@@ -134,12 +143,13 @@ $meta_description = get_setting('meta_description');
 
                                     </ul>
                                  </div>
-                              </div>
+                              </div> -->
                            </article>
 
                         </div>
                      </li>
                      <li class="listing-botoms">
+                        <b> Structural Material</b>
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
@@ -149,8 +159,7 @@ $meta_description = get_setting('meta_description');
                            @endforeach
                            @else
 
-                           <li><a class="dropdown-item1" href="{{ route('search') }}">{{ translate('All
-                                 Categories')}}</a></li>
+                           
 
                            @if (\App\Models\Category::find($category_id)->parent_id != 0)
                            <li><a class="dropdown-item1"
