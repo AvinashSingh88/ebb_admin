@@ -211,6 +211,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/blog/destroy/{id}', 'BlogController@destroy')->name('blog.destroy');
     Route::post('/blog/change-status', 'BlogController@change_status')->name('blog.change-status');
 
+    //Enquiry Section
+    Route::resource('enquiry','EnquiryController');
+    Route::get('/enq/destroy/{id}', 'EnquiryController@destroy')->name('enq.destroy');
+    Route::get('/enquiry/product-enquiry','EnquiryController@productEnquiry')->name('enq.productEnquiry');
     //Coupons
     Route::resource('coupon', 'CouponController');
     Route::get('/coupon/destroy/{id}', 'CouponController@destroy')->name('coupon.destroy');

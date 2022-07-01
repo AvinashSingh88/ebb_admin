@@ -75,6 +75,7 @@ Route::post('/category/nav-element-list', 'HomeController@get_category_items')->
 Route::get('/flash-deals', 'HomeController@all_flash_deals')->name('flash-deals');
 Route::get('/flash-deal/{slug}', 'HomeController@flash_deal_details')->name('flash-deal-details');
 
+Route::post('productRequestQuote', 'HomeController@productRequestQuote')->name('productRequestQuote');
 
 Route::get('/sitemap.xml', function () {
     return base_path('sitemap.xml');

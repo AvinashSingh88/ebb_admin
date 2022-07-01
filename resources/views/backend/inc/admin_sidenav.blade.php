@@ -193,7 +193,7 @@
                 <!-- Website Setup -->
                 @if(Auth::user()->user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions)))
                     <li class="aiz-side-nav-item">
-                        <a href="#" class="aiz-side-nav-link {{ areActiveRoutes(['website.footer', 'website.header'])}}" >
+                        <a href="#" class="aiz-side-nav-link {{ areActiveRoutes(['website.footer', 'website.header', 'website.cat-wise-brand-list','website.cat-wise-offer-list'])}}" >
                             <i class="las la-desktop aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">{{translate('Website Setup')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
@@ -219,6 +219,38 @@
                                     <span class="aiz-side-nav-text">{{translate('Appearance')}}</span>
                                 </a>
                             </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('website.cat-wise-brand-list') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Category Wise Brand')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('website.cat-wise-offer-list') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Category Wise Offer')}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+				
+				<!-- Enquiry Setup -->
+                @if(Auth::user()->user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions)))
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link {{ areActiveRoutes(['admin/enquiry', 'enq.productEnquiry'])}}" >
+                            <i class="las la-desktop aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{translate('Enquiry')}}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ url('admin/enquiry') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Enquiry')}}</span>
+                                </a>
+								<a href="{{ route('enq.productEnquiry') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Product Request Enquiry')}}</span>
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>
                 @endif
