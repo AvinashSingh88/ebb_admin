@@ -149,7 +149,7 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </li>
                      <li class="listing-botoms">
-                        <b> Structural Material</b>
+                        <b> Products List</b>
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))

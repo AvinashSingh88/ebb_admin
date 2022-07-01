@@ -9471,11 +9471,13 @@ section.slidespro10 .deals-tabs {
 
 section.pageTitle {
     background: url(../img/small_banner.jpg);
-    padding: 100px 0 100px;
+    padding: 0px;
     background-size: cover;
     background-position: center center;
     text-align: center;
     color: #fff;
+    color: #fff;
+    height: 240px;
 }
 
 li.breadcrumb-item.active {
@@ -9963,7 +9965,7 @@ ul.list-unstyled.dropdown-list.listing_block a {
 .discrptions_button h5 a {
     background: #1274c0;
     font-size: 13px;
-    padding: 5px 25px;
+    padding: 5px 20px;
     border-radius: 50px;
     color: #fff !important;
     height: 45px;
@@ -10017,6 +10019,29 @@ ul.list-unstyled.dropdown-list.listing_block a {
 
 
 /*product details*/
+.zoomContainer {
+    width: 400px !important;
+}
+
+.col-md-6 .discrptions_button .cart-add.d-block.cart-add1.products_list input.quantity.quantity-field.border-0.text-center.m-0.w-25 {
+    border-radius: 0px !important;
+    height: 45px;
+}
+
+.col-md-6 .discrptions_button .cart-add.d-block.cart-add1.products_list input.button-minus.border.rounded-circle.quantity-left-minus.icon-shape.icon-sm.mx-1.m-0 {
+    margin: 0px !important;
+    width: 35px;
+    border-radius: 25px 0px 0px 25px !important;
+    height: 45px;
+    border: 1px solid #1274c0 !important;
+}
+
+.col-md-6 .discrptions_button .cart-add.d-block.cart-add1.products_list input.button-plus.border.rounded-circle.quantity-right-plus.icon-shape.icon-sm.m-0.lh-0 {
+    height: 45px;
+    margin: 0px !important;
+    border: 1px solid #ff6c00 !important;
+    border-radius: 0px 25px 25px 0px !IMPORTANT;
+}
 
 .product-box1 .discrptions h5 {
     text-align: left;
@@ -22512,6 +22537,38 @@ select.form-control.form-control-sm.aiz-selectpicker {
 }
 
 /*price ranges end*/
+
+/* product st */
+.aiz-megabox input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.opacity {
+    opacity: 0;
+}
+
+.aiz-megabox .aiz-megabox-elem {
+    border: 1px solid #e2e5ec;
+    border-radius: 0.25rem;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+}
+
+.aiz-megabox>input:checked~.aiz-megabox-elem,
+.aiz-megabox>input:checked~.aiz-megabox-elem {
+    border-color: #ff6c00;
+}
+
+.h-30px,
+.size-30px {
+    height: 30px;
+    width: 30px;
+}
+
+/* product detail end */
 @media (max-width: 1200px) and (min-width: 992px) {
     .position-absolutedk .nav>li>a {
         margin-left: 5px;

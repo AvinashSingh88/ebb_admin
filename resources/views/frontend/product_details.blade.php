@@ -31,39 +31,10 @@
     <meta property="og:price:amount" content="{{ single_price($detailedProduct->unit_price) }}" />
     <meta property="product:price:currency" content="{{ \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code }}" />
     <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
-	<style>
-	<style>
-	.aiz-megabox input {
-		position: absolute;
-		z-index: -1;
-		opacity: 0;
-	}
-	.opacity{
-		opacity: 0;
-	}
-	.aiz-megabox .aiz-megabox-elem {
-		border: 1px solid #e2e5ec;
-		border-radius: 0.25rem;
-		-webkit-transition: all 0.3s ease;
-		transition: all 0.3s ease;
-		border-radius: 0.25rem;
-	}
-
-	.aiz-megabox>input:checked~.aiz-megabox-elem,
-	.aiz-megabox>input:checked~.aiz-megabox-elem {
-		border-color: #ff6c00;
-	}
-
-	.h-30px,
-	.size-30px {
-		height: 30px;
-		width: 30px;
-	}
-</style>
-	</style>
+ 
 @endsection
 @section('content')
-<section class="pageTitle" style="    background-image: url({{static_asset('assets_web/img/orderbanner.png')}});height: 240px; background-size: contain;">
+<section class="pageTitle" style="    background-image: url({{static_asset('assets_web/img/orderbanner.png')}}); background-size: cover;">
          <div class="container">
          </div>
       </section>
@@ -97,6 +68,25 @@
 							  @endforeach
                               <div class="clearfix"></div>
                               <div id="gallery_01">
+                     
+                              
+                     <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}">
+                     <img src="{{ uploaded_asset($photo) }}" width="100"  /></a>
+
+                     <a href="#" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}">
+                     <img src="{{ uploaded_asset($photo) }}" width="100"  /></a>
+                     <a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}">
+                     <img src="{{ uploaded_asset($photo) }}" width="100"/>
+                     </a>
+                     <a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content" >
+                     <img src="{{ uploaded_asset($photo) }}" width="100"  /></a>
+                     <a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content" >
+                     <img src="{{ uploaded_asset($photo) }}" width="100"  /></a>
+                     <a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content" >
+                     <img src="{{ uploaded_asset($photo) }}" width="100"  /></a>
+                  
+                  </div>
+                              <!--<div id="gallery_01">
 							  @foreach ($detailedProduct->stocks as $key => $stock)
 
 										@if($stock->image != null)
@@ -106,7 +96,7 @@
                                  @endif
 
 									@endforeach 
-                              </div>
+                              </div>-->
                            </div>
                         </div>
 						<!--Last code start--->
@@ -353,7 +343,7 @@
                                  <!--for current product-->
                                  <li>
                                     <a href="javascript:void(0);" class="detbrand selected">
-                                    <img src="img/brandsa1.jpg" class="loadimg" alt="">
+                                    <img src="{{static_asset('assets_web/img/brandsa1.jpg')}}" class="loadimg" alt="">
                                     <span class="price">₹ 1656
                                     </span></a><!-- detbrand -->
                                  </li>
@@ -361,37 +351,37 @@
                                  <!--for other products-->
                                  <li>
                                     <a href="#1" class="detbrand">
-                                    <img src="img/brandsa2.jpg" class="loadimg" alt="">
+                                    <img src="{{static_asset('assets_web/img/brandsa2.jpg')}}" class="loadimg" alt="">
                                     <span class="price">₹ 1092
                                     </span></a><!-- detbrand -->
                                  </li>
                                  <li>
                                     <a href="#1" class="detbrand">
-                                    <img src="img/brandsa3.jpg" class="loadimg" alt="">
+                                    <img src="{{static_asset('assets_web/img/brandsa3.jpg')}}" class="loadimg" alt="">
                                     <span class="price">₹ 876
                                     </span></a><!-- detbrand -->
                                  </li>
                                  <li>
                                     <a href="#1" class="detbrand">
-                                    <img src="img/brandsa4.jpg" class="loadimg" alt="">
+                                    <img src="{{static_asset('assets_web/img/brandsa4.jpg')}}" class="loadimg" alt="">
                                     <span class="price">₹ 1100
                                     </span></a><!-- detbrand -->
                                  </li>
                                  <li>
                                     <a href="#1" class="detbrand">
-                                    <img src="img/brandsa5.jpg" class="loadimg" alt="">
+                                    <img src="{{static_asset('assets_web/img/brandsa5.jpg')}}" class="loadimg" alt="">
                                     <span class="price">₹ 1694
                                     </span></a><!-- detbrand -->
                                  </li>
                                  <li>
                                     <a href="#1" class="detbrand">
-                                    <img src="img/brandsa6.png" class="loadimg" alt="">
+                                    <img src="{{static_asset('assets_web/img/brandsa6.png')}}" class="loadimg" alt="">
                                     <span class="price">₹ 1149
                                     </span></a><!-- detbrand -->
                                  </li>
                                  <li>
                                     <a href="#1" class="detbrand">
-                                    <img src="img/brandsa7.png" class="loadimg" alt="">
+                                    <img src="{{static_asset('assets_web/img/brandsa7.png')}}" class="loadimg" alt="">
                                     <span class="price">₹ 1154
                                     </span></a><!-- detbrand -->
                                  </li>
@@ -411,20 +401,28 @@
 								}
 							@endphp
                            <div class="discrptions_button">
-							
-                              <div class="input-group quantity_input">
-                                 <span class="input-group-btn">
-                                 <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
-                                 <i class="fa fa-minus" aria-hidden="true"></i>
-                                 </button>
-                                 </span>
-                                 <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                                 <span class="input-group-btn">
-                                 <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
-                                 <i class="fa fa-plus" aria-hidden="true"></i>
-                                 </button>
-                                 </span>
+                           <div class="cart-add d-block cart-add1 products_list ">
+                                 <div class="input-group quantity_input mb-0">
+                                     <div class="input-group w-100 justify-content-start align-items-center packageadd">
+                                       <input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0" data-field="quantity">
+                                       <input type="number" step="1" max="10" value="1" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25">
+                                       <input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0" data-field="quantity">
+                                    </div>
+                                 </div>
                               </div>
+                              <!-- <div class="input-group quantity_input">
+                                 <span class="input-group-btn">
+                                 <input type="button" value="-" class="button-minus border rounded-circle btn btn-danger btn-number quantity-left-minus icon-shape icon-sm mx-1 " data-field="quantity">
+                                     
+                                
+                                 </span>
+                                 <input type="number" step="1" max="10" value="1" id="quantity"  name="quantity" class="quantity quantity-field form-control input-number border-0 text-center w-25">
+                                     
+                                  <span class="input-group-btn">
+                                 <input type="button" value="+" class="button-plus border btn btn-success btn-number rounded-circle quantity-right-plus icon-shape icon-sm lh-0" data-field="quantity">
+                                
+                                 </span>
+                              </div> -->
                               <h5><a href="#1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</a></h5>
 							  
                               <!--<h6><a href="quote.php">Get Quote</a></h6>-->
@@ -479,8 +477,10 @@
                            <li class="ukine ukine3b">
                               <div class="tab-description">
                                  <h3>Warranty Details</h3>
-                                 <p><div class="tab-description">
-                                    <?php=$detailedProduct->overview ?> 
+                                 <p>
+                                    <div class="tab-description">
+                                      <?php=$detailedProduct->overview ?> 
+                                    </div>
                                  </p>
                               </div>
                            </li>
@@ -504,12 +504,12 @@
                         </form>
                         <ul class="row delivery">
                            <li class="col-md-4">
-                              <img src="img/shipping.svg" class="loadimg delimg" alt="">
+                              <img src="{{static_asset('assets_web/img/shipping.svg')}}" class="loadimg delimg" alt="">
                               <span class="name">Priority</span>
                               <span class="status">Delivery</span>
                            </li>
                            <li class="col-md-4">
-                              <img src="img/cancellation.svg" class="loadimg delimg" alt="">
+                              <img src="{{static_asset('assets_web/img/cancellation.svg')}}" class="loadimg delimg" alt="">
                               <span class="name">Cancellation</span>
                               <span class="status">Allowed</span>
                            </li>
@@ -641,8 +641,8 @@
  <!-- Product relative Carousel -->
             <div class="headsections111">
             <div class="container">
-			 <div class="service-pros" style="padding:0px;margin:0px;">
-		<div class="head-cnt work-center text-center">
+			 <div class="service-pros m-0 p-0">
+		<div class="head-cnt work-center text-center mb-0">
             <div class="bounceIn animated">
            
                <h4>{{ translate('Related products')}}</h4>
@@ -686,12 +686,12 @@
  
 			  <div class="brandss1">
 			   <div class="row">
-			   <div class="col-md-2"><a href="#1"><img src="img/iconon1.png" alt=""> <h3>All Under One roof</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
-			   <div class="col-md-2"><a href="#1"><img src="img/iconon2.png" alt=""><h3>Widest Product Range</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
-			   <div class="col-md-2"><a href="#1"><img src="img/iconon3.png" alt=""><h3>On Time Delivery</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
-			   <div class="col-md-2"><a href="#1"><img src="img/iconon4.png" alt=""><h3>Product Knowledge Support</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
-			   <div class="col-md-2"><a href="#1"><img src="img/iconon5.png" alt=""><h3>Genuine Products</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
-			   <div class="col-md-2"><a href="#1"><img src="img/iconon6.png" alt=""><h3>365 Days Wholesale Rates</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon1.png')}}" alt=""> <h3>All Under One roof</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon2.png')}}" alt=""><h3>Widest Product Range</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon3.png')}}" alt=""><h3>On Time Delivery</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon4.png')}}" alt=""><h3>Product Knowledge Support</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon5.png')}}" alt=""><h3>Genuine Products</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
+			   <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon6.png')}}" alt=""><h3>365 Days Wholesale Rates</h3><p>Ebuildbazaar Stores from others is their pricing.</p></a></div>
 			   </div>
 			   </div>
 		 </div>
