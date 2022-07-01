@@ -39,7 +39,6 @@ class CategoryController extends Controller
         $categories = Category::where('parent_id', 0)
             ->with('childrenCategories')
             ->get();
-
         return view('backend.product.categories.create', compact('categories'));
     }
 
@@ -57,6 +56,7 @@ class CategoryController extends Controller
         if($request->order_level != null) {
             $category->order_level = $request->order_level;
         }
+        $category->type = $request->type;
         $category->digital = $request->digital;
         $category->banner = $request->banner;
         $category->icon = $request->icon;
@@ -141,6 +141,7 @@ class CategoryController extends Controller
         if($request->order_level != null) {
             $category->order_level = $request->order_level;
         }
+        $category->type = $request->type;
         $category->digital = $request->digital;
         $category->banner = $request->banner;
         $category->icon = $request->icon;
