@@ -1,7 +1,15 @@
+
 @extends('backend.layouts.app')
 
 @section('content')
-
+<style>
+#hidden_div {
+    display: none;
+}
+#service_div {
+    display: none;
+}
+</style>
 <div class="row">
     <div class="col-lg-10 mx-auto">
         <div class="card">
@@ -20,7 +28,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Category Type')}}</label>
                         <div class="col-md-9">
-                            <select class="select2 form-control aiz-selectpicker" name="type" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
+                            <select onchange="showDiv(this)" class="select2 form-control aiz-selectpicker" name="type" id="type" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
                                 <option selected disabled>Select Category Type</option>
                                 <option value="1">Product</option>
                                 <option value="2">Service</option>
@@ -28,12 +36,22 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
+                        <label class="col-md-3 col-form-label">{{translate('Parent Category')}}</label>
+                        <div class="col-md-9">
+                            <select class="select2 form-control " name="parent_id" id="cats_id" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
+                                 
+                            </select>
+                        </div>
+
+                        
+                    </div> --}}
+                    <div id="hidden_div" class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Parent Category')}}</label>
                         <div class="col-md-9">
                             <select class="select2 form-control aiz-selectpicker" name="parent_id" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
                                 <option value="0">{{ translate('No Parent') }}</option>
-                                @foreach ($categories as $category)
+                                @foreach ($product_categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
                                     @foreach ($category->childrenCategories as $childCategory)
                                         @include('categories.child_category', ['child_category' => $childCategory])
@@ -42,6 +60,21 @@
                             </select>
                         </div>
                     </div>
+					<div id="service_div" class="form-group row">
+                        <label class="col-md-3 col-form-label">{{translate('Service Parent Category')}}</label>
+                        <div class="col-md-9">
+                            <select class="select2 form-control aiz-selectpicker" name="parent_id" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
+                                <option value="0">{{ translate('No Parent') }}</option>
+                                @foreach ($service_categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
+                                    @foreach ($category->childrenCategories as $childCategory)
+                                        @include('categories.child_category', ['child_category' => $childCategory])
+                                    @endforeach
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+					
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">
                             {{translate('Ordering Number')}}
@@ -165,5 +198,45 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+function showDiv(select){
+   if(select.value==1){
+    document.getElementById('hidden_div').style.display = "block";
+   } else{
+    document.getElementById('hidden_div').style.display = "none";
+   }
 
+   if(select.value==2){
+   document.getElementById('service_div').style.display = "block";
+    } else{
+        document.getElementById('service_div').style.display = "none";
+    }
+} 
+
+jQuery(document).ready(function(){
+        jQuery('#type').change(function(){
+            let type=jQuery(this).val();
+            let datas = "";
+            jQuery.ajax({
+                url:'{{route('getCategoryName')}}',
+                type:'post',
+                data:'type='+type+'&_token={{csrf_token()}}',
+                success:function(result){
+                    // jQuery('#project_id').val(''+result+'')
+                    if (result == '') {
+                        datas += '<option>Not Found.</option>';
+                    } else{
+                        // console.log(result);
+                        $.each(result, function (i) {
+                            datas += '<option value="'+result[i].id+'">'+result[i].name+'</option>';
+                             //console.log(datas);
+                        });                    
+                    }
+                    jQuery('#cats_id').html(datas);
+                }
+            });
+        });
+    });
+        </script>
 @endsection

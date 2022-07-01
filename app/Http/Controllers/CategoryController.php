@@ -29,6 +29,12 @@ class CategoryController extends Controller
         return view('backend.product.categories.index', compact('categories', 'sort_search'));
     }
 
+    public function getCategoryName(Request $request){
+        $typeid = $request->post('type');
+        $categoryde = Category::where('type', $typeid)->orderBy('order_level', 'desc')->get();
+        return $categoryde;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +45,9 @@ class CategoryController extends Controller
         $categories = Category::where('parent_id', 0)
             ->with('childrenCategories')
             ->get();
-        return view('backend.product.categories.create', compact('categories'));
+        $product_categories = Category::where('type','=','1')->where('parent_id', 0)->get();
+        $service_categories = Category::where('type','=','2')->where('parent_id', 0)->get();
+        return view('backend.product.categories.create', compact('categories','product_categories','service_categories'));
     }
 
     /**
