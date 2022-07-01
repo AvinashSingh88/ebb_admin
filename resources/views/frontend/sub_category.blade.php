@@ -6,14 +6,9 @@
 
 
 @section('content')
-<style>
-		 .product-categorys2 .product-box {height: auto;} 
-		 .product-box img {padding: 15px 70px; height: auto;}
-		 .product-box{padding-bottom:25px;}
-		 .product-categorys2 .product-box {box-shadow: 0px 0px 5px 1px #ccc;}
-		 </style>
+ 
  <!-- <section class="pageTitle "> </section> -->
-      <section> 
+      <section class="section-banner-top"> 
 	  @if($subcategories->page_wise_banner=='')
 	  <img src="{{static_asset('assets_web/img/building-material.png')}}" alt="Image Description" style="width:100%;">
 		@else
@@ -40,13 +35,13 @@
                   <div class="col-md-3">
                      <div class="d-xl-block col-wd-2gdot5">
 					 <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
-								<ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
+						 
+<!--/#content-->
+                <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
      <?php 
   $page = basename($_SERVER['SCRIPT_NAME'],".php");
   ?>
-     <!--<li class="link-category0">
-                           <div class="dropdown-title"></div>
-                        </li>-->
+    
      <li class="link-category link-category1aa">
 
 
@@ -54,21 +49,20 @@
          <div id="accordion" class="accordion-container">
              <article class="content-entry">
                  <h4 class="article-title">
-				 @php
+                 @php
 					 $total_category = \App\Models\Category::where('parent_id', '=', '0')->count();
 				 @endphp
                      <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
-                         Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> ({{$total_category}})</span> <i
+                         Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> (9)</span> <i
                              class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
                      </a>
                  </h4>
                  <div class="accordion-content">
                      <div class="link-categoryx link-category1az ">
                          <ul class="list-unstyled dropdown-list">
-					@foreach (\App\Models\Category::where('parent_id', '=', '0')->get() as $key => $category)
+                         @foreach (\App\Models\Category::where('parent_id', '=', '0')->get() as $key => $category)
 					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} </a></li>
                      @endforeach
-
                          </ul>
                      </div>
                  </div>
@@ -76,10 +70,9 @@
 
          </div>
      </li>
-                        
-						 <li class="listing-botoms">
-                              <b> {{$subcategories->name}}</b>
-                              <ul class="list-unstyled dropdown-list listing_block filter">
+     <li class="listing-botoms">
+     <b> {{$subcategories->name}}</b>
+     <ul class="list-unstyled dropdown-list listing_block filter">
 								 @foreach ($firstFiveSubcat as $item)
 									<li><a class="dropdown-item1" href="{{ route('products.category', $item->slug) }}">{{$item->name}}</a></li>
 								 @endforeach
@@ -97,8 +90,13 @@
                                  </li>
                               </ul>
                            </li>
+       </ul>
 
- </ul>
+
+
+
+
+								
                      </div>
                          
                           <aside id="sidebar" class="sidebar-wrap" style="margin-bottom:30px;">
@@ -258,13 +256,11 @@
             </div>
          </div>
       </section>
-	   <style>
- .bannerslid .service-pros .bounceIn.animated h4::after{background:#fff;}
- </style>
- <section class="bannerslid mt-1 mb-1 animated animate__fadeInUp wow" style="background:#fff;padding:0px;">
+	 
+ <section class="bannerslid mt-1 mb-1 animated animate__fadeInUp wow p-0">
       <div class="container">
-         <div class="service-pros" style="padding:0px;margin:0px;">
-            <div class="head-cnt work-center text-center">
+         <div class="service-pros p-0 m-0">
+            <div class="head-cnt work-center text-center mb-0">
                <div class="bounceIn animated">
 
                   <h4>Exciting Offers & Discounts</h4>
@@ -320,14 +316,5 @@
 		 </div>
 		 </section>
 	  @endsection
-	 
-	 <script>
-		/*
-      $(document).ready(function() {
-			$(".tablskd").click(function () {
-				$(".tablskd").removeClass("active");
-				$(".tablskd").addClass("active");        
-			});
-		});
-      */
-	 </script>
+ 
+ 

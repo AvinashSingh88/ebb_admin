@@ -166,6 +166,7 @@
                             </div>
                         </div>
                         <div class="owl-carousel owl-theme owl-carousel_sliders">
+<<<<<<< HEAD
                             <div class="item">
                                 <div class="colams_item">
                                     <a href="javascript:void(0);">
@@ -218,6 +219,24 @@
                             </div>
                         </div>
 
+=======
+    
+
+                        @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+                        @php
+                            $subcat = \App\Models\Category::find($first_level_id);
+                        @endphp
+                            <div class="item">
+                                <a href="{{ route('products.category', $subcat->slug) }}">
+                                    <div class="trend-theme">
+                                        <img src="{{ uploaded_asset($subcat->home_image) }}" alt="{{ $subcat->getTranslation('name') }}" />
+                                    </div>
+                                    <h3> {{ $subcat->getTranslation('name') }}</h3>
+                                </a>
+                            </div>
+                        @endforeach
+                        </div>
+>>>>>>> 6c5ce47e9bc7a048fdd8d925814669771f8b261f
                     </div>
                 </div>
             </div>
