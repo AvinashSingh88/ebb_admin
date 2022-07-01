@@ -146,6 +146,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::resource('custom-pages', 'PageController');
         Route::get('/custom-pages/edit/{id}', 'PageController@edit')->name('custom-pages.edit');
         Route::get('/custom-pages/destroy/{id}', 'PageController@destroy')->name('custom-pages.destroy');
+        Route::get('home-category-section','WebsiteController@homeCatSectionList')->name('website.home-category-section');
+        Route::get('add-home-category-section','WebsiteController@addHomeCatSectionList')->name('website.add-home-category-section');
+        Route::post('uploadHomeCategorySection','WebsiteController@uploadHomeCategorySection')->name('website.uploadHomeCategorySection');
+        Route::get('/homecatsec/destroy/{id}','WebsiteController@destroyHomeCatSection')->name('website.destroyhomecatesection');
+        Route::get('/edit-home-cat-section/{id}', 'WebsiteController@editHomeCatSection')->name('website.edit-home-cat-section/{id}');
+        Route::post('updatehomeCatSection', 'WebsiteController@updatehomeCatSection')->name('website.updatehomeCatSection');
     });
 
     Route::resource('roles', 'RoleController');

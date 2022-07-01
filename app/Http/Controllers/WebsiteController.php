@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category_wise_brand;
 use App\Models\Category_wise_offer;
+use App\Models\HomeCategorySection;
 class WebsiteController extends Controller
 {
 	public function header(Request $request)
@@ -136,4 +137,58 @@ class WebsiteController extends Controller
         return redirect()->route('website.cat-wise-offer-list');
 
     }
+    public function homeCatSectionList(){
+        $homecatSectionLists = HomeCategorySection::paginate(15);
+		return view('backend.website_settings.home_category_section.list', compact('homecatSectionLists'));
+    }
+    public function addHomeCatSectionList(){
+        return view('backend.website_settings.home_category_section.create');
+    }
+    public function uploadHomeCategorySection(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'image'=>'required',
+            'category_attribute'=>'required',
+            'slug_url'=>'required',
+        ]);
+       
+        $addoffer = HomeCategorySection::create([
+           "category_attribute" => "$request->category_attribute",
+            "title" => "$request->title",
+            "image" => "$request->image",
+            "slug_url" => "$request->slug_url",
+            
+        ]);
+        if ($addoffer) {
+			flash(translate('Uploaded Successfully!'))->success();
+            return redirect()->back();
+        }
+    }
+    public function destroyHomeCatSection($id)
+    {
+        HomeCategorySection::destroy($id);
+        flash(translate('Deleted successfully'))->success();
+        return redirect()->route('website.home-category-section');
+
+    }
+    public function editHomeCatSection(Request $request, $id)
+     {
+        $homecatsec = HomeCategorySection::findOrFail($id);
+        return view('backend.website_settings.home_category_section.edit',compact('homecatsec'));
+        
+     }
+     public function updatehomeCatSection(Request $request){
+        $editdetails = HomeCategorySection::where('id', $request->cid)
+        ->update([
+                'category_attribute' => $request->category_attribute,
+                'image' => $request->image,
+                'slug_url' => $request->slug_url,
+                'title' => $request->title,
+            ]);
+            if ($editdetails) {
+            flash(translate('Updated Successfully!'))->success();
+            return redirect()->back();
+            }
+     }
+    
 }
