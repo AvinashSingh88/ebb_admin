@@ -169,11 +169,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $product_id = $request->input('product_id');
-        $product = Product::where('id',$product_id)->first();
-        // dd($product);
-        // die;
-        // $product = Product::find($request->product_id);
+        $product = Product::find($request->id);
         $carts = array();
         $data = array();
 
@@ -214,7 +210,7 @@ class CartController extends Controller
 
             if ($product->digital != 1) {
                 //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
-                foreach (json_decode(Product::where('id',$product_id)->choice_options) as $key => $choice) {
+                foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
                     if($str != null){
                         $str .= '-'.str_replace(' ', '', $request['attribute_id_'.$choice->attribute_id]);
                     }
@@ -353,7 +349,7 @@ class CartController extends Controller
                 $carts = Cart::where('temp_user_id', $temp_user_id)->get();
             }
             return array(
-                'status' => 1,
+                'status' => 'Added To Cart!',
                 'cart_count' => count($carts),
                 'modal_view' => view('frontend.partials.addedToCart', compact('product', 'data'))->render(),
                 'nav_cart_view' => view('frontend.partials.cart')->render(),

@@ -21,7 +21,7 @@
    <input type="hidden" value="{{ $price }}" class="prod_price">
 	
 	
-	   <div class="discrptions_button buddonjdk">
+	   <!---<div class="discrptions_button buddonjdk">
                             <h5 class="mask-overflow"><a href="{{ route('product', $product->slug) }}"><i class="fa fa-eye"></i></a></h5>
                               <button id="btn1" type="button" class="btn cart active cart_buttons1  cart_buttons{{$product->id}} addToCartButton"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="name">Add to cart</span> </button>
                               <div class="cart-add cart-add1 products_list ">
@@ -34,7 +34,7 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
+                           </div>-->
 	
 	
 	

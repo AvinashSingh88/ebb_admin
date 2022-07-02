@@ -176,6 +176,7 @@ $('#option-choice-form input').on('change', function(){
                     //    $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
                        $('#show_total_price').removeClass('d-none');
                        $('#total_price').html(data.price);
+					   $('#total_product_price').val(data.total_price);
                        $('#available-quantity').html(data.quantity);
                        $('.input-number').prop('max', data.max_limit);
                        if(parseInt(data.in_stock) == 0 && data.digital  == 0){
@@ -207,6 +208,40 @@ $('#option-choice-form input').on('change', function(){
             }
 
             return false;
+        }
+		function updateNavCart(view,count){
+            $('.cart-count').html(count);
+            $('#cart_items').html(view);
+        }
+		function addToCart(){
+            if(checkAddToCartValidity()) {
+				// alert('rana');
+                // $('#addToCart').modal();
+                // $('.c-preloader').show();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type:"POST",
+                    url: '{{ route('cart.addToCart') }}',
+                    data: $('#option-choice-form').serializeArray(),
+                    success: function(data){
+
+                       // $('#addToCart-modal-body').html(null);
+                       // $('.c-preloader').hide();
+                       // $('#modal-size').removeClass('modal-lg');
+                       // $('#addToCart-modal-body').html(data.modal_view);
+                       // AIZ.extra.plusMinus();
+					   toastr.info(data.status);
+                       updateNavCart(data.nav_cart_view,data.cart_count);
+                    }
+                });
+            }
+            else{
+                AIZ.plugins.notify('warning', "{{ translate('Please choose all the options') }}");
+            }
         }
 
         $(document).ready(function() {

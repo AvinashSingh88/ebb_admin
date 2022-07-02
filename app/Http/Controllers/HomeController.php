@@ -683,6 +683,7 @@ class HomeController extends Controller
 
         return array(
             'price' => single_price($price * $request->quantity),
+            'total_price' => $price * $request->quantity,
             'quantity' => $quantity,
             'digital' => $product->digital,
             'variation' => $str,

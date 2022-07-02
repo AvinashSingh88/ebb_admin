@@ -22679,3 +22679,28 @@ span.aiz-megabox-elem.rounded.d-flex.align-items-center.justify-content-center.p
         right: 16%;
     }
 }
+/* product details button css start*/
+.addtocartbut {
+    background: #1274c0;
+    font-size: 13px;
+    padding: 5px 20px;
+    border-radius: 50px;
+    color: #fff !important;
+    height: 45px;
+    line-height: 34px;
+    display: block;
+    font-weight: 400;
+    letter-spacing: 0.5px;    border: none;
+
+} 
+.out-of-stock{font-size: 13px;
+    padding: 5px 20px;
+    border-radius: 50px;
+    color: #4a4a4a;
+    height: 45px;
+    line-height: 34px;
+    display: block;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border: none;}
+/* product details button css end*/
