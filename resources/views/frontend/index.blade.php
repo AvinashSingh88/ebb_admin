@@ -30,11 +30,7 @@
                      <span class="febslide">30000+ <b>Products Online</b></span>
                      <span class="spanls">12000+ <b>Products In Store</b></span>
                   </h2>
-                  <div class="btn-two btn-center-two">
-                                <a href="contact_us.php" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                                <a href="javascript:void(0);" class="btn-wht-two" tabindex="0">
-                                    Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
@@ -61,11 +57,7 @@
                      <span class="spanls spanlsa "><img src="{{static_asset('assets_web/img/price-tag.png')}}" alt="">
                         <b> Wholesale Price</b></span>
                   </h2>
-                  <div class="btn-two btn-center-two">
-                                <a href="contact_us.php" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                                <a href="javascript:void(0);" class="btn-wht-two" tabindex="0">
-                                    Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
@@ -92,11 +84,7 @@
                      <span class="febslideaa"><i class="fa-solid fa-indian-rupee-sign"></i> 5000 Off*<b>On Kitchen
                            Appliances </b></span>
                   </h2>
-                  <div class="btn-two btn-center-two">
-                                <a href="contact_us.php" class="btn-wht-one" tabindex="0">Schedule a call</a>
-                                <a href="javascript:void(0);" class="btn-wht-two" tabindex="0">
-                                    Watch video</a>
-                  </div>
+
                </div>
             </div>
          </div>
@@ -107,12 +95,11 @@
       <a class="button secondary play"><i class="fas fa-play"></i></a><a class="button secondary stop"><i
             class="fa fa-pause"></i></a>
    </div>
-</div>  
+</div>
 
 <div class="services_sectionssd">
 
    <!-- Service section start  -->
-  
    <section class="product-csteogry">
       <div class="trend servoce_dops service_sections45 pb-0">
          <div class="container">
@@ -130,8 +117,8 @@
                      </div>
                   </div>
                </div>
-               <div class="owl-carousel owl-theme owl-carousel_sliders">
-               <div class="item">
+
+               <div class="col-md-5c">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser1a.jpg')}}" alt="" />
@@ -139,7 +126,7 @@
                      <h3>End to End Consultants</h3>
                   </a>
                </div>
-               <div class="item">
+               <div class="col-md-5c">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser2.jpg')}}" alt="" />
@@ -147,7 +134,7 @@
                      <h3>Architect</h3>
                   </a>
                </div>
-               <div class="item">
+               <div class="col-md-5c">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser3.jpg')}}" alt="" />
@@ -155,7 +142,7 @@
                      <h3>Contractor</h3>
                   </a>
                </div>
-               <div class="item">
+               <div class="col-md-5c">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser4.jpg')}}" alt="" />
@@ -163,14 +150,14 @@
                      <h3>Interior design</h3>
                   </a>
                </div>
-               <div class="item">
+               <div class="col-md-5c">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/ser5.jpg')}}" alt="" />
                      </div>
                      <h3>Vastu</h3>
                   </a>
-               </div>    </div>
+               </div>
             </div>
          </div>
       </div>
@@ -682,7 +669,11 @@
             <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
          </a>
       </div>
-   
+      <div class="container">
+         <a href="#1">
+            <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
+         </a>
+      </div>
    </div>
    <!-- banner section 2 end-->
 
@@ -1841,7 +1832,8 @@
                      </ul>
                      <ul class="ulines-dps-para">
                         <li class="ukine ukine8 active2">
-                           <form class="bottom-form">
+                           <form class="bottom-form" method="post" action="{{route('productRequestQuote')}}">
+                              @csrf
                               <div class="bounceIn animated">
                                  <h4>Request A Free Quote</h4>
                                  <p>
@@ -1856,99 +1848,52 @@
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-user"></i>
                                           </span>
-                                          <input type="text" name="full-name" class="form-control empty"
+                                          <input type="text" name="name" class="form-control empty"
                                              placeholder="Full Name" />
                                        </div>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
-                                          <input type="text" name="full-name" class="form-control empty"
+                                          <input type="text" name="email" class="form-control empty"
                                              placeholder="Email Address" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-phone-flip"></i>
                                           </span>
-                                          <input type="tel" name="full-name" class="form-control empty"
+                                          <input type="tel" name="phone" class="form-control empty"
                                              placeholder="Phone Number" maxlength="10" minlength="10" />
                                        </div>
-                                       <div class="input-group " style="margin-bottom: 10px">
+                                       <div class="input-group w-441" style="margin-bottom: 10px; float: left">
+                                          <span class="input-group-addon">
+                                             <i class="fa-solid fa-inr"></i>
+                                          </span>
+                                          <input type="tel" name="price_range" class="form-control empty"
+                                             placeholder="Price Range" />
+                                       </div>
+                                       {{-- <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
                                           <h3 class="left-range1">500</h3>
                                           <h3 class="left-range2">2000</h3>
-                                       </div>
+                                       </div> --}}
                                        <div class="input-group" style="margin-bottom: 5px">
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
                                           <textarea name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder=""> Your Message *
+                                             placeholder="Your Message *"> 
                                                </textarea>
                                        </div>
                                        <div class="ginput_container ginput_container_checkbox">
                                           <ul class="gfield_checkbox" id="input_18_14">
+                                             @foreach (\App\Models\Category::where('parent_id','=','0')->get() as $key => $category)
                                              <li class="gchoice_18_14_1">
-                                                <input name="input_14.1" type="checkbox" value="Architect"
+                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
                                                    id="choice_18_14_1" />
-                                                <label for="choice_18_14_1" id="label_18_14_1">Architect</label>
+                                                <label for="pro_cat{{$category->id}}" id="label_18_14_1">{{$category->name}}</label>
                                              </li>
-                                             <li class="gchoice_18_14_2">
-                                                <input name="input_14.2" type="checkbox" value="Professional services"
-                                                   id="choice_18_14_2" />
-                                                <label for="choice_18_14_2" id="label_18_14_2">Professional
-                                                   services</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Building Material</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Furniture</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Sanitary items</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Electrical</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Plumbing</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Sanitary Ware</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Paint</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Home Appliances</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Doors & Window</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Tool & machines</label>
-                                             </li>
+                                          @endforeach
                                           </ul>
                                        </div>
                                        <!-- checkbox -->
@@ -2131,115 +2076,22 @@
                      </div>
                      <div class=" dnone768 ">
                         <div class=" row ">
+                           @foreach ($allblogs as $item)
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service12.jpg')}}" />
+                                 <img class="card-img-top" alt="{{$item->title}}"
+                                    src="{{uploaded_asset($item->banner)}}" />
                                  <div class="card-block">
-                                    <h4 class="card-title">Blog1</h4>
+                                    <h4 class="card-title text-truncate">{{$item->title}}</h4>
                                     <div class="card-text">
-                                       Elders and families received relief in COVID
+                                       {{$item->short_description}}
                                     </div>
-                                    <a class="ankblog" href="#3">View More</a>
+                                    <a class="ankblog" href="{{url('blog/'.$item->slug)}}">Read More</a>
                                  </div>
                               </div>
                            </div>
-                           <div class="col-md-6 col-sm-12">
-                              <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service13.jpg')}}" />
-                                 <div class="card-block">
-                                    <h4 class="card-title">Blog2</h4>
-                                    <div class="card-text">
-                                       Cancer treatments for elders including palliative care
-                                    </div>
-                                    <a class="ankblog" href="#3">View More</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-12">
-                              <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service13.jpg')}}" />
-                                 <div class="card-block">
-                                    <h4 class="card-title">Blog3</h4>
-                                    <div class="card-text">
-                                       Treatments per year provided by 156 Mobile Health Care
-                                       units
-                                    </div>
-                                    <a class="ankblog" href="#3">View More</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-12">
-                              <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service14.jpg')}}" />
-                                 <div class="card-block">
-                                    <h4 class="card-title">Blog4</h4>
-                                    <div class="card-text">
-                                       Cataract Surgeries being conducted every year
-                                    </div>
-                                    <a class="ankblog" href="#3">View More</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-12">
-                              <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service15.jpg')}}" />
-                                 <div class="card-block">
-                                    <h4 class="card-title">Blog5</h4>
-                                    <div class="card-text">
-                                       Physiotherapy treatments to elders across 15 states
-                                       per year
-                                    </div>
-                                    <a class="ankblog" href="#3">View More</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-12">
-                              <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service1.jpg')}}" />
-                                 <div class="card-block">
-                                    <h4 class="card-title">Blog6</h4>
-                                    <div class="card-text">
-                                       Elderly and 7415 groups receive livelihood support
-                                       across 16 states
-                                    </div>
-                                    <a class="ankblog" href="#3">View More</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-12">
-                              <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service2.jpg')}}" />
-                                 <div class="card-block">
-                                    <h4 class="card-title">Blog7</h4>
-                                    <div class="card-text">
-                                       Old age homes provide support and dignity to destitute
-                                       elders
-                                    </div>
-                                    <a class="ankblog" href="#3">View More</a>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6 col-sm-12">
-                              <div class="card">
-                                 <img class="card-img-top" alt=""
-                                    src="{{static_asset('assets_web/img/blog/service3.jpg')}}" />
-                                 <div class="card-block">
-                                    <h4 class="card-title">Blog8</h4>
-                                    <div class="card-text">
-                                       elderly are provided monthly ration and finances in
-                                       our "Support a Gran".
-                                    </div>
-                                    <a class="ankblog" href="#3">View More</a>
-                                 </div>
-                              </div>
-                           </div>
+                           @endforeach
+                           
                         </div>
                      </div>
                   </div>

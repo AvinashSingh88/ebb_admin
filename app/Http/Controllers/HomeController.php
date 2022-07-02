@@ -21,6 +21,8 @@ use App\Models\Address;
 use App\Models\Customer_payment_card;
 use App\Models\Category_wise_brand;
 use App\Models\Enquiry;
+use App\Models\Blog;
+use App\Models\ProductQuoteEnquiry;
 use Cookie;
 use Illuminate\Support\Str;
 use App\Mail\SecondEmailVerifyMailManager;
@@ -48,8 +50,9 @@ class HomeController extends Controller
         });
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
         $cat_wise_brands = Category_wise_brand::groupBy('category_id')->get();
+        $allblogs = Blog::limit(4)->get();
       
-        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands'));
+        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands','allblogs'));
     }
 
     
@@ -902,5 +905,30 @@ class HomeController extends Controller
     {
         $products = filter_products(Product::where('added_by', 'admin'))->with('taxes')->paginate(12)->appends(request()->query());
         return view('frontend.inhouse_products', compact('products'));
+    }
+
+    public function productRequestQuote(Request $request){
+        // $request->validate([
+        //     'name'=>'required',
+        //     'email'=>'required|email',
+        //     'phone'=>'required|min:11|numeric',
+        //     'price_range'=>'required',
+        //     'message'=>'required',
+        //     'category'=>'required',
+        // ]);
+    //    dd($request->name);
+    //    die;
+        $add_product_request_enquiry = ProductQuoteEnquiry::create([
+            "name" => "$request->name",
+            "email" => "$request->email",
+            "phone" => "$request->phone",
+            "price_range" => "$request->price_range",
+            "message" => "$request->message",
+            "category" => "$request->category"
+        ]);
+        if ($add_product_request_enquiry) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Thank you for enquiry with us!.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.')); 
     }
 }

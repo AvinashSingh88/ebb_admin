@@ -31,6 +31,22 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-md-3 col-form-label">{{translate('Category Type')}}</label>
+                        <div class="col-md-9">
+                            <select class="select2 form-control aiz-selectpicker" name="type" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
+                                <option value="{{$category->type}}" >@if ($category->type=='1')
+                                    Product
+                                    @else
+                                    Service
+                                @endif
+                            </option>
+                                <option value="1">Product</option>
+                                <option value="2">Service</option>
+                                     
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Parent Category')}}</label>
                         <div class="col-md-9">
                             <select class="select2 form-control aiz-selectpicker" name="parent_id" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" data-selected="{{ $category->parent_id }}">

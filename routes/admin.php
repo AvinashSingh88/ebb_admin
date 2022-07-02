@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/categories/edit/{id}', 'CategoryController@edit')->name('categories.edit');
     Route::get('/categories/destroy/{id}', 'CategoryController@destroy')->name('categories.destroy');
     Route::post('/categories/featured', 'CategoryController@updateFeatured')->name('categories.featured');
-
+    Route::post('getCategoryName','CategoryController@getCategoryName')->name('getCategoryName');
     Route::resource('brands', 'BrandController');
     Route::get('/brands/edit/{id}', 'BrandController@edit')->name('brands.edit');
     Route::get('/brands/destroy/{id}', 'BrandController@destroy')->name('brands.destroy');
@@ -146,6 +146,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::resource('custom-pages', 'PageController');
         Route::get('/custom-pages/edit/{id}', 'PageController@edit')->name('custom-pages.edit');
         Route::get('/custom-pages/destroy/{id}', 'PageController@destroy')->name('custom-pages.destroy');
+        Route::get('home-category-section','WebsiteController@homeCatSectionList')->name('website.home-category-section');
+        Route::get('add-home-category-section','WebsiteController@addHomeCatSectionList')->name('website.add-home-category-section');
+        Route::post('uploadHomeCategorySection','WebsiteController@uploadHomeCategorySection')->name('website.uploadHomeCategorySection');
+        Route::get('/homecatsec/destroy/{id}','WebsiteController@destroyHomeCatSection')->name('website.destroyhomecatesection');
+        Route::get('/edit-home-cat-section/{id}', 'WebsiteController@editHomeCatSection')->name('website.edit-home-cat-section/{id}');
+        Route::post('updatehomeCatSection', 'WebsiteController@updatehomeCatSection')->name('website.updatehomeCatSection');
     });
 
     Route::resource('roles', 'RoleController');
@@ -211,6 +217,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/blog/destroy/{id}', 'BlogController@destroy')->name('blog.destroy');
     Route::post('/blog/change-status', 'BlogController@change_status')->name('blog.change-status');
 
+    //Enquiry Section
+    Route::resource('enquiry','EnquiryController');
+    Route::get('/enq/destroy/{id}', 'EnquiryController@destroy')->name('enq.destroy');
+    Route::get('/enquiry/product-enquiry','EnquiryController@productEnquiry')->name('enq.productEnquiry');
     //Coupons
     Route::resource('coupon', 'CouponController');
     Route::get('/coupon/destroy/{id}', 'CouponController@destroy')->name('coupon.destroy');
