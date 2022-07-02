@@ -460,22 +460,7 @@ $qty += $stock->qty;
             </div>
         </div>
     </div>
-	<div class="row no-gutters pb-3 d-none" id="chosen_price_div">
-                                    <div class="col-sm-2">
-                                        <div class="opacity-50 my-2">{{ translate('Total Price')}}:</div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="product-price">
-                                            <strong id="chosen_price" class="h4 fw-600 text-primary">
-
-                                            </strong>
-                                        </div>
-                                    </div>
-                                </div>
-</form>
-
-    <div class="discrptions_button">
-        <div class="cart-add d-block cart-add1 products_list ">
+	<div class="discrptions_button cart-add d-block cart-add1 products_list ">
             <div class="input-group quantity_input mb-0">
                 <div class="input-group w-100 justify-content-start align-items-center packageadd">
                     <input type="button" value="-"
@@ -490,15 +475,19 @@ $qty += $stock->qty;
                 </div>
             </div>
         </div>
+</form>
+
+    <div class="discrptions_button">
+        
 
         <input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
         <input type="hidden" id="total_product_price" class="prod_price">
         <button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to
             Cart</button>
-        <button class="out-of-stock d-none background-gray">Out of stock</button>
+        <button class="out-of-stock background-gray">Out of stock</button>
 
         <!--<h6><a href="quote.php">Get Quote</a></h6>-->
-        <h6><a href="bulk-order.php">Bulk Order</a></h6>
+        <button class="bulk-order-buttons">Bulk Order</button>
 
     </div>
 

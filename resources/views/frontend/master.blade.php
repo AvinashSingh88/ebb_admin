@@ -180,13 +180,13 @@ $('#option-choice-form input').on('change', function(){
                        $('#available-quantity').html(data.quantity);
                        $('.input-number').prop('max', data.max_limit);
                        if(parseInt(data.in_stock) == 0 && data.digital  == 0){
-                           $('.buy-now').addClass('d-none');
-                           $('.add-to-cart').addClass('d-none');
+                           $('.bulk-order-buttons').addClass('d-none');
+                           $('.addtocartbut').addClass('d-none');
                            $('.out-of-stock').removeClass('d-none');
                        }
                        else{
-                           $('.buy-now').removeClass('d-none');
-                           $('.add-to-cart').removeClass('d-none');
+                           $('.bulk-order-buttons').removeClass('d-none');
+                           $('.addtocartbut').removeClass('d-none');
                            $('.out-of-stock').addClass('d-none');
                        }
                    }
@@ -345,15 +345,17 @@ $('#option-choice-form input').on('change', function(){
                     }
                 });
             var prod_id =  $(this).closest('.product_data').find('.prod_id').val();
+            // alert(prod_id);
             $.ajax({
                 method: "POST",
                 url: '{{url('dele-cart-item')}}',
                 data: {
                     'prod_id':prod_id,
                 },
-                dataType: "dataType",
                 success: function (response) {
                     toastr.info(response.status);
+                    loadcart();
+					 $('#cart-summary').html(response.cart_view);
                 }
             });
         });
