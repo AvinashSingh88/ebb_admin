@@ -47,14 +47,16 @@
             <div class="col-md-12 breadmcrumsize">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-						@php
-							$catid  = $detailedProduct->category->id;
-                            $getParentid = \App\Models\Category::where('id','=',$catid)->first(['parent_id']);
-                            $get_parent_id = $getParentid->parent_id;
-                            
-						@endphp
+                        @php
+                        $catid = $detailedProduct->category->id;
+                        $getParentid = \App\Models\Category::where('id','=',$catid)->first(['parent_id']);
+                        $get_parent_id = $getParentid->parent_id;
+
+                        @endphp
                         <li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="product-building.php">{{$detailedProduct->category->getTranslation('name') }}</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="product-building.php">{{$detailedProduct->category->getTranslation('name') }}</a>
+                        </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             {{ $detailedProduct->getTranslation('name') }} -{{$get_parent_id}}</li>
                     </ol>
@@ -121,208 +123,7 @@
                         </div>
                         <!--Last code start--->
 
-                        <form id="option-choice-form">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
-
-                            @if ($detailedProduct->choice_options != null)
-                            @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
-                            <div class="tab-finish">
-                                <div class="row no-gutters">
-                                    <div class="col-sm-2">
-                                        <p class="ucfirst">
-                                            {{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="aiz-radio-inline">
-                                            @foreach ($choice->values as $key => $value)
-                                            <label class="aiz-megabox pl-0 mr-2">
-                                                <input class="opacity" type="radio"
-                                                    name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}"
-                                                    @if($key==0) checked @endif>
-                                                <span
-                                                    class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                                    {{ $value }}
-                                                </span>
-                                            </label>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
-
-                            @if (count(json_decode($detailedProduct->colors)) > 0)
-                            <div class="row no-gutters">
-                                <div class="col-sm-2">
-                                    <div class="opacity-50 my-0">
-                                        <h6>{{ translate('Color')}}:</h6>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="aiz-radio-inline">
-                                        @foreach (json_decode($detailedProduct->colors) as $key => $color)
-                                        <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip"
-                                            data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
-                                            <input class="opacity" type="radio" name="color"
-                                                value="{{ \App\Models\Color::where('code', $color)->first()->name }}"
-                                                @if($key==0) checked @endif>
-                                            <span
-                                                class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                                <span class="size-30px d-inline-block rounded"
-                                                    style="background:{{ $color }};"></span>
-                                            </span>
-                                        </label>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr>
-                            @endif
-
-                            <!-- Quantity + Add to cart -->
-                            <div class="row no-gutters d-none">
-                                <div class="col-sm-2">
-                                    <div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="product-quantity d-flex align-items-center">
-                                        <div
-                                            class="input-group w-60 justify-content-start align-items-center packageadd">
-                                            <input type="button" value="-"
-                                                class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0"
-                                                data-field="quantity">
-                                            <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10"
-                                                value="{{ $detailedProduct->min_qty }}" name="quantity"
-                                                class="quantity quantity-field border-0 text-center m-0 w-25">
-                                            <input type="button" value="+"
-                                                class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0"
-                                                data-field="quantity">
-                                        </div>
-                                        <!-- <div class="row no-gutters align-items-center aiz-plus-minus mr-3"
-                                            style="width: 130px;">
-                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light"
-                                                type="button" data-type="minus" data-field="quantity" disabled="">
-                                                <i class="las la-minus"></i>
-                                            </button>
-                                            <input type="number" class="opacity" name="quantity"
-                                                class="col border-0 text-center flex-grow-1 fs-16 input-number"
-                                                placeholder="1" value="{{ $detailedProduct->min_qty }}"
-                                                min="{{ $detailedProduct->min_qty }}" max="10">
-                                            <button class="btn  col-auto btn-icon btn-sm btn-circle btn-light"
-                                                type="button" data-type="plus" data-field="quantity">
-                                                <i class="las la-plus"></i>
-                                            </button>
-                                        </div> -->
-                                        @php
-                                        $qty = 0;
-                                        foreach ($detailedProduct->stocks as $key => $stock) {
-                                        $qty += $stock->qty;
-                                        }
-                                        @endphp
-                                        <div class="avialable-amount w-40 opacity-60">
-                                            @if($detailedProduct->stock_visibility_state == 'quantity')
-                                            (<span id="available-quantity">{{ $qty }}</span>
-                                            {{ translate('available')}})
-                                            @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
-                                            (<span id="available-quantity">{{ translate('In Stock') }}</span>)
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </form>
-                        <!--Last code end--->
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="product-box1">
-                            <div class="discrptions">
-                                <h5>{{ $detailedProduct->getTranslation('name') }} </h5>
-                                <div class="pricebox mt-2">
-                                    <div class="d-flex">
-                                        <div class="title w-60 pt-2">
-                                            <h4 class="tag-line325"> Made In India
-                                                <img class="flag-detls" src="{{static_asset('assets_web/img/in.jpg')}}"
-                                                    alt="">
-                                            </h4>
-                                        </div>
-                                        <div class="d-flex align-items-center w-40 m-0">
-                                            <div class="col-auto">
-                                                <h4 class="tag-line325"><span
-                                                        class="mr-2 opacity-50">{{ translate('Sold by')}}: </span>
-                                                    @if ($detailedProduct->added_by == 'seller' &&
-                                                    get_setting('vendor_system_activation') == 1)
-                                                    <a href=""
-                                                        class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
-                                                    @else
-                                                    {{ translate('Inhouse product') }}
-                                                    @endif
-                                                </h4>
-                                            </div>
-
-                                            @if (get_setting('conversation_system') == 1)
-                                            <div class="col-auto">
-                                                <button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">{{ translate('Message
-													Seller')}}</button>
-                                            </div>
-                                            @endif
-
-                                            @if ($detailedProduct->brand != null)
-                                            <div class="col-auto">
-                                                <a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
-                                                    <img class="icon-imagw mx-2"
-                                                        src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
-                                                        alt="{{ $detailedProduct->brand->getTranslation('name') }}">
-                                                </a>
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="d-flex">
-                                        @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
-                                        <div class="price">
-                                            <!-- <i class="fa fa-inr"></i> -->
-                                            <h3> {{ home_discounted_price($detailedProduct) }}</h3>
-                                        </div>
-                                        {{-- @if($detailedProduct->unit != null) 
-												<div class="opacity-70">/{{$detailedProduct->getTranslation('unit') }}
-                                    </div>
-                                    @endif --}}
-
-                                    <div class="cutprice mx-2">
-                                        <h3>
-                                            {{ home_price($detailedProduct) }}
-                                            {{-- @if($detailedProduct->unit != null)
-													 <span>/{{ $detailedProduct->getTranslation('unit') }}</span>
-                                            @endif --}}
-                                        </h3>
-                                    </div>
-                                    @endif
-
-                                    <div id="show_total_price" class="price d-none">Total Price: <div id="total_price"
-                                            class=""></div>
-                                    </div>
-
-                                    {{-- <div class="offer border-0">You Save  <i class="fa fa-inr"></i> 35  ( 14% ) </div> --}}
-                                </div>
-                                <div class="title">Inclusive of all taxes</div>
-                                <p class="col-cpvc-2">CPVC SDR 11 CPVC Pipes 40 mm 1.50 <a href="#descriptions1">More
-                                        Details</a> </p>
-
-                            </div>
-
-                        </div>
-
-                        <img class="w-100 mb-2" src="{{static_asset('assets_web/img/productcoupon.jpg')}}" alt="">
-                        <div id="accordion" class="accordion-container">
+                        {{-- <div id="accordion" class="accordion-container">
                             <article class="content-entry products_offers">
                                 <h4 class="article-title"> Special offers <i class="fa fa-angle-right"
                                         aria-hidden="true" style="    line-height: 35px;"></i></h4>
@@ -371,50 +172,132 @@
                                                 <div id="ga-product_4683826004099" class="ga-product ">
                                                     <a href="#1">
                                                         <img class="ga-33" id="ga-33"
-                                                            src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
-                                                    </a>
-                                                </div>
-                                                <div id="ga-product_6616790696067" class="ga-product ">
-                                                    <a href="#1">
-                                                        <img class="ga-22" id="ga-22"
-                                                            src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
-                                                    </a>
-                                                </div>
-                                                <div id="ga-product_5155996893315" class="ga-product last">
-                                                    <a href="#1">
-                                                        <img class="ga-111" id="ga-111"
-                                                            src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
-                                                    </a>
-                                                </div>
+                                                            src="{{static_asset('assets_web/img/cement1.jpg')}}"
+                        alt="">
+                        </a>
+                    </div>
+                    <div id="ga-product_6616790696067" class="ga-product ">
+                        <a href="#1">
+                            <img class="ga-22" id="ga-22" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
+                        </a>
+                    </div>
+                    <div id="ga-product_5155996893315" class="ga-product last">
+                        <a href="#1">
+                            <img class="ga-111" id="ga-111" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
+                        </a>
+                    </div>
 
-                                            </div>
-                                        </div>
-                                        <ul class="ga-products-input">
-                                            <li class="ga-product ga-deactive" data-product-id="3">
-                                                <input class="selectedItem" type="checkbox" value="3">
-                                                <a class="ga-product_title" href="#1">PPC Surecem 32.5R Cement per
-                                                    Pallet 40 bags of 50kg</a>
+                </div>
+            </div>
+            <ul class="ga-products-input">
+                <li class="ga-product ga-deactive" data-product-id="3">
+                    <input class="selectedItem" type="checkbox" value="3">
+                    <a class="ga-product_title" href="#1">PPC Surecem 32.5R Cement per
+                        Pallet 40 bags of 50kg</a>
 
-                                            </li>
-                                            <li class="ga-product ga-deactive" data-product-id="2">
-                                                <input class="selectedItem" type="checkbox" value="2">
-                                                <a class="ga-product_title" href="#1">Cement stock brick</a>
+                </li>
+                <li class="ga-product ga-deactive" data-product-id="2">
+                    <input class="selectedItem" type="checkbox" value="2">
+                    <a class="ga-product_title" href="#1">Cement stock brick</a>
 
-                                            </li>
-                                            <li class="ga-product ga-deactive" data-product-id="1">
-                                                <input class="selectedItem" type="checkbox" value="1">
-                                                <a class="ga-product_title" href="#1">KBC Kwikbuild Cement 32.5N bag
-                                                    50kg</a>
+                </li>
+                <li class="ga-product ga-deactive" data-product-id="1">
+                    <input class="selectedItem" type="checkbox" value="1">
+                    <a class="ga-product_title" href="#1">KBC Kwikbuild Cement 32.5N bag
+                        50kg</a>
 
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--/.accordion-content-->
-                            </article>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/.accordion-content-->
+    </article>
 
+</div> --}}
+
+
+<!--Last code end--->
+</div>
+
+<div class="col-md-6">
+    <div class="product-box1">
+        <div class="discrptions">
+            <h5>{{ $detailedProduct->getTranslation('name') }} </h5>
+            <div class="pricebox mt-2">
+                <div class="d-flex">
+                    <div class="title w-60 pt-2">
+                        <h4 class="tag-line325"> Made In India
+                            <img class="flag-detls" src="{{static_asset('assets_web/img/in.jpg')}}" alt="">
+                        </h4>
+                    </div>
+                    <div class="d-flex align-items-center w-40 m-0">
+                        <div class="col-auto">
+                            <h4 class="tag-line325"><span class="mr-2 opacity-50">{{ translate('Sold by')}}: </span>
+                                @if ($detailedProduct->added_by == 'seller' &&
+                                get_setting('vendor_system_activation') == 1)
+                                <a href="" class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
+                                @else
+                                {{ translate('Inhouse product') }}
+                                @endif
+                            </h4>
                         </div>
-                        {{--<div class="backtabs-dp_servicespros2">
+
+                        @if (get_setting('conversation_system') == 1)
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">{{ translate('Message
+													Seller')}}</button>
+                        </div>
+                        @endif
+
+                        @if ($detailedProduct->brand != null)
+                        <div class="col-auto">
+                            <a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
+                                <img class="icon-imagw mx-2" src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
+                                    alt="{{ $detailedProduct->brand->getTranslation('name') }}">
+                            </a>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="d-flex">
+                    @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
+                    <div class="price">
+                        <!-- <i class="fa fa-inr"></i> -->
+                        <h3> {{ home_discounted_price($detailedProduct) }}</h3>
+                    </div>
+                    {{-- @if($detailedProduct->unit != null) 
+												<div class="opacity-70">/{{$detailedProduct->getTranslation('unit') }}
+                </div>
+                @endif --}}
+
+                <div class="cutprice mx-2">
+                    <h3>
+                        {{ home_price($detailedProduct) }}
+                        {{-- @if($detailedProduct->unit != null)
+													 <span>/{{ $detailedProduct->getTranslation('unit') }}</span>
+                        @endif --}}
+                    </h3>
+                </div>
+                @endif
+
+                <div id="show_total_price" class="price d-none">Total Price: <div id="total_price" class=""></div>
+                </div>
+
+                {{-- <div class="offer border-0">You Save  <i class="fa fa-inr"></i> 35  ( 14% ) </div> --}}
+            </div>
+            <div class="title">Inclusive of all taxes</div>
+            <p class="col-cpvc-2">CPVC SDR 11 CPVC Pipes 40 mm 1.50 <a href="#descriptions1">More
+                    Details</a> </p>
+
+        </div>
+
+    </div>
+
+    <img class="w-100 mb-2" src="{{static_asset('assets_web/img/productcoupon.jpg')}}" alt="">
+
+
+    {{--<div class="backtabs-dp_servicespros2">
                    
 
 						  <div class="optionbox">
@@ -425,55 +308,140 @@
                                  <li>
                                     <a href="javascript:void(0);" class="detbrand selected">
                                     <img src="{{static_asset('assets_web/img/brandsa1.jpg')}}" class="loadimg" alt="">
-                        <span class="price">₹ 1656
-                        </span></a><!-- detbrand -->
-                        </li>
-                        <!--for current product-->
-                        <!--for other products-->
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa2.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1092
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa3.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 876
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa4.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1100
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa5.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1694
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa6.png')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1149
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa7.png')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1154
-                                </span></a><!-- detbrand -->
-                        </li>
+    <span class="price">₹ 1656
+    </span></a><!-- detbrand -->
+    </li>
+    <!--for current product-->
+    <!--for other products-->
+    <li>
+        <a href="#1" class="detbrand">
+            <img src="{{static_asset('assets_web/img/brandsa2.jpg')}}" class="loadimg" alt="">
+            <span class="price">₹ 1092
+            </span></a><!-- detbrand -->
+    </li>
+    <li>
+        <a href="#1" class="detbrand">
+            <img src="{{static_asset('assets_web/img/brandsa3.jpg')}}" class="loadimg" alt="">
+            <span class="price">₹ 876
+            </span></a><!-- detbrand -->
+    </li>
+    <li>
+        <a href="#1" class="detbrand">
+            <img src="{{static_asset('assets_web/img/brandsa4.jpg')}}" class="loadimg" alt="">
+            <span class="price">₹ 1100
+            </span></a><!-- detbrand -->
+    </li>
+    <li>
+        <a href="#1" class="detbrand">
+            <img src="{{static_asset('assets_web/img/brandsa5.jpg')}}" class="loadimg" alt="">
+            <span class="price">₹ 1694
+            </span></a><!-- detbrand -->
+    </li>
+    <li>
+        <a href="#1" class="detbrand">
+            <img src="{{static_asset('assets_web/img/brandsa6.png')}}" class="loadimg" alt="">
+            <span class="price">₹ 1149
+            </span></a><!-- detbrand -->
+    </li>
+    <li>
+        <a href="#1" class="detbrand">
+            <img src="{{static_asset('assets_web/img/brandsa7.png')}}" class="loadimg" alt="">
+            <span class="price">₹ 1154
+            </span></a><!-- detbrand -->
+    </li>
 
-                        </ul>
-                    </div>
-                    <hr />
+    </ul>
+</div>
+<hr />
 
 
-                </div>--}}
+</div>--}}
 
+
+@php
+$qty = 0;
+foreach ($detailedProduct->stocks as $key => $stock) {
+$qty += $stock->qty;
+}
+@endphp
+
+<form id="option-choice-form">
+    @csrf
+    <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
+
+    @if ($detailedProduct->choice_options != null)
+    @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
+    <div class="tab-finish">
+        <div class="row no-gutters">
+            <div class="col-sm-2">
+                <p class="ucfirst">
+                    {{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:
+                </p>
+            </div>
+            <div class="col-sm-10">
+                <div class="aiz-radio-inline">
+                    @foreach ($choice->values as $key => $value)
+                    <label class="aiz-megabox pl-0 mr-2">
+                        <input class="opacity" type="radio" name="attribute_id_{{ $choice->attribute_id }}"
+                            value="{{ $value }}" @if($key==0) checked @endif>
+                        <span
+                            class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                            {{ $value }}
+                        </span>
+                    </label>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    @endif
+
+    @if (count(json_decode($detailedProduct->colors)) > 0)
+    <div class="row no-gutters">
+        <div class="col-sm-2">
+            <div class="opacity-50 my-0">
+                <h6>{{ translate('Color')}}:</h6>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="aiz-radio-inline">
+                @foreach (json_decode($detailedProduct->colors) as $key => $color)
+                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip"
+                    data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
+                    <input class="opacity" type="radio" name="color"
+                        value="{{ \App\Models\Color::where('code', $color)->first()->name }}" @if($key==0) checked
+                        @endif>
+                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                        <span class="size-30px d-inline-block rounded" style="background:{{ $color }};"></span>
+                    </span>
+                </label>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    @endif
+
+    <!-- Quantity + Add to cart -->
+    <div class="row no-gutters d-none">
+        <div class="col-sm-2">
+            <div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
+        </div>
+        <div class="col-sm-10">
+            <div class="product-quantity d-flex align-items-center">
+                <div class="input-group w-60 justify-content-start align-items-center packageadd">
+                    <input type="button" value="-"
+                        class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0"
+                        data-field="quantity">
+                    <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10"
+                        value="{{ $detailedProduct->min_qty }}" name="quantity"
+                        class="quantity quantity-field border-0 text-center m-0 w-25">
+                    <input type="button" value="+"
+                        class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0"
+                        data-field="quantity">
+                </div>
 
                 @php
                 $qty = 0;
@@ -481,100 +449,108 @@
                 $qty += $stock->qty;
                 }
                 @endphp
-                <hr>
-                <div class="discrptions_button">
-                    <div class="cart-add d-block cart-add1 products_list ">
-                        <div class="input-group quantity_input mb-0">
-                            <div class="input-group w-100 justify-content-start align-items-center packageadd">
-                                <input type="button" value="-"
-                                    class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0"
-                                    data-field="quantity">
-                                <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10"
-                                    value="{{ $detailedProduct->min_qty }}" name="quantity"
-                                    class="quantity quantity-field border-0 text-center m-0 w-25">
-                                <input type="button" value="+"
-                                    class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0"
-                                    data-field="quantity">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="input-group quantity_input">
-                                 <span class="input-group-btn">
-                                 <input type="button" value="-" class="button-minus border rounded-circle btn btn-danger btn-number quantity-left-minus icon-shape icon-sm mx-1 " data-field="quantity">
-                                     
-                                
-                                 </span>
-                                 <input type="number" step="1" max="10" value="1" id="quantity"  name="quantity" class="quantity quantity-field form-control input-number border-0 text-center w-25">
-                                     
-                                  <span class="input-group-btn">
-                                 <input type="button" value="+" class="button-plus border btn btn-success btn-number rounded-circle quantity-right-plus icon-shape icon-sm lh-0" data-field="quantity">
-                                
-                                 </span>
-                              </div> -->
-                    <h5><a href="#1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</a></h5>
-
-                    <!--<h6><a href="quote.php">Get Quote</a></h6>-->
-                    <h6><a href="bulk-order.php">Bulk Order</a></h6>
-                </div>
-
-                <h4 id="available-quantity">
+                <div class="avialable-amount w-40 opacity-60">
                     @if($detailedProduct->stock_visibility_state == 'quantity')
-                    <span id="available-quantity">{{ $qty }} </span>
-                    {{ translate('available')}}
+                    (<span id="available-quantity">{{ $qty }}</span>
+                    {{ translate('available')}})
                     @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
-                    {{ translate('In Stock') }}
+                    (<span id="available-quantity">{{ translate('In Stock') }}</span>)
                     @endif
-                </h4>
-                {{-- <h4>Highlights</h4>
-                           <ul class="ulproducts ulproducts4">
-                              <li><b>Category </b>&nbsp; :&nbsp; Plumbing</li>
-                              <li><b>Sub Category </b>&nbsp; :&nbsp; Pipes</li>
-                              <li><b>Products </b>&nbsp; :&nbsp; CPVC Pipes</li>
-                              <li><b>Brand </b>&nbsp; :&nbsp; ISI</li>
-                              <li><b>HSN </b>&nbsp; :&nbsp; 8544</li>
-                              <li><b>SKU </b>&nbsp; :&nbsp; MK002302</li>
-                           </ul> --}}
+                </div>
             </div>
         </div>
-        <div id="descriptions1"></div>
     </div>
-
-
-    <div class="bootstrap-accordiana">
-        <div class="backtabs-dp_servicespros2">
-            <ul class="ulines-dps">
-                <li class="ukine ukine1b active4">Description</li>
-                <li class="ukine ukine2b">Overview </li>
-                <li class="ukine ukine3b">Warranty </li>
-            </ul>
-            <ul class="ulines-dps-para ">
-                <li class="ukine ukine1b active4">
-                    <div class="tab-description">
-                        <h3>Product Description</h3>
-                        <p><?php echo $detailedProduct->getTranslation('description'); ?> </p>
-                    </div>
-                </li>
-                <li class="ukine ukine2b">
-                    <div class="tab-description">
-                        <h3>Product Overview</h3>
-                        <div class="tab-description">
-                            {{$detailedProduct->overview}}
-                        </div>
-                    </div>
-                </li>
-                <li class="ukine ukine3b">
-                    <div class="tab-description">
-                        <h3>Warranty Details</h3>
-                        <p>
-                        <div class="tab-description">
-                            <?php=$detailedProduct->overview ?>
-                        </div>
-                        </p>
-                    </div>
-                </li>
-            </ul>
+	<div class="discrptions_button cart-add d-block cart-add1 products_list ">
+            <div class="input-group quantity_input mb-0">
+                <div class="input-group w-100 justify-content-start align-items-center packageadd">
+                    <input type="button" value="-"
+                        class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0"
+                        data-field="quantity">
+                    <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10"
+                        value="{{ $detailedProduct->min_qty }}" name="quantity"
+                        class="quantity quantity-field border-0 text-center m-0 w-25">
+                    <input type="button" value="+"
+                        class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0"
+                        data-field="quantity">
+                </div>
+            </div>
         </div>
+</form>
+
+    <div class="discrptions_button">
+        
+
+        <input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
+        <input type="hidden" id="total_product_price" class="prod_price">
+        <button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to
+            Cart</button>
+        <button class="out-of-stock background-gray">Out of stock</button>
+
+        <!--<h6><a href="quote.php">Get Quote</a></h6>-->
+        <button class="bulk-order-buttons">Bulk Order</button>
+
     </div>
+
+
+    <h4 id="available-quantity">
+        @if($detailedProduct->stock_visibility_state == 'quantity')
+        <span id="available-quantity">{{ $qty }} </span>
+        {{ translate('available')}}
+        @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
+        {{ translate('In Stock') }}
+        @endif
+    </h4>
+
+<h4>Highlights</h4>
+<ul class="ulproducts ulproducts4">
+    <li><b>Category </b>&nbsp; :&nbsp; Plumbing</li>
+    <li><b>Sub Category </b>&nbsp; :&nbsp; Pipes</li>
+    <li><b>Products </b>&nbsp; :&nbsp; CPVC Pipes</li>
+    <li><b>Brand </b>&nbsp; :&nbsp; ISI</li>
+    <li><b>HSN </b>&nbsp; :&nbsp; 8544</li>
+    <li><b>SKU </b>&nbsp; :&nbsp; MK002302</li>
+</ul>
+</div>
+</div>
+<div id="descriptions1"></div>
+</div>
+
+
+<div class="bootstrap-accordiana">
+    <div class="backtabs-dp_servicespros2">
+        <ul class="ulines-dps">
+            <li class="ukine ukine1b active4">Description</li>
+            <li class="ukine ukine2b">Overview </li>
+            <li class="ukine ukine3b">Warranty </li>
+        </ul>
+        <ul class="ulines-dps-para ">
+            <li class="ukine ukine1b active4">
+                <div class="tab-description">
+                    <h3>Product Description</h3>
+                    <p><?php echo $detailedProduct->getTranslation('description'); ?> </p>
+                </div>
+            </li>
+            <li class="ukine ukine2b">
+                <div class="tab-description">
+                    <h3>Product Overview</h3>
+                    <div class="tab-description">
+                        {{$detailedProduct->overview}}
+                    </div>
+                </div>
+            </li>
+            <li class="ukine ukine3b">
+                <div class="tab-description">
+                    <h3>Warranty Details</h3>
+                    <p>
+                    <div class="tab-description">
+                        <?php=$detailedProduct->overview ?>
+                    </div>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 
 
 </div>
