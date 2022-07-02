@@ -50,7 +50,7 @@ class EnquiryController extends Controller
         // $product_enquiry = $product_enquiry->paginate(15);
 
         // return view('backend.enquiry.product_enquiry.product_enquiry', compact('product_enquiry','sort_search'));
-        return view('Rana');
+        //return view('Rana');
     }
 	public function show($id)
     {

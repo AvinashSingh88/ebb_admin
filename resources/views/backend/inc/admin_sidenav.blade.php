@@ -193,7 +193,7 @@
                 <!-- Website Setup -->
                 @if(Auth::user()->user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions)))
                     <li class="aiz-side-nav-item">
-                        <a href="#" class="aiz-side-nav-link {{ areActiveRoutes(['website.footer', 'website.header', 'website.cat-wise-brand-list','website.cat-wise-offer-list'])}}" >
+                        <a href="#" class="aiz-side-nav-link {{ areActiveRoutes(['website.footer', 'website.header', 'website.cat-wise-brand-list','website.cat-wise-offer-list','website.home-category-section'])}}" >
                             <i class="las la-desktop aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">{{translate('Website Setup')}}</span>
                             <span class="aiz-side-nav-arrow"></span>
@@ -227,6 +227,11 @@
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('website.cat-wise-offer-list') }}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{translate('Category Wise Offer')}}</span>
+                                </a>
+                            </li>
+							<li class="aiz-side-nav-item">
+                                <a href="{{ route('website.home-category-section') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Home Category Section')}}</span>
                                 </a>
                             </li>
                         </ul>

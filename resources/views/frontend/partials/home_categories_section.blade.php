@@ -16,56 +16,18 @@
                             </div>
                         </div>
                         <div class="owl-carousel owl-theme owl-carousel_sliders">
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser16.jpg" alt="" />
-                                        </div>
-                                        <h3>Construction Material</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser17.jpg" alt="" />
-                                        </div>
-                                        <h3>Plumbing & sanitaryware</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser18.jpg" alt="" />
-                                        </div>
-                                        <h3>Electrical Items</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser19.jpg" alt="" />
-                                        </div>
-                                        <h3>Door & Window</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser20.jpg" alt="" />
-                                        </div>
-                                        <h3>Earth Movers</h3>
-                                    </a>
-                                </div>
-                            </div>
+							@foreach(\App\Models\HomeCategorySection::where('category_attribute','=','building_materials')->get() as $key => $home_cat_sec)
+								<div class="item">
+									<div class="colams_item">
+										<a href="{{$home_cat_sec->slug_url}}">
+											<div class="trend-theme">
+												<img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
+											</div>
+											<h3>{{$home_cat_sec->title}}</h3>
+										</a>
+									</div>
+								</div>
+                            @endforeach
                         </div>
 
                     </div>
@@ -91,56 +53,18 @@
                             </div>
                         </div>
                         <div class="owl-carousel owl-theme owl-carousel_sliders">
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser21.jpg" alt="" />
-                                        </div>
-                                        <h3>Flooring</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser22.jpg" alt="" />
-                                        </div>
-                                        <h3>Home Furniture</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser23.jpg" alt="" />
-                                        </div>
-                                        <h3>Excavation</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser9.jpg" alt="" />
-                                        </div>
-                                        <h3>Home decor</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser7.jpg" alt="" />
-                                        </div>
-                                        <h3>Plumbing & Electrical</h3>
-                                    </a>
-                                </div>
-                            </div>
+                           @foreach(\App\Models\HomeCategorySection::where('category_attribute','=','furnishing_material')->get() as $key => $home_cat_sec)
+								<div class="item">
+									<div class="colams_item">
+										<a href="{{$home_cat_sec->slug_url}}">
+											<div class="trend-theme">
+												<img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
+											</div>
+											<h3>{{$home_cat_sec->title}}</h3>
+										</a>
+									</div>
+								</div>
+                            @endforeach
                         </div>
 
 
@@ -166,56 +90,18 @@
                             </div>
                         </div>
                         <div class="owl-carousel owl-theme owl-carousel_sliders">
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser27.jpg" alt="" />
-                                        </div>
-                                        <h3>Premium civil work</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser28.jpg" alt="" />
-                                        </div>
-                                        <h3>Premium interior</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser29.jpg" alt="" />
-                                        </div>
-                                        <h3>Premium furnishing</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser26.jpg" alt="" />
-                                        </div>
-                                        <h3> Furniture/Woodwork</h3>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="colams_item">
-                                    <a href="javascript:void(0);">
-                                        <div class="trend-theme">
-                                            <img src="img/ser25.jpg" alt="" />
-                                        </div>
-                                        <h3>Premium electric Items</h3>
-                                    </a>
-                                </div>
-                            </div>
+                            @foreach(\App\Models\HomeCategorySection::where('category_attribute','=','sanitary_items')->get() as $key => $home_cat_sec)
+								<div class="item">
+									<div class="colams_item">
+										<a href="{{$home_cat_sec->slug_url}}">
+											<div class="trend-theme">
+												<img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
+											</div>
+											<h3>{{$home_cat_sec->title}}</h3>
+										</a>
+									</div>
+								</div>
+                            @endforeach
                         </div>
 
                     </div>
