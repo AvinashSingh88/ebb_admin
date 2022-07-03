@@ -221,7 +221,8 @@ class CartController extends Controller
             }
 
             $data['variation'] = $str;
-
+				// dd($str);
+				// die;
             $product_stock = $product->stocks->where('variant', $str)->first();
             $price = $product_stock->price;
 

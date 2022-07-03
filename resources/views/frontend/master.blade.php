@@ -213,6 +213,7 @@ $('#option-choice-form input').on('change', function(){
             $('.cart-count').html(count);
             $('#cart_items').html(view);
         }
+		
 		function addToCart(){
             if(checkAddToCartValidity()) {
 				// alert('rana');
@@ -246,11 +247,16 @@ $('#option-choice-form input').on('change', function(){
 
         $(document).ready(function() {
 			loadcart();
-			$('.addToCartButton').click(function (e) { 
+			/*
+			$('.addToCartButtonProductList').click(function (e) { 
                 e.preventDefault();
-                var product_id = $(this).closest('.product_data').find('.prod_id').val();
-                var product_qty = $(this).closest('.product_data').find('.input-number').val();
-                var product_price = $(this).closest('.product_data').find('.prod_price').val();
+                var id = $(this).closest('.product_data').find('.prod_id').val();
+                var color = $(this).closest('.product_data').find('.color').val();
+                var quantity = $(this).closest('.product_data').find('.quantity').val();
+               
+			   alert(id);
+			   alert(color);
+			   alert(quantity);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -258,21 +264,24 @@ $('#option-choice-form input').on('change', function(){
                 });
                 $.ajax({
                     method: "POST",
-                    url: '{{url('add-to-cart')}}',
+                    // url: '{{url('add-to-cart')}}',
+					url: '{{ route('cart.addToCart') }}',
                     data: {
-                       'product_id':product_id,
-                       'product_qty':product_qty,
-                       'product_price':product_price,
+                       'id':id,
+                       'color':color,
+                       'quantity':quantity,
                     },
-                    success: function (response) {
+                    success: function (data) {
                         // alert(response.status);
-						 toastr.info(response.status);
-                         loadcart();
+						 // toastr.info(response.status);
+                         // loadcart();
+						  toastr.info(data.status);
+                       updateNavCart(data.nav_cart_view,data.cart_count);
 						 //updateNavCart(data.nav_cart_view,data.cart_count);
                     }
                 });
         });
-		
+		*/
         function loadcart(){
             $.ajax({
             method:"GET",

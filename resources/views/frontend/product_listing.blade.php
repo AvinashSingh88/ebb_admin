@@ -772,10 +772,16 @@ $meta_description = get_setting('meta_description');
                   </div>
                </div>
                <div class="row">
+				@php 
+					$s=1;
+				@endphp
                   @foreach ($products as $key => $product)
-                  <div class="col-md-3">
+                  <div id="{{$s}}" class="col-md-3">
                      @include('frontend.partials.product_box_1',['product' => $product])
                   </div>
+				  @php 
+					$s=$s+1;
+				@endphp
                   @endforeach
 
 
