@@ -106,22 +106,41 @@
     <div class="modal fade" id="addToCart">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
             <div class="modal-content position-relative">
-                <div class="c-preloader text-center p-3">
+                <!--<div class="c-preloader text-center p-3">
                     <i class="las la-spinner la-spin la-3x"></i>
-                </div>
+                </div>-->
                 <button type="button" class="close absolute-top-right btn-icon close z-1" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="la-2x">&times;</span>
                 </button>
                 <div id="addToCart-modal-body">
-
+			<span id="userid"></span>
                 </div>
             </div>
         </div>
     </div>
 
     @yield('modal')
-       
+       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
+		
+		 function showAddToCartModals(showAddToCartModals){
+        $('#addToCart').modal('show'); 
+        let id = $(showAddToCartModals).attr('id');
+        $('#userid').html(id);
+        $.ajax({
+            url: '{{route('cart.showCartModal')}}',
+            type: 'post',
+            data:'id='+id+'&_token={{csrf_token()}}',
+            success:function(respons){
+                // $('#concontractid').html(JSON.parse(respons)[0].contractorID);
+               $('#addToCart-modal-body').html(respons);
+                // console.log(JSON.parse(respons)[0].contractorID);
+            }
+        })
+    }
+		
+		
 		function showCategoryWiseBrand(showCategoryWiseBrand){
         let address_id = $(showCategoryWiseBrand).attr('id');
         let datas = "";
@@ -147,8 +166,11 @@
         })
     }
 	
+	
+	
     $(document).ready(function() {
 	    getVariantPrice();
+		
     });
     
 $('#option-choice-form input').on('change', function(){

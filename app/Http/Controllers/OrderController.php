@@ -300,8 +300,10 @@ class OrderController extends Controller
         // $address = Address::where('id', $carts[0]['address_id'])->first();
         $shippingAddress = [];
         if ($address != null) {
-           $shippingAddress['name']        = $address->first_name.' '.$address->first_name;
-           $shippingAddress['state']       = $address->state;
+           $shippingAddress['name']         = $address->first_name.' '.$address->last_name;
+           $shippingAddress['address']      = $address->address;
+           $shippingAddress['area']         = $address->area;
+           $shippingAddress['state']        = $address->state;
             $shippingAddress['city']        = $address->city;
             $shippingAddress['postal_code'] = $address->pin;
             $shippingAddress['phone']       = $address->phone;
