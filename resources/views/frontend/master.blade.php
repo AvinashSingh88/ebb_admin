@@ -130,6 +130,20 @@
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
 		
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "{{url('getcatWiseBrands')}}",
+                success: function (response) {
+                    $('#catewisebrands').html(response);
+                }
+            });
+            
+        });
+
+
+
+
 		 function showAddToCartModals(showAddToCartModals){
         $('#addToCart').modal('show'); 
         let id = $(showAddToCartModals).attr('id');
@@ -147,7 +161,8 @@
     }
 		
 		
-		function showCategoryWiseBrand(showCategoryWiseBrand){
+		function showCategoryWiseBrand(showCategoryWiseBrand)
+    {
         let address_id = $(showCategoryWiseBrand).attr('id');
         let datas = "";
         $.ajax({
@@ -155,19 +170,20 @@
             type: 'post',
             data:'address_id='+address_id+'&_token={{csrf_token()}}',
             success:function(respons){
-                // $('#title').val(JSON.parse(respons)[0].title);
                 if (respons == '') {
                         datas += '<div class="col-sm-12"><div class="alert alert-danger">Not found.</div></div>';
                     } else{
-                         console.log(respons);
+                        //  console.log(respons);
                         $.each(respons, function (i) {
                             datas += '<div class="item"><div class="product-box"><div class="box-elech"><img src="'+respons[i].brand_id+'" alt=""></div><div class="pro_img_mens"><img src="'+respons[i].image+'" alt=""></div><div class="discrptions"><h5>  '+respons[i].title+'</h5><h6 id="title"></h6></div><div class="discrptions_button"><h5><a href="product-detail.php">View Detail-cat-'+respons[i].category_id+'</a></h5></div></div></div>';
 
-                            console.log(respons);
+                             console.log(datas);
                            
-                        });                    
+                        }); 
+                                          
                     }
-					$("#catbrandslist").html(datas);
+				$("#cat-list .catbrandslistss").html(datas); 	
+                $('#onloadactivecatbrand').addClass('d-none');
             }
         })
     }

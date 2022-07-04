@@ -934,4 +934,13 @@ class HomeController extends Controller
         }
         return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.')); 
     }
+
+    public function getcatWiseBrands(){
+        $output = '
+    
+        <p>hi Rana sharma</p>
+        
+        ';
+        return $output;
+    }
 }
