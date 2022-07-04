@@ -101,10 +101,16 @@
 	   
 	   @include('frontend.partials.modal')
 
-    
+    <style>
+	.popup_products_modals { 
+    height: auto;    top: 5%;
+    overflow-x: auto;
+    overflow-y: auto; 
+}
+	</style>
 
-    <div class="modal fade" id="addToCart">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
+    <div class="modal fade popup_products_modals" id="addToCart">
+        <div class="modal-dialog mt-0 d-block modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
             <div class="modal-content position-relative">
                 <!--<div class="c-preloader text-center p-3">
                     <i class="las la-spinner la-spin la-3x"></i>
