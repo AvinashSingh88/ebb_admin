@@ -47,27 +47,31 @@
 					<div class="col-md-6">
 						<div class="product-box mb-0 zoom-left_hegt">
 							<!--<div class="beachs">10% Off</div>-->
-							<div class="zoom-left"> @php $photos = explode(',', $detailedProduct->photos); @endphp @foreach ($photos as $key => $photo) <img id="zoom_03" src="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" /> @endforeach
+							<div class="zoom-left"> 
+								@php 
+							$photos = explode(',', $detailedProduct->photos); 
+							@endphp 
+							
+								<img id="zoom_03" src="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" data-zoom-image="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" /> 
+							
 								<div class="clearfix"></div>
+								
+
 								<div id="gallery_01">
-									<a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-									<a href="#" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}"> <img src="{{ uploaded_asset($photo) }}" width="100" /> </a>
-									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-								</div>
-								<!--<div id="gallery_01">
-							  @foreach ($detailedProduct->stocks as $key => $stock)
-
+								@foreach ($photos as $key => $photo) 
+										<a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}">
+											<img src="{{ uploaded_asset($photo) }}" width="100" />
+										</a>
+									@endforeach
+									@foreach ($detailedProduct->stocks as $key => $stock)
 										@if($stock->image != null)
-                                 <a href="javascript:void(0);" class="elevatezoom-gallery active" 
-								 data-update="" data-image="{{ uploaded_asset($stock->image) }}" data-zoom-image="{{ uploaded_asset($stock->image) }}">
-                                 <img src="{{ uploaded_asset($stock->image) }}" width="100"  /></a>
-                                 @endif
-
+											<a href="javascript:void(0);" class="elevatezoom-gallery active"  data-update="" data-image="{{ uploaded_asset($stock->image) }}" data-zoom-image="{{ uploaded_asset($stock->image) }}">
+												<img src="{{ uploaded_asset($stock->image) }}" width="100"  />
+											</a>
+										@endif
 									@endforeach 
-                              </div>--></div>
+                              </div>
+							</div>
 						</div>
 						<!--Last code start--->{{--
 						<div id="accordion" class="accordion-container">
