@@ -1,78 +1,9 @@
-<section class="product-csteogry">
-            <div class="trend servoce_dops service_sections45 pb-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-12">
-                            <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                                <div class="border-botb-3">
-                                    <a href="javascript:void(0);" class="view-link"> View all <i
-                                            class="fa-solid fa-chevron-right"></i> </a>
-                                </div>
-                                <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Building Material
-                                </h3>
-                                <div class="deals">
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-carousel owl-theme owl-carousel_sliders">
-							@foreach(\App\Models\HomeCategorySection::where('category_attribute','=','building_materials')->get() as $key => $home_cat_sec)
-								<div class="item">
-									<div class="colams_item">
-										<a href="{{$home_cat_sec->slug_url}}">
-											<div class="trend-theme">
-												<img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
-											</div>
-											<h3>{{$home_cat_sec->title}}</h3>
-										</a>
-									</div>
-								</div>
-                            @endforeach
-                        </div>
+@php
+    $get_attributes = \App\Models\HomeCategorySection::groupBy('category_attribute')->get();
+@endphp
 
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Small Banner end -->
-        <section class="product-csteogry">
-            <div class="trend servoce_dops service_sections45 pb-0">
-                <div class="container">
-                    <div class="row" style="justify-content:left;">
-                        <div class="col-md-12 col-sm-12 col-12">
-                            <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                                <div class="border-botb-3">
-                                    <a href="javascript:void(0);" class="view-link"> View all <i
-                                            class="fa-solid fa-chevron-right"></i> </a>
-                                </div>
-                                <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Furnishing material
-                                </h3>
-                                <div class="deals">
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-carousel owl-theme owl-carousel_sliders">
-                           @foreach(\App\Models\HomeCategorySection::where('category_attribute','=','furnishing_material')->get() as $key => $home_cat_sec)
-								<div class="item">
-									<div class="colams_item">
-										<a href="{{$home_cat_sec->slug_url}}">
-											<div class="trend-theme">
-												<img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
-											</div>
-											<h3>{{$home_cat_sec->title}}</h3>
-										</a>
-									</div>
-								</div>
-                            @endforeach
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Small Banner end -->
+@if(count($get_attributes)> 0 )
+    @foreach($get_attributes as $key => $value)
         <section class="product-csteogry">
             <div class="trend servoce_dops service_sections45 pb-0">
                 <div class="container">
@@ -80,27 +11,36 @@
                         <div class="col-md-12 col-sm-12 col-12">
                             <div class="border-bottom1 border-color-111 mt-3 mb-3">
                                 <div class="border-botb-3">
-                                    <a href="javascript:void(0);" class="view-link"> View all <i
+                                    <a href="{{url('categories')}}" class="view-link"> View all <i
                                             class="fa-solid fa-chevron-right"></i> </a>
                                 </div>
-                                <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Sanitary items</h3>
+                                <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
+                                    @if($value->category_attribute == "building_materials")
+                                        Building Material
+                                    @elseif($value->category_attribute == "furnishing_material")
+                                        Furnishing Material
+                                    @elseif($value->category_attribute == "sanitary_items")
+                                        Sanitary Items
+                                    @else
+                                    @endif
+                                </h3>
                                 <div class="deals">
                                     <hr>
                                 </div>
                             </div>
                         </div>
                         <div class="owl-carousel owl-theme owl-carousel_sliders">
-                            @foreach(\App\Models\HomeCategorySection::where('category_attribute','=','sanitary_items')->get() as $key => $home_cat_sec)
-								<div class="item">
-									<div class="colams_item">
-										<a href="{{$home_cat_sec->slug_url}}">
-											<div class="trend-theme">
-												<img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
-											</div>
-											<h3>{{$home_cat_sec->title}}</h3>
-										</a>
-									</div>
-								</div>
+                            @foreach(\App\Models\HomeCategorySection::where('category_attribute', $value->category_attribute)->get() as $key => $home_cat_sec)
+                                <div class="item">
+                                    <div class="colams_item">
+                                        <a href="{{$home_cat_sec->slug_url}}">
+                                            <div class="trend-theme">
+                                                <img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
+                                            </div>
+                                            <h3>{{$home_cat_sec->title}}</h3>
+                                        </a>
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
 
@@ -108,4 +48,7 @@
                 </div>
             </div>
         </section>
-        <!--Small Banner end -->
+    @endforeach
+@endif
+
+     

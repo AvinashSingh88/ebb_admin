@@ -967,7 +967,7 @@
                   @if ($brand != null)
                   <div class="col-md-2">
                      <a href="{{ route('products.brand', $brand->slug) }}">
-                        <img src="{{ static_asset('assets/img/placeholder.jpg') }}"
+                        <img src="{{ uploaded_asset($brand->logo) }}"
                            alt="{{ $brand->getTranslation('name') }}">
                      </a>
                   </div>
