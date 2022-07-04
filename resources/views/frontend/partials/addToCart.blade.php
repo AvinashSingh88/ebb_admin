@@ -1,63 +1,34 @@
 <div class="modal-body p-4 c-scrollbar-light">
     <div class="row">
         <div class="col-lg-6">
-            <div class="row gutters-10 flex-row-reverse">
-                @php
-                    $photos = explode(',',$product->photos);
-                @endphp
-                <div class="col">
-                    <div class="aiz-carousel product-gallery" data-nav-for='.product-gallery-thumb' data-fade='true' data-auto-height='true'>
-                        @foreach ($photos as $key => $photo)
-                        <div class="carousel-box img-zoom rounded">
-                            <img
-                                class="img-fluid lazyload"
-                                src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                data-src="{{ uploaded_asset($photo) }}"
-                                onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                            >
-                        </div>
-                        @endforeach
-                        @foreach ($product->stocks as $key => $stock)
-                            @if ($stock->image != null)
-                                <div class="carousel-box img-zoom rounded">
-                                    <img
-                                        class="img-fluid lazyload"
-                                        src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                        data-src="{{ uploaded_asset($stock->image) }}"
-                                        onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                    >
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-auto w-90px">
-                    <div class="aiz-carousel carousel-thumb product-gallery-thumb" data-items='5' data-nav-for='.product-gallery' data-vertical='true' data-focus-select='true'>
-                        @foreach ($photos as $key => $photo)
-                        <div class="carousel-box c-pointer border p-1 rounded">
-                            <img
-                                class="lazyload mw-100 size-60px mx-auto"
-                                src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                data-src="{{ uploaded_asset($photo) }}"
-                                onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                            >
-                        </div>
-                        @endforeach
-                        @foreach ($product->stocks as $key => $stock)
-                            @if ($stock->image != null)
-                                <div class="carousel-box c-pointer border p-1 rounded" data-variation="{{ $stock->variant }}">
-                                    <img
-                                        class="lazyload mw-100 size-50px mx-auto"
-                                        src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                        data-src="{{ uploaded_asset($stock->image) }}"
-                                        onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                    >
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+            <<div class="product-box mb-0 zoom-left_hegt">
+							 
+							<div class="zoom-left"> 
+								@php 
+							$photos = explode(',', $product->photos); 
+							@endphp 
+							
+								<img id="zoom_03" src="{{ uploaded_asset($product->thumbnail_img) }}" data-zoom-image="{{ uploaded_asset($product->thumbnail_img) }}" /> 
+							
+								<div class="clearfix"></div>
+								
+
+								<!---<div id="gallery_01">
+								@foreach ($photos as $key => $photo) 
+										<a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}">
+											<img src="{{ uploaded_asset($photo) }}" width="100" />
+										</a>
+									@endforeach
+									@foreach ($product->stocks as $key => $stock)
+										@if($stock->image != null)
+											<a href="javascript:void(0);" class="elevatezoom-gallery active"  data-update="" data-image="{{ uploaded_asset($stock->image) }}" data-zoom-image="{{ uploaded_asset($stock->image) }}">
+												<img src="{{ uploaded_asset($stock->image) }}" width="100"  />
+											</a>
+										@endif
+									@endforeach 
+                              </div>-->
+							</div>
+						</div>
         </div>
 
         <div class="col-lg-6">

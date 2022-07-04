@@ -23,9 +23,9 @@
                             <li class="ukine ukine1b active4"><a href="{{url('purchase_history')}}">
                             Orders
                             </a></li>
-                            <li class="ukine ukine2b "><a href="{{url('product_return')}}">
+                            {{-- <li class="ukine ukine2b "><a href="{{url('product_return')}}">
                             Returns
-                            </a>  </li>
+                            </a>  </li> --}}
                            </ul>
                              
                         <div class="hotel-form py-4 shadow-none">
@@ -45,7 +45,16 @@
                                                                 </a>
                                                             </p>
                                                             <p class="Order_Detail m-0">
-                                                                Order Placed on {{ date('d-m-Y', $order->date) }}
+                                                                <b>Order Placed on</b> {{ date('d-m-Y', $order->date) }}
+                                                            </p>
+                                                            <p class="Order_Detail m-0">
+                                                                <b>Order Amount :</b> {{ single_price($order->grand_total) }}
+                                                            </p>
+                                                             <p class="Order_Detail m-0">
+                                                                <b>Delivery Status :</b> {{ translate(ucfirst(str_replace('_', ' ', $order->delivery_status))) }}
+                                                                @if($order->delivery_viewed == 0)
+                                                                    <span class="ml-2" style="color:green"><strong>*</strong></span>
+                                                                @endif
                                                             </p>
                                                         </div>
                                                     </div>
@@ -58,7 +67,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @foreach (\App\Models\OrderDetail::where('order_id', $order->id)->get() as $key)
+                                                {{-- @foreach (\App\Models\OrderDetail::where('order_id', $order->id)->get() as $key)
 												<div class="row ">
                                                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
                                                         <a href="javascript:void(0)" target="_blank"
@@ -102,7 +111,7 @@
                                                         <div class="row align-items-center flex-column">
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                 <div class="row">
-                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                    {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                          <p class="order_listing text-capitalize my-1">
                                                                              <a href="#">
                                                                             <span class="icon rounded-circle py-1 px-1 d-inline-block bg-success text-center m-auto">
@@ -121,8 +130,8 @@
                                                                                 Customer Support
                                                                             </a>
                                                                         </p>
-                                                                    </div>
-                                                                    <div class="col-lg-12">
+                                                                    </div> --}}
+                                                                    {{-- <div class="col-lg-12">
                                                                          <p class="order_listing text-capitalize my-1">
                                                                              <a href="{{ route('invoice.download', $order->id) }}">
                                                                             <span class="icon rounded-circle py-1 px-1 d-inline-block bg-warning text-center m-auto">
@@ -131,8 +140,8 @@
                                                                                 Print Order Detail
                                                                             </a>
                                                                         </p>
-                                                                    </div>
-                                                                    <div class="col-lg-12">
+                                                                    </div> --}}
+                                                                    {{-- <div class="col-lg-12">
                                                                          <p class="order_listing text-capitalize my-1">
                                                                              <a href="#">
                                                                             <span class="icon rounded-circle py-1 px-1 d-inline-block bg-danger text-center m-auto">
@@ -141,14 +150,14 @@
                                                                                 cancel order
                                                                             </a>
                                                                         </p>
-                                                                    </div>
-                                                                </div>
+                                                                    </div> --}}
+                                                                {{-- </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 													<hr>
-												@endforeach
+												@endforeach --}}
 												
                                             </li>
 											 @endif
