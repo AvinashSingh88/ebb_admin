@@ -6,6 +6,9 @@
 
 
 @section('content')
+@php
+    $status = $order->orderDetails->first()->delivery_status;
+@endphp
  <section class="pageTitle" style="    background-image: url({{static_asset('assets_web/img/orderbanner.png')}});height: 240px; background-size: contain;">
          <div class="container">
          </div>
@@ -56,6 +59,7 @@
                                           <th>Shipping Address</th>
                                          
                                           <th>Payment Method</th>
+                                           
                                           <th>Order Summary</th>
                                           <th>&nbsp; </th>
                                           
@@ -63,22 +67,24 @@
                                     </thead>
                                     <tbody>
                                        <tr>
-                                          <td>      {{$order->address->first_name.' '.$order->address->last_name}}    </td>
-                                          <td>        BHIM UPI     </td>
-                                          <td>        Item(s) Subtotal     </td>
-                                          <td>  :&nbsp;&nbsp; 1,699.00     </td>
+                                          <td>      {{ json_decode($order->shipping_address)->name }}    </td>
+                                          <td>        {{ ucfirst(str_replace('_', ' ', $order->payment_staus)) }} <hr>    
+                                               Order Status : {{ translate(ucfirst(str_replace('_', ' ', $status))) }}  
+</td>											   
+                                          <td>        {{ translate('Subtotal')}}     </td>
+                                          <td>  :&nbsp;&nbsp; {{ single_price($order->orderDetails->sum('price')) }}     </td>
                                             </tr>
                                        <tr>
-                                          <td>     Phalpura   </td>
+                                          <td>     {{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->area }}, {{ json_decode($order->shipping_address)->postal_code }}   </td>
                                           <td>           </td>
-                                          <td>        Shipping: </td>
-                                          <td>  :&nbsp;&nbsp; 40.00     </td>
+                                          <td>        {{ translate('Shipping')}}: </td>
+                                          <td>  :&nbsp;&nbsp; {{ single_price($order->orderDetails->sum('shipping_cost')) }}     </td>
                                             </tr>
                                        <tr>
-                                          <td>     {{$order->address->house_no}}, {{$order->address->area}}, {{$order->address->city}}, {{$order->address->state}} {{$order->address->pin}}   </td>
+                                          <td>     {{ json_decode($order->shipping_address)->state }}, {{ json_decode($order->shipping_address)->city }}, {{ json_decode($order->shipping_address)->postal_code }}   </td>
                                           <td>           </td>
-                                          <td>        Total: </td>
-                                          <td>  :&nbsp;&nbsp;   1,739.00     </td>
+                                          <td>        {{ translate('Tax')}} </td>
+                                          <td>  :&nbsp;&nbsp;  {{ single_price($order->orderDetails->sum('tax')) }}   </td>
                                             </tr>
                                        <tr>
                                           <td>       </td>
@@ -89,8 +95,8 @@
                                        <tr>
                                           <td>       </td>
                                           <td>           </td>
-                                          <td>        Grand Total: </td>
-                                          <td>  :&nbsp;&nbsp;   1,699.00 </td>
+                                          <td>        {{ translate('Grand Total')}}: </td>
+                                          <td>  :&nbsp;&nbsp;   {{ single_price($order->grand_total) }}</td>
                                             </tr>
                                           
                                  </tbody>
@@ -109,16 +115,14 @@
                                        </div>
                                        <div class="col-sm-7 text-cart">
                                           <h4 class="nomargin pt-1">{{ $orderDetail->product->getTranslation('name') }}</h4>
-                                          <p class="pr-des-cart pt-0 mt-0">
-TMT Steel Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-</p>
-<span><b>Sold by :</b> Appario Retail Private Ltd</span>
+                                          
+<span><b>Variation :</b> {{ $orderDetail->variation }}</span> 
 <span>Return window closed on 31-Mar-2021</span>
                                       
 
 										<div class="row p-2">
                                              <div class="col-sm-3 ">
-                                              <p class="pp-cart m-0"><b><i class="fa-solid fa-indian-rupee-sign"></i> {{$orderDetail->price}}</b></p>
+                                              <p class="pp-cart m-0"><b><i class="fa-solid fa-indian-rupee-sign"></i> {{ single_price($orderDetail->price) }}</b></p>
                                              </div>
                                              <!-- <div class="col-sm-3 cartoff">
                                                 8 % Off
@@ -126,7 +130,7 @@ TMT Steel Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam non
                                           </div>
                                        </div>
                                        <div class="col-sm-3 input-cart">
-									  <button class="class_buy_again mt-4">Buy it Again</button>  
+									  <a href="{{ route('product', $orderDetail->product->slug) }}"><button class="class_buy_again mt-4">Buy it Again</button>  </a>
                                         
                                        </div>
                                        <div class=" col-lg-12 bd-bt "></div>
@@ -151,122 +155,7 @@ TMT Steel Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam non
       </div>
 	  
      
-      <section class="similar-pros-section mb-30" >
-         <div class="container">
-            <div class="mb-8 similar-pros">
-               <div class="service-pros" style="padding:0px;margin:0px;">
-                  <div class="head-cnt work-center text-center">
-                     <div class="bounceIn animated">
-                        <h4>Similar Relative</h4>
-                        <hr class="underlinskd">
-                     </div>
-                  </div>
-               </div>
-               <ul class="list-unstyled owl-carousel owl-theme trending021">
-                  <li class="mb-4">
-                     <div class="row">
-                        <div class="col-auto col-md-4">
-                           <a href="#" class="d-block width-75">
-                           <img class="img-fluid" src="img/sim1.jpg" alt="Image Description">
-                           </a>
-                        </div>
-                        <div class="col col-md-8">
-                           <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="#">Finolex Selfit Pipe</a></h3>
-                           <div class="row">
-                              <div class="font-weight-bold col-md-7"> 
-                                 <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                              </div>
-                              <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                 <p>35% off</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="mb-4">
-                     <div class="row">
-                        <div class="col-auto col-md-4">
-                           <a href="#" class="d-block width-75">
-                           <img class="img-fluid" src="img/sim2.jpg" alt="Image Description">
-                           </a>
-                        </div>
-                        <div class="col col-md-8">
-                           <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="#">HDPE Pipes</a></h3>
-                           <div class="row">
-                              <div class="font-weight-bold col-md-7"> 
-                                 <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                              </div>
-                              <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                 <p>35% off</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="mb-4">
-                     <div class="row">
-                        <div class="col-auto col-md-4">
-                           <a href="#" class="d-block width-75">
-                           <img class="img-fluid" src="img/sim3.jpg" alt="Image Description">
-                           </a>
-                        </div>
-                        <div class="col col-md-8">
-                           <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="#">PVC Elbow</a></h3>
-                           <div class="row">
-                              <div class="font-weight-bold col-md-7"> 
-                                 <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                              </div>
-                              <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                 <p>35% off</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="mb-4">
-                     <div class="row">
-                        <div class="col-auto col-md-4">
-                           <a href="#" class="d-block width-75">
-                           <img class="img-fluid" src="img/sim4.jpg" alt="Image Description">
-                           </a>
-                        </div>
-                        <div class="col col-md-8">
-                           <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="#">CPVC SDR</a></h3>
-                           <div class="row">
-                              <div class="font-weight-bold col-md-7"> 
-                                 <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                              </div>
-                              <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                 <p>35% off</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="mb-4">
-                     <div class="row">
-                        <div class="col-auto col-md-4">
-                           <a href="#" class="d-block width-75">
-                           <img class="img-fluid" src="img/sim5.jpg" alt="Image Description">
-                           </a>
-                        </div>
-                        <div class="col col-md-8">
-                           <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="#">Heavy Pressure</a></h3>
-                           <div class="row">
-                              <div class="font-weight-bold col-md-7"> 
-                                 <ins class="font-size-15 text-red text-decoration-none d-block">₹1999.00</ins>
-                              </div>
-                              <div class="text-warning text-ls-n2 font-size-16 mb-1 col-md-5" >
-                                 <p>35% off</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-               </ul>
-            </div>
-         </div>
-      </section>
+      @include('frontend.partials.youmaylike')
  
 @endsection
  
