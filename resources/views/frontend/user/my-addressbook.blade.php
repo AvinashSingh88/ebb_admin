@@ -179,6 +179,9 @@
                   <div class="js-form-message form-group col-md-6 mb-3">
                         <input type="text" class="form-control" name="house_no" id="house_no" placeholder="House/Plot No">
                     </div>
+                    <div class="js-form-message form-group col-md-6 mb-3">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Full Address">
+                    </div>
                   <div class="js-form-message form-group col-md-6 mb-3">
                         <input type="text" class="form-control" name="area" id="area" placeholder="Area">
                     </div>
@@ -248,6 +251,9 @@
                     </div>
                   <div class="js-form-message form-group col-md-6 mb-3">
                         <input type="text" class="form-control" name="house_no" placeholder="House/Plot No" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                    </div>
+                    <div class="js-form-message form-group col-md-6 mb-3">
+                        <input type="text" class="form-control" name="address" placeholder="Full Address" aria-label="Full address" >
                     </div>
                   <div class="js-form-message form-group col-md-6 mb-3">
                         <input type="text" class="form-control" name="area" placeholder="Street/Locality/Area" aria-label="Area" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
@@ -319,6 +325,7 @@
                 $('#pin').val(JSON.parse(respons)[0].pin);
                 $('#area').val(JSON.parse(respons)[0].area);
                 $('#house_no').val(JSON.parse(respons)[0].house_no);
+                $('#address').val(JSON.parse(respons)[0].address);
                 $('#phone').val(JSON.parse(respons)[0].phone);
                 $('#id').val(JSON.parse(respons)[0].id);
                 

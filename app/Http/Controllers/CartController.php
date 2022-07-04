@@ -83,20 +83,20 @@ class CartController extends Controller
 
     public function deleteFromCart(Request $request){
        
-        if(Auth::check())
-        {
+        // if(Auth::check())
+        // {
             $prod_id = $request->input('prod_id');
-            if(Cart::where('product_id',$prod_id)->where('user_id', Auth::id())->exists())
-            {
-                $cartItem = Cart::where('product_id',$prod_id)->where('user_id', Auth::id())->first();
+            // if(Cart::where('id',$prod_id)->where('user_id', Auth::id())->exists())
+            // {
+                $cartItem = Cart::where('id',$prod_id)->first();
                 $cartItem->delete();
                 return response()->json(['status'=>"Removed from Cart"]);
-            }
-        }
-        else
-        {
-            return response()->json(['status' => "Login to Your Account"]);
-        }
+            // }
+        // }
+        // else
+        // {
+        //     return response()->json(['status' => "Login to Your Account"]);
+        // }
 
     }
     public function updateCartPlus(Request $request){
@@ -169,11 +169,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $product_id = $request->input('product_id');
-        $product = Product::where('id',$product_id)->first();
-        // dd($product);
-        // die;
-        // $product = Product::find($request->product_id);
+        $product = Product::find($request->id);
         $carts = array();
         $data = array();
 
@@ -214,7 +210,7 @@ class CartController extends Controller
 
             if ($product->digital != 1) {
                 //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
-                foreach (json_decode(Product::where('id',$product_id)->choice_options) as $key => $choice) {
+                foreach (json_decode(Product::find($request->id)->choice_options) as $key => $choice) {
                     if($str != null){
                         $str .= '-'.str_replace(' ', '', $request['attribute_id_'.$choice->attribute_id]);
                     }
@@ -225,7 +221,8 @@ class CartController extends Controller
             }
 
             $data['variation'] = $str;
-
+				// dd($str);
+				// die;
             $product_stock = $product->stocks->where('variant', $str)->first();
             $price = $product_stock->price;
 
@@ -353,7 +350,7 @@ class CartController extends Controller
                 $carts = Cart::where('temp_user_id', $temp_user_id)->get();
             }
             return array(
-                'status' => 1,
+                'status' => 'Added To Cart!',
                 'cart_count' => count($carts),
                 'modal_view' => view('frontend.partials.addedToCart', compact('product', 'data'))->render(),
                 'nav_cart_view' => view('frontend.partials.cart')->render(),

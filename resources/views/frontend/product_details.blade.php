@@ -1,16 +1,8 @@
-@extends('frontend.master')
-@section('meta_title'){{ $detailedProduct->meta_title }}@stop
-
-@section('meta_description'){{ $detailedProduct->meta_description }}@stop
-
-@section('meta_keywords'){{ $detailedProduct->tags }}@stop
-
-@section('meta')
+@extends('frontend.master') @section('meta_title'){{ $detailedProduct->meta_title }}@stop @section('meta_description'){{ $detailedProduct->meta_description }}@stop @section('meta_keywords'){{ $detailedProduct->tags }}@stop @section('meta')
 <!-- Schema.org markup for Google+ -->
 <meta itemprop="name" content="{{ $detailedProduct->meta_title }}">
 <meta itemprop="description" content="{{ $detailedProduct->meta_description }}">
 <meta itemprop="image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
-
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="product">
 <meta name="twitter:site" content="@publisher_handle">
@@ -20,7 +12,6 @@
 <meta name="twitter:image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
 <meta name="twitter:data1" content="{{ single_price($detailedProduct->unit_price) }}">
 <meta name="twitter:label1" content="Price">
-
 <!-- Open Graph data -->
 <meta property="og:title" content="{{ $detailedProduct->meta_title }}" />
 <meta property="og:type" content="og:product" />
@@ -29,84 +20,44 @@
 <meta property="og:description" content="{{ $detailedProduct->meta_description }}" />
 <meta property="og:site_name" content="{{ get_setting('meta_title') }}" />
 <meta property="og:price:amount" content="{{ single_price($detailedProduct->unit_price) }}" />
-<meta property="product:price:currency"
-    content="{{ \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code }}" />
-<meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
-
-@endsection
-@section('content')
-<section class="pageTitle product-detail_banner"
-    style="background-image:url({{static_asset('assets_web/img/orderbanner.png')}})">
-    <div class="container">
-    </div>
+<meta property="product:price:currency" content="{{ \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code }}" />
+<meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}"> @endsection @section('content')
+<section class="pageTitle product-detail_banner" style="background-image:url({{static_asset('assets_web/img/orderbanner.png')}})">
+	<div class="container"> </div>
 </section>
 <!--top banner end -->
 <div class="service-pros animated animate__fadeInUp wow product-categorys ulines-dps-para ">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 breadmcrumsize">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-						@php
-							$catid  = $detailedProduct->category->id;
-                            $getParentid = \App\Models\Category::where('id','=',$catid)->first(['parent_id']);
-                            $get_parent_id = $getParentid->parent_id;
-                            
-						@endphp
-                        <li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="product-building.php">{{$detailedProduct->category->getTranslation('name') }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            {{ $detailedProduct->getTranslation('name') }} -{{$get_parent_id}}</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <div class="container details-product">
-        <div class="row">
-            <div class="col-xl-9 col-wd-9gdot5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="product-box mb-0 zoom-left_hegt">
-                            <!--<div class="beachs">10% Off</div>-->
-                            <div class="zoom-left">
-                                @php $photos = explode(',', $detailedProduct->photos); @endphp
-                                @foreach ($photos as $key => $photo)
-                                <img id="zoom_03" src="{{ uploaded_asset($photo) }}"
-                                    data-zoom-image="{{ uploaded_asset($photo) }}" />
-                                @endforeach
-                                <div class="clearfix"></div>
-                                <div id="gallery_01">
-
-
-                                    <a href="#" class="elevatezoom-gallery active" data-update=""
-                                        data-image="{{ uploaded_asset($photo) }}"
-                                        data-zoom-image="{{ uploaded_asset($photo) }}">
-                                        <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-
-                                    <a href="#" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}"
-                                        data-zoom-image="{{ uploaded_asset($photo) }}">
-                                        <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-                                    <a href="tester" class="elevatezoom-gallery"
-                                        data-image="{{ uploaded_asset($photo) }}"
-                                        data-zoom-image="{{ uploaded_asset($photo) }}">
-                                        <img src="{{ uploaded_asset($photo) }}" width="100" />
-                                    </a>
-                                    <a href="tester" class="elevatezoom-gallery"
-                                        data-image="{{ uploaded_asset($photo) }}"
-                                        data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content">
-                                        <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-                                    <a href="tester" class="elevatezoom-gallery"
-                                        data-image="{{ uploaded_asset($photo) }}"
-                                        data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content">
-                                        <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-                                    <a href="tester" class="elevatezoom-gallery"
-                                        data-image="{{ uploaded_asset($photo) }}"
-                                        data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content">
-                                        <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
-
-                                </div>
-                                <!--<div id="gallery_01">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 breadmcrumsize">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb"> @php $catid = $detailedProduct->category->id; $getParentid = \App\Models\Category::where('id','=',$catid)->first(['parent_id']); $get_parent_id = $getParentid->parent_id; @endphp
+						<li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
+						<li class="breadcrumb-item"><a href="product-building.php">{{$detailedProduct->category->getTranslation('name') }}</a> </li>
+						<li class="breadcrumb-item active" aria-current="page"> {{ $detailedProduct->getTranslation('name') }} -{{$get_parent_id}}</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="container details-product">
+		<div class="row">
+			<div class="col-xl-9 col-wd-9gdot5">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="product-box mb-0 zoom-left_hegt">
+							<!--<div class="beachs">10% Off</div>-->
+							<div class="zoom-left"> @php $photos = explode(',', $detailedProduct->photos); @endphp @foreach ($photos as $key => $photo) <img id="zoom_03" src="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" /> @endforeach
+								<div class="clearfix"></div>
+								<div id="gallery_01">
+									<a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
+									<a href="#" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
+									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}"> <img src="{{ uploaded_asset($photo) }}" width="100" /> </a>
+									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
+									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
+									<a href="tester" class="elevatezoom-gallery" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}" class="slide-content"> <img src="{{ uploaded_asset($photo) }}" width="100" /></a>
+								</div>
+								<!--<div id="gallery_01">
 							  @foreach ($detailedProduct->stocks as $key => $stock)
 
 										@if($stock->image != null)
@@ -116,555 +67,284 @@
                                  @endif
 
 									@endforeach 
-                              </div>-->
-                            </div>
-                        </div>
-                        <!--Last code start--->
-
-                        <form id="option-choice-form">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
-
-                            @if ($detailedProduct->choice_options != null)
-                            @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
-                            <div class="tab-finish">
-                                <div class="row no-gutters">
-                                    <div class="col-sm-2">
-                                        <p class="ucfirst">
-                                            {{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="aiz-radio-inline">
-                                            @foreach ($choice->values as $key => $value)
-                                            <label class="aiz-megabox pl-0 mr-2">
-                                                <input class="opacity" type="radio"
-                                                    name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}"
-                                                    @if($key==0) checked @endif>
-                                                <span
-                                                    class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                                    {{ $value }}
-                                                </span>
-                                            </label>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
-
-                            @if (count(json_decode($detailedProduct->colors)) > 0)
-                            <div class="row no-gutters">
-                                <div class="col-sm-2">
-                                    <div class="opacity-50 my-0">
-                                        <h6>{{ translate('Color')}}:</h6>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="aiz-radio-inline">
-                                        @foreach (json_decode($detailedProduct->colors) as $key => $color)
-                                        <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip"
-                                            data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
-                                            <input class="opacity" type="radio" name="color"
-                                                value="{{ \App\Models\Color::where('code', $color)->first()->name }}"
-                                                @if($key==0) checked @endif>
-                                            <span
-                                                class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                                <span class="size-30px d-inline-block rounded"
-                                                    style="background:{{ $color }};"></span>
-                                            </span>
-                                        </label>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr>
-                            @endif
-
-                            <!-- Quantity + Add to cart -->
-                            <div class="row no-gutters d-none">
-                                <div class="col-sm-2">
-                                    <div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="product-quantity d-flex align-items-center">
-                                        <div
-                                            class="input-group w-60 justify-content-start align-items-center packageadd">
-                                            <input type="button" value="-"
-                                                class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0"
-                                                data-field="quantity">
-                                            <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10"
-                                                value="{{ $detailedProduct->min_qty }}" name="quantity"
-                                                class="quantity quantity-field border-0 text-center m-0 w-25">
-                                            <input type="button" value="+"
-                                                class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0"
-                                                data-field="quantity">
-                                        </div>
-                                        <!-- <div class="row no-gutters align-items-center aiz-plus-minus mr-3"
-                                            style="width: 130px;">
-                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light"
-                                                type="button" data-type="minus" data-field="quantity" disabled="">
-                                                <i class="las la-minus"></i>
-                                            </button>
-                                            <input type="number" class="opacity" name="quantity"
-                                                class="col border-0 text-center flex-grow-1 fs-16 input-number"
-                                                placeholder="1" value="{{ $detailedProduct->min_qty }}"
-                                                min="{{ $detailedProduct->min_qty }}" max="10">
-                                            <button class="btn  col-auto btn-icon btn-sm btn-circle btn-light"
-                                                type="button" data-type="plus" data-field="quantity">
-                                                <i class="las la-plus"></i>
-                                            </button>
-                                        </div> -->
-                                        @php
-                                        $qty = 0;
-                                        foreach ($detailedProduct->stocks as $key => $stock) {
-                                        $qty += $stock->qty;
-                                        }
-                                        @endphp
-                                        <div class="avialable-amount w-40 opacity-60">
-                                            @if($detailedProduct->stock_visibility_state == 'quantity')
-                                            (<span id="available-quantity">{{ $qty }}</span>
-                                            {{ translate('available')}})
-                                            @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
-                                            (<span id="available-quantity">{{ translate('In Stock') }}</span>)
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </form>
-                        <!--Last code end--->
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="product-box1">
-                            <div class="discrptions">
-                                <h5>{{ $detailedProduct->getTranslation('name') }} </h5>
-                                <div class="pricebox mt-2">
-                                    <div class="d-flex">
-                                        <div class="title w-60 pt-2">
-                                            <h4 class="tag-line325"> Made In India
-                                                <img class="flag-detls" src="{{static_asset('assets_web/img/in.jpg')}}"
-                                                    alt="">
-                                            </h4>
-                                        </div>
-                                        <div class="d-flex align-items-center w-40 m-0">
-                                            <div class="col-auto">
-                                                <h4 class="tag-line325"><span
-                                                        class="mr-2 opacity-50">{{ translate('Sold by')}}: </span>
-                                                    @if ($detailedProduct->added_by == 'seller' &&
-                                                    get_setting('vendor_system_activation') == 1)
-                                                    <a href=""
-                                                        class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
-                                                    @else
-                                                    {{ translate('Inhouse product') }}
-                                                    @endif
-                                                </h4>
-                                            </div>
-
-                                            @if (get_setting('conversation_system') == 1)
-                                            <div class="col-auto">
-                                                <button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">{{ translate('Message
-													Seller')}}</button>
-                                            </div>
-                                            @endif
-
-                                            @if ($detailedProduct->brand != null)
-                                            <div class="col-auto">
-                                                <a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
-                                                    <img class="icon-imagw mx-2"
-                                                        src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
-                                                        alt="{{ $detailedProduct->brand->getTranslation('name') }}">
-                                                </a>
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="d-flex">
-                                        @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
-                                        <div class="price">
-                                            <!-- <i class="fa fa-inr"></i> -->
-                                            <h3> {{ home_discounted_price($detailedProduct) }}</h3>
-                                        </div>
-                                        {{-- @if($detailedProduct->unit != null) 
-												<div class="opacity-70">/{{$detailedProduct->getTranslation('unit') }}
-                                    </div>
-                                    @endif --}}
-
-                                    <div class="cutprice mx-2">
-                                        <h3>
-                                            {{ home_price($detailedProduct) }}
-                                            {{-- @if($detailedProduct->unit != null)
-													 <span>/{{ $detailedProduct->getTranslation('unit') }}</span>
-                                            @endif --}}
-                                        </h3>
-                                    </div>
-                                    @endif
-
-                                    <div id="show_total_price" class="price d-none">Total Price: <div id="total_price"
-                                            class=""></div>
-                                    </div>
-
-                                    {{-- <div class="offer border-0">You Save  <i class="fa fa-inr"></i> 35  ( 14% ) </div> --}}
-                                </div>
-                                <div class="title">Inclusive of all taxes</div>
-                                <p class="col-cpvc-2">CPVC SDR 11 CPVC Pipes 40 mm 1.50 <a href="#descriptions1">More
-                                        Details</a> </p>
-
-                            </div>
-
-                        </div>
-
-                        <img class="w-100 mb-2" src="{{static_asset('assets_web/img/productcoupon.jpg')}}" alt="">
-                        <div id="accordion" class="accordion-container">
-                            <article class="content-entry products_offers">
-                                <h4 class="article-title"> Special offers <i class="fa fa-angle-right"
+                              </div>--></div>
+						</div>
+						<!--Last code start--->{{--
+						<div id="accordion" class="accordion-container">
+							<article class="content-entry products_offers">
+								<h4 class="article-title"> Special offers <i class="fa fa-angle-right"
                                         aria-hidden="true" style="    line-height: 35px;"></i></h4>
-
-                                <div class="accordion-content">
-                                    <div class="offer-section">
-                                        <!--<span class="title-head">Special offers</span>-->
-                                        <ul>
-                                            <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                <b>Big Saving</b> - Apply Coupon SAVEBIG
-                                                &amp; Get 20% Off (price inclusive of discount)
-                                                <span class="terms">T&amp;C</span>
-                                            </li>
-                                            <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                <b>5% Instant Discount - </b> on HDFC
-                                                Bank Credit Cards &amp; EMI <span class="terms">T&amp;C</span>
-                                            </li>
-                                            <li class="offerlist"> <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                <b>No Cost EMI - Starting from Rs.
-                                                    1,214</b> on ICICI, Axis, Kotak, HDFC &amp; <span
-                                                    class="terms">More</span>
-                                            </li>
-                                            <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                <b>Store Discount</b> - Visit our
-                                                nearest store and get instant extra discount <span
-                                                    class="terms">T&amp;C</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </article>
-
-                            <article class="content-entry products_offers ">
-                                <h4 class="article-title products_offersbto">Bought together <i
+								<div class="accordion-content">
+									<div class="offer-section">
+										<!--<span class="title-head">Special offers</span>-->
+										<ul>
+											<li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Big Saving</b> - Apply Coupon SAVEBIG &amp; Get 20% Off (price inclusive of discount) <span class="terms">T&amp;C</span> </li>
+											<li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>5% Instant Discount - </b> on HDFC Bank Credit Cards &amp; EMI <span class="terms">T&amp;C</span> </li>
+											<li class="offerlist"> <i class="fa fa-angle-right" aria-hidden="true"></i> <b>No Cost EMI - Starting from Rs.
+                                                    1,214</b> on ICICI, Axis, Kotak, HDFC &amp; <span class="terms">More</span> </li>
+											<li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Store Discount</b> - Visit our nearest store and get instant extra discount <span class="terms">T&amp;C</span> </li>
+										</ul>
+									</div>
+								</div>
+							</article>
+							<article class="content-entry products_offers ">
+								<h4 class="article-title products_offersbto">Bought together <i
                                         class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
                                 </h4>
-
-                                <div class="accordion-content">
-                                    <div id="ga-product_bought_together" data-title="Bought together"
-                                        class="ga ga-template_2 ga-products-box  ga-template_themeid_0">
-                                        <!--<h2 class="ga-title section-title "><span>Bought together</span></h2>-->
-                                        <div class="ga-subtitle">Get 5% off when you add one or more products.</div>
-                                        <div class="ga-products">
-                                            <div class="ga-products_image">
-                                                <div id="ga-product_4683826004099" class="ga-product ">
-                                                    <a href="#1">
-                                                        <img class="ga-33" id="ga-33"
-                                                            src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
-                                                    </a>
-                                                </div>
-                                                <div id="ga-product_6616790696067" class="ga-product ">
-                                                    <a href="#1">
-                                                        <img class="ga-22" id="ga-22"
-                                                            src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
-                                                    </a>
-                                                </div>
-                                                <div id="ga-product_5155996893315" class="ga-product last">
-                                                    <a href="#1">
-                                                        <img class="ga-111" id="ga-111"
-                                                            src="{{static_asset('assets_web/img/cement1.jpg')}}" alt="">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <ul class="ga-products-input">
-                                            <li class="ga-product ga-deactive" data-product-id="3">
-                                                <input class="selectedItem" type="checkbox" value="3">
-                                                <a class="ga-product_title" href="#1">PPC Surecem 32.5R Cement per
-                                                    Pallet 40 bags of 50kg</a>
-
-                                            </li>
-                                            <li class="ga-product ga-deactive" data-product-id="2">
-                                                <input class="selectedItem" type="checkbox" value="2">
-                                                <a class="ga-product_title" href="#1">Cement stock brick</a>
-
-                                            </li>
-                                            <li class="ga-product ga-deactive" data-product-id="1">
-                                                <input class="selectedItem" type="checkbox" value="1">
-                                                <a class="ga-product_title" href="#1">KBC Kwikbuild Cement 32.5N bag
-                                                    50kg</a>
-
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--/.accordion-content-->
-                            </article>
-
-                        </div>
-                        {{--<div class="backtabs-dp_servicespros2">
-                   
-
-						  <div class="optionbox">
-                              <div class="clear-fix"></div>
-                              <h4 class="dthd">Brands : <span><a href="#1" style="color: inherit;text-decoration: none;">V-Guard</a></span> </h4>
-                              <ul class="optbrand">
-                                 <!--for current product-->
-                                 <li>
-                                    <a href="javascript:void(0);" class="detbrand selected">
-                                    <img src="{{static_asset('assets_web/img/brandsa1.jpg')}}" class="loadimg" alt="">
-                        <span class="price">₹ 1656
-                        </span></a><!-- detbrand -->
-                        </li>
-                        <!--for current product-->
-                        <!--for other products-->
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa2.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1092
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa3.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 876
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa4.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1100
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa5.jpg')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1694
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa6.png')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1149
-                                </span></a><!-- detbrand -->
-                        </li>
-                        <li>
-                            <a href="#1" class="detbrand">
-                                <img src="{{static_asset('assets_web/img/brandsa7.png')}}" class="loadimg" alt="">
-                                <span class="price">₹ 1154
-                                </span></a><!-- detbrand -->
-                        </li>
-
-                        </ul>
-                    </div>
-                    <hr />
-
-
-                </div>--}}
-
-
-                @php
-                $qty = 0;
-                foreach ($detailedProduct->stocks as $key => $stock) {
-                $qty += $stock->qty;
-                }
-                @endphp
-                <hr>
-                <div class="discrptions_button">
-                    <div class="cart-add d-block cart-add1 products_list ">
-                        <div class="input-group quantity_input mb-0">
-                            <div class="input-group w-100 justify-content-start align-items-center packageadd">
-                                <input type="button" value="-"
-                                    class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0"
-                                    data-field="quantity">
-                                <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10"
-                                    value="{{ $detailedProduct->min_qty }}" name="quantity"
-                                    class="quantity quantity-field border-0 text-center m-0 w-25">
-                                <input type="button" value="+"
-                                    class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0"
-                                    data-field="quantity">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="input-group quantity_input">
-                                 <span class="input-group-btn">
-                                 <input type="button" value="-" class="button-minus border rounded-circle btn btn-danger btn-number quantity-left-minus icon-shape icon-sm mx-1 " data-field="quantity">
-                                     
-                                
-                                 </span>
-                                 <input type="number" step="1" max="10" value="1" id="quantity"  name="quantity" class="quantity quantity-field form-control input-number border-0 text-center w-25">
-                                     
-                                  <span class="input-group-btn">
-                                 <input type="button" value="+" class="button-plus border btn btn-success btn-number rounded-circle quantity-right-plus icon-shape icon-sm lh-0" data-field="quantity">
-                                
-                                 </span>
-                              </div> -->
-                    <h5><a href="#1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</a></h5>
-
-                    <!--<h6><a href="quote.php">Get Quote</a></h6>-->
-                    <h6><a href="bulk-order.php">Bulk Order</a></h6>
-                </div>
-
-                <h4 id="available-quantity">
-                    @if($detailedProduct->stock_visibility_state == 'quantity')
-                    <span id="available-quantity">{{ $qty }} </span>
-                    {{ translate('available')}}
-                    @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
-                    {{ translate('In Stock') }}
-                    @endif
-                </h4>
-                {{-- <h4>Highlights</h4>
-                           <ul class="ulproducts ulproducts4">
-                              <li><b>Category </b>&nbsp; :&nbsp; Plumbing</li>
-                              <li><b>Sub Category </b>&nbsp; :&nbsp; Pipes</li>
-                              <li><b>Products </b>&nbsp; :&nbsp; CPVC Pipes</li>
-                              <li><b>Brand </b>&nbsp; :&nbsp; ISI</li>
-                              <li><b>HSN </b>&nbsp; :&nbsp; 8544</li>
-                              <li><b>SKU </b>&nbsp; :&nbsp; MK002302</li>
-                           </ul> --}}
-            </div>
-        </div>
-        <div id="descriptions1"></div>
-    </div>
-
-
-    <div class="bootstrap-accordiana">
-        <div class="backtabs-dp_servicespros2">
-            <ul class="ulines-dps">
-                <li class="ukine ukine1b active4">Description</li>
-                <li class="ukine ukine2b">Overview </li>
-                <li class="ukine ukine3b">Warranty </li>
-            </ul>
-            <ul class="ulines-dps-para ">
-                <li class="ukine ukine1b active4">
-                    <div class="tab-description">
-                        <h3>Product Description</h3>
-                        <p><?php echo $detailedProduct->getTranslation('description'); ?> </p>
-                    </div>
-                </li>
-                <li class="ukine ukine2b">
-                    <div class="tab-description">
-                        <h3>Product Overview</h3>
-                        <div class="tab-description">
-                            {{$detailedProduct->overview}}
-                        </div>
-                    </div>
-                </li>
-                <li class="ukine ukine3b">
-                    <div class="tab-description">
-                        <h3>Warranty Details</h3>
-                        <p>
-                        <div class="tab-description">
-                            <?php=$detailedProduct->overview ?>
-                        </div>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-</div>
-<div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
-    <div class="md-hide">
-        @php
-        $start_date = date('d-M-Y');
-        $deliver_date = date("d-M-Y", strtotime("$start_date +$detailedProduct->est_shipping_days days"));
-        @endphp
-        <div class="deliverybox">
-            <span class="title"><i class="fa fa-map-marker"></i>Delivery by {{$deliver_date}}</span>
-            <form>
-                <input type="number" name="pincode" value="670002" placeholder="Enter Pincode">
-                <a href="javascript:void(0);" class="change">Change</a>
-            </form>
-            <ul class="row delivery">
-                <li class="col-md-4">
-                    <img src="{{static_asset('assets_web/img/shipping.svg')}}" class="loadimg delimg" alt="">
-                    <span class="name">Priority</span>
-                    <span class="status">Delivery</span>
-                </li>
-                <li class="col-md-4">
-                    <img src="{{static_asset('assets_web/img/cancellation.svg')}}" class="loadimg delimg" alt="">
-                    <span class="name">Cancellation</span>
-                    <span class="status">Allowed</span>
-                </li>
-            </ul>
-            <div class="details">
-                <p style="display: none;"><i class="fa fa-inr" aria-hidden="true"></i> Cash on Delivery Available
-                </p>
-                <p><i class="fa fa-inr" aria-hidden="true"></i> Online Payment Available</p>
-            </div>
-        </div>
-        <!-- deliverybox -->
-    </div>
-    <div class="mb-8">
-        <div class="border-bottom border-color-1 mb-3">
-            <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Complementary Products</h3>
-        </div>
-        <ul class="list-unstyled">
-            @foreach (filter_products(\App\Models\Product::where('category_id',
-            $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key =>
-            $related_product)
-            <li class="mb-4">
-                <div class="row">
-                    <div class="col-auto col-md-4">
-                        <a href="{{ route('product', $related_product->slug) }}" class="d-block width-75">
+								<div class="accordion-content">
+									<div id="ga-product_bought_together" data-title="Bought together" class="ga ga-template_2 ga-products-box  ga-template_themeid_0">
+										<!--<h2 class="ga-title section-title "><span>Bought together</span></h2>-->
+										<div class="ga-subtitle">Get 5% off when you add one or more products.</div>
+										<div class="ga-products">
+											<div class="ga-products_image">
+												<div id="ga-product_4683826004099" class="ga-product ">
+													<a href="#1"> <img class="ga-33" id="ga-33" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt=""> </a>
+												</div>
+												<div id="ga-product_6616790696067" class="ga-product ">
+													<a href="#1"> <img class="ga-22" id="ga-22" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt=""> </a>
+												</div>
+												<div id="ga-product_5155996893315" class="ga-product last">
+													<a href="#1"> <img class="ga-111" id="ga-111" src="{{static_asset('assets_web/img/cement1.jpg')}}" alt=""> </a>
+												</div>
+											</div>
+										</div>
+										<ul class="ga-products-input">
+											<li class="ga-product ga-deactive" data-product-id="3">
+												<input class="selectedItem" type="checkbox" value="3"> <a class="ga-product_title" href="#1">PPC Surecem 32.5R Cement per
+                        Pallet 40 bags of 50kg</a> </li>
+											<li class="ga-product ga-deactive" data-product-id="2">
+												<input class="selectedItem" type="checkbox" value="2"> <a class="ga-product_title" href="#1">Cement stock brick</a> </li>
+											<li class="ga-product ga-deactive" data-product-id="1">
+												<input class="selectedItem" type="checkbox" value="1"> <a class="ga-product_title" href="#1">KBC Kwikbuild Cement 32.5N bag
+                        50kg</a> </li>
+										</ul>
+									</div>
+								</div>
+								<!--/.accordion-content-->
+							</article>
+						</div> --}}
+						<!--Last code end--->
+					</div>
+					<div class="col-md-6">
+						<div class="product-box1">
+							<div class="discrptions">
+								<h5>{{ $detailedProduct->getTranslation('name') }} </h5>
+								<div class="pricebox mt-2">
+									<div class="d-flex">
+										<div class="title w-60 pt-2">
+											<h4 class="tag-line325"> Made In India
+                            <img class="flag-detls" src="{{static_asset('assets_web/img/in.jpg')}}" alt="">
+                        </h4> </div>
+										<div class="d-flex align-items-center w-40 m-0">
+											<div class="col-auto">
+												<h4 class="tag-line325"><span class="mr-2 opacity-50">{{ translate('Sold by')}}: </span>
+                                @if ($detailedProduct->added_by == 'seller' &&
+                                get_setting('vendor_system_activation') == 1)
+                                <a href="" class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
+                                @else
+                                {{ translate('Inhouse product') }}
+                                @endif
+                            </h4> </div> @if (get_setting('conversation_system') == 1)
+											<div class="col-auto">
+												<button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">{{ translate('Message Seller')}}</button>
+											</div> @endif @if ($detailedProduct->brand != null)
+											<div class="col-auto"> <a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
+                                <img class="icon-imagw mx-2" src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
+                                    alt="{{ $detailedProduct->brand->getTranslation('name') }}">
+                            </a> </div> @endif </div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="d-flex"> @if(home_price($detailedProduct) != home_discounted_price($detailedProduct))
+										<div class="price">
+											<!-- <i class="fa fa-inr"></i> -->
+											<h3> {{ home_discounted_price($detailedProduct) }}</h3> </div> {{-- @if($detailedProduct->unit != null)
+										<div class="opacity-70">/{{$detailedProduct->getTranslation('unit') }} </div> @endif --}}
+										<div class="cutprice mx-2">
+											<h3>
+                        {{ home_price($detailedProduct) }}
+                        {{-- @if($detailedProduct->unit != null)
+													 <span>/{{ $detailedProduct->getTranslation('unit') }}</span>
+                        @endif --}}
+                    </h3> </div> @endif
+										<div id="show_total_price" class="price d-none">Total Price:
+											<div id="total_price" class=""></div>
+										</div> {{--
+										<div class="offer border-0">You Save <i class="fa fa-inr"></i> 35 ( 14% ) </div> --}} </div>
+									<div class="title">Inclusive of all taxes</div>
+									<p class="col-cpvc-2">CPVC SDR 11 CPVC Pipes 40 mm 1.50 <a href="#descriptions1">More
+                    Details</a> </p>
+								</div>
+							</div> <img class="w-100 mb-2" src="{{static_asset('assets_web/img/productcoupon.jpg')}}" alt=""> @php $qty = 0; foreach ($detailedProduct->stocks as $key => $stock) { $qty += $stock->qty; } @endphp
+							<form id="option-choice-form"> @csrf
+								<input type="hidden" name="id" value="{{ $detailedProduct->id }}"> @if ($detailedProduct->choice_options != null) @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
+								<div class="tab-finish">
+									<div class="row no-gutters">
+										<div class="col-sm-2">
+											<p class="ucfirst"> {{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}: </p>
+										</div>
+										<div class="col-sm-10">
+											<div class="aiz-radio-inline"> @foreach ($choice->values as $key => $value)
+												<label class="aiz-megabox pl-0 mr-2">
+													<input class="opacity" type="radio" name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}" @if($key==0) checked @endif> <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+												{{ $value }}
+											</span> </label> @endforeach </div>
+										</div>
+									</div>
+								</div> @endforeach @endif @if (count(json_decode($detailedProduct->colors)) > 0)
+								<div class="row no-gutters">
+									<div class="col-sm-2">
+										<div class="opacity-50 my-0">
+											<h6>{{ translate('Color')}}:</h6> </div>
+									</div>
+									<div class="col-sm-10">
+										<div class="aiz-radio-inline"> @foreach (json_decode($detailedProduct->colors) as $key => $color)
+											<label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
+												<input class="opacity" type="radio" name="color" value="{{ \App\Models\Color::where('code', $color)->first()->name }}" @if($key==0) checked @endif> <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                        <span class="size-30px d-inline-block rounded" style="background:{{ $color }};"></span> </span>
+											</label> @endforeach </div>
+									</div>
+								</div>
+								<hr> @endif
+								<!-- Quantity + Add to cart -->
+								<div class="row no-gutters d-none">
+									<div class="col-sm-2">
+										<div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
+									</div>
+									<div class="col-sm-10">
+										<div class="product-quantity d-flex align-items-center">
+											<div class="input-group w-60 justify-content-start align-items-center packageadd">
+												<input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0" data-field="quantity">
+												<input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25">
+												<input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0" data-field="quantity"> </div> @php $qty = 0; foreach ($detailedProduct->stocks as $key => $stock) { $qty += $stock->qty; } @endphp
+											<div class="avialable-amount w-40 opacity-60"> @if($detailedProduct->stock_visibility_state == 'quantity') (<span id="available-quantity">{{ $qty }}</span> {{ translate('available')}}) @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1) (<span id="available-quantity">{{ translate('In Stock') }}</span>) @endif </div>
+										</div>
+									</div>
+								</div>
+								<div class="discrptions_button cart-add d-block cart-add1 products_list ">
+									<div class="input-group quantity_input mb-0">
+										<div class="input-group w-100 justify-content-start align-items-center packageadd">
+											<input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0" data-field="quantity">
+											<input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25">
+											<input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0" data-field="quantity"> </div>
+									</div>
+								</div>
+							</form>
+							<div class="discrptions_button">
+								<input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
+								<input type="hidden" id="total_product_price" class="prod_price">
+								<button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
+								<button class="out-of-stock background-gray">Out of stock</button>
+								<!--<h6><a href="quote.php">Get Quote</a></h6>-->
+								<button class="bulk-order-buttons">Bulk Order</button>
+							</div>
+							<h4 id="available-quantity">
+        @if($detailedProduct->stock_visibility_state == 'quantity')
+        <span id="available-quantity">{{ $qty }} </span>
+        {{ translate('available')}}
+        @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
+        {{ translate('In Stock') }}
+        @endif
+    </h4>
+							<h4>Highlights</h4>
+							<ul class="ulproducts ulproducts4">
+								<li><b>Sub Category </b>&nbsp; :&nbsp; {{ $detailedProduct->category->getTranslation('name') }}</li>
+								<li><b>Products </b>&nbsp; :&nbsp; {{ $detailedProduct->getTranslation('name') }}</li>
+								<li><b>Brand </b>&nbsp; :&nbsp; {{ $detailedProduct->brand->getTranslation('name') }}</li>
+								<li><b>SKU </b>&nbsp; :&nbsp; MK002302</li>
+							</ul>
+						</div>
+					</div>
+					<div id="descriptions1"></div>
+				</div>
+				<div class="bootstrap-accordiana">
+					<div class="backtabs-dp_servicespros2">
+						<ul class="ulines-dps">
+							<li class="ukine ukine1b active4">Description</li>
+							<li class="ukine ukine2b">Overview </li>
+							<li class="ukine ukine3b">Warranty </li>
+						</ul>
+						<ul class="ulines-dps-para ">
+							<li class="ukine ukine1b active4">
+								<div class="tab-description">
+									<h3>Product Description</h3>
+									<p>
+										<?php echo $detailedProduct->getTranslation('description'); ?>
+									</p>
+								</div>
+							</li>
+							<li class="ukine ukine2b">
+								<div class="tab-description">
+									<h3>Product Overview</h3>
+									<div class="tab-description">
+										<?php echo $detailedProduct->overview; ?>
+									</div>
+								</div>
+							</li>
+							<li class="ukine ukine3b">
+								<div class="tab-description">
+									<h3>Warranty Details</h3>
+									<p>
+										<div class="tab-description">
+											<?php echo $detailedProduct->warranty; ?>
+										</div>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
+				<div class="md-hide"> @php $start_date = date('d-M-Y'); $deliver_date = date("d-M-Y", strtotime("$start_date +$detailedProduct->est_shipping_days days")); @endphp
+					<div class="deliverybox"> <span class="title"><i class="fa fa-map-marker"></i>Delivery by {{$deliver_date}}</span>
+						<form>
+							<input type="number" name="pincode" value="670002" placeholder="Enter Pincode"> <a href="javascript:void(0);" class="change">Change</a> </form>
+						<ul class="row delivery">
+							<li class="col-md-4"> <img src="{{static_asset('assets_web/img/shipping.svg')}}" class="loadimg delimg" alt=""> <span class="name">Priority</span> <span class="status">Delivery</span> </li>
+							<li class="col-md-4"> <img src="{{static_asset('assets_web/img/cancellation.svg')}}" class="loadimg delimg" alt=""> <span class="name">Cancellation</span> <span class="status">Allowed</span> </li>
+						</ul>
+						<div class="details">
+							<p style="display: none;"><i class="fa fa-inr" aria-hidden="true"></i> Cash on Delivery Available </p>
+							<p><i class="fa fa-inr" aria-hidden="true"></i> Online Payment Available</p>
+						</div>
+					</div>
+					<!-- deliverybox -->
+				</div>
+				<div class="mb-8">
+					<div class="border-bottom border-color-1 mb-3">
+						<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Complementary Products</h3> </div>
+					<ul class="list-unstyled"> @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
+						<li class="mb-4">
+							<div class="row">
+								<div class="col-auto col-md-4"> <a href="{{ route('product', $related_product->slug) }}" class="d-block width-75">
                             <img class="img-fluid" src="{{ uploaded_asset($related_product->thumbnail_img) }}"
                                 alt="{{ $related_product->getTranslation('name') }}">
-                        </a>
-                    </div>
-                    <div class="col col-md-8">
-                        <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a
+                        </a> </div>
+								<div class="col col-md-8">
+									<h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a
                                 href="{{ route('product', $related_product->slug) }}">{{ $related_product->getTranslation('name') }}</a>
-                        </h3>
-                    </div>
-                </div>
-            </li>
-            @endforeach
-
-        </ul>
-    </div>
-    <div class="form_rights_inner p-20 animated fadeIn">
-        <a class="dcompinfo_anchor" href="#1">
-            <div class="dcomp_imag"><img src="{{static_asset('assets_web/img/cement1.jpg')}}" class="dcomp_imgbox "
-                    alt="Ebuild Bazaar">
-                <span class="dcomp_thumb_icon ebuild_icon"></span>
-            </div>
-        </a>
-        <div class="dcomp_foll mt-10">
-            <button class="dcomp_follbtn font11 fw600 color414">Follow</button>
-        </div>
-        <a class="forms_wrapper" href="#1">
-            <div class="dcomp_name mt-15 font18 fw600 color414">
-                <h3>Ebuild Bazaar</h3>
-            </div>
-            <div class="dcomp_loct mt-15">
-                <span class="details_locat_icon ebuild_icon"></span>
-                <span class="details_locat_cont font11 fw600 color414">
+                        </h3> </div>
+							</div>
+						</li> @endforeach </ul>
+				</div>
+				<div class="form_rights_inner p-20 animated fadeIn">
+					<a class="dcompinfo_anchor" href="#1">
+						<div class="dcomp_imag"><img src="{{static_asset('assets_web/img/cement1.jpg')}}" class="dcomp_imgbox " alt="Ebuild Bazaar"> <span class="dcomp_thumb_icon ebuild_icon"></span> </div>
+					</a>
+					<div class="dcomp_foll mt-10">
+						<button class="dcomp_follbtn font11 fw600 color414">Follow</button>
+					</div>
+					<a class="forms_wrapper" href="#1">
+						<div class="dcomp_name mt-15 font18 fw600 color414">
+							<h3>Ebuild Bazaar</h3> </div>
+						<div class="dcomp_loct mt-15"> <span class="details_locat_icon ebuild_icon"></span> <span class="details_locat_cont font11 fw600 color414">
                     <img src="{{static_asset('assets_web/img/in.jpg')}}" alt="alt"
                         style="    border-radius: 50px;  width: 25px;  height: 25px;">
                     IND
-                </span>
-                <span class="font15 fw400 color414">Noida</span>
-            </div>
-        </a>
-        <div class="dcomp_rati mt-5">
-            <a class="dcomp_rati" href="#12">
-                <span class="dcomp_rtext mr-10 font16 fw600 color363">4.1</span>
-                <span class="dcomp_rstar mr-10 ">
+                </span> <span class="font15 fw400 color414">Noida</span> </div>
+					</a>
+					<div class="dcomp_rati mt-5">
+						<a class="dcomp_rati" href="#12"> <span class="dcomp_rtext mr-10 font16 fw600 color363">4.1</span> <span class="dcomp_rstar mr-10 ">
                     <svg width="100%" height="100%" viewBox="0 0 1000 200">
                         <polygon id="star8371" points="100,10 40,198 190,78 10,78 160,198" fill="#FFE372"></polygon>
                         <defs>
@@ -682,13 +362,10 @@
                         <rect width="82%" height="100%" clip-path="url(#stars8371)"
                             style="fill: rgb(255, 110, 0); height: 100%;"></rect>
                     </svg>
-                </span>
-                <span class="dcomp_rnumb font15 fw400 color788">129 Ratings</span>
-            </a>
-        </div>
-        <a class="dcompinfo_anchor" href="#1">
-            <div class="dcomp_bagd mt-5">
-                <span class="dcomp_trust_icon ebuild_icon mr-10">
+                </span> <span class="dcomp_rnumb font15 fw400 color788">129 Ratings</span> </a>
+					</div>
+					<a class="dcompinfo_anchor" href="#1">
+						<div class="dcomp_bagd mt-5"> <span class="dcomp_trust_icon ebuild_icon mr-10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="37" height="8.818" viewBox="0 0 37 8.818">
                         <defs>
                             <style>
@@ -715,8 +392,7 @@
                             </g>
                         </g>
                     </svg>
-                </span>
-                <span class="dcomp_verify_icon ebuild_icon mr-10">
+                </span> <span class="dcomp_verify_icon ebuild_icon mr-10">
                     <svg xmlns="http://www.w3.org/2000/svg" width="44.521" height="15.772" viewBox="0 0 44.521 15.772">
                         <defs>
                             <style>
@@ -752,101 +428,90 @@
                                 class="cls-4" data-name="Path 4184" transform="translate(213.324 586.9)" />
                         </g>
                     </svg>
-                </span>
-                <span class="dcomp_yers font11 fw700 color414">41 YRS</span>
-            </div>
-        </a>
-        <hr>
-        <div class="dcomp_btnbox mt-15">
-            <div class="dcomp_text mt-10 mb-5 font15 fw400 color788">For more details on products</div>
-            <button class="dcomp_ebtn mt-10">
-                <span class="font15 fw400 color007">Contact Supplier</span></button>
-            <button class="dcomp_fbtn mt-10 font15 fw400 colorFFF">Get Best Price</button>
-        </div>
-    </div>
-
+                </span> <span class="dcomp_yers font11 fw700 color414">41 YRS</span> </div>
+					</a>
+					<hr>
+					<div class="dcomp_btnbox mt-15">
+						<div class="dcomp_text mt-10 mb-5 font15 fw400 color788">For more details on products</div>
+						<button class="dcomp_ebtn mt-10"> <span class="font15 fw400 color007">Contact Supplier</span></button>
+						<button class="dcomp_fbtn mt-10 font15 fw400 colorFFF">Get Best Price</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-</div>
-</div>
-</div>
-
 <!-- Product relative Carousel -->
 <div class="headsections111">
-    <div class="container">
-        <div class="service-pros m-0 p-0">
-            <div class="head-cnt work-center text-center mb-0">
-                <div class="bounceIn animated">
-
-                    <h4>{{ translate('Related products')}}</h4>
-                    <hr class="underlinskd">
-
-                </div>
-            </div>
-        </div>
-
-        <div class="owl-carousel owl-theme trending0">
-            @foreach (filter_products(\App\Models\Product::where('category_id',
-            $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key =>
-            $related_product)
-            <div class="item">
-                <div class="product-box">
-                    <div class="beachs">{{$related_product->discount}}% Off</div>
-                    <img src="{{ uploaded_asset($related_product->thumbnail_img) }}"
-                        alt="{{ $related_product->getTranslation('name') }}">
-                    <div class="discrptions">
-                        <h5>{{ $related_product->getTranslation('name') }} </h5>
-                        <h6>{{ home_discounted_base_price($related_product) }}</h6>
-                    </div>
-                    <div class="discrptions_button">
-                        <h5><a href="{{ route('product', $related_product->slug) }}">View Detail</a></h5>
-                        <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-@include('frontend.partials.youmaylike')
-
+	<div class="container">
+		<div class="service-pros m-0 p-0">
+			<div class="head-cnt work-center text-center mb-0">
+				<div class="bounceIn animated">
+					<h4>{{ translate('Related products')}}</h4>
+					<hr class="underlinskd"> </div>
+			</div>
+		</div>
+		<div class="owl-carousel owl-theme trending0"> @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
+			<div class="item">
+				<div class="product-box">
+					<div class="beachs">{{$related_product->discount}}% Off</div> <img src="{{ uploaded_asset($related_product->thumbnail_img) }}" alt="{{ $related_product->getTranslation('name') }}">
+					<div class="discrptions">
+						<h5>{{ $related_product->getTranslation('name') }} </h5>
+						<h6>{{ home_discounted_base_price($related_product) }}</h6> </div>
+					<div class="discrptions_button">
+						<h5><a href="{{ route('product', $related_product->slug) }}">View Detail</a></h5>
+						<h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6> </div>
+				</div>
+			</div> @endforeach </div>
+	</div>
+</div> @include('frontend.partials.youmaylike')
 <section class="banner-brand_product">
-    <div class="container">
-        <div class="service-pros" style="padding:0px;margin:0px;">
-            <div class="head-cnt work-center text-center" style="    margin: 0px; height: 0px;">
-                <div class="bounceIn animated">
-                    <h4>Why Buy Product From eBuildBazaar?</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="brandss1">
-            <div class="row">
-                <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon1.png')}}" alt="">
-                        <h3>All Under One roof</h3>
-                        <p>Ebuildbazaar Stores from others is their pricing.</p>
-                    </a></div>
-                <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon2.png')}}" alt="">
-                        <h3>Widest Product Range</h3>
-                        <p>Ebuildbazaar Stores from others is their pricing.</p>
-                    </a></div>
-                <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon3.png')}}" alt="">
-                        <h3>On Time Delivery</h3>
-                        <p>Ebuildbazaar Stores from others is their pricing.</p>
-                    </a></div>
-                <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon4.png')}}" alt="">
-                        <h3>Product Knowledge Support</h3>
-                        <p>Ebuildbazaar Stores from others is their pricing.</p>
-                    </a></div>
-                <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon5.png')}}" alt="">
-                        <h3>Genuine Products</h3>
-                        <p>Ebuildbazaar Stores from others is their pricing.</p>
-                    </a></div>
-                <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon6.png')}}" alt="">
-                        <h3>365 Days Wholesale Rates</h3>
-                        <p>Ebuildbazaar Stores from others is their pricing.</p>
-                    </a></div>
-            </div>
-        </div>
-    </div>
-</section>
-@endsection
+	<div class="container">
+		<div class="service-pros" style="padding:0px;margin:0px;">
+			<div class="head-cnt work-center text-center" style="    margin: 0px; height: 0px;">
+				<div class="bounceIn animated">
+					<h4>Why Buy Product From eBuildBazaar?</h4> </div>
+			</div>
+		</div>
+		<div class="brandss1">
+			<div class="row">
+				<div class="col-md-2">
+					<a href="#1"><img src="{{static_asset('assets_web/img/iconon1.png')}}" alt="">
+						<h3>All Under One roof</h3>
+						<p>Ebuildbazaar Stores from others is their pricing.</p>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="#1"><img src="{{static_asset('assets_web/img/iconon2.png')}}" alt="">
+						<h3>Widest Product Range</h3>
+						<p>Ebuildbazaar Stores from others is their pricing.</p>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="#1"><img src="{{static_asset('assets_web/img/iconon3.png')}}" alt="">
+						<h3>On Time Delivery</h3>
+						<p>Ebuildbazaar Stores from others is their pricing.</p>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="#1"><img src="{{static_asset('assets_web/img/iconon4.png')}}" alt="">
+						<h3>Product Knowledge Support</h3>
+						<p>Ebuildbazaar Stores from others is their pricing.</p>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="#1"><img src="{{static_asset('assets_web/img/iconon5.png')}}" alt="">
+						<h3>Genuine Products</h3>
+						<p>Ebuildbazaar Stores from others is their pricing.</p>
+					</a>
+				</div>
+				<div class="col-md-2">
+					<a href="#1"><img src="{{static_asset('assets_web/img/iconon6.png')}}" alt="">
+						<h3>365 Days Wholesale Rates</h3>
+						<p>Ebuildbazaar Stores from others is their pricing.</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> @endsection
