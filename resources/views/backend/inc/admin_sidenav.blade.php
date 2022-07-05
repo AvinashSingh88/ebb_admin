@@ -50,7 +50,7 @@
                     </li>
                     @endif
                 @endif
-
+ 
                 <!-- Product -->
                 @if(Auth::user()->user_type == 'admin' || in_array('2', json_decode(Auth::user()->staff->role->permissions)))
                     <li class="aiz-side-nav-item">
@@ -127,6 +127,44 @@
                             <li class="aiz-side-nav-item">
                                 <a href="{{route('reviews.index')}}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{translate('Product Reviews')}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- Service -->
+                @if(Auth::user()->user_type == 'admin' || in_array('2', json_decode(Auth::user()->staff->role->permissions)))
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-shopping-cart aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{translate('Services')}}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                        <!--Submenu-->
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                <a class="aiz-side-nav-link" href="{{route('products.create')}}">
+                                    <span class="aiz-side-nav-text">{{translate('Add New Service')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{route('products.all')}}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('All Services') }}</span>
+                                </a>
+                            </li>
+
+                            @if(get_setting('vendor_system_activation') == 1)
+                            <li class="aiz-side-nav-item">
+                                <a href="{{route('products.seller')}}" class="aiz-side-nav-link {{ areActiveRoutes(['products.seller', 'products.seller.edit']) }}">
+                                    <span class="aiz-side-nav-text">{{ translate('Seller Services') }}</span>
+                                </a>
+                            </li>
+                            @endif
+                            
+                            <li class="aiz-side-nav-item">
+                                <a href="{{route('reviews.index')}}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Service Reviews')}}</span>
                                 </a>
                             </li>
                         </ul>
