@@ -221,6 +221,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('enquiry','EnquiryController');
     Route::get('/enq/destroy/{id}', 'EnquiryController@destroy')->name('enq.destroy');
     Route::get('/enquiry/product-enquiry','EnquiryController@productEnquiry')->name('enq.productEnquiry');
+    // Route::get('/enquiry/product-enq','EnquiryController@productEnq')->name('enqs.productEnquiry');
+    // Route::resource('/enquiry/product-enquiry','productEnquiry');
     //Coupons
     Route::resource('coupon', 'CouponController');
     Route::get('/coupon/destroy/{id}', 'CouponController@destroy')->name('coupon.destroy');

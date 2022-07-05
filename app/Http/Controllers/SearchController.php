@@ -120,7 +120,7 @@ class SearchController extends Controller
         }
 
         $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
-		$categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+		$categories = Category::where('level', 0)->where('type','1')->orderBy('order_level', 'desc')->get();
         // $subcategories = Category::where('slug', $catslug)->first();
         // $getCatId = $subcategories->id;
         // $subcatlist = Category::where('parent_id','=',$getCatId)->paginate(12);

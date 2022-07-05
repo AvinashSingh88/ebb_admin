@@ -50,17 +50,17 @@
              <article class="content-entry">
                  <h4 class="article-title">
                  @php
-					 $total_category = \App\Models\Category::where('parent_id', '=', '0')->count();
+					 $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type','1')->count();
 				 @endphp
                      <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
-                         Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> (9)</span> <i
+                         Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> ({{$total_category}})</span> <i
                              class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
                      </a>
                  </h4>
                  <div class="accordion-content">
                      <div class="link-categoryx link-category1az ">
                          <ul class="list-unstyled dropdown-list">
-                         @foreach (\App\Models\Category::where('parent_id', '=', '0')->get() as $key => $category)
+                         @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
 					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} </a></li>
                      @endforeach
                          </ul>

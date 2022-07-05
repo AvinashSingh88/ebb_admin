@@ -275,6 +275,10 @@
                         </ul>
                     </li>
                 @endif
+
+                <a href="{{ url('admin/enquiry/product-enquiry') }}" class="aiz-side-nav-link">
+                    <span class="aiz-side-nav-text">{{translate('Product Request Enquiry')}}</span>
+                </a>
 				
 				<!-- Enquiry Setup -->
                 @if(Auth::user()->user_type == 'admin' || in_array('13', json_decode(Auth::user()->staff->role->permissions)))
@@ -289,7 +293,7 @@
                                 <a href="{{ url('admin/enquiry') }}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{translate('Enquiry')}}</span>
                                 </a>
-								<a href="{{ route('enq.productEnquiry') }}" class="aiz-side-nav-link">
+								<a href="{{ url('admin/enquiry/product-enquiry') }}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{translate('Product Request Enquiry')}}</span>
                                 </a>
                             </li>

@@ -175,6 +175,43 @@ var x = setInterval(function() {
     </div>
 
     @yield('modal')
+      @@ -130,24 +130,39 @@
+	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "{{url('getcatWiseBrands')}}",
+                success: function (response) {
+                    $('#catewisebrands').html(response);
+                }
+            });
+            
+        });
+
+
+
+
+		 function showAddToCartModals(showAddToCartModals){
+        $('#addToCart').modal('show'); 
+        let id = $(showAddToCartModals).attr('id');
+        $('#userid').html(id);
+        $.ajax({
+            url: '{{route('cart.showCartModal')}}',
+            type: 'post',
+            data:'id='+id+'&_token={{csrf_token()}}',
+            success:function(respons){
+                // $('#concontractid').html(JSON.parse(respons)[0].contractorID);
+               $('#addToCart-modal-body').html(respons);
+                // console.log(JSON.parse(respons)[0].contractorID);
+            }
+        })
+    }
+		 
+    
+		function showCategoryWiseBrand(showCategoryWiseBrand)
+    {
        
 		<script type="text/javascript">
 		function showCategoryWiseBrand(showCategoryWiseBrand){

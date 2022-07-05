@@ -71,7 +71,7 @@ $meta_description = get_setting('meta_description');
                   <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
                      <li class="link-category link-category1aa">
                         @php
-                        $total_category = \App\Models\Category::where('parent_id', '=', '0')->count();
+                        $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type', '1')->count();
                         @endphp
 
                         <div id="accordion" class="accordion-container">
@@ -87,7 +87,7 @@ $meta_description = get_setting('meta_description');
                               <div class="accordion-content">
                                  <div class="link-categoryx link-category1az ">
                                     <ul class="list-unstyled dropdown-list">
-                                    @foreach (\App\Models\Category::where('parent_id', '=', '0')->get() as $key => $category)
+                                       @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
                                        <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}</a></li>
                                  @endforeach
                                     </ul>
@@ -153,7 +153,7 @@ $meta_description = get_setting('meta_description');
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
-                           @foreach (\App\Models\Category::where('level', 0)->get() as $category)
+                            @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
                            <li><a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">{{
                                  $category->getTranslation('name') }}</a></li>
                            @endforeach
