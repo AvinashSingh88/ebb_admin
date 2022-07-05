@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- Head Section -->
    <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ getBaseURL() }}">
