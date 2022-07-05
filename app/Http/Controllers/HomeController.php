@@ -516,7 +516,7 @@ class HomeController extends Controller
     public function all_categories(Request $request)
     {
         //        $categories = Category::where('level', 0)->orderBy('name', 'asc')->get();
-        $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        $categories = Category::where('level', 0)->where('type','1')->orderBy('order_level', 'desc')->get();
         return view('frontend.all_category', compact('categories'));
     }
     public function all_brands(Request $request)
@@ -927,7 +927,8 @@ class HomeController extends Controller
             "phone" => "$request->phone",
             "price_range" => "$request->price_range",
             "message" => "$request->message",
-            "category" => "$request->category"
+            "category" => "$request->category",
+            "type" => "$request->type",
         ]);
         if ($add_product_request_enquiry) {
             return redirect()->back()->with(session()->flash('alert-success', 'Thank you for enquiry with us!.'));

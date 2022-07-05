@@ -39,18 +39,31 @@ class EnquiryController extends Controller
 	
 	public function productEnquiry(Request $request)
     {
-        // $sort_search = null;
-        // $product_enquiry = ProductQuoteEnquiry::orderBy('created_at', 'desc');
+        $sort_search = null;
+        $product_enquiry = ProductQuoteEnquiry::orderBy('created_at', 'desc');
         
-        // if ($request->search != null){
-        //     $product_enquiry = $product_enquiry->where('phone', 'like', '%'.$request->search.'%');
-        //     $sort_search = $request->search;
-        // }
+        if ($request->search != null){
+            $product_enquiry = $product_enquiry->where('phone', 'like', '%'.$request->search.'%');
+            $sort_search = $request->search;
+        }
 
-        // $product_enquiry = $product_enquiry->paginate(15);
+        $product_enquiry = $product_enquiry->paginate(15);
 
-        // return view('backend.enquiry.product_enquiry.product_enquiry', compact('product_enquiry','sort_search'));
-        //return view('Rana');
+        return view('backend.enquiry.product_enquiry.index', compact('product_enquiry','sort_search'));
+    }
+    public function productEnq()
+    {
+        $sort_search = null;
+        $product_enquiry = ProductQuoteEnquiry::orderBy('created_at', 'desc');
+        
+        if ($request->search != null){
+            $product_enquiry = $product_enquiry->where('phone', 'like', '%'.$request->search.'%');
+            $sort_search = $request->search;
+        }
+
+        $product_enquiry = $product_enquiry->paginate(15);
+
+        return view('backend.enquiry.product_enquiry.index', compact('product_enquiry','sort_search'));
     }
 	public function show($id)
     {

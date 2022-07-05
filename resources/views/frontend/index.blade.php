@@ -1858,7 +1858,7 @@
                      </ul>
                      <ul class="ulines-dps-para">
                         <li class="ukine ukine8 active2">
-                           <form class="bottom-form" method="post" action="{{route('productRequestQuote')}}">
+                           <form autocomplete="off" class="bottom-form" method="post" action="{{route('productRequestQuote')}}">
                               @csrf
                               <div class="bounceIn animated">
                                  <h4>Request A Free Quote</h4>
@@ -1874,28 +1874,28 @@
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-user"></i>
                                           </span>
-                                          <input type="text" name="name" class="form-control empty"
+                                          <input type="text" required name="name" class="form-control empty"
                                              placeholder="Full Name" />
                                        </div>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
-                                          <input type="text" name="email" class="form-control empty"
+                                          <input type="text" required name="email" class="form-control empty"
                                              placeholder="Email Address" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-phone-flip"></i>
                                           </span>
-                                          <input type="tel" name="phone" class="form-control empty"
+                                          <input type="tel" required name="phone" class="form-control empty"
                                              placeholder="Phone Number" maxlength="10" minlength="10" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-inr"></i>
                                           </span>
-                                          <input type="tel" name="price_range" class="form-control empty"
+                                          <input type="tel" required name="price_range" class="form-control empty"
                                              placeholder="Price Range" />
                                        </div>
                                        {{-- <div class="input-group " style="margin-bottom: 10px">
@@ -1907,13 +1907,14 @@
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
-                                          <textarea name="message" style="height: 120px;" class="form-control textareas"
+                                          <textarea required name="message" style="height: 120px;" class="form-control textareas"
                                              placeholder="Your Message *"> 
                                                </textarea>
                                        </div>
+									   <input required type="hidden" name="type" value="1">
                                        <div class="ginput_container ginput_container_checkbox">
                                           <ul class="gfield_checkbox" id="input_18_14">
-                                             @foreach (\App\Models\Category::where('parent_id','=','0')->get() as $key => $category)
+                                             @foreach (\App\Models\Category::where('parent_id','=','0')->where('type','1')->get() as $key => $category)
                                              <li class="gchoice_18_14_1">
                                                 <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
                                                    id="choice_18_14_1" />
@@ -1944,8 +1945,10 @@
                               </div>
                            </form>
                         </li>
+                        
                         <li class="ukine ukine9">
-                           <form class="bottom-form">
+                           <form autocomplete="off" class="bottom-form" method="post" action="{{route('productRequestQuote')}}">
+                              @csrf
                               <div class="bounceIn animated">
                                  <h4>Request A Free Quote</h4>
                                  <p>
@@ -1960,103 +1963,53 @@
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-user"></i>
                                           </span>
-                                          <input type="text" name="full-name" class="form-control empty"
+                                          <input type="text" required name="name" class="form-control empty"
                                              placeholder="Full Name" />
                                        </div>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
-                                          <input type="text" name="full-name" class="form-control empty"
+                                          <input type="text" required name="email" class="form-control empty"
                                              placeholder="Email Address" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-phone-flip"></i>
                                           </span>
-                                          <input type="tel" name="full-name" class="form-control empty"
+                                          <input type="tel" required name="phone" class="form-control empty"
                                              placeholder="Phone Number" maxlength="10" minlength="10" />
                                        </div>
-                                       <div class="input-group " style="margin-bottom: 10px">
+                                       <div class="input-group w-441" style="margin-bottom: 10px; float: left">
+                                          <span class="input-group-addon">
+                                             <i class="fa-solid fa-inr"></i>
+                                          </span>
+                                          <input type="tel" required name="price_range" class="form-control empty"
+                                             placeholder="Price Range" />
+                                       </div>
+                                       {{-- <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
                                           <h3 class="left-range1">500</h3>
                                           <h3 class="left-range2">2000</h3>
-                                       </div>
+                                       </div> --}}
                                        <div class="input-group" style="margin-bottom: 5px">
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
-                                          <textarea name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder="">Your Message * 
+                                          <textarea required name="message" style="height: 120px;" class="form-control textareas"
+                                             placeholder="Your Message *"> 
                                                </textarea>
                                        </div>
+									   <input required type="hidden" name="type" value="2">
                                        <div class="ginput_container ginput_container_checkbox">
                                           <ul class="gfield_checkbox" id="input_18_14">
+                                             @foreach (\App\Models\Category::where('parent_id','=','0')->where('type','2')->get() as $key => $category)
                                              <li class="gchoice_18_14_1">
-                                                <input name="input_14.1" type="checkbox" value="Architect"
+                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
                                                    id="choice_18_14_1" />
-                                                <label for="choice_18_14_1" id="label_18_14_1">Architect</label>
+                                                <label for="pro_cat{{$category->id}}" id="label_18_14_1">{{$category->name}}</label>
                                              </li>
-                                             <li class="gchoice_18_14_2">
-                                                <input name="input_14.2" type="checkbox" value="Professional services"
-                                                   id="choice_18_14_2" />
-                                                <label for="choice_18_14_2" id="label_18_14_2">Professional
-                                                   services</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Building Material</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Furniture</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Sanitary items</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Electrical</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Plumbing</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Sanitary Ware</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Paint</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Home Appliances</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Doors & Window</label>
-                                             </li>
-                                             <li class="gchoice_18_14_3">
-                                                <input name="input_14.3" type="checkbox" value="Building Material"
-                                                   id="choice_18_14_3" />
-                                                <label for="choice_18_14_3" id="label_18_14_3">Tool & machines</label>
-                                             </li>
-                                             <!--   <li class="gchoice_18_14_3">
-                                                     <input  name="input_14.3" type="checkbox"  value="Building Material" id="choice_18_14_3" />
-                                                     <label for="choice_18_14_3"  id="label_18_14_3" >Hardware</label >
-                                                     </li> -->
+                                          @endforeach
                                           </ul>
                                        </div>
                                        <!-- checkbox -->
