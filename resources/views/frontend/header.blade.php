@@ -338,7 +338,7 @@
                                           @php 
                                              $counter = 1;
                                           @endphp
-                                          @foreach (\App\Models\Category::all() as $key => $category)
+                                          @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->get() as $key => $category)
                                           @php
                                              $counter++;
                                           @endphp
@@ -712,7 +712,7 @@
                                     <div class="row">
                                        <div class="col-md-8" style="padding-right: 0px">
                                           <ul class="megamenusubs">
-                                             @foreach (\App\Models\Category::all() as $key => $category)
+                                             @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->get() as $key => $category)
                                              <li>
                                                 <a href="{{ route('cat', $category->slug) }}" style="    padding: 0px;">
                                                 <b class="webhead1">{{  $category->getTranslation('name') }}</b>
