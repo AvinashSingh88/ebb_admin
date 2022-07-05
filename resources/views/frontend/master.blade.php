@@ -126,7 +126,7 @@
     </div>
 
     @yield('modal')
-       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+      @@ -130,24 +130,39 @@
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
 		
@@ -159,8 +159,8 @@
             }
         })
     }
-		
-		
+		 
+    
 		function showCategoryWiseBrand(showCategoryWiseBrand)
     {
         let address_id = $(showCategoryWiseBrand).attr('id');
