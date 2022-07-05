@@ -93,155 +93,7 @@
                   </div>
                   <div class="select-search">
                      <input type="search" class="form-control" placeholder="What are you looking for.."  id="searchid" />
-                     <div class="search-tab">
-                        <!-- tab menu start here -->
-                        <div class="submenu submenu3">
-                           <div class="menuleft menuleft3">
-                              <div class="tabbable-panel">
-                                 <div class="tabbable-line">
-                                    <ul class="nav nav-tabs">
-                                       <li class="active">
-                                          <a href="#tab_default_1" data-toggle="tab"
-                                             >Products</a
-                                             >
-                                       </li>
-                                       <li>
-                                          <a href="#tab_default_2" data-toggle="tab"
-                                             >Suppliers</a
-                                             >
-                                       </li>
-                                    </ul>
-                                    <div class="tab-content">
-                                       <div class="tab-pane active" id="tab_default_1">
-                                          <ul class="ulinesdmen">
-                                             <li>
-                                                <i class="fas fa-search"></i> Services1
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services2
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services3
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services4
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services5
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services6
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services7
-                                             </li>
-                                          </ul>
-                                       </div>
-                                       <div class="tab-pane" id="tab_default_2">
-                                          <ul class="ulinesdmen">
-                                             <li>
-                                                <i class="fas fa-search"></i> Services7
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services6
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services5
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services4
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services3
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services2
-                                             </li>
-                                             <li>
-                                                <i class="fas fa-search"></i> Services1
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="menuright menuright3">
-                              <ul>
-                                 <li>
-                                    <a href="technology-expertise#tab2">
-                                    <img
-                                       class="lazyloaded"
-                                       src="{{static_asset('assets_web/img/technology-menu-icon.svg')}}"
-                                       data-src="{{static_asset('assets_web/img/technology-menu-icon.svg')}}"
-                                       alt="Technology"
-                                       width="44"
-                                       />
-                                    <span
-                                       ><strong>Technology</strong> What we are good
-                                    at!</span
-                                       ></a
-                                       >
-                                 </li>
-                                 <li>
-                                    <a href="4p"
-                                       ><img
-                                       src="{{static_asset('assets_web/img/4p-menu-icon.svg')}}"
-                                       alt="4p"
-                                       width="44"
-                                       />
-                                    <span
-                                       ><strong>4P</strong> Our winning
-                                    proposition.</span
-                                       ></a
-                                       >
-                                 </li>
-                                 <li>
-                                    <a href="models"
-                                       ><img
-                                       src="{{static_asset('assets_web/img/models-menu-icon.svg')}}"
-                                       alt="models"
-                                       width="44"
-                                       />
-                                    <span
-                                       ><strong>Models</strong> We know what is best
-                                    for you.</span
-                                       ></a
-                                       >
-                                 </li>
-                                 <li>
-                                    <a href="agile-and-scrum"
-                                       ><img
-                                       class="lazyloaded"
-                                       src="{{static_asset('assets_web/img/agile-menu-icon.svg')}}"
-                                       data-src="{{static_asset('assets_web/img/agile-menu-icon.svg')}}"
-                                       alt=">Agile &amp; Scrum"
-                                       width="44"
-                                       />
-                                    <span><strong>Agile &amp; Scrum</strong> Engage with
-                                    full trust on every stage.</span></a>
-                                 </li>
-                                 <li>
-                                    <a href="valued-professionals"><img
-                                       src="{{static_asset('assets_web/img/scrum-menu-icon.svg')}}"
-                                       alt="Valued Professionals"
-                                       width="44"/>
-                                    <span><strong>Valued Professionals</strong> Know more
-                                    about our knowledge pool</span></a>
-                                 </li>
-                                 <li>
-                                    <a href="valued-professionals"><img
-                                       src="{{static_asset('assets_web/img/scrum-menu-icon.svg')}}"
-                                       alt="Valued Professionals"
-                                       width="44"/>
-                                    <span><strong>Valued Professionals</strong> Know more
-                                    about our knowledge pool</span></a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
-                        <!-- tab menu end here -->
-                     </div>
+                     
                   </div>
                   <div class="seach-btn">
                      <button class="btn"><i class="fas fa-search"></i></button>
@@ -251,10 +103,10 @@
             <div class="col-md-4 col-xs-12">
                <div class="right-menu">
                   <ul>
-                     <li class="flot-right getquote">
+                     <li class="flot-right getquote cart-count">
                      </li>
-                     <li id="cart_items" class="flot-right getquote">
-                         @include('frontend.partials.cart')
+                     <li class="flot-right getquote cart-count">
+                        <a href="{{url('cart')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> <span class="cart_count">1</span> <b class="cart_amount"> ₹ 0</b></a>
                      </li>
                      @if (Auth::check()) 
                      <li class="flot-right getquote getquote-signs">
@@ -338,7 +190,7 @@
                                           @php 
                                              $counter = 1;
                                           @endphp
-                                          @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->get() as $key => $category)
+                                          @foreach (\App\Models\Category::all() as $key => $category)
                                           @php
                                              $counter++;
                                           @endphp
@@ -712,7 +564,7 @@
                                     <div class="row">
                                        <div class="col-md-8" style="padding-right: 0px">
                                           <ul class="megamenusubs">
-                                             @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->get() as $key => $category)
+                                             @foreach (\App\Models\Category::all() as $key => $category)
                                              <li>
                                                 <a href="{{ route('cat', $category->slug) }}" style="    padding: 0px;">
                                                 <b class="webhead1">{{  $category->getTranslation('name') }}</b>
