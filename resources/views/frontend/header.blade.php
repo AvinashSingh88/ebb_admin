@@ -105,8 +105,9 @@
                   <ul>
                      <li class="flot-right getquote cart-count">
                      </li>
-                     <li class="flot-right getquote cart-count">
-                        <a href="{{url('cart')}}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> <span class="cart_count">1</span> <b class="cart_amount"> ₹ 0</b></a>
+                     
+					 <li id="cart_items" class="flot-right getquote">
+                         @include('frontend.partials.cart')
                      </li>
                      @if (Auth::check()) 
                      <li class="flot-right getquote getquote-signs">
