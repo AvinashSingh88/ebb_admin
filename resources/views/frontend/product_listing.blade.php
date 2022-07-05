@@ -149,7 +149,7 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </li>
                      <li class="listing-botoms">
-                        <b> Structural Material</b>
+                        <b> Products List</b>
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
@@ -659,22 +659,32 @@ $meta_description = get_setting('meta_description');
                            </div>
                         </article>
                         @endif
-                        
-                        <article class="content-entry open">
-                        <h4 class="font-size-14 mb-3 font-weight-bold article-title">Price range</h4>
-                        <div class="accordion-content1">
-                        
-                         
-                        <div id="slider-range"></div>
-                        <p>
-                          <input type="text" id="amount" readonly />
-                          <input type="text" id="amount1" readonly />
-                        </p>
-                        </div>
-                        <article>
                      </div>
                    
+               <div class="wrapper prices-ranges">
                
+  <fieldset class="filter-price w-100 bg-secondary">
+   
+    <div class="price-field w-100">
+      <input type="range"  min="100" max="50000" value="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif" id="lower">
+      
+      <input type="range" min="100" max="50000" value="5000" id="upper">
+    </div>
+
+     <div class="price-wrap">
+       
+      <div class="price-wrap-1">
+        <input id="one">
+        <label for="one"> </label>
+      </div>
+      <div class="price-wrap_line">-</div>
+      <div class="price-wrap-2">
+        <input id="two">
+        <label for="two"> </label>
+      </div>
+    </div>
+  </fieldset> 
+</div>
 
                      <div class="bg-white shadow-sm rounded mb-3">
                         
@@ -762,10 +772,12 @@ $meta_description = get_setting('meta_description');
                   </div>
                </div>
                <div class="row">
+				
                   @foreach ($products as $key => $product)
                   <div class="col-md-3">
                      @include('frontend.partials.product_box_1',['product' => $product])
                   </div>
+				  
                   @endforeach
 
 
