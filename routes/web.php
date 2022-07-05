@@ -101,6 +101,7 @@ Route::get('/category/{category_slug}', 'SearchController@listingByCategory')->n
 Route::get('/brand/{brand_slug}', 'SearchController@listingByBrand')->name('products.brand');
 
 Route::post('getcategorybrands', 'HomeController@getcategorybrands')->name('getcategorybrands');
+Route::get('getcatWiseBrands', 'HomeController@getcatWiseBrands')->name('getcatWiseBrands');
 
 Route::get('/product/{slug}', 'HomeController@product')->name('product');
 Route::post('/product/variant_price', 'HomeController@variant_price')->name('products.variant_price');

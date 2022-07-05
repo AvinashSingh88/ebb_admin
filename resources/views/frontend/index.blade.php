@@ -341,10 +341,14 @@
 
                         @foreach ($cat_wise_brands as $item)
                         <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}"
-                           class="col-tabs-{{$item->id}} tabs-dps-tab nav-item closestbrand">
-                           <a class="nav-link rounded-pill selectbrand">{{$item->category->name}} </a>
+                           class="col-tabs-1 tabs-dps-tab active nav-item">
+                           <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
+                            
                         </li>
-                        <input type="hidden" value="{{$item->id}}" class="prod_id">
+						@php
+							 $cat_s_id = $item->category_id;
+						@endphp
+                        
                         @endforeach
 
                      </ul>
@@ -356,9 +360,29 @@
 
          <div class="div-tab-dps sections">
             <ul>
-               <li class="col-tabs-1 tabs-dps-tab active">
-                  <div class="owl-carousel owl-theme trending001" id="catbrandslist">
-
+				<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
+					<div class="owl-carousel owl-theme trending001">
+						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get() as $key => $cc)
+						<div class="item">
+							<div class="product-box">
+								<!-- <h6>Brand</h6>-->
+								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
+								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
+								<div class="discrptions">
+									<h5>  {{$cc->title}} </h5>
+									<h6>{{$cc->category->name}}</h6> </div>
+								<div class="discrptions_button">
+									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
+							</div>
+						</div>
+						@endforeach
+					</div>
+				</li>
+				
+               <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
+                  <div class="owl-carousel owl-theme trending001 catbrandslistss" >
+                      
+                     
 
                   </div>
                </li>
@@ -368,6 +392,8 @@
       </div>
    </div>
 
+
+   
    <!-- banner 1 section start -->
    @if (get_setting('home_banner1_images') != null)
    <section>
