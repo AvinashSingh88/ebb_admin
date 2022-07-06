@@ -61,23 +61,7 @@
    <script src="{{static_asset('assets_web/js/jquery-3.6.0.js')}}" type="text/javascript"></script>
    <script src="{{static_asset('assets_web/js/jquery-ui.js')}}" type="text/javascript"></script>
    
-   <script>
-     $( function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 10,
-      max: 5000,
-      values: [ 1000, 4000 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val(ui.values[ 0 ]+".00" );
-		$( "#amount1" ).val(ui.values[ 1 ]+".00" );
-      }
-    });
-    $( "#amount" ).val($( "#slider-range" ).slider( "values", 0 )+".00");
-	  
-	  $( "#amount1" ).val($( "#slider-range" ).slider( "values", 1 )+".00");
-  } );
-  </script>
+   
       @if (get_setting('google_analytics') == 1)
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
