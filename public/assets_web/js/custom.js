@@ -472,10 +472,10 @@ $(document).on('click', '.button-plus,.button-minus', function(e) {
 });
 
 
-$(document).on('click', '.remove', function(e) {
-    e.preventDefault();
-    $(this).closest('tr').remove();
-});
+// $(document).on('click', '.remove', function(e) {
+//     e.preventDefault();
+//     $(this).closest('tr').remove();
+// });
 
 
 

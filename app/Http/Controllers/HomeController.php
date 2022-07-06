@@ -23,6 +23,7 @@ use App\Models\Category_wise_brand;
 use App\Models\Enquiry;
 use App\Models\Blog;
 use App\Models\ProductQuoteEnquiry;
+use App\Models\CallRequest;
 use Cookie;
 use Illuminate\Support\Str;
 use App\Mail\SecondEmailVerifyMailManager;
@@ -934,6 +935,15 @@ class HomeController extends Controller
             return redirect()->back()->with(session()->flash('alert-success', 'Thank you for enquiry with us!.'));
         }
         return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.')); 
+    }
+    public function insertCallRequest(Request $request){
+        $add_product_request_enquiry = CallRequest::create([
+            "name" => "$request->name",
+            "email" => "$request->email",
+            "mobile" => "$request->mobile",
+            
+        ]);
+        response()->json(['status' => "Call Request sent successfully"]);
     }
 
     public function getcatWiseBrands(){

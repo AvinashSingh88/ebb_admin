@@ -244,3 +244,4 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
    </div>
    
 @endsection
+

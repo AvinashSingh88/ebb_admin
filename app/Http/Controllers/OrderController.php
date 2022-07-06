@@ -653,10 +653,11 @@ class OrderController extends Controller
 
                 }
 
-                $orderDetail->delete();
+                $orderDetail->update(['delivery_status'=>'cancelled']);
             }
-            $order->delete();
+            $order->update(['delivery_status'=>'cancelled']);
             flash(translate('Order has been deleted successfully'))->success();
+            redirect('');
         } else {
             flash(translate('Something went wrong'))->error();
         }

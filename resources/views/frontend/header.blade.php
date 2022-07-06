@@ -103,9 +103,7 @@
             <div class="col-md-4 col-xs-12">
                <div class="right-menu">
                   <ul>
-                     <li class="flot-right getquote cart-count">
-                     </li>
-                     
+                    
 					 <li id="cart_items" class="flot-right getquote">
                          @include('frontend.partials.cart')
                      </li>

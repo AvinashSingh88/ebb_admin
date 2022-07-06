@@ -409,7 +409,7 @@ class CartController extends Controller
 
         return array(
             'cart_count' => count($carts),
-            'cart_view' => view('frontend.partials.cart_details', compact('carts'))->render(),
+            'cart_view' => view('frontend.partials.cart_update_ajax', compact('carts'))->render(),
             'nav_cart_view' => view('frontend.partials.cart')->render(),
         );
     }
@@ -451,7 +451,7 @@ class CartController extends Controller
 
         return array(
             'cart_count' => count($carts),
-            'cart_view' => view('frontend.partials.cart_details', compact('carts'))->render(),
+            'cart_view' => view('frontend.partials.cart_update_ajax', compact('carts'))->render(),
             'nav_cart_view' => view('frontend.partials.cart')->render(),
         );
     }
