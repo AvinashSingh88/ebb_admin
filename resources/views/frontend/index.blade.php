@@ -341,7 +341,7 @@
 
                         @foreach ($cat_wise_brands as $item)
                         <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}"
-                           class="col-tabs-1 tabs-dps-tab active nav-item">
+                           class="col-tabs-1 tabs-dps-tab nav-item">
                            <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
                             
                         </li>
