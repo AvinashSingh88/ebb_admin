@@ -22582,10 +22582,32 @@ select.form-control.form-control-sm.aiz-selectpicker {
     }
 }
 
+/* product details add to cart button */
+.addtocartbut {
+    background: #1274c0;
+    font-size: 13px;
+    padding: 5px 20px;
+    border-radius: 50px;
+    color: #fff !important;
+    height: 45px;
+    line-height: 34px;
+    display: block;
+    font-weight: 400;
+    letter-spacing: 0.5px;    border: none;
 
-
-
-
+}   
+.out-of-stock{
+    font-size: 13px;
+    padding: 5px 20px;
+    border-radius: 50px;
+    color: #4a4a4a;
+    height: 45px;
+    line-height: 34px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border: none;
+}
+/* product details add to cart button */
 /*digital timer*/
 #demo{
 		margin-top:0px;
