@@ -273,9 +273,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/products/published', 'ProductController@updatePublished')->name('products.published');
 
     Route::post('/products/add-more-choice-option', 'ProductController@add_more_choice_option')->name('products.add-more-choice-option');
-
     Route::get('invoice/{order_id}', 'InvoiceController@invoice_download')->name('invoice.download');
-
+    
+    //services routes
+    Route::post('/services/store/', 'ServiceController@store')->name('services.store');
+    Route::post('/services/update/{id}', 'ServiceController@update')->name('services.update');
+    Route::get('/services/destroy/{id}', 'ServiceController@destroy')->name('services.destroy');
+    
     Route::resource('orders', 'OrderController');
     Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
     Route::post('/orders/details', 'OrderController@order_details')->name('orders.details');
