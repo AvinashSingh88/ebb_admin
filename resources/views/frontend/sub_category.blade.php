@@ -1,4 +1,4 @@
-@extends('frontend.master')
+ @extends('frontend.master')
 
 @section('title')Home -  @endsection
 
@@ -180,7 +180,7 @@
                                  <a class="rana {{ Request::is('cat/'.$category->slug) ? 'active':'' }}"> {{ set_active('cat', $category->slug) }} </a>
 
                                  <a class="tablskd {{ Request::is('cat/'.$category->slug) ? 'active':'' }}" href="{{ route('cat', $category->slug) }}">
-                                    <img data-u="image" src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /> 
+                                    <img data-u="image" src="{{ uploaded_asset($category->banner) }}" alt="{{translate('icon')}}" /> 
                                     <h6>{{  $category->getTranslation('name') }} </h6>
                                     <div class="triangle-down"></div>
                                  </a>
@@ -210,6 +210,7 @@
 									<div class="product_br">
 										<a href="{{ route('products.category', $item->slug) }}">
 										   <img src="{{ uploaded_asset($item->icon) }}" alt="">
+                                 <!-- <img src="{{ uploaded_asset($item->banner) }}" alt=""> -->
 										   <h3>{{$item->name}}</h3>
 										</a>
 									</div>

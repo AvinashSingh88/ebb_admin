@@ -515,8 +515,7 @@ class HomeController extends Controller
 
     public function all_categories(Request $request)
     {
-        //        $categories = Category::where('level', 0)->orderBy('name', 'asc')->get();
-        $categories = Category::where('level', 0)->where('type','1')->orderBy('order_level', 'desc')->get();
+        $categories = Category::where('level', 0)->where('type','1')->orderBy('order_level', 'asc')->get();
         return view('frontend.all_category', compact('categories'));
     }
     public function all_brands(Request $request)

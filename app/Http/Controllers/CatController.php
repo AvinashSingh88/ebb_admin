@@ -10,10 +10,10 @@ use App\Models\Category_wise_offer;
 class CatController extends Controller
 {
     public function subCatbyCat($catslug){
-        $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        $categories = Category::where('level', 0)->orderBy('order_level', 'ASC')->get();
         $subcategories = Category::where('slug', $catslug)->first();
         $getCatId = $subcategories->id;
-        $subcatlist = Category::where('parent_id','=',$getCatId)->get( );
+        $subcatlist = Category::where('parent_id','=',$getCatId)->orderBy('order_level', 'ASC')->get( );
         $firstFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->limit(5)->get();
         $exceptFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->take(15)->skip(5)->get();
         $catwisebrands = Category_wise_brand::where('category_id','=',$getCatId)->get();
