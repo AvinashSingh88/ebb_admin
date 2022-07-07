@@ -153,7 +153,7 @@
 												<button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">{{ translate('Message Seller')}}</button>
 											</div> @endif @if ($detailedProduct->brand != null)
 											<div class="col-auto"> <a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
-                                <img class="icon-imagw mx-2" src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
+                                <img height="60" class="icon-imagw mx-2" src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
                                     alt="{{ $detailedProduct->brand->getTranslation('name') }}">
                             </a> </div> @endif </div>
 									</div>
