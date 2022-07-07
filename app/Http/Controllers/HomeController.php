@@ -491,6 +491,35 @@ class HomeController extends Controller
         abort(404);
     }
 
+    public function bulkOrder(Request $request, $slug)
+    {
+        $detailedProduct  = Product::with('category','reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
+        $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
+        if ($detailedProduct != null && $detailedProduct->published) {
+            if ($request->has('product_referral_code') && addon_is_activated('affiliate_system')) {
+
+                $affiliate_validation_time = AffiliateConfig::where('type', 'validation_time')->first();
+                $cookie_minute = 30 * 24;
+                if ($affiliate_validation_time) {
+                    $cookie_minute = $affiliate_validation_time->value * 60;
+                }
+                Cookie::queue('product_referral_code', $request->product_referral_code, $cookie_minute);
+                Cookie::queue('referred_product_id', $detailedProduct->id, $cookie_minute);
+
+                $referred_by_user = User::where('referral_code', $request->product_referral_code)->first();
+
+                $affiliateController = new AffiliateController;
+                $affiliateController->processAffiliateStats($referred_by_user->id, 1, 0, 0, 0);
+            }
+            if ($detailedProduct->digital == 1) {
+                return view('frontend.digital_product_details', compact('detailedProduct','categories'));
+            } else {
+                return view('frontend.bulk_order_details', compact('detailedProduct','categories'));
+            }
+        }
+        abort(404);
+    }
+
     // public function shop($slug)
     // {
     //     $shop  = Shop::where('slug', $slug)->first();
