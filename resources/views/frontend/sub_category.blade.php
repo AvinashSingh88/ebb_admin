@@ -113,15 +113,15 @@
                </div>
             </div>
             <div class="form-group">
-               <input class="form-control" name="name" value="" type="text" placeholder="Name">
+               <input class="form-control" name="name" required value="" type="text" placeholder="Name">
             </div>
             <!-- form-group -->
             <div class="form-group">
-               <input class="form-control" name="phone" value="" type="text" placeholder="Phone">
+               <input class="form-control" name="phone" required value="" type="text" placeholder="Phone">
             </div>
             <!-- form-group -->
             <div class="form-group">
-               <input class="form-control" name="email" value="" type="email" placeholder="Email">
+               <input class="form-control" name="email" required value="" type="email" placeholder="Email">
             </div>
             <!-- form-group -->
             <div class="form-group form-group-textarea">
@@ -130,7 +130,7 @@
             <!-- form-group -->	
             <div class="form-group">
                <div class="dropdown1 bootstrap-select1 form-control1">
-                  <select name="user_type" class="selectpicker form-control" title="Select">
+                  <select required name="user_type" class="selectpicker form-control" title="Select">
                      <option class="bs-title-option" value="">Selected</option>
                      <option value="buyer">I'm a buyer</option>
                      <option value="tennant">I'm a tennant</option>

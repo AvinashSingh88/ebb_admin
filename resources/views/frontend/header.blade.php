@@ -103,9 +103,7 @@
             <div class="col-md-4 col-xs-12">
                <div class="right-menu">
                   <ul>
-                     <li class="flot-right getquote cart-count">
-                     </li>
-                     
+                    
 					 <li id="cart_items" class="flot-right getquote">
                          @include('frontend.partials.cart')
                      </li>
@@ -160,6 +158,64 @@
                      <li class="border-zero flot-right">
                         <a href="javascript:void(0);" id="imgrotate"><img
                            src="{{static_asset('assets_web/img/services-arrow.png')}}" alt="" /></a>
+                           
+                           <div class="right-sidemenu">
+    <div class="top-button">
+       <button class="btns">Organize Site Visit</button>
+    </div>
+    <div class="request-button">
+       <button class="btn">
+       <i class="fas fa-phone-volume"></i> Request Call Back
+       </button>
+       <hr />
+       <div class="req-form">
+          <h3>Pre-Register here for Best Offers</h3>
+          <div class="form-group">
+             <input type="text" placeholder="Name" class="form-control" />
+          </div>
+          <div class="form-group">
+             <input type="number" placeholder="Mobile No" class="form-control" />
+          </div>
+          <div class="form-group">
+             <input
+                type="text"
+                placeholder="E-Mail address"
+                class="form-control"
+                />
+          </div>
+       </div>
+       <button class="btn btn2">
+       <i class="fas fa-phone-volume"></i> Pre-Register Now
+       </button>
+       <div class="req-form callus">
+          <h3>CALL US : 1800 419 3805</h3>
+       </div>
+       <div class="book-visit">
+          <h3>
+             Book A Site Visit <i class="fas fa-car hvr-icon-pulse-grow"></i>
+          </h3>
+       </div>
+       <div class="social_media">
+          <ul>
+             <li>
+                <a href="javascript:void(0);"><i class="fab fa-facebook-square"></i></a>
+             </li>
+             <li>
+                <a href="javascript:void(0);"><i class="fab fa-instagram"></i></a>
+             </li>
+             <li>
+                <a href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
+             </li>
+             <li>
+                <a href="javascript:void(0);"><i class="fab fa-linkedin"></i></a>
+             </li>
+             <li>
+                <a href="javascript:void(0);"><i class="fab fa-skype"></i></a>
+             </li>
+          </ul>
+       </div>
+    </div>
+ </div>
                      </li>
                   </ul>
                </div>
@@ -805,13 +861,12 @@
          <div class="left-side-bar">
             <ul class="menu-list">
                <li>
-                  <a href="javascript:void(0);"><i class="fa-solid fa-house"></i>&nbsp; ask group</a
+                  <a href="javascript:void(0);"><i class="fa-solid fa-house"></i> Ebuild Bazaar </a
                      >
                </li>
                <li>
                   <a href="javascript:void(0);"
-                     ><i class="fa-solid fa-kit-medical"></i>&nbsp; ask wealth
-                  advisors <b class="caret"></b
+                     ><i class="fa-solid fa-kit-medical"></i> Ebuild Bazaar Wealth  Advisors<b class="caret"></b
                      ></a>
                   <div class="menu-sub-list">
                      <ul>
@@ -819,40 +874,39 @@
                         <li><a href="javascript:void(0);">Our Companies</a></li>
                         <li><a href="javascript:void(0);">Our Board Member</a></li>
                         <li><a href="javascript:void(0);">Our Team</a></li>
-                        <li><a href="javascript:void(0);">Ask Foundation</a></li>
+                        <li><a href="javascript:void(0);">Ebuild Bazaar Foundation</a></li>
                         <li><a href="javascript:void(0);">Disclosure</a></li>
-                     </ul>
+                      </ul>
                   </div>
                </li>
                <li>
-                  <a href="javascript:void(0);"><i class="fa-solid fa-user-tie-hair"></i> &nbsp; ask
-                  investment managers</a
+                  <a href="javascript:void(0);"><i class="fa-solid fa-house"></i> Ebuild Bazaar
+    Investment Managers</a
                      >
                </li>
                <li>
                   <a href="javascript:void(0);"
-                     ><i class="fa-solid fa-house"></i>&nbsp; ask property
-                  investment
+                     ><i class="fa-solid fa-house"></i> Ebuild Bazaar Property
+    Investment
                   </a>
                </li>
                <li>
-                  <a href="javascript:void(0);"><i class="fa-solid fa-house"></i>&nbsp; ask capital
-                  management
+                  <a href="javascript:void(0);"><i class="fa-solid fa-house"></i> Ebuild Bazaar Capital
+    Management
                   </a>
                </li>
                <li>
-                  <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> &nbsp; ask
-                  pravi</a
+                  <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> Ebuild Bazaar Pravi</a
                      >
                </li>
                <li>
-                  <a href="javascript:void(0);"><i class="fa-solid fa-play"></i> &nbsp; media </a>
+                  <a href="javascript:void(0);"><i class="fa-solid fa-play"></i> Media </a>
                </li>
                <li>
-                  <a href="javascript:void(0);"><i class="fa-solid fa-book"></i>&nbsp; careers</a>
+                  <a href="javascript:void(0);"><i class="fa-solid fa-book"></i> Careers</a>
                </li>
                <li>
-                  <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> &nbsp; contact
+                  <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> Contact
                   us</a
                      >
                </li>

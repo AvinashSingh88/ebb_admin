@@ -76,6 +76,7 @@ Route::get('/flash-deals', 'HomeController@all_flash_deals')->name('flash-deals'
 Route::get('/flash-deal/{slug}', 'HomeController@flash_deal_details')->name('flash-deal-details');
 
 Route::post('productRequestQuote', 'HomeController@productRequestQuote')->name('productRequestQuote');
+Route::post('insertCallRequest', 'HomeController@insertCallRequest')->name('insertCallRequest');
 
 Route::get('/sitemap.xml', function () {
     return base_path('sitemap.xml');
@@ -104,6 +105,7 @@ Route::post('getcategorybrands', 'HomeController@getcategorybrands')->name('getc
 Route::get('getcatWiseBrands', 'HomeController@getcatWiseBrands')->name('getcatWiseBrands');
 
 Route::get('/product/{slug}', 'HomeController@product')->name('product');
+Route::get('/bulkorder/{slug}', 'HomeController@bulkOrder')->name('bulkorder');
 Route::post('/product/variant_price', 'HomeController@variant_price')->name('products.variant_price');
 Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
 Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');

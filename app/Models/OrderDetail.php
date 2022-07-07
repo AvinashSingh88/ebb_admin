@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends Model
 {
-    protected $fillable = ['order_id','product_id','price','tax','quantity','variation'];
+    protected $fillable = ['order_id','delivery_status','product_id','price','tax','quantity','variation'];
     public function order()
     {
         return $this->belongsTo(Order::class);

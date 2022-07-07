@@ -54,9 +54,14 @@
         <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.theme.default.css')}}" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
         <link rel="stylesheet" href="{{static_asset('assets_web/css/reset.css')}}" /> 
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/jquery-ui.css')}}" /> 
         <link href="{{static_asset('assets_web/css/style.css')}}" media="all" rel="stylesheet" type="text/css" />
       
    <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
+   <script src="{{static_asset('assets_web/js/jquery-3.6.0.js')}}" type="text/javascript"></script>
+   <script src="{{static_asset('assets_web/js/jquery-ui.js')}}" type="text/javascript"></script>
+   
+   
       @if (get_setting('google_analytics') == 1)
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
@@ -126,9 +131,60 @@
     </div>
 
     @yield('modal')
-      @@ -130,24 +130,39 @@
+
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
+		
+		// function removeFromCartView(e, key){
+            // e.preventDefault();
+            // removeFromCart(key);
+        // }
+		
+		// function removeFromCart(key){
+            // $.post('{{ route('cart.removeFromCart') }}', {
+                // &_token  : '&_token={{csrf_token()}}',
+                // id      :  key
+            // }, function(data){
+                // updateNavCart(data.nav_cart_view,data.cart_count);
+                // $('#cart-summary').html(data.cart_view);
+                // AIZ.plugins.notify('success', "{{ translate('Item has been removed from cart') }}");
+                // $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
+            // });
+        // }
+
+    $(".request-call-back").click(function(e){
+		e.preventDefault();
+		 // var data = $(this).serialize();
+		var name =  $('#names').val();
+        var mobile = $("input[name=mobile]").val();
+        var email = $('#emails').val();
+		
+        var url = '{{ url('insertCallRequest') }}';
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+        $.ajax({
+           url:url,
+           method:'POST',
+            data:{
+                  name:name, 
+                  mobile:mobile,
+                  email:email,
+                },
+           success:function(response){
+              toastr.info(response.message);
+				$('#names').val('');
+				$("input[name=mobile]").val('');
+				$('#emails').val('');
+           },
+           error:function(error){
+              console.log(error)
+           }
+		
+        });
+	});
 		
         $(document).ready(function() {
             $.ajax({
@@ -260,10 +316,7 @@ $('#option-choice-form input').on('change', function(){
 		
 		function addToCart(){
             if(checkAddToCartValidity()) {
-				// alert('rana');
-                // $('#addToCart').modal();
-                // $('.c-preloader').show();
-                $.ajaxSetup({
+				$.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
@@ -291,41 +344,7 @@ $('#option-choice-form input').on('change', function(){
 
         $(document).ready(function() {
 			loadcart();
-			/*
-			$('.addToCartButtonProductList').click(function (e) { 
-                e.preventDefault();
-                var id = $(this).closest('.product_data').find('.prod_id').val();
-                var color = $(this).closest('.product_data').find('.color').val();
-                var quantity = $(this).closest('.product_data').find('.quantity').val();
-               
-			   alert(id);
-			   alert(color);
-			   alert(quantity);
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    method: "POST",
-                    // url: '{{url('add-to-cart')}}',
-					url: '{{ route('cart.addToCart') }}',
-                    data: {
-                       'id':id,
-                       'color':color,
-                       'quantity':quantity,
-                    },
-                    success: function (data) {
-                        // alert(response.status);
-						 // toastr.info(response.status);
-                         // loadcart();
-						  toastr.info(data.status);
-                       updateNavCart(data.nav_cart_view,data.cart_count);
-						 //updateNavCart(data.nav_cart_view,data.cart_count);
-                    }
-                });
-        });
-		*/
+			
         function loadcart(){
             $.ajax({
             method:"GET",
@@ -340,6 +359,29 @@ $('#option-choice-form input').on('change', function(){
             });
         }
 		
+		$('.delete-cart-item').click(function (e) { 
+            e.preventDefault();
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            var id =  $(this).closest('.product_data').find('.prod_id').val();
+             
+            $.ajax({
+                method: "POST",
+                url: '{{ route('cart.removeFromCart') }}',
+                data: {
+                    'id':id,
+                },
+                success: function (data) {
+                    // toastr.info("Removed from Cart!");
+					updateNavCart(data.nav_cart_view,data.cart_count);
+					$('#cart-summary').html(data.cart_view);
+                }
+            });
+        });
+		
 		$(document).on('click', '.button-plus', function(e) {
 			e.preventDefault();
 				$.ajaxSetup({
@@ -350,7 +392,8 @@ $('#option-choice-form input').on('change', function(){
 			var quantity = $(this).closest('.product_data').find('.qty').val();			
 			var id = $(this).closest('.product_data').find('.prod_id').val();			
 			 $.ajax({
-				url: '{{url('update-cart-qty-plus')}}',
+				// url: '{{url('update-cart-qty-plus')}}',
+				url: '{{route('cart.updateQuantity')}}',
 				method: "POST",
 				data: {
                        'quantity':quantity,
@@ -359,6 +402,7 @@ $('#option-choice-form input').on('change', function(){
 				success: function (response) {
 					// alert(response.status);
 					 // toastr.info(response.status);
+					 updateNavCart(response.nav_cart_view,response.cart_count);
 					 $('#cart-summary').html(response.cart_view);
                      loadcart();
 				}
@@ -375,7 +419,7 @@ $('#option-choice-form input').on('change', function(){
 			var quantity = $(this).closest('.product_data').find('.qty').val();			
 			var id = $(this).closest('.product_data').find('.prod_id').val();			
 			 $.ajax({
-				url: '{{url('update-cart-qty-minus')}}',
+				url: '{{route('cart.updateQuantity')}}',
 				method: "POST",
 				data: {
                        'quantity':quantity,
@@ -384,34 +428,15 @@ $('#option-choice-form input').on('change', function(){
 				success: function (response) {
 					// alert(response.status);
 					 // toastr.info(response.status);
-                     loadcart();
+                     updateNavCart(response.nav_cart_view,response.cart_count);
 					 $('#cart-summary').html(response.cart_view);
+                     loadcart();
 				}
 			});
 		});
 		
-        $('.delete-cart-item').click(function (e) { 
-            e.preventDefault();
-            $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-            var prod_id =  $(this).closest('.product_data').find('.prod_id').val();
-            // alert(prod_id);
-            $.ajax({
-                method: "POST",
-                url: '{{url('dele-cart-item')}}',
-                data: {
-                    'prod_id':prod_id,
-                },
-                success: function (response) {
-                    toastr.info(response.status);
-                    loadcart();
-					 $('#cart-summary').html(response.cart_view);
-                }
-            });
-        });
+        
+		
 		
 
 		
@@ -516,6 +541,7 @@ $('#option-choice-form input').on('change', function(){
     <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
     <script src="{{static_asset('assets_web/js/script.js')}}" type="text/javascript"></script>
    
+   @yield('script')
 
 <script>
 var lowerSlider = document.querySelector('#lower');
@@ -551,6 +577,10 @@ lowerSlider.oninput = function () {
     }
     document.querySelector('#one').value=this.value
 };
+
+
+	
+	
 </script>
     </body>
      </html>
