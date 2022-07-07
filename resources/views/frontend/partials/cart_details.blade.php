@@ -1,3 +1,4 @@
+<?php if(false) { ?>
 <div class="container">
     @if( $carts && count($carts) > 0 )
         <div class="row">
@@ -117,3 +118,4 @@
 <script type="text/javascript">
     AIZ.extra.plusMinus();
 </script>
+<?php } ?>

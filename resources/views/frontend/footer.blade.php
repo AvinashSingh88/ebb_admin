@@ -270,7 +270,6 @@
  </section>
  </footer>
 
- <!-- right side start menu -->
- 
+
     
  

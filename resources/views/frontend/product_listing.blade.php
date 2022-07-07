@@ -35,7 +35,36 @@ $meta_description = get_setting('meta_description');
 @endsection
 
 @section('content')
-
+<!-- Price nouislider-filter cdn -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js" integrity="sha512-T5Bneq9hePRO8JR0S/0lQ7gdW+ceLThvC80UjwkMRz+8q+4DARVZ4dqKoyENC7FcYresjfJ6ubaOgIE35irf4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <style>
+         .mall-slider-handles{
+         margin-top: 50px;
+         }
+         .filter-container-1{
+         display: flex;
+         justify-content: center;
+         margin-top: 60px;
+         }
+         .filter-container-1 input{
+         border: 1px solid #ddd;
+         width: 100%;
+         text-align: center;
+         height: 30px;
+         border-radius: 5px;
+         }
+         .filter-container-1 button{
+         background: #51a179;
+         color:#fff;
+         padding: 5px 20px;
+         }
+         .filter-container-1 button:hover{
+         background: #2e7552;
+         color:#fff;
+         }
+          
+      </style>
 <section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
  
 </section>
@@ -350,374 +379,64 @@ $meta_description = get_setting('meta_description');
                         </article>
                         @endforeach
 
-                        @if(false)
-                        <article class="content-entry">
-                           <h4 class="font-size-14 mb-3 font-weight-bold article-title">Product Type <i></i></h4>
-                           <div class="accordion-content">
-                              <div class="border-topsd">
-                                 <div class="border-bott">
-                                    <!-- Checkboxes -->
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_32">
-                                          <label class="custom-control-label" for="checkbox_32">Lav faucet <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_33">
-                                          <label class="custom-control-label" for="checkbox_33">Pipes and fittings <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_34">
-                                          <label class="custom-control-label" for="checkbox_34">Valve trim <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_35">
-                                          <label class="custom-control-label" for="checkbox_35">Bath spout <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_36">
-                                          <label class="custom-control-label" for="checkbox_36">Counter top basin <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <!-- End Checkboxes -->
-                                    <!-- View More - Collapse -->
-                                    <div class="collapses6" id="collapseBrand1">
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_37">
-                                             <label class="custom-control-label" for="checkbox_37">Rainhead <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_38">
-                                             <label class="custom-control-label" for="checkbox_38">Showerhead <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_39">
-                                             <label class="custom-control-label" for="checkbox_39">Shower arm <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <!-- End View More - Collapse -->
-                                    <!-- Link -->
-                                    <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2"
-                                       data-toggle="collapse" href="#collapseColor" role="button" aria-expanded="false"
-                                       aria-controls="collapseColor">
-                                       <span class="link__icon text-gray-27 bg-white">
-                                          <span class="link__icon-inner">+</span>
-                                       </span>
-                                       <span class="link-collapse__default6">Show more</span>
-                                       <span class="link-collapse__active6">Show less</span>
-                                    </a>
-                                    <!-- End Link -->
-                                 </div>
-                              </div>
-                           </div>
-
-                        </article>
-                        <article class="content-entry">
-                           <h4 class="font-size-14 mb-3 font-weight-bold article-title">Type/ Mounting Type <i></i></h4>
-                           <div class="accordion-content">
-                              <div class="border-topsd">
-                                 <div class="border-bott">
-                                    <!-- Checkboxes -->
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_40">
-                                          <label class="custom-control-label" for="checkbox_40">Valve trim <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_41">
-                                          <label class="custom-control-label" for="checkbox_41">P Trap <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_42">
-                                          <label class="custom-control-label" for="checkbox_42">Single flow <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_43">
-                                          <label class="custom-control-label" for="checkbox_43">S Trap <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_44">
-                                          <label class="custom-control-label" for="checkbox_44">Manual valve <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <!-- End Checkboxes -->
-                                    <!-- View More - Collapse -->
-                                    <div class="collapses7" id="collapseBrand1">
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_45">
-                                             <label class="custom-control-label" for="checkbox_45">Pipe <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_46">
-                                             <label class="custom-control-label" for="checkbox_46">Coupler <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_47">
-                                             <label class="custom-control-label" for="checkbox_47">Tee <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <!-- End View More - Collapse -->
-                                    <!-- Link -->
-                                    <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2"
-                                       data-toggle="collapse" href="#collapseColor" role="button" aria-expanded="false"
-                                       aria-controls="collapseColor">
-                                       <span class="link__icon text-gray-27 bg-white">
-                                          <span class="link__icon-inner">+</span>
-                                       </span>
-                                       <span class="link-collapse__default7">Show more</span>
-                                       <span class="link-collapse__active7">Show less</span>
-                                    </a>
-                                    <!-- End Link -->
-                                 </div>
-                              </div>
-                           </div>
-
-                        </article>
-                        <article class="content-entry">
-                           <h4 class="font-size-14 mb-3 font-weight-bold article-title">Shape<i></i></h4>
-                           <div class="accordion-content">
-                              <div class="border-topsd">
-                                 <div class="border-bott">
-                                    <!-- Checkboxes -->
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_48">
-                                          <label class="custom-control-label" for="checkbox_48">Square <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_49">
-                                          <label class="custom-control-label" for="checkbox_49">Round <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_50">
-                                          <label class="custom-control-label" for="checkbox_50">Oval <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_51">
-                                          <label class="custom-control-label" for="checkbox_51">Rectangle <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                       <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" class="custom-control-input" id="checkbox_52">
-                                          <label class="custom-control-label" for="checkbox_52">Rectangular <span
-                                                class="text-gray-25 font-size-12 font-weight-normal">
-                                                (56)</span></label>
-                                       </div>
-                                    </div>
-                                    <!-- End Checkboxes -->
-
-                                    <!-- View More - Collapse -->
-                                    <div class="collapses8" id="collapseBrand1">
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_53">
-                                             <label class="custom-control-label" for="checkbox_53">Geometric <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_54">
-                                             <label class="custom-control-label" for="checkbox_54">Organic <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_55">
-                                             <label class="custom-control-label" for="checkbox_55">Rectengular <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_56">
-                                             <label class="custom-control-label" for="checkbox_56">Geometric rectangular
-                                                <span class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_57">
-                                             <label class="custom-control-label" for="checkbox_57">Round & oval <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_58">
-                                             <label class="custom-control-label" for="checkbox_58">Square soft edges
-                                                <span class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                       <div class="form-group align-items-center justify-content-between mb-2 pb-1">
-                                          <div class="custom-control custom-checkbox">
-                                             <input type="checkbox" class="custom-control-input" id="checkbox_60">
-                                             <label class="custom-control-label" for="checkbox_60">Square <span
-                                                   class="text-gray-25 font-size-12 font-weight-normal">
-                                                   (56)</span></label>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <!-- End View More - Collapse -->
-
-                                    <!-- Link -->
-                                    <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2"
-                                       data-toggle="collapse" href="#collapseColor" role="button" aria-expanded="false"
-                                       aria-controls="collapseColor">
-                                       <span class="link__icon text-gray-27 bg-white">
-                                          <span class="link__icon-inner">+</span>
-                                       </span>
-                                       <span class="link-collapse__default8">Show more</span>
-                                       <span class="link-collapse__active8">Show less</span>
-                                    </a>
-                                    <!-- End Link -->
-
-                                 </div>
-                              </div>
-                           </div>
-                        </article>
-                        @endif
+                       
                         
-                        <article class="content-entry open">
+                        <!---<article class="content-entry open">
                         <h4 class="font-size-14 mb-3 font-weight-bold article-title">Price range</h4>
                         <div class="accordion-content1">
                         
                          
                         <div id="slider-range"></div>
                         <p>
-                          <input type="text" id="amount" readonly />
-                          <input type="text" id="amount1" readonly />
+                          <input type="text" name="min_price" id="amount" readonly />
+                          <input type="text" name="max_price" id="amount1" readonly />
                         </p>
                         </div>
-                        <article>
-                     </div>
-                   
-               
-
-                     <div class="bg-white shadow-sm rounded mb-3">
-                        
-
-                        <div class="p-3">
-                           <div class="aiz-range-slider">
-                              <div id="input-slider-range"
-                                    data-range-value-min="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif"
-                                    data-range-value-max="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif"
-                              ></div>
-
-                              <div class="row mt-2">
-                                    <div class="col-6">
-                                       <span class="range-slider-value value-low fs-14 fw-600 opacity-70"
-                                          @if (isset($min_price))
-                                                data-range-value-low="{{ $min_price }}"
-                                          @elseif($products->min('unit_price') > 0)
-                                                data-range-value-low="{{ $products->min('unit_price') }}"
-                                          @else
-                                                data-range-value-low="0"
-                                          @endif
-                                          id="input-slider-range-value-low" ></span>
-                                    </div>
-                                    <div class="col-6 text-right">
-                                       <span class="range-slider-value value-high fs-14 fw-600 opacity-70"
-                                          @if (isset($max_price))
-                                                data-range-value-high="{{ $max_price }}"
-                                          @elseif($products->max('unit_price') > 0)
-                                                data-range-value-high="{{ $products->max('unit_price') }}"
-                                          @else
-                                                data-range-value-high="0"
-                                          @endif
-                                          id="input-slider-range-value-high"
-                                       ></span>
-                                    </div>
-                              </div>
-                           </div>
+                        </article>-->
+						
+						 <div class="mall-slider-handles" data-start="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif" data-end="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif" @if (isset($min_price)) data-min="{{ $min_price }}" @elseif($products->min('unit_price') > 0) data-min="{{ $products->min('unit_price') }}" @else data-min="0" @endif @if (isset($max_price)) data-max="{{ $max_price }}" @elseif($products->max('unit_price') > 0) data-max="{{ $products->max('unit_price') }}"  @else data-max="0" @endif data-max="{{ $max_price }}" data-target="price" style="width: 100%"> </div>
+                     <div class="row filter-container-1">
+                        <div class="col-md-4">
+                           <input data-min="price" id="skip-value-lower" name="min_price" value="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif" readonly>  
+                        </div>
+                        <div class="col-md-4">
+                           <input data-max="price" id="skip-value-upper" name="max_price" value="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif" readonly>
+                        </div>
+                        <div class="col-md-4">
+                           <button type="submit" class="btn btn-sm">Filter</button>
                         </div>
                      </div>
-
-
-
-                  </div>
+                     </div>
+					 
+					 @section('script')
+                   <script>
+					   $(function () {
+							   var $propertiesForm = $('.mall-category-filter');
+							   var $body = $('body');
+							   $('.mall-slider-handles').each(function () {
+								   var el = this;
+								   noUiSlider.create(el, {
+									   start: [el.dataset.start, el.dataset.end],
+									   connect: true,
+									   tooltips: true,
+									   range: {
+										   min: [parseFloat(el.dataset.min)],
+										   max: [parseFloat(el.dataset.max)]
+									   },
+									   pips: {
+										   mode: 'range',
+										   density: 20
+									   }
+								   }).on('change', function (values) {
+									   $('[data-min="' + el.dataset.target + '"]').val(values[0])
+									   $('[data-max="' + el.dataset.target + '"]').val(values[1])
+									   $propertiesForm.trigger('submit');
+								   });
+							   })
+						   })     
+					</script>
+					@endsection
+				</div>
                </div>
 
             </div>
@@ -756,8 +475,7 @@ $meta_description = get_setting('meta_description');
 							</div>
                      
                         </div>
-                        <!--<input type="text" name="min_price" value="">
-                        <input type="text" name="max_price" value="">-->
+                        
                      </div>
                   </div>
                </div>
