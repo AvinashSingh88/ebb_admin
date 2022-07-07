@@ -105,6 +105,7 @@ Route::post('getcategorybrands', 'HomeController@getcategorybrands')->name('getc
 Route::get('getcatWiseBrands', 'HomeController@getcatWiseBrands')->name('getcatWiseBrands');
 
 Route::get('/product/{slug}', 'HomeController@product')->name('product');
+Route::get('/bulkorder/{slug}', 'HomeController@bulkOrder')->name('bulkorder');
 Route::post('/product/variant_price', 'HomeController@variant_price')->name('products.variant_price');
 Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
 Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');

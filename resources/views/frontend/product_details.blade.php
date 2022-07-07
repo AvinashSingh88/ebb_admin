@@ -239,7 +239,7 @@
 								<button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
 								<button class="out-of-stock background-gray">Out of stock</button>
 								<!--<h6><a href="quote.php">Get Quote</a></h6>-->
-								<button class="bulk-order-buttons">Bulk Order</button>
+								<button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons">Bulk Order</button>
 							</div>
 							<h4 id="available-quantity">
         @if($detailedProduct->stock_visibility_state == 'quantity')
