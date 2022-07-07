@@ -388,6 +388,7 @@
 	    $("#rotatezero").click(function() {
 	        $(".menu-overlay").toggleClass("add-overlay");
 	    });
+		
 	});
 	$(".owl-carousel8").owlCarousel({
 	    loop: true,
@@ -452,10 +453,13 @@
 	    $("#shopid").click(function() {
 	        $(".top_ul").slideToggle();
 	    });
+		
+		 
 
 
 	    $(".close-menu").click(function() {
-	        $(".menu-overlay").removeClass('add-overlay');
+	        $("#rotatezero span").toggleClass("rotatezero");
+			$(".menu-overlay").removeClass('add-overlay');
 	    });
 
 	});
