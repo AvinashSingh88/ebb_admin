@@ -270,61 +270,6 @@
  </section>
  </footer>
 
- <!-- right side start menu -->
- <div class="right-sidemenu">
-    <div class="top-button">
-       <button class="btns">Organize Site Visit</button>
-    </div>
-    <div class="request-button">
-       <button class="btn">
-       <i class="fas fa-phone-volume"></i> Request Call Back
-       </button>
-       <hr />
-	<form method="post" action="" class="">
-       <div class="req-form">
-          <h3>Pre-Register here for Best Offers</h3>
-          <div class="form-group">
-             <input type="text" required id="names" name="name" placeholder="Name" class="form-control" />
-          </div>
-          <div class="form-group">
-             <input type="number" required name="mobile" placeholder="Mobile No" class="form-control" />
-          </div>
-          <div class="form-group">
-             <input type="text" id="emails" required placeholder="E-Mail address" class="form-control" name="email"/>
-          </div>
-       </div>
-       <button class="btn btn2 request-call-back">
-       <i class="fas fa-phone-volume"></i> Pre-Register Now
-       </button>
-	</form>
-       <div class="req-form callus">
-          <h3>CALL US : 1800 419 3805</h3>
-       </div>
-       <div class="book-visit">
-          <h3>
-             Book A Site Visit <i class="fas fa-car hvr-icon-pulse-grow"></i>
-          </h3>
-       </div>
-       <div class="social_media">
-          <ul>
-             <li>
-                <a href="javascript:void(0);"><i class="fab fa-facebook-square"></i></a>
-             </li>
-             <li>
-                <a href="javascript:void(0);"><i class="fab fa-instagram"></i></a>
-             </li>
-             <li>
-                <a href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
-             </li>
-             <li>
-                <a href="javascript:void(0);"><i class="fab fa-linkedin"></i></a>
-             </li>
-             <li>
-                <a href="javascript:void(0);"><i class="fab fa-skype"></i></a>
-             </li>
-          </ul>
-       </div>
-    </div>
- </div>
+
     
  

@@ -3528,6 +3528,7 @@ ul.ulinesdmen li i.fas.fa-search {
 
 li.border-zero.flot-right {
     float: right;
+	position:relative;
 }
 
 li.border-zero.flot-right a {
@@ -3607,8 +3608,8 @@ li.border-zero.flot-right img {
 
 .right-sidemenu {
     position: absolute;
-    top: 109px;
-    right: 0;
+    top: 47px;
+    right: -35px;
     background: #fff;
     z-index: 99999;
     width: 300px;
@@ -4048,7 +4049,7 @@ a {
     right: -7px;
     top: 60%;
     transform: translateY(-50%);
-    /*background-image: url(../img/nav-arrow.png);*/
+    background-image: url(../img/nav-arrow.png);
     background-repeat: no-repeat;
     width: 13px;
     height: 8px;
@@ -4209,7 +4210,9 @@ ul.megamenusubs li ul li a:after {
 .serRow ul li a {
     text-decoration: none;
 }
-
+.serRow ul li a:hover {
+	color:#ff7713;
+}
 .col-sm-5.services {
     padding: 0px 0px 0px 18px;
 }
@@ -5633,7 +5636,6 @@ ul.menu-list li a {
     padding: 13px 15% 13px 10%;
     font-size: 13px;
     font-weight: normal;
-    text-transform: uppercase;
     transition: 0.3s;
     letter-spacing: 0.5px;
 }
@@ -20327,7 +20329,8 @@ li.ukine.fs-5.py-2 {
 }
 
 .departmentdks {
-    overflow: unset;
+    height: 508px;
+    overflow: auto;
 }
 
 .top_ul ul li {
@@ -20343,10 +20346,8 @@ li.ukine.fs-5.py-2 {
 }
 
 .top_ul {
-    max-height: 410px;
-    overflow: auto;
-    width: 1275px !important;
-    z-index: 0;
+    max-height: 550px;
+    z-index: 99;
 }
 
 .top-megamenu.web-mega {

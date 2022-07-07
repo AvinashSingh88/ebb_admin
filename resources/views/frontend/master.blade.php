@@ -131,7 +131,7 @@
     </div>
 
     @yield('modal')
-      
+
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
 		
@@ -528,7 +528,7 @@ $('#option-choice-form input').on('change', function(){
    
     <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>
+    <!--<script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>-->
     <script src="{{static_asset('assets_web/js/slick.min.js')}}"></script>
     <script src="{{static_asset('assets_web/js/owl.carousel.js')}}"></script>
     <script src="{{static_asset('assets_web/js/plugins.js')}}" type="text/javascript"></script>
@@ -539,7 +539,7 @@ $('#option-choice-form input').on('change', function(){
     <script src="{{static_asset('assets_web/js/wow.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
     <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
-    <script src="{{static_asset('assets_web/js/script.js')}}" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/scripts.js')}}" type="text/javascript"></script>
    
    @yield('script')
 
