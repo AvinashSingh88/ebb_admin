@@ -1293,37 +1293,37 @@
                            <div class="slick marquee">
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
@@ -1331,37 +1331,37 @@
                            <div class="slick marquee2">
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
@@ -1369,37 +1369,37 @@
                            <div class="slick marquee">
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
@@ -1407,37 +1407,37 @@
                            <div class="slick marquee2">
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="./{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
                                        width="100%" height="78" />
                                  </div>
                               </div>

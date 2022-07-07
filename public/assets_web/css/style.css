@@ -20329,7 +20329,8 @@ li.ukine.fs-5.py-2 {
 }
 
 .departmentdks {
-    overflow: unset;
+    height: 508px;
+    overflow: auto;
 }
 
 .top_ul ul li {
@@ -20346,9 +20347,7 @@ li.ukine.fs-5.py-2 {
 
 .top_ul {
     max-height: 550px;
-    overflow: auto;
-    width: 1275px !important;
-    z-index: 0;
+    z-index: 99;
 }
 
 .top-megamenu.web-mega {
