@@ -256,6 +256,8 @@
 								<li><b>Brand </b>&nbsp; :&nbsp; {{ $detailedProduct->brand->getTranslation('name') }}</li>
 								<li><b>SKU </b>&nbsp; :&nbsp; MK002302</li>
 							</ul>
+						</br>
+							<button type="button" class="btn btn-danger addToCartbyRana">Sharma</button>
 						</div>
 					</div>
 					<div id="descriptions1"></div>

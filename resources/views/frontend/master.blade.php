@@ -114,12 +114,14 @@
 }
 	</style>
 
-    <div class="modal fade popup_products_modals" id="addToCart">
-        <div class="modal-dialog mt-0 d-block modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
+   
+	
+	<div class="modal fade popup_products_modals" id="addToCart">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
             <div class="modal-content position-relative">
-                <!--<div class="c-preloader text-center p-3">
-                    <i class="las la-spinner la-spin la-3x"></i>
-                </div>-->
+                <div class="c-preloader text-center p-3">
+                    <i style="color:green;" class="fa fa-spinner fa-3x"></i>
+                </div>
                 <button type="button" class="close absolute-top-right btn-icon close z-1" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="la-2x">&times;</span>
                 </button>
@@ -129,12 +131,39 @@
             </div>
         </div>
     </div>
-
+	
+ 
+  {{-- 
+<!-- Modal -->
+<div class="modal fade popup_products_modals" id="addToCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" id="closemodal" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
+        <div class="modal-body">
+				<div class="c-preloader text-center p-3">
+                    <i style="color:green;" class="fa fa-spinner fa-3x"></i>
+                </div>
+            <div id="addToCart-modal-body"></div>
+	    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ --}}
     @yield('modal')
 
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	   <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
 		<script type="text/javascript">
-		
+		$('#closemodal').modal('hide')
 		// function removeFromCartView(e, key){
             // e.preventDefault();
             // removeFromCart(key);
@@ -151,6 +180,15 @@
                 // $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
             // });
         // }
+    $(document).ready(function() {
+        e.preventDefault();
+        $(".addToCartbyRana").click(function (e) { 
+            e.preventDefault();
+            alert('rana');
+            console.log('rana sharma');
+            
+        });
+    });
 
     $(".request-call-back").click(function(e){
 		e.preventDefault();
@@ -201,20 +239,23 @@
 
 
 		 function showAddToCartModals(showAddToCartModals){
-        $('#addToCart').modal('show'); 
-        let id = $(showAddToCartModals).attr('id');
-        $('#userid').html(id);
-        $.ajax({
-            url: '{{route('cart.showCartModal')}}',
-            type: 'post',
-            data:'id='+id+'&_token={{csrf_token()}}',
-            success:function(respons){
-                // $('#concontractid').html(JSON.parse(respons)[0].contractorID);
-               $('#addToCart-modal-body').html(respons);
-                // console.log(JSON.parse(respons)[0].contractorID);
-            }
-        })
-    }
+				let id = $(showAddToCartModals).attr('id');
+				if(!$('#modal-size').hasClass('modal-lg')){
+					$('#modal-size').addClass('modal-lg');
+				}
+				$('#addToCart-modal-body').html(null);
+				$('#addToCart').modal('show'); 
+				$('.c-preloader').show();
+			$.ajax({
+					url: '{{route('cart.showCartModal')}}',
+					type: 'post',
+					data:'id='+id+'&_token={{csrf_token()}}',
+					success:function(respons){
+					   $('#addToCart-modal-body').html(respons);
+					   $('.c-preloader').hide();
+					}
+			})
+		}
 		 
     
 		function showCategoryWiseBrand(showCategoryWiseBrand)
@@ -232,9 +273,7 @@
                         //  console.log(respons);
                         $.each(respons, function (i) {
                             datas += '<div class="item"><div class="product-box"><div class="box-elech"><img src="'+respons[i].brand_id+'" alt=""></div><div class="pro_img_mens"><img src="'+respons[i].image+'" alt=""></div><div class="discrptions"><h5>  '+respons[i].title+'</h5><h6 id="title"></h6></div><div class="discrptions_button"><h5><a href="product-detail.php">View Detail-cat-'+respons[i].category_id+'</a></h5></div></div></div>';
-
-                             console.log(datas);
-                           
+                            console.log(datas);
                         }); 
                                           
                     }
@@ -345,6 +384,37 @@ $('#option-choice-form input').on('change', function(){
         $(document).ready(function() {
 			loadcart();
 			
+			$('.addtoCartRana').click(function (e) { 
+                e.preventDefault();
+				alert('rana');
+                // var product_id = $(this).closest('.product_box_data').find('.prod_id').val();
+                // var product_qty = $(this).closest('.product_box_data').find('.input-number').val();
+                // var product_price = $(this).closest('.product_box_data').find('.prod_price').val();
+				// alert(product_id);
+                // $.ajaxSetup({
+                    // headers: {
+                        // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    // }
+                // });
+                // $.ajax({
+                    // method: "POST",
+                    // url: '{{url('add-to-cart')}}',
+                    // data: {
+                       // 'product_id':product_id,
+                       // 'product_qty':product_qty,
+                       // 'product_price':product_price,
+                    // },
+                    // success: function (response) {
+                        // alert(response.status);
+						 // toastr.info(response.status);
+                         // loadcart();
+						 // updateNavCart(data.nav_cart_view,data.cart_count);
+                    // }
+                // });
+        });
+		
+		
+		
         function loadcart(){
             $.ajax({
             method:"GET",
@@ -360,6 +430,7 @@ $('#option-choice-form input').on('change', function(){
         }
 		
 		$('.delete-cart-item').click(function (e) { 
+		
             e.preventDefault();
             $.ajaxSetup({
                     headers: {
@@ -392,8 +463,7 @@ $('#option-choice-form input').on('change', function(){
 			var quantity = $(this).closest('.product_data').find('.qty').val();			
 			var id = $(this).closest('.product_data').find('.prod_id').val();			
 			 $.ajax({
-				// url: '{{url('update-cart-qty-plus')}}',
-				url: '{{route('cart.updateQuantity')}}',
+			url: '{{route('cart.updateQuantity')}}',
 				method: "POST",
 				data: {
                        'quantity':quantity,
@@ -407,7 +477,9 @@ $('#option-choice-form input').on('change', function(){
                      loadcart();
 				}
 			});
-		});
+		});	 
+				 
+		
 
         $(document).on('click', '.button-minus', function(e) {
 			e.preventDefault();
@@ -435,7 +507,7 @@ $('#option-choice-form input').on('change', function(){
 			});
 		});
 		
-        
+  });      
 		
 		
 
@@ -483,7 +555,7 @@ $('#option-choice-form input').on('change', function(){
 			
 			
 			
-        });
+        
 
         $('#search').on('keyup', function(){
             search();

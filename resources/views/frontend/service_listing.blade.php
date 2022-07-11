@@ -38,7 +38,33 @@ $meta_description = get_setting('meta_description');
 <!-- Price nouislider-filter cdn -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js" integrity="sha512-T5Bneq9hePRO8JR0S/0lQ7gdW+ceLThvC80UjwkMRz+8q+4DARVZ4dqKoyENC7FcYresjfJ6ubaOgIE35irf4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      
+      <style>
+         .mall-slider-handles{
+         margin-top: 50px;
+         }
+         .filter-container-1{
+         display: flex;
+         justify-content: center;
+         margin-top: 60px;
+         }
+         .filter-container-1 input{
+         border: 1px solid #ddd;
+         width: 100%;
+         text-align: center;
+         height: 30px;
+         border-radius: 5px;
+         }
+         .filter-container-1 button{
+         background: #51a179;
+         color:#fff;
+         padding: 5px 20px;
+         }
+         .filter-container-1 button:hover{
+         background: #2e7552;
+         color:#fff;
+         }
+          
+      </style>
 <section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
  
 </section>
@@ -57,7 +83,7 @@ $meta_description = get_setting('meta_description');
                   @endif
                   @if(isset($category_id))
                   <li class="breadcrumb-item active"><a
-                        href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">{{
+                        href="{{ route('products.servicecategory', \App\Models\Category::find($category_id)->slug) }}">{{
                         \App\Models\Category::find($category_id)->getTranslation('name') }}</a></li>
 
                   @endif
@@ -74,7 +100,7 @@ $meta_description = get_setting('meta_description');
                   <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
                      <li class="link-category link-category1aa">
                         @php
-                        $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type', '1')->count();
+                        $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type', '2')->count();
                         @endphp
 
                         <div id="accordion" class="accordion-container">
@@ -90,7 +116,7 @@ $meta_description = get_setting('meta_description');
                               <div class="accordion-content">
                                  <div class="link-categoryx link-category1az ">
                                     <ul class="list-unstyled dropdown-list">
-                                       @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
+                                       @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','2')->get() as $key => $category)
                                        <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}</a></li>
                                  @endforeach
                                     </ul>
@@ -152,12 +178,12 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </li>
                      <li class="listing-botoms">
-                        <b> Products List</b>
+                        <b> Service List</b>
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
-                            @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-                           <li><a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">{{
+                            @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','2')->get() as $key => $category)
+                           <li><a class="dropdown-item1" href="{{ route('products.servicecategory', $category->slug) }}">{{
                                  $category->getTranslation('name') }}</a></li>
                            @endforeach
                            @else
@@ -166,13 +192,13 @@ $meta_description = get_setting('meta_description');
 
                            @if (\App\Models\Category::find($category_id)->parent_id != 0)
                            <li><a class="dropdown-item1"
-                                 href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">{{
+                                 href="{{ route('products.servicecategory', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">{{
                                  \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')
                                  }}</a></li>
                            @endif
                            <li>
                               <a class="dropdown-item1"
-                                 href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">
+                                 href="{{ route('products.servicecategory', \App\Models\Category::find($category_id)->slug) }}">
                                  {{ \App\Models\Category::find($category_id)->getTranslation('name') }}
                               </a>
                            </li>
@@ -180,7 +206,7 @@ $meta_description = get_setting('meta_description');
                            $id)
                            <li>
                               <a class="dropdown-item1"
-                                 href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">
+                                 href="{{ route('products.servicecategory', \App\Models\Category::find($id)->slug) }}">
                                  {{ \App\Models\Category::find($id)->getTranslation('name') }}
                               </a>
                            </li>
@@ -380,8 +406,6 @@ $meta_description = get_setting('meta_description');
                            <button type="submit" class="btn btn-sm">Filter</button>
                         </div>
                      </div>
-					 
-					 
                      </div>
 					 
 					 @section('script')
@@ -458,9 +482,9 @@ $meta_description = get_setting('meta_description');
                <div class="row">
 				
                   @foreach ($products as $key => $product)
-                  <div class="col-md-3">
-                     @include('frontend.partials.product_box_1',['product' => $product])
-                  </div>
+                  
+                     @include('frontend.partials.service_box_1',['product' => $product])
+                   
 				  
                   @endforeach
 

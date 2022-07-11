@@ -277,11 +277,7 @@
                                       
                                     </ul>
                                     
-                                    
-                                    
-                                    
-                                    
-                                    <div class="dpeartmens">
+									<div class="dpeartmens">
                                     
                                     
                                     @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
@@ -292,15 +288,21 @@
                                                 <div class="col-md-8" style="padding-right: 0px">
                                                
                                                    <ul class="megamenusubs">
+														@php
+															$i=0;
+														@endphp
                                                     @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
-                                                  
+														
                                                                
                                                       <li>
+													  @php
+															$i++;
+														@endphp
                                                        @php
                                                                $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
                                                                @endphp
                                                          <a href="{{ route('products.category', $subcatSlug) }}">
-                                                         <b class="webhead2"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b>
+                                                         <b class="webhead{{$i}}"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b>
                                                          </a>
                                                          
                                                          
@@ -311,7 +313,15 @@
                                                                      $cat_icon =  \App\Models\Category::find($second_level_id)->getTranslation('icon');
                                                                      $childcatSlug = \App\Models\Category::find($second_level_id)->slug;
                                                                      @endphp
-                                                                     <a href="{{ route('products.category', $childcatSlug) }}"><img src="{{uploaded_asset($cat_icon)}}" alt="">  {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
+                                                                     <a href="{{ route('products.category', $childcatSlug) }}">
+																		@php
+																		
+																		if($cat_icon!=null)
+																		{
+																		@endphp
+																		<img src="{{uploaded_asset($cat_icon)}}" alt="{{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}"> 
+																		@php } @endphp
+																	 {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
                                                                      </a>
                                                                   </li>
                                                                   @endforeach
@@ -319,8 +329,14 @@
                                                             
                                                          </ul>
                                                       </li>
-                                                      
+														@php
+															if($i==5)
+															{
+																$i=0;
+															}
+														@endphp
                                                       @endforeach
+														
                                                       
                                                    </ul>
                                                    
@@ -343,6 +359,7 @@
                                              </div>
                                           </div>
                                           <!-- mega menu content end here -->
+										  
                                        </div>
                                        
                                        @endforeach
@@ -350,6 +367,7 @@
                                        
                                       
                                     </div>
+									
                                  </div>
                                  
                                  @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
@@ -436,7 +454,7 @@
                                           
                                        <li>
                                           <div class="sub-menu-item">
-                                             <a href="turnkey-services.php" class="ProductLink">
+                                             <a href="{{ route('servicecat', $category->slug) }}" class="ProductLink">
                                                 <img src="{{uploaded_asset($category->home_image)}}" class="NavThumbnail" alt="{{$category->name}}" />
                                                 <h3>{{$category->name}} </h3>
                                              </a>

@@ -38,9 +38,6 @@
 						 
 <!--/#content-->
                 <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
-     <?php 
-  $page = basename($_SERVER['SCRIPT_NAME'],".php");
-  ?>
     
      <li class="link-category link-category1aa">
 
@@ -50,7 +47,7 @@
              <article class="content-entry">
                  <h4 class="article-title">
                  @php
-					 $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type','1')->count();
+					 $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type','2')->count();
 				 @endphp
                      <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
                          Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> ({{$total_category}})</span> <i
@@ -60,8 +57,8 @@
                  <div class="accordion-content">
                      <div class="link-categoryx link-category1az ">
                          <ul class="list-unstyled dropdown-list">
-                         @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} </a></li>
+                         @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','2')->get() as $key => $category)
+					         <li><a class="dropdown-item1" href="{{ route('servicecat', $category->slug) }}">{{  $category->getTranslation('name') }} </a></li>
                      @endforeach
                          </ul>
                      </div>
@@ -99,70 +96,7 @@
 								
                      </div>
                          
-                          <aside id="sidebar" class="sidebar-wrap" style="margin-bottom:30px;">
-   <div class="property-form-wrap">
-      <div class="property-form clearfix">
-         <form method="post" action="{{route('makeEnquiry')}}" enctype="multipart/form-data">
-			@csrf
-            <div class="agent-details">
-               <div class="d-flex align-items-center">
-                  <div class="agent-image"><img class="rounded" src="{{ static_asset('assets/img/avatar-place.png') }}" alt="Brittany Watkins" width="70" height="70"></div>
-                  <ul class="agent-information list-unstyled">
-                     <li class="agent-name"><i class="fa fa-user-o" aria-hidden="true"></i> Admin</li>
-                  </ul>
-               </div>
-            </div>
-            <div class="form-group">
-               <input class="form-control" name="name" required value="" type="text" placeholder="Name">
-            </div>
-            <!-- form-group -->
-            <div class="form-group">
-               <input class="form-control" name="phone" required value="" type="text" placeholder="Phone">
-            </div>
-            <!-- form-group -->
-            <div class="form-group">
-               <input class="form-control" name="email" required value="" type="email" placeholder="Email">
-            </div>
-            <!-- form-group -->
-            <div class="form-group form-group-textarea">
-               <textarea class="form-control hz-form-message" name="message" rows="4" placeholder="Message">Hello, I am interested in [Modern Apartment]</textarea>
-            </div>
-            <!-- form-group -->	
-            <div class="form-group">
-               <div class="dropdown1 bootstrap-select1 form-control1">
-                  <select required name="user_type" class="selectpicker form-control" title="Select">
-                     <option class="bs-title-option" value="">Selected</option>
-                     <option value="buyer">I'm a buyer</option>
-                     <option value="tennant">I'm a tennant</option>
-                     <option value="agent">I'm an agent</option>
-                     <option value="other">Other</option>
-                  </select>
-               </div>
-               <!-- selectpicker -->
-            </div>
-            <!-- form-group -->
-            <div class="form-group">
-               <label class="control control--checkbox m-0 hz-terms-of-use">
-               <input type="checkbox" name="privacy_policy">By submitting this form I agree to <a target="_blank" href="#1">Terms of Use</a>
-               </label>
-            </div>
-            <!-- form-group -->	
-    
-            <button type="submit" class="houzez_agent_property_form btn btn-secondary btn-half-width">
-				<span class="btn-loader houzez-loader-js"></span>					Send Message					
-            </button>
-            <a href="tel:999999999" class="btn btn-secondary-outlined btn-half-width">
-               <!-- <button type="button" class="btn"> -->
-               <span class="hide-on-click">Call</span> 
-               <!-- </button> -->
-            </a>
-            <a target="_blank" href="https://api.whatsapp.com/send, I am interested in [Modern Apartment] " class="btn btn-secondary-outlined btn-full-width mt-10"><i class="houzez-icon icon-messaging-whatsapp mr-1"></i> WhatsApp</a>
-         </form>
-      </div>
-      <!-- property-form -->
-   </div>
-   <!-- property-form-wrap -->
-</aside>
+                          @include('frontend.partials.category_enquiry_form')
                      </div>
                   </div>
                   <div class="col-md-9">
@@ -172,15 +106,14 @@
     <div class="owl-carousel owl-theme category-slide">
  
 	
-						      @foreach ($categories as $key => $category)
+						      @foreach ($servicecategories as $key => $category)
                            <div class="item">
                               <div class="fancybox thumb1">
                                
-                                 <!---<a class="rana {{ (request()->is('admin/cities')) ? 'active' : 'inactive' }}"> {{ (request()->is('admin/cities')) }} </a>-->
-                                 <a class="rana {{ Request::is('cat/'.$category->slug) ? 'active':'' }}"> {{ set_active('cat', $category->slug) }} </a>
+                                 <a class="rana {{ Request::is('servicecat/'.$category->slug) ? 'active':'' }}"> {{ set_active('servicecat', $category->slug) }} </a>
 
-                                 <a class="tablskd {{ Request::is('cat/'.$category->slug) ? 'active':'' }}" href="{{ route('cat', $category->slug) }}">
-                                    <img data-u="image" src="{{ uploaded_asset($category->icon) }}" alt="{{translate('icon')}}" /> 
+                                 <a class="tablskd {{ Request::is('servicecat/'.$category->slug) ? 'active':'' }}" href="{{ route('servicecat', $category->slug) }}">
+                                    <img data-u="image" src="{{ uploaded_asset($category->banner) }}" alt="{{translate('icon')}}" /> 
                                     <h6>{{  $category->getTranslation('name') }} </h6>
                                     <div class="triangle-down"></div>
                                  </a>
@@ -208,8 +141,8 @@
                               @foreach ($subcatlist as $item)
 								<div class="col">
 									<div class="product_br">
-										<a href="{{ route('products.category', $item->slug) }}">
-										   <img src="{{ uploaded_asset($item->banner) }}" alt="">
+										<a href="{{ route('products.servicecategory', $item->slug) }}">
+										   <img src="{{ uploaded_asset($item->icon) }}" alt="">
                                  <!-- <img src="{{ uploaded_asset($item->banner) }}" alt=""> -->
 										   <h3>{{$item->name}}</h3>
 										</a>
@@ -238,25 +171,99 @@
             </div>
          </div>
       </section>
-      <section class="banner-brand_product banner-brand_product2 ">
-         <div class="container">
-            <div class="service-pros" style="padding:0px;margin:0px;">
-               <div class="head-cnt work-center text-center">
-                  <div class="bounceIn animated">
-                     <h4>Top {{$subcategories->name}} Brands</h4>
-                     <hr class="underlinskd">
-                  </div>
+	   <section class="stage_cons">
+   <div class="container">
+   <div class="service-pros" style="padding:0px;margin:0px;">
+            <div class="head-cnt work-center text-center">
+               <div class="bounceIn animated">
+
+                  <h4>Our Process Services</h4>
+                  <hr class="underlinskd">
+
                </div>
             </div>
-            <div class="brandss">
-				<div class="row">
-					@foreach ($catwisebrands as $key)
-						<div class="col-md-2"><a href="{{ $key->url }}"><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></a></div>
-					@endforeach
-				</div>
+         </div>
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="stage_cons_lst">
+               <ul id="menu-soc" class="menu">
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure1.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">1</div>
+                        <span class="caption">sub structure</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure2.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">2</div>
+                        <span class="caption">plinth level structure</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure3.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">3</div>
+                        <span class="caption">super structure</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure4.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">4</div>
+                        <span class="caption">masonry  construction</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure5.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">5</div>
+                        <span class="caption">electrical &amp; plumbing</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure6.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">6</div>
+                        <span class="caption">plaster application</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure7.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">7</div>
+                        <span class="caption">water proofing</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure8.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">8</div>
+                        <span class="caption">flooring &amp; tiling</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure9.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">9</div>
+                        <span class="caption">wall putty application</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="javascript:void(0);">
+                        <div class="item_box"><img src="{{static_asset('assets_web/img/services/sub_structure10.png')}}" class="menu-image menu-image-title-after" alt=""></div>
+                        <div class="triangle">10</div>
+                        <span class="caption">paint application</span>
+                     </a>
+                  </li>
+               </ul>
             </div>
          </div>
-      </section>
+      </div>
+   </div>
+</section>
+      
 	 
  <section class="bannerslid mt-1 mb-1 animated animate__fadeInUp wow p-0">
       <div class="container">
