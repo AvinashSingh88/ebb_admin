@@ -66,6 +66,7 @@ $meta_description = get_setting('meta_description');
          </div>
       </div>
    </div>
+	   </div>
    <div class="container details-product product-catpro ">
       <form class="" id="search-form" action="" method="GET">
          <div class="row">
@@ -380,8 +381,6 @@ $meta_description = get_setting('meta_description');
                            <button type="submit" class="btn btn-sm">Filter</button>
                         </div>
                      </div>
-					 
-					 
                      </div>
 					 
 					 @section('script')
@@ -514,7 +513,7 @@ $meta_description = get_setting('meta_description');
          </div>
       </div>
    </section>
-
+ 
    <script type="text/javascript">
       function filter() {
          $('#search-form').submit();

@@ -107,18 +107,20 @@
 					 <li id="cart_items" class="flot-right getquote">
                          @include('frontend.partials.cart')
                      </li>
-                     @if (Auth::check()) 
+                     @if (Auth::check() && (Auth::user()->user_type!=='admin')) 
                      <li class="flot-right getquote getquote-signs">
                         <a href="javascript:void(0);" id="SignInlogin" class="SignInlogin"><i class="far fa-user"></i>
                         {{ Auth::user()->name }}</a>
                         <div class="tab-more tab-more2 bg-dark active">
                            <ul class="login_signiN">
                               <li>
+								
                                  <a href="{{url('profile')}}"
                                     class="d-flex align-items-center justify-content-around p-0 m-0">
                                  <i class="fa fa-user-circle"></i> {{ Auth::user()->name }} <i
                                     class="fa fa-angle-right ms-2"></i>
                                  </a>
+								 
                               </li>
                               <li><a href="{{url('purchase_history')}}"><i
                                  class="bg_icon-img"></i>My Orders</a></li>
@@ -230,7 +232,7 @@
             <div class="container">
                <nav>
                   <div class="row">
-                     <div class="col-md-12 col-xs-12">
+                    <div class="col-md-12 col-xs-12">
                         <div class="collapseNav top-headers">
                            <ul class="first-ul">
                               <li class="shop">
@@ -348,11 +350,11 @@
                                                    <div class="divcalimmega">
                                                       <h3>Top Brands</h3>
                                                       <ul class="brand-menus">
-                                                               @foreach (\App\Models\Category_wise_brand::where('category_id', $category->id)->limit(3)->get() as $key)
+                                                               @foreach (\App\Models\Category_wise_brand::where('category_id', $category->id)->get() as $key)
                                                                <li><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></li>
                                                                @endforeach  
                                                             </ul>
-                                                      <img src="img/service-banner-1.png">
+                                                      <img src="{{static_asset('assets_web/img/service-banner-1.png')}}">
                                                       <a class="hire-team-btn" href="javascript:void(0);" target="_self">View More</a>
                                                    </div>
                                                 </div>
@@ -506,7 +508,9 @@
                                                 <b class="webhead1">{{  $category->getTranslation('name') }}</b>
                                                 </a>
                                                 <ul class="megamenusubs231 megamenusubs231a">
-                                                   @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+													<li class="overflow-hidden m-0 p-0 h-96">
+														<ul class="m-0 p-0 d-block">
+														   @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
                                                    <li>
                                                       @php
                                                       $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
@@ -515,7 +519,10 @@
                                                       </a>
                                                    </li>
                                                    @endforeach
-                                                   <li>
+														</ul>
+													</li>
+                                                
+                                                   <li class="mb-2">
                                                       <a href="{{route('cat', $category->slug)}}" style="color: #1274c0; font-weight: 700;letter-spacing: 0.5px;">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                                    </li>
                                                 </ul>
@@ -548,7 +555,7 @@
                                     <div class="submenu submenu3">
                                        <div class="menuleft menuleft3">
                                           <h3><span>Hire</span> Remote Team</h3>
-                                          <img class="lazyloaded" src="{{static_asset('assets_web/img/hire-team-photo.png')}}" data-src="img/hire-team-photo.png" alt="Team Photos" />
+                                          <img class="lazyloaded" src="{{static_asset('assets_web/img/hire-team-photo.png')}}" data-src="{{static_asset('assets_web/img/hire-team-photo.png')}}" alt="Team Photos" />
                                           <a href="technology-expertise#tab2" class="borderbtn1">Hire Now</a
                                              >
                                        </div>

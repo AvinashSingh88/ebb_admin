@@ -20,11 +20,10 @@
     
 	
 	 <div class="discrptions_button buddonjdk">
-                            <h5 class="mask-overflow">
+		    <h5 class="mask-overflow">
 							<a href="{{ route('product', $product->slug) }}"><i class="fa fa-eye"></i></a>
 							</h5>
-							
-                              <!--<button  type="button" id="{{$product->id}}" onclick="showAddToCartModals(this)" class="btn cart active">
+                           <!--<button  type="button" id="{{$product->id}}" onclick="showAddToCartModals(this)" class="btn cart active">
 							  <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
 							  <span class="name">Add to cart</span> 
 							  </button>--->
@@ -42,13 +41,11 @@
                                     </div>
                                  </div>
                               </div>
-							  <br>
-							  <br>
-                             <span class="btn btn-danger addtoCartRanass">Rana</span>
+						
                            </div>
 						  
 	
 	
 </div>
 
-<button type="button" class="btn btn-danger addToCartbyRana">Sharma</button>
+
