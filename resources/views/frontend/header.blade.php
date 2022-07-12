@@ -107,18 +107,20 @@
 					 <li id="cart_items" class="flot-right getquote">
                          @include('frontend.partials.cart')
                      </li>
-                     @if (Auth::check()) 
+                     @if (Auth::check() && (Auth::user()->user_type!=='admin')) 
                      <li class="flot-right getquote getquote-signs">
                         <a href="javascript:void(0);" id="SignInlogin" class="SignInlogin"><i class="far fa-user"></i>
                         {{ Auth::user()->name }}</a>
                         <div class="tab-more tab-more2 bg-dark active">
                            <ul class="login_signiN">
                               <li>
+								
                                  <a href="{{url('profile')}}"
                                     class="d-flex align-items-center justify-content-around p-0 m-0">
                                  <i class="fa fa-user-circle"></i> {{ Auth::user()->name }} <i
                                     class="fa fa-angle-right ms-2"></i>
                                  </a>
+								 
                               </li>
                               <li><a href="{{url('purchase_history')}}"><i
                                  class="bg_icon-img"></i>My Orders</a></li>
@@ -230,7 +232,7 @@
             <div class="container">
                <nav>
                   <div class="row">
-                     <div class="col-md-12 col-xs-12">
+                    <div class="col-md-12 col-xs-12">
                         <div class="collapseNav top-headers">
                            <ul class="first-ul">
                               <li class="shop">
@@ -348,7 +350,7 @@
                                                    <div class="divcalimmega">
                                                       <h3>Top Brands</h3>
                                                       <ul class="brand-menus">
-                                                               @foreach (\App\Models\Category_wise_brand::where('category_id', $category->id)->limit(3)->get() as $key)
+                                                               @foreach (\App\Models\Category_wise_brand::where('category_id', $category->id)->get() as $key)
                                                                <li><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></li>
                                                                @endforeach  
                                                             </ul>
