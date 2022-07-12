@@ -135,22 +135,7 @@
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
 		
-		// function removeFromCartView(e, key){
-            // e.preventDefault();
-            // removeFromCart(key);
-        // }
-		
-		// function removeFromCart(key){
-            // $.post('{{ route('cart.removeFromCart') }}', {
-                // &_token  : '&_token={{csrf_token()}}',
-                // id      :  key
-            // }, function(data){
-                // updateNavCart(data.nav_cart_view,data.cart_count);
-                // $('#cart-summary').html(data.cart_view);
-                // AIZ.plugins.notify('success', "{{ translate('Item has been removed from cart') }}");
-                // $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
-            // });
-        // }
+        
 
     $(".request-call-back").click(function(e){
 		e.preventDefault();
@@ -412,6 +397,33 @@ $('#option-choice-form input').on('change', function(){
 				}
 			});
 		});
+		
+		$(document).on('click', '.add_cart_button_plus', function(e) {
+			e.preventDefault();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+			var quantity = $(this).closest('.product_data').find('.input-number').val();			
+			var id = $(this).closest('.product_data').find('.prod_id').val();
+				
+			 $.ajax({
+				url: '{{route('cart.updateCartPlus')}}',
+				method: "POST",
+				data: {
+                       'quantity':quantity,
+                       'id':id,
+                    },
+					
+				success: function (response) {
+					toastr.info(response.status);
+					 updateNavCart(response.nav_cart_view,response.cart_count);
+					 $('#cart-summary').html(response.cart_view);
+                     loadcart();
+				}
+			});
+		});
 
         $(document).on('click', '.button-minus', function(e) {
 			e.preventDefault();
@@ -583,7 +595,8 @@ lowerSlider.oninput = function () {
 };
 
 
-	
+
+
 	
 </script>
     </body>
