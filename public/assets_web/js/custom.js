@@ -1019,9 +1019,11 @@ $('.img051').on('click', function() {
 
 $(".col-tabs-1 ").on("click", function() {
     $(".div-tab-dps ul li ").removeClass('active');
-    $(".col-tabs-1").addClass('active');
-
+    $(".div-tab-dps .col-tabs-1").addClass('active');
+	$(".nav .col-tabs-1").removeClass('active');
+  	$(this).addClass('active');
 });
+
 
 $(".col-tabs-2 ").on("click", function() {
     $(".div-tab-dps ul li ").removeClass('active');

@@ -277,11 +277,7 @@
                                       
                                     </ul>
                                     
-                                    
-                                    
-                                    
-                                    
-                                    <div class="dpeartmens">
+									<div class="dpeartmens">
                                     
                                     
                                     @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
@@ -292,15 +288,21 @@
                                                 <div class="col-md-8" style="padding-right: 0px">
                                                
                                                    <ul class="megamenusubs">
+														@php
+															$i=0;
+														@endphp
                                                     @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
-                                                  
+														
                                                                
                                                       <li>
+													  @php
+															$i++;
+														@endphp
                                                        @php
                                                                $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
                                                                @endphp
                                                          <a href="{{ route('products.category', $subcatSlug) }}">
-                                                         <b class="webhead2"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b>
+                                                         <b class="webhead{{$i}}"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b>
                                                          </a>
                                                          
                                                          
@@ -311,7 +313,15 @@
                                                                      $cat_icon =  \App\Models\Category::find($second_level_id)->getTranslation('icon');
                                                                      $childcatSlug = \App\Models\Category::find($second_level_id)->slug;
                                                                      @endphp
-                                                                     <a href="{{ route('products.category', $childcatSlug) }}"><img src="{{uploaded_asset($cat_icon)}}" alt="">  {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
+                                                                     <a href="{{ route('products.category', $childcatSlug) }}">
+																		@php
+																		
+																		if($cat_icon!=null)
+																		{
+																		@endphp
+																		<img src="{{uploaded_asset($cat_icon)}}" alt="{{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}"> 
+																		@php } @endphp
+																	 {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
                                                                      </a>
                                                                   </li>
                                                                   @endforeach
@@ -319,8 +329,14 @@
                                                             
                                                          </ul>
                                                       </li>
-                                                      
+														@php
+															if($i==5)
+															{
+																$i=0;
+															}
+														@endphp
                                                       @endforeach
+														
                                                       
                                                    </ul>
                                                    
@@ -336,13 +352,14 @@
                                                                <li><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></li>
                                                                @endforeach  
                                                             </ul>
-                                                      <img src="img/service-banner-1.png">
+                                                      <img src="{{static_asset('assets_web/img/service-banner-1.png')}}">
                                                       <a class="hire-team-btn" href="javascript:void(0);" target="_self">View More</a>
                                                    </div>
                                                 </div>
                                              </div>
                                           </div>
                                           <!-- mega menu content end here -->
+										  
                                        </div>
                                        
                                        @endforeach
@@ -350,6 +367,7 @@
                                        
                                       
                                     </div>
+									
                                  </div>
                                  
                                  @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
@@ -431,227 +449,27 @@
                                  <!-- mega sub menu start here -->
                                  <div class="product_submenu">
                                     <ul>
+									
+                                          @foreach (\App\Models\Category::where('parent_id','0')->where('type','2')->orderBy('order_level','asc')->get() as $key => $category)
+                                          
                                        <li>
                                           <div class="sub-menu-item">
-                                             <a href="turnkey-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/endconsulants1.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Turnkey Services </h3>
+                                             <a href="{{ route('servicecat', $category->slug) }}" class="ProductLink">
+                                                <img src="{{uploaded_asset($category->home_image)}}" class="NavThumbnail" alt="{{$category->name}}" />
+                                                <h3>{{$category->name}} </h3>
                                              </a>
                                              <ol>
+											 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
                                                 <li>
-                                                   <a href="end_to_end_construction.php">  End To End Construction </a>
+                                                   <a href="end_to_end_construction.php">  {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }} </a>
                                                 </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Renovation</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Interior </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Architecture </a>
-                                                </li>
+												@endforeach
+                                               
                                              </ol>
                                           </div>
                                        </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="architect-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/architect.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Architect</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);">Residential Architects </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Society Architects</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Structural Design Architects</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Commercial Architects</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="cost-cunsl-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/cost.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Cost consultant</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Whole life solution </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Pre-tender estimate</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Elemental cost plan</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);">Chartered surveyor</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="services-engineer-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/services-enginer.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Services Engineer</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);">  Occupant subjectivity</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Thermal comfort</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Mechanical ventilation </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);">Insulation specification</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="structural-engeeniring-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/structural1.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Structural Engineer</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Structural Observations </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Design Everest</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Seismic concerns </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);">Code compliance</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="interior-desgine-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/interiordesigner1.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Interior Designer</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Modular Kitchens</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);">Furniture</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);">Lighting</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Painting & Wallpaper</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="vastu-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/vastu.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Vastu / Archaeologist</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Vastu Interior Designer </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Vastu Architecture</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Vastu Designer </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Vastu Architecture Services</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="labour-supplier-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/labur11.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Labour Suppliers</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Proofing construction </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Construction disputes</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Buildability in construction </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);">Smart construction</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="contractor-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/contractor11.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Contractor</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Turnkey Contractor </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Civil contractor</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Slab casting contractor </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);">Ironworker </a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
-                                       <li>
-                                          <div class="sub-menu-item">
-                                             <a href="exterior-desgine-services.php" class="ProductLink">
-                                                <img src="{{static_asset('assets_web/img/exteriordesign.jpg')}}" class="NavThumbnail" alt="Kitchen Pannels" />
-                                                <h3>Exterior Design</h3>
-                                             </a>
-                                             <ol>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Modular kitchen designer</a>
-                                                   <div class=""></div>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Modular wordrobe designer</a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Commercial Spaces Interiors </a>
-                                                </li>
-                                                <li>
-                                                   <a href="javascript:void(0);"> Hotel Interior designing</a>
-                                                </li>
-                                             </ol>
-                                          </div>
-                                       </li>
+									   @endforeach
+                                       
                                     </ul>
                                     <div class="laminates-more">
                                        <div class="submenu4_bot">
@@ -688,7 +506,9 @@
                                                 <b class="webhead1">{{  $category->getTranslation('name') }}</b>
                                                 </a>
                                                 <ul class="megamenusubs231 megamenusubs231a">
-                                                   @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+													<li class="overflow-hidden m-0 p-0 h-96">
+														<ul class="m-0 p-0 d-block">
+														   @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
                                                    <li>
                                                       @php
                                                       $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
@@ -697,7 +517,10 @@
                                                       </a>
                                                    </li>
                                                    @endforeach
-                                                   <li>
+														</ul>
+													</li>
+                                                
+                                                   <li class="mb-2">
                                                       <a href="{{route('cat', $category->slug)}}" style="color: #1274c0; font-weight: 700;letter-spacing: 0.5px;">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                                    </li>
                                                 </ul>
@@ -730,7 +553,7 @@
                                     <div class="submenu submenu3">
                                        <div class="menuleft menuleft3">
                                           <h3><span>Hire</span> Remote Team</h3>
-                                          <img class="lazyloaded" src="{{static_asset('assets_web/img/hire-team-photo.png')}}" data-src="img/hire-team-photo.png" alt="Team Photos" />
+                                          <img class="lazyloaded" src="{{static_asset('assets_web/img/hire-team-photo.png')}}" data-src="{{static_asset('assets_web/img/hire-team-photo.png')}}" alt="Team Photos" />
                                           <a href="technology-expertise#tab2" class="borderbtn1">Hire Now</a
                                              >
                                        </div>
@@ -785,6 +608,7 @@
                                                    />
                                                 <span
                                                    ><strong>Interior / Exterior</strong>Designing</span></a>
+
                                              </li>
                                              <li>
                                                 <a href="valued-professionals"

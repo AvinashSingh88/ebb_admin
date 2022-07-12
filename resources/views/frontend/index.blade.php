@@ -106,11 +106,11 @@
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
+                    <!-- <div class="border-botb-3">
                         <a href="javascript:void(0);" class="view-link"> View all <i
                               class="fa-solid fa-chevron-right"></i>
                         </a>
-                     </div>
+                     </div>-->
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Services Offered</h3>
                      <div class="deals">
                         <hr>
@@ -184,12 +184,12 @@
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
+                  <!--<div class="border-botb-3">
                      <a href="#" class="view-link">
                         View all
                         <i class="fa-solid fa-chevron-right"></i>
                      </a>
-                  </div>
+                  </div>-->
                   <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
                      The Best Premium Offer
                   </h3>
@@ -380,11 +380,11 @@
 				</li>
 				
                <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
-                  <div class="owl-carousel owl-theme trending001 catbrandslistss" >
+                <div class="owl-carousel owl-theme trending001 catbrandslistss" >
                       
                      
 
-                  </div>
+                  </div>  
                </li>
             </ul>
          </div>
@@ -695,11 +695,7 @@
             <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
          </a>
       </div>
-      <div class="container">
-         <a href="#1">
-            <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
-         </a>
-      </div>
+     
    </div>
    <!-- banner section 2 end-->
 
@@ -792,7 +788,7 @@
                <div class="deals">
                   <hr>
                </div>
-               <!--<p>Let’s Brew N Binge</p>-->
+               <!--<p>Let's Brew N Binge</p>-->
             </div>
             <div class="owl-carousel owl-theme trending00154">
                <div class="item">
@@ -850,6 +846,7 @@
                      <div class="discrptions_button">
                         <h5><a href="javascript:void(0);">View Detail</a></h5>
                      </div>
+
                   </div>
                </div>
                <div class="item">
@@ -938,7 +935,7 @@
                <div class="item">
                   <div class="product-box">
                      <!-- <div class="beachs">10% Off</div> -->
-                     <img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
+                     <div class="imllskdon"><img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt=""></div>
                      <div class="discrptions">
                         <h5 class="text-truncate-2">{{ $top_product->getTranslation('name') }} </h5>
                         <h6>{{ home_discounted_base_price($top_product) }}
@@ -949,7 +946,6 @@
                      </div>
                      <div class="discrptions_button">
                         <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
-                        <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
                      </div>
                   </div>
                </div>
@@ -968,11 +964,11 @@
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
+                    <!-- <div class="border-botb-3">
                         <a href="{{ route('brands.all') }}" class="view-link"> View all
                            <i class="fa-solid fa-chevron-right"></i>
                         </a>
-                     </div>
+                     </div>-->
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Premium Brand fair partners
                      </h3>
                      <div class="deals">
@@ -1005,7 +1001,7 @@
       <!-- Premium Brand Fair Partners end -->
 
       <!-- SERVICES ARE HERE st -->
-      <section class="wraper ">
+   <!--   <section class="wraper ">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
@@ -1073,7 +1069,7 @@
                </div>
             </div>
          </div>
-      </section>
+      </section>-->
 
       <!-- SERVICES ARE HERE end -->
 </div>
@@ -1084,10 +1080,10 @@
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
+                 <!-- <div class="border-botb-3">
                      <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
                      </a>
-                  </div>
+                  </div>-->
                   <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Choose your suppliers by regions
                   </h3>
                   <div class="deals">
@@ -1161,13 +1157,52 @@
                </div>
                <div class="item">
                   <a href="javascript:void(0);">
-                     <div class="trend-theme" style="    border: none;">
-                        <p style="    color: #ff7713;  letter-spacing: 0.5px;">More Regions <i
-                              class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
+                     <div class="trend-theme">
+                        <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
+                        <h6>Hyderabad</h6>
+
                      </div>
                   </a>
                </div>
+               <div class="item">
+                  <a href="javascript:void(0);">
+                     <div class="trend-theme">
+                        <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
+                        <h6>Chennai</h6>
+
+                     </div>
+                  </a>
+               </div>
+               <div class="item">
+                  <a href="javascript:void(0);">
+                     <div class="trend-theme">
+                        <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
+                        <h6>Hyderabad</h6>
+
+                     </div>
+                  </a>
+               </div>
+               <div class="item">
+                  <a href="javascript:void(0);">
+                     <div class="trend-theme">
+                        <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
+                        <h6>Chennai</h6>
+
+                     </div>
+                  </a>
+               </div>
+               
             </div>
+            
+            
+                  
+                     <!--<div class="trend-theme" style="    border: none;">
+                     <a href="javascript:void(0);">
+                        <p class="m-0 float-end" style="color: #ff7713;">More Regions <i  class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
+                              </a>
+                     </div>-->
+                  
+               
          </div>
       </div>
    </div>
@@ -1181,15 +1216,16 @@
             <div class="latest-news main-parent">
                <div class="backtabs-dp">
                   <ul class="ulines-dps">
-                     <li class="ukine ukine1 active">Testimonials</li>
+                     <!--<li class="ukine ukine1 ">Testimonials</li>-->
+					    <li class="ukine ukine5 active">Our Team</li>
                      <li class="ukine ukine2">Clients</li>
                      <li class="ukine ukine3">News</li>
                      <li class="ukine ukine4">Client review</li>
-                     <li class="ukine ukine5">Our Team</li>
+                   
                      <li class="ukine ukine6">Certification</li>
                   </ul>
                   <ul class="ulines-dps-para">
-                     <li class="ukine ukine1 active">
+                    <!-- <li class="ukine ukine1 ">
                         <div>
                            <div class="owl-carousel owl-carousel012 owl-theme slide-latest">
                               <div class="item">
@@ -1287,7 +1323,7 @@
                               </div>
                            </div>
                         </div>
-                     </li>
+                     </li>-->
                      <li class="ukine ukine2">
                         <div class="slikdir">
                            <div class="slick marquee">
@@ -1664,7 +1700,7 @@
                            </div>
                         </div>
                      </li>
-                     <li class="ukine ukine5">
+                     <li class="ukine ukine5 active">
                         <div class="mangementTeam">
                            <div class="owl-carouselteam owl-carousel owl-theme">
                               <div class="item">
@@ -1875,6 +1911,7 @@
                                              placeholder="Full Name" />
                                        </div>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
+
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
@@ -2039,11 +2076,14 @@
                <!-- cards section -->
                <div class="content-section justify mt-0 oveR">
                   <div class="achieve-box">
-                     <div class="head-cnt work-center text-left" style="margin-bottom:30px;">
+                     <div class="head-cnt work-center text-left mb-3">
                         <div class="bounceIn animated">
-                           <!--<div class="our-latest-border" style="    margin: 0px;"></div>-->
-                           <h5>Blog</h5>
+                        
+                          <!-- <h5>Blog</h5>-->
                            <h4> Latest Blogs</h4>
+							<div class="deals"> 
+                     <hr>
+                  </div>
                            <p>
                               Construction Materials & Services Your Online Purchase Manager Saves Time, Energy and Cost
                               Source & order construction materials digitally on one platform
