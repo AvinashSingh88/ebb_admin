@@ -144,12 +144,12 @@
                         <!--Submenu-->
                         <ul class="aiz-side-nav-list level-2">
                             <li class="aiz-side-nav-item">
-                                <a class="aiz-side-nav-link" href="{{route('products.create')}}">
+                                <a class="aiz-side-nav-link" href="{{route('services.create')}}">
                                     <span class="aiz-side-nav-text">{{translate('Add New Service')}}</span>
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
-                                <a href="{{route('products.all')}}" class="aiz-side-nav-link">
+                                <a href="{{route('services.all')}}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{ translate('All Services') }}</span>
                                 </a>
                             </li>

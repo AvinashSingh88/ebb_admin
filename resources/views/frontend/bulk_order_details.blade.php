@@ -352,7 +352,7 @@
 											<tr>
 												<td> {{$s}} </td>
 												<td>
-													<input type="checkbox" value="" id="boxselect"> 
+													<input type="checkbox" value=""  data-id="{{ $item->id }}" id="boxselect"> 
 													<img src="{{uploaded_asset($item->thumbnail_img)}}" onclick="openModal();(1)" class="img01 hover-shadow"> </td>
 												<td> <span>{{$item->name}} </span> </td>
 												<td class="position-relative text-center"> <i class="fa fa-ellipsis-v ulines3es1"></i>
@@ -505,7 +505,7 @@
 												</td>
 												<td id='price'> {{$item->unit_price}} </td>
 												<td id='discount'> {{$item->discount}} </td>
-												<td id='gst'> 18.00</td>
+												<td id='gst'> {{}}</td>
 												<td>
 													<input id="txtp" onkeypress="return isNumberKey(event)" class="ttype text-center" name="text" value="0" type="text" disabled> </td>
 												<td>
@@ -963,3 +963,22 @@
 		</div>
 	</div>
 </section> @endsection
+
+@section('script')
+<script>
+	$("input[type=checkbox]").on("click", function() {
+		var product_id = $(this).data("id");
+		var product_code = $(this).data("code");
+
+
+        	if($(this).is(":checked")){
+            	$("#product-item-"+product_id).css("border","#d96557 3px solid");
+            	$("#product-"+product_id).val(product_code);
+        	}
+        	else if($(this).is(":not(:checked)")){
+            	$("#product-item-"+product_id).css("border","none");
+            	$("#product-"+product_id).val("	");
+        	}
+	});
+</script>
+@endsection

@@ -10,6 +10,7 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
+use App\Http\Controllers\ServiceController;
 
 Route::post('/update', 'UpdateController@step0')->name('update');
 Route::get('/update/step1', 'UpdateController@step1')->name('update.step1');
@@ -39,7 +40,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::post('/products/approved', 'ProductController@updateProductApproval')->name('products.approved');
     Route::post('/products/get_products_by_subcategory', 'ProductController@get_products_by_subcategory')->name('products.get_products_by_subcategory');
     Route::post('/bulk-product-delete', 'ProductController@bulk_product_delete')->name('bulk-product-delete');
-
+    //services blades routes
+    Route::get('/services/all','ServiceController@all_services')->name('services.all');
+    Route::get('/services/create','ServiceController@create')->name('services.create');
+    Route::get('/services/admin/{id}/edit', 'ServiceController@admin_product_edit')->name('services.admin.edit');
+    
 
 
     Route::resource('sellers', 'SellerController');
