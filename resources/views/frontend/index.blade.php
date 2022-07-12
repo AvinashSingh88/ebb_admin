@@ -981,112 +981,13 @@
                <div class="backtabs-dp">
                   <ul class="ulines-dps">
                      <li class="ukine ukine5 active">Our Team</li>
-                     <!--<li class="ukine ukine1 ">Testimonials</li>-->
                      <li class="ukine ukine2">Clients</li>
                      <li class="ukine ukine3">News</li>
                      <li class="ukine ukine4">Client review</li>
                      <li class="ukine ukine6">Certification</li>
                   </ul>
                   <ul class="ulines-dps-para">
-                     <!--  <li class="ukine ukine1 ">
-                        <div>
-                           <div class="owl-carousel owl-carousel012 owl-theme slide-latest">
-                              <div class="item">
-                                 <div class="row" style="width: 95%; margin-right: 3%">
-                                    <div class="col-md-4">
-                                       <div class="LDSCarouselItem">
-                                          <h6>design space</h6>
-                                          <h4>Young Vibes</h4>
-                                          <p>
-                                             We feel blessed that we choose Arrivae whose expert designer make our dream
-                                             come true with our newly bought 2 BHK with his out of box design
-                                             suggestions.
-                                          </p>
-                                          <div class="d-flex align-items-center">
-                                             <div class="mr-4 profileSection">
-                                                <h6 class="mb-0">Suman Gupta</h6>
-                                                <p>Pune</p>
-                                             </div>
-                                             <img alt="customer_image" class="cus_img pb-3"
-                                                src="{{static_asset('assets_web/img/testis.png')}}" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                       <iframe src="https://www.youtube.com/embed/21KjRjtrbJM" frameborder="0"
-                                          allowfullscreen="" style="
-                                                height: 345px;
-                                                width: 100%;
-                                                border-radius: 10px;
-                                                "></iframe>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="item">
-                                 <div class="row" style="width: 95%; margin-right: 3%">
-                                    <div class="col-md-4">
-                                       <div class="LDSCarouselItem">
-                                          <h6>design space</h6>
-                                          <h4>Young Vibes</h4>
-                                          <p>
-                                             We feel blessed that we choose Arrivae whose expert designer make our dream
-                                             come true with our newly bought 2 BHK with his out of box design
-                                             suggestions.
-                                          </p>
-                                          <div class="d-flex align-items-center">
-                                             <div class="mr-4 profileSection">
-                                                <h6 class="mb-0">Suman Gupta</h6>
-                                                <p>Pune</p>
-                                             </div>
-                                             <img alt="customer_image" class="cus_img pb-3"
-                                                src="{{static_asset('assets_web/img/testis.png')}}" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                       <iframe src="https://www.youtube.com/embed/21KjRjtrbJM" frameborder="0"
-                                          allowfullscreen="" style="
-                                                height: 345px;
-                                                width: 100%;
-                                                border-radius: 10px;
-                                                "></iframe>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="item">
-                                 <div class="row" style="width: 95%; margin-right: 3%">
-                                    <div class="col-md-4">
-                                       <div class="LDSCarouselItem">
-                                          <h6>design space</h6>
-                                          <h4>Young Vibes</h4>
-                                          <p>
-                                             We feel blessed that we choose Arrivae whose expert designer make our dream
-                                             come true with our newly bought 2 BHK with his out of box design
-                                             suggestions.
-                                          </p>
-                                          <div class="d-flex align-items-center">
-                                             <div class="mr-4 profileSection">
-                                                <h6 class="mb-0">Suman Gupta</h6>
-                                                <p>Pune</p>
-                                             </div>
-                                             <img alt="customer_image" class="cus_img pb-3"
-                                                src="{{static_asset('assets_web/img/testis.png')}}" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                       <iframe src="https://www.youtube.com/embed/21KjRjtrbJM" frameborder="0"
-                                          allowfullscreen="" style="
-                                                height: 345px;
-                                                width: 100%;
-                                                border-radius: 10px;
-                                                "></iframe>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        </li>-->
+
                      <li class="ukine ukine2">
                         <div class="slikdir">
                            <div class="slick marquee">
