@@ -94,6 +94,15 @@ Route::get('/customer-packages', 'HomeController@premium_package_index')->name('
 //Rana routes
 Route::get('/cat/{catslug}', 'CatController@subCatbyCat')->name('cat');
 Route::post('makeEnquiry', 'HomeController@makeEnquiry')->name('makeEnquiry');
+Route::get('servicecat/{catslug}/','ServiceCatController@ServiceSubCatbyCat')->name('servicecat');
+
+Route::get('/search', 'ServiceSearchController@index')->name('search');
+Route::get('/search?keyword={search}', 'ServiceSearchController@index')->name('suggestion.search');
+Route::post('/ajax-search', 'ServiceSearchController@ajax_search')->name('search.ajax');
+Route::get('/servicecategory/{category_slug}', 'ServiceSearchController@listingByCategory')->name('products.servicecategory');
+Route::get('/brand/{brand_slug}', 'ServiceSearchController@listingByBrand')->name('products.brand');
+
+
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::get('/search?keyword={search}', 'SearchController@index')->name('suggestion.search');

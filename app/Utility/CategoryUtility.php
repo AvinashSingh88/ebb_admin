@@ -9,7 +9,7 @@ class CategoryUtility
     /*when with trashed is true id will get even the deleted items*/
     public static function get_immediate_children($id, $with_trashed = false, $as_array = false)
     {
-        $children = $with_trashed ? Category::where('parent_id', $id)->orderBy('order_level', 'desc')->get() : Category::where('parent_id', $id)->orderBy('order_level', 'desc')->get();
+        $children = $with_trashed ? Category::where('parent_id', $id)->orderBy('order_level', 'ASC')->get() : Category::where('parent_id', $id)->orderBy('order_level', 'ASC')->get();
         $children = $as_array && !is_null($children) ? $children->toArray() : $children;
 
         return $children;

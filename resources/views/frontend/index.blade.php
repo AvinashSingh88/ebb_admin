@@ -324,6 +324,7 @@
 </div>
 
    <!-- Product relative Carousel -->
+	<!--   @if(count($cat_wise_brands) > 0)
    <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
       <div class="container">
          <div class="row">
@@ -362,10 +363,14 @@
             <ul>
 				<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
 					<div class="owl-carousel owl-theme trending001">
-						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get() as $key => $cc)
+						@php
+						$category_wise_brand = \App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get();
+						@endphp
+						@if(count($category_wise_brand) > 0) 
+						@foreach($category_wise_brand as $key => $cc)
 						<div class="item">
 							<div class="product-box">
-								<!-- <h6>Brand</h6>-->
+								 
 								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
 								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
 								<div class="discrptions">
@@ -376,6 +381,7 @@
 							</div>
 						</div>
 						@endforeach
+						@endif
 					</div>
 				</li>
 				
@@ -391,9 +397,116 @@
 
       </div>
    </div>
+	   @endif-->
+	      @if(count($cat_wise_brands) > 0)
+  <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+               <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
+                  <div class="deals">
+                     <hr>
+                  </div>
+               </div>
 
+               <div class="position-absolutedk">
+                  <div class="mt-md-n1ddd div-tab-dps">
+                     <ul class="nav nav-pills">
+						@php
+							$i=0;
+						@endphp
+                        @foreach ($cat_wise_brands as $item)
+						@php
+							$i++;
+						@endphp
+                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}"
+                           class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
+                           <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
+                            
+                        </li>
+						@php
+							 $cat_s_id = $item->category_id;
+						@endphp
+						
+							@endforeach
+						
+                     </ul>
+                  </div>
 
-   
+               </div>
+            </div>
+         </div>
+
+         <div class="div-tab-dps sections">
+            <ul>
+				
+						@php
+							$i=0;
+						@endphp
+                        @foreach ($cat_wise_brands as $item)
+						@php
+							$i++;
+							$cat_idd = $item->category_id;
+						@endphp
+                        <li id="{{$item->category_id}}"
+                           class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
+                          <div class="owl-carousel owl-theme trending001">
+						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_idd)->get() as $key => $cc)
+						<div class="item">
+							<div class="product-box">
+								<!-- <h6>Brand</h6>-->
+								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
+								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
+								<div class="discrptions">
+									<h5>  {{$cc->title}} </h5>
+									<h6>{{$cc->category->name}}</h6> </div>
+								<div class="discrptions_button">
+									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
+							</div>
+						</div>
+						@endforeach
+					</div>
+                            
+                        </li>
+					 
+                        
+                        @endforeach
+				
+				
+				<!--<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
+					<div class="owl-carousel owl-theme trending001">
+						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get() as $key => $cc)
+						<div class="item">
+							<div class="product-box">
+								 
+								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
+								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
+								<div class="discrptions">
+									<h5>  {{$cc->title}} </h5>
+									<h6>{{$cc->category->name}}</h6> </div>
+								<div class="discrptions_button">
+									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
+							</div>
+						</div>
+						@endforeach
+					</div>
+				</li>-->
+				
+             <!--  <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
+                  <div class="owl-carousel owl-theme trending001 catbrandslistss" >
+                      
+                     
+
+                  </div>
+               </li>-->
+            </ul>
+         </div>
+
+      </div>
+   </div>
+
+   @endif
    <!-- banner 1 section start -->
    @if (get_setting('home_banner1_images') != null)
    <section>
@@ -695,11 +808,7 @@
             <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
          </a>
       </div>
-      <div class="container">
-         <a href="#1">
-            <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
-         </a>
-      </div>
+    
    </div>
    <!-- banner section 2 end-->
 
@@ -938,7 +1047,9 @@
                <div class="item">
                   <div class="product-box">
                      <!-- <div class="beachs">10% Off</div> -->
+					 <div class="imllskdon">
                      <img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
+					 </div>
                      <div class="discrptions">
                         <h5 class="text-truncate-2">{{ $top_product->getTranslation('name') }} </h5>
                         <h6>{{ home_discounted_base_price($top_product) }}
@@ -949,7 +1060,7 @@
                      </div>
                      <div class="discrptions_button">
                         <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
-                        <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>
+                       <!-- <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>-->
                      </div>
                   </div>
                </div>
@@ -1005,7 +1116,7 @@
       <!-- Premium Brand Fair Partners end -->
 
       <!-- SERVICES ARE HERE st -->
-      <section class="wraper ">
+    <!--  <section class="wraper ">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
@@ -1073,7 +1184,7 @@
                </div>
             </div>
          </div>
-      </section>
+      </section>-->
 
       <!-- SERVICES ARE HERE end -->
 </div>
@@ -1159,14 +1270,7 @@
                      </div>
                   </a>
                </div>
-               <div class="item">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme" style="    border: none;">
-                        <p style="    color: #ff7713;  letter-spacing: 0.5px;">More Regions <i
-                              class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
-                     </div>
-                  </a>
-               </div>
+            
             </div>
          </div>
       </div>
@@ -1181,15 +1285,16 @@
             <div class="latest-news main-parent">
                <div class="backtabs-dp">
                   <ul class="ulines-dps">
-                     <li class="ukine ukine1 active">Testimonials</li>
+				    <li class="ukine ukine5 active">Our Team</li>
+                     <!--<li class="ukine ukine1 ">Testimonials</li>-->
                      <li class="ukine ukine2">Clients</li>
                      <li class="ukine ukine3">News</li>
                      <li class="ukine ukine4">Client review</li>
-                     <li class="ukine ukine5">Our Team</li>
+                   
                      <li class="ukine ukine6">Certification</li>
                   </ul>
                   <ul class="ulines-dps-para">
-                     <li class="ukine ukine1 active">
+                   <!--  <li class="ukine ukine1 ">
                         <div>
                            <div class="owl-carousel owl-carousel012 owl-theme slide-latest">
                               <div class="item">
@@ -1287,7 +1392,7 @@
                               </div>
                            </div>
                         </div>
-                     </li>
+                     </li>-->
                      <li class="ukine ukine2">
                         <div class="slikdir">
                            <div class="slick marquee">
@@ -1664,7 +1769,7 @@
                            </div>
                         </div>
                      </li>
-                     <li class="ukine ukine5">
+                     <li class="ukine ukine5 active">
                         <div class="mangementTeam">
                            <div class="owl-carouselteam owl-carousel owl-theme">
                               <div class="item">
