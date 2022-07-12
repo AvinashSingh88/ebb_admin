@@ -50,10 +50,8 @@
             <div class="container">
                <div class="header-content">
                   <h1>Now Delivering In<span> Gurgaon & Delhi</span></h1>
-                  <h2> <span class="spanls1 spanls1a "> <img src="{{static_asset('assets_web/img/light-bulb.png')}}"
-                           alt=""> <b>Get Product Knowledge</b></span>
-                     <span class="febslide febslidea "><img src="{{static_asset('assets_web/img/guaranteed.png')}}"
-                           alt=""> <b>Original Guaranteed</b></span>
+                  <h2> <span class="spanls1 spanls1a "> <img src="{{static_asset('assets_web/img/light-bulb.png')}}" alt=""> <b>Get Product Knowledge</b></span>
+                     <span class="febslide febslidea "><img src="{{static_asset('assets_web/img/guaranteed.png')}}" alt=""> <b>Original Guaranteed</b></span>
                      <span class="spanls spanlsa "><img src="{{static_asset('assets_web/img/price-tag.png')}}" alt="">
                         <b> Wholesale Price</b></span>
                   </h2>
@@ -92,8 +90,7 @@
       </div>
    </div>
    <div class="stopowl">
-      <a class="button secondary play"><i class="fas fa-play"></i></a><a class="button secondary stop"><i
-            class="fa fa-pause"></i></a>
+      <a class="button secondary play"><i class="fas fa-play"></i></a><a class="button secondary stop"><i class="fa fa-pause"></i></a>
    </div>
 </div>
 
@@ -107,8 +104,7 @@
                <div class="col-md-12 col-sm-12 col-12">
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
                      <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
-                              class="fa-solid fa-chevron-right"></i>
+                        <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
                         </a>
                      </div>
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Services Offered</h3>
@@ -224,8 +220,7 @@
                            @endphp
                            @if ($product->published != 0)
                            <li>
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{  $product->getTranslation('name')  }}">
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{  $product->getTranslation('name')  }}">
                               <div class="discrptions">
                                  <h6>{{ home_discounted_base_price($product) }}</h6>
                                  <h5> {{ $product->getTranslation('name') }} </h5>
@@ -247,84 +242,85 @@
    </div>
    <!-- The Best Premium Manufacturers end -->
 
-    <!-- Product relative Carousel -->
- 
- 
-            <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-12">
-				<div class="border-bottom1 border-color-111 mt-3 mb-3">
-					<div class="border-botb-3"> <a href="javascript:void(0);" class="view-link">  View all <i class="fa-solid fa-chevron-right"></i> </a> </div>
-					<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium manufacturers</h3>
-					<div class="deals">
-						<hr> </div>
-				</div>
-			</div>
-		</div>
-		<div class="boxoodod">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="second-product-box">
-						<div class="secitonkdknvhh">
-							<h6>Customized products </h6>
-							<p>Partner with one of 60,000 experienced manufacturers with design & production</p>
-						</div>
-						<div class="climprosk" style="background-image:url({{static_asset('assets_web/img/bankjkgi.jpg')}});"></div>
-						<div class="nkekoloiond">
-							<div class="product-box">
-								<h6>  <span>Source from Factories</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/images1.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/images2.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/images3.png')}}" alt=""> </li>
-								</ul>
-							</div>
-							<div class="product-box">
-								<h6>  <span>Top-ranking suppliers</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/psldid1.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/psldid2.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/psldid3.png')}}" alt=""> </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="second-product-box">
-						<div class="secitonkdknvhh">
-							<h6>Ready-to-ship products</h6>
-							<p>Source from 15 million products that are ready to ship, and leave the facility within 15 days.</p>
-						</div>
-						<div class="climprosk" style="background-image:url({{static_asset('assets_web/img/dkdjksd.jpg')}});    background-position: center center;"></div>
-						<div class="nkekoloiond">
-							<div class="product-box">
-								<h6>  <span>Fast Dispatch</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}" alt=""> </li>
-								</ul>
-							</div>
-							<div class="product-box">
-								<h6>  <span>Weekly Deals</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/Doors.png')}}" alt=""> </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
    <!-- Product relative Carousel -->
-	<!--   @if(count($cat_wise_brands) > 0)
+
+
+   <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+               <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                  <div class="border-botb-3"> <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i> </a> </div>
+                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium manufacturers</h3>
+                  <div class="deals">
+                     <hr>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="boxoodod">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="second-product-box">
+                     <div class="secitonkdknvhh">
+                        <h6>Customized products </h6>
+                        <p>Partner with one of 60,000 experienced manufacturers with design & production</p>
+                     </div>
+                     <div class="climprosk" style="background-image:url({{static_asset('assets_web/img/bankjkgi.jpg')}});"></div>
+                     <div class="nkekoloiond">
+                        <div class="product-box">
+                           <h6> <span>Source from Factories</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/images1.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/images2.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/images3.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                        <div class="product-box">
+                           <h6> <span>Top-ranking suppliers</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/psldid1.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/psldid2.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/psldid3.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="second-product-box">
+                     <div class="secitonkdknvhh">
+                        <h6>Ready-to-ship products</h6>
+                        <p>Source from 15 million products that are ready to ship, and leave the facility within 15 days.</p>
+                     </div>
+                     <div class="climprosk" style="background-image:url({{static_asset('assets_web/img/dkdjksd.jpg')}});    background-position: center center;"></div>
+                     <div class="nkekoloiond">
+                        <div class="product-box">
+                           <h6> <span>Fast Dispatch</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                        <div class="product-box">
+                           <h6> <span>Weekly Deals</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/Doors.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+   @if(count($cat_wise_brands) > 0)
    <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
       <div class="container">
          <div class="row">
@@ -339,17 +335,21 @@
                <div class="position-absolutedk">
                   <div class="mt-md-n1ddd div-tab-dps">
                      <ul class="nav nav-pills">
-
+                        @php
+                        $i=0;
+                        @endphp
                         @foreach ($cat_wise_brands as $item)
-                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}"
-                           class="col-tabs-1 tabs-dps-tab nav-item">
+                        @php
+                        $i++;
+                        @endphp
+                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}" class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
                            <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
-                            
+
                         </li>
-						@php
-							 $cat_s_id = $item->category_id;
-						@endphp
-                        
+                        @php
+                        $cat_s_id = $item->category_id;
+                        @endphp
+
                         @endforeach
 
                      </ul>
@@ -361,120 +361,42 @@
 
          <div class="div-tab-dps sections">
             <ul>
-				<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
-					<div class="owl-carousel owl-theme trending001">
-						@php
-						$category_wise_brand = \App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get();
-						@endphp
-						@if(count($category_wise_brand) > 0) 
-						@foreach($category_wise_brand as $key => $cc)
-						<div class="item">
-							<div class="product-box">
-								 
-								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
-								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
-								<div class="discrptions">
-									<h5>  {{$cc->title}} </h5>
-									<h6>{{$cc->category->name}}</h6> </div>
-								<div class="discrptions_button">
-									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
-							</div>
-						</div>
-						@endforeach
-						@endif
-					</div>
-				</li>
-				
-               <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
-                  <div class="owl-carousel owl-theme trending001 catbrandslistss" >
-                      
-                     
 
+               @php
+               $i=0;
+               @endphp
+               @foreach ($cat_wise_brands as $item)
+               @php
+               $i++;
+               $cat_idd = $item->category_id;
+               @endphp
+               <li id="{{$item->category_id}}" class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
+                  <div class="owl-carousel owl-theme trending001">
+                     @foreach(\App\Models\Category_wise_brand::where('category_id',$cat_idd)->get() as $key => $cc)
+                     <div class="item">
+                        <div class="product-box">
+                           <!-- <h6>Brand</h6>-->
+                           <div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
+                           <div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
+                           <div class="discrptions">
+                              <h5> {{$cc->title}} </h5>
+                              <h6>{{$cc->category->name}}</h6>
+                           </div>
+                           <div class="discrptions_button">
+                              <h5><a href="{{$cc->url}}">View Detail</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     @endforeach
                   </div>
+
                </li>
-            </ul>
-         </div>
 
-      </div>
-   </div>
-	   @endif-->
-	      @if(count($cat_wise_brands) > 0)
-  <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
 
-               <div class="position-absolutedk">
-                  <div class="mt-md-n1ddd div-tab-dps">
-                     <ul class="nav nav-pills">
-						@php
-							$i=0;
-						@endphp
-                        @foreach ($cat_wise_brands as $item)
-						@php
-							$i++;
-						@endphp
-                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}"
-                           class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
-                           <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
-                            
-                        </li>
-						@php
-							 $cat_s_id = $item->category_id;
-						@endphp
-						
-							@endforeach
-						
-                     </ul>
-                  </div>
+               @endforeach
 
-               </div>
-            </div>
-         </div>
 
-         <div class="div-tab-dps sections">
-            <ul>
-				
-						@php
-							$i=0;
-						@endphp
-                        @foreach ($cat_wise_brands as $item)
-						@php
-							$i++;
-							$cat_idd = $item->category_id;
-						@endphp
-                        <li id="{{$item->category_id}}"
-                           class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
-                          <div class="owl-carousel owl-theme trending001">
-						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_idd)->get() as $key => $cc)
-						<div class="item">
-							<div class="product-box">
-								<!-- <h6>Brand</h6>-->
-								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
-								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
-								<div class="discrptions">
-									<h5>  {{$cc->title}} </h5>
-									<h6>{{$cc->category->name}}</h6> </div>
-								<div class="discrptions_button">
-									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
-							</div>
-						</div>
-						@endforeach
-					</div>
-                            
-                        </li>
-					 
-                        
-                        @endforeach
-				
-				
-				<!--<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
+               <!--<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
 					<div class="owl-carousel owl-theme trending001">
 						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get() as $key => $cc)
 						<div class="item">
@@ -492,8 +414,8 @@
 						@endforeach
 					</div>
 				</li>-->
-				
-             <!--  <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
+
+               <!--  <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
                   <div class="owl-carousel owl-theme trending001 catbrandslistss" >
                       
                      
@@ -518,8 +440,7 @@
                @foreach ($banner_1_imags as $key => $value)
                <div class="col-lg-6 mb-4 mb-xl-0">
                   <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block">
-                     <img class="img-fluid" src="{{ uploaded_asset($banner_1_imags[$key]) }}"
-                        alt="{{ env('APP_NAME') }} promo">
+                     <img class="img-fluid" src="{{ uploaded_asset($banner_1_imags[$key]) }}" alt="{{ env('APP_NAME') }} promo">
                   </a>
                </div>
                @endforeach
@@ -550,8 +471,7 @@
                         strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
                            <li class="col-6">
                               <a href="{{ route('flash-deal-details', $deal->slug) }}">
-                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
-                                    alt="{{$deal->title}}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}" alt="{{$deal->title}}">
                                  <span>{{$deal->title}}</span>
                               </a>
                            </li>
@@ -562,8 +482,7 @@
                      <a href="javascript:void(0);" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
-                              stroke-linecap="round" stroke-linejoin="round"></path>
+                           <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                      </a>
 
@@ -585,8 +504,7 @@
                         strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
                            <li class="col-6">
                               <a href="{{ route('flash-deal-details', $deal->slug) }}">
-                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
-                                    alt="{{$deal->title}}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}" alt="{{$deal->title}}">
                                  <span>{{$deal->title}}</span>
                               </a>
                            </li>
@@ -596,8 +514,7 @@
                      <a href="javascript:void(0);" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
-                              stroke-linecap="round" stroke-linejoin="round"></path>
+                           <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                      </a>
                   </div>
@@ -618,8 +535,7 @@
                         strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
                            <li class="col-6">
                               <a href="{{ route('flash-deal-details', $deal->slug) }}">
-                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
-                                    alt="{{$deal->title}}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}" alt="{{$deal->title}}">
                                  <span>{{$deal->title}}</span>
                               </a>
                            </li>
@@ -629,8 +545,7 @@
                      <a href="javascript:void(0);" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
-                              stroke-linecap="round" stroke-linejoin="round"></path>
+                           <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                      </a>
                   </div>
@@ -682,8 +597,7 @@
                      <div class="col-md-6">
                         <div class="product-box">
                            <div class="imllskdon">
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{ $product->getTranslation('name') }}">
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{ $product->getTranslation('name') }}">
                            </div>
                            <div class="discrptions">
                               <h5> {{ $product->getTranslation('name') }} </h5>
@@ -729,8 +643,7 @@
                      <div class="col-md-6">
                         <div class="product-box">
                            <div class="imllskdon">
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{ $product->getTranslation('name') }}">
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{ $product->getTranslation('name') }}">
                            </div>
                            <div class="discrptions">
                               <h5> {{ $product->getTranslation('name') }} </h5>
@@ -776,8 +689,7 @@
                      <div class="col-md-6">
                         <div class="product-box">
                            <div class="imllskdon">
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{ $product->getTranslation('name') }}">
+                              <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{ $product->getTranslation('name') }}">
                            </div>
                            <div class="discrptions">
                               <h5> {{ $product->getTranslation('name') }} </h5>
@@ -808,7 +720,7 @@
             <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
          </a>
       </div>
-    
+
    </div>
    <!-- banner section 2 end-->
 
@@ -840,11 +752,11 @@
                      <div class="mt-md-n1ddd div-tab-dpsa">
                         <div class="mt-md-n1 border-tops border-color-1">
                            <div class="flex-horizontal-centersss">
-							   
+
                               <h5 class="font-size-15 mb-0 font-weight-bold text-lh-1 mr-1">
-                                 Ends in &nbsp; : &nbsp; 
+                                 Ends in &nbsp; : &nbsp;
                               </h5>
-                              
+
 
                               <p id="demo"></p>
 
@@ -868,8 +780,7 @@
                   <div class="item">
                      <div class="product-box">
                         <div class="imllskdon">
-                           <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                              alt="{{  $product->getTranslation('name')  }}">
+                           <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{  $product->getTranslation('name')  }}">
                         </div>
                         <div class="discrptions">
                            <h5> {{ $product->getTranslation('name') }} </h5>
@@ -1047,9 +958,9 @@
                <div class="item">
                   <div class="product-box">
                      <!-- <div class="beachs">10% Off</div> -->
-					 <div class="imllskdon">
-                     <img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
-					 </div>
+                     <div class="imllskdon">
+                        <img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
+                     </div>
                      <div class="discrptions">
                         <h5 class="text-truncate-2">{{ $top_product->getTranslation('name') }} </h5>
                         <h6>{{ home_discounted_base_price($top_product) }}
@@ -1060,7 +971,7 @@
                      </div>
                      <div class="discrptions_button">
                         <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
-                       <!-- <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>-->
+                        <!-- <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>-->
                      </div>
                   </div>
                </div>
@@ -1101,8 +1012,7 @@
                   @if ($brand != null)
                   <div class="col-md-2">
                      <a href="{{ route('products.brand', $brand->slug) }}">
-                        <img src="{{ uploaded_asset($brand->logo) }}"
-                           alt="{{ $brand->getTranslation('name') }}">
+                        <img src="{{ uploaded_asset($brand->logo) }}" alt="{{ $brand->getTranslation('name') }}">
                      </a>
                   </div>
                   @endif
@@ -1116,7 +1026,7 @@
       <!-- Premium Brand Fair Partners end -->
 
       <!-- SERVICES ARE HERE st -->
-    <!--  <section class="wraper ">
+      <!--  <section class="wraper ">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
@@ -1270,7 +1180,7 @@
                      </div>
                   </a>
                </div>
-            
+
             </div>
          </div>
       </div>
@@ -1285,16 +1195,16 @@
             <div class="latest-news main-parent">
                <div class="backtabs-dp">
                   <ul class="ulines-dps">
-				    <li class="ukine ukine5 active">Our Team</li>
+                     <li class="ukine ukine5 active">Our Team</li>
                      <!--<li class="ukine ukine1 ">Testimonials</li>-->
                      <li class="ukine ukine2">Clients</li>
                      <li class="ukine ukine3">News</li>
                      <li class="ukine ukine4">Client review</li>
-                   
+
                      <li class="ukine ukine6">Certification</li>
                   </ul>
                   <ul class="ulines-dps-para">
-                   <!--  <li class="ukine ukine1 ">
+                     <!--  <li class="ukine ukine1 ">
                         <div>
                            <div class="owl-carousel owl-carousel012 owl-theme slide-latest">
                               <div class="item">
@@ -1398,152 +1308,128 @@
                            <div class="slick marquee">
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                            </div>
                            <div class="slick marquee2">
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                            </div>
                            <div class="slick marquee">
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                            </div>
                            <div class="slick marquee2">
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas1.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas2.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas3.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas4.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas5.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                               <div class="slick-slide2">
                                  <div class="inner">
-                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder"
-                                       width="100%" height="78" />
+                                    <img src="{{static_asset('assets_web/img/clientas6.png')}}" alt="Placeholder" width="100%" height="78" />
                                  </div>
                               </div>
                            </div>
@@ -1624,15 +1510,12 @@
                                           <div class="reviciview2">
                                              <div class="reviciview_reviciviewstar_rating__21e5o undefined">
                                                 <div class="reviciview_googleLogo__3B3_2">
-                                                   <img src="{{static_asset('assets_web/img/googles.jpg')}}"
-                                                      style="width: 60px; margin-right: 10px" />
+                                                   <img src="{{static_asset('assets_web/img/googles.jpg')}}" style="width: 60px; margin-right: 10px" />
                                                 </div>
                                                 <div class="reviciview_reviciviewSection__3eYUw">
-                                                   <span class="reviciview_reviewRating__1uda5">4.5/5 </span><span
-                                                      class="reviciview_reviewsCount__20JnR">(1000+ Reviews)</span>
+                                                   <span class="reviciview_reviewRating__1uda5">4.5/5 </span><span class="reviciview_reviewsCount__20JnR">(1000+ Reviews)</span>
                                                    <div class="reviciview_star-rating__3fSCB">
-                                                      <span class="reviciview_star-rating__fill__1TiOD"
-                                                         style="width: 90%"></span>
+                                                      <span class="reviciview_star-rating__fill__1TiOD" style="width: 90%"></span>
                                                    </div>
                                                 </div>
                                              </div>
@@ -1649,9 +1532,7 @@
                                           </p>
                                           <div>
                                              <div class="bestBrand_awardSec">
-                                                <img class="brand_img" alt="Best Brand"
-                                                   src="{{static_asset('assets_web/img/bestBrand_award1.jpg')}}"
-                                                   style="opacity: 1" />
+                                                <img class="brand_img" alt="Best Brand" src="{{static_asset('assets_web/img/bestBrand_award1.jpg')}}" style="opacity: 1" />
                                              </div>
                                           </div>
                                        </div>
@@ -1678,15 +1559,12 @@
                                           <div class="reviciview2">
                                              <div class="reviciview_reviciviewstar_rating__21e5o undefined">
                                                 <div class="reviciview_googleLogo__3B3_2">
-                                                   <img src="{{static_asset('assets_web/img/googles.jpg')}}"
-                                                      style="width: 60px; margin-right: 10px" />
+                                                   <img src="{{static_asset('assets_web/img/googles.jpg')}}" style="width: 60px; margin-right: 10px" />
                                                 </div>
                                                 <div class="reviciview_reviciviewSection__3eYUw">
-                                                   <span class="reviciview_reviewRating__1uda5">4.5/5 </span><span
-                                                      class="reviciview_reviewsCount__20JnR">(1000+ Reviews)</span>
+                                                   <span class="reviciview_reviewRating__1uda5">4.5/5 </span><span class="reviciview_reviewsCount__20JnR">(1000+ Reviews)</span>
                                                    <div class="reviciview_star-rating__3fSCB">
-                                                      <span class="reviciview_star-rating__fill__1TiOD"
-                                                         style="width: 90%"></span>
+                                                      <span class="reviciview_star-rating__fill__1TiOD" style="width: 90%"></span>
                                                    </div>
                                                 </div>
                                              </div>
@@ -1703,9 +1581,7 @@
                                           </p>
                                           <div>
                                              <div class="bestBrand_awardSec">
-                                                <img class="brand_img" alt="Best Brand"
-                                                   src="{{static_asset('assets_web/img/bestBrand_award1.jpg')}}"
-                                                   style="opacity: 1" />
+                                                <img class="brand_img" alt="Best Brand" src="{{static_asset('assets_web/img/bestBrand_award1.jpg')}}" style="opacity: 1" />
                                              </div>
                                           </div>
                                        </div>
@@ -1732,15 +1608,12 @@
                                           <div class="reviciview2">
                                              <div class="reviciview_reviciviewstar_rating__21e5o undefined">
                                                 <div class="reviciview_googleLogo__3B3_2">
-                                                   <img src="{{static_asset('assets_web/img/googles.jpg')}}"
-                                                      style="width: 60px; margin-right: 10px" />
+                                                   <img src="{{static_asset('assets_web/img/googles.jpg')}}" style="width: 60px; margin-right: 10px" />
                                                 </div>
                                                 <div class="reviciview_reviciviewSection__3eYUw">
-                                                   <span class="reviciview_reviewRating__1uda5">4.5/5 </span><span
-                                                      class="reviciview_reviewsCount__20JnR">(1000+ Reviews)</span>
+                                                   <span class="reviciview_reviewRating__1uda5">4.5/5 </span><span class="reviciview_reviewsCount__20JnR">(1000+ Reviews)</span>
                                                    <div class="reviciview_star-rating__3fSCB">
-                                                      <span class="reviciview_star-rating__fill__1TiOD"
-                                                         style="width: 90%"></span>
+                                                      <span class="reviciview_star-rating__fill__1TiOD" style="width: 90%"></span>
                                                    </div>
                                                 </div>
                                              </div>
@@ -1757,9 +1630,7 @@
                                           </p>
                                           <div>
                                              <div class="bestBrand_awardSec">
-                                                <img class="brand_img" alt="Best Brand"
-                                                   src="{{static_asset('assets_web/img/bestBrand_award1.jpg')}}"
-                                                   style="opacity: 1" />
+                                                <img class="brand_img" alt="Best Brand" src="{{static_asset('assets_web/img/bestBrand_award1.jpg')}}" style="opacity: 1" />
                                              </div>
                                           </div>
                                        </div>
@@ -1907,34 +1778,22 @@
                            </div>
                            <div class="owl-carousel owl-carousel41 owl-theme form-slide">
                               <div class="item">
-                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}"
-                                    alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}"
-                                    style="opacity: 1" />
+                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}" alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}" style="opacity: 1" />
                               </div>
                               <div class="item">
-                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}"
-                                    alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}"
-                                    style="opacity: 1" />
+                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}" alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}" style="opacity: 1" />
                               </div>
                               <div class="item">
-                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}"
-                                    alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}"
-                                    style="opacity: 1" />
+                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}" alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}" style="opacity: 1" />
                               </div>
                               <div class="item">
-                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}"
-                                    alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}"
-                                    style="opacity: 1" />
+                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}" alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}" style="opacity: 1" />
                               </div>
                               <div class="item">
-                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}"
-                                    alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}"
-                                    style="opacity: 1" />
+                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}" alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}" style="opacity: 1" />
                               </div>
                               <div class="item">
-                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}"
-                                    alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}"
-                                    style="opacity: 1" />
+                                 <img class="owl-lazy" data-src="{{static_asset('assets_web/img/according1.png')}}" alt="Clutch Award" src="{{static_asset('assets_web/img/according1.png')}}" style="opacity: 1" />
                               </div>
                            </div>
                         </div>
@@ -1976,29 +1835,25 @@
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-user"></i>
                                           </span>
-                                          <input type="text" required name="name" class="form-control empty"
-                                             placeholder="Full Name" />
+                                          <input type="text" required name="name" class="form-control empty" placeholder="Full Name" />
                                        </div>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
-                                          <input type="text" required name="email" class="form-control empty"
-                                             placeholder="Email Address" />
+                                          <input type="text" required name="email" class="form-control empty" placeholder="Email Address" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-phone-flip"></i>
                                           </span>
-                                          <input type="tel" required name="phone" class="form-control empty"
-                                             placeholder="Phone Number" maxlength="10" minlength="10" />
+                                          <input type="tel" required name="phone" class="form-control empty" placeholder="Phone Number" maxlength="10" minlength="10" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-inr"></i>
                                           </span>
-                                          <input type="tel" required name="price_range" class="form-control empty"
-                                             placeholder="Price Range" />
+                                          <input type="tel" required name="price_range" class="form-control empty" placeholder="Price Range" />
                                        </div>
                                        {{-- <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
@@ -2009,20 +1864,18 @@
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
-                                          <textarea required name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder="Your Message *"> 
+                                          <textarea required name="message" style="height: 120px;" class="form-control textareas" placeholder="Your Message *">
                                                </textarea>
                                        </div>
-									   <input required type="hidden" name="type" value="1">
+                                       <input required type="hidden" name="type" value="1">
                                        <div class="ginput_container ginput_container_checkbox">
                                           <ul class="gfield_checkbox" id="input_18_14">
                                              @foreach (\App\Models\Category::where('parent_id','=','0')->where('type','1')->get() as $key => $category)
                                              <li class="gchoice_18_14_1">
-                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
-                                                   id="choice_18_14_1" />
+                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}" id="choice_18_14_1" />
                                                 <label for="pro_cat{{$category->id}}" id="label_18_14_1">{{$category->name}}</label>
                                              </li>
-                                          @endforeach
+                                             @endforeach
                                           </ul>
                                        </div>
                                        <!-- checkbox -->
@@ -2034,8 +1887,7 @@
                                        <div class="btn-box">
                                           <button type="submit" class="addto">
                                              Submit
-                                             <svg class="position-relative ml-2" width="13px" height="10px"
-                                                viewBox="0 0 13 10">
+                                             <svg class="position-relative ml-2" width="13px" height="10px" viewBox="0 0 13 10">
                                                 <path d="M1,5 L11,5"></path>
                                                 <polyline points="8 1 12 5 8 9"></polyline>
                                              </svg>
@@ -2047,7 +1899,7 @@
                               </div>
                            </form>
                         </li>
-                        
+
                         <li class="ukine ukine9">
                            <form autocomplete="off" class="bottom-form" method="post" action="{{route('productRequestQuote')}}">
                               @csrf
@@ -2065,29 +1917,25 @@
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-user"></i>
                                           </span>
-                                          <input type="text" required name="name" class="form-control empty"
-                                             placeholder="Full Name" />
+                                          <input type="text" required name="name" class="form-control empty" placeholder="Full Name" />
                                        </div>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
-                                          <input type="text" required name="email" class="form-control empty"
-                                             placeholder="Email Address" />
+                                          <input type="text" required name="email" class="form-control empty" placeholder="Email Address" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-phone-flip"></i>
                                           </span>
-                                          <input type="tel" required name="phone" class="form-control empty"
-                                             placeholder="Phone Number" maxlength="10" minlength="10" />
+                                          <input type="tel" required name="phone" class="form-control empty" placeholder="Phone Number" maxlength="10" minlength="10" />
                                        </div>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-inr"></i>
                                           </span>
-                                          <input type="tel" required name="price_range" class="form-control empty"
-                                             placeholder="Price Range" />
+                                          <input type="tel" required name="price_range" class="form-control empty" placeholder="Price Range" />
                                        </div>
                                        {{-- <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
@@ -2098,20 +1946,18 @@
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
-                                          <textarea required name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder="Your Message *"> 
+                                          <textarea required name="message" style="height: 120px;" class="form-control textareas" placeholder="Your Message *">
                                                </textarea>
                                        </div>
-									   <input required type="hidden" name="type" value="2">
+                                       <input required type="hidden" name="type" value="2">
                                        <div class="ginput_container ginput_container_checkbox">
                                           <ul class="gfield_checkbox" id="input_18_14">
                                              @foreach (\App\Models\Category::where('parent_id','=','0')->where('type','2')->get() as $key => $category)
                                              <li class="gchoice_18_14_1">
-                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
-                                                   id="choice_18_14_1" />
+                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}" id="choice_18_14_1" />
                                                 <label for="pro_cat{{$category->id}}" id="label_18_14_1">{{$category->name}}</label>
                                              </li>
-                                          @endforeach
+                                             @endforeach
                                           </ul>
                                        </div>
                                        <!-- checkbox -->
@@ -2123,8 +1969,7 @@
                                        <div class="btn-box">
                                           <button type="submit" class="addto">
                                              Submit
-                                             <svg class="position-relative ml-2" width="13px" height="10px"
-                                                viewBox="0 0 13 10">
+                                             <svg class="position-relative ml-2" width="13px" height="10px" viewBox="0 0 13 10">
                                                 <path d="M1,5 L11,5"></path>
                                                 <polyline points="8 1 12 5 8 9"></polyline>
                                              </svg>
@@ -2160,8 +2005,7 @@
                            @foreach ($allblogs as $item)
                            <div class="col-md-6 col-sm-12">
                               <div class="card">
-                                 <img class="card-img-top" alt="{{$item->title}}"
-                                    src="{{uploaded_asset($item->banner)}}" />
+                                 <img class="card-img-top" alt="{{$item->title}}" src="{{uploaded_asset($item->banner)}}" />
                                  <div class="card-block">
                                     <h4 class="card-title text-truncate">{{$item->title}}</h4>
                                     <div class="card-text">
@@ -2172,7 +2016,7 @@
                               </div>
                            </div>
                            @endforeach
-                           
+
                         </div>
                      </div>
                   </div>
@@ -2187,36 +2031,36 @@
 
 @section('script')
 <script>
-// Set the date we're counting down to
-var flash_date = "{{date('M d, Y H:i:s', $flash_deal->end_date)}}";
+   // Set the date we're counting down to
+   var flash_date = "{{date('M d, Y H:i:s', $flash_deal->end_date)}}";
 
 
-var countDownDate = new Date(flash_date).getTime();
+   var countDownDate = new Date(flash_date).getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+   // Update the count down every 1 second
+   var x = setInterval(function() {
 
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + " : " + hours + " : "
-  + minutes + " : " + seconds;
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = days + " : " + hours + " : " +
+         minutes + " : " + seconds;
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+         clearInterval(x);
+         document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+   }, 1000);
 </script>
 @endsection

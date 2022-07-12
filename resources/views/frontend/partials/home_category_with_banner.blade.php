@@ -40,17 +40,31 @@
                                             $subcat = \App\Models\Category::find($first_level_id);
                                         @endphp
                                         <div class="product-info w-25 float-left d-block">
-                                            <a href="javascript:void(0);">
-                                                <div class="item-info d-flex">
-                                                <div class="info-sub">
-                                                    <h4 class="d-block">
+											<a href="javascript:void(0);">
+                        <div class="item-info">
+                           <h4 class="d-block">
+                               {{ $subcat->getTranslation('name') }}
+                           </h4>
+                           <div class=" d-flex">
+                              <div class="info-sub w-50">
+                                 <span class="paragronid">{{ $subcat->short_description }}</span> 
+                              </div>
+                              <img class="zoom-in lazyload w-50" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->banner) }}">
+                           </div>
+                        </div>
+                     </a>
+                                            <!--<a href="javascript:void(0);">
+												  <h4 class="d-block">
                                                         {{ $subcat->getTranslation('name') }}
                                                     </h4>
+                                                <div class="item-info d-flex">
+                                                <div class="info-sub">
+                                                  
                                                     <span class="paragronid">{{ $subcat->short_description }}</span>
                                                 </div>
-                                                <img class="zoom-in lazyload" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->banner) }}">
+                                                <img class="zoom-in lazyload position-relative" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->banner) }}">
                                                 </div>
-                                            </a>
+                                            </a>-->
                                         </div>
                                     @endforeach
 
@@ -91,7 +105,7 @@
                                     <div class="discrptions">
                                         <h5> {{ $subcat->getTranslation('name') }} </h5>
                                     </div>
-                                    <div class="discrptions_button">
+                                    <div class="discrptions_button mt-2">
                                         <h5>
                                             <a href="{{ route('products.category', $subcat->slug) }}">
                                                 View Detail
