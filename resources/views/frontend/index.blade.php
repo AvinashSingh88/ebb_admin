@@ -1,10 +1,6 @@
 @extends('frontend.master')
-
 @section('title')Home - @endsection
-
 @section('description') @endsection
-
-
 @section('content')
 <div class="banner-main">
    <div class="owl-carousel444 owl-carousel owl-theme">
@@ -30,7 +26,6 @@
                      <span class="febslide">30000+ <b>Products Online</b></span>
                      <span class="spanls">12000+ <b>Products In Store</b></span>
                   </h2>
-
                </div>
             </div>
          </div>
@@ -55,7 +50,6 @@
                      <span class="spanls spanlsa "><img src="{{static_asset('assets_web/img/price-tag.png')}}" alt="">
                         <b> Wholesale Price</b></span>
                   </h2>
-
                </div>
             </div>
          </div>
@@ -82,7 +76,6 @@
                      <span class="febslideaa"><i class="fa-solid fa-indian-rupee-sign"></i> 5000 Off*<b>On Kitchen
                            Appliances </b></span>
                   </h2>
-
                </div>
             </div>
          </div>
@@ -93,9 +86,7 @@
       <a class="button secondary play"><i class="fas fa-play"></i></a><a class="button secondary stop"><i class="fa fa-pause"></i></a>
    </div>
 </div>
-
 <div class="services_sectionssd">
-
    <!-- Service section start  -->
    <section class="product-csteogry">
       <div class="trend servoce_dops service_sections45 pb-0">
@@ -103,17 +94,12 @@
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                        </a>
-                     </div>
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Services Offered</h3>
                      <div class="deals">
                         <hr>
                      </div>
                   </div>
                </div>
-
                <div class="col-md-5c">
                   <a href="javascript:void(0);">
                      <div class="trend-theme">
@@ -159,23 +145,18 @@
       </div>
    </section>
    <!-- Service section end  -->
-
    <!-- Category section start  -->
    @include('frontend.partials.home_categories_section')
    <!-- Category section end  -->
 </div>
-
 <div class="sample-secondary">
-
    <!-- The Best Premium Manufacturers st -->
-
    <div class="headsections111 dkjfksjjksdfjis seicktioons">
       <div class="container">
          @php
          $primium_offers = \App\Models\FlashDeal::where('type', '=', 'best_premium_section')->where('status',
          1)->where('is_home', 1)->get();
          @endphp
-
          @if(count($primium_offers) > 0)
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
@@ -195,7 +176,6 @@
                </div>
             </div>
          </div>
-
          <div class="boxoodod">
             <div class="row">
                @foreach($primium_offers as $featured_deal)
@@ -210,9 +190,7 @@
                               </a>
                            </span>
                         </h6>
-
                         <ul class="image-productsll">
-
                            @foreach ($featured_deal->flash_deal_get_products($featured_deal->id, 3) as $key =>
                            $flash_deal_product)
                            @php
@@ -228,7 +206,6 @@
                            </li>
                            @endif
                            @endforeach
-
                         </ul>
                      </div>
                   </div>
@@ -237,14 +214,10 @@
             </div>
          </div>
          @endif
-
       </div>
    </div>
    <!-- The Best Premium Manufacturers end -->
-
    <!-- Product relative Carousel -->
-
-
    <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
       <div class="container">
          <div class="row">
@@ -318,8 +291,7 @@
          </div>
       </div>
    </div>
-
-
+   <!-- Product relative Carousel -->
    @if(count($cat_wise_brands) > 0)
    <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
       <div class="container">
@@ -331,7 +303,6 @@
                      <hr>
                   </div>
                </div>
-
                <div class="position-absolutedk">
                   <div class="mt-md-n1ddd div-tab-dps">
                      <ul class="nav nav-pills">
@@ -344,24 +315,18 @@
                         @endphp
                         <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}" class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
                            <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
-
                         </li>
                         @php
                         $cat_s_id = $item->category_id;
                         @endphp
-
                         @endforeach
-
                      </ul>
                   </div>
-
                </div>
             </div>
          </div>
-
          <div class="div-tab-dps sections">
             <ul>
-
                @php
                $i=0;
                @endphp
@@ -389,45 +354,12 @@
                      </div>
                      @endforeach
                   </div>
-
                </li>
-
-
                @endforeach
-
-
-               <!--<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
-					<div class="owl-carousel owl-theme trending001">
-						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get() as $key => $cc)
-						<div class="item">
-							<div class="product-box">
-								 
-								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
-								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
-								<div class="discrptions">
-									<h5>  {{$cc->title}} </h5>
-									<h6>{{$cc->category->name}}</h6> </div>
-								<div class="discrptions_button">
-									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
-							</div>
-						</div>
-						@endforeach
-					</div>
-				</li>-->
-
-               <!--  <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
-                  <div class="owl-carousel owl-theme trending001 catbrandslistss" >
-                      
-                     
-
-                  </div>
-               </li>-->
             </ul>
          </div>
-
       </div>
    </div>
-
    @endif
    <!-- banner 1 section start -->
    @if (get_setting('home_banner1_images') != null)
@@ -435,7 +367,6 @@
       <div class="mb-5 closindig">
          <div class="container">
             <div class="row">
-
                @php $banner_1_imags = json_decode(get_setting('home_banner1_images')); @endphp
                @foreach ($banner_1_imags as $key => $value)
                <div class="col-lg-6 mb-4 mb-xl-0">
@@ -450,13 +381,11 @@
    </section>
    @endif
    <!-- banner 1 section end -->
-
    <!-- CONSUMER ELECTRONICS end -->
    <div class="other-categories">
       <div class="container">
          <div class="other-categories-list">
             <div class="row">
-
                @php
                $category_offers = \App\Models\FlashDeal::where('type', '=', 'category_section')->where('status',
                1)->where('is_home', 1)->take(4)->get();
@@ -478,18 +407,15 @@
                            @endif
                            @endforeach
                      </ul>
-
                      <a href="javascript:void(0);" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                      </a>
-
                   </div>
                </div>
                @endif
-
                @php
                $service_offers = \App\Models\FlashDeal::where('type', '=', 'service_section')->where('status',
                1)->where('is_home', 1)->take(4)->get();
@@ -520,7 +446,6 @@
                   </div>
                </div>
                @endif
-
                @php
                $brand_offers = \App\Models\FlashDeal::where('type', '=', 'brand_section')->where('status',
                1)->where('is_home', 1)->take(4)->get();
@@ -551,29 +476,24 @@
                   </div>
                </div>
                @endif
-
             </div>
          </div>
       </div>
    </div>
    <!-- VEHICLE PARTS & ACCESSORIES st -->
-
    <!-- Category With Banner section start  -->
    @include('frontend.partials.home_category_with_banner')
    <!-- Category With Banner section end  -->
-
    <!-- Product relative Carousel -->
    <div class=" headsections111 weekinliud dkjfksjjksdfjis">
       <div class="container">
          <div class="row">
-
             @php
             $weekly_offers = \App\Models\FlashDeal::where('type', '=', 'weekly_section')->where('status',
             1)->where('is_home', 1)->first();
             @endphp
             @if($weekly_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
-
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
                   <a href="{{ route('flash-deal-details', $weekly_offers->slug) }}">
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
@@ -584,10 +504,8 @@
                      <hr>
                   </div>
                </div>
-
                <div class="bkdjfoskji">
                   <div class="row">
-
                      @foreach ($weekly_offers->flash_deal_get_products($weekly_offers->id, 2) as $key =>
                      $flash_deal_product)
                      @php
@@ -607,19 +525,16 @@
                      </div>
                      @endif
                      @endforeach
-
                   </div>
                </div>
             </div>
             @endif
-
             @php
             $live_offers = \App\Models\FlashDeal::where('type', '=', 'live_section')->where('status',
             1)->where('is_home', 1)->first();
             @endphp
             @if($live_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
-
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
                   <a href="{{ route('flash-deal-details', $live_offers->slug) }}">
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
@@ -630,10 +545,8 @@
                      <hr>
                   </div>
                </div>
-
                <div class="bkdjfoskji">
                   <div class="row">
-
                      @foreach ($live_offers->flash_deal_get_products($live_offers->id, 2) as $key =>
                      $flash_deal_product)
                      @php
@@ -653,19 +566,16 @@
                      </div>
                      @endif
                      @endforeach
-
                   </div>
                </div>
             </div>
             @endif
-
             @php
             $small_comodity_offers = \App\Models\FlashDeal::where('type', '=',
             'small_comodity_section')->where('status', 1)->where('is_home', 1)->first();
             @endphp
             @if($small_comodity_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
-
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
                   <a href="{{ route('flash-deal-details', $small_comodity_offers->slug) }}">
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
@@ -676,10 +586,8 @@
                      <hr>
                   </div>
                </div>
-
                <div class="bkdjfoskji">
                   <div class="row">
-
                      @foreach ($small_comodity_offers->flash_deal_get_products($small_comodity_offers->id, 2) as $key =>
                      $flash_deal_product)
                      @php
@@ -699,31 +607,23 @@
                      </div>
                      @endif
                      @endforeach
-
                   </div>
                </div>
             </div>
             @endif
-
-
          </div>
-
-
       </div>
    </div>
    <!-- VEHICLE PARTS & ACCESSORIES end -->
-
    <!-- banner section 2 start-->
-   <div class="bannnner">
+   <div class="bannnner pt-3">
       <div class="container">
          <a href="#1">
             <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
          </a>
       </div>
-
    </div>
    <!-- banner section 2 end-->
-
    <!-- Deals of the day section start -->
    @php
    $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('featured', 1)->first();
@@ -734,7 +634,6 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
-
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
                      <div class="border-botb-3">
                         <a href="{{ route('flash-deal-details', $flash_deal->slug) }}" class="view-link">
@@ -747,31 +646,22 @@
                         <hr>
                      </div>
                   </div>
-
                   <div class="position-absolutedk">
                      <div class="mt-md-n1ddd div-tab-dpsa">
                         <div class="mt-md-n1 border-tops border-color-1">
                            <div class="flex-horizontal-centersss">
-
                               <h5 class="font-size-15 mb-0 font-weight-bold text-lh-1 mr-1">
                                  Ends in &nbsp; : &nbsp;
                               </h5>
-
-
                               <p id="demo"></p>
-
-
                            </div>
                         </div>
                      </div>
                   </div>
-
                </div>
             </div>
-
             <div class="div-tab-dpsa sections">
                <div class="owl-carousel owl-theme trending0001">
-
                   @foreach ($flash_deal->flash_deal_products->take(20) as $key => $flash_deal_product)
                   @php
                   $product = \App\Models\Product::find($flash_deal_product->product_id);
@@ -786,23 +676,19 @@
                            <h5> {{ $product->getTranslation('name') }} </h5>
                            <h6> {{ home_discounted_base_price($product) }} </h6>
                         </div>
-
                      </div>
                   </div>
                   @endif
                   @endforeach
-
                </div>
             </div>
          </div>
       </div>
       @endif
       <!-- Deals of the day section end -->
-
       <!-- Product relative Carousel -->
       <div class=" headsections111 weekinliud dkjfksjjksdfjis">
          <div class="container">
-
             <div class="border-bottom1 border-color-111 mt-3 mb-3 dkprojaecke">
                <div class="border-botb-3">
                   <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
@@ -827,8 +713,6 @@
                         <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
                         <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
                      </ul>
-
-
                      <div class="discrptions_button">
                         <h5><a href="javascript:void(0);">View Detail</a></h5>
                      </div>
@@ -846,8 +730,6 @@
                         <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
                         <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
                      </ul>
-
-
                      <div class="discrptions_button">
                         <h5><a href="javascript:void(0);">View Detail</a></h5>
                      </div>
@@ -865,8 +747,6 @@
                         <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
                         <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
                      </ul>
-
-
                      <div class="discrptions_button">
                         <h5><a href="javascript:void(0);">View Detail</a></h5>
                      </div>
@@ -884,8 +764,6 @@
                         <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
                         <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
                      </ul>
-
-
                      <div class="discrptions_button">
                         <h5><a href="javascript:void(0);">View Detail</a></h5>
                      </div>
@@ -903,8 +781,6 @@
                         <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
                         <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
                      </ul>
-
-
                      <div class="discrptions_button">
                         <h5><a href="javascript:void(0);">View Detail</a></h5>
                      </div>
@@ -922,24 +798,18 @@
                         <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
                         <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
                      </ul>
-
-
                      <div class="discrptions_button">
                         <h5><a href="javascript:void(0);">View Detail</a></h5>
                      </div>
                   </div>
                </div>
             </div>
-
-
          </div>
       </div>
       <!-- VEHICLE PARTS & ACCESSORIES end -->
-
       <!-- JUST FOR YOU start -->
       <div class=" headsections111 dkjfksjjksdfjis just-for-you pb-2">
          <div class="container">
-
             <div class="row">
                <div class="col-md-12 col-sm-12 col-12">
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
@@ -950,9 +820,7 @@
                   </div>
                </div>
             </div>
-
             <div class="owl-carousel owl-theme trending0001">
-
                @foreach (filter_products(\App\Models\Product::orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key
                => $top_product)
                <div class="item">
@@ -976,13 +844,10 @@
                   </div>
                </div>
                @endforeach
-
             </div>
-
          </div>
       </div>
       <!-- JUST FOR YOU end -->
-
       <!--Premium Brand Fair Partnerst -->
       @if (get_setting('top10_brands') != null)
       <section class="banner-brand_product banner-brand_product2 brankdisections ">
@@ -1005,7 +870,6 @@
             </div>
             <div class="brandss">
                <div class="row">
-
                   @php $top10_brands = json_decode(get_setting('top10_brands')); @endphp
                   @foreach ($top10_brands as $key => $value)
                   @php $brand = \App\Models\Brand::find($value); @endphp
@@ -1017,98 +881,20 @@
                   </div>
                   @endif
                   @endforeach
-
                </div>
             </div>
          </div>
       </section>
       @endif
       <!-- Premium Brand Fair Partners end -->
-
-      <!-- SERVICES ARE HERE st -->
-      <!--  <section class="wraper ">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-12">
-                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Helping Services</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="row r2 ">
-               <div class="col-lg-3 col-md-2 col-sm-3 col-xs-3">
-                  <div class=" image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade1.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Trade Assurance</h5>
-                           <p class="pr "> Order Protection</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon1.png')}}" alt="tradeicon1"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                  <div class=" image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade2.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Payment</h5>
-                           <p class="pr ">Payment Solutions</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon2.png')}}" alt="tradeicons2"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
-                  <div class="image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade3.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Inspection</h5>
-                           <p class="pr ">Inspection Solution</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon3.png')}}" alt="tradeicon3"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                  <div class="image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade4.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Ocean and air shipping</h5>
-                           <p class="pr ">Logistic Service</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon4.png')}}" alt="tradeicon4"></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>-->
-
-      <!-- SERVICES ARE HERE end -->
 </div>
 <!-- CHOOSE YOUR SUPPLIERS BY REGIONS st -->
 <section class="product-csteogry kdikskon">
-   <div class="trend servoce_dops service_sections45 pb-0">
+   <div class="trend servoce_dops service_sections45 pb-0 pt-0">
       <div class="container">
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
                   <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Choose your suppliers by regions
                   </h3>
                   <div class="deals">
@@ -1122,7 +908,14 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/mumbai.png')}}" alt="">
                         <h6>Mumbai</h6>
-
+                     </div>
+                  </a>
+               </div>
+               <div class="item">
+                  <a href="javascript:void(0);">
+                     <div class="trend-theme">
+                        <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
+                        <h6>Bengaluru</h6>
                      </div>
                   </a>
                </div>
@@ -1131,7 +924,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Delhi</h6>
-
                      </div>
                   </a>
                </div>
@@ -1140,7 +932,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Bengaluru</h6>
-
                      </div>
                   </a>
                </div>
@@ -1149,7 +940,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Bengaluru</h6>
-
                      </div>
                   </a>
                </div>
@@ -1158,7 +948,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Indore</h6>
-
                      </div>
                   </a>
                </div>
@@ -1167,7 +956,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Hyderabad</h6>
-
                      </div>
                   </a>
                </div>
@@ -1176,17 +964,14 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Chennai</h6>
-
                      </div>
                   </a>
                </div>
-
             </div>
          </div>
       </div>
    </div>
 </section>
-
 <!-- CHOOSE YOUR SUPPLIERS BY REGIONS end -->
 <section class="latest animated animate__fadeInUp wow">
    <div class="container1">
@@ -1200,7 +985,6 @@
                      <li class="ukine ukine2">Clients</li>
                      <li class="ukine ukine3">News</li>
                      <li class="ukine ukine4">Client review</li>
-
                      <li class="ukine ukine6">Certification</li>
                   </ul>
                   <ul class="ulines-dps-para">
@@ -1302,7 +1086,7 @@
                               </div>
                            </div>
                         </div>
-                     </li>-->
+                        </li>-->
                      <li class="ukine ukine2">
                         <div class="slikdir">
                            <div class="slick marquee">
@@ -1855,17 +1639,19 @@
                                           </span>
                                           <input type="tel" required name="price_range" class="form-control empty" placeholder="Price Range" />
                                        </div>
-                                       {{-- <div class="input-group " style="margin-bottom: 10px">
+                                       {{--
+                                       <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
                                           <h3 class="left-range1">500</h3>
                                           <h3 class="left-range2">2000</h3>
-                                       </div> --}}
+                                       </div>
+                                       --}}
                                        <div class="input-group" style="margin-bottom: 5px">
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
                                           <textarea required name="message" style="height: 120px;" class="form-control textareas" placeholder="Your Message *">
-                                               </textarea>
+                                          </textarea>
                                        </div>
                                        <input required type="hidden" name="type" value="1">
                                        <div class="ginput_container ginput_container_checkbox">
@@ -1899,7 +1685,6 @@
                               </div>
                            </form>
                         </li>
-
                         <li class="ukine ukine9">
                            <form autocomplete="off" class="bottom-form" method="post" action="{{route('productRequestQuote')}}">
                               @csrf
@@ -1937,17 +1722,19 @@
                                           </span>
                                           <input type="tel" required name="price_range" class="form-control empty" placeholder="Price Range" />
                                        </div>
-                                       {{-- <div class="input-group " style="margin-bottom: 10px">
+                                       {{--
+                                       <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
                                           <h3 class="left-range1">500</h3>
                                           <h3 class="left-range2">2000</h3>
-                                       </div> --}}
+                                       </div>
+                                       --}}
                                        <div class="input-group" style="margin-bottom: 5px">
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
                                           <textarea required name="message" style="height: 120px;" class="form-control textareas" placeholder="Your Message *">
-                                               </textarea>
+                                          </textarea>
                                        </div>
                                        <input required type="hidden" name="type" value="2">
                                        <div class="ginput_container ginput_container_checkbox">
@@ -1991,9 +1778,10 @@
                   <div class="achieve-box">
                      <div class="head-cnt work-center text-left" style="margin-bottom:30px;">
                         <div class="bounceIn animated">
-                           <!--<div class="our-latest-border" style="    margin: 0px;"></div>-->
-                           <h5>Blog</h5>
                            <h4> Latest Blogs</h4>
+                           <div class="deals">
+                              <hr>
+                           </div>
                            <p>
                               Construction Materials & Services Your Online Purchase Manager Saves Time, Energy and Cost
                               Source & order construction materials digitally on one platform
@@ -2016,7 +1804,6 @@
                               </div>
                            </div>
                            @endforeach
-
                         </div>
                      </div>
                   </div>
@@ -2026,9 +1813,7 @@
       </div>
    </section>
 </div>
-
 @endsection
-
 @section('script')
 <script>
    // Set the date we're counting down to
