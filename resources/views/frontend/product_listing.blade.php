@@ -67,7 +67,7 @@ $meta_description = get_setting('meta_description');
       </div>
    </div>
 	   </div>
-   <div class="container details-product product-catpro ">
+   <div id="product-box" class="container details-product product-catpro ">
       <form class="" id="search-form" action="" method="GET">
          <div class="row">
             <div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
@@ -382,7 +382,7 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </div>
                      </div>
-					 
+					 @include('frontend.partials.category_enquiry_form')
 					 @section('script')
                    <script>
 					   $(function () {
@@ -515,6 +515,39 @@ $meta_description = get_setting('meta_description');
    </section>
  
    <script type="text/javascript">
+      
+      $(document).ready(function(){
+         $(".addToCartUButton").click(function(){
+			var product_id = $(this).closest('.product_data').find('.prod_id').val();
+			var product_qty = $(this).closest('.product_data').find('.input-number').val();
+			var product_price = $(this).closest('.product_data').find('.prod_price').val();
+			
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: "POST",
+                    url: '{{url('add-to-cart')}}',
+                    data: {
+                       'product_id':product_id,
+                       'product_qty':product_qty,
+                       'product_price':product_price,
+                    },
+                    success: function (response) {
+                        toastr.info(response.status);
+                         updateNavCart(response.nav_cart_view,response.cart_count);
+						 $('#product-box').html(response.product_box_view);
+                    }
+                });
+         });
+      });
+		function updateNavCart(view,count){
+            $('.cart-count').html(count);
+            $('#cart_items').html(view);
+        }
+		
       function filter() {
          $('#search-form').submit();
       }

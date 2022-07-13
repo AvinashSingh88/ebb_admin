@@ -1,106 +1,11 @@
-@extends('frontend.master')
-
-@if (isset($category_id))
-@php
-$meta_title = \App\Models\Category::find($category_id)->meta_title;
-$meta_description = \App\Models\Category::find($category_id)->meta_description;
-@endphp
-@elseif (isset($brand_id))
-@php
-$meta_title = \App\Models\Brand::find($brand_id)->meta_title;
-$meta_description = \App\Models\Brand::find($brand_id)->meta_description;
-@endphp
-@else
-@php
-$meta_title = get_setting('meta_title');
-$meta_description = get_setting('meta_description');
-@endphp
-@endif
-
-@section('meta_title'){{ $meta_title }}@stop
-@section('meta_description'){{ $meta_description }}@stop
-
-@section('meta')
-<!-- Schema.org markup for Google+ -->
-<meta itemprop="name" content="{{ $meta_title }}">
-<meta itemprop="description" content="{{ $meta_description }}">
-
-<!-- Twitter Card data -->
-<meta name="twitter:title" content="{{ $meta_title }}">
-<meta name="twitter:description" content="{{ $meta_description }}">
-
-<!-- Open Graph data -->
-<meta property="og:title" content="{{ $meta_title }}" />
-<meta property="og:description" content="{{ $meta_description }}" />
-@endsection
-
-@section('content')
-<!-- Price nouislider-filter cdn -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js" integrity="sha512-T5Bneq9hePRO8JR0S/0lQ7gdW+ceLThvC80UjwkMRz+8q+4DARVZ4dqKoyENC7FcYresjfJ6ubaOgIE35irf4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <style>
-         .mall-slider-handles{
-         margin-top: 50px;
-         }
-         .filter-container-1{
-         display: flex;
-         justify-content: center;
-         margin-top: 60px;
-         }
-         .filter-container-1 input{
-         border: 1px solid #ddd;
-         width: 100%;
-         text-align: center;
-         height: 30px;
-         border-radius: 5px;
-         }
-         .filter-container-1 button{
-         background: #51a179;
-         color:#fff;
-         padding: 5px 20px;
-         }
-         .filter-container-1 button:hover{
-         background: #2e7552;
-         color:#fff;
-         }
-          
-      </style>
-<section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
- 
-</section>
-<!--top banner end -->
-<div class="service-pros animated animate__fadeInUp wow product-categorys ulines-dps-para ">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-12 breadmcrumsize">
-            <nav aria-label="breadcrumb">
-               <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ translate('Home')}}</a></li>
-                  @if(!isset($category_id))
-                  <li class="breadcrumb-item"><a href="{{ route('search') }}">{{ translate('All Categories')}}</a></li>
-                  @else
-                  <li class="breadcrumb-item"><a href="{{ route('search') }}">{{ translate('All Categories')}} </a></li>
-                  @endif
-                  @if(isset($category_id))
-                  <li class="breadcrumb-item active"><a
-                        href="{{ route('products.servicecategory', \App\Models\Category::find($category_id)->slug) }}">{{
-                        \App\Models\Category::find($category_id)->getTranslation('name') }}</a></li>
-
-                  @endif
-               </ol>
-            </nav>
-         </div>
-      </div>
-   </div>
-   <div class="container details-product product-catpro ">
-      <form class="" id="search-form" action="" method="GET">
+  <form class="" id="search-form" action="" method="GET">
          <div class="row">
             <div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
                <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
                   <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
                      <li class="link-category link-category1aa">
                         @php
-                        $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type', '2')->count();
+                        $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type', '1')->count();
                         @endphp
 
                         <div id="accordion" class="accordion-container">
@@ -182,8 +87,8 @@ $meta_description = get_setting('meta_description');
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
-                            @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','2')->get() as $key => $category)
-                           <li><a class="dropdown-item1" href="{{ route('products.servicecategory', $category->slug) }}">{{
+                            @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
+                           <li><a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">{{
                                  $category->getTranslation('name') }}</a></li>
                            @endforeach
                            @else
@@ -192,13 +97,13 @@ $meta_description = get_setting('meta_description');
 
                            @if (\App\Models\Category::find($category_id)->parent_id != 0)
                            <li><a class="dropdown-item1"
-                                 href="{{ route('products.servicecategory', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">{{
+                                 href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">{{
                                  \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')
                                  }}</a></li>
                            @endif
                            <li>
                               <a class="dropdown-item1"
-                                 href="{{ route('products.servicecategory', \App\Models\Category::find($category_id)->slug) }}">
+                                 href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">
                                  {{ \App\Models\Category::find($category_id)->getTranslation('name') }}
                               </a>
                            </li>
@@ -206,7 +111,7 @@ $meta_description = get_setting('meta_description');
                            $id)
                            <li>
                               <a class="dropdown-item1"
-                                 href="{{ route('products.servicecategory', \App\Models\Category::find($id)->slug) }}">
+                                 href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">
                                  {{ \App\Models\Category::find($id)->getTranslation('name') }}
                               </a>
                            </li>
@@ -281,7 +186,7 @@ $meta_description = get_setting('meta_description');
                            </div>
 
                         </article>
-
+					<?php if(false) { ?>
                         @if (get_setting('color_filter_activation'))
                         <article class="content-entry">
                            <h4 class="font-size-14 mb-3 font-weight-bold article-title"> {{ translate('Filter by
@@ -379,7 +284,7 @@ $meta_description = get_setting('meta_description');
                         </article>
                         @endforeach
 
-                       
+                       <?php } ?>
                         
                         <!---<article class="content-entry open">
                         <h4 class="font-size-14 mb-3 font-weight-bold article-title">Price range</h4>
@@ -394,6 +299,7 @@ $meta_description = get_setting('meta_description');
                         </div>
                         </article>-->
 						
+						 <?php if(false) { ?>
 						 <div class="mall-slider-handles" data-start="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::min('unit_price') }} @endif" data-end="@if(\App\Models\Product::count() < 1) 0 @else {{ \App\Models\Product::max('unit_price') }} @endif" @if (isset($min_price)) data-min="{{ $min_price }}" @elseif($products->min('unit_price') > 0) data-min="{{ $products->min('unit_price') }}" @else data-min="0" @endif @if (isset($max_price)) data-max="{{ $max_price }}" @elseif($products->max('unit_price') > 0) data-max="{{ $products->max('unit_price') }}"  @else data-max="0" @endif data-max="{{ $max_price }}" data-target="price" style="width: 100%"> </div>
                      <div class="row filter-container-1">
                         <div class="col-md-4">
@@ -406,6 +312,7 @@ $meta_description = get_setting('meta_description');
                            <button type="submit" class="btn btn-sm">Filter</button>
                         </div>
                      </div>
+					 <?php } ?>
                      </div>
 					 
 					 @section('script')
@@ -483,7 +390,7 @@ $meta_description = get_setting('meta_description');
 				
                   @foreach ($products as $key => $product)
                   <div class="col-md-3">
-                     @include('frontend.partials.service_box_1',['product' => $product])
+                     @include('frontend.partials.product_box_1',['product' => $product])
                   </div>
 				  
                   @endforeach
@@ -497,58 +404,4 @@ $meta_description = get_setting('meta_description');
          </div>
       </form>
       <!-- End Brand Carousel -->
-   </div>
-   <section class="banner-brand_product">
-      <div class="container">
-         <div class="service-pros" style="padding:0px;margin:0px;">
-            <div class="head-cnt work-center text-center" style="    margin: 0px; height: 0px;">
-               <div class="bounceIn animated">
-                  <h4>Why Buy Product From eBuildBazaar?</h4>
-               </div>
-            </div>
-         </div>
-
-         <div class="brandss1">
-            <div class="row">
-               <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon1.png')}}" alt="">
-                     <h3>All Under One roof</h3>
-                     <p>Ebuildbazaar Stores from others is their pricing.</p>
-                  </a></div>
-               <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon2.png')}}" alt="">
-                     <h3>Widest Product Range</h3>
-                     <p>Ebuildbazaar Stores from others is their pricing.</p>
-                  </a></div>
-               <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon3.png')}}" alt="">
-                     <h3>On Time Delivery</h3>
-                     <p>Ebuildbazaar Stores from others is their pricing.</p>
-                  </a></div>
-               <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon4.png')}}" alt="">
-                     <h3>Product Knowledge Support</h3>
-                     <p>Ebuildbazaar Stores from others is their pricing.</p>
-                  </a></div>
-               <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon5.png')}}" alt="">
-                     <h3>Genuine Products</h3>
-                     <p>Ebuildbazaar Stores from others is their pricing.</p>
-                  </a></div>
-               <div class="col-md-2"><a href="#1"><img src="{{static_asset('assets_web/img/iconon6.png')}}" alt="">
-                     <h3>365 Days Wholesale Rates</h3>
-                     <p>Ebuildbazaar Stores from others is their pricing.</p>
-                  </a></div>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <script type="text/javascript">
-      function filter() {
-         $('#search-form').submit();
-      }
-      function rangefilter(arg) {
-         $('input[name=min_price]').val(arg[0]);
-         $('input[name=max_price]').val(arg[1]);
-         filter();
-      }
-   </script>
-
-
-   @endsection
+   

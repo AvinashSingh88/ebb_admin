@@ -16,7 +16,7 @@
             </div>
             <!-- form-group -->
             <div class="form-group">
-               <input class="form-control" name="phone" required value="" type="text" placeholder="Phone">
+               <input class="form-control" min="10" max="10" name="phone" pattern="[6789][0-9]{9}" required value="" type="text" placeholder="Phone">
             </div>
             <!-- form-group -->
             <div class="form-group">

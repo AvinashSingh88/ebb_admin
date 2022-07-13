@@ -151,7 +151,33 @@
                 // $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
             // });
         // }
-
+        $(document).on('click', '.add_cart_button_plus', function(e) {
+			e.preventDefault();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+			var quantity = $(this).closest('.product_data').find('.input-number').val();			
+			var id = $(this).closest('.product_data').find('.prod_id').val();
+				
+			 $.ajax({
+				url: '{{route('cart.updateCartPlus')}}',
+				method: "POST",
+				data: {
+                       'quantity':quantity,
+                       'id':id,
+                    },
+					
+				success: function (response) {
+					toastr.info(response.status);
+					 updateNavCart(response.nav_cart_view,response.cart_count);
+					 $('#cart-summary').html(response.cart_view);
+                     loadcart();
+				}
+			});
+		});
+        
     $(".request-call-back").click(function(e){
 		e.preventDefault();
 		 // var data = $(this).serialize();
