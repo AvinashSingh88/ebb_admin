@@ -459,7 +459,7 @@
                               </li>
                               <!-- PRODUCT END HERE -->
                               <li class="menulocationds menulocationds2 com">
-                                 <a href="#s">Products </a>
+                                 <a href="#">Products </a>
                                  <div class="megamenu megamenu2" style="
                                     background-image: url({{static_asset('assets_web/img/megamenusbanner.png')}});
                                     background-size: cover;

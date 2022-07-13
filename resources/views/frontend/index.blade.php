@@ -185,7 +185,7 @@
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
                   <div class="border-botb-3">
-                     <a href="#" class="view-link">
+                     <a href="{{ route('flash-deals') }}" class="view-link">
                         View all
                         <i class="fa-solid fa-chevron-right"></i>
                      </a>
@@ -247,85 +247,82 @@
    </div>
    <!-- The Best Premium Manufacturers end -->
 
-    <!-- Product relative Carousel -->
- 
- 
-            <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-12">
-				<div class="border-bottom1 border-color-111 mt-3 mb-3">
-					<div class="border-botb-3"> <a href="javascript:void(0);" class="view-link">  View all <i class="fa-solid fa-chevron-right"></i> </a> </div>
-					<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium manufacturers</h3>
-					<div class="deals">
-						<hr> </div>
-				</div>
-			</div>
-		</div>
-		<div class="boxoodod">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="second-product-box">
-						<div class="secitonkdknvhh">
-							<h6>Customized products </h6>
-							<p>Partner with one of 60,000 experienced manufacturers with design & production</p>
-						</div>
-						<div class="climprosk" style="background-image:url({{static_asset('assets_web/img/bankjkgi.jpg')}});"></div>
-						<div class="nkekoloiond">
-							<div class="product-box">
-								<h6>  <span>Source from Factories</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/images1.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/images2.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/images3.png')}}" alt=""> </li>
-								</ul>
-							</div>
-							<div class="product-box">
-								<h6>  <span>Top-ranking suppliers</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/psldid1.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/psldid2.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/psldid3.png')}}" alt=""> </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="second-product-box">
-						<div class="secitonkdknvhh">
-							<h6>Ready-to-ship products</h6>
-							<p>Source from 15 million products that are ready to ship, and leave the facility within 15 days.</p>
-						</div>
-						<div class="climprosk" style="background-image:url({{static_asset('assets_web/img/dkdjksd.jpg')}});    background-position: center center;"></div>
-						<div class="nkekoloiond">
-							<div class="product-box">
-								<h6>  <span>Fast Dispatch</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}" alt=""> </li>
-								</ul>
-							</div>
-							<div class="product-box">
-								<h6>  <span>Weekly Deals</span></h6>
-								<ul class="image-productsll">
-									<li> <img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt=""> </li>
-									<li> <img src="{{static_asset('assets_web/img/index0/Doors.png')}}" alt=""> </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+   <!-- Product relative Carousel -->
+   <div class="headsections111 dkjfksjjksdfjis seicktioons secionryuioe">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+               <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                  <div class="border-botb-3"> <a href="javascript:void(0);" class="view-link">  View all <i class="fa-solid fa-chevron-right"></i> </a> </div>
+                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium manufacturers</h3>
+                  <div class="deals">
+                     <hr> </div>
+               </div>
+            </div>
+         </div>
+         <div class="boxoodod">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="second-product-box">
+                     <div class="secitonkdknvhh">
+                        <h6>Customized products </h6>
+                        <p>Partner with one of 60,000 experienced manufacturers with design & production</p>
+                     </div>
+                     <div class="climprosk" style="background-image:url({{static_asset('assets_web/img/bankjkgi.jpg')}});"></div>
+                     <div class="nkekoloiond">
+                        <div class="product-box">
+                           <h6>  <span>Source from Factories</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/images1.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/images2.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/images3.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                        <div class="product-box">
+                           <h6>  <span>Top-ranking suppliers</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/psldid1.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/psldid2.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/psldid3.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="second-product-box">
+                     <div class="secitonkdknvhh">
+                        <h6>Ready-to-ship products</h6>
+                        <p>Source from 15 million products that are ready to ship, and leave the facility within 15 days.</p>
+                     </div>
+                     <div class="climprosk" style="background-image:url({{static_asset('assets_web/img/dkdjksd.jpg')}});    background-position: center center;"></div>
+                     <div class="nkekoloiond">
+                        <div class="product-box">
+                           <h6>  <span>Fast Dispatch</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/index0/appliances.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/appliancessd.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/dfdfsd.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                        <div class="product-box">
+                           <h6>  <span>Weekly Deals</span></h6>
+                           <ul class="image-productsll">
+                              <li> <img src="{{static_asset('assets_web/img/index0/kitchen.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/furniture.png')}}" alt=""> </li>
+                              <li> <img src="{{static_asset('assets_web/img/index0/Doors.png')}}" alt=""> </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 
-   
-	      @if(count($cat_wise_brands) > 0)
-  <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
+	@if(count($cat_wise_brands) > 0)
+   <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
       <div class="container">
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
@@ -431,7 +428,6 @@
 
       </div>
    </div>
-
    @endif
    <!-- banner 1 section start -->
    @if (get_setting('home_banner1_images') != null)
@@ -461,7 +457,6 @@
       <div class="container">
          <div class="other-categories-list">
             <div class="row">
-
                @php
                $category_offers = \App\Models\FlashDeal::where('type', '=', 'category_section')->where('status',
                1)->where('is_home', 1)->take(4)->get();
@@ -485,7 +480,7 @@
                            @endforeach
                      </ul>
 
-                     <a href="javascript:void(0);" class="view-link">
+                     <a href="{{ route('flash-deals') }}" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
@@ -519,7 +514,7 @@
                            @endif
                            @endforeach
                      </ul>
-                     <a href="javascript:void(0);" class="view-link">
+                     <a href="{{ route('flash-deals') }}" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
@@ -552,7 +547,7 @@
                            @endif
                            @endforeach
                      </ul>
-                     <a href="javascript:void(0);" class="view-link">
+                     <a href="{{ route('flash-deals') }}" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
@@ -728,14 +723,19 @@
    <!-- VEHICLE PARTS & ACCESSORIES end -->
 
    <!-- banner section 2 start-->
+
+   @if (get_setting('home_banner2_images') != null)
+   @php $home_banner2_images = json_decode(get_setting('home_banner2_images')); @endphp
+   @foreach ($home_banner2_images as $key => $value)
    <div class="bannnner">
       <div class="container">
-         <a href="#1">
-            <img src="{{static_asset('assets_web/img/index0/home-temple-banner.jpg')}}" alt="" style="width:100%;">
+         <a href="{{ json_decode(get_setting('home_banner2_links'), true)[$key] }}">
+            <img src="{{ uploaded_asset($home_banner2_images[$key]) }}" alt="" style="width:100%;">
          </a>
       </div>
-    
    </div>
+   @endforeach
+   @endif
    <!-- banner section 2 end-->
 
    <!-- Deals of the day section start -->
@@ -986,7 +986,6 @@
                      </div>
                      <div class="discrptions_button">
                         <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
-                       <!-- <h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>-->
                      </div>
                   </div>
                </div>

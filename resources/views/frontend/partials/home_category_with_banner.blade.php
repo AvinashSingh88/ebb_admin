@@ -35,36 +35,25 @@
                                 </a>
 
                                 <div class="product-item d-flow-root">
-                                    @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
-                                        @php
-                                            $subcat = \App\Models\Category::find($first_level_id);
-                                        @endphp
+                                   	@foreach (\App\Models\Category::where('parent_id', $value)->take(8)->get() as $key => $first_level_id)
+									@php
+										$subcat = \App\Models\Category::find($first_level_id->id);
+									@endphp
                                         <div class="product-info w-25 float-left d-block">
-											<a href="javascript:void(0);">
-                        <div class="item-info">
-                           <h4 class="d-block">
-                               {{ $subcat->getTranslation('name') }}
-                           </h4>
-                           <div class=" d-flex">
-                              <div class="info-sub w-50">
-                                 <span class="paragronid">{{ $subcat->short_description }}</span> 
-                              </div>
-                              <img class="zoom-in lazyload w-50" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->banner) }}">
-                           </div>
-                        </div>
-                     </a>
-                                            <!--<a href="javascript:void(0);">
-												  <h4 class="d-block">
+											<a href="{{ route('products.category', $subcat->slug) }}">
+                                                <div class="item-info">
+                                                    <h4 class="d-block">
                                                         {{ $subcat->getTranslation('name') }}
                                                     </h4>
-                                                <div class="item-info d-flex">
-                                                <div class="info-sub">
-                                                  
-                                                    <span class="paragronid">{{ $subcat->short_description }}</span>
+                                                    <div class=" d-flex">
+                                                        <div class="info-sub w-50">
+                                                            <span class="paragronid">{{ $subcat->short_description }}</span> 
+                                                        </div>
+                                                        <img class="zoom-in lazyload w-50" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->banner) }}">
+                                                    </div>
                                                 </div>
-                                                <img class="zoom-in lazyload position-relative" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->banner) }}">
-                                                </div>
-                                            </a>-->
+                                            </a>
+                                           
                                         </div>
                                     @endforeach
 
@@ -95,9 +84,10 @@
                         </div>
                     </div>
                     <div class="owl-carousel owl-theme trending001">
-                        @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+                        @foreach (\App\Models\Category::where('parent_id', $value)->take(8)->get() as $key => $first_level_id)
+						
                             @php
-                                $subcat = \App\Models\Category::find($first_level_id);
+                                $subcat = \App\Models\Category::find($first_level_id->id);
                             @endphp
                             <div class="item">
                                 <div class="product-box">
