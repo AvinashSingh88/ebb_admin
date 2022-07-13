@@ -382,7 +382,7 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </div>
                      </div>
-					 
+					 @include('frontend.partials.category_enquiry_form')
 					 @section('script')
                    <script>
 					   $(function () {
