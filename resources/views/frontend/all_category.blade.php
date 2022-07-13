@@ -44,26 +44,25 @@
                         </li>-->
     <li class="link-category link-category1aa">
 
-
+						@php
+						   $countCategory = \App\Models\Category::where('parent_id','=',0)->where('type','1')->count();
+						@endphp
 
        <div id="accordion" class="accordion-container">
           <article class="content-entry">
              <h4 class="article-title">
                 <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
-                   Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> (9)</span> <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
+                   Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> ({{$countCategory}})</span> <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
                 </a>
              </h4>
              <div class="accordion-content">
                 <div class="link-categoryx link-category1az ">
                    <ul class="list-unstyled dropdown-list">
-
-                     @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-                     @php
-                       $productCountByCat = \App\Models\Product::where('category_id','=', $category->id)->count();
-                  
-                     @endphp
-                     
-					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} ({{ $productCountByCat}}) </a></li>
+					 @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
+						 @php
+						   $SubCategoryCountByCat = \App\Models\Category::where('parent_id','=', $category->id)->count();
+						 @endphp
+							<li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} ({{ $SubCategoryCountByCat}}) </a></li>
                      @endforeach
                    </ul>
                 </div>
