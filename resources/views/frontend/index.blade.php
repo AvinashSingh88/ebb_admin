@@ -323,81 +323,7 @@
 	</div>
 </div>
 
-   <!-- Product relative Carousel -->
-	<!--   @if(count($cat_wise_brands) > 0)
-   <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-
-               <div class="position-absolutedk">
-                  <div class="mt-md-n1ddd div-tab-dps">
-                     <ul class="nav nav-pills">
-
-                        @foreach ($cat_wise_brands as $item)
-                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}"
-                           class="col-tabs-1 tabs-dps-tab nav-item">
-                           <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
-                            
-                        </li>
-						@php
-							 $cat_s_id = $item->category_id;
-						@endphp
-                        
-                        @endforeach
-
-                     </ul>
-                  </div>
-
-               </div>
-            </div>
-         </div>
-
-         <div class="div-tab-dps sections">
-            <ul>
-				<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
-					<div class="owl-carousel owl-theme trending001">
-						@php
-						$category_wise_brand = \App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get();
-						@endphp
-						@if(count($category_wise_brand) > 0) 
-						@foreach($category_wise_brand as $key => $cc)
-						<div class="item">
-							<div class="product-box">
-								 
-								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
-								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
-								<div class="discrptions">
-									<h5>  {{$cc->title}} </h5>
-									<h6>{{$cc->category->name}}</h6> </div>
-								<div class="discrptions_button">
-									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
-							</div>
-						</div>
-						@endforeach
-						@endif
-					</div>
-				</li>
-				
-               <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
-                  <div class="owl-carousel owl-theme trending001 catbrandslistss" >
-                      
-                     
-
-                  </div>
-               </li>
-            </ul>
-         </div>
-
-      </div>
-   </div>
-	   @endif-->
+   
 	      @if(count($cat_wise_brands) > 0)
   <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
       <div class="container">
@@ -420,13 +346,13 @@
 						@php
 							$i++;
 						@endphp
-                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->category_id}}"
+                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->id}}"
                            class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
-                           <a class="nav-link rounded-pill seldectbrand">{{$item->category->name}} </a>
+                           <a class="nav-link rounded-pill seldectbrand">{{$item->name}} </a>
                             
                         </li>
 						@php
-							 $cat_s_id = $item->category_id;
+							 $cat_s_id = $item->id;
 						@endphp
 						
 							@endforeach
@@ -447,9 +373,9 @@
                         @foreach ($cat_wise_brands as $item)
 						@php
 							$i++;
-							$cat_idd = $item->category_id;
+							$cat_idd = $item->id;
 						@endphp
-                        <li id="{{$item->category_id}}"
+                        <li id="{{$item->id}}"
                            class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
                           <div class="owl-carousel owl-theme trending001">
 						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_idd)->get() as $key => $cc)
