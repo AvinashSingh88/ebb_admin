@@ -287,7 +287,7 @@
 		{{-- Home categories 1--}}
 		<div class="card">
 			<div class="card-header">
-				<h6 class="mb-0">{{ translate('Home Categories') }}</h6>
+				<h6 class="mb-0">{{ translate('Home Premium Categories') }} (Add Maximum 4)</h6>
 			</div>
 			<div class="card-body">
 				<form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
