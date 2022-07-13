@@ -366,44 +366,6 @@
 
          <div class="div-tab-dps sections">
             <ul>
-<<<<<<< HEAD
-
-               @php
-               $i=0;
-               @endphp
-               @foreach ($cat_wise_brands as $item)
-               @php
-               $i++;
-               $cat_idd = $item->category_id;
-               @endphp
-               <li id="{{$item->category_id}}" class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
-                  <div class="owl-carousel owl-theme trending001">
-                     @foreach(\App\Models\Category_wise_brand::where('category_id',$cat_idd)->get() as $key => $cc)
-                     <div class="item">
-                        <div class="product-box">
-                           <!-- <h6>Brand</h6>-->
-                           <div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
-                           <div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
-                           <div class="discrptions">
-                              <h5> {{$cc->title}} </h5>
-                              <h6>{{$cc->category->name}}</h6>
-                           </div>
-                           <div class="discrptions_button">
-                              <h5><a href="{{$cc->url}}">View Detail</a></h5>
-                           </div>
-                        </div>
-                     </div>
-                     @endforeach
-                  </div>
-
-               </li>
-
-
-               @endforeach
-
-
-               
-=======
 				
 						@php
 							$i=0;
@@ -464,7 +426,6 @@
 
                   </div>
                </li>-->
->>>>>>> 0cc45d024c6509dc51e9c34034f5afd0ee7387e2
             </ul>
          </div>
 
