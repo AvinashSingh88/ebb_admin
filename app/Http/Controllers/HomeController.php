@@ -51,6 +51,7 @@ class HomeController extends Controller
         });
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
         $cat_wise_brands = Category_wise_brand::groupBy('category_id')->get();
+		
         $allblogs = Blog::limit(4)->get();
       
         return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands','allblogs'));

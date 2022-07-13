@@ -583,7 +583,7 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-md-2 col-from-label">{{translate('Top Brands (Max 10)')}}</label>
+						<label class="col-md-2 col-from-label">{{translate('Top Brands (Max 18)')}}</label>
 						<div class="col-md-10">
 							<input type="hidden" name="types[]" value="top10_brands">
 							<select name="top10_brands[]" class="form-control aiz-selectpicker" multiple data-max-options="18" data-live-search="true" data-selected="{{ get_setting('top10_brands') }}">

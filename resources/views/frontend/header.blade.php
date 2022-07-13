@@ -610,7 +610,6 @@
                                                    />
                                                 <span
                                                    ><strong>Interior / Exterior</strong>Designing</span></a>
-
                                              </li>
                                              <li>
                                                 <a href="valued-professionals"

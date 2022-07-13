@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
+
 use Illuminate\Http\Request;
 use App\Models\Search;
 use App\Models\Product;
@@ -120,23 +120,13 @@ class SearchController extends Controller
         }
 
         $products = filter_products($products)->with('taxes')->paginate(12)->appends(request()->query());
-        
-        $check_cart_product = \App\Models\Cart::select('product_id');
-        if(Auth::user() != null) {
-            $user_id = Auth::user()->id;
-            $check_cart_product_list = $check_cart_product->where('user_id', $user_id)->get();
-        }else{
-            $temp_user_id = $request->session()->get('temp_user_id');
-            $check_cart_product_list = $check_cart_product->where('temp_user_id', $temp_user_id)->get();
-        }
-    
 		$categories = Category::where('level', 0)->where('type','1')->orderBy('order_level', 'desc')->get();
         // $subcategories = Category::where('slug', $catslug)->first();
         // $getCatId = $subcategories->id;
         // $subcatlist = Category::where('parent_id','=',$getCatId)->paginate(12);
         // $firstFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->limit(5)->get();
         // $exceptFiveSubcat = Category::where('parent_id','=',$getCatId)->orderBy('id', 'desc')->take(15)->skip(5)->get();
-        return view('frontend.product_listing', compact('check_cart_product_list','first_five_color','categories','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
+        return view('frontend.product_listing', compact('first_five_color','categories','products', 'query', 'category_id', 'brand_id', 'sort_by', 'seller_id','min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
     }
 
     public function listing(Request $request)

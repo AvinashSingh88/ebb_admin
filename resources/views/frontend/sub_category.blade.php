@@ -74,7 +74,7 @@
      <b> {{$subcategories->name}}</b>
      <ul class="list-unstyled dropdown-list listing_block filter">
 								 @foreach ($firstFiveSubcat as $item)
-									<li><a class="dropdown-item1" href="{{ route('products.category', $item->slug) }}">{{$item->name}}</a></li>
+									<li><a class="dropdown-item1" href="{{ route('products.category', $item->slug) }}"> {{$item->name}}</a></li>
 								 @endforeach
 								    
 								 @foreach ($exceptFiveSubcat as $item)
