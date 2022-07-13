@@ -308,6 +308,7 @@
                      <li class="ukine ukine1b active4">
                         <div class="tab-description">
                            <h3>Product Description</h3>
+                           <button id="btn1" type="button" class="btn cart active cart_buttons3 addtoCartProduct"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="name">Add to cart</span> </button>
                            <p>
                               <?php echo $detailedProduct->getTranslation('description'); ?>
                            </p>

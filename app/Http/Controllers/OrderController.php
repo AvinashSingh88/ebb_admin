@@ -355,17 +355,18 @@ class OrderController extends Controller
                 $coupon_discount += $cartItem['discount'];
 
                 $product_variation = $cartItem['variation'];
-
-                $product_stock = $product->stocks->where('variant', $product_variation)->first();
-                if ($product->digital != 1 && $cartItem['quantity'] > $product_stock->qty) {
-                    flash(translate('The requested quantity is not available for ') . $product->getTranslation('name'))->warning();
-                    $order->delete();
-                    return redirect()->route('cart')->send();
-                } elseif ($product->digital != 1) {
-                    $product_stock->qty -= $cartItem['quantity'];
-                    $product_stock->save();
-                }
-
+				
+				if($cartItem['variation']!=''){
+					$product_stock = $product->stocks->where('variant', $product_variation)->first();
+					if ($product->digital != 1 && $cartItem['quantity'] > $product_stock->qty) {
+						flash(translate('The requested quantity is not available for ') . $product->getTranslation('name'))->warning();
+						$order->delete();
+						return redirect()->route('cart')->send();
+					} elseif ($product->digital != 1) {
+						$product_stock->qty -= $cartItem['quantity'];
+						$product_stock->save();
+					}
+				}
                 $order_detail = new OrderDetail;
                 $order_detail->order_id = $order->id;
                 $order_detail->seller_id = $product->user_id;

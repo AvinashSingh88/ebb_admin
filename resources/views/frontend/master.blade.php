@@ -59,7 +59,6 @@
     <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{static_asset('assets_web/js/jquery-ui.js')}}" type="text/javascript"></script>
 
-
     @if (get_setting('google_analytics') == 1)
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
@@ -92,11 +91,8 @@
             t.src = v;
             s = b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            '{{static_asset('
-            assets_web / js / fbevents.js ')}}');
-        fbq('init', '{{ env('
-            FACEBOOK_PIXEL_ID ') }}');
+        }(window, document, 'script', '{{static_asset('assets_web/js/fbevents.js')}}');
+        fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
         fbq('track', 'PageView');
     </script>
     <noscript>
@@ -144,25 +140,10 @@
     </div>
 
     @yield('modal')
-
+	
+ 
     <script type="text/javascript">
-        // function removeFromCartView(e, key){
-        // e.preventDefault();
-        // removeFromCart(key);
-        // }
-
-        // function removeFromCart(key){
-        // $.post('{{ route('cart.removeFromCart') }}', {
-        // &_token  : '&_token={{csrf_token()}}',
-        // id      :  key
-        // }, function(data){
-        // updateNavCart(data.nav_cart_view,data.cart_count);
-        // $('#cart-summary').html(data.cart_view);
-        // AIZ.plugins.notify('success', "{{ translate('Item has been removed from cart') }}");
-        // $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
-        // });
-        // }
-
+       
         $(".request-call-back").click(function(e) {
             e.preventDefault();
             // var data = $(this).serialize();
@@ -170,8 +151,7 @@
             var mobile = $("input[name=mobile]").val();
             var email = $('#emails').val();
 
-            var url = '{{ url('
-            insertCallRequest ') }}';
+            var url = '{{ url('insertCallRequest') }}';
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -217,8 +197,7 @@
             let id = $(showAddToCartModals).attr('id');
             $('#userid').html(id);
             $.ajax({
-                url: '{{route('
-                cart.showCartModal ')}}',
+                url: '{{route('cart.showCartModal')}}',
                 type: 'post',
                 data: 'id=' + id + '&_token={{csrf_token()}}',
                 success: function(respons) {
@@ -235,8 +214,7 @@
             let address_id = $(showCategoryWiseBrand).attr('id');
             let datas = "";
             $.ajax({
-                url: '{{url('
-                getcategorybrands ')}}',
+                url: '{{url('getcategorybrands')}}',
                 type: 'post',
                 data: 'address_id=' + address_id + '&_token={{csrf_token()}}',
                 success: function(respons) {
@@ -277,8 +255,7 @@
             if ($('#option-choice-form input[name=quantity]').val() > 0 && checkAddToCartValidity()) {
                 $.ajax({
                     type: "POST",
-                    url: '{{ route('
-                    products.variant_price ') }}',
+                    url: '{{ route('products.variant_price') }}',
                     data: $('#option-choice-form').serializeArray(),
                     success: function(data) {
                         console.log(data);
@@ -342,8 +319,7 @@
                 });
                 $.ajax({
                     type: "POST",
-                    url: '{{ route('
-                    cart.addToCart ') }}',
+                    url: '{{ route('cart.addToCart') }}',
                     data: $('#option-choice-form').serializeArray(),
                     success: function(data) {
 
@@ -367,8 +343,7 @@
             function loadcart() {
                 $.ajax({
                     method: "GET",
-                    url: '{{url('
-                    load - cart - data ')}}',
+                    url: '{{url('load-cart-data')}}',
                     success: function(response) {
                         //   console.log(response.count);  
                         $('.cart_count').html('');
@@ -390,8 +365,7 @@
 
                 $.ajax({
                     method: "POST",
-                    url: '{{ route('
-                    cart.removeFromCart ') }}',
+                    url: '{{ route('cart.removeFromCart') }}',
                     data: {
                         'id': id,
                     },
@@ -402,6 +376,60 @@
                     }
                 });
             });
+        });
+		
+		$(document).on('click', '.button-plus', function(e) {
+			e.preventDefault();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+			var quantity = $(this).closest('.product_data').find('.qty').val();			
+			var id = $(this).closest('.product_data').find('.prod_id').val();			
+			 $.ajax({
+				url: '{{route('cart.updateQuantity')}}',
+				method: "POST",
+				data: {
+                       'quantity':quantity,
+                       'id':id,
+                    },
+				success: function (response) {
+					// alert(response.status);
+					 // toastr.info(response.status);
+					 updateNavCart(response.nav_cart_view,response.cart_count);
+					 $('#cart-summary').html(response.cart_view);
+                     loadcart();
+				}
+			});
+		});
+		
+		$(document).on('click', '.add_cart_button_plus', function(e) {
+			e.preventDefault();
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+			var quantity = $(this).closest('.product_data').find('.input-number').val();			
+			var id = $(this).closest('.product_data').find('.prod_id').val();
+				
+			 $.ajax({
+				url: '{{route('cart.updateCartPlus')}}',
+				method: "POST",
+				data: {
+                       'quantity':quantity,
+                       'id':id,
+                    },
+					
+				success: function (response) {
+					toastr.info(response.status);
+					 updateNavCart(response.nav_cart_view,response.cart_count);
+					 $('#cart-summary').html(response.cart_view);
+                     loadcart();
+				}
+			});
+		});
 
             $(document).on('click', '.button-plus', function(e) {
                 e.preventDefault();
@@ -413,9 +441,7 @@
                 var quantity = $(this).closest('.product_data').find('.qty').val();
                 var id = $(this).closest('.product_data').find('.prod_id').val();
                 $.ajax({
-                    // url: '{{url('update-cart-qty-plus')}}',
-                    url: '{{route('
-                    cart.updateQuantity ')}}',
+                    url: '{{route('cart.updateQuantity')}}',
                     method: "POST",
                     data: {
                         'quantity': quantity,
@@ -441,8 +467,7 @@
                 var quantity = $(this).closest('.product_data').find('.qty').val();
                 var id = $(this).closest('.product_data').find('.prod_id').val();
                 $.ajax({
-                    url: '{{route('
-                    cart.updateQuantity ')}}',
+                    url: '{{route('cart.updateQuantity')}}',
                     method: "POST",
                     data: {
                         'quantity': quantity,
@@ -463,28 +488,14 @@
 
 
 
-            $('.category-nav-element').each(function(i, el) {
-                $(el).on('mouseover', function() {
-                    if (!$(el).find('.sub-cat-menu').hasClass('loaded')) {
-                        $.post('{{ route('
-                            category.elements ') }}', {
-                                _token: AIZ.data.csrf,
-                                id: $(el).data('id')
-                            },
-                            function(data) {
-                                $(el).find('.sub-cat-menu').addClass('loaded').html(data);
-                            });
-                    }
-                });
-            });
+            
             if ($('#lang-change').length > 0) {
                 $('#lang-change .dropdown-menu a').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault();
                         var $this = $(this);
                         var locale = $this.data('flag');
-                        $.post('{{ route('
-                            language.change ') }}', {
+                        $.post('{{ route('language.change') }}', {
                                 _token: AIZ.data.csrf,
                                 locale: locale
                             },
@@ -502,8 +513,7 @@
                         e.preventDefault();
                         var $this = $(this);
                         var currency_code = $this.data('currency');
-                        $.post('{{ route('
-                            currency.change ') }}', {
+                        $.post('{{ route('currency.change') }}', {
                                 _token: AIZ.data.csrf,
                                 currency_code: currency_code
                             },
@@ -538,8 +548,7 @@
 
                 $('.typed-search-box').removeClass('d-none');
                 $('.search-preloader').removeClass('d-none');
-                $.post('{{ route('
-                    search.ajax ') }}', {
+                $.post('{{ route('search.ajax') }}', {
                         _token: AIZ.data.csrf,
                         search: searchKey
                     },
@@ -562,7 +571,6 @@
             }
         }
     </script>
-
 
 
 
@@ -617,5 +625,12 @@
         };
     </script>
 </body>
+
+
+
+	
+</script>
+    </body>
+     </html>
 
 </html>
