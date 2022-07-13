@@ -10,10 +10,10 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-12">
                             <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                                <div class="border-botb-3">
+                                <!--<div class="border-botb-3">
                                     <a href="{{url('categories')}}" class="view-link"> View all <i
                                             class="fa-solid fa-chevron-right"></i> </a>
-                                </div>
+                                </div>-->
                                 <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
                                     @if($value->category_attribute == "building_materials")
                                         Building Material
