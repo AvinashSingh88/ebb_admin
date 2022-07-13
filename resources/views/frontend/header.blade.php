@@ -151,30 +151,29 @@
     <div class="top-button">
        <button class="btns">Organize Site Visit</button>
     </div>
-    <div class="request-button">
+     <div class="request-button">
        <button class="btn">
        <i class="fas fa-phone-volume"></i> Request Call Back
        </button>
        <hr />
+	<form method="post" autocomplete="off" action="" class="">
        <div class="req-form">
           <h3>Pre-Register here for Best Offers</h3>
+          <span style="color:red;font-size:16px;" id="error_message"></span>
           <div class="form-group">
-             <input type="text" placeholder="Name" class="form-control" />
+             <input type="text" required id="names" name="name" placeholder="Name" class="form-control" />
           </div>
           <div class="form-group">
-             <input type="number" placeholder="Mobile No" class="form-control" />
+             <input type="number" required name="mobile" placeholder="Mobile No" class="form-control" />
           </div>
           <div class="form-group">
-             <input
-                type="text"
-                placeholder="E-Mail address"
-                class="form-control"
-                />
+             <input type="text" id="emails" required placeholder="E-Mail address" class="form-control" name="email"/>
           </div>
        </div>
-       <button class="btn btn2">
+       <button class="btn btn2 request-call-back">
        <i class="fas fa-phone-volume"></i> Pre-Register Now
        </button>
+	</form>
        <div class="req-form callus">
           <h3>CALL US : 1800 419 3805</h3>
        </div>

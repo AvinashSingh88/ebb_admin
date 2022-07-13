@@ -1901,16 +1901,19 @@
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-user"></i>
                                           </span>
-                                          <input type="text" required name="name" class="form-control empty"
+                                          <input required type="text" name="name" class="form-control empty"
                                              placeholder="Full Name" />
+											  
                                        </div>
+											<span class="form-text text-danger my-3">@error('name'){{$message}}@enderror</span>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
-                                          <input type="text" required name="email" class="form-control empty"
+                                          <input type="email" required name="email" class="form-control empty"
                                              placeholder="Email Address" />
                                        </div>
+									   <span class="form-text text-danger my-3">@error('email'){{$message}}@enderror</span>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-phone-flip"></i>
@@ -1918,13 +1921,15 @@
                                           <input type="tel" required name="phone" class="form-control empty"
                                              placeholder="Phone Number" maxlength="10" minlength="10" />
                                        </div>
+									    <span class="form-text text-danger my-3">@error('phone'){{$message}}@enderror</span>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-inr"></i>
                                           </span>
-                                          <input type="tel" required name="price_range" class="form-control empty"
+                                          <input required type="tel" name="price_range" class="form-control empty"
                                              placeholder="Price Range" />
                                        </div>
+									   <span class="form-text text-danger my-3">@error('price_range'){{$message}}@enderror</span>
                                        {{-- <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
                                           <h3 class="left-range1">500</h3>
@@ -1934,16 +1939,17 @@
                                           <span class="input-group-addon text-aAaA" style="height: 120px">
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
-                                          <textarea required name="message" style="height: 120px;" class="form-control textareas"
+                                          <textarea name="message" style="height: 120px;" class="form-control textareas"
                                              placeholder="Your Message *"> 
                                                </textarea>
                                        </div>
+									   <span class="form-text text-danger my-3">@error('message'){{$message}}@enderror</span>
 									   <input required type="hidden" name="type" value="1">
                                        <div class="ginput_container ginput_container_checkbox">
                                           <ul class="gfield_checkbox" id="input_18_14">
                                              @foreach (\App\Models\Category::where('parent_id','=','0')->where('type','1')->get() as $key => $category)
                                              <li class="gchoice_18_14_1">
-                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
+                                                <input name="category" required id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
                                                    id="choice_18_14_1" />
                                                 <label for="pro_cat{{$category->id}}" id="label_18_14_1">{{$category->name}}</label>
                                              </li>
@@ -1990,16 +1996,21 @@
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-user"></i>
                                           </span>
-                                          <input type="text" required name="name" class="form-control empty"
+                                          <input type="text" name="name" class="form-control"
                                              placeholder="Full Name" />
+											 <span class="form-text text-danger">@error('name')
+												{{$message}}
+												@enderror
+											</span>
                                        </div>
                                        <div class="input-group w-440" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-envelope"></i>
                                           </span>
-                                          <input type="text" required name="email" class="form-control empty"
+                                          <input type="email" required name="email" class="form-control empty"
                                              placeholder="Email Address" />
                                        </div>
+									   <span class="form-text text-danger my-3">@error('email'){{$message}}@enderror</span>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-phone-flip"></i>
@@ -2007,6 +2018,7 @@
                                           <input type="tel" required name="phone" class="form-control empty"
                                              placeholder="Phone Number" maxlength="10" minlength="10" />
                                        </div>
+									   <span class="form-text text-danger my-3">@error('phone'){{$message}}@enderror</span>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
                                           <span class="input-group-addon">
                                              <i class="fa-solid fa-inr"></i>
@@ -2014,6 +2026,7 @@
                                           <input type="tel" required name="price_range" class="form-control empty"
                                              placeholder="Price Range" />
                                        </div>
+									   <span class="form-text text-danger my-3">@error('price_range'){{$message}}@enderror</span>
                                        {{-- <div class="input-group " style="margin-bottom: 10px">
                                           <input id="multi" class="multi-range" type="range" />
                                           <h3 class="left-range1">500</h3>
@@ -2027,12 +2040,13 @@
                                              placeholder="Your Message *"> 
                                                </textarea>
                                        </div>
+									   <span class="form-text text-danger my-3">@error('message'){{$message}}@enderror</span>
 									   <input required type="hidden" name="type" value="2">
                                        <div class="ginput_container ginput_container_checkbox">
                                           <ul class="gfield_checkbox" id="input_18_14">
                                              @foreach (\App\Models\Category::where('parent_id','=','0')->where('type','2')->get() as $key => $category)
                                              <li class="gchoice_18_14_1">
-                                                <input name="category" id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
+                                                <input name="category" required id="pro_cat{{$category->id}}" type="radio" value="{{$category->name}}"
                                                    id="choice_18_14_1" />
                                                 <label for="pro_cat{{$category->id}}" id="label_18_14_1">{{$category->name}}</label>
                                              </li>
