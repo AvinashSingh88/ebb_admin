@@ -63,7 +63,7 @@
 					<div id="service_div" class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Service Parent Category')}}</label>
                         <div class="col-md-9">
-                            <select class="select2 form-control aiz-selectpicker" name="parent_id" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
+                            <select class="select2 form-control aiz-selectpicker" name="parent_id1" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
                                 <option value="0">{{ translate('No Parent') }}</option>
                                 @foreach ($service_categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
@@ -200,21 +200,21 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-function showDiv(select){
-   if(select.value==1){
-    document.getElementById('hidden_div').style.display = "block";
-   } else{
-    document.getElementById('hidden_div').style.display = "none";
-   }
-
-   if(select.value==2){
-   document.getElementById('service_div').style.display = "block";
+    function showDiv(select){
+    if(select.value==1){
+        document.getElementById('hidden_div').style.display = "block";
     } else{
-        document.getElementById('service_div').style.display = "none";
+        document.getElementById('hidden_div').style.display = "none";
     }
-} 
 
-jQuery(document).ready(function(){
+    if(select.value==2){
+    document.getElementById('service_div').style.display = "block";
+        } else{
+            document.getElementById('service_div').style.display = "none";
+        }
+    } 
+
+    jQuery(document).ready(function(){
         jQuery('#type').change(function(){
             let type=jQuery(this).val();
             let datas = "";
@@ -238,5 +238,5 @@ jQuery(document).ready(function(){
             });
         });
     });
-        </script>
+</script>
 @endsection

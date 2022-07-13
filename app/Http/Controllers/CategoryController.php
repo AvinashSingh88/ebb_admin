@@ -81,6 +81,13 @@ class CategoryController extends Controller
             $category->level = $parent->level + 1 ;
         }
 
+        if ($request->parent_id1 != "0") {
+            $category->parent_id = $request->parent_id1;
+
+            $parent = Category::find($request->parent_id1);
+            $category->level = $parent->level + 1 ;
+        }
+
         if ($request->slug != null) {
             $category->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug));
         }
