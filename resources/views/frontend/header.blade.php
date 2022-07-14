@@ -30,28 +30,28 @@
                <div class="t_c right-text">
                   <ul>
                      <li>
-                        <a href="advertise.php"><i class="fas fa-volume-up"></i> Advertise</a>
+                        <a href="javascript:void(0);"><i class="fas fa-volume-up"></i> Advertise</a>
                      </li>
                      <li>
                         <a href="javascript:void(0);"><i class="fa-solid fa-download animated infinite slideInDown"></i>Brochure</a>
                      </li>
                      <li>
-                        <a href="enquiry.php"><i class="far fa-question-circle"></i> Enquiry</a>
+                        <a href="javascript:void(0);"><i class="far fa-question-circle"></i> Enquiry</a>
                      </li>
                      <li>
-                        <a href="become_seller.php"><i class="fas fa-archway"></i> Become a Seller</a>
+                        <a href="javascript:void(0);"><i class="fas fa-archway"></i> Become a Seller</a>
                      </li>
                      <li>
-                        <a href="help_center.php"><i class="far fa-question-circle"></i> Help Center</a>
+                        <a href="javascript:void(0);"><i class="far fa-question-circle"></i> Help Center</a>
                      </li>
                      <li class="cartonlog">
-                        <a href="#t.php">Appointment</a>
+                        <a href="javascript:void(0);">Appointment</a>
                      </li>
                      <li>
-                        <a href="bulk-order2.php"><i class="fas fa-truck"></i> Bulk Order</a>
+                        <a href="javascript:void(0);"><i class="fas fa-truck"></i> Bulk Order</a>
                      </li>
                      <li>
-                        <a href="#track-order.php"><i class="fas fa fa-cube"></i> Track Order </a>
+                        <a href="javascript:void(0);"><i class="fas fa fa-cube"></i> Track Order </a>
                      </li>
                   </ul>
                </div>
@@ -284,7 +284,7 @@
                                                                <b class="webhead{{$i}}"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b>
                                                             </a>
                                                               
-                                                            <ul class="megamenusubs231 megamenusubs231a">
+                                                            <ul class="megamenusubs231 megamenusubs231a{{$i}}">
                                                                @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($first_level_id) as $key => $second_level_id)                                                                     
                                                                   <li>     
                                                                      @php

@@ -3807,13 +3807,12 @@
               <div class="left-side-bar">
                  <ul class="menu-list">
                     <li>
-                       <a href="javascript:void(0);"><i class="fa-solid fa-house"></i>&nbsp; ask group</a
+                       <a href="javascript:void(0);"><i class="fa-solid fa-house"></i> Ebuild Bazaar</a
                           >
                     </li>
                     <li>
                        <a href="javascript:void(0);"
-                          ><i class="fa-solid fa-kit-medical"></i>&nbsp; ask wealth
-                       advisors <b class="caret"></b
+                          ><i class="fa-solid fa-kit-medical"></i> Ebuild Bazaar Wealth  Advisors<b class="caret"></b
                           ></a>
                        <div class="menu-sub-list">
                           <ul>
@@ -3827,35 +3826,36 @@
                        </div>
                     </li>
                     <li>
-                       <a href="javascript:void(0);"><i class="fa-solid fa-user-tie-hair"></i> &nbsp; ask
-                       investment managers</a
+                       <a href="javascript:void(0);"><i class="fa-solid fa-user-tie-hair"></i>  Ebuild Bazaar
+    Investment Managers</a
                           >
                     </li>
                     <li>
                        <a href="javascript:void(0);"
-                          ><i class="fa-solid fa-house"></i>&nbsp; ask property
-                       investment
+                          ><i class="fa-solid fa-house"></i>  Ebuild Bazaar Property
+    Investment
+          
                        </a>
                     </li>
                     <li>
-                       <a href="javascript:void(0);"><i class="fa-solid fa-house"></i>&nbsp; ask capital
-                       management
+                       <a href="javascript:void(0);"><i class="fa-solid fa-house"></i>  Ebuild Bazaar Capital
+    Management
+                  
                        </a>
                     </li>
                     <li>
-                       <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> &nbsp; ask
-                       pravi</a
+                       <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> Ebuild Bazaar Pravi</a
                           >
                     </li>
                     <li>
-                       <a href="javascript:void(0);"><i class="fa-solid fa-play"></i> &nbsp; media </a>
+                       <a href="javascript:void(0);"><i class="fa-solid fa-play"></i> Media </a>
                     </li>
                     <li>
-                       <a href="javascript:void(0);"><i class="fa-solid fa-book"></i>&nbsp; careers</a>
+                       <a href="javascript:void(0);"><i class="fa-solid fa-book"></i> Careers</a>
                     </li>
                     <li>
-                       <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> &nbsp; contact
-                       us</a
+                       <a href="javascript:void(0);"><i class="fa-solid fa-headphones-simple"></i> Contact
+                  us</a
                           >
                     </li>
                  </ul>
