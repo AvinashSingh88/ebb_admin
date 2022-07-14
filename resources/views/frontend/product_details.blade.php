@@ -131,6 +131,47 @@
                   </div>
                   --}}
                   <!--Last code end--->
+				  <!---Brand section start--->
+					<div class="backtabs-dp_servicespros2 mt-2">
+                   
+
+						  <div class="optionbox">
+                              <div class="clear-fix"></div>
+							  @if ($detailedProduct->brand != null)
+                              <h4 class="dthd">Brands : <span><a href="#1" style="color: inherit;text-decoration: none;">{{$detailedProduct->brand->name}}</a></span> </h4>
+								@endif
+                              <ul class="optbrand">
+									@if ($detailedProduct->brand != null)	
+                                 <!--for current product-->
+                                 <li>
+                                    <a href="javascript:void(0);" class="detbrand selected">
+                                    <img src="{{ uploaded_asset($detailedProduct->brand->logo) }}" height="30" class="loadimg" alt="">
+                                    <span class="price">{{home_discounted_base_price($detailedProduct)}}</span></a><!-- detbrand -->
+                                 </li>
+                                 <!--for current product-->
+									@endif
+                                 <!--for other products-->
+								 @php
+									$brandid = $detailedProduct->brand_id;
+									$catid = $detailedProduct->category_id;
+									$detailproductid = $detailedProduct->id;
+								 @endphp
+								   @foreach(\App\Models\Product::where('category_id',$catid)->where('id', '!=', $detailproductid)->groupBy('brand_id')->get() as $brandproducts)
+                                 <li>
+                                    <a href="{{route('product',$brandproducts->slug )}}" class="detbrand">
+                                    <img src="{{ uploaded_asset($brandproducts->brand->logo) }}" height="30" class="loadimg" alt="">
+                                    <span class="price">{{home_discounted_base_price($brandproducts)}}</span></a><!-- detbrand -->
+                                 </li>
+								   @endforeach
+                                 
+                                  
+                              </ul>
+                           </div>
+                           <hr/>
+                        
+                        
+                     </div>
+				  <!---Brand section end--->
                </div>
                <div class="col-md-6">
                   <div class="product-box1">

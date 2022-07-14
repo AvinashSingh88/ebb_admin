@@ -18,6 +18,5 @@ if(auth()->user() != null) {
 						  <span class="cart-count">0</span>
                           <b> ₹ 00</b>
 						  @endif
-					
-						</a>
+				</a>
 						

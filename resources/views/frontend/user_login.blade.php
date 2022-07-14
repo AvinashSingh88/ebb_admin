@@ -42,11 +42,11 @@
 													@csrf
 												@if (addon_is_activated('otp_system') && env("DEMO_MODE") != "On")
 													<div class="js-form-message form-group">
-														<input type="tel" id="phone-code" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">
+														<input required type="tel" id="phone-code" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">
 													</div>
 													<input type="hidden" name="country_code" value="">
 													<div class="js-form-message form-group">
-														<input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" id="email" autocomplete="off">
+														<input required type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" id="email" autocomplete="off">
 														@if ($errors->has('email'))
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $errors->first('email') }}</strong>
@@ -97,37 +97,41 @@
 												<form id="reg-form" action="{{ route('register') }}" method="post" class="js-validate row" novalidate="novalidate">
 													@csrf
 													<div class="js-form-message form-group col-md-6 mb-3">
-														<input type="text" class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" autocomplete="off">
+														<input type="text" required class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="First Name" autocomplete="off">
 														@if ($errors->has('first_name'))
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $errors->first('first_name') }}</strong>
 															</span>
 														@endif
+														<span class="text-danger" id="firstname_error"></span>
 													</div>
                                                     <input type="hidden" name="name" value="a">
 													<div class="js-form-message form-group col-md-6 mb-3">
-														<input type="text" class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name" autocomplete="off">
+														<input required type="text" class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" id="last_name" value="{{ old('last_name') }}" placeholder="Last Name" autocomplete="off">
                                                         @if ($errors->has('last_name'))
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $errors->first('last_name') }}</strong>
 															</span>
 														@endif
+														<span class="text-danger" id="lastname_error"></span>
 													</div>
 													<div class="js-form-message form-group col-md-6 mb-3">
-														<input type="text" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="Phone No." autocomplete="off">
+														<input  maxlength="10" min="10" pattern="[6789][0-9]{9}" required type="text" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Phone No." autocomplete="off">
                                                         @if ($errors->has('phone'))
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $errors->first('phone') }}</strong>
 															</span>
 														@endif
+														<span class="text-danger" id="phone"></span>
 													</div>
 													<div class="js-form-message form-group col-md-6 mb-3">
-														<input type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email address" autocomplete="off">
+														<input required type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="email" value="{{ old('email') }}" placeholder="Email address" autocomplete="off">
                                                         @if ($errors->has('email'))
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $errors->first('email') }}</strong>
 															</span>
 														@endif
+														<span class="text-danger" id="email"></span>
 													</div>
 													<div class="js-form-message form-group col-md-12 mb-3">
 														<ul class="list-unstyled d-flex">
@@ -136,7 +140,7 @@
 															</li>
 															<li class="m-3 mt-0 mb-0">
 																<label for="male">
-																	<input id="male" class="input-radio" type="radio" value="Male" name="gender"> <span>Male </span> </label>
+																	<input id="male" class="input-radio" type="radio" value="Male" checked name="gender"> <span>Male </span> </label>
 															</li>
 															<li class="m-3 mt-0 mb-0">
 																<label for="female">
@@ -149,12 +153,14 @@
 														</ul>
 													</div>
 													<div class="js-form-message form-group mb-3 col-md-6">
-														<input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="upassword" placeholder="New Password" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+														<input required type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="upassword" placeholder="New Password" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
                                                         @if ($errors->has('password'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('password') }}</strong>
                                                 </span>
+												
                                             @endif
+											<span class="text-danger" id="password_error"></span>
 													</div>
 													<div class="js-form-message form-group mb-3 col-md-6">
 														<input type="password" class="form-control" placeholder="{{  translate('Confirm Password') }}" name="password_confirmation">
@@ -162,7 +168,7 @@
 													<p class="text-gray-901 mb-4">Your personal data will be used to support your experience throughout this website, to manage your account, and for other purposes described in our <a href="policy.php" class="text-blue">privacy policy.</a></p>
 													<div class="mb-600">
 														<div class="mb-3">
-															<button type="submit" style="width:140px;" class="btn btn-primary-dark-w px-5">{{  translate('Create Account') }}</button>
+															<button type="submit" style="width:140px;" class="btn btn-primary-dark-w px-5 create-account">{{  translate('Create Account') }}</button>
 														</div>
 													</div>
 												</form>
@@ -232,6 +238,103 @@
 	</div>
 </div> 
 <script type="text/javascript">
+
+function validateForm() {
+  // let x = document.forms["myForm"]["fname"].value;
+  // if (x == "") {
+    // alert("Name must be filled out");
+    // return false;
+  // }
+		var first_name =  $('#first_name').val();
+		var last_name =  $('#last_name').val();
+		var phone =  $('#phone').val();
+		var password =  $('#password').val();
+		var email =  $('#email').val();
+       
+		if(first_name=='')
+			{
+				document.getElementById("firstname_error").innerHTML="First Name is Required."; 
+				return false;
+			}
+			else{
+				document.getElementById("firstname_error").innerHTML="";
+				
+			}
+			
+		if(last_name=='')
+		{
+			document.getElementById("lastname_error").innerHTML="Last Name is Required."; 
+			return false;
+		}
+		else{
+				document.getElementById("lastname_error").innerHTML="";
+				
+			}
+		if(phone=='')
+		{
+			document.getElementById("phone").innerHTML="Phone Number is Required."; 
+			return false;
+		}
+		else{
+				document.getElementById("phone").innerHTML="";
+				
+			}
+		if(email=='')
+		{
+			document.getElementById("email").innerHTML="Email is Required."; 
+			return false;
+		}
+		else{
+				document.getElementById("email").innerHTML="";
+				
+			}
+		if(password=='')
+		{
+			document.getElementById("password_error").innerHTML="Password Number is Required."; 
+			return false;
+		}
+		else{
+				document.getElementById("password_error").innerHTML="";
+				
+			}
+}
+
+	$(".create-accountsss").click(function(e){
+		e.preventDefault();
+		var first_name =  $('#first_name').val();
+		var last_name =  $('#last_name').val();
+		var phone =  $('#phone').val();
+		var password =  $('#password').val();
+		var email =  $('#email').val();
+       
+		if(first_name=='')
+			{
+				document.getElementById("firstname_error").innerHTML="First Name is Required."; 
+				return false;
+			}
+			
+		if(last_name=='')
+		{
+			document.getElementById("lastname_error").innerHTML="Last Name is Required."; 
+			return false;
+		}
+		if(phone=='')
+		{
+			document.getElementById("phone").innerHTML="Phone Number is Required."; 
+		}
+		if(email=='')
+		{
+			document.getElementById("email_error").innerHTML="Email Number is Required."; 
+		}
+		if(password=='')
+		{
+			document.getElementById("password_error").innerHTML="Password Number is Required."; 
+		}
+			 
+    
+	
+	});
+	
         var isPhoneShown = true,
             countryData = window.intlTelInputGlobals.getCountryData(),
             input = document.querySelector("#phone-code");
@@ -287,140 +390,4 @@
 
         
     </script>
-
-@php if(false) { @endphp
-<section class="gry-bg py-5">
-	<div class="profile">
-		<div class="container">
-			<div class="row">
-				<div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
-					<div class="card">
-						<div class="text-center pt-4">
-							<h1 class="h4 fw-600">
-                                    {{ translate('Login to your account.')}}
-                                </h1> </div>
-						<div class="px-4 py-3 py-lg-4">
-							<div class="">
-								<form class="form-default" role="form" action="{{ route('login') }}" method="POST">
-								@csrf @if (addon_is_activated('otp_system') && env("DEMO_MODE") != "On")
-									<div class="form-group phone-form-group mb-1">
-										<input type="tel" id="phone-code" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off"> </div>
-									<input type="hidden" name="country_code" value="">
-									<div class="form-group email-form-group mb-1 d-none">
-										<input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" id="email" autocomplete="off"> @if ($errors->has('email')) <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span> @endif </div>
-									<div class="form-group text-right">
-										<button class="btn btn-link p-0 opacity-50 text-reset" type="button" onclick="toggleEmailPhone(this)">{{ translate('Use Email Instead') }}</button>
-									</div> @else
-									<div class="form-group">
-										<input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" id="email" autocomplete="off"> @if ($errors->has('email')) <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span> @endif </div> @endif
-									<div class="form-group">
-										<input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ translate('Password')}}" name="password" id="password"> </div>
-									<div class="row mb-2">
-										<div class="col-6">
-											<label class="aiz-checkbox">
-												<input type="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}> <span class=opacity-60>{{  translate('Remember Me') }}</span> <span class="aiz-square-check"></span> </label>
-										</div>
-										<div class="col-6 text-right"> <a href="{{ route('password.request') }}" class="text-reset opacity-60 fs-14">{{ translate('Forgot password?')}}</a> </div>
-									</div>
-									<div class="mb-5">
-										<button type="submit" class="btn btn-primary btn-block fw-600">{{ translate('Login') }}</button>
-									</div>
-								</form>
-								@if (env("DEMO_MODE") == "On")
-								<div class="mb-5">
-									<table class="table table-bordered mb-0">
-										<tbody>
-											<tr>
-												<td>{{ translate('Seller Account')}}</td>
-												<td>
-													<button class="btn btn-info btn-sm" onclick="autoFillSeller()">{{ translate('Copy credentials') }}</button>
-												</td>
-											</tr>
-											<tr>
-												<td>{{ translate('Customer Account')}}</td>
-												<td>
-													<button class="btn btn-info btn-sm" onclick="autoFillCustomer()">{{ translate('Copy credentials') }}</button>
-												</td>
-											</tr>
-											<tr>
-												<td>{{ translate('Delivery Boy Account')}}</td>
-												<td>
-													<button class="btn btn-info btn-sm" onclick="autoFillDeliveryBoy()">{{ translate('Copy credentials') }}</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div> @endif @if(get_setting('google_login') == 1 || get_setting('facebook_login') == 1 || get_setting('twitter_login') == 1)
-								<div class="separator mb-3"> <span class="bg-white px-3 opacity-60">{{ translate('Or Login With')}}</span> </div>
-								<ul class="list-inline social colored text-center mb-5"> @if (get_setting('facebook_login') == 1)
-									<li class="list-inline-item">
-										<a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="facebook"> <i class="lab la-facebook-f"></i> </a>
-									</li> @endif @if(get_setting('google_login') == 1)
-									<li class="list-inline-item">
-										<a href="{{ route('social.login', ['provider' => 'google']) }}" class="google"> <i class="lab la-google"></i> </a>
-									</li> @endif @if (get_setting('twitter_login') == 1)
-									<li class="list-inline-item">
-										<a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="twitter"> <i class="lab la-twitter"></i> </a>
-									</li> @endif </ul> @endif </div>
-							<div class="text-center">
-								<p class="text-muted mb-0">{{ translate('Dont have an account?')}}</p> <a href="{{ route('user.registration') }}">{{ translate('Register Now')}}</a> </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section> @php } @endphp @endsection @section('script')
-<script type="text/javascript">
-var isPhoneShown = true,
-	countryData = window.intlTelInputGlobals.getCountryData(),
-	input = document.querySelector("#phone-code");
-for(var i = 0; i < countryData.length; i++) {
-	var country = countryData[i];
-	if(country.iso2 == 'bd') {
-		country.dialCode = '88';
-	}
-}
-var iti = intlTelInput(input, {
-	separateDialCode: true,
-	utilsScript: "{{ static_asset('assets/js/intlTelutils.js') }}?1590403638580",
-	onlyCountries: @php echo json_encode(\App\ Models\ Country::where('status', 1) - > pluck('code') - > toArray())@ endphp,
-	customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
-		if(selectedCountryData.iso2 == 'bd') {
-			return "01xxxxxxxxx";
-		}
-		return selectedCountryPlaceholder;
-	}
-});
-var country = iti.getSelectedCountryData();
-$('input[name=country_code]').val(country.dialCode);
-input.addEventListener("countrychange", function(e) {
-	// var currentMask = e.currentTarget.placeholder;
-	var country = iti.getSelectedCountryData();
-	$('input[name=country_code]').val(country.dialCode);
-});
-
-function toggleEmailPhone(el) {
-	if(isPhoneShown) {
-		$('.phone-form-group').addClass('d-none');
-		$('.email-form-group').removeClass('d-none');
-		$('input[name=phone]').val(null);
-		isPhoneShown = false;
-		$(el).html('{{ translate('
-			Use Phone Instead ') }}');
-	} else {
-		$('.phone-form-group').removeClass('d-none');
-		$('.email-form-group').addClass('d-none');
-		$('input[name=email]').val(null);
-		isPhoneShown = true;
-		$(el).html('{{ translate('
-			Use Email Instead ') }}');
-	}
-}
-
-
-</script> @endsection
+@endsection
