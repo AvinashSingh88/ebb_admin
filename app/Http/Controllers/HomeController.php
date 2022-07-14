@@ -944,14 +944,14 @@ class HomeController extends Controller
     }
 
     public function productRequestQuote(Request $request){
-        // $request->validate([
-        //     'name'=>'required',
-        //     'email'=>'required|email',
-        //     'phone'=>'required|min:11|numeric',
-        //     'price_range'=>'required',
-        //     'message'=>'required',
-        //     'category'=>'required',
-        // ]);
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'phone'=>'required|min:11|numeric',
+            'price_range'=>'required|numeric',
+            'message'=>'required',
+            'category'=>'required',
+        ]);
     //    dd($request->name);
     //    die;
         $add_product_request_enquiry = ProductQuoteEnquiry::create([

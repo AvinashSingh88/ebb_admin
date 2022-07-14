@@ -44,26 +44,25 @@
                         </li>-->
     <li class="link-category link-category1aa">
 
-
+						@php
+						   $countCategory = \App\Models\Category::where('parent_id','=',0)->where('type','1')->count();
+						@endphp
 
        <div id="accordion" class="accordion-container">
           <article class="content-entry">
              <h4 class="article-title">
                 <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;" role="button">
-                   Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> (9)</span> <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
+                   Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal"> ({{$countCategory}})</span> <i class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
                 </a>
              </h4>
              <div class="accordion-content">
                 <div class="link-categoryx link-category1az ">
                    <ul class="list-unstyled dropdown-list">
-
-                     @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-                     @php
-                       $productCountByCat = \App\Models\Product::where('category_id','=', $category->id)->count();
-                  
-                     @endphp
-                     
-					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} ({{ $productCountByCat}}) </a></li>
+					 @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
+						 @php
+						   $SubCategoryCountByCat = \App\Models\Category::where('parent_id','=', $category->id)->count();
+						 @endphp
+							<li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} ({{ $SubCategoryCountByCat}}) </a></li>
                      @endforeach
                    </ul>
                 </div>
@@ -99,86 +98,10 @@
            
          </div>
       </div>
-	   <section class="youmayalso">
 	  
-    
-	   <div class="service-pros23 service-pros animated animate__fadeInUp wow">
-         <div class="container">
-		 <div class="service-pros" style="padding:0px;margin:0px;">
-		<div class="head-cnt work-center text-center">
-            <div class="bounceIn animated">
-           
-               <h4>You may also like</h4>
-			   <hr class="underlinskd">
-               
-            </div>
-         </div>
-         </div>
-		 	 
-         
-	  <div class="owl-carousel owl-theme trending4">
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros1.png')}}" alt="" />
-                                       
-                                       </div>
-									      <h3>Modular kitchen</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros2.jpg')}}" alt="" />
-                                      
-                                       </div>    <h3>Hardware and tools</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros3.jpg')}}" alt="" />
-                                        
-                                       </div>  <h3>Paints and surface care (PSC)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros4.jpg')}}" alt="" />
-                                         
-                                       </div> <h3>Structural materials (SMT)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros5.jpg')}}" alt="" />
-                                  
-                                       </div>        <h3>Wood materials (WMT)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros6.jpg')}}" alt="" />
-                                  
-                                       </div>        <h3>Electrical & lighting (ELT)</h3>
-                                    </a>
-                                 </div>
-                                 <div class="item">
-                                    <a href="javascript:void(0);">
-                                       <div class="trend-theme">
-                                          <img src="{{static_asset('assets_web/img/pros7.jpg')}}" alt="" />
-                                  
-                                       </div>        <h3>Sanitary ware & bath fittings</h3>
-                                    </a>
-                                 </div>
-                              </div>
-        
-      </div>
-      </div>
-      </section>
+	  <!--You may also like start --->
+		@include('frontend.partials.youmaylike')
+	  <!--You may also like end --->
 	  	  	 <section class="banner-brand_product">
 		 <div class="container">
 		 <div class="service-pros" style="padding:0px;margin:0px;">

@@ -184,7 +184,8 @@
 		var name =  $('#names').val();
         var mobile = $("input[name=mobile]").val();
         var email = $('#emails').val();
-		
+    if(name!=='' && mobile!=='' && email!=='')
+        {
         var url = '{{ url('insertCallRequest') }}';
 		$.ajaxSetup({
 			headers: {
@@ -200,7 +201,8 @@
                   email:email,
                 },
            success:function(response){
-              toastr.info(response.message);
+              toastr.info("Call Request Sent Successfully!");
+              document.getElementById("error_message").innerHTML="";
 				$('#names').val('');
 				$("input[name=mobile]").val('');
 				$('#emails').val('');
@@ -210,6 +212,11 @@
            }
 		
         });
+    }
+    else{
+        // alert('Required');
+        document.getElementById("error_message").innerHTML="All fields are Required."; 
+    }
 	});
 		
         $(document).ready(function() {

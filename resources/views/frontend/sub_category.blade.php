@@ -61,8 +61,11 @@
                      <div class="link-categoryx link-category1az ">
                          <ul class="list-unstyled dropdown-list">
                          @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-					         <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} </a></li>
-                     @endforeach
+							@php
+								$SubCategoryCountByCat = \App\Models\Category::where('parent_id','=', $category->id)->count();
+							@endphp
+							<li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }} ({{$SubCategoryCountByCat}})</a></li>
+						 @endforeach
                          </ul>
                      </div>
                  </div>
@@ -74,7 +77,11 @@
      <b> {{$subcategories->name}}</b>
      <ul class="list-unstyled dropdown-list listing_block filter">
 								 @foreach ($firstFiveSubcat as $item)
-									<li><a class="dropdown-item1" href="{{ route('products.category', $item->slug) }}"> {{$item->name}}</a></li>
+								 @php
+									$cat_id = $item->id;
+									$total_products = \App\Models\Product::where('category_id',$cat_id)->count();
+								@endphp
+									<li><a class="dropdown-item1" href="{{ route('products.category', $item->slug) }}"> {{$item->name}} ({{$total_products}})</a></li>
 								 @endforeach
 								    
 								 @foreach ($exceptFiveSubcat as $item)
