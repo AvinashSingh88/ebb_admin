@@ -126,8 +126,12 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        // dd($request);
-        // die;
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'phone'=>'required|min:10|numeric',
+            'email'=>'required|email',
+        ]);
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             if(User::where('email', $request->email)->first() != null){
                 flash(translate('Email or Phone already exists.'));

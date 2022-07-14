@@ -1920,7 +1920,7 @@
                                              <i class="fa-solid fa-phone-flip"></i>
                                           </span>
                                           <input type="tel" required name="phone" class="form-control empty"
-                                             placeholder="Phone Number" maxlength="10" minlength="10" />
+                                             placeholder="Phone Number" maxlength="10" min="10" />
                                        </div>
 									    <span class="form-text text-danger my-3">@error('phone'){{$message}}@enderror</span>
                                        <div class="input-group w-441" style="margin-bottom: 10px; float: left">
