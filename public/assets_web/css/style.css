@@ -29,6 +29,7 @@ p {
     width: 100%;
     height: auto;
     margin-bottom: 15px;
+	transition: all 1s ease;
 }
 
 
@@ -39,6 +40,7 @@ p {
     justify-content: end;
     text-align: right;
     width: 100%;
+	margin: 2px 0 0 0;
 }
 
 
@@ -504,10 +506,6 @@ div#slide-3046-layer-1 {
     background: #000;
     z-index: 8;
     border-bottom: 1px solid #ccc;
-}
-
-.t_c.right-text {
-    margin: 2px 0 0 0;
 }
 
 .topHeader .info1 {
@@ -2139,46 +2137,46 @@ li.menulocationds.menulocationds2.com ul.megamenusubs231 {
     top: -24px;
 }
 
-.megamenu .megamenusubs231a li a:hover {
+.megamenu .megamenusubs231a1 li a:hover {
     padding-left: 10px !important;
-    background: #ed3776;
-    color: #fff;
     text-decoration: none;
+	background: #ed3776 !important;
+    color: #fff !important;
 }
 
-.megamenu .megamenusubs231b li a:hover {
+.megamenu .megamenusubs231a2 li a:hover {
     padding-left: 10px !important;
-    background: #009688;
-    color: #fff;
     text-decoration: none;
+	background: #009688 !important;
+    color: #fff !important;
 }
 
-.megamenu .megamenusubs231c li a:hover {
+.megamenu .megamenusubs231a3 li a:hover {
     padding-left: 10px !important;
-    background: #ed38f6;
-    color: #fff;
     text-decoration: none;
+	background: #ed38f6 !important;
+    color: #fff !important;
 }
 
-.megamenu .megamenusubs231d li a:hover {
+.megamenu .megamenusubs231a4 li a:hover {
     padding-left: 10px !important;
-    background: #ff0000;
-    color: #fff;
     text-decoration: none;
+	background: #ff0000 !important;
+    color: #fff !important;
 }
 
-.megamenu .megamenusubs231e li a:hover {
+.megamenu .megamenusubs231a5 li a:hover {
     padding-left: 10px !important;
-    background: #ed3906;
-    color: #fff;
     text-decoration: none;
+	background: #ed1076 !important;
+    color: #fff !important;
 }
 
-.megamenu .megamenusubs231f li a:hover {
+.megamenu .megamenusubs231a6 li a:hover {
     padding-left: 10px !important;
-    background: #ed1076;
-    color: #fff;
     text-decoration: none;
+	background: #0a85ab !important;
+    color: #fff !important;
 }
 
 .webhead1 {
@@ -2732,7 +2730,7 @@ li.menulocationds.menulocationds2.com ul.megamenusubs231 {
     width: 100%;
     position: relative;
     height: 50px;
-    padding: 12px 12px;
+    padding: 12px 35% 12px 12px;
     border-radius: 50px;
     border: 2px solid white;
     margin-bottom: 0;
@@ -5640,7 +5638,7 @@ ul.menu-list {
 ul.menu-list li a {
     display: block;
     color: #000;
-    padding: 13px 15% 13px 10%;
+    padding: 13px 5% 13px 5%;
     font-size: 13px;
     font-weight: normal;
     transition: 0.3s;
@@ -5820,7 +5818,6 @@ a.close-menu {
 }
 
 .form-above_footer .bottom-form .input-group .form-control {
-    cursor: pointer;
     font-size: 13px;
     letter-spacing: 0.5px;
 }
@@ -7983,6 +7980,8 @@ div.bhoechie-tab-menu ul.nav.nav-tabs li {
     background: #f8f8f8;
 }
 
+
+
 .hotkeys_sprite {
     position: absolute;
     z-index: 99;
@@ -8039,35 +8038,35 @@ b.webhead6 {
     margin-top: 0px;
 }
 
-.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231a li a:hover {
+/*.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231a1 li a:hover {
     background: #ed3776 !important;
     color: #fff !important;
 }
 
-.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231b li a:hover {
+.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231a2 li a:hover {
     background: #009688 !important;
     color: #fff !important;
 }
 
-.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231c li a:hover {
+.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231a3 li a:hover {
     background: #ed38f6 !important;
     color: #fff !important;
 }
 
-.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231d li a:hover {
+.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231a4 li a:hover {
     background: #ff0000 !important;
     color: #fff !important;
 }
 
-.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231e li a:hover {
+.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231a5 li a:hover {
     background: #ed1076 !important;
     color: #fff !important;
 }
 
-.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231f li a:hover {
+.top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li .megamenusubs231a6 li a:hover {
     background: #0a85ab !important;
     color: #fff !important;
-}
+}*/
 
 .top_ul ul li:hover .top-megamenu.web-mega .megamenu.megamenu2 {
     display: block !important;
@@ -9364,12 +9363,13 @@ li.gchoice_18_14_2 {
     padding: 10px 10px 10px 10px !important;
     display: block;
     border-bottom: 1px solid #eee;
-    background: #fff;
+    background: #f8f8f8;
     color: #000 !important;
     position: relative;
     font-size: 13px;
     letter-spacing: 0.5px;
     border-radius: 0;
+	width: 270px;
 }
 
 .top_ul .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li {
@@ -16799,9 +16799,10 @@ input[type="checkbox"] {
 }
 
 .custom-control-label {
-    position: relative;
+    position: absolute;
     margin-bottom: 0;
     vertical-align: top;
+	padding-left:18px;
 }
 
 .btn-primary-dark-w {
@@ -17714,9 +17715,6 @@ ul.list-unstyled.dropdown-list.listing_block a {
     letter-spacing: 0.5px;
 }
 
-.ser-prd-img.position-relative img {
-    transition: all 1s ease;
-}
 
 .product-box.services:hover .ser-prd-img.position-relative img {
     transform: scale(1.5);
@@ -20498,9 +20496,7 @@ li.ukine.fs-5.py-2 {
     width: 100%;
 }
 
-.top_ul ul li a {
-    width: 270px;
-}
+
 
 ul.megamenusubs {
     height: 508px;

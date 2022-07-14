@@ -16,8 +16,7 @@ if(auth()->user() != null) {
 						<span class="cart-count">{{ count($cart)}}</span> 
 					  @else
 						  <span class="cart-count">0</span>
-                         <!-- <b> ₹ 00</b>-->
+                          <b> ₹ 00</b>
 						  @endif
-					
-						</a>
+				</a>
 						

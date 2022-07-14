@@ -131,7 +131,17 @@
     </div>
 
     @yield('modal')
+	<script>
+        $(document).ready(function() {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('alert-danger'))
+                toastr.error('{{ Session::get('alert-danger') }}');
+            @elseif(Session::has('alert-success'))
+                toastr.success('{{ Session::get('alert-success') }}');
+            @endif
+        });
 
+    </script>
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
 		
