@@ -29,7 +29,6 @@ p {
     width: 100%;
     height: auto;
     margin-bottom: 15px;
-	transition: all 1s ease;
 }
 
 
@@ -40,7 +39,6 @@ p {
     justify-content: end;
     text-align: right;
     width: 100%;
-	margin: 2px 0 0 0;
 }
 
 
@@ -506,6 +504,10 @@ div#slide-3046-layer-1 {
     background: #000;
     z-index: 8;
     border-bottom: 1px solid #ccc;
+}
+
+.t_c.right-text {
+    margin: 2px 0 0 0;
 }
 
 .topHeader .info1 {
@@ -17715,6 +17717,9 @@ ul.list-unstyled.dropdown-list.listing_block a {
     letter-spacing: 0.5px;
 }
 
+.ser-prd-img.position-relative img {
+    transition: all 1s ease;
+}
 
 .product-box.services:hover .ser-prd-img.position-relative img {
     transform: scale(1.5);
