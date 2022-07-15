@@ -158,8 +158,7 @@ $meta_description = get_setting('meta_description');
 
                            @if (!isset($category_id))
                             @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-                           <li><a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">{{
-                                 $category->getTranslation('name') }}</a></li>
+                           <li><a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">{{$category->getTranslation('name') }}</a></li>
                            @endforeach
                            @else
 
@@ -187,6 +186,33 @@ $meta_description = get_setting('meta_description');
                            </li>
                            @endforeach
                            @endif
+
+                        </ul>
+                     </li>
+                     
+                     
+                     
+                     <li class="listing-botoms">
+                        <b> Structural Material</b>
+                        <ul class="list-unstyled dropdown-list listing_block filter">
+
+                           
+                           <li><a class="dropdown-item1 active" href="#">Cement <i class="fa fa-angle-down" aria-hidden="true"></i></a></li> 
+                           <li><a class="dropdown-item1" href="#">Black Cement</a></li>
+                           <li><a class="dropdown-item1" href="#">White Cement</a></li>
+                           <li><a class="dropdown-item1" href="#">Grey Cement</a></li>
+                           
+                           <li><a class="dropdown-item1" href="#">Bricks & Blocks <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+<li><a class="dropdown-item1" href="#">Sand & Stones  <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+<li><a class="dropdown-item1" href="#">Roofing Solution  <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+
+<a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2" data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false" aria-controls="collapseBrand">
+                                    <span class="link__icon text-gray-27 bg-white">
+                                       <span class="link__icon-inner">+</span>
+                                    </span>
+                                    <span class="link-collapse__default">Show more</span>
+                                    <span class="link-collapse__active">Show less</span>
+                                 </a>
 
                         </ul>
                      </li>

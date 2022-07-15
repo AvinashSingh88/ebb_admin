@@ -299,6 +299,9 @@
                                                                      </a>
                                                                   </li>
                                                                @endforeach
+                                                               <li>
+			                                                          <a href="{{ route('products.category', $subcatSlug) }}" class="buildsing">View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+			                                                                                                </li>
 
                                                             </ul>
                                                          </li>
@@ -320,7 +323,7 @@
                                                                <li><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></li>
                                                                @endforeach  
                                                             </ul>
-                                                      <img src="{{static_asset('assets_web/img/service-banner-1.png')}}">
+                                                      
                                                       <a class="hire-team-btn" href="javascript:void(0);" target="_self">View More</a>
                                                    </div>
                                                 </div>
@@ -355,7 +358,7 @@
                                  
                               </li>
                               <li class="home">
-                                 <a href="javascript:void(0);"><i class="fas fa-home"></i></a>
+                                 <a href="{{url('/')}}"><i class="fas fa-home"></i></a>
                               </li>
                               <li class="menulocationds menulocationds1 com">
                                  <a href="#s">Company</a>
@@ -466,14 +469,21 @@
                                     background-position: top center;
                                     ">
                                     <div class="row">
-                                       <div class="col-md-8" style="padding-right: 0px">
+                                       <div class="col-md-12" style="padding-right: 0px">
                                           <ul class="megamenusubs">
+                                          @php
+                                             $i=0;
+                                          @endphp
                                              @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->get() as $key => $category)
                                              <li>
+                                             @php
+                                                   $i++;
+                                                   $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+                                                @endphp
                                                 <a href="{{ route('cat', $category->slug) }}" style="    padding: 0px;">
-                                                <b class="webhead1">{{  $category->getTranslation('name') }}</b>
+                                                <b class="webhead{{$i}}">{{  $category->getTranslation('name') }}</b>
                                                 </a>
-                                                <ul class="megamenusubs231 megamenusubs231a">
+                                                <ul class="megamenusubs231 megamenusubs231a{{$i}}">
 													<li class="overflow-hidden m-0 p-0 h-96">
 														<ul class="m-0 p-0 d-block">
 														   @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
@@ -489,24 +499,20 @@
 													</li>
                                                 
                                                    <li class="mb-2">
-                                                      <a href="{{route('cat', $category->slug)}}" style="color: #1274c0; font-weight: 700;letter-spacing: 0.5px;">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                                      <a href="{{route('cat', $category->slug)}}" class="viewmorepro">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                                    </li>
                                                 </ul>
                                              </li>
-                                             @endforeach  
+                                             @php
+                                                            if($i==5)
+                                                            {
+                                                               $i=0;
+                                                            }
+                                                         @endphp
+                                                      @endforeach
                                           </ul>
                                        </div>
-                                       <div class="col-md-4">
-                                          <div class="divcalimmega">
-                                             <h3>Hire Team</h3>
-                                             <p>
-                                                Hire our dedicated team who will prove to be the biggest sources to help your businesses with cost-effective method.
-                                             </p>
-                                             <img src="{{static_asset('assets_web/img/service-banner-1.png')}}" />
-                                             <a class="hire-team-btn" href="javascript:void(0);" target="_self">Hire Team</a
-                                                >
-                                          </div>
-                                       </div>
+                                       
                                     </div>
                                  </div>
                               </li>
@@ -778,23 +784,7 @@
                   class="injected-svg js-svg-injector"
                   data-parent="#SVGwaveWithDots"
                   >
-                  <style type="text/css">
-                     .wave-bottom-with-dots-0 {
-                     fill: #377dff;
-                     }
-                     .wave-bottom-with-dots-1 {
-                     fill: #377dff;
-                     }
-                     .wave-bottom-with-dots-2 {
-                     fill: #de4437;
-                     }
-                     .wave-bottom-with-dots-3 {
-                     fill: #00c9a7;
-                     }
-                     .wave-bottom-with-dots-4 {
-                     fill: #ffc107;
-                     }
-                  </style>
+                 
                   <path
                      class="wave-bottom-with-dots-0 fill-primary"
                      opacity=".6"
