@@ -35,27 +35,28 @@
           <div class="midFooter">
              <div class="row">
                 <div class="col-sm-2 aboutLogo">
-                   <h3>Online Services</h3>
+                   <h3>Online Products </h3>
                    <div class="serRow">
                       <ul class="ulanineser">
-					  @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','2')->get() as $key => $category)
+                        @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
                          <li>
-                            <a href="{{ route('servicecat', $category->slug) }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{$category->name}}</a>
+                            <a href="{{ route('cat', $category->slug) }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{$category->name}}</a>
                          </li>
-						 @endforeach
+						      @endforeach
                           
                       </ul>
                    </div>
                 </div>
                 <div class="col-sm-5 services">
-                   <h3> Online Products </h3>
+                   <h3> Online Services </h3>
                    <div class="serRow">
                       <ul>
-                         @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
+                        @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','2')->orderBy('order_level', 'ASC')->get() as $key => $category)
                          <li>
-                            <a href="{{ route('cat', $category->slug) }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{$category->name}}</a>
+                            <a href="{{ route('servicecat', $category->slug) }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{$category->name}}</a>
                          </li>
-						 @endforeach
+						      @endforeach
+                         
                         
                       </ul>
                    </div>
@@ -64,12 +65,12 @@
                    <h3>{{ get_setting('widget_one',null,App::getLocale()) }}</h3>
                    <div class="serRow">
                       <ul class="ulanineser">
-					  @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
-                            @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
-                         <li>
-                            <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ $value }}</a>
-                         </li>
-						  @endforeach
+					         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
+                           @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
+                              <li>
+                                 <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ $value }}</a>
+                              </li>
+                           @endforeach
                         @endif
                          
                       </ul>
