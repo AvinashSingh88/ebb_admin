@@ -100,21 +100,12 @@
  
    </head>
    <body>
-       @include('frontend.header')
+		@include('frontend.header')
        @yield('content')
        @include('frontend.footer')
-	   
-	   @include('frontend.partials.modal')
+       @include('frontend.partials.modal')
 
-    <style>
-	.popup_products_modals { 
-    height: auto;    top: 5%;
-    overflow-x: auto;
-    overflow-y: auto; 
-}
-	</style>
-
-    <div class="modal fade popup_products_modals" id="addToCart">
+   <div class="modal fade popup_products_modals" id="addToCart">
         <div class="modal-dialog mt-0 d-block modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
             <div class="modal-content position-relative">
                 <!--<div class="c-preloader text-center p-3">
@@ -575,7 +566,7 @@ $('#option-choice-form input').on('change', function(){
    
     <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <!--<script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>-->
+    <script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>
     <script src="{{static_asset('assets_web/js/slick.min.js')}}"></script>
     <script src="{{static_asset('assets_web/js/owl.carousel.js')}}"></script>
     <script src="{{static_asset('assets_web/js/plugins.js')}}" type="text/javascript"></script>

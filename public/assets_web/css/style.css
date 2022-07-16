@@ -2088,6 +2088,18 @@ li.menulocationds.menulocationds2.com ul.megamenusubs231 {
     width: 100%;
     display: block;
 }
+.product_submenu:before {
+    position: absolute;
+    z-index: 999999;
+    content: "";
+    width: 0px;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #ff7713;
+    left: 51.4%;
+    top: -21px;
+}
 
 .megamenu1:before {
     position: absolute;
@@ -2111,7 +2123,7 @@ li.menulocationds.menulocationds2.com ul.megamenusubs231 {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 20px solid #ff7713;
-    left: 54%;
+    left: 53.7%;
     top: -24px;
 }
 
@@ -2124,7 +2136,7 @@ li.menulocationds.menulocationds2.com ul.megamenusubs231 {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 20px solid #ff7713;
-    left: 67%;
+    left: 70.3%;
     top: -24px;
 }
 
@@ -4139,7 +4151,7 @@ ul.megamenusubs li ul li a:after {
     min-width: 318px;
     height: auto;
     padding: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     z-index: -2;
     border-radius: 15px;
     transition: all 0.3s ease;
@@ -4280,7 +4292,7 @@ a.logoFotterT {
 }
 
 .megamenu4:before {
-    left: 89%;
+    left: 87.6%;
 }
 
 .product_submenu {
@@ -8081,7 +8093,7 @@ b.webhead6 {
     position: absolute;
     width: 250px;
     background: #fff;
-    right: -10px;
+    right: -25px;
     border-top: 5px solid #ff7713;
     border-radius: 10px;
     display: none;
@@ -8105,6 +8117,7 @@ b.webhead6 {
     height: 100%;
     line-height: 20px;
     display: flex;
+	
 }
 
 .more_tabs .tab-more ul li:nth-child(2n+2) a {
@@ -8151,7 +8164,7 @@ li.com.more_tabs:hover .tab-more {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 20px solid #ff7713;
-    left: 80%;
+    left: 85%;
     top: -20px;
 }
 
@@ -11265,6 +11278,7 @@ a.detbrand.selected img {
     filter: grayscale(0%);
     -webkit-filter: grayscale(0%);
     opacity: 1;
+	max-width:100%;
 }
 
 a.detbrand>span.price {
@@ -23198,4 +23212,6 @@ section.all_sub_brands .bg-white.shadow-sm.rounded.px-3.pt-3 {
  .wave-bottom-with-dots-4 {
  fill: #ffc107;
  }
- 
+.mrgnbot10{
+		margin-bottom:10px;
+}
