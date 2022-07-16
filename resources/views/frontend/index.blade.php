@@ -107,7 +107,7 @@
                <div class="col-md-12 col-sm-12 col-12">
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
                      <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
+                        <a href="{{route('servicecategories.all')}}" class="view-link"> View all <i
                               class="fa-solid fa-chevron-right"></i>
                         </a>
                      </div>

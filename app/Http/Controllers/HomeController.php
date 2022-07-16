@@ -558,6 +558,10 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('frontend.all_brand', compact('categories'));
     }
+    public function all_service_category(Request $request){
+        $servicecategories = Category::where('level', 0)->where('type','2')->orderBy('order_level', 'asc')->get();
+        return view('frontend.all_service_category', compact('servicecategories'));
+    }
 
     public function show_product_upload_form(Request $request)
     {
