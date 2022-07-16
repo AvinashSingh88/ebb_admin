@@ -138,6 +138,8 @@
                 toastr.error('{{ Session::get('alert-danger') }}');
             @elseif(Session::has('alert-success'))
                 toastr.success('{{ Session::get('alert-success') }}');
+            @elseif(Session::has('alert-warning'))
+                toastr.success('{{ Session::get('alert-warning') }}');
             @endif
         });
 

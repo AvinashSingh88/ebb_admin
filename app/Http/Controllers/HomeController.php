@@ -825,7 +825,8 @@ class HomeController extends Controller
             return back();
         }
 
-        flash(translate('Email already exists!'))->warning();
+        // <!-- flash(translate('Email already exists!'))->warning(); -->
+        flash('alert-warning', 'Email already exists!');
         return back();
     }
 
@@ -875,13 +876,16 @@ class HomeController extends Controller
 
                 auth()->login($user, true);
 
-                flash(translate('Email Changed successfully'))->success();
+                // <!-- flash(translate('Email Changed successfully'))->success(); -->
+                flash('alert-success', 'Email already exists!');
                 return redirect()->route('dashboard');
             }
         }
 
-        flash(translate('Email was not verified. Please resend your mail!'))->error();
-        return redirect()->route('dashboard');
+        // <!-- flash(translate('Email was not verified. Please resend your mail!'))->error(); -->
+        // flash('alert-danger', 'Email was not verified. Please resend your mail!');
+		return redirect()->route('dashboard')->with(session()->flash('alert-danger', 'Email was not verified. Please resend your mail.'));
+        // return redirect()->route('dashboard');
     }
 
     public function reset_password_with_code(Request $request)
@@ -894,19 +898,20 @@ class HomeController extends Controller
                 event(new PasswordReset($user));
                 auth()->login($user, true);
 
-                flash(translate('Password updated successfully'))->success();
+                // flash(translate('Password updated successfully'))->success();
+                flash('alert-danger', 'Password updated successfully!');
+                
 
                 if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'staff') {
                     return redirect()->route('admin.dashboard');
                 }
                 return redirect()->route('home');
             } else {
-                flash("Password and confirm password didn't match")->warning();
-                return redirect()->route('password.request');
+                return redirect()->route('password.request')->with(session()->flash('alert-danger', 'Password and confirm password did not match.'));
             }
         } else {
-            flash("Verification code mismatch")->error();
-            return redirect()->route('password.request');
+            // <!-- flash("Verification code mismatch")->error(); -->
+            return redirect()->route('password.request')->with(session()->flash('alert-danger', 'Verification code mismatch.'));
         }
     }
 

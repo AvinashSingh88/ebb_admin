@@ -48,7 +48,8 @@ class ForgotPasswordController extends Controller
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             $user = User::where('email', $request->email)->first();
             if ($user != null) {
-                $user->verification_code = rand(100000,999999);
+                $user->verification_code = 123456;
+                // $user->verification_code = rand(100000,999999);
                 $user->save();
 
                 $array['view'] = 'emails.verification';
@@ -56,13 +57,15 @@ class ForgotPasswordController extends Controller
                 $array['subject'] = translate('Password Reset');
                 $array['content'] = translate('Verification Code is ').$user->verification_code;
 
-                Mail::to($user->email)->queue(new SecondEmailVerifyMailManager($array));
+                // Mail::to($user->email)->queue(new SecondEmailVerifyMailManager($array));
 
                 return view('auth.passwords.reset');
             }
             else {
-                flash(translate('No account exists with this email'))->error();
-                return back();
+                // flash(translate('No account exists with this email'))->error();
+                // flash('alert-danger', 'No account exists with this email!');
+                return redirect()->back()->with(session()->flash('alert-danger', 'NO account exists with this email!.'));
+                // return back();
             }
         }
         else{
@@ -74,7 +77,8 @@ class ForgotPasswordController extends Controller
                 return view('otp_systems.frontend.auth.passwords.reset_with_phone');
             }
             else {
-                flash(translate('No account exists with this phone number'))->error();
+                // flash(translate('No account exists with this phone number'))->error();
+                flash('alert-danger', 'No account exists with this phone number!');
                 return back();
             }
         }
