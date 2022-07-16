@@ -1,9 +1,6 @@
 @extends('frontend.master')
-
 @section('title')Home - @endsection
-
 @section('description') @endsection
-
 
 @section('content')
 <div class="banner-main">
@@ -92,13 +89,16 @@
       </div>
    </div>
    <div class="stopowl">
-      <a class="button secondary play"><i class="fas fa-play"></i></a><a class="button secondary stop"><i
-            class="fa fa-pause"></i></a>
+      <a class="button secondary play">
+         <i class="fas fa-play"></i>
+      </a>
+      <a class="button secondary stop">
+         <i class="fa fa-pause"></i>
+      </a>
    </div>
 </div>
 
 <div class="services_sectionssd">
-
    <!-- Service section start  -->
    <section class="product-csteogry">
       <div class="trend servoce_dops service_sections45 pb-0">
@@ -117,47 +117,17 @@
                      </div>
                   </div>
                </div>
-
+               @foreach ($servicesoffered as $item)
                <div class="col-md-5c">
-                  <a href="javascript:void(0);">
+                  <a href="{{ route('servicecat', $item->slug) }}">
                      <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser1a.jpg')}}" alt="" />
+                        <img src="{{uploaded_asset($item->home_image)}}" alt="" />
                      </div>
-                     <h3>End to End Consultants</h3>
+                     <h3>{{$item->name}}</h3>
                   </a>
                </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser2.jpg')}}" alt="" />
-                     </div>
-                     <h3>Architect</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser3.jpg')}}" alt="" />
-                     </div>
-                     <h3>Contractor</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser4.jpg')}}" alt="" />
-                     </div>
-                     <h3>Interior design</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser5.jpg')}}" alt="" />
-                     </div>
-                     <h3>Vastu</h3>
-                  </a>
-               </div>
+               @endforeach
+               
             </div>
          </div>
       </div>
@@ -170,9 +140,7 @@
 </div>
 
 <div class="sample-secondary">
-
    <!-- The Best Premium Manufacturers st -->
-
    <div class="headsections111 dkjfksjjksdfjis seicktioons">
       <div class="container">
          @php
@@ -184,12 +152,7 @@
          <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <div class="border-botb-3">
-                     <a href="{{ route('flash-deals') }}" class="view-link">
-                        View all
-                        <i class="fa-solid fa-chevron-right"></i>
-                     </a>
-                  </div>
+                  
                   <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
                      The Best Premium Offer
                   </h3>
@@ -207,6 +170,12 @@
                strtotime(date('Y-m-d H:i:s')) <= $featured_deal->end_date)
                   <div class="col-md-4">
                      <div class="product-box">
+                        <div class="border-botb-3">
+                           <a href="{{ route('flash-deal-details', $featured_deal->slug) }}" class="view-link">
+                              View all
+                              <i class="fa-solid fa-chevron-right"></i>
+                           </a>
+                        </div>
                         <h6>
                            <span>
                               <a href="{{ route('flash-deal-details', $featured_deal->slug) }}">
@@ -322,133 +291,100 @@
    </div>
 
 	@if(count($cat_wise_brands) > 0)
-   <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12 col-sm-12 col-12">
-               <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
-                  <div class="deals">
-                     <hr>
-                  </div>
-               </div>
-
-               <div class="position-absolutedk">
-                  <div class="mt-md-n1ddd div-tab-dps">
-                     <ul class="nav nav-pills">
-						@php
-							$i=0;
-						@endphp
-                        @foreach ($cat_wise_brands as $item)
-						@php
-							$i++;
-						@endphp
-                        <li onclick="showCategoryWiseBrand(this)" id="{{$item->id}}"
-                           class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
-                           <a class="nav-link rounded-pill seldectbrand">{{$item->name}} </a>
-                            
-                        </li>
-						@php
-							 $cat_s_id = $item->id;
-						@endphp
-						
-							@endforeach
-						
-                     </ul>
+      <div class="headsections111 dfgj66786gggff dkjfksjjksdfjis seicktioons">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12 col-12">
+                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">The best premium Popular Brand</h3>
+                     <div class="deals">
+                        <hr>
+                     </div>
                   </div>
 
+                  <div class="position-absolutedk">
+                     <div class="mt-md-n1ddd div-tab-dps">
+                        <ul class="nav nav-pills">
+                     @php
+                        $i=0;
+                     @endphp
+                           @foreach ($cat_wise_brands as $item)
+                     @php
+                        $i++;
+                     @endphp
+                           <li onclick="showCategoryWiseBrand(this)" id="{{$item->id}}"
+                              class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
+                              <a class="nav-link rounded-pill seldectbrand">{{$item->name}} </a>
+                           </li>
+                     @php
+                        $cat_s_id = $item->id;
+                     @endphp
+                     
+                        @endforeach
+                     
+                        </ul>
+                     </div>
+
+                  </div>
                </div>
             </div>
+
+            <div class="div-tab-dps sections">
+               <ul>
+                  @php
+                     $i=0;
+                  @endphp
+
+                  @foreach ($cat_wise_brands as $item)
+                     @php
+                        $i++;
+                        $cat_idd = $item->id;
+                     @endphp
+                     <li id="{{$item->id}}"
+                        class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
+                        <div class="owl-carousel owl-theme trending001">
+                           @foreach(\App\Models\Category_wise_brand::where('category_id',$cat_idd)->get() as $key => $cc)
+                              <div class="item">
+                                 <div class="product-box">
+                                    <!-- <h6>Brand</h6>-->
+                                    <div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
+                                    <div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
+                                    <div class="discrptions">
+                                       <h5>  {{$cc->title}} </h5>
+                                       <h6>{{$cc->category->name}}</h6> </div>
+                                    <div class="discrptions_button">
+                                       <h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
+                                 </div>
+                              </div>
+                           @endforeach
+                        </div>
+                     </li>
+                  @endforeach
+               </ul>
+            </div>
+
          </div>
-
-         <div class="div-tab-dps sections">
-            <ul>
-				
-						@php
-							$i=0;
-						@endphp
-                        @foreach ($cat_wise_brands as $item)
-						@php
-							$i++;
-							$cat_idd = $item->id;
-						@endphp
-                        <li id="{{$item->id}}"
-                           class="col-tabs-{{$i}} tabs-dps-tab nav-item @if($i=='1') active @endif">
-                          <div class="owl-carousel owl-theme trending001">
-						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_idd)->get() as $key => $cc)
-						<div class="item">
-							<div class="product-box">
-								<!-- <h6>Brand</h6>-->
-								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
-								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
-								<div class="discrptions">
-									<h5>  {{$cc->title}} </h5>
-									<h6>{{$cc->category->name}}</h6> </div>
-								<div class="discrptions_button">
-									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
-							</div>
-						</div>
-						@endforeach
-					</div>
-                            
-                        </li>
-					 
-                        
-                        @endforeach
-				
-				
-				<!--<li id="onloadactivecatbrand" class="col-tabs-1 tabs-dps-tab active">
-					<div class="owl-carousel owl-theme trending001">
-						@foreach(\App\Models\Category_wise_brand::where('category_id',$cat_s_id)->get() as $key => $cc)
-						<div class="item">
-							<div class="product-box">
-								 
-								<div class="box-elech"> <img src="{{uploaded_asset($cc->brand->logo)}}" alt=""> </div>
-								<div class="pro_img_mens"> <img src="{{uploaded_asset($cc->image)}}" alt=""> </div>
-								<div class="discrptions">
-									<h5>  {{$cc->title}} </h5>
-									<h6>{{$cc->category->name}}</h6> </div>
-								<div class="discrptions_button">
-									<h5><a href="{{$cc->url}}">View Detail</a></h5> </div>
-							</div>
-						</div>
-						@endforeach
-					</div>
-				</li>-->
-				
-             <!--  <li id="cat-list" class="col-tabs-1 tabs-dps-tab active">
-                  <div class="owl-carousel owl-theme trending001 catbrandslistss" >
-                      
-                     
-
-                  </div>
-               </li>-->
-            </ul>
-         </div>
-
       </div>
-   </div>
    @endif
    <!-- banner 1 section start -->
    @if (get_setting('home_banner1_images') != null)
-   <section>
-      <div class="mb-5 closindig">
-         <div class="container">
-            <div class="row">
-
-               @php $banner_1_imags = json_decode(get_setting('home_banner1_images')); @endphp
-               @foreach ($banner_1_imags as $key => $value)
-               <div class="col-lg-6 mb-4 mb-xl-0">
-                  <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block">
-                     <img class="img-fluid" src="{{ uploaded_asset($banner_1_imags[$key]) }}"
-                        alt="{{ env('APP_NAME') }} promo">
-                  </a>
+      <section>
+         <div class="mb-5 closindig">
+            <div class="container">
+               <div class="row">
+                  @php $banner_1_imags = json_decode(get_setting('home_banner1_images')); @endphp
+                  @foreach ($banner_1_imags as $key => $value)
+                  <div class="col-lg-6 mb-4 mb-xl-0">
+                     <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block">
+                        <img class="img-fluid" src="{{ uploaded_asset($banner_1_imags[$key]) }}"
+                           alt="{{ env('APP_NAME') }} promo">
+                     </a>
+                  </div>
+                  @endforeach
                </div>
-               @endforeach
             </div>
          </div>
-      </div>
-   </section>
+      </section>
    @endif
    <!-- banner 1 section end -->
 
@@ -723,18 +659,17 @@
    <!-- VEHICLE PARTS & ACCESSORIES end -->
 
    <!-- banner section 2 start-->
-
    @if (get_setting('home_banner2_images') != null)
-   @php $home_banner2_images = json_decode(get_setting('home_banner2_images')); @endphp
-   @foreach ($home_banner2_images as $key => $value)
-   <div class="bannnner">
-      <div class="container">
-         <a href="{{ json_decode(get_setting('home_banner2_links'), true)[$key] }}">
-            <img src="{{ uploaded_asset($home_banner2_images[$key]) }}" alt="" style="width:100%;">
-         </a>
-      </div>
-   </div>
-   @endforeach
+      @php $home_banner2_images = json_decode(get_setting('home_banner2_images')); @endphp
+      @foreach ($home_banner2_images as $key => $value)
+         <div class="bannnner">
+            <div class="container">
+               <a href="{{ json_decode(get_setting('home_banner2_links'), true)[$key] }}">
+                  <img src="{{ uploaded_asset($home_banner2_images[$key]) }}" alt="" style="width:100%;">
+               </a>
+            </div>
+         </div>
+      @endforeach
    @endif
    <!-- banner section 2 end-->
 
@@ -811,194 +746,57 @@
             </div>
          </div>
       </div>
-      @endif
-      <!-- Deals of the day section end -->
+   @endif
+   <!-- Deals of the day section end -->
 
-      <!-- Product relative Carousel -->
-      <div class=" headsections111 weekinliud dkjfksjjksdfjis">
-         <div class="container">
+   <!-- JUST FOR YOU start -->
+   <div class=" headsections111 dkjfksjjksdfjis just-for-you pb-2">
+      <div class="container">
 
-            <div class="border-bottom1 border-color-111 mt-3 mb-3 dkprojaecke">
-               <div class="border-botb-3">
-                  <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                  </a>
-               </div>
-               <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Projects</h3>
-               <div class="deals">
-                  <hr>
-               </div>
-               <!--<p>Let’s Brew N Binge</p>-->
-            </div>
-            <div class="owl-carousel owl-theme trending00154">
-               <div class="item">
-                  <div class="product-box">
-                     <div class="discrptions">
-                        <h5> The Great India Place Mall </h5>
-                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                     </div>
-                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-c.png')}}" alt="">
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
-                     </ul>
-
-
-                     <div class="discrptions_button">
-                        <h5><a href="javascript:void(0);">View Detail</a></h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="discrptions">
-                        <h5> The Great India Place Mall </h5>
-                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                     </div>
-                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-b.png')}}" alt="">
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
-                     </ul>
-
-
-                     <div class="discrptions_button">
-                        <h5><a href="javascript:void(0);">View Detail</a></h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="discrptions">
-                        <h5> The Great India Place Mall </h5>
-                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                     </div>
-                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior.png')}}" alt="">
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
-                     </ul>
-
-
-                     <div class="discrptions_button">
-                        <h5><a href="javascript:void(0);">View Detail</a></h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="discrptions">
-                        <h5> The Great India Place Mall </h5>
-                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                     </div>
-                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior9bedroom.png')}}" alt="">
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
-                     </ul>
-
-
-                     <div class="discrptions_button">
-                        <h5><a href="javascript:void(0);">View Detail</a></h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="discrptions">
-                        <h5> The Great India Place Mall </h5>
-                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                     </div>
-                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior-c.png')}}" alt="">
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq1.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq2.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq3.png')}}" alt=""></li>
-                     </ul>
-
-
-                     <div class="discrptions_button">
-                        <h5><a href="javascript:void(0);">View Detail</a></h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="item">
-                  <div class="product-box">
-                     <div class="discrptions">
-                        <h5> The Great India Place Mall </h5>
-                        <h6> Entry from Gate No. 11 Adjacent, Ashok Marg</h6>
-                     </div>
-                     <img class="owlding" src="{{static_asset('assets_web/img/index0/interior.png')}}" alt="">
-                     <ul class="image-productsll">
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq4.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq5.png')}}" alt=""></li>
-                        <li> <img src="{{static_asset('assets_web/img/index0/sq6.png')}}" alt=""></li>
-                     </ul>
-
-
-                     <div class="discrptions_button">
-                        <h5><a href="javascript:void(0);">View Detail</a></h5>
-                     </div>
+         <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+               <div class="border-bottom1 border-color-111 mt-3 mb-3">
+                  <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Just For You</h3>
+                  <div class="deals">
+                     <hr>
                   </div>
                </div>
             </div>
+         </div>
 
+         <div class="owl-carousel owl-theme trending0001">
+
+            @foreach (filter_products(\App\Models\Product::orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key
+            => $top_product)
+            <div class="item">
+               <div class="product-box">
+                  <!-- <div class="beachs">10% Off</div> -->
+               <div class="imllskdon">
+                  <img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
+               </div>
+                  <div class="discrptions">
+                     <h5 class="text-truncate-2">{{ $top_product->getTranslation('name') }} </h5>
+                     <h6>{{ home_discounted_base_price($top_product) }}
+                        @if(home_base_price($top_product) != home_discounted_base_price($top_product))
+                        <strike> {{ home_base_price($top_product) }}</strike>
+                        @endif
+                     </h6>
+                  </div>
+                  <div class="discrptions_button">
+                     <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
+                  </div>
+               </div>
+            </div>
+            @endforeach
 
          </div>
+
       </div>
-      <!-- VEHICLE PARTS & ACCESSORIES end -->
+   </div>
+   <!-- JUST FOR YOU end -->
 
-      <!-- JUST FOR YOU start -->
-      <div class=" headsections111 dkjfksjjksdfjis just-for-you pb-2">
-         <div class="container">
-
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-12">
-                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Just For You</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="owl-carousel owl-theme trending0001">
-
-               @foreach (filter_products(\App\Models\Product::orderBy('num_of_sale', 'desc'))->limit(6)->get() as $key
-               => $top_product)
-               <div class="item">
-                  <div class="product-box">
-                     <!-- <div class="beachs">10% Off</div> -->
-					 <div class="imllskdon">
-                     <img src="{{ uploaded_asset($top_product->thumbnail_img) }}" alt="">
-					 </div>
-                     <div class="discrptions">
-                        <h5 class="text-truncate-2">{{ $top_product->getTranslation('name') }} </h5>
-                        <h6>{{ home_discounted_base_price($top_product) }}
-                           @if(home_base_price($top_product) != home_discounted_base_price($top_product))
-                           <strike> {{ home_base_price($top_product) }}</strike>
-                           @endif
-                        </h6>
-                     </div>
-                     <div class="discrptions_button">
-                        <h5><a href="{{ route('product', $top_product->slug) }}">View Detail</a></h5>
-                     </div>
-                  </div>
-               </div>
-               @endforeach
-
-            </div>
-
-         </div>
-      </div>
-      <!-- JUST FOR YOU end -->
-
-      <!--Premium Brand Fair Partnerst -->
-      @if (get_setting('top10_brands') != null)
+   <!--Premium Brand Fair Partnerst -->
+   @if (get_setting('top10_brands') != null)
       <section class="banner-brand_product banner-brand_product2 brankdisections ">
          <div class="container">
             <div class="row">
@@ -1037,81 +835,8 @@
             </div>
          </div>
       </section>
-      @endif
+   @endif
       <!-- Premium Brand Fair Partners end -->
-
-      <!-- SERVICES ARE HERE st -->
-    <!--  <section class="wraper ">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-12">
-                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Helping Services</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="row r2 ">
-               <div class="col-lg-3 col-md-2 col-sm-3 col-xs-3">
-                  <div class=" image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade1.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Trade Assurance</h5>
-                           <p class="pr "> Order Protection</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon1.png')}}" alt="tradeicon1"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                  <div class=" image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade2.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Payment</h5>
-                           <p class="pr ">Payment Solutions</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon2.png')}}" alt="tradeicons2"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
-                  <div class="image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade3.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Inspection</h5>
-                           <p class="pr ">Inspection Solution</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon3.png')}}" alt="tradeicon3"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                  <div class="image-trade ">
-                     <img class="img-responsive " src="{{static_asset('assets_web/img/trade4.png')}}" alt="ngo.jpg ">
-                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 cl">
-                           <h5>Ocean and air shipping</h5>
-                           <p class="pr ">Logistic Service</p>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2"><img class="trade-img-icon img-responsive "
-                              src="{{static_asset('assets_web/img/tradeicon4.png')}}" alt="tradeicon4"></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>-->
-
-      <!-- SERVICES ARE HERE end -->
 </div>
 <!-- CHOOSE YOUR SUPPLIERS BY REGIONS st -->
 <section class="product-csteogry kdikskon">
@@ -1121,8 +846,8 @@
             <div class="col-md-12 col-sm-12 col-12">
                <div class="border-bottom1 border-color-111 mt-3 mb-3">
                   <div class="border-botb-3">
-                     <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
-                     </a>
+                     <!-- <a href="javascript:void(0);" class="view-link"> View all <i class="fa-solid fa-chevron-right"></i>
+                     </a> -->
                   </div>
                   <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Choose your suppliers by regions
                   </h3>
@@ -1137,7 +862,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/mumbai.png')}}" alt="">
                         <h6>Mumbai</h6>
-
                      </div>
                   </a>
                </div>
@@ -1146,7 +870,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Delhi</h6>
-
                      </div>
                   </a>
                </div>
@@ -1155,7 +878,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Bengaluru</h6>
-
                      </div>
                   </a>
                </div>
@@ -1164,7 +886,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Bengaluru</h6>
-
                      </div>
                   </a>
                </div>
@@ -1173,7 +894,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Indore</h6>
-
                      </div>
                   </a>
                </div>
@@ -1182,7 +902,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Hyderabad</h6>
-
                      </div>
                   </a>
                </div>
@@ -1191,7 +910,6 @@
                      <div class="trend-theme">
                         <img src="{{static_asset('assets_web/img/banglore.png')}}" alt="">
                         <h6>Chennai</h6>
-
                      </div>
                   </a>
                </div>
@@ -1211,113 +929,12 @@
                <div class="backtabs-dp">
                   <ul class="ulines-dps">
 				    <li class="ukine ukine5 active">Our Team</li>
-                     <!--<li class="ukine ukine1 ">Testimonials</li>-->
                      <li class="ukine ukine2">Clients</li>
                      <li class="ukine ukine3">News</li>
                      <li class="ukine ukine4">Client review</li>
-                   
                      <li class="ukine ukine6">Certification</li>
                   </ul>
                   <ul class="ulines-dps-para">
-                   <!--  <li class="ukine ukine1 ">
-                        <div>
-                           <div class="owl-carousel owl-carousel012 owl-theme slide-latest">
-                              <div class="item">
-                                 <div class="row" style="width: 95%; margin-right: 3%">
-                                    <div class="col-md-4">
-                                       <div class="LDSCarouselItem">
-                                          <h6>design space</h6>
-                                          <h4>Young Vibes</h4>
-                                          <p>
-                                             We feel blessed that we choose Arrivae whose expert designer make our dream
-                                             come true with our newly bought 2 BHK with his out of box design
-                                             suggestions.
-                                          </p>
-                                          <div class="d-flex align-items-center">
-                                             <div class="mr-4 profileSection">
-                                                <h6 class="mb-0">Suman Gupta</h6>
-                                                <p>Pune</p>
-                                             </div>
-                                             <img alt="customer_image" class="cus_img pb-3"
-                                                src="{{static_asset('assets_web/img/testis.png')}}" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                       <iframe src="https://www.youtube.com/embed/21KjRjtrbJM" frameborder="0"
-                                          allowfullscreen="" style="
-                                                height: 345px;
-                                                width: 100%;
-                                                border-radius: 10px;
-                                                "></iframe>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="item">
-                                 <div class="row" style="width: 95%; margin-right: 3%">
-                                    <div class="col-md-4">
-                                       <div class="LDSCarouselItem">
-                                          <h6>design space</h6>
-                                          <h4>Young Vibes</h4>
-                                          <p>
-                                             We feel blessed that we choose Arrivae whose expert designer make our dream
-                                             come true with our newly bought 2 BHK with his out of box design
-                                             suggestions.
-                                          </p>
-                                          <div class="d-flex align-items-center">
-                                             <div class="mr-4 profileSection">
-                                                <h6 class="mb-0">Suman Gupta</h6>
-                                                <p>Pune</p>
-                                             </div>
-                                             <img alt="customer_image" class="cus_img pb-3"
-                                                src="{{static_asset('assets_web/img/testis.png')}}" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                       <iframe src="https://www.youtube.com/embed/21KjRjtrbJM" frameborder="0"
-                                          allowfullscreen="" style="
-                                                height: 345px;
-                                                width: 100%;
-                                                border-radius: 10px;
-                                                "></iframe>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="item">
-                                 <div class="row" style="width: 95%; margin-right: 3%">
-                                    <div class="col-md-4">
-                                       <div class="LDSCarouselItem">
-                                          <h6>design space</h6>
-                                          <h4>Young Vibes</h4>
-                                          <p>
-                                             We feel blessed that we choose Arrivae whose expert designer make our dream
-                                             come true with our newly bought 2 BHK with his out of box design
-                                             suggestions.
-                                          </p>
-                                          <div class="d-flex align-items-center">
-                                             <div class="mr-4 profileSection">
-                                                <h6 class="mb-0">Suman Gupta</h6>
-                                                <p>Pune</p>
-                                             </div>
-                                             <img alt="customer_image" class="cus_img pb-3"
-                                                src="{{static_asset('assets_web/img/testis.png')}}" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                       <iframe src="https://www.youtube.com/embed/21KjRjtrbJM" frameborder="0"
-                                          allowfullscreen="" style="
-                                                height: 345px;
-                                                width: 100%;
-                                                border-radius: 10px;
-                                                "></iframe>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </li>-->
                      <li class="ukine ukine2">
                         <div class="slikdir">
                            <div class="slick marquee">
@@ -2121,41 +1738,33 @@
       </div>
    </section>
 </div>
-
 @endsection
 
 @section('script')
 <script>
-// Set the date we're counting down to
-var flash_date = "{{date('M d, Y H:i:s', $flash_deal->end_date)}}";
+   // Set the date we're counting down to
+   var flash_date = "{{date('M d, Y H:i:s', $flash_deal->end_date)}}";
 
-
-var countDownDate = new Date(flash_date).getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + " : " + hours + " : "
-  + minutes + " : " + seconds;
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
+   var countDownDate = new Date(flash_date).getTime();
+   // Update the count down every 1 second
+   var x = setInterval(function() {
+   // Get today's date and time
+   var now = new Date().getTime();
+   // Find the distance between now and the count down date
+   var distance = countDownDate - now;
+   // Time calculations for days, hours, minutes and seconds
+   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+   // Output the result in an element with id="demo"
+   document.getElementById("demo").innerHTML = days + " : " + hours + " : "
+   + minutes + " : " + seconds;
+   // If the count down is over, write some text 
+   if (distance < 0) {
+         clearInterval(x);
+         document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+   }, 1000);
 </script>
 @endsection

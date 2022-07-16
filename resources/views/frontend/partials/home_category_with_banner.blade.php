@@ -49,7 +49,7 @@
                                                         <div class="info-sub w-50">
                                                             <span class="paragronid">{{ $subcat->short_description }}</span> 
                                                         </div>
-                                                        <img class="zoom-in lazyload w-50" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->banner) }}">
+                                                        <img class="zoom-in lazyload w-50" alt="{{ $subcat->getTranslation('name') }}" src="{{ uploaded_asset($subcat->home_image) }}">
                                                     </div>
                                                 </div>
                                             </a>
