@@ -117,47 +117,17 @@
                      </div>
                   </div>
                </div>
-
+               @foreach ($servicesoffered as $item)
                <div class="col-md-5c">
-                  <a href="javascript:void(0);">
+                  <a href="{{ route('servicecat', $item->slug) }}">
                      <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser1a.jpg')}}" alt="" />
+                        <img src="{{uploaded_asset($item->home_image)}}" alt="" />
                      </div>
-                     <h3>End to End Consultants</h3>
+                     <h3>{{$item->name}}</h3>
                   </a>
                </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser2.jpg')}}" alt="" />
-                     </div>
-                     <h3>Architect</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser3.jpg')}}" alt="" />
-                     </div>
-                     <h3>Contractor</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser4.jpg')}}" alt="" />
-                     </div>
-                     <h3>Interior design</h3>
-                  </a>
-               </div>
-               <div class="col-md-5c">
-                  <a href="javascript:void(0);">
-                     <div class="trend-theme">
-                        <img src="{{static_asset('assets_web/img/ser5.jpg')}}" alt="" />
-                     </div>
-                     <h3>Vastu</h3>
-                  </a>
-               </div>
+               @endforeach
+               
             </div>
          </div>
       </div>
