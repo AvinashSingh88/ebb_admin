@@ -2032,6 +2032,8 @@ div#formRanking2a .owl-next span {
     height: 100%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+	overflow:auto;
+	height:550px;
 }
 
 .megamenusubs li {
@@ -9885,6 +9887,9 @@ a.dropdown-item1.active {
 ul.list-unstyled.dropdown-list.listing_block a {
     padding: 7px 0px;
 }
+ul.list-unstyled.dropdown-list.listing_block a.active {
+    color:#ff6c00;
+}
 
 .product-box1 .ulproducts4 li:last-child {
     border: none;
@@ -14256,7 +14261,7 @@ i.fa-solid.fa-house {
 
 .top-megamenu.web-mega {
     height: 558px;
-    overflow: auto;
+    /*overflow: auto;*/
     width: 975px;
 }
 
@@ -23167,3 +23172,30 @@ section.all_sub_brands a.d-block.p-3.mb-3.border.border-light.rounded.hov-shadow
 section.all_sub_brands .bg-white.shadow-sm.rounded.px-3.pt-3 {
     box-shadow: 0px 0px 3px 1px #cccccc8f !important;
 }
+.viewmorepro{
+	color: #1274c0!important;
+	font-weight: 700!important;
+	letter-spacing: 0.5px!important;
+}
+.popup_products_modals { 
+    height: auto;    
+	top: 5%;
+    overflow-x: auto;
+    overflow-y: auto; 
+}
+.wave-bottom-with-dots-0 {
+ fill: #377dff;
+ }
+ .wave-bottom-with-dots-1 {
+ fill: #377dff;
+ }
+ .wave-bottom-with-dots-2 {
+ fill: #de4437;
+ }
+ .wave-bottom-with-dots-3 {
+ fill: #00c9a7;
+ }
+ .wave-bottom-with-dots-4 {
+ fill: #ffc107;
+ }
+ 
