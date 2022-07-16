@@ -117,16 +117,23 @@
                      </div>
                   </div>
                </div>
-               @foreach ($servicesoffered as $item)
-               <div class="col-md-5c">
-                  <a href="{{ route('servicecat', $item->slug) }}">
-                     <div class="trend-theme">
-                        <img src="{{uploaded_asset($item->home_image)}}" alt="" />
+
+               <div class="owl-carousel owl-theme owl-carousel_sliders">
+                  @foreach ($servicesoffered as $item)
+                     <div class="item">
+                        <div class="colams_item">
+                           <a href="{{ route('servicecat', $item->slug) }}">
+                              <div class="trend-theme">
+                                 <img src="{{uploaded_asset($item->home_image)}}" alt="" />
+                              </div>
+                              <h3>{{$item->name}}</h3>
+                           </a>
+                        </div>
                      </div>
-                     <h3>{{$item->name}}</h3>
-                  </a>
+                  @endforeach
                </div>
-               @endforeach
+
+              
                
             </div>
          </div>

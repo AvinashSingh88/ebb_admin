@@ -70,45 +70,12 @@ $meta_description = get_setting('meta_description');
          </div>
       </div>
    </div>
-	   </div>
+</div>
    <div id="product-box" class="container details-product product-catpro ">
       <form class="" id="search-form" action="" method="GET">
          <div class="row">
             <div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
-               <div class="mb-8 border border-width-2 border-color-3 borders-radius-6 mrgnbot10">
-                  <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
-                     <li class="link-category link-category1aa">
-                        @php
-                        $total_category = \App\Models\Category::where('parent_id', '=', '0')->where('type', '1')->count();
-                        @endphp
-
-                        <div id="accordion" class="accordion-container">
-                           <article class="content-entry">
-                              <h4 class="article-title">
-                                 <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;"
-                                    role="button">
-                                    Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal">
-                                       ({{$total_category}})</span> <i class="fa fa-angle-right" aria-hidden="true"
-                                       style="    line-height: 35px;"></i>
-                                 </a>
-                              </h4>
-                              <div class="accordion-content">
-                                 <div class="link-categoryx link-category1az ">
-                                    <ul class="list-unstyled dropdown-list">
-                                       @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-                                       <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}</a></li>
-                                 @endforeach
-                                    </ul>
-                                 </div>
-                              </div>
-                             
-                           </article>
-</div>
-<div id="product-box" class="container details-product product-catpro ">
-   <form class="" id="search-form" action="" method="GET">
-      <div class="row">
-         <div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
-            <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
+            <div class="mb-8 border border-width-2 border-color-3 borders-radius-6 mrgnbot10">
                <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
                   <li class="link-category link-category1aa">
                      @php
@@ -118,7 +85,7 @@ $meta_description = get_setting('meta_description');
                      <div id="accordion" class="accordion-container">
                         <article class="content-entry">
                            <h4 class="article-title">
-                              <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:void(0);"
+                              <a class="dropdown-toggle1 dropdown-toggle-collapse1" href="javascript:;"
                                  role="button">
                                  Show All Categories<span class="text-gray-25 font-size-12 font-weight-normal">
                                     ({{$total_category}})</span> <i class="fa fa-angle-right" aria-hidden="true"
@@ -128,41 +95,30 @@ $meta_description = get_setting('meta_description');
                            <div class="accordion-content">
                               <div class="link-categoryx link-category1az ">
                                  <ul class="list-unstyled dropdown-list">
-                                    @foreach (\App\Models\Category::where('parent_id', '=',
-                                    '0')->where('type','1')->get() as $key => $category)
-                                    <li>
-                                       <a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">
-                                          {{$category->getTranslation('name') }}
-                                       </a>
-                                    </li>
-                                    @endforeach
+                                    @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
+                                    <li><a class="dropdown-item1" href="{{ route('cat', $category->slug) }}">{{  $category->getTranslation('name') }}</a></li>
+                              @endforeach
                                  </ul>
                               </div>
                            </div>
                         </article>
                      </div>
                   </li>
-
                   <li class="listing-botoms">
+                     <b> {{\App\Models\Category::find($category_id)->getTranslation('name') }}</b>
                      <ul class="list-unstyled dropdown-list listing_block filter">
+
                         @if (!isset($category_id))
-                        @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key
-                        => $category)
-                        <li>
-                           <a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">
-                              {{$category->getTranslation('name')}}
-                           </a>
-                        </li>
+                           @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
+                        <li><a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">{{$category->getTranslation('name') }}</a></li>
                         @endforeach
                         @else
 
                         @if (\App\Models\Category::find($category_id)->parent_id != 0)
-                        <li>
-                           <a class="dropdown-item1"
-                              href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">
-                              {{\App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')}}
-                           </a>
-                        </li>
+                        <li><a class="dropdown-item1"
+                              href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">{{
+                              \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')
+                              }}</a></li>
                         @endif
                         <li>
                            <a class="dropdown-item1"
@@ -170,7 +126,7 @@ $meta_description = get_setting('meta_description');
                               {{ \App\Models\Category::find($category_id)->getTranslation('name') }}
                            </a>
                         </li>
-                        @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key =>
+                        @foreach (\App\Models\Category::where('parent_id', $category_id)->get() as $key =>
                         $id)
                         <li>
                            <a class="dropdown-item1"
@@ -182,83 +138,30 @@ $meta_description = get_setting('meta_description');
                         @endif
                      </ul>
                   </li>
-
-
-
-                  <li class="listing-botoms">
-                     <b> Structural Material</b>
-                     <ul class="list-unstyled dropdown-list listing_block filter">
-
-                        </ul>
-                     </li>
-                     
-                     
-                     
-                     
-
-                  </ul>
-               </div>
-               
-               <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
-               <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
-               	<li class="listing-botoms">
-                        <b> Third Category</b>
-                        <ul class="list-unstyled dropdown-list listing_block filter">
-
-                           
-                           
-                           <li><a class="dropdown-item1" href="#">Black Cement</a></li>
-                           <li><a class="dropdown-item1" href="#">White Cement</a></li>
-                           <li><a class="dropdown-item1" href="#">Grey Cement</a></li>
-                           
-                           
-
-
-
-                        </ul>
-                     </li>
-               </ul>
-               </div>
-               
-               
-               <div class="mb-6">
-                  <div class="border-bottom1 border-color-11 mt-3 mb-3">
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Filters</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-                  <div class="border-bott">
-
-                        <li><a class="dropdown-item1 active" href="#">Cement <i class="fa fa-angle-down"
-                                 aria-hidden="true"></i></a></li>
-                        <li><a class="dropdown-item1" href="#">Black Cement</a></li>
-                        <li><a class="dropdown-item1" href="#">White Cement</a></li>
-                        <li><a class="dropdown-item1" href="#">Grey Cement</a></li>
-
-                        <li><a class="dropdown-item1" href="#">Bricks & Blocks <i class="fa fa-angle-right"
-                                 aria-hidden="true"></i></a></li>
-                        <li><a class="dropdown-item1" href="#">Sand & Stones <i class="fa fa-angle-right"
-                                 aria-hidden="true"></i></a></li>
-                        <li><a class="dropdown-item1" href="#">Roofing Solution <i class="fa fa-angle-right"
-                                 aria-hidden="true"></i></a></li>
-
-                        <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2"
-                           data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false"
-                           aria-controls="collapseBrand">
-                           <span class="link__icon text-gray-27 bg-white">
-                              <span class="link__icon-inner">+</span>
-                           </span>
-                           <span class="link-collapse__default">Show more</span>
-                           <span class="link-collapse__active">Show less</span>
-                        </a>
-
-                     </ul>
-                  </li>
-
-
                </ul>
             </div>
+            
+            <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
+               <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
+                  <li class="listing-botoms">
+                     <b> Third Category</b>
+                     <ul class="list-unstyled dropdown-list listing_block filter">
+                        @php
+                              $category_slug_id = \App\Models\Category::find($category_id);
+                        @endphp
+                        @foreach (\App\Models\Category::where('parent_id', $category_id)->get() as $keys => $ids)
+                           <li>
+                              <a class="dropdown-item1"
+                                 href="{{ route('products.category', \App\Models\Category::find($ids)->slug) }}">
+                                 {{ \App\Models\Category::find($ids)->getTranslation('name') }}
+                              </a>
+                           </li>
+                        @endforeach   
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+            
             <div class="mb-6">
                <div class="border-bottom1 border-color-11 mt-3 mb-3">
                   <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Filters</h3>
@@ -321,6 +224,7 @@ $meta_description = get_setting('meta_description');
                            </div>
                         </div>
 
+
                      </article>
 
                      @if (get_setting('color_filter_activation'))
@@ -337,11 +241,11 @@ $meta_description = get_setting('meta_description');
                                     <div class="custom-control custom-checkbox">
                                        <input type="checkbox" class="custom-control-input" id="color{{$color->id}}"
                                           name="color" value="{{ $color->code }}" onchange="filter()"
-                                          @if(isset($selected_color) && $selected_color==$color->code) checked @endif
-                                       >
+                                          @if(isset($selected_color) && $selected_color==$color->code) checked @endif>
+                                       
                                        <label class="custom-control-label" for="color{{$color->id}}">{{$color->name}}
-                                          <span class="text-gray-25 font-size-12 font-weight-normal"></span> <span
-                                             class="mx-auto color_code">
+                                          <span class="text-gray-25 font-size-12 font-weight-normal"></span> 
+                                          <span class="mx-auto color_code">
                                              <div style="background-color:{{$color->code}}" class="w-100 h-100">
                                              </div>
                                           </span></label>
@@ -489,9 +393,9 @@ $meta_description = get_setting('meta_description');
                   @endsection
                </div>
             </div>
-
-         </div>
-         <div class="col-xl-9 col-wd-9gdot5">
+            </div>
+            
+            <div class="col-xl-9 col-wd-9gdot5">
             <div class="head-cnt work-center text-left" style="margin-bottom:20px;">
                <div class="bounceIn animated">
                   <!-- <div class="our-latest-border" style="    margin: 0px;"></div>-->
@@ -542,8 +446,9 @@ $meta_description = get_setting('meta_description');
 
             {{ $products->appends(request()->input())->links() }}
          </div>
+            </div>
 
-      </div>
+         
    </form>
    <!-- End Brand Carousel -->
 </div>
