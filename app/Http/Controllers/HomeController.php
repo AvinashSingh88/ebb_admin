@@ -56,8 +56,9 @@ class HomeController extends Controller
         $cat_wise_brands = Category::whereIn('id', $categories_id)->get();
 		
         $allblogs = Blog::limit(4)->get();
+        $servicesoffered = Category::where('level', 0)->where('type',2)->orderBy('order_level', 'desc')->get();
       
-        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands','allblogs'));
+        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands','allblogs','servicesoffered'));
     }
 
     
