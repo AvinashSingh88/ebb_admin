@@ -12859,6 +12859,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .rounded {
     border-radius: 0.25rem !important;
+	box-shadow: 0px 0px 3px 1px #ccc!important;
 }
 
 .agent-information {
