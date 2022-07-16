@@ -169,14 +169,21 @@ class CheckoutController extends Controller
 
     public function get_shipping_info(Request $request)
     {
-        $carts = Cart::where('user_id', Auth::user()->id)->get();
-//        if (Session::has('cart') && count(Session::get('cart')) > 0) {
-        if ($carts && count($carts) > 0) {
-            $categories = Category::all();
-            return view('frontend.shipping_info', compact('categories', 'carts'));
-        }
-        flash(translate('Your cart is empty'))->success();
-        return back();
+		$addressCount = Address::where('user_id', Auth::user()->id)->count();
+		if($addressCount>=1)
+		{
+			$carts = Cart::where('user_id', Auth::user()->id)->get();
+	//        if (Session::has('cart') && count(Session::get('cart')) > 0) {
+			if ($carts && count($carts) > 0) {
+				$categories = Category::all();
+				return view('frontend.shipping_info', compact('categories', 'carts'));
+			}
+			flash(translate('Your cart is empty'))->success();
+			return back();
+		}else{
+			// return back()
+			return redirect()->route('my_addressbook')->with(session()->flash('alert-danger', 'Please add your address.'));
+		}
     }
 
     public function store_shipping_info(Request $request)
