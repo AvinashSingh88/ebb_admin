@@ -11272,6 +11272,7 @@ a.detbrand img {
     display: block;
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
+	max-width:100%;
 }
 
 a.detbrand.selected img {
