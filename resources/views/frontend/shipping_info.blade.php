@@ -49,12 +49,7 @@
 
                     <div class="hotel-form pb-4 pt-2 shadow-none">
                         <div class="row">
-						@php
-							$userid = Auth::user()->id;
-							$addressCount = \App\Models\Address::where('user_id', $userid)->count();
-							 
-						@endphp
-						@if($addressCount>=1)
+						
 							@foreach (Auth::user()->addresses as $key => $address)
 								<div class="col-md-4">
 									<div class="d-flex position-relative">
@@ -107,12 +102,7 @@
 									</div>
 								</div>
 							@endforeach
-						@else
-								@php
-									 
-									header('location: indch.php');
-								@endphp
-						@endif
+						 
                             <div class="col-md-4">
                                 <div class="d-flex position-relative">
                                     <div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none w-100 bg-white pt-4 border">
