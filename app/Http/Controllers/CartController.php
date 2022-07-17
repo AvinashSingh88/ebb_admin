@@ -274,20 +274,28 @@ class CartController extends Controller
 				if(Auth::user() != null) {
 					$user_id = Auth::user()->id;
 					$cartItem = Cart::where('product_id',$id)->where('user_id', $user_id)->first();
-				}else{
-					$user_id = null;
-					$temp_user_id = $request->session()->get('temp_user_id');
-					$cartItem = Cart::where('product_id',$id)->where('temp_user_id', $temp_user_id)->first();
-					
-				}
-                $carts = Cart::where('user_id', Auth::id())->get();
-                $price = $cartItem->price;
-                $cart_update = Cart::where('product_id', $request->id)
-                ->update([
+					$carts = Cart::where('user_id', Auth::id())->get();
+					$price = $cartItem->price;
+					$cart_update = Cart::where('product_id', $request->id)->where('user_id',$user_id)->update([
                         'quantity' => $quantity,
                         'total_price' => $quantity*$price,
                     ]);
-                return response()->json(['status'=>"Cart Updated!"]);
+					return response()->json(['status'=>"Cart Updated!"]);
+				}
+				else{
+					$user_id = null;
+					$temp_user_id = $request->session()->get('temp_user_id');
+					$cartItem = Cart::where('product_id',$id)->where('temp_user_id', $temp_user_id)->first();
+					$carts = Cart::where('user_id', Auth::id())->get();
+					$price = $cartItem->price;
+					$cart_update = Cart::where('product_id', $request->id)->where('temp_user_id',$temp_user_id)->update([
+                        'quantity' => $quantity,
+                        'total_price' => $quantity*$price,
+                    ]);
+					return response()->json(['status'=>"Cart Updated!"]);
+					
+				}
+                
                 // return array(
                     // 'cart_view' => view('frontend.partials.cart_update_ajax', compact('carts'))->render(),
                 // );
@@ -588,24 +596,31 @@ class CartController extends Controller
         $cartItem = Cart::findOrFail($request->id);
 
         if($cartItem['id'] == $request->id){
+			
             $product = Product::find($cartItem['product_id']);
-            $product_stock = $product->stocks->where('variant', $cartItem['variation'])->first();
-            $quantity = $product_stock->qty;
-            $price = $product_stock->price;
+			if($cartItem['variation']!=='') { 
+				$product_stock = $product->stocks->where('variant', $cartItem['variation'])->first();
+				$quantity = $product_stock->qty;
+				$price = $product_stock->price;
 
-            if($quantity >= $request->quantity) {
-                if($request->quantity >= $product->min_qty){
-                    $cartItem['quantity'] = $request->quantity;
-                }
-            }
+				if($quantity >= $request->quantity) {
+					if($request->quantity >= $product->min_qty){
+						$cartItem['quantity'] = $request->quantity;
+					}
+				}
 
-            if($product->wholesale_product){
-                $wholesalePrice = $product_stock->wholesalePrices->where('min_qty', '<=', $request->quantity)->where('max_qty', '>=', $request->quantity)->first();
-                if($wholesalePrice){
-                    $price = $wholesalePrice->price;
-                }
-            }
-
+				if($product->wholesale_product){
+					$wholesalePrice = $product_stock->wholesalePrices->where('min_qty', '<=', $request->quantity)->where('max_qty', '>=', $request->quantity)->first();
+					if($wholesalePrice){
+						$price = $wholesalePrice->price;
+					}
+				}
+			}
+			else{
+				 
+					 $cartItem['quantity'] = $request->quantity;
+				 
+			}
             $cartItem->save();
         }
 

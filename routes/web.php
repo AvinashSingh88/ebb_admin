@@ -95,6 +95,7 @@ Route::get('/customer-packages', 'HomeController@premium_package_index')->name('
 Route::get('/cat/{catslug}', 'CatController@subCatbyCat')->name('cat');
 Route::post('makeEnquiry', 'HomeController@makeEnquiry')->name('makeEnquiry');
 Route::get('servicecat/{catslug}/','ServiceCatController@ServiceSubCatbyCat')->name('servicecat');
+Route::get('/servicecategories', 'HomeController@all_service_category')->name('servicecategories.all');
 
 Route::get('/search', 'ServiceSearchController@index')->name('search');
 Route::get('/search?keyword={search}', 'ServiceSearchController@index')->name('suggestion.search');

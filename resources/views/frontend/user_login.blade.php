@@ -73,13 +73,12 @@
 														<div class="custom-control custom-checkbox d-flex align-items-center">
 															<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} class="custom-control-input" id="rememberCheckbox">
 															<span class=opacity-60>{{  translate('Remember Me') }}</span>
-                                                    <span class="aiz-square-check"></span>
-															<label class="custom-control-label form-label" for="rememberCheckbox">Remember me</label>
+                                                    
 														</div>
 													</div>
 													<div class="mb-1"> 
 														<button type="submit" name="submit" class="btn btn-primary-dark-w px-5 mb-2"> Login</button>
-														<div class="mb-2"><a href="javascript:void(0);" class="text-blue" data-toggle="modal" data-target="#myModal">Lost your password?</a></div>
+														<div class="mb-2"><a href="{{ route('password.request') }}" class="text-blue">Lost your password?</a></div>
 													</div>
 												</form>
 											</div>
