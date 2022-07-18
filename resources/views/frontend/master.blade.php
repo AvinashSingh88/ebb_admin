@@ -571,25 +571,18 @@ $('#option-choice-form input').on('change', function(){
         }
        
     </script>
-	
   
-  
-   
-    <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <!--<script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>-->
-    <script src="{{static_asset('assets_web/js/slick.min.js')}}"></script>
-    <script src="{{static_asset('assets_web/js/owl.carousel.js')}}"></script>
-    <script src="{{static_asset('assets_web/js/plugins.js')}}" type="text/javascript"></script>
-    <script src="{{static_asset('assets_web/js/jquery.elevatezoom.min.js')}}"></script>
-    <script src="{{static_asset('assets_web/js/custom.js')}}"></script>
-    <script src="{{static_asset('assets_web/js/slider-custom.js')}}"></script>
-    <script src="{{static_asset('assets_web/js/slider.js')}}"></script>
-    <script src="{{static_asset('assets_web/js/wow.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
-    <script src="{{static_asset('assets_web/js/scripts.js')}}" type="text/javascript"></script>
-   
+<!-- Plugin JS File -->
+<script src="{{static_asset('assets_web/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{static_asset('assets_web/vendor/jquery.plugin/jquery.plugin.min.js')}}"></script>
+<script src="{{static_asset('assets_web/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{static_asset('assets_web/vendor/owl-carousel/owl.carousel.min.js')}}"></script>
+<script src="{{static_asset('assets_web/vendor/zoom/jquery.zoom.min.js')}}"></script>
+<script src="{{static_asset('assets_web/vendor/skrollr/skrollr.min.js')}}"></script>
+
+<!-- Main JS -->
+<script src="{{static_asset('assets_web/js/main.min.js')}}"></script>
+
    @yield('script')
 
 <script>
