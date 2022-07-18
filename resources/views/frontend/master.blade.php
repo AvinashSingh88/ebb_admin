@@ -100,21 +100,12 @@
  
    </head>
    <body>
-       @include('frontend.header')
+		@include('frontend.header')
        @yield('content')
        @include('frontend.footer')
-	   
-	   @include('frontend.partials.modal')
+       @include('frontend.partials.modal')
 
-    <style>
-	.popup_products_modals { 
-    height: auto;    top: 5%;
-    overflow-x: auto;
-    overflow-y: auto; 
-}
-	</style>
-
-    <div class="modal fade popup_products_modals" id="addToCart">
+   <div class="modal fade popup_products_modals" id="addToCart">
         <div class="modal-dialog mt-0 d-block modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
             <div class="modal-content position-relative">
                 <!--<div class="c-preloader text-center p-3">
@@ -572,6 +563,7 @@ $('#option-choice-form input').on('change', function(){
        
     </script>
   
+<<<<<<< HEAD
 <!-- Plugin JS File -->
 <script src="{{static_asset('assets_web/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{static_asset('assets_web/vendor/jquery.plugin/jquery.plugin.min.js')}}"></script>
@@ -583,6 +575,25 @@ $('#option-choice-form input').on('change', function(){
 <!-- Main JS -->
 <script src="{{static_asset('assets_web/js/main.min.js')}}"></script>
 
+=======
+  
+   
+    <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="{{static_asset('assets_web/js/popper.mins.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/slick.min.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/owl.carousel.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/plugins.js')}}" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/jquery.elevatezoom.min.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/custom.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/slider-custom.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/slider.js')}}"></script>
+    <script src="{{static_asset('assets_web/js/wow.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
+    <script src="{{static_asset('assets_web/js/scripts.js')}}" type="text/javascript"></script>
+   
+>>>>>>> 8b5ff72f948cfa9918703f6117b23bff96ef451c
    @yield('script')
 
 <script>

@@ -319,7 +319,7 @@
                         </div>
                         </div>
 						</div>
-                     <h4 id="available-quantity">
+                     <h4 id="">
                         @if($detailedProduct->stock_visibility_state == 'quantity')
                         <span id="available-quantity">{{ $qty }} </span>
                         {{ translate('available')}}
