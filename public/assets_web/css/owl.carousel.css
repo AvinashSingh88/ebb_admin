@@ -51,7 +51,9 @@
     width: 100%; }
   .owl-carousel .owl-nav.disabled,
   .owl-carousel .owl-dots.disabled {
-    display: none; }
+    /*display: none;*/ }
+	.trending400 .owl-nav.disabled, .trending400 .owl-dots.disabled, .footer-slider .owl-nav.disabled, .footer-slider .owl-dots.disabled, .owl-carousel444 .owl-nav.disabled, .owl-carousel444 .owl-dots.disabled{
+    display: none!Important; }
   .owl-carousel .owl-nav .owl-prev,
   .owl-carousel .owl-nav .owl-next,
   .owl-carousel .owl-dot {

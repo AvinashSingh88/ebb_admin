@@ -118,7 +118,7 @@
                   </div>
                </div>
 
-               <div class="owl-carousel owl-theme owl-carousel_sliders">
+               <div class="owl-carousel owl-theme owl-carousel_sliders trending001">
                   @foreach ($servicesoffered as $item)
                      <div class="item">
                         <div class="colams_item">
