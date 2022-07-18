@@ -270,7 +270,7 @@
                               </div>
                               <div class="col-sm-10">
                                  <div class="aiz-radio-inline"> @foreach (json_decode($detailedProduct->colors) as $key => $color)
-                                    <label class="aiz-megabox pl-0 mr-2 d-flex" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
+                                    <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
                                     <input class="opacity" type="radio" name="color" value="{{ \App\Models\Color::where('code', $color)->first()->name }}" @if($key==0) checked @endif> <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-0 mt-0 mx-2">
                                     <span class="size-30px d-inline-block rounded" style="background:{{ $color }};"></span> </span>
                                     </label> @endforeach 
@@ -321,7 +321,7 @@
 						</div>
                      <h4 id="available-quantity">
                         @if($detailedProduct->stock_visibility_state == 'quantity')
-                        <span id="available-quantity">{{ $qty }} </span>
+                        <span id="available-quantity">Only {{ $qty }} Items Left!</span>
                         {{ translate('available')}}
                         @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
                         {{ translate('In Stock') }}

@@ -171,7 +171,7 @@
                   <div class="col-md-4">
                      <div class="product-box">
                         <div class="border-botb-3">
-                           <a href="{{ route('flash-deal-details', $featured_deal->slug) }}" class="view-link">
+                           <a href="{{ route('flash-deal-details', $featured_deal->slug) }}" class="view-link topview">
                               View all
                               <i class="fa-solid fa-chevron-right"></i>
                            </a>
