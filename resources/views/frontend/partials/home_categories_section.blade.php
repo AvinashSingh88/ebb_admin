@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="owl-carousel owl-theme owl-carousel_sliders">
+                        <div class="owl-carousel owl-theme owl-carousel_sliders trending001">
                             @foreach(\App\Models\HomeCategorySection::where('category_attribute', $value->category_attribute)->get() as $key => $home_cat_sec)
                                 <div class="item">
                                     <div class="colams_item">
