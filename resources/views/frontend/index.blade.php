@@ -107,7 +107,7 @@
                <div class="col-md-12 col-sm-12 col-12">
                   <div class="border-bottom1 border-color-111 mt-3 mb-3">
                      <div class="border-botb-3">
-                        <a href="javascript:void(0);" class="view-link"> View all <i
+                        <a href="{{route('servicecategories.all')}}" class="view-link"> View all <i
                               class="fa-solid fa-chevron-right"></i>
                         </a>
                      </div>
@@ -117,16 +117,23 @@
                      </div>
                   </div>
                </div>
-               @foreach ($servicesoffered as $item)
-               <div class="col-md-5c">
-                  <a href="{{ route('servicecat', $item->slug) }}">
-                     <div class="trend-theme">
-                        <img src="{{uploaded_asset($item->home_image)}}" alt="" />
+
+               <div class="owl-carousel owl-theme owl-carousel_sliders">
+                  @foreach ($servicesoffered as $item)
+                     <div class="item">
+                        <div class="colams_item">
+                           <a href="{{ route('servicecat', $item->slug) }}">
+                              <div class="trend-theme">
+                                 <img src="{{uploaded_asset($item->home_image)}}" alt="" />
+                              </div>
+                              <h3>{{$item->name}}</h3>
+                           </a>
+                        </div>
                      </div>
-                     <h3>{{$item->name}}</h3>
-                  </a>
+                  @endforeach
                </div>
-               @endforeach
+
+              
                
             </div>
          </div>

@@ -49,58 +49,60 @@
 
                     <div class="hotel-form pb-4 pt-2 shadow-none">
                         <div class="row">
-						@foreach (Auth::user()->addresses as $key => $address)
-                            <div class="col-md-4">
-                                <div class="d-flex position-relative">
-                                    <div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none w-100 bg-white pt-2 border">
-                                        <div class="px-2">
-                                            <div class="user_location mt-1 pb-2">
-                                                <label for="payment_method_bacs d-flex">
-                                                    <input class="input-radio" type="radio" name="address_id" value="{{ $address->id }}" @if ($address->set_default)
-                                                checked
-                                            @endif required>
-											@php
-												$addid = $address->id; 
-											@endphp
-                                                    <span class="userf-name">{{$address->address_type}}</span>
-                                                </label>
+						
+							@foreach (Auth::user()->addresses as $key => $address)
+								<div class="col-md-4">
+									<div class="d-flex position-relative">
+										<div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none w-100 bg-white pt-2 border">
+											<div class="px-2">
+												<div class="user_location mt-1 pb-2">
+													<label for="payment_method_bacs d-flex">
+														<input class="input-radio" type="radio" name="address_id" value="{{ $address->id }}" @if ($address->set_default)
+													checked
+												@endif required>
+												@php
+													$addid = $address->id; 
+												@endphp
+														<span class="userf-name">{{$address->address_type}}</span>
+													</label>
 
-                                            </div>
-                                            <div class="user_name mt-1">
-                                                <span class="userf-name">
-                                                    {{$address->first_name.' '.$address->last_name}} 
-                                                </span>
-                                            </div>
-                                            <div class="phone_number mt-1">
-                                                <span class="user-phone d-flex">
-                                                    <i class="fa fa-phone p-2 border rounded-circle"
-                                                        aria-hidden="true"></i>
-                                                    +91-{{ $address->phone }}
-                                                </span>
-                                            </div>
-                                            <div class="user_email mt-1">
-                                                <span class="user-email d-flex">
-                                                    <i class="fa fa-map-marker p-2 border rounded-circle"
-                                                        aria-hidden="true"></i> {{$address->house_no}}, {{$address->area}}, {{$address->city}}, {{$address->state}} {{$address->pin}}
-                                                </span>
-                                            </div>
-											@if($address->set_default=='1')
-                                            <div class="user_email edit-address mt-1 d-flex">
+												</div>
+												<div class="user_name mt-1">
+													<span class="userf-name">
+														{{$address->first_name.' '.$address->last_name}} 
+													</span>
+												</div>
+												<div class="phone_number mt-1">
+													<span class="user-phone d-flex">
+														<i class="fa fa-phone p-2 border rounded-circle"
+															aria-hidden="true"></i>
+														+91-{{ $address->phone }}
+													</span>
+												</div>
+												<div class="user_email mt-1">
+													<span class="user-email d-flex">
+														<i class="fa fa-map-marker p-2 border rounded-circle"
+															aria-hidden="true"></i> {{$address->house_no}}, {{$address->area}}, {{$address->city}}, {{$address->state}} {{$address->pin}}
+													</span>
+												</div>
+												@if($address->set_default=='1')
+												<div class="user_email edit-address mt-1 d-flex">
 
-                                                <div class="w-100">
-                                                    <button
-                                                        class="btn btn-success float-start add-buttonser">Default&nbsp;Address</button>
-                                                </div>
+													<div class="w-100">
+														<button
+															class="btn btn-success float-start add-buttonser">Default&nbsp;Address</button>
+													</div>
 
-                                            </div>
-											@endif
-                                        </div>
+												</div>
+												@endif
+											</div>
 
-                                    </div>
+										</div>
 
-                                </div>
-                            </div>
-						@endforeach
+									</div>
+								</div>
+							@endforeach
+						 
                             <div class="col-md-4">
                                 <div class="d-flex position-relative">
                                     <div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none w-100 bg-white pt-4 border">
