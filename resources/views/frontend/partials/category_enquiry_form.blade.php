@@ -24,7 +24,7 @@
             </div>
             <!-- form-group -->
             <div class="form-group form-group-textarea">
-               <textarea class="form-control hz-form-message" name="message" rows="4" placeholder="Message">Hello, I am interested in [Modern Apartment]</textarea>
+               <textarea class="form-control hz-form-message" name="message" rows="4" placeholder="Hello, I am interested in [Modern Apartment]"></textarea>
             </div>
             <!-- form-group -->	
             <div class="form-group">

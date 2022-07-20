@@ -1564,8 +1564,7 @@
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
                                           <textarea name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder="Your Message *"> 
-                                               </textarea>
+                                             placeholder="Your Message *"></textarea>
                                        </div>
 									   <span class="form-text text-danger my-3">@error('message'){{$message}}@enderror</span>
 									   <input required type="hidden" name="type" value="1">
@@ -1661,8 +1660,7 @@
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
                                           <textarea required name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder="Your Message *"> 
-                                               </textarea>
+                                             placeholder="Your Message *"></textarea>
                                        </div>
 									   <span class="form-text text-danger my-3">@error('message'){{$message}}@enderror</span>
 									   <input required type="hidden" name="type" value="2">
