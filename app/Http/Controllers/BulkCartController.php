@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\BulkCart;
 use Auth;
 use Session;
 use Cookie;
 use App\Models\Search;
-
 use App\Models\FlashDeal;
 use App\Models\Brand;
 use App\Models\Color;
@@ -18,9 +18,9 @@ use App\Models\Shop;
 use App\Models\Attribute;
 use App\Models\AttributeCategory;
 use App\Utility\CategoryUtility;
-class CartController extends Controller
+class BulkCartController extends Controller
 {
-    public function addToUserCart(Request $request, $category_id = null, $brand_id = null){
+    public function addBulkProdToCart(Request $request, $category_id = null, $brand_id = null){
         $product_id = $request->input('product_id');
         $product_qty = $request->input('product_qty');
         $product_price = $request->input('product_price');
@@ -44,7 +44,7 @@ class CartController extends Controller
    
 	if($prod_check)
 	{
-		if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists())
+		if(BulkCart::where('product_id',$product_id)->where('user_id',Auth::id())->exists())
 		{
 		    return response()->json(['status'=>'Already Added to Cart']);
         }
@@ -64,17 +64,14 @@ class CartController extends Controller
 			
             if(auth()->user() != null) {
                 $user_id = Auth::user()->id;
-                $carts = Cart::where('user_id', $user_id)->get();
-				$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+                $carts = BulkCart::where('user_id', $user_id)->get();
             } else {
                 // $temp_user_id = $request->session()->get('temp_user_id');
-                $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-				$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+                $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
             }
             return array(
                 'status' => 'Added To Cart!',
                 'cart_count' => count($carts),
-                'sum_cart_count' => $sumcartamount,
 				// 'product_box_view' => view('frontend.partials.product_box_ajax', compact('carts','products','check_cart_product_list'))->render(),
                 'nav_cart_view' => view('frontend.partials.cart')->render(),
             );
@@ -102,8 +99,8 @@ class CartController extends Controller
     }
     public function cartCountFunction()
     {
-        $cartcount = Cart::where('user_id',Auth::id())->count();
-        $sumcartamount = Cart::where('user_id',Auth::id())
+        $cartcount = BulkCart::where('user_id',Auth::id())->count();
+        $sumcartamount = BulkCart::where('user_id',Auth::id())
                         ->sum('total_price');
         return response()->json(['count'=>$cartcount,'cart_amount'=>$sumcartamount]);
     }
@@ -115,7 +112,7 @@ class CartController extends Controller
         if(auth()->user() != null) {
             $user_id = Auth::user()->id;
             if($request->session()->get('temp_user_id')) {
-                Cart::where('temp_user_id', $request->session()->get('temp_user_id'))
+                BulkCart::where('temp_user_id', $request->session()->get('temp_user_id'))
                         ->update(
                                 [
                                     'user_id' => $user_id,
@@ -125,14 +122,14 @@ class CartController extends Controller
 
                 Session::forget('temp_user_id');
             }
-            $carts = Cart::where('user_id', $user_id)->get();
+            $bulkcarts = BulkCart::where('user_id', $user_id)->get();
         } else {
             $temp_user_id = $request->session()->get('temp_user_id');
-            // $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-            $carts = ($temp_user_id != null) ? Cart::where('temp_user_id', $temp_user_id)->get() : [] ;
+            // $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
+            $bulkcarts = ($temp_user_id != null) ? BulkCart::where('temp_user_id', $temp_user_id)->get() : [] ;
         }
 
-        return view('frontend.view_cart', compact('categories', 'carts'));
+        return view('frontend.view_bulk_product_cart', compact('categories', 'bulkcarts'));
     }
 
     public function deleteFromCart(Request $request){
@@ -140,9 +137,9 @@ class CartController extends Controller
         // if(Auth::check())
         // {
             $prod_id = $request->input('prod_id');
-            // if(Cart::where('id',$prod_id)->where('user_id', Auth::id())->exists())
+            // if(BulkCart::where('id',$prod_id)->where('user_id', Auth::id())->exists())
             // {
-                $cartItem = Cart::where('id',$prod_id)->first();
+                $cartItem = BulkCart::where('id',$prod_id)->first();
                 $cartItem->delete();
                 return response()->json(['status'=>"Removed from Cart"]);
             // }
@@ -159,42 +156,31 @@ class CartController extends Controller
         
             $quantity = $request->input('quantity');
             $id = $request->input('id');
-            // if(Cart::where('id',$id)->where('user_id', Auth::id())->exists())
+            // if(BulkCart::where('id',$id)->where('user_id', Auth::id())->exists())
             // {
 				if(Auth::user() != null) {
 					$user_id = Auth::user()->id;
-					$cartItem = Cart::where('product_id',$id)->where('user_id', $user_id)->first();
-					$carts = Cart::where('user_id', Auth::id())->get();
+					$cartItem = BulkCart::where('product_id',$id)->where('user_id', $user_id)->first();
+					$carts = BulkCart::where('user_id', Auth::id())->get();
 					$price = $cartItem->price;
-					$cart_update = Cart::where('product_id', $request->id)->where('user_id',$user_id)->update([
+					$cart_update = BulkCart::where('product_id', $request->id)->where('user_id',$user_id)->update([
                         'quantity' => $quantity,
                         'total_price' => $quantity*$price,
                     ]);
-					$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
-					return array(
-						'status' => 'Cart Updated!',
-						'cart_count' => count($carts),
-						'sum_cart_count' => $sumcartamount,
-						'nav_cart_view' => view('frontend.partials.cart')->render(),
-					);
+					return response()->json(['status'=>"Cart Updated!"]);
 				}
 				else{
 					$user_id = null;
 					$temp_user_id = $request->session()->get('temp_user_id');
-					$cartItem = Cart::where('product_id',$id)->where('temp_user_id', $temp_user_id)->first();
-					$carts = Cart::where('user_id', Auth::id())->get();
+					$cartItem = BulkCart::where('product_id',$id)->where('temp_user_id', $temp_user_id)->first();
+					$carts = BulkCart::where('user_id', Auth::id())->get();
 					$price = $cartItem->price;
-					$cart_update = Cart::where('product_id', $request->id)->where('temp_user_id',$temp_user_id)->update([
+					$cart_update = BulkCart::where('product_id', $request->id)->where('temp_user_id',$temp_user_id)->update([
                         'quantity' => $quantity,
                         'total_price' => $quantity*$price,
                     ]);
-					$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
-					return array(
-						'status' => 'Cart Updated!',
-						'cart_count' => count($carts),
-						'sum_cart_count' => $sumcartamount,
-						'nav_cart_view' => view('frontend.partials.cart')->render(),
-					);
+					return response()->json(['status'=>"Cart Updated!"]);
+					
 				}
                 
                 // return array(
@@ -210,12 +196,12 @@ class CartController extends Controller
         {
             $quantity = $request->input('quantity');
             $id = $request->input('id');
-            if(Cart::where('id',$id)->where('user_id', Auth::id())->exists())
+            if(BulkCart::where('id',$id)->where('user_id', Auth::id())->exists())
             {
-                $cartItem = Cart::where('id',$id)->where('user_id', Auth::id())->first();
-                $carts = Cart::where('user_id', Auth::id())->get();
+                $cartItem = BulkCart::where('id',$id)->where('user_id', Auth::id())->first();
+                $carts = BulkCart::where('user_id', Auth::id())->get();
                 $price = $cartItem->price;
-                $cart_update = Cart::where('id', $request->id)
+                $cart_update = BulkCart::where('id', $request->id)
                             ->update([
                                     'quantity' => $quantity,
                                     'total_price' => $quantity*$price,
@@ -243,7 +229,86 @@ class CartController extends Controller
         $product = Product::find($request->id);
         return view('auction.frontend.addToCartAuction', compact('product'));
     }
+	public function addCarts(Request $request){
+			
+			if(Auth::user() != null) {
+            $user_id = Auth::user()->id;
+            $temp_user_id = null;
+        }else{
+            $user_id = null;
+            $temp_user_id = $request->session()->get('temp_user_id');
 
+            if($temp_user_id == null || $temp_user_id == ""){
+                $temp_user_id = bin2hex(random_bytes(10));
+                $request->session()->put('temp_user_id', $temp_user_id);
+            }
+        }
+		$product_id =  $request->input('product_id', []);
+			$price =  $request->input('price', []);
+			$quantity =  $request->input('quantity', []);
+			// $cartItem['quantity'] += $request['quantity'];
+            
+        if(auth()->user() != null) {
+            $user_id = Auth::user()->id;
+            $data['user_id'] = $user_id;
+            $carts = BulkCart::where('user_id', $user_id)->get();
+            $sameProductinCart = BulkCart::where('user_id', $user_id)->where('product_id',$request->product_id)->exists();
+            $sameProductinCartQuantity = BulkCart::where('user_id', $user_id)->where('product_id',$request->product_id)->first();
+        } else {
+            if($request->session()->get('temp_user_id')) {
+                $temp_user_id = $request->session()->get('temp_user_id');
+            } else {
+                $temp_user_id = bin2hex(random_bytes(10));
+                $request->session()->put('temp_user_id', $temp_user_id);
+            }
+            $data['temp_user_id'] = $temp_user_id;
+            $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
+            $sameProductinCart = BulkCart::where('temp_user_id', $temp_user_id)->where('product_id',$request->product_id)->exists();
+            $sameProductinCartQuantity = BulkCart::where('user_id', $temp_user_id)->where('product_id',$request->product_id)->first();
+        }
+           
+            if($sameProductinCart>=1){
+                $results = [];
+                foreach ($request->product_id as $index => $unit) {
+                    $results[] = [
+                            "product_id" => $product_id[$index],
+                            "price" => $price[$index],
+                            "quantity" => $quantity[$index]+$sameProductinCartQuantity->quantity,
+                            "temp_user_id" => $temp_user_id,
+                            "user_id" => $user_id,
+                            "variation" => '',
+                        ];
+                }
+                // BulkCart::save($results);
+                $cartupdate = BulkCart::where('product_id', $product_id[$index])
+                            ->update([
+                                    'quantity' => $quantity[$index]+$sameProductinCartQuantity->quantity,
+                                ]);
+                // BulkCart::update([
+                //     'quantity' => $quantity[$index]+$sameProductinCartQuantity->quantity,
+                // ]);
+            }
+            else{
+                $results = [];
+                foreach ($request->product_id as $index => $unit) {
+                    $results[] = [
+                            "product_id" => $product_id[$index],
+                            "price" => $price[$index],
+                            "quantity" => $quantity[$index],
+                            "temp_user_id" => $temp_user_id,
+                            "user_id" => $user_id,
+                            "variation" => '',
+                        ];
+                }
+                BulkCart::insert($results);
+            }
+			
+			// dd($results);
+			// die;
+			
+         
+		return redirect('bulk-cart')->with(session()->flash('alert-success', 'Bulk Products Added to cart!'));
+	}
     public function addToCart(Request $request)
     {
         $product = Product::find($request->id);
@@ -253,8 +318,7 @@ class CartController extends Controller
         if(auth()->user() != null) {
             $user_id = Auth::user()->id;
             $data['user_id'] = $user_id;
-            $carts = Cart::where('user_id', $user_id)->get();
-			$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+            $carts = BulkCart::where('user_id', $user_id)->get();
         } else {
             if($request->session()->get('temp_user_id')) {
                 $temp_user_id = $request->session()->get('temp_user_id');
@@ -263,8 +327,7 @@ class CartController extends Controller
                 $request->session()->put('temp_user_id', $temp_user_id);
             }
             $data['temp_user_id'] = $temp_user_id;
-            $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-			$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+            $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
         }
 
         $data['product_id'] = $product->id;
@@ -277,7 +340,6 @@ class CartController extends Controller
                 return array(
                     'status' => 0,
                     'cart_count' => count($carts),
-                    'sum_cart_count' => $sumcartamount,
                     'modal_view' => view('frontend.partials.minQtyNotSatisfied', [ 'min_qty' => $product->min_qty ])->render(),
                     'nav_cart_view' => view('frontend.partials.cart')->render(),
                 );
@@ -319,7 +381,6 @@ class CartController extends Controller
                 return array(
                     'status' => 0,
                     'cart_count' => count($carts),
-					'sum_cart_count' => $sumcartamount,
                     'modal_view' => view('frontend.partials.outOfStockCart')->render(),
                     'nav_cart_view' => view('frontend.partials.cart')->render(),
                 );
@@ -381,7 +442,6 @@ class CartController extends Controller
                         return array(
                             'status' => 0,
                             'cart_count' => count($carts),
-							'sum_cart_count' => $sumcartamount,
                             'modal_view' => view('frontend.partials.auctionProductAlredayAddedCart')->render(),
                             'nav_cart_view' => view('frontend.partials.cart')->render(),
                         );
@@ -394,7 +454,6 @@ class CartController extends Controller
                             return array(
                                 'status' => 0,
                                 'cart_count' => count($carts),
-								'sum_cart_count' => $sumcartamount,
                                 'modal_view' => view('frontend.partials.outOfStockCart')->render(),
                                 'nav_cart_view' => view('frontend.partials.cart')->render(),
                             );
@@ -418,27 +477,23 @@ class CartController extends Controller
                     }
                 }
                 if (!$foundInCart) {
-                    Cart::create($data);
+                    BulkCart::create($data);
                 }
             }
             else{
-                Cart::create($data);
+                BulkCart::create($data);
             }
 
             if(auth()->user() != null) {
                 $user_id = Auth::user()->id;
-                $carts = Cart::where('user_id', $user_id)->get();
-				$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
-				
+                $carts = BulkCart::where('user_id', $user_id)->get();
             } else {
                 $temp_user_id = $request->session()->get('temp_user_id');
-                $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-				$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+                $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
             }
             return array(
                 'status' => 'Added To Cart!',
                 'cart_count' => count($carts),
-				'sum_cart_count' => $sumcartamount,
                 'modal_view' => view('frontend.partials.addedToCart', compact('product', 'data'))->render(),
                 'nav_cart_view' => view('frontend.partials.cart')->render(),
             );
@@ -464,21 +519,18 @@ class CartController extends Controller
             $data['digital'] = $product->digital;
 
             if(count($carts) == 0){
-                Cart::create($data);
+                BulkCart::create($data);
             }
             if(auth()->user() != null) {
                 $user_id = Auth::user()->id;
-                $carts = Cart::where('user_id', $user_id)->get();
-				$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+                $carts = BulkCart::where('user_id', $user_id)->get();
             } else {
                 $temp_user_id = $request->session()->get('temp_user_id');
-                $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-				$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+                $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
             }
             return array(
                 'status' => 1,
                 'cart_count' => count($carts),
-				'sum_cart_count' => $sumcartamount,
                 'modal_view' => view('frontend.partials.addedToCart', compact('product', 'data'))->render(),
                 'nav_cart_view' => view('frontend.partials.cart')->render(),
             );
@@ -488,13 +540,13 @@ class CartController extends Controller
     //removes from Cart
     public function removeFromCart(Request $request)
     {
-        Cart::destroy($request->id);
+        BulkCart::destroy($request->id);
         if(auth()->user() != null) {
             $user_id = Auth::user()->id;
-            $carts = Cart::where('user_id', $user_id)->get();
+            $carts = BulkCart::where('user_id', $user_id)->get();
         } else {
             $temp_user_id = $request->session()->get('temp_user_id');
-            $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+            $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
         }
 
         return array(
@@ -507,7 +559,7 @@ class CartController extends Controller
     //updated the quantity for a cart item
     public function updateQuantity(Request $request)
     {
-        $cartItem = Cart::findOrFail($request->id);
+        $cartItem = BulkCart::findOrFail($request->id);
 
         if($cartItem['id'] == $request->id){
 			
@@ -540,10 +592,10 @@ class CartController extends Controller
 
         if(auth()->user() != null) {
             $user_id = Auth::user()->id;
-            $carts = Cart::where('user_id', $user_id)->get();
+            $carts = BulkCart::where('user_id', $user_id)->get();
         } else {
             $temp_user_id = $request->session()->get('temp_user_id');
-            $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+            $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
         }
 
         return array(
@@ -554,7 +606,7 @@ class CartController extends Controller
     }
 	public function proUpdateQuantit(Request $request)
     {
-        $cartItem = Cart::findOrFail($request->id);
+        $cartItem = BulkCart::findOrFail($request->id);
 		dd($cartItem);die;
         // if($cartItem['id'] == $request->id){
             $product = Product::find($cartItem['product_id']);
@@ -580,10 +632,10 @@ class CartController extends Controller
 
         if(auth()->user() != null) {
             $user_id = Auth::user()->id;
-            $carts = Cart::where('user_id', $user_id)->get();
+            $carts = BulkCart::where('user_id', $user_id)->get();
         } else {
             $temp_user_id = $request->session()->get('temp_user_id');
-            $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+            $carts = BulkCart::where('temp_user_id', $temp_user_id)->get();
         }
 
         return array(

@@ -170,6 +170,14 @@ class HomeController extends Controller
             'phone'=>'required',
             'email'=>'required',
         ]);
+        // dd($request);die;
+        if ($request->hasfile('file')) {
+            $file = $request->file('file');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = 'user-ava-'.time().'.'.$extenstion;
+            $file->move(public_path('uploads/user'), $filename);
+        }
+        //  dd($filename);die;
         $userid = Auth::user()->id;
         $name = $request->first_name.' '.$request->last_name;
         $upate_profile_details = User::where('id', $userid)
@@ -181,6 +189,7 @@ class HomeController extends Controller
                                     'email' => $request->email,
                                     'email' => $request->email,
                                     'gender' => $request->gender,
+                                    'avatar' => $filename,
                                 ]);
         if ($upate_profile_details) {
             return redirect()->back()->with(session()->flash('alert-success', 'Profile Updated Successfully!.'));

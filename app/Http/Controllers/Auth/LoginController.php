@@ -213,7 +213,8 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
         flash(translate('Invalid login credentials'))->error();
-        return back();
+		return redirect()->back()->with(session()->flash('alert-danger', 'Invalid login credentials!.'));
+        // return back();
     }
 
     /**

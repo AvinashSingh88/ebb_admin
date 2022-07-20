@@ -61,7 +61,19 @@
    <script src="{{static_asset('assets_web/js/jquery-3.6.0.js')}}" type="text/javascript"></script>
    <script src="{{static_asset('assets_web/js/jquery-ui.js')}}" type="text/javascript"></script>
    
-   
+   <script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 5000;
+        @if (Session::has('alert-danger'))
+            toastr.error('{{ Session::get('alert-danger') }}');
+        @elseif(Session::has('alert-success'))
+            toastr.success('{{ Session::get('alert-success') }}');
+        @elseif(Session::has('alert-warning'))
+            toastr.success('{{ Session::get('alert-warning') }}');
+        @endif
+    });
+
+</script>
       @if (get_setting('google_analytics') == 1)
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
@@ -122,19 +134,7 @@
     </div>
 
     @yield('modal')
-	<script>
-        $(document).ready(function() {
-            toastr.options.timeOut = 10000;
-            @if (Session::has('alert-danger'))
-                toastr.error('{{ Session::get('alert-danger') }}');
-            @elseif(Session::has('alert-success'))
-                toastr.success('{{ Session::get('alert-success') }}');
-            @elseif(Session::has('alert-warning'))
-                toastr.success('{{ Session::get('alert-warning') }}');
-            @endif
-        });
-
-    </script>
+	
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
 		
@@ -174,7 +174,7 @@
 					
 				success: function (response) {
 					toastr.info(response.status);
-					 updateNavCart(response.nav_cart_view,response.cart_count);
+					updateNavCart(response.nav_cart_view,response.cart_count,response.sum_cart_count);
 					 $('#cart-summary').html(response.cart_view);
                      loadcart();
 				}
@@ -349,9 +349,10 @@ $('#option-choice-form input').on('change', function(){
 
             return false;
         }
-		function updateNavCart(view,count){
+		function updateNavCart(view,count,amount){
             $('.cart-count').html(count);
             $('#cart_items').html(view);
+		    $('.cart-amount').html(amount);
         }
 		
 		function addToCart(){
@@ -373,7 +374,7 @@ $('#option-choice-form input').on('change', function(){
                        // $('#addToCart-modal-body').html(data.modal_view);
                        // AIZ.extra.plusMinus();
 					   toastr.info(data.status);
-                       updateNavCart(data.nav_cart_view,data.cart_count);
+                       updateNavCart(data.nav_cart_view,data.cart_count,data.sum_cart_count);
                     }
                 });
             }

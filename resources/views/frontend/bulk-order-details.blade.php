@@ -7,7 +7,7 @@
 
 @section('content')
 @php
-    $status = $order->orderDetails->first()->delivery_status;
+    $status = $order->BulkorderDetails->first()->delivery_status;
 @endphp
  <section class="pageTitle" style="    background-image: url({{static_asset('assets_web/img/orderbanner.png')}});height: 240px; background-size: contain;">
          <div class="container">
@@ -72,19 +72,19 @@
                                                Order Status : {{ translate(ucfirst(str_replace('_', ' ', $status))) }}  
 </td>											   
                                           <td>        {{ translate('Subtotal')}}     </td>
-                                          <td>  :&nbsp;&nbsp; {{ single_price($order->orderDetails->sum('price')) }}     </td>
+                                          <td>  :&nbsp;&nbsp; {{ single_price($order->BulkorderDetails->sum('price')) }}     </td>
                                             </tr>
                                        <tr>
                                           <td>     {{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->area }}, {{ json_decode($order->shipping_address)->postal_code }}   </td>
                                           <td>           </td>
                                           <td>        {{ translate('Shipping')}}: </td>
-                                          <td>  :&nbsp;&nbsp; {{ single_price($order->orderDetails->sum('shipping_cost')) }}     </td>
+                                          <td>  :&nbsp;&nbsp; {{ single_price($order->BulkorderDetails->sum('shipping_cost')) }}     </td>
                                             </tr>
                                        <tr>
                                           <td>     {{ json_decode($order->shipping_address)->state }}, {{ json_decode($order->shipping_address)->city }}, {{ json_decode($order->shipping_address)->postal_code }}   </td>
                                           <td>           </td>
                                           <td>        {{ translate('Tax')}} </td>
-                                          <td>  :&nbsp;&nbsp;  {{ single_price($order->orderDetails->sum('tax')) }}   </td>
+                                          <td>  :&nbsp;&nbsp;  {{ single_price($order->BulkorderDetails->sum('tax')) }}   </td>
                                             </tr>
                                        <tr>
                                           <td>       </td>
@@ -106,15 +106,15 @@
                                 <table class="table1" id="cart">
                          
                            <tbody style="border: 1px solid #d3d3d385; border-radius:10px;">
-                              @foreach ($order->orderDetails as $key => $orderDetail)
+                              @foreach ($order->BulkorderDetails as $key => $orderDetail)
 							  <tr>
                                  <td data-th="Product">
                                     <div class="row p-2">
                                        <div class="col-sm-2 hidden-xs">
-                                          <img src="{{ uploaded_asset($orderDetail->product->thumbnail_img) }}" alt=" ..." class="cart-img w-100">
+                                          <a href="{{ route('product', $orderDetail->product->slug) }}"><img src="{{ uploaded_asset($orderDetail->product->thumbnail_img) }}" alt=" ..." class="cart-img w-100"></a>
                                        </div>
                                        <div class="col-sm-7 text-cart">
-                                          <h4 class="nomargin pt-1">{{ $orderDetail->product->getTranslation('name') }}</h4>
+                                         <a href="{{ route('product', $orderDetail->product->slug) }}"> <h4 class="nomargin pt-1">{{ $orderDetail->product->getTranslation('name') }}</h4></a>
                                           
 {{-- <span><b>Variation :</b> {{ $orderDetail->variation }}</span> 
 <span>Return window closed on 31-Mar-2021</span> --}}
@@ -129,10 +129,10 @@
                                                 </div> -->
                                           </div>
                                        </div>
-                                       <div class="col-sm-3 input-cart">
+                                       <!--<div class="col-sm-3 input-cart">
 									  <a href="{{ route('product', $orderDetail->product->slug) }}"><button class="class_buy_again mt-4">Buy it Again</button>  </a>
                                         
-                                       </div>
+                                       </div>-->
                                        <div class=" col-lg-12 bd-bt "></div>
                                     </div>
                                  </td>

@@ -134,12 +134,16 @@ Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 Route::post('/cart/updateCartPlus', 'CartController@updateCartPlus')->name('cart.updateCartPlus');
 
+Route::post('add-bulk-product-to-cart','BulkCartController@addCarts')->name('bulkproduct.addCarts');
+Route::get('/bulk-cart', 'BulkCartController@index')->name('bulk-cart');
 //Checkout Routes
 Route::group(['prefix' => 'checkout', 'middleware' => ['user', 'verified', 'unbanned']], function () {
     Route::get('/', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
     Route::any('/delivery_info', 'CheckoutController@store_shipping_info')->name('checkout.store_shipping_infostore');
     Route::post('/payment_select', 'CheckoutController@store_delivery_info')->name('checkout.store_delivery_info');
-
+    //bulk order route
+    Route::get('bulkcheckout', 'BulkCheckoutController@get_shipping_info')->name('bulkcheckout.shipping_info');
+    Route::post('BulkpayOnDelivery', 'BulkOrderController@BulkpayOnDelivery')->name('BulkpayOnDelivery');
     Route::get('/order-confirmed', 'CheckoutController@order_confirmed')->name('order_confirmed');
     Route::post('/payment', 'CheckoutController@checkout')->name('payment.checkout');
     Route::post('/get_pick_up_points', 'HomeController@get_pick_up_points')->name('shipping_info.get_pick_up_points');
@@ -223,6 +227,12 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
     Route::resource('wishlists', 'WishlistController');
     Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 
+    //bulk order purchase history routes
+    Route::resource('bulk_purchase_history', 'BulkPurchaseHistoryController');
+    Route::get('bulk-order-details/{id}', 'BulkPurchaseHistoryController@orderDetails')->name('bulk-order-details');
+    Route::post('/purchase_history/details', 'BulkPurchaseHistoryController@purchase_history_details')->name('purchase_history.details');
+    Route::get('/purchase_history/destroy/{id}', 'BulkPurchaseHistoryController@destroy')->name('purchase_history.destroy');
+    
     Route::get('/wallet', 'WalletController@index')->name('wallet.index');
     Route::post('/recharge', 'WalletController@recharge')->name('wallet.recharge');
 
