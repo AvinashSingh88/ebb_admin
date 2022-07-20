@@ -118,7 +118,7 @@
                   </div>
                </div>
 
-               <div class="owl-carousel owl-theme owl-carousel_sliders">
+               <div class="owl-carousel owl-theme owl-carousel_sliders trending001">
                   @foreach ($servicesoffered as $item)
                      <div class="item">
                         <div class="colams_item">
@@ -178,7 +178,7 @@
                   <div class="col-md-4">
                      <div class="product-box">
                         <div class="border-botb-3">
-                           <a href="{{ route('flash-deal-details', $featured_deal->slug) }}" class="view-link">
+                           <a href="{{ route('flash-deal-details', $featured_deal->slug) }}" class="view-link topview">
                               View all
                               <i class="fa-solid fa-chevron-right"></i>
                            </a>
@@ -1564,8 +1564,7 @@
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
                                           <textarea name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder="Your Message *"> 
-                                               </textarea>
+                                             placeholder="Your Message *"></textarea>
                                        </div>
 									   <span class="form-text text-danger my-3">@error('message'){{$message}}@enderror</span>
 									   <input required type="hidden" name="type" value="1">
@@ -1661,8 +1660,7 @@
                                              <i class="fa-solid fa-pen-to-square"></i>
                                           </span>
                                           <textarea required name="message" style="height: 120px;" class="form-control textareas"
-                                             placeholder="Your Message *"> 
-                                               </textarea>
+                                             placeholder="Your Message *"></textarea>
                                        </div>
 									   <span class="form-text text-danger my-3">@error('message'){{$message}}@enderror</span>
 									   <input required type="hidden" name="type" value="2">

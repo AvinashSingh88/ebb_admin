@@ -97,13 +97,12 @@ $meta_description = get_setting('meta_description');
                                     </ul>
                                  </div>
                               </div>
-                              
+
                            </article>
 
                         </div>
                      </li>
                      <li class="listing-botoms">
-                       
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
@@ -130,6 +129,19 @@ $meta_description = get_setting('meta_description');
                               </a>
                            </li>
 						   <!--Code for Second category end-->
+
+                           @if (\App\Models\Category::find($category_id)->parent_id != 0)
+                           <li><a class="dropdown-item1"
+                                 href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">{{
+                                 \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')
+                                 }}</a></li>
+                           @endif
+                           <li>
+                              <a class="dropdown-item1"
+                                 href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">
+                                 {{ \App\Models\Category::find($category_id)->getTranslation('name') }}
+                              </a>
+                           </li>
                            @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key =>
                            $id)
                            <li>
@@ -144,7 +156,10 @@ $meta_description = get_setting('meta_description');
                         </ul>
                      </li>
                      
+
                    </ul>
+
+
                </div>
                <div class="mb-6">
                   <div class="border-bottom1 border-color-11 mt-3 mb-3">
@@ -207,6 +222,7 @@ $meta_description = get_setting('meta_description');
                                  </a>
                               </div>
                            </div>
+
 
                         </article>
 
@@ -491,6 +507,7 @@ $meta_description = get_setting('meta_description');
                     success: function (response) {
                         toastr.info(response.status);
                          updateNavCart(response.nav_cart_view,response.cart_count,response.sum_cart_count);
+
 						 $('#product-box').html(response.product_box_view);
                     }
                 });
@@ -500,6 +517,7 @@ $meta_description = get_setting('meta_description');
             $('.cart-count').html(count);
             $('#cart_items').html(view);
 			$('.cart-amount').html(amount);
+
         }
 		
       function filter() {

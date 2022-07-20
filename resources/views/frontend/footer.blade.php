@@ -119,7 +119,7 @@
                               @foreach (explode(',', get_setting('payment_method_images')) as $key => $value)
                                  <div class="item">
                                     <li>
-                                       <a href="javascript:void(0);"><img src="{{ uploaded_asset($value) }}" alt="" /> </a>
+                                       <a href="javascript:void(0);"><img class="smlogoslide" src="{{ uploaded_asset($value) }}" alt=""  /> </a>
                                     </li>
                                  </div>
                               @endforeach

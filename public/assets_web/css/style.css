@@ -14608,10 +14608,12 @@ section.categorydks_byproducts {
 
 .border-botb-3 a.view-link {
     position: absolute;
-    top: 20px;
+    top: -5px;
     right: 65px;
 }
-
+.topview{
+	top:15px!Important;
+}
 .position-absolutedk {
     position: absolute;
     top: -7px;
@@ -16036,7 +16038,7 @@ section.formsbanners {
 
 .border-botb-3 a.view-link {
     position: absolute;
-    top: 15px;
+    top: -5px;
     right: 15px;
     z-index: 1;
     font-size: 14px;
@@ -23219,4 +23221,10 @@ section.all_sub_brands .bg-white.shadow-sm.rounded.px-3.pt-3 {
  }
 .mrgnbot10{
 		margin-bottom:10px;
+}
+.trending001 .owl-dots{
+	display:none;
+}
+.smlogoslide{
+	width:30px;
 }
