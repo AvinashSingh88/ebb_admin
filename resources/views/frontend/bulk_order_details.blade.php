@@ -162,76 +162,48 @@
                     Details</a> </p>
 								</div>
 							</div> <img class="w-100 mb-2" src="{{static_asset('assets_web/img/productcoupon.jpg')}}" alt=""> @php $qty = 0; foreach ($detailedProduct->stocks as $key => $stock) { $qty += $stock->qty; } @endphp
-							<form id="option-choice-form"> @csrf
-								<input type="hidden" name="id" value="{{ $detailedProduct->id }}"> @if ($detailedProduct->choice_options != null) @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
-								<div class="tab-finish">
-									<div class="row no-gutters">
-										<div class="col-sm-2">
-											<p class="ucfirst"> {{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}: </p>
-										</div>
-										<div class="col-sm-10">
-											<div class="aiz-radio-inline"> @foreach ($choice->values as $key => $value)
-												<label class="aiz-megabox pl-0 mr-2">
-													<input class="opacity" type="radio" name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}" @if($key==0) checked @endif> <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-												{{ $value }}
-											</span> </label> @endforeach </div>
-										</div>
-									</div>
-								</div> @endforeach @endif @if (count(json_decode($detailedProduct->colors)) > 0)
-								<div class="row no-gutters">
-									<div class="col-sm-2">
-										<div class="opacity-50 my-0">
-											<h6>{{ translate('Color')}}:</h6> </div>
-									</div>
-									<div class="col-sm-10">
-										<div class="aiz-radio-inline"> @foreach (json_decode($detailedProduct->colors) as $key => $color)
-											<label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
-												<input class="opacity" type="radio" name="color" value="{{ \App\Models\Color::where('code', $color)->first()->name }}" @if($key==0) checked @endif> <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                        <span class="size-30px d-inline-block rounded" style="background:{{ $color }};"></span> </span>
-											</label> @endforeach </div>
-									</div>
-								</div>
-								<hr> @endif
-								<!-- Quantity + Add to cart -->
-								<div class="row no-gutters d-none">
-									<div class="col-sm-2">
-										<div class="opacity-50 my-2">{{ translate('Quantity')}}:</div>
-									</div>
-									<div class="col-sm-10">
-										<div class="product-quantity d-flex align-items-center">
-											<div class="input-group w-60 justify-content-start align-items-center packageadd">
-												<input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0" data-field="quantity">
-												<input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25">
-												<input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0" data-field="quantity"> </div> @php $qty = 0; foreach ($detailedProduct->stocks as $key => $stock) { $qty += $stock->qty; } @endphp
-											<div class="avialable-amount w-40 opacity-60"> @if($detailedProduct->stock_visibility_state == 'quantity') (<span id="available-quantity">{{ $qty }}</span> {{ translate('available')}}) @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1) (<span id="available-quantity">{{ translate('In Stock') }}</span>) @endif </div>
-										</div>
-									</div>
-								</div>
-								<div class="discrptions_button cart-add d-block cart-add1 products_list ">
-									<div class="input-group quantity_input mb-0">
-										<div class="input-group w-100 justify-content-start align-items-center packageadd">
-											<input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0" data-field="quantity">
-											<input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25">
-											<input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0" data-field="quantity"> </div>
-									</div>
-								</div>
-							</form>
-							<div class="discrptions_button">
-								<input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
-								<input type="hidden" id="total_product_price" class="prod_price">
-								<button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
-								<button class="out-of-stock background-gray">Out of stock</button>
-								<!--<h6><a href="quote.php">Get Quote</a></h6>-->
-								<button class="bulk-order-buttons">Bulk Order</button>
-							</div>
-							<h4 id="available-quantity">
-        @if($detailedProduct->stock_visibility_state == 'quantity')
-        <span id="available-quantity">{{ $qty }} </span>
-        {{ translate('available')}}
-        @elseif($detailedProduct->stock_visibility_state == 'text' && $qty >= 1)
-        {{ translate('In Stock') }}
-        @endif
-    </h4>
+							 
+							<!---Brand section start--->
+					<div class="backtabs-dp_servicespros2 mt-2">
+                   
+
+						  <div class="optionbox">
+                              <div class="clear-fix"></div>
+							  @if ($detailedProduct->brand != null)
+                              <h4 class="dthd">Brands : <span><a href="#1" style="color: inherit;text-decoration: none;">{{$detailedProduct->brand->name}}</a></span> </h4>
+								@endif
+                              <ul class="optbrand">
+									@if ($detailedProduct->brand != null)	
+                                 <!--for current product-->
+                                 <li>
+                                    <a href="javascript:void(0);" class="detbrand selected">
+                                    <img src="{{ uploaded_asset($detailedProduct->brand->logo) }}" height="30" class="loadimg" alt="">
+                                    <span class="price">{{home_discounted_base_price($detailedProduct)}}</span></a><!-- detbrand -->
+                                 </li>
+                                 <!--for current product-->
+									@endif
+                                 <!--for other products-->
+								 @php
+									$brandid = $detailedProduct->brand_id;
+									$catid = $detailedProduct->category_id;
+									$detailproductid = $detailedProduct->id;
+								 @endphp
+								   @foreach(\App\Models\Product::where('category_id',$catid)->where('id', '!=', $detailproductid)->groupBy('brand_id')->get() as $brandproducts)
+                                 <li>
+                                    <a href="{{route('product',$brandproducts->slug )}}" class="detbrand">
+                                    <img src="{{ uploaded_asset($brandproducts->brand->logo) }}" height="30" class="loadimg" alt="">
+                                    <span class="price">{{home_discounted_base_price($brandproducts)}}</span></a><!-- detbrand -->
+                                 </li>
+								   @endforeach
+                                 
+                                  
+                              </ul>
+                           </div>
+                           <hr/>
+                        
+                        
+                     </div>
+				  <!---Brand section end--->
 							<h4>Highlights</h4>
 							<ul class="ulproducts ulproducts4">
 								<li><b>Sub Category </b>&nbsp; :&nbsp; {{ $detailedProduct->category->getTranslation('name') }}</li>
@@ -301,7 +273,29 @@
 										<input type="file" id="file" class="file">
 										<label for="file">Upload Parchi</label>
 									</div>
-									<div class="wof_cart_widget_wrapper" style=" background-color: #1274c0; border-radius: 5px; border: none;"> <i class="fa fa-cart-arrow-down" aria-hidden="true" style="    color: #fff;   padding-right: 5px;"></i> <span class="lbl_cart_total" style="color:#fff;">2</span> </div>
+									@php
+if(auth()->user() != null) {
+    $user_id = Auth::user()->id;
+    $bulkcart = \App\Models\BulkCart::where('user_id', $user_id)->get();
+} else {
+    $temp_user_id = Session()->get('temp_user_id');
+    if($temp_user_id) {
+        $bulkcart = \App\Models\BulkCart::where('temp_user_id', $temp_user_id)->get();
+    }
+}
+
+@endphp						
+{{--@if(isset($bulkcart) && count($bulkcart) > 0)
+									<div onclick="window.location.href='{{url('bulk-cart')}}'" class="wof_cart_widget_wrapper" style=" background-color: #1274c0; border-radius: 5px; border: none;"> 
+										<i class="fa fa-cart-arrow-down" aria-hidden="true" style="color: #fff;   padding-right: 5px;"></i>
+										<span class="lbl_cart_total" style="color:#fff;">{{ count($bulkcart)}}</span> 
+									</div>
+									@else--}}
+									<div class="wof_cart_widget_wrapper" style=" background-color: #1274c0; border-radius: 5px; border: none;"> 
+										<i class="fa fa-cart-arrow-down" aria-hidden="true" style="color: #fff;   padding-right: 5px;"></i>
+										<span class="lbl_cart_total" style="color:#fff;">0</span> 
+									</div>
+									 
 								</div>
 								<div class="wof-collection-main-wrapper">
 									<div class="collection_container">
@@ -321,6 +315,8 @@
 								</div>
 							</div>
 							<div class="card-body">
+					<form method="post" action="{{route('bulkproduct.addCarts')}}">
+					@csrf
 								<div class="table-crack-overflow">
 									<table class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
 										<thead>
@@ -342,24 +338,25 @@
 											</tr>
 										</thead>
 										@php
-											echo $category_id = $detailedProduct->category_id;
+											 $category_id = $detailedProduct->category_id;
 										@endphp
 										<tbody id='ckeckboxselect'>
 											@php
 												$s=1;
+												$total_unit_price = 0;
 											@endphp
 											@foreach (\App\Models\Product::where('category_id',$category_id)->get() as $key => $item)
 											<tr>
 												<td> {{$s}} </td>
 												<td>
-													<input type="checkbox" value=""  data-id="{{ $item->id }}" id="boxselect"> 
+													<input type="checkbox" value="{{ $item->id }}" name="product_id[]"  data-id="{{ $item->id }}" id="boxselect"> 
 													<img src="{{uploaded_asset($item->thumbnail_img)}}" onclick="openModal();(1)" class="img01 hover-shadow"> </td>
 												<td> <span>{{$item->name}} </span> </td>
 												<td class="position-relative text-center"> <i class="fa fa-ellipsis-v ulines3es1"></i>
 													<div class="ulanidksizecolor ulines-dps-frost01 ulines3es01">
 														<ul class="tabs-ulcheckbox">
 															<li class="ulcheckbox ulcheckbox1 active">
-																<form class="cart" action="#1" method="post" enctype="multipart/form-data">
+																<div class="cart" action="#1" method="post" enctype="multipart/form-data">
 																	<div class="wc-pao-addons-container">
 																		<div class="wc-pao-addon-container  wc-pao-addon wc-pao-addon-size" data-product-name="Album">
 																			<label for="addon-28-size-0" class="wc-pao-addon-name" data-addon-name="Size" data-has-per-person-pricing="" data-has-per-block-pricing="">Size </label>
@@ -391,10 +388,10 @@
 																		</div>
 																		<div id="product-addons-total" data-show-sub-total="1" data-type="simple" data-tax-mode="excl" data-tax-display-mode="excl" data-price="15" data-raw-price="15" data-product-id="28"></div>
 																	</div>
-																</form>
+																</div>
 															</li>
 															<li class="ulcheckbox ulcheckbox2">
-																<form class="cart" action="#1" method="post" enctype="multipart/form-data">
+																<div class="cart" action="#1" method="post" enctype="multipart/form-data">
 																	<div class="wc-pao-addons-container">
 																		<div class="wc-pao-addon-container  wc-pao-addon wc-pao-addon-size" data-product-name="Album">
 																			<label for="addon-28-size-0" class="wc-pao-addon-name" data-addon-name="Size" data-has-per-person-pricing="" data-has-per-block-pricing="">Color </label>
@@ -424,10 +421,10 @@
 																			</p>
 																		</div>
 																	</div>
-																</form>
+																</div>
 															</li>
 															<li class="ulcheckbox ulcheckbox3">
-																<form class="cart" action="#1" method="post" enctype="multipart/form-data">
+																<div class="cart" action="#1" method="post" enctype="multipart/form-data">
 																	<div class="wc-pao-addons-container">
 																		<div class="wc-pao-addon-container  wc-pao-addon wc-pao-addon-size" data-product-name="Album">
 																			<label for="addon-28-size-0" class="wc-pao-addon-name" data-addon-name="Size" data-has-per-person-pricing="" data-has-per-block-pricing="">Stock </label>
@@ -445,10 +442,10 @@
 																			</p>
 																		</div>
 																	</div>
-																</form>
+																</div>
 															</li>
 															<li class="ulcheckbox ulcheckbox4">
-																<form class="cart" action="#1" method="post" enctype="multipart/form-data">
+																<div class="cart" action="#1" method="post" enctype="multipart/form-data">
 																	<div class="wc-pao-addons-container">
 																		<div class="wc-pao-addon-container  wc-pao-addon wc-pao-addon-size" data-product-name="Album">
 																			<label for="addon-28-size-0" class="wc-pao-addon-name" data-addon-name="Size" data-has-per-person-pricing="" data-has-per-block-pricing="">View </label>
@@ -466,10 +463,10 @@
 																			</p>
 																		</div>
 																	</div>
-																</form>
+																</div>
 															</li>
 															<li class="ulcheckbox ulcheckbox5">
-																<form class="cart" action="#1" method="post" enctype="multipart/form-data">
+																<div class="cart" action="#1" method="post" enctype="multipart/form-data">
 																	<div class="wc-pao-addons-container">
 																		<div class="wc-pao-addon-container  wc-pao-addon wc-pao-addon-size" data-product-name="Album">
 																			<label for="addon-28-size-0" class="wc-pao-addon-name" data-addon-name="Size" data-has-per-person-pricing="" data-has-per-block-pricing="">Suspend </label>
@@ -488,7 +485,7 @@
 																		</div>
 																		<div id="product-addons-total" data-show-sub-total="1" data-type="simple" data-tax-mode="excl" data-tax-display-mode="excl" data-price="15" data-raw-price="15" data-product-id="28"></div>
 																	</div>
-																</form>
+																</div>
 															</li>
 														</ul>
 													</div>
@@ -503,16 +500,20 @@
 														</ul>
 													</div>
 												</td>
-												<td id='price'> {{$item->unit_price}} </td>
+												<td id='price'>
+													{{$item->unit_price}}
+													<input type="hidden" name="price[]" value="{{$item->unit_price}}">
+												</td>
 												<td id='discount'> {{$item->discount}} </td>
-												<td id='gst'> {{}}</td>
+												<td id='gst'> </td>
 												<td>
-													<input id="txtp" onkeypress="return isNumberKey(event)" class="ttype text-center" name="text" value="0" type="text" disabled> </td>
+													<input id="txtp" onkeypress="return isNumberKey(event)" class="ttype text-center" name="quantity[]" value="0" type="text" disabled> </td>
 												<td>
 													<input id="txttotle" name="ert" class="totle background-white border text-center" type="text" value="00000.00" disabled> </td>
 											</tr>
 											@php
 												$s=$s+1;
+												$total_unit_price = $total_unit_price+$item->unit_price;
 											@endphp
 											@endforeach
 											</tbody>
@@ -524,7 +525,7 @@
 											<td colspan="4" class="align-left border-right"> <b style="font-size:14px;  margin-right:14px;  padding-left:5px;">TOTAL
                                                     </b> </td>
 											<td style="width:10%; border-left:1px solid #ccc; text-align:center;">
-												<input id="txtplistqtytotl" name="text" type="button" class="AlltotleQTY" value="0.00" style="background-color:#fff; border:1px solid #fff; "> </td>
+												<input id="txtplistqtytotl" name="text" type="button" class="AlltotleQTY" value="{{$total_unit_price}}" style="background-color:#fff; border:1px solid #fff; "> </td>
 											<td style="width:10%;    border-left: 1px solid #ccc;">
 												<input id="txtplistTol" name="text" type="button" class="Alltotle" value="0.00" style="background-color:#fff; border:1px solid #fff; "> </td>
 										</tr>
@@ -541,13 +542,14 @@
 											<td style="width:50%;  margin:10px 0px;">
 												<div class="snipcart-details">
 													<a href="#1">
-														<input type="submit" value="ADD TO CART" id="addpiece" class="button" style="padding:12px 50px;">
+														<input type="submit" value="Go To Cart" id="addpiece" class="button" style="padding:12px 50px;">
 													</a>
 												</div>
 												<input name="text" class="Alltotle" value="0.00"> </td>
 										</tr>
 									</tbody>
 								</table>
+						</form>
 								<div class="col-md-saa left">
 									<div class="closedirs">
 										<div class="fa-border">

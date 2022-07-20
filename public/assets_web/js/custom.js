@@ -1297,6 +1297,11 @@ $('#ckeckboxselect').on('change', '#boxselect', function() {
     var total = $(this).parent('td').parent('tr').find("#txttotle").text();
 
     if (this.checked) {
+		  var numberNotChecked=  $('input[id=boxselect]:checked').length;
+		  $('.lbl_cart_total').text(numberNotChecked);
+		  //console.log(numberNotChecked);
+
+
         $(this).parent('td').parent('tr').children('td').find("#txtp").removeAttr('disabled');
         if (qut == 0) {
             $(this).parent('td').parent('tr').children('td').find("#txtp").val(1);
@@ -1312,6 +1317,8 @@ $('#ckeckboxselect').on('change', '#boxselect', function() {
             $(this).parent('td').parent('tr').find("#txttotle").val(grand_Total);
         }
     } else {
+		  var numberNotChecked=  $('input[id=boxselect]:checked').length;
+		  $('.lbl_cart_total').text(numberNotChecked);
         $(this).parent('td').parent('tr').children('td').find("#txtp").attr('disabled', 'disabled');
         if (qut == 1) {
             $(this).parent('td').parent('tr').children('td').find("#txtp").val(0);

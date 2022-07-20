@@ -27,14 +27,21 @@
                             @endif
                         @endforeach
                     </div>
+					<form class="js-validate row" method="post" action="{{route('updateProfile')}}" enctype="multipart/form-data" novalidate="novalidate">
+						@csrf
                         <div class="hotel-form py-4 shadow-none">
+						
 						  <ul class="ulines-dps-para">
                               <li class="ukine 	active4">
                               <div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none">
                             <div class="row">
                                 <div class="col-lg-2">
                                     <div class="profile_user-holder">
+										@if(Auth::user()->avatar=='')
                                        <img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('assets_web/img/profile.png')}}" alt="" class="w-100 h-100">
+										@else
+											<img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('uploads/user/'.Auth::user()->avatar)}}" alt="" class="w-100 h-100">
+										@endif
                                     <input type="file" name="file" class="d-none" id="profile">
 									</div>
                                 </div>
@@ -73,8 +80,7 @@
                
                
                <p class="text-gray-901 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
-               <form class="js-validate row" method="post" action="{{route('updateProfile')}}" novalidate="novalidate">
-			   @csrf
+               
                   <div class="js-form-message form-group col-md-6 mb-3">
 					<input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ Auth::user()->first_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
 				  </div>
@@ -135,7 +141,7 @@
                   <div class="mb-600">
                      <div class="mb-3"><button type="submit" class="btn btn-primary-dark-w px-5 w-25">Update Profile</button></div>
                   </div>
-               </form>
+                
          
             </div>
                               </li>
@@ -145,7 +151,21 @@
                          
                         
                         </div>
+						</form>
                         </div>
                      </div>
                   </div>
+				  <script>
+		 $("#profile").change(function() {
+        var reader = new FileReader();
+        console.log(reader);
+        reader.onload = function(e) {
+            $('#profileImg').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(this.files[0]); // convert to base64 string
+    });
+		 </script>
 @endsection
+ 
+
+ 

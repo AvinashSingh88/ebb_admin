@@ -45,7 +45,7 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                <nav aria-label="breadcrumb">
                      <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>  
-                  <li class="breadcrumb-item active" aria-current="page"> Cart     </li>
+                  <li class="breadcrumb-item active" aria-current="page"> Bulk Product Cart     </li>
                </ol>
                </nav>
             </div>
@@ -53,19 +53,19 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
             </div>
          </div>
          <div id="cart-summary" class="justify-content-between1">
-			@if( $carts && count($carts) > 0 )
+			@if( $bulkcarts && count($bulkcarts) > 0 )
             <div class="row p-2">
                <div class="col-md-9">
                   <div class="boxcol p-4  pt-2">
                      <div class="container1">
 					   
 					   <div class="border-bottom1 border-color-11 mt-3 mb-3">
-                        <h3 class="section-title section-title__sm mb-0 pb-0 font-size-18"> <i class="fa-solid fa-cart-shopping"></i> My Cart</h3>
+                        <h3 class="section-title section-title__sm mb-0 pb-0 font-size-18"> <i class="fa-solid fa-cart-shopping"></i> My Bulk Product Cart</h3>
 						<div class="deals"> 
                      <hr>
                   </div>
                      </div>
-					    {{-- <div class="col-sm-3 tag-cart">Steel</div> --}}
+					    
 						<div id="">
 							<table class="table1" id="cart" class="table table-hover table-condensed">
 							 
@@ -73,17 +73,17 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                            @php
                                $total=0;
                            @endphp
-							@foreach ($carts as $item)
+							@foreach ($bulkcarts as $item)
 								
 							
 								  <tr class="product_data">
 									 <td data-th="Product">
 										<div class="row p-2">
-										   <div class="col-sm-3 hidden-xs">
-											  <img src="{{ uploaded_asset($item->product->thumbnail_img) }}" alt="{{$item->product->name}}" class="cart-img" />
-										   </div>
-										   <div class="col-sm-6 text-cart">
-											  <h4 class="nomargin">{{$item->product->name}}</h4>
+										    <div class="col-sm-3 hidden-xs">
+												<a href="{{ route('product', $item->product->slug) }}"><img src="{{ uploaded_asset($item->product->thumbnail_img) }}" alt="{{$item->product->name}}" class="cart-img" /></a>
+										    </div>
+										    <div class="col-sm-6 text-cart">
+											  <a href="{{ route('product', $item->product->slug) }}"> <h4 class="nomargin">{{$item->product->name}}</h4></a>
 											  
 											  <div class="row p-2">
 												 <div class="col-sm-4 ">
@@ -94,7 +94,7 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
 													8 % Off
 													</div>  --->
 											  </div>
-										   </div>
+										    </div>
 										   <input type="hidden" class="prod_id" value="{{$item->id}}">
 											<div class="col-sm-3 input-cart">
 											<div class="cart-add cart-add1 d-block">
@@ -125,7 +125,7 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
                         
 						<div class="d-flow-root">
 						<div class="d-flex mt-2 float-right">
-						 <div class="cont2"><a href="{{url('checkout')}}" class="">  Proceed to checkout</a>
+						 <div class="cont2"><a href="{{route('bulkcheckout.shipping_info')}}" class="">  Proceed to checkout</a>
                                  </div>
                                  <div class="continue "><a href="{{url('')}}" class=""><i class="fa-solid fa-cart-shopping"></i> Continue Shopping</a>
                                  </div>

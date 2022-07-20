@@ -97,63 +97,12 @@ $meta_description = get_setting('meta_description');
                                     </ul>
                                  </div>
                               </div>
-                              <!-- <div class="accordion-content">
-                                 <div class="link-categoryx link-category1az ">
-                                    <ul class="list-unstyled dropdown-list">
-                                       @if (!isset($category_id))
-                                       @foreach (\App\Models\Category::where('level', 0)->get() as $category)
-                                       <li class="mb-2 ml-2">
-                                          <a class="text-reset fs-14"
-                                             href="{{ route('products.category', $category->slug) }}">{{
-                                             $category->getTranslation('name') }}</a>
-                                       </li>
-                                       @endforeach
-                                       @else
-                                       <li class="mb-2">
-                                          <a class="text-reset fs-14 fw-600" href="{{ route('search') }}">
-                                             <i class="las la-angle-left"></i>
-                                             {{ translate('All Categories')}}
-                                          </a>
-                                       </li>
-                                       @if (\App\Models\Category::find($category_id)->parent_id != 0)
-                                       <li class="mb-2">
-                                          <a class="text-reset fs-14 fw-600"
-                                             href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">
-                                             <i class="las la-angle-left"></i>
-                                             {{
-                                             \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')
-                                             }}
-                                          </a>
-                                       </li>
-                                       @endif
-                                       <li class="mb-2">
-                                          <a class="text-reset fs-14 fw-600"
-                                             href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">
-                                             <i class="las la-angle-left"></i>
-                                             {{ \App\Models\Category::find($category_id)->getTranslation('name') }}
-                                          </a>
-                                       </li>
-                                       @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id)
-                                       as $key => $id)
-                                       <li class="ml-4 mb-2">
-                                          <a class="text-reset fs-14"
-                                             href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">{{
-                                             \App\Models\Category::find($id)->getTranslation('name') }}</a>
-                                       </li>
-                                       @endforeach
-                                       @endif
 
-
-
-                                    </ul>
-                                 </div>
-                              </div> -->
                            </article>
 
                         </div>
                      </li>
                      <li class="listing-botoms">
-                        <b> Products List</b>
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
@@ -163,6 +112,23 @@ $meta_description = get_setting('meta_description');
                            @else
 
                            
+						<!--Code for First category start-->
+                           @if (\App\Models\Category::find($category_id)->parent_id != 0)
+                           <li><a class="dropdown-item1"
+                                 href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">
+								 <b>{{ App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')}}</b>
+								</a></li>
+                           @endif
+						   	<!--Code for First category end-->
+							
+							<!--Code for Second category start-->
+                           <li>
+                              <a class="dropdown-item1"
+                                 href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">
+                                 <b>{{ \App\Models\Category::find($category_id)->getTranslation('name') }}</b>
+                              </a>
+                           </li>
+						   <!--Code for Second category end-->
 
                            @if (\App\Models\Category::find($category_id)->parent_id != 0)
                            <li><a class="dropdown-item1"
@@ -190,34 +156,10 @@ $meta_description = get_setting('meta_description');
                         </ul>
                      </li>
                      
-                     
-                     
-                     <li class="listing-botoms">
-                        <b> Structural Material</b>
-                        <ul class="list-unstyled dropdown-list listing_block filter">
 
-                           
-                           <li><a class="dropdown-item1 active" href="#">Cement <i class="fa fa-angle-down" aria-hidden="true"></i></a></li> 
-                           <li><a class="dropdown-item1" href="#">Black Cement</a></li>
-                           <li><a class="dropdown-item1" href="#">White Cement</a></li>
-                           <li><a class="dropdown-item1" href="#">Grey Cement</a></li>
-                           
-                           <li><a class="dropdown-item1" href="#">Bricks & Blocks <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-<li><a class="dropdown-item1" href="#">Sand & Stones  <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-<li><a class="dropdown-item1" href="#">Roofing Solution  <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                   </ul>
 
-<a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2" data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false" aria-controls="collapseBrand">
-                                    <span class="link__icon text-gray-27 bg-white">
-                                       <span class="link__icon-inner">+</span>
-                                    </span>
-                                    <span class="link-collapse__default">Show more</span>
-                                    <span class="link-collapse__active">Show less</span>
-                                 </a>
 
-                        </ul>
-                     </li>
-
-                  </ul>
                </div>
                <div class="mb-6">
                   <div class="border-bottom1 border-color-11 mt-3 mb-3">
@@ -280,6 +222,7 @@ $meta_description = get_setting('meta_description');
                                  </a>
                               </div>
                            </div>
+
 
                         </article>
 
@@ -563,15 +506,18 @@ $meta_description = get_setting('meta_description');
                     },
                     success: function (response) {
                         toastr.info(response.status);
-                         updateNavCart(response.nav_cart_view,response.cart_count);
+                         updateNavCart(response.nav_cart_view,response.cart_count,response.sum_cart_count);
+
 						 $('#product-box').html(response.product_box_view);
                     }
                 });
          });
       });
-		function updateNavCart(view,count){
+		function updateNavCart(view,count,amount){
             $('.cart-count').html(count);
             $('#cart_items').html(view);
+			$('.cart-amount').html(amount);
+
         }
 		
       function filter() {
