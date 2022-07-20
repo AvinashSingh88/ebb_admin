@@ -87,8 +87,8 @@ input.quantity.quantity-field.border-0.text-center.w-25 {
 											  
 											  <div class="row p-2">
 												 <div class="col-sm-4 ">
-												  <p class="pp-cart m-0"><i class="fa-solid fa-indian-rupee-sign"></i> {{$item->price}}</p>
-												  <p class="pp-cart m-0">Total: {{$item->quantity}} X {{$item->price}} = <i class="fa-solid fa-indian-rupee-sign"></i>  {{$item->quantity*$item->price}}</p>
+												  <p class="pp-cart m-0"><i class="fa-solid fa-indian-rupee-sign"></i> {{$item->price+$item->tax}}</p>
+												  <p class="pp-cart m-0">Total: {{$item->quantity}} X {{$item->price+$item->tax}} = <i class="fa-solid fa-indian-rupee-sign"></i>  {{$item->quantity*($item->price+$item->tax)}}</p>
 												 </div>
 												   <!--<div class="col-sm-3 cartoff">
 													8 % Off
