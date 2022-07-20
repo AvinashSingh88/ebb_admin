@@ -81,19 +81,19 @@
                
                <p class="text-gray-901 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
                
-                  <div class="js-form-message form-group col-md-6 mb-3">
+                  <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
 					<input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ Auth::user()->first_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
 				  </div>
-                  <div class="js-form-message form-group col-md-6 mb-3">
+                  <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
 					<input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ Auth::user()->last_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
 				  </div>
-                  <div class="js-form-message form-group col-md-6 mb-3">
+                  <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
 					<input type="tel" class="form-control" name="phone" placeholder="Phone No." value="{{ Auth::user()->phone }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
 				  </div>
-                  <div class="js-form-message form-group col-md-6 mb-3">
+                  <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
 					<input type="email" class="form-control" name="email" placeholder="Email address" value="{{ Auth::user()->email }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
 				  </div>
-                  <div class="js-form-message form-group col-md-12 mb-3">  
+                  <div class="js-form-message form-group col-md-12 mb-3 floatprofile">  
 				  <ul class="list-unstyled d-flex">
                         @php
 						if(!empty(Auth::user()->gender ) && Auth::user()->gender == 'Female'){ 
