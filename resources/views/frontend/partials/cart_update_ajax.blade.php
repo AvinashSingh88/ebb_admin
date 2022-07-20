@@ -31,9 +31,9 @@
 											  <h4 class="nomargin">{{$item->product->name}}</h4>
 											  <p class="pr-des-cart">Whatever your needs be, we’ll provide you with tailor-made solutions that breathe life in your interiors. </p>
 											  <div class="row p-2">
-												 <div class="col-sm-12 ">
-												  <p class="pp-cart my-0 mx-2"><i class="fa-solid fa-indian-rupee-sign"></i> {{$item->price}}</p>
-												  <p class="pp-cart my-0 mx-2">Total: {{$item->quantity}} X {{$item->price}} = <i class="fa-solid fa-indian-rupee-sign"></i>  {{$item->quantity*$item->price}}</p>
+												 <div class="col-sm-4 ">
+												  <p class="pp-cart m-0"><i class="fa-solid fa-indian-rupee-sign"></i> {{$item->price+$item->tax}}</p>
+												  <p class="pp-cart m-0">Total: {{$item->quantity}} X {{$item->price+$item->tax}} = <i class="fa-solid fa-indian-rupee-sign"></i>  {{$item->quantity*($item->price+$item->tax)}}</p>
 												 </div>
 												   <!--<div class="col-sm-3 cartoff">
 													8 % Off

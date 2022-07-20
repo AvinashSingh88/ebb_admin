@@ -443,7 +443,7 @@ $('#option-choice-form input').on('change', function(){
 				success: function (response) {
 					// alert(response.status);
 					 // toastr.info(response.status);
-					 updateNavCart(response.nav_cart_view,response.cart_count);
+					 updateNavCart(response.nav_cart_view,response.cart_count,response.sum_cart_count);
 					 $('#cart-summary').html(response.cart_view);
                      loadcart();
 				}
