@@ -65,8 +65,7 @@
                                 
                            
                         
-						<div
-                                 class="hotel-form py-4 mx-1 px-2 mb-3 mt-1 shadow-none w-33 pt-2 border">
+						<div class="hotel-form py-4 mx-1 px-2 mb-3 mt-1 shadow-none w-33 pt-2 border">
                                                         <div class="px-2">
                                                             <div class="d-flex">
                                                                 <div class="w-50">
@@ -118,7 +117,7 @@
 																<div class="w-500">
                                                                 <input type="hidden" name="userid" value="{{$item->user_id}}">
                                                                 <input type="hidden" name="address_id" value="{{$item->id}}">
-                                                                <button type="submit" class="float-start btn btn-info add-buttonser">Remove</button>
+                                                                <button type="submit" class="float-end btn btn-info add-buttonser">Remove</button>
                                                                 </div>
                                                             </form>
 
@@ -133,7 +132,7 @@
 																<div class="w-500">
                                                                 <input type="hidden" name="userid" value="{{$item->user_id}}">
                                                                 <input type="hidden" name="address_id" value="{{$item->id}}">
-                                                                <button type="submit" class="float-start btn btn-info add-buttonser">Remove</button>
+                                                                <button type="submit" class="float-end btn btn-info add-buttonser">Remove</button>
                                                                 </div>
                                                             </form>
 															@endif
