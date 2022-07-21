@@ -643,30 +643,49 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::findOrFail($id);
-        if ($order != null) {
-            foreach ($order->orderDetails as $key => $orderDetail) {
-                try {
+        // $order = Order::findOrFail($id);
+        // if ($order != null) {
+            // foreach ($order->orderDetails as $key => $orderDetail) {
+                // try {
 
-                    $product_stock = ProductStock::where('product_id', $orderDetail->product_id)->where('variant', $orderDetail->variation)->first();
-                    if ($product_stock != null) {
-                        $product_stock->qty += $orderDetail->quantity;
+                    // $product_stock = ProductStock::where('product_id', $orderDetail->product_id)->where('variant', $orderDetail->variation)->first();
+                    // if ($product_stock != null) {
+                        // $product_stock->qty += $orderDetail->quantity;
+                        // $product_stock->save();
+                    // }
+
+                // } catch (\Exception $e) {
+
+                // }
+
+                // $orderDetail->update(['delivery_status'=>'cancelled']);
+            // }
+            // $order->update(['delivery_status'=>'cancelled']);
+            // flash(translate('Order has been deleted successfully'))->success();
+            // redirect('');
+        // } else {
+            // flash(translate('Something went wrong'))->error();
+        // }
+		
+		
+			$orderdetails = OrderDetail::findOrFail($id);
+			$product_stock = ProductStock::where('product_id', $orderdetails->product_id)->where('variant', $orderdetails->variation)->first();
+			if ($product_stock != null) {
+                        $product_stock->qty += $orderdetails->quantity;
                         $product_stock->save();
                     }
-
-                } catch (\Exception $e) {
-
-                }
-
-                $orderDetail->update(['delivery_status'=>'cancelled']);
-            }
-            $order->update(['delivery_status'=>'cancelled']);
-            flash(translate('Order has been deleted successfully'))->success();
-            redirect('');
-        } else {
-            flash(translate('Something went wrong'))->error();
-        }
-        return back();
+			$ordercancel = OrderDetail::where('id', $id)
+                            ->update([
+                                    'delivery_status' => 'cancelled',
+                                ]);
+								
+            // $order->update(['delivery_status'=>'cancelled']);
+            // flash(translate('Order has been deleted successfully'))->success();
+            // redirect('');
+        if($ordercancel){
+			return redirect()->back()->with(session()->flash('alert-danger', 'Order has been cancelled successfully!.'));
+		}
+		return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!.'));
     }
 
     public function bulk_order_delete(Request $request)

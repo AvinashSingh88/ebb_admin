@@ -147,9 +147,11 @@
                                                                             </a>
                                                                         </p>
                                                                     </div>
+																	 
+																@if($key->delivery_status == 'pending' && $key->payment_status == 'unpaid')
                                                                      <div class="col-lg-12">
                                                                          <p class="order_listing text-capitalize my-1">
-                                                                             <a href="#">
+                                                                             <a href="{{url('orders/destroy/'.$key->id)}}">
                                                                             <span class="icon rounded-circle py-1 px-1 d-inline-block bg-danger text-center m-auto">
                                                                                     <i class="fa fa-times mx-2 text-white text-center"></i>
                                                                                 </span>
@@ -157,6 +159,7 @@
                                                                             </a>
                                                                         </p>
                                                                     </div>
+																@endif
                                                                  </div>
                                                             </div>
                                                         </div>

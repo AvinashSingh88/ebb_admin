@@ -44,6 +44,7 @@
 										@endif
                                     <input type="file" name="file" class="d-none" id="profile">
 									</div>
+									
                                 </div>
                                 <div class="col-lg-10">
                                     <div class="user_name mt-1">
@@ -64,6 +65,7 @@
                                     </div>
                                    
                                 </div>
+								
                             </div>
                            
 
@@ -80,7 +82,13 @@
                
                
                <p class="text-gray-901 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
-               
+               @if ($errors->has('file'))
+									 
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('file') }}</strong>
+										</span>
+									 
+									@endif
                   <div class="js-form-message form-group col-md-6 mb-3">
 					<input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ Auth::user()->first_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
 				  </div>

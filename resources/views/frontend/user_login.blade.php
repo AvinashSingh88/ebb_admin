@@ -1,4 +1,12 @@
 @extends('frontend.master') @section('content')
+<style>
+#password-strength-status {padding: 5px 10px;color: #FFFFFF; border-radius:4px;margin-top:5px;}
+.medium-password{background-color: orange;color:#000;border:#BBB418 1px solid;}
+.weak-password{background-color: #FF6600;border:#AA4502 1px solid;}
+.strong-password{background-color: #12CC1A;border:#0FA015 1px solid;}
+
+#password_strength {padding: 5px 10px;color: #FFFFFF; border-radius:4px;margin-top:5px;}
+</style>
 <section class="pageTitle"> </section>
 <!--top banner end -->
 <div class="discription_section my__accountsd">
@@ -36,6 +44,16 @@
 													<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Login</h3>
 													<div class="deals">
 														<hr> </div>
+														<div class="flash-message mt-2">
+                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @if (Session::has('alert-' . $msg))
+                                <div class="alert alert-{{ $msg }} alert-dismissible fade show" role="alert">
+                                    {{ Session::get('alert-' . $msg) }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
 												</div>
 												<p class="text-gray-901 mb-4">Welcome back! Sign in to your account.</p>
 												<form method="post" action="{{ route('login') }}" class="js-validate" novalidate="novalidate">
@@ -152,7 +170,7 @@
 														</ul>
 													</div>
 													<div class="js-form-message form-group mb-3 col-md-6">
-														<input required type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="upassword" placeholder="New Password" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+														<input required type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }} " id="txtPassword" onkeyup="CheckPasswordStrength(this.value)" name="password" placeholder="New Password" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
                                                         @if ($errors->has('password'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('password') }}</strong>
@@ -160,6 +178,8 @@
 												
                                             @endif
 											<span class="text-danger" id="password_error"></span>
+											<div id="password-strength-status"></div>
+											<span id="password_strength"></span>
 													</div>
 													<div class="js-form-message form-group mb-3 col-md-6">
 														<input type="password" class="form-control" placeholder="{{  translate('Confirm Password') }}" name="password_confirmation">
@@ -237,6 +257,7 @@
 	</div>
 </div> 
 <script type="text/javascript">
+
 
 function validateForm() {
   // let x = document.forms["myForm"]["fname"].value;

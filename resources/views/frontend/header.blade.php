@@ -137,9 +137,29 @@
                      </li>
                      @else
                      <li class="flot-right getquote getquote-signs">
-                        <a href="{{url('users/login')}}" id="SignInlogin" class="SignInlogin"><i class="far fa-user"></i>
+                        <a href="#1" id="SignInlogin" class="SignInlogin"><i class="far fa-user"></i>
                         Sign In / Login</a>
                         <div class="tab-more tab-more2 bg-dark active">
+							<ul class="login_signiN">
+			                                                <li>
+			                                                    <a href="{{url('users/login')}}"
+			                                                        class="d-flex align-items-center justify-content-around p-0 m-0">
+			                                                        <i class="fa fa-user-circle"></i> Login <i
+			                                                            class="fa fa-angle-right ms-2"></i>
+			                                                    </a>
+			                                                </li>
+			                                                <li><a href="{{url('purchase_history')}}"><i
+			                                                            class="bg_icon-img"></i>My Orders</a></li>
+			                                                <li><a href="{{url('product_return')}}"><i
+			                                                            class="bg_icon-img"></i>My Returns</a></li>
+			                                                
+			                                                <li><a href="{{url('profile')}}"><i
+			                                                            class="bg_icon-img"></i>My Profile</a></li>
+			                                               <li><a href="{{url('help_support')}}"><i
+			                                                            class="bg_icon-img"></i>Help &amp; Support</a></li>
+			                                                
+			                                            </ul>
+														
                         </div>
                      </li>
                      @endif

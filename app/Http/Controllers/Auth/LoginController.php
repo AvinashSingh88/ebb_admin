@@ -79,7 +79,7 @@ class LoginController extends Controller
         }
         else {
             //check if email exist
-            $existingUser = User::where('email', $user->email)->first();
+            $existingUser = User::where('email', $user->email)->where('is_verified',1)->first();
 
             if ($existingUser) {
                 //update provider_id
