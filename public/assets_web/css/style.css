@@ -30,7 +30,10 @@ p {
     height: auto;
     margin-bottom: 15px;
 }
-
+.floatprofile{
+	float:left;
+	padding-right:15px;
+}
 
 /*sliders text*/
 
@@ -16786,7 +16789,7 @@ section.banner-brand_product.banner-brand_product2.brankdisections .border-botto
 }
 
 .form-group {
-    margin-bottom: 0rem;
+    margin-bottom: 1rem;
 }
 
 .form-control {

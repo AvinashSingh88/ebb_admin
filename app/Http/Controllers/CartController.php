@@ -254,7 +254,9 @@ class CartController extends Controller
             $user_id = Auth::user()->id;
             $data['user_id'] = $user_id;
             $carts = Cart::where('user_id', $user_id)->get();
-			$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+			$sumcartprice = Cart::where('user_id',$user_id)->sum('price');
+			$sumcarttax = Cart::where('user_id',$user_id)->sum('tax');
+			$sumcartamount = $sumcartprice+$sumcarttax; 
         } else {
             if($request->session()->get('temp_user_id')) {
                 $temp_user_id = $request->session()->get('temp_user_id');
@@ -264,7 +266,9 @@ class CartController extends Controller
             }
             $data['temp_user_id'] = $temp_user_id;
             $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-			$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+			$sumcartprice = Cart::where('temp_user_id',$temp_user_id)->sum('price');
+			$sumcarttax = Cart::where('temp_user_id',$temp_user_id)->sum('tax');
+			$sumcartamount = $sumcartprice+$sumcarttax; 
         }
 
         $data['product_id'] = $product->id;
@@ -358,6 +362,7 @@ class CartController extends Controller
             $data['quantity'] = $request['quantity'];
             $data['price'] = $price;
             $data['tax'] = $tax;
+			$data['total_price'] = $tax+$price;
             //$data['shipping'] = 0;
             $data['shipping_cost'] = 0;
             $data['product_referral_code'] = null;
@@ -428,12 +433,16 @@ class CartController extends Controller
             if(auth()->user() != null) {
                 $user_id = Auth::user()->id;
                 $carts = Cart::where('user_id', $user_id)->get();
-				$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+				$sumcartprice = Cart::where('user_id',$user_id)->sum('price');
+				$sumcarttax = Cart::where('user_id',$user_id)->sum('tax');
+				$sumcartamount = $sumcartprice+$sumcarttax; 
 				
             } else {
                 $temp_user_id = $request->session()->get('temp_user_id');
                 $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-				$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+				$sumcartprice = Cart::where('temp_user_id',$temp_user_id)->sum('price');
+				$sumcarttax = Cart::where('temp_user_id',$temp_user_id)->sum('tax');
+				$sumcartamount = $sumcartprice+$sumcarttax; 
             }
             return array(
                 'status' => 'Added To Cart!',
@@ -458,6 +467,7 @@ class CartController extends Controller
             $data['quantity'] = 1;
             $data['price'] = $price;
             $data['tax'] = $tax;
+			$data['total_price'] = $tax+$price;
             $data['shipping_cost'] = 0;
             $data['product_referral_code'] = null;
             $data['cash_on_delivery'] = $product->cash_on_delivery;
@@ -469,11 +479,15 @@ class CartController extends Controller
             if(auth()->user() != null) {
                 $user_id = Auth::user()->id;
                 $carts = Cart::where('user_id', $user_id)->get();
-				$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+				$sumcartprice = Cart::where('user_id',$user_id)->sum('price');
+				$sumcarttax = Cart::where('user_id',$user_id)->sum('tax');
+				$sumcartamount = $sumcartprice+$sumcarttax; 
             } else {
                 $temp_user_id = $request->session()->get('temp_user_id');
                 $carts = Cart::where('temp_user_id', $temp_user_id)->get();
-				$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+				$sumcartprice = Cart::where('temp_user_id',$temp_user_id)->sum('price');
+				$sumcarttax = Cart::where('temp_user_id',$temp_user_id)->sum('tax');
+				$sumcartamount = $sumcartprice+$sumcarttax; 
             }
             return array(
                 'status' => 1,
@@ -541,12 +555,15 @@ class CartController extends Controller
         if(auth()->user() != null) {
             $user_id = Auth::user()->id;
             $carts = Cart::where('user_id', $user_id)->get();
+			$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
         } else {
             $temp_user_id = $request->session()->get('temp_user_id');
             $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+			$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
         }
 
         return array(
+            'sum_cart_count' => $sumcartamount,
             'cart_count' => count($carts),
             'cart_view' => view('frontend.partials.cart_update_ajax', compact('carts'))->render(),
             'nav_cart_view' => view('frontend.partials.cart')->render(),
