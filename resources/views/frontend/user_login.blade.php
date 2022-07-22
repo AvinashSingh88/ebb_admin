@@ -71,10 +71,14 @@
 													</div>
 													<div class="js-form-message mb-3">
 														<div class="custom-control custom-checkbox d-flex align-items-center">
-															<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} class="custom-control-input" id="rememberCheckbox">
-															<span class=opacity-60>{{  translate('Remember Me') }}</span>
+															<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} class="" id="rememberCheckbox">
+															<label class="opacity-60" for="rememberCheckbox">{{  translate('Remember Me') }}</label>
                                                     
 														</div>
+                                                        
+                                                        
+                                                         
+                                                       
 													</div>
 													<div class="mb-1"> 
 														<button type="submit" name="submit" class="btn btn-primary-dark-w px-5 mb-2"> Login</button>

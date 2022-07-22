@@ -23231,3 +23231,19 @@ section.all_sub_brands .bg-white.shadow-sm.rounded.px-3.pt-3 {
 .smlogoslide{
 	width:30px;
 }
+.companyname {
+    background: #198754;
+    padding: 1px 4px;
+    color: #fff;
+    border-radius: 3px;
+	display:inline-block;
+	margin-bottom:4px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
