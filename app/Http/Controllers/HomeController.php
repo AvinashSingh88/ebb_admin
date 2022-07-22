@@ -169,6 +169,8 @@ class HomeController extends Controller
             'last_name'=>'required',
             'phone'=>'required',
             'email'=>'required',
+            // 'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024|dimensions:width=500,height=500',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
         // dd($request);die;
         if ($request->hasfile('file')) {
@@ -468,9 +470,10 @@ class HomeController extends Controller
     public function trackOrder(Request $request)
     {
         if ($request->has('order_code')) {
+            $ocode = $request->order_code;
             $order = Order::where('code', $request->order_code)->first();
             if ($order != null) {
-                return view('frontend.track_order', compact('order'));
+                return view('frontend.track_order', compact('order','ocode'));
             }
         }
         return view('frontend.track_order');
@@ -1005,4 +1008,43 @@ class HomeController extends Controller
         ';
         return $output;
     }
+    public function verifyEmail(){
+        
+        return view('frontend.emailverify');
+    }
+	public function verifyOtpOfEmail(Request $request){
+		 if(session()->get('user_email')!=null){
+		 $this->validate($request,[
+            'otp' => 'required|min:6|max:6',          
+            'email' => 'required',          
+            ]);
+			$email_in_session = session()->get('user_email');
+			
+			$getstoredotp = User::where('email',$email_in_session)->first();
+			$getstoredotp = $getstoredotp->verification_code;
+			// dd($getstoredotp->verification_code);die;
+			$email = $request->email;
+        $otp = $request->otp;
+        $email_in_session = session()->get('user_email');
+        $otp_in_session = session()->get('ver_code');
+			if ($email == $email_in_session && $otp == $otp_in_session && $otp == $getstoredotp) {
+					$otp_verification = User::where('email', $email_in_session)
+					->update([
+							'email_verified_at' => date('Y-m-d H:m:s'),
+							'is_verified' => 1,
+						   
+						]);
+						session()->forget(['user_email', 'ver_code']);
+						if ($otp_verification) {
+							return redirect('users/login')->with(session()->flash('alert-success', 'Thank your! Your OTP is Verified.'));
+						}
+					return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong.'));
+				}
+			else{
+				 return redirect()->back()->with(session()->flash('alert-danger', 'That is not the OTP that we have sent. Please check and try again.'));
+			 }
+		}else{
+				return redirect('users/login')->back()->with(session()->flash('alert-success', 'Thank your! Your OTP is Verified.'));
+			}
+	}
 }

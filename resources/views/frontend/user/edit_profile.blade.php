@@ -44,6 +44,7 @@
 										@endif
                                     <input type="file" name="file" class="d-none" id="profile">
 									</div>
+									
                                 </div>
                                 <div class="col-lg-10">
                                     <div class="user_name mt-1">
@@ -64,6 +65,7 @@
                                     </div>
                                    
                                 </div>
+								
                             </div>
                            
 
@@ -81,38 +83,45 @@
                
                <p class="text-gray-901 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
                
+               @if ($errors->has('file'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('file') }}</strong>
+										</span>
+								@endif
+                
+                <div class="js-form-message form-group col-md-6 mb-3">
                   <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
-					<input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ Auth::user()->first_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
-				  </div>
+                    <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ Auth::user()->first_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                  </div>
                   <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
-					<input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ Auth::user()->last_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
-				  </div>
+                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ Auth::user()->last_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                  </div>
                   <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
-					<input type="tel" class="form-control" name="phone" placeholder="Phone No." value="{{ Auth::user()->phone }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
-				  </div>
+                    <input type="tel" class="form-control" name="phone" placeholder="Phone No." value="{{ Auth::user()->phone }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                  </div>
                   <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
-					<input type="email" class="form-control" name="email" placeholder="Email address" value="{{ Auth::user()->email }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
-				  </div>
+                    <input type="email" class="form-control" name="email" placeholder="Email address" value="{{ Auth::user()->email }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
+                  </div>
                   <div class="js-form-message form-group col-md-12 mb-3 floatprofile">  
-				  <ul class="list-unstyled d-flex">
-                        @php
-						if(!empty(Auth::user()->gender ) && Auth::user()->gender == 'Female'){ 
-                    $fcheck = 'checked="checked"'; 
-                    $mcheck = ''; 
-                    $otcheck = ''; 
-                }
-				elseif (!empty(Auth::user()->gender ) && Auth::user()->gender == 'Male'){ 
-                    $mcheck = 'checked="checked"'; 
-                    $fcheck = ''; 
-					$otcheck = '';
-                }
-				else{
-					$mcheck = ''; 
-                    $fcheck = ''; 
-					$otcheck = 'checked="checked"';
-				}
-						@endphp
-						<li class="mt-0 mb-0">
+				            <ul class="list-unstyled d-flex">
+                      @php
+                      if(!empty(Auth::user()->gender ) && Auth::user()->gender == 'Female'){ 
+                              $fcheck = 'checked="checked"'; 
+                              $mcheck = ''; 
+                              $otcheck = ''; 
+                          }
+                      elseif (!empty(Auth::user()->gender ) && Auth::user()->gender == 'Male'){ 
+                              $mcheck = 'checked="checked"'; 
+                              $fcheck = ''; 
+                              $otcheck = '';
+                      } else {
+                              $mcheck = ''; 
+                              $fcheck = ''; 
+                              $otcheck = 'checked="checked"';
+                      }
+                      @endphp
+                      
+						            <li class="mt-0 mb-0">
                             <label for="payment_method_bacs d-flex">
                                  <span><b>Gender</b> </span>
                             </label> 
@@ -132,18 +141,16 @@
                         <li class="m-3 mt-0 mb-0">
                             <label for="genOther">
                                 <input type="radio" data-order_button_text="Proceed to PayPal" value="Other" name="gender" class="input-radio" {{$otcheck}} id="genOther">
-                                <span>Other  </span>
+                                <span> Other  </span>
                             </label> 
                         </li>
                     </ul>
-				  </div>
+				        </div>
 				                    
                   <div class="mb-600">
                      <div class="mb-3"><button type="submit" class="btn btn-primary-dark-w px-5 w-25">Update Profile</button></div>
                   </div>
-                
-         
-            </div>
+                </div>
                               </li>
                               
                             

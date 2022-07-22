@@ -13,6 +13,7 @@
 // use App\Mail\SupportMailManager;
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Auth\RegisterController;
 //demo
 Route::get('/demo/cron_1', 'DemoController@cron_1');
 Route::get('/demo/cron_2', 'DemoController@cron_2');
@@ -193,7 +194,12 @@ Route::get('/supportpolicy', 'HomeController@supportpolicy')->name('supportpolic
 Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolicy');
 
+Route::get('email-verify','HomeController@verifyEmail')->name('email-verify');
+Route::post('verifyOtpOfEmail','HomeController@verifyOtpOfEmail')->name('verifyOtpOfEmail');
+
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
+
+    
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'HomeController@profile')->name('profile');
     Route::post('/new-user-verification', 'HomeController@new_verify')->name('user.new.verify');

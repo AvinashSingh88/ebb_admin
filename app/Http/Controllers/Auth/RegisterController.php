@@ -9,6 +9,7 @@ use App\Models\BusinessSetting;
 use App\OtpConfiguration;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\OTPVerificationController;
+use App\Http\Controllers\MailController;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -132,11 +133,29 @@ class RegisterController extends Controller
             'phone'=>'required|min:10|numeric',
             'email'=>'required|email',
         ]);
+		// $verificationcode = rand(111111,999999);
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            if(User::where('email', $request->email)->first() != null){
-                flash(translate('Email or Phone already exists.'));
-                return back();
+            if(User::where('email', $request->email)->where('is_verified',0)->first() != null){
+                if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
+                
+				$veri_code = User::where('email',$request->email)->first();
+				$veri_code = $veri_code->verification_code;
+				$request->session()->put('user_email', $request->email);
+                $request->session()->put('ver_code', $veri_code);
+				
+                MailController::sendRegistrationMail($request->first_name, $request->last_name, $veri_code, $request->email);
+                // $user->email_verified_at = date('Y-m-d H:m:s');
+                // $user->save();
+                // flash(translate('Registration successful.'))->success();
+                return redirect('email-verify')->with(session()->flash('alert-success', 'Registered Customer! An Otp has been sent to your mail. Kindly Verify'));
+				}
+				
             }
+			else if (User::where('email', $request->email)->where('is_verified',1)->first() != null)
+			{
+				return redirect()->back()->with(session()->flash('alert-danger', 'Email or Phone already exists.'));
+			}
+				
         }
         elseif (User::where('phone', '+'.$request->country_code.$request->phone)->first() != null) {
             flash(translate('Phone already exists.'));
@@ -150,6 +169,7 @@ class RegisterController extends Controller
         // $name = "Prince kr";
         // dd($name);
         // die;
+        $verificationcode = rand(111111,999999);
         
         $user = User::create([
             "first_name" => "$request->first_name",
@@ -157,6 +177,7 @@ class RegisterController extends Controller
             "last_name" => "$request->last_name",
             "phone" => "$request->phone",
             "email" => "$request->email",
+            "verification_code" => "$verificationcode",
             "gender" => "$request->gender",
             "password" => Hash::make($request->password)
         ]);
@@ -166,13 +187,17 @@ class RegisterController extends Controller
         // dd($user);
         // die;
 
-        $this->guard()->login($user);
+        // $this->guard()->login($user);
 
         if($user->email != null){
             if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
-                $user->email_verified_at = date('Y-m-d H:m:s');
-                $user->save();
-                flash(translate('Registration successful.'))->success();
+                $request->session()->put('user_email', $request->email);
+                $request->session()->put('ver_code', $verificationcode);
+                MailController::sendRegistrationMail($request->first_name, $request->last_name, $verificationcode, $request->email);
+                // $user->email_verified_at = date('Y-m-d H:m:s');
+                // $user->save();
+                // flash(translate('Registration successful.'))->success();
+                return redirect('email-verify');
             }
             else {
                 event(new Registered($user));
@@ -183,6 +208,7 @@ class RegisterController extends Controller
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
     }
+    
 
     protected function registered(Request $request, $user)
     {
