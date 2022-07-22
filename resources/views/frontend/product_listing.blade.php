@@ -72,7 +72,7 @@ $meta_description = get_setting('meta_description');
       <form class="" id="search-form" action="" method="GET">
          <div class="row">
             <div class="d-none d-xl-block col-xl-3 col-wd-2gdot5">
-               <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
+               <div class="mb-8 border border-width-2 border-color-3 borders-radius-6 mrgnbot10">
                   <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
                      <li class="link-category link-category1aa">
                         @php
@@ -104,7 +104,11 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </li>
                      <li class="listing-botoms">
-                       
+                     <!--Code for First category start-->
+                       @if (\App\Models\Category::find($category_id)->parent_id != 0)
+							  
+									 <b>{{ App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')}}</b>
+							   @endif
                         <ul class="list-unstyled dropdown-list listing_block filter">
 
                            @if (!isset($category_id))
@@ -114,6 +118,8 @@ $meta_description = get_setting('meta_description');
                            @else
 
                            
+							
+							   
 							<!--Code for First category start-->
 							   @if (\App\Models\Category::find($category_id)->parent_id != 0)
 							   <li><a class="dropdown-item1"
@@ -149,7 +155,7 @@ $meta_description = get_setting('meta_description');
                </div>
 			   
 			     <!--Code for Third category end-->
-					<div class="mb-6 mt-3  border border-width-2 border-color-3 borders-radius-6">
+					<div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
 					   <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
 						  <li class="listing-botoms">
 							 <b> Third Category</b>
