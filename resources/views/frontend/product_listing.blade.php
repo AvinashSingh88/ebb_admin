@@ -42,6 +42,7 @@ $meta_description = get_setting('meta_description');
 <section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
  
 </section>
+
 <!--top banner end -->
 <div class="service-pros animated animate__fadeInUp wow product-categorys ulines-dps-para ">
    <div class="container">
@@ -113,32 +114,32 @@ $meta_description = get_setting('meta_description');
                            @else
 
                            
-						<!--Code for First category start-->
-                           @if (\App\Models\Category::find($category_id)->parent_id != 0)
-                           <li><a class="dropdown-item1"
-                                 href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">
-								 <b>{{ App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')}}</b>
-								</a></li>
-                           @endif
+							<!--Code for First category start-->
+							   @if (\App\Models\Category::find($category_id)->parent_id != 0)
+							   <li><a class="dropdown-item1"
+									 href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">
+									 <b>{{ App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')}}</b>
+									</a></li>
+							   @endif
 						   	<!--Code for First category end-->
 							
+							@php
+								$getSecondCatParent = \App\Models\Category::where('id',$category_id)->first();
+								$getSecondCatParent = $getSecondCatParent->parent_id;
+							@endphp
+							 @foreach (\App\Models\Category::where('parent_id',$getSecondCatParent)->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $secondcategory)
 							<!--Code for Second category start-->
                            <li>
-                              <a class="dropdown-item1"
-                                 href="{{ route('products.category', \App\Models\Category::find($category_id)->slug) }}">
-                                 <b>{{ \App\Models\Category::find($category_id)->getTranslation('name') }}</b>
+                              <a class="dropdown-item1 {{ Request::is('category/'.$secondcategory->slug) ? 'active':'' }}"
+                                 href="{{ route('products.category', $secondcategory->slug)}}">
+                                 <b>{{ $secondcategory->name }}</b>
                               </a>
                            </li>
+						   
 						   <!--Code for Second category end-->
-                           @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key =>
-                           $id)
-                           <li>
-                              <a class="dropdown-item1"
-                                 href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">
-                                 {{ \App\Models\Category::find($id)->getTranslation('name') }}
-                              </a>
-                           </li>
-                           @endforeach
+						   @endforeach
+						   
+                          
                            @endif
 
                         </ul>
@@ -146,6 +147,23 @@ $meta_description = get_setting('meta_description');
                      
                    </ul>
                </div>
+			   
+			     <!--Code for Third category end-->
+					<div class="mb-6 mt-3  border border-width-2 border-color-3 borders-radius-6">
+					   <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
+						  <li class="listing-botoms">
+							 <b> Third Category</b>
+							 <ul class="list-unstyled dropdown-list listing_block filter">
+								 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key =>$id)
+								<li><a class="dropdown-item1" href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">{{ \App\Models\Category::find($id)->getTranslation('name') }}</a></li>
+								@endforeach
+								 
+							 </ul>
+						  </li>
+					   </ul>
+					</div>
+				  <!--Code for Third category end-->
+				
                <div class="mb-6">
                   <div class="border-bottom1 border-color-11 mt-3 mb-3">
                      <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Filters</h3>
