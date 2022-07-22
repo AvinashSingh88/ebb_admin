@@ -171,6 +171,109 @@
                     </li>
                 @endif
 
+                <!-- Sale -->
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        <i class="las la-money-bill aiz-side-nav-icon"></i>
+                        <span class="aiz-side-nav-text">{{translate('Sales')}}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <!--Submenu-->
+                    <ul class="aiz-side-nav-list level-2">
+                        @if(Auth::user()->user_type == 'admin' || in_array('3', json_decode(Auth::user()->staff->role->permissions)))
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('all_orders.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['all_orders.index', 'all_orders.show'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('All Orders')}}</span>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if(Auth::user()->user_type == 'admin' || in_array('4', json_decode(Auth::user()->staff->role->permissions)))
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('inhouse_orders.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['inhouse_orders.index', 'inhouse_orders.show'])}}" >
+                                    <span class="aiz-side-nav-text">{{translate('Inhouse orders')}}</span>
+                                </a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->user_type == 'admin' || in_array('5', json_decode(Auth::user()->staff->role->permissions)))
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('seller_orders.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['seller_orders.index', 'seller_orders.show'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('Seller Orders')}}</span>
+                                </a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->user_type == 'admin' || in_array('6', json_decode(Auth::user()->staff->role->permissions)))
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('pick_up_point.order_index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['pick_up_point.order_index','pick_up_point.order_show'])}}">
+                                    <span class="aiz-side-nav-text">{{translate('Pick-up Point Order')}}</span>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+
+                  <!-- Customers -->
+                @if(Auth::user()->user_type == 'admin' || in_array('8', json_decode(Auth::user()->staff->role->permissions)))
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-user-friends aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{ translate('Customers') }}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('customers.index') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Customer list') }}</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                @endif
+
+                <!-- Sellers -->
+                @if((Auth::user()->user_type == 'admin' || in_array('9', json_decode(Auth::user()->staff->role->permissions))) && get_setting('vendor_system_activation') == 1)
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-user aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{ translate('Sellers') }}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                @php
+                                    $sellers = \App\Models\Shop::where('verification_status', 0)->where('verification_info', '!=', null)->count();
+                                @endphp
+                                <a href="{{ route('sellers.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['sellers.index', 'sellers.create', 'sellers.edit', 'sellers.payment_history','sellers.approved','sellers.profile_modal','sellers.show_verification_request'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('All Seller') }}</span>
+                                    @if($sellers > 0)<span class="badge badge-info">{{ $sellers }}</span> @endif
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('sellers.payment_histories') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Payouts') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('withdraw_requests_all') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Payout Requests') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('business_settings.vendor_commission') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Seller Commission') }}</span>
+                                </a>
+                            </li>
+
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('seller_verification_form.index') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Seller Verification Form') }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                 <!-- Upload Files -->
                 @if(Auth::user()->user_type == 'admin' || in_array('22', json_decode(Auth::user()->staff->role->permissions)))
                     <li class="aiz-side-nav-item">
@@ -336,7 +439,6 @@
                     </ul>
                 </li>
                 @endif
-
 
                 <!-- Staffs -->
                 @if(Auth::user()->user_type == 'admin' || in_array('20', json_decode(Auth::user()->staff->role->permissions)))

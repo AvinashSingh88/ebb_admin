@@ -64,7 +64,7 @@
 													</div>
 													<input type="hidden" name="country_code" value="">
 													<div class="js-form-message form-group">
-														<input required type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" id="email" autocomplete="off">
+														<input required type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Username or Email address') }}" name="email" id="email" autocomplete="off">
 														@if ($errors->has('email'))
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $errors->first('email') }}</strong>
@@ -76,7 +76,7 @@
 													</div>
 												@else
 													<div class="js-form-message form-group">
-														<input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" id="email" autocomplete="off">
+														<input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Username or Email address') }}" name="email" id="email" autocomplete="off">
 														@if ($errors->has('email'))
 															<span class="invalid-feedback" role="alert">
 																<strong>{{ $errors->first('email') }}</strong>
@@ -188,6 +188,12 @@
 													<div class="mb-600">
 														<div class="mb-3">
 															<button type="submit" style="width:140px;" class="btn btn-primary-dark-w px-5 create-account">{{  translate('Create Account') }}</button>
+														</div>
+													</div>
+                                                    
+                                                    <div class="mb-600">
+														<div class="mb-3">
+															<input type="text" class="form-control" placeholder="{{  translate('OTP') }}" name="otp_validation" style="float:left; width:50%"> &nbsp;&nbsp;<button type="submit" style="width:140px;" class="btn btn-primary-dark-w px-5 create-account">{{  translate('Verify OTP') }}</button>
 														</div>
 													</div>
 												</form>

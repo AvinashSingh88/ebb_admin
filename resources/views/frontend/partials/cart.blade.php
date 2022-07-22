@@ -19,7 +19,7 @@ if(auth()->user() != null) {
 						<b class="cart-amount"> {{$sumcartamount}}</b>
 					  @else
 						  <span class="cart-count">0</span>
-                          <b class="cart-amount"> 00</b>
+                          <b class="cart-amount">₹ 00</b>
 						  @endif
 				</a>
 						
