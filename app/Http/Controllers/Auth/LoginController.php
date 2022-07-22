@@ -165,14 +165,12 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         // Check verified User
-        $check_verified_user = \App\Models\User::where('email', $request->email)->first();
-        if($check_verified_user != null && $check_verified_user->is_verified == 0){
-            // return redirect to otp verify page;
-            print_r("Chhote bache ho kya?");
-            dd($request->email);
-            die;
-        } 
-        
+        // $check_verified_user = \App\Models\User::where('email', $request->email)->first();
+        // // dd($check_verified_user->is_verified);die;
+        // if($check_verified_user != null && $check_verified_user->is_verified == 0){
+        //     return redirect()->route('email-verify');
+        //     // return redirect()->route('user.login');
+        // } 
         
         if ($request->get('phone') != null) {
             return ['phone' => "+{$request['country_code']}{$request['phone']}", 'password' => $request->get('password')];

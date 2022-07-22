@@ -15,7 +15,7 @@
 			<div class="col-md-12 breadmcrumsize">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="index.php">Home</a></li>
+						<li class="breadcrumb-item"><a href="{{url('')}}">Home</a></li>
 						<li class="breadcrumb-item active" aria-current="page">Login Or Registration</li>
 					</ol>
 				</nav>
@@ -191,11 +191,12 @@
 														</div>
 													</div>
                                                     
-                                                    <div class="mb-600">
+                                                    {{--<div class="mb-600">
 														<div class="mb-3">
-															<input type="text" class="form-control" placeholder="{{  translate('OTP') }}" name="otp_validation" style="float:left; width:50%"> &nbsp;&nbsp;<button type="submit" style="width:140px;" class="btn btn-primary-dark-w px-5 create-account">{{  translate('Verify OTP') }}</button>
+															<input type="text" class="form-control" placeholder="{{  translate('OTP') }}" name="otp_validation" style="float:left; width:50%"> &nbsp;&nbsp;
+															<button type="submit" style="width:140px;" class="btn btn-primary-dark-w px-5 create-account">{{  translate('Verify OTP') }}</button>
 														</div>
-													</div>
+													</div>--}}
 												</form>
 											</div>
 										</li>
