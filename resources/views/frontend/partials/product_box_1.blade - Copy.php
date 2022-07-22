@@ -14,12 +14,7 @@
    <div class="beachs">{{$product->discount}}% Off</div>
    <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{  $product->getTranslation('name')  }}"
       onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
-	<div class="discrptions">
-
-		@if($product->brand_id!=null)
-			<div class="companyname">{{$product->brand->name}}</div>
-		@endif
-    </div>
+	
    <div class="discrptions">
       <a href="{{ route('product', $product->slug) }}">
          <h5 class="text-truncate-2">{{ $product->getTranslation('name') }} </h5>

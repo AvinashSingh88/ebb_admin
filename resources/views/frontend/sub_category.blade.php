@@ -38,9 +38,7 @@
 						 
 <!--/#content-->
                 <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar view-all">
-     <?php 
-  $page = basename($_SERVER['SCRIPT_NAME'],".php");
-  ?>
+      
     
      <li class="link-category link-category1aa">
 

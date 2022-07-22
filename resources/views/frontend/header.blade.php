@@ -51,7 +51,7 @@
                         <a href="bulk-order2.php"><i class="fas fa-truck"></i> Bulk Order</a>
                      </li>
                      <li>
-                        <a href="#track-order.php"><i class="fas fa fa-cube"></i> Track Order </a>
+                        <a href="{{url('track-your-order')}}"><i class="fas fa fa-cube"></i> Track Order </a>
                      </li>
                   </ul>
                </div>
@@ -144,7 +144,7 @@
 			                                                <li>
 			                                                    <a href="{{url('users/login')}}"
 			                                                        class="d-flex align-items-center justify-content-around p-0 m-0">
-			                                                        <i class="fa fa-user-circle"></i> Login/register <i
+			                                                        <i class="fa fa-user-circle"></i> Login <i
 			                                                            class="fa fa-angle-right ms-2"></i>
 			                                                    </a>
 			                                                </li>
