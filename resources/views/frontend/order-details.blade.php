@@ -90,7 +90,7 @@
                                           <td>       </td>
                                           <td>           </td>
                                           <td>        Promotion Applied: </td>
-                                          <td>  :&nbsp;&nbsp;  -  40.00  </td>
+                                          <td>  :&nbsp;&nbsp;  -  00.00  </td>
                                             </tr>
                                        <tr>
                                           <td>       </td>

@@ -51,7 +51,7 @@
                         <a href="bulk-order2.php"><i class="fas fa-truck"></i> Bulk Order</a>
                      </li>
                      <li>
-                        <a href="#track-order.php"><i class="fas fa fa-cube"></i> Track Order </a>
+                        <a href="{{url('track-your-order')}}"><i class="fas fa fa-cube"></i> Track Order </a>
                      </li>
                   </ul>
                </div>

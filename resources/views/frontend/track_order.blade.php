@@ -26,9 +26,9 @@
                                     </div>
                                 </div>
                                 
-                                <form action="{{ route('orders.track') }}" method="GET" class="js-validate" novalidate="novalidate">
+                                <form action="{{ route('orders.track') }}" method="GET" class="js-validate">
                                     <div class="js-form-message form-group">
-									<input type="text" class="form-control" name="order_code" required id="signinSrEmailExample3" placeholder="Order Code *">
+									<input type="text" class="form-control" @isset($ocode) value="{{ $ocode }}" @endisset name="order_code" required id="signinSrEmailExample3" placeholder="Order Code *">
 									</div>
                                    
                                     <div class="js-form-message">
@@ -95,13 +95,13 @@
                                               <td>  Order Code:  </td>
                                               <td>  {{ $order->code }} </td>
                                               <td>    Order date:    </td>
-                                              <td> 28-04-2022 06:35 AM   </td>
+                                              <td> {{ date('d-m-Y H:i A', $order->date) }}   </td>
                                                 </tr>
                                            <tr>
                                               <td>      Customer:    </td>
                                               <td>      {{ json_decode($order->shipping_address)->name }}    </td>
                                               <td>        Total order amount:   </td>
-                                              <td>  ₹ 1,699.00 </td>
+                                              <td>  ₹ {{ single_price($order->orderDetails->sum('price') + $order->orderDetails->sum('tax')) }} </td>
                                                 </tr>
                                            <tr>
                                               <td>   Email:  </td>
@@ -109,25 +109,25 @@
                                         <td>{{ $order->user->email }}</td>
                                     @endif
                                               <td>        Shipping method: </td>
-                                              <td>  ₹ 40.00     </td>
+                                              <td>  {{ translate('Flat shipping rate')}}     </td>
                                                 </tr>
                                            <tr>
                                               <td>   Shipping address: </td>
-                                              <td>    3947 West Side Avenue Hackensack, NJ 07601, College, United States       </td>
+                                              <td>   {{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->area }}, {{ json_decode($order->shipping_address)->postal_code }}       </td>
                                               <td>       Payment method: </td>
-                                              <td>  ₹  1,739.00     </td>
+                                              <td>  {{ ucfirst(str_replace('_', ' ', $order->payment_type)) }}   </td>
                                                 </tr>
                                            <tr>
-                                              <td>       </td>
-                                              <td>           </td>
-                                              <td>       Delivery Status: </td>
-                                              <td>  Picked Up  </td>
-                                                </tr>
+                                              <td></td>
+                                              <td></td>
+                                              <td>Delivery Status: </td>
+                                              <td>{{ ucfirst(str_replace('_', ' ', $order->delivery_status)) }}  </td>
+                                            </tr>
                                            <tr>
                                               <td>       </td>
                                               <td>           </td>
                                               <td>        Grand Total: </td>
-                                              <td>  ₹ 1,699.00 </td>
+                                              <td>   {{ single_price($order->grand_total) }} </td>
                                                 </tr>
                                               
                                      </tbody>
@@ -174,9 +174,9 @@
                                       <tbody>
                                     
                                          <tr>
-                                            <td> Women Fit and Flare Dress (Aqua) </td>
-                                            <td>  	1 </td>
-                                            <td>   William C. Schroyer   </td>
+                                            <td> {{ $orderDetail->product->getTranslation('name') }} @if($orderDetail->variation!=null) ({{ $orderDetail->variation }}) @endif </td>
+                                            <td>  	{{ $orderDetail->quantity }} </td>
+                                            <td>   {{ $orderDetail->product->user->name }}   </td>
                                             
                                               </tr>
                                 
@@ -187,6 +187,7 @@
                             
                                 
                              </div>
+							 @endforeach
                           </div>
                        </div>
                     </div>
@@ -194,7 +195,7 @@
                  </div>
                 </div>
              </div>
-			  @endisset
+		@endisset
     </section>
 <?php if(false) { ?>
 

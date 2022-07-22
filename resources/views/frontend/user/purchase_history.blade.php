@@ -119,7 +119,7 @@
                                                                 <div class="row">
                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                          <p class="order_listing text-capitalize my-1">
-                                                                             <a href="#">
+                                                                             <a href="{{url('track-your-order?order_code='.$order->code)}}">
                                                                             <span class="icon rounded-circle py-1 px-1 d-inline-block bg-success text-center m-auto">
                                                                                     <i class="fa fa-map-marker-alt mx-2 text-white"></i>
                                                                                 </span>
