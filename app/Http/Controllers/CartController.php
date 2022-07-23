@@ -28,6 +28,7 @@ class CartController extends Controller
         if(Auth::user() != null) {
             $user_id = Auth::user()->id;
             $temp_user_id = null;
+			// $check_product_av = Cart::where('product_id',$product_id)->where('user_id',$user_id)->exists();
         }else{
             $user_id = null;
             $temp_user_id = $request->session()->get('temp_user_id');
@@ -35,20 +36,81 @@ class CartController extends Controller
             if($temp_user_id == null || $temp_user_id == ""){
                 $temp_user_id = bin2hex(random_bytes(10));
                 $request->session()->put('temp_user_id', $temp_user_id);
+				// $check_product_av = Cart::where('product_id',$product_id)->where('user_id',$temp_user_id)->exists();
             }
         }
     
+			
     
     
 	$prod_check = Product::where('id',$product_id)->exists();
    
 	if($prod_check)
 	{
-		if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists())
+		 
+			if(auth()->user() != null) {
+					$user_id = Auth::user()->id;
+					$carts = Cart::where('user_id', $user_id)->get();
+					$check_product_av = Cart::where('product_id',$product_id)->where('user_id',$user_id)->exists();
+						if($check_product_av!=null)
+							{
+								$check_product_quantity = Cart::where('product_id',$product_id)->where('user_id',$user_id)->first();
+								$check_product_quantity = $check_product_quantity->quantity;
+							}
+				} else {
+					$carts = Cart::where('temp_user_id', $temp_user_id)->get();
+					$check_product_av = Cart::where('product_id',$product_id)->where('temp_user_id',$temp_user_id)->exists();
+						if($check_product_av!=null)
+						{
+							$check_product_quantity = Cart::where('product_id',$product_id)->where('temp_user_id',$temp_user_id)->first();
+							$check_prod_quantity = $check_product_quantity->quantity;
+						}
+					// dd($check_prod_quantity);die;
+				}
+		 
+		if($check_product_av)
 		{
-		    return response()->json(['status'=>'Already Added to Cart']);
-        }
-		else{
+		    // return response()->json(['status'=>'Already Added to Cart']);
+			
+			
+				if(auth()->user() != null) {
+					$user_id = Auth::user()->id;
+					$carts = Cart::where('user_id', $user_id)->get();
+					$check_product_quantity = Cart::where('product_id',$product_id)->where('user_id',$user_id)->first();
+					$check_prod_quantity = $check_product_quantity->quantity;
+					$total_qty = $product_qty+$check_prod_quantity;
+					$cart_update = Cart::where('product_id', $product_id)->where('user_id', $user_id)
+									->update([
+											'quantity' =>$total_qty,
+											'total_price' => $total_qty*$product_price,
+										]);
+				}else{
+					$total_qty = $product_qty+$check_prod_quantity;
+					$cart_update = Cart::where('product_id', $product_id)->where('temp_user_id', $temp_user_id)
+									->update([
+											'quantity' =>$total_qty,
+											'total_price' => $total_qty*$product_price,
+										]);
+				}					
+			if(auth()->user() != null) {
+                $user_id = Auth::user()->id;
+                $carts = Cart::where('user_id', $user_id)->get();
+				$sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+            } else {
+                // $temp_user_id = $request->session()->get('temp_user_id');
+                $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+				$sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+            }
+            return array(
+                'status' => 'Added To Cart!',
+                'cart_count' => count($carts),
+                'sum_cart_count' => $sumcartamount,
+				// 'product_box_view' => view('frontend.partials.product_box_ajax', compact('carts','products','check_cart_product_list'))->render(),
+                'nav_cart_view' => view('frontend.partials.cart')->render(),
+            );
+		}
+        
+		
 			
             $cartItem = new Cart();
             $cartItem->product_id = $product_id;
@@ -78,14 +140,10 @@ class CartController extends Controller
 				// 'product_box_view' => view('frontend.partials.product_box_ajax', compact('carts','products','check_cart_product_list'))->render(),
                 'nav_cart_view' => view('frontend.partials.cart')->render(),
             );
-        }
+        
 	}
         
-    // }
-    // else
-    //     {
-    //         return response()->json(['status' => "Login to Your Account"]);
-    //     }
+    
     }
 	public function listing(Request $request)
     {

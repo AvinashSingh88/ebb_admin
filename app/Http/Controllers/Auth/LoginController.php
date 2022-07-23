@@ -239,10 +239,10 @@ class LoginController extends Controller
             $redirect_route = 'home';
         }
 
-        //User's Cart Delete
-        if (auth()->user()) {
-            Cart::where('user_id', auth()->user()->id)->delete();
-        }
+        // //User's Cart Delete
+        // if (auth()->user()) {
+        //     Cart::where('user_id', auth()->user()->id)->delete();
+        // }
 
         $this->guard()->logout();
 
