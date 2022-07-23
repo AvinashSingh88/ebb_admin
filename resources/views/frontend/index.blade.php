@@ -16,7 +16,7 @@
                      <source src="{{static_asset('assets_web/img/home_1080.mp4')}}" type="video/mp4" />
                   </video>
                </div>
-               <div class="slidebag5"><img src="{{static_asset('assets_web/img/shape5.png')}}" /></div>
+               <!--<div class="slidebag5"><img src="{{static_asset('assets_web/img/shape5.png')}}" /></div>-->
             </div>
          </div>
          <div class="cover">
@@ -204,7 +204,7 @@
                                  alt="{{  $product->getTranslation('name')  }}">
                               <div class="discrptions">
                                  <h6>{{ home_discounted_base_price($product) }}</h6>
-                                 <h5> {{ $product->getTranslation('name') }} </h5>
+                                 <h5 class="text-truncate-2"> {{ $product->getTranslation('name') }} </h5>
                               </div>
                            </li>
                            @endif

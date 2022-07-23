@@ -12,6 +12,7 @@
 										 <div class="profile_user-holder shadow">
                                          <img src="{{static_asset('assets_web/img/profile.png')}}" alt="" class="w-100 h-100">
                                     </div>
+                                    
 									@endif
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
