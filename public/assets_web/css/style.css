@@ -5673,7 +5673,7 @@ a.close-menu {
     position: absolute;
     z-index: 9999999999;
     top: 60px;
-    left: 18%;
+    left: 205px;
 }
 
 .menu-overlay {
@@ -8100,6 +8100,7 @@ b.webhead6 {
     border-top: 5px solid #ff7713;
     border-radius: 10px;
     display: none;
+	margin-top:5px;
 }
 
 .more_tabs .tab-more ul li {
@@ -20720,6 +20721,14 @@ ul.megamenusubs {
     border-radius: 50%;
     box-shadow: 0px 0px 3px 1px #fff;
     margin: auto;
+	cursor:pointer;
+	color:#ff6c00;
+}
+.profile_user-holder span {
+   position: absolute;
+    left: 25px;
+    top: 125px;
+	font-weight:bold;
 }
 
 .reservation000225 .user_name .userf-name {
@@ -23247,3 +23256,11 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+/*password stength css*/
+#password-strength-status {padding: 5px 10px;color: #FFFFFF; border-radius:4px;margin-top:5px;}
+.medium-password{background-color: orange;color:#000;border:#BBB418 1px solid;}
+.weak-password{background-color: #FF6600;border:#AA4502 1px solid;}
+.strong-password{background-color: #12CC1A;border:#0FA015 1px solid;}
+
+#password_strength {padding: 5px 10px;color: #FFFFFF; border-radius:4px;margin-top:5px;}
