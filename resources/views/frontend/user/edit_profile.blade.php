@@ -35,13 +35,16 @@
                               <li class="ukine 	active4">
                               <div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none">
                             <div class="row">
-                                <div class="col-lg-2">
+							
+								<div class="col-lg-2">
                                     <div class="profile_user-holder">
 										@if(Auth::user()->avatar=='')
                                        <img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('assets_web/img/profile.png')}}" alt="" class="w-100 h-100">
+                                       
 										@else
-											<img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('uploads/user/'.Auth::user()->avatar)}}" alt="" class="w-100 h-100">
+											<img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('uploads/user/'.Auth::user()->avatar)}}" alt="" class="w-100 h-100"><span>Add/Edit Photo</span>
 										@endif
+										<button>Add/Edit Photo</button>
                                     <input type="file" name="file" class="d-none" id="profile">
 									</div>
 									
