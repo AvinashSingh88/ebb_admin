@@ -16,7 +16,7 @@ if(auth()->user() != null) {
 						<i class="fa fa-cart-arrow-down" aria-hidden="true"></i> 
 						@if(isset($cart) && count($cart) > 0)
 						<span class="cart-count">{{ count($cart)}}</span> 
-						<b class="cart-amount"> {{$sumcartamount}}</b>
+						<b class="cart-amount">₹ {{$sumcartamount}}</b>
 					  @else
 						  <span class="cart-count">0</span>
                           <b class="cart-amount">₹ 00</b>
