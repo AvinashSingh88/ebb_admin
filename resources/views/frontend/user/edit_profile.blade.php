@@ -39,8 +39,9 @@
                                     <div class="profile_user-holder">
 										@if(Auth::user()->avatar=='')
                                        <img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('assets_web/img/profile.png')}}" alt="" class="w-100 h-100">
+                                       <span>Add/Edit Photo</span>
 										@else
-											<img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('uploads/user/'.Auth::user()->avatar)}}" alt="" class="w-100 h-100">
+											<img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('uploads/user/'.Auth::user()->avatar)}}" alt="" class="w-100 h-100"><span>Add/Edit Photo</span>
 										@endif
                                     <input type="file" name="file" class="d-none" id="profile">
 									</div>
@@ -89,7 +90,6 @@
 										</span>
 								@endif
                 
-                <div class="js-form-message form-group col-md-6 mb-3">
                   <div class="js-form-message form-group col-md-6 mb-3 floatprofile">
                     <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ Auth::user()->first_name }}" aria-label="Email address" requireddata-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
                   </div>
