@@ -132,6 +132,7 @@ $meta_description = get_setting('meta_description');
                                  href="{{ route('products.category', $secondcategory->slug)}}">{{ $secondcategory->name }}
                               </a>
                            </li>
+                           
 						   
 						   <!--Code for Second category end-->
 						   @endforeach
