@@ -573,6 +573,8 @@ if (!function_exists('uploaded_asset')) {
     function uploaded_asset($id)
     {
         if (($asset = \App\Models\Upload::find($id)) != null) {
+            $user_type = \App\Models\User::find($asset->user_id)->select('user_type');
+            dd($user_type);
             return my_asset($asset->file_name);
         }
         return null;
