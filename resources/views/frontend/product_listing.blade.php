@@ -42,7 +42,6 @@ $meta_description = get_setting('meta_description');
 <section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
  
 </section>
-
 <!--top banner end -->
 <div class="service-pros animated animate__fadeInUp wow product-categorys ulines-dps-para ">
    <div class="container">
@@ -120,13 +119,6 @@ $meta_description = get_setting('meta_description');
                            
 							
 							   
-							<!--Code for First category start-->
-							   @if (\App\Models\Category::find($category_id)->parent_id != 0)
-							   <li><a class="dropdown-item1"
-									 href="{{ route('products.category', \App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->slug) }}">
-									 <b>{{ App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')}}</b>
-									</a></li>
-							   @endif
 						   	<!--Code for First category end-->
 							
 							@php
@@ -137,10 +129,10 @@ $meta_description = get_setting('meta_description');
 							<!--Code for Second category start-->
                            <li>
                               <a class="dropdown-item1 {{ Request::is('category/'.$secondcategory->slug) ? 'active':'' }}"
-                                 href="{{ route('products.category', $secondcategory->slug)}}">
-                                 <b>{{ $secondcategory->name }}</b>
+                                 href="{{ route('products.category', $secondcategory->slug)}}">{{ $secondcategory->name }}
                               </a>
                            </li>
+                           
 						   
 						   <!--Code for Second category end-->
 						   @endforeach
