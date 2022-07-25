@@ -20726,10 +20726,16 @@ ul.megamenusubs {
 }
 .editphotobtn {
    position: absolute;
-    left: 40px;
-    top: 125px;
+    left: 75px;
+    top: 100px;
 	border:0px;
-	padding:0 5px;
+	z-index:99;
+	background:#36C;
+	border-radius:100%;
+	padding:5px;
+	color:#fff;
+	font-size:20px;
+	border:2px solid #fff;
 }
 
 .reservation000225 .user_name .userf-name {
@@ -22409,10 +22415,11 @@ h3.section-title.section-title__sm.mb-0.pb-0.mt-3.font-size-18 {
 }
 
 .text-truncate-2 {
-    overflow: hidden;
+    overflow: hidden!Important;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+	width:110px;
 }
 
 .bannerslid .service-pros .bounceIn.animated h4::after {
