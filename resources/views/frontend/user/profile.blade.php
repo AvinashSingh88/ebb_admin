@@ -98,23 +98,34 @@
                                       
                                     </div>
 								</div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-4">
-								  <div class="bucks_holder">
-                                        <p class="_ebucks">
-                                          My Address
+                                @php
+                                    $addressCount = \App\Models\Address::where('user_id',Auth::user()->id)->get();
+                                     
+                                @endphp
+                                 @if (count($addressCount)>=1)
+                                     
+                                
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-4">
+                                        <div class="bucks_holder">
+                                            <p class="_ebucks">
+                                                My Address
+    
+                                            </p>
+    
 
-                                        </p>
- 
+                                            <p class="_detail">
+                                                {{$address->first_name.' '.$address->last_name}} , </br>
+                                                House no. {{$address->house_no}}, {{$address->area}}, {{$address->city}}, {{$address->state}} {{$address->pin}}
+                                            </p>
+    
+                                            <a href="{{url('my_addressbook')}}" class="continue_shopping_">
+                                                edit address
+                                            </a>
+                                        </div>
+                                    </div> 
+                                    @endif
+                                
 
-                                        <p class="_detail">
-                                           Milap Nagar, Uttam Nagar, new delhi,Milap Nagar Delhi-110059
-                                        </p>
-
-                                        <a href="edit_profile.php" class="continue_shopping_">
-                                            edit address
-                                        </a>
-                                    </div>
-								</div>
                             </div>
                         </div>
 @endsection
