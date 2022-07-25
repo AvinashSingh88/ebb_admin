@@ -42,9 +42,8 @@
                                        <img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('assets_web/img/profile.png')}}" alt="" class="w-100 h-100">
                                        
 										@else
-											<img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('uploads/user/'.Auth::user()->avatar)}}" alt="" class="w-100 h-100"><span>Add/Edit Photo</span>
+											<img  onclick="document.getElementById('profile').click();" id="profileImg" src="{{static_asset('uploads/user/'.Auth::user()->avatar)}}" alt="" class="w-100 h-100"><i onclick="document.getElementById('profile').click();" class="fa fa-camera editphotobtn"></i>
 										@endif
-										<button type="submit" class="editphotobtn btn-success">Update</button>
                                     <input type="file" name="file" class="d-none" id="profile">
 									</div>
 									
