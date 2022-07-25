@@ -258,7 +258,7 @@
                        // Redirect to payment page after 1 sec 
                         window.location.href ='{{url('')}}';
                     }, 1000) */
-					document.getElementById("login_error").innerHTML="Wrong Password";
+					document.getElementById("login_error").innerHTML="Login Failed, pls check password";
 				 }
            },
            error:function(error){
