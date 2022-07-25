@@ -52,7 +52,7 @@
 									    
                                     <div class="user_email mt-1 pb-3">
                                         <span class="user-email">
-                                         Track order, cancel order and email ShopClues Bazaar support
+                                         Track order, cancel order and email ebb Build Bazaar support
                                         </span>
                                     </div>
                                    <div class="user_email edit-address mt-1">
