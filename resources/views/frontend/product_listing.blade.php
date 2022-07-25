@@ -124,7 +124,7 @@ $meta_description = get_setting('meta_description');
 								$getSecondCatParent = \App\Models\Category::where('id',$category_id)->first();
 								$getSecondCatParent = $getSecondCatParent->parent_id;
 							@endphp
-							 @foreach (\App\Models\Category::where('parent_id',$getSecondCatParent)->where('type','1')->orderBy('order_level', 'ASC')->limit(1)->get() as $key => $secondcategory)
+							 @foreach (\App\Models\Category::where('parent_id',$getSecondCatParent)->where('type','1')->orderBy('order_level', 'ASC')->limit(5)->get() as $key => $secondcategory)
 							  @php
 									$cat_id = $secondcategory->id;
 									$total_products = \App\Models\Product::where('category_id',$cat_id)->count();
@@ -132,7 +132,7 @@ $meta_description = get_setting('meta_description');
 						   <li><a class="dropdown-item1 {{ Request::is('category/'.$secondcategory->slug) ? 'active':'' }}" href="{{ route('products.category', $secondcategory->slug)}}">{{ $secondcategory->name }} ({{$total_products}})</a></li>
                                
 							@endforeach
-							@foreach (\App\Models\Category::where('parent_id',$getSecondCatParent)->where('type','1')->orderBy('order_level', 'ASC')->take(50)->skip(1)->get() as $key => $secondcategory)
+							@foreach (\App\Models\Category::where('parent_id',$getSecondCatParent)->where('type','1')->orderBy('order_level', 'ASC')->take(50)->skip(5)->get() as $key => $secondcategory)
 							@php
 									$cat_id = $secondcategory->id;
 									$total_products = \App\Models\Product::where('category_id',$cat_id)->count();
