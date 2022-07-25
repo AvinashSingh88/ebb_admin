@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\FlashDeal;
 use App\Models\Brand;
@@ -164,6 +164,9 @@ class HomeController extends Controller
         $userid = Auth::user()->id;
         $myaddress = Address::where('user_id',$userid)->get();
         return view('frontend.user.my-addressbook', compact('myaddress'));
+    }
+    public function bankDetail(){
+        return view('frontend.user.mybankdetail');
     }
     public function updateProfile(Request $request){
         $request->validate([
@@ -1049,4 +1052,21 @@ class HomeController extends Controller
 				return redirect('users/login')->back()->with(session()->flash('alert-success', 'Thank your! Your OTP is Verified.'));
 			}
 	}
+
+    public function checkLogin(Request $request){
+        $request->validate([
+            'login_password' => 'required',
+        ]);
+        $getPassword = User::where('id',Auth::user()->id)->first();
+        $getPass = $getPassword->password;
+
+        if (!Hash::check($request->login_password, $getPass)) {
+            return response()->json(['success'=>false, 'message' => 'Login Fail, pls check password']);
+        }else{
+            // return response()->json(['status'=>'2']);
+            return response()->json(['success'=>true, 'message' => 'Login Success!']);
+        }
+
+        
+    }
 }

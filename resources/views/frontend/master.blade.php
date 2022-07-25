@@ -221,6 +221,58 @@
         document.getElementById("error_message").innerHTML="All fields are Required."; 
     }
 	});
+	
+	 $(".loginAgain").click(function(e){
+		e.preventDefault();
+		  
+		var login_password =  $('#login_password').val();
+         
+    if(login_password!=='')
+        {
+        var url = '{{ url('checkLogin') }}';
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+        $.ajax({
+           url:url,
+           method:'POST',
+            data:{
+                  login_password:login_password, 
+				},
+           success:function(response){
+            console.log(response.status);
+			  document.getElementById("login_error").innerHTML="";
+				$('#login_password').val('');
+                
+				 if(response.success==true){
+					 setTimeout(function() {
+                        /*Redirect to payment page after 1 sec*/
+                        window.location.href ='{{url('manage-payments')}}';
+                    }, 1000) 
+                    console.log(response);
+				 }
+				 else if(response.status==false){
+					 /*setTimeout(function() {
+                       // Redirect to payment page after 1 sec 
+                        window.location.href ='{{url('')}}';
+                    }, 1000) */
+					document.getElementById("login_error").innerHTML="Wrong Password";
+				 }
+           },
+           error:function(error){
+              console.log(error)
+			  
+           }
+		
+        });
+    }
+    else{
+        // alert('Required');
+        document.getElementById("login_error").innerHTML="Field Required."; 
+    }
+	});
 		
         $(document).ready(function() {
             $.ajax({
@@ -621,7 +673,7 @@ lowerSlider.oninput = function () {
 };
 
 
-	
+
 	
 </script>
     </body>
