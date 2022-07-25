@@ -25,14 +25,17 @@
 				<div class="col-sm-10">
 					<select type="text" class="form-control aiz-selectpicker" placeholder="{{translate('Title')}}" name="category_attribute" data-live-search="true">
 						<option @if($homecatsec->category_attribute == $homecatsec->category_attribute) selected @endif value="{{$homecatsec->category_attribute}}" >
-						@if($homecatsec->category_attribute=='building_materials')
-						Building Materials
+						@if($homecatsec->category_attribute=='service_offered')
+							Service Offered
+						@elseif($homecatsec->category_attribute=='building_materials')
+							Building Materials
 						@elseif($homecatsec->category_attribute=='furnishing_material')
-						Furnishing Material
+							Furnishing Material
 						@elseif($homecatsec->category_attribute=='sanitary_items')
-						Sanitary Items
+							Sanitary Items
 						@endif
 						</option>
+						<option value="service_offered">Service Offered</option>
 						<option value="building_materials">Building Material</option>
 						<option value="furnishing_material">Furnishing Material</option>
 						<option value="sanitary_items">Sanitary Items</option>

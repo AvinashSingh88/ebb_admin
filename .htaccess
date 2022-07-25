@@ -46,6 +46,8 @@ Options -Indexes
   AddOutputFilterByType DEFLATE font/otf
   AddOutputFilterByType DEFLATE font/ttf
   AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/jpeg
+  AddOutputFilterByType DEFLATE image/png
   AddOutputFilterByType DEFLATE image/x-icon
   AddOutputFilterByType DEFLATE text/css
   AddOutputFilterByType DEFLATE text/html
