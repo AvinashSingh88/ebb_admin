@@ -149,10 +149,12 @@ class HomeController extends Controller
 
     public function profile(Request $request)
     {
+        $address = Address::where('user_id',Auth::user()->id)->first();
+        // dd($address);die;
         if (Auth::user()->user_type == 'delivery_boy') {
             return view('delivery_boys.frontend.profile');
         } else {
-            return view('frontend.user.profile');
+            return view('frontend.user.profile',compact('address'));
         }
     }
     public function editProfile(){
