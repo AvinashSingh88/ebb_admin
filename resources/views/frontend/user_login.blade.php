@@ -178,7 +178,28 @@
 											<span id="password_strength"></span>
 													</div>
 													<div class="js-form-message form-group mb-3 col-md-6">
-														<input type="password" class="form-control" placeholder="{{  translate('Confirm Password') }}" name="password_confirmation">
+														<input type="password" class="form-control" placeholder="{{  translate('Confirm Password') }}" name="password_confirmation" id="txtConfirmPassword">
+                                                        
+                                                        
+                                                        
+ <div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch"></div>
+    <script>
+    function checkPasswordMatch() {
+        var password = $("#txtPassword").val();
+        var confirmPassword = $("#txtConfirmPassword").val();
+        if (password != confirmPassword)
+            $("#CheckPasswordMatch").html("Passwords does not match!");
+        else
+            $("#CheckPasswordMatch").html("Passwords match.");
+    }
+    $(document).ready(function () {
+       $("#txtConfirmPassword").keyup(checkPasswordMatch);
+    });
+    </script>
+    
+    
+    
+    
 													</div>
 													<p class="text-gray-901 mb-4">Your personal data will be used to support your experience throughout this website, to manage your account, and for other purposes described in our <a href="policy.php" class="text-blue">privacy policy.</a></p>
 													<div class="mb-600">
