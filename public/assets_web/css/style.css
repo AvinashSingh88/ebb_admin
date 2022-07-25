@@ -20724,11 +20724,12 @@ ul.megamenusubs {
 	cursor:pointer;
 	color:#ff6c00;
 }
-.profile_user-holder span {
+.editphotobtn {
    position: absolute;
-    left: 25px;
+    left: 40px;
     top: 125px;
-	font-weight:bold;
+	border:0px;
+	padding:0 5px;
 }
 
 .reservation000225 .user_name .userf-name {

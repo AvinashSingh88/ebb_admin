@@ -64,11 +64,7 @@
                                                             <a href="{{url('order-details/'.$order->id)}}" class="mt-1 order_btn text-capitalize ">
                                                                 Order Detail
                                                             </a>
-															@if ($order->orderDetails->first()->delivery_status == 'pending' && $order->payment_status == 'unpaid')
-                                            <a href="{{url('orders/destroy/'.$order->id)}}" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" title="{{ translate('Cancel') }}">
-                                              Cancel Order
-                                           </a>
-                                        @endif
+															
 															
                                                         </div>
                                                     </div>

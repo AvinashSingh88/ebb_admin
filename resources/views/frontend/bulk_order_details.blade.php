@@ -324,7 +324,7 @@ if(auth()->user() != null) {
 												<th style="  line-height:25px;     width: 35px;  padding-right: 0px;"> S. No.</th>
 												<th style="line-height:25px;    width: 70px;">Product</th>
 												<th style="     width: 110px;   line-height: 25px;">Item</th>
-												<th style="     text-align:center;  line-height: 25px;">Description </th>
+												{{--<th style="     text-align:center;  line-height: 25px;">Description </th>--}}
 												<th style="    width: 45px;">Price
 													<br>(Per Piece)</th>
 												<th style="   width: 45px;   line-height: 25px;">Discount %</th>
@@ -352,6 +352,7 @@ if(auth()->user() != null) {
 													<input type="checkbox" value="{{ $item->id }}" name="product_id[]"  data-id="{{ $item->id }}" id="boxselect"> 
 													<img src="{{uploaded_asset($item->thumbnail_img)}}" onclick="openModal();(1)" class="img01 hover-shadow"> </td>
 												<td> <span>{{$item->name}} </span> </td>
+													{{--
 												<td class="position-relative text-center"> <i class="fa fa-ellipsis-v ulines3es1"></i>
 													<div class="ulanidksizecolor ulines-dps-frost01 ulines3es01">
 														<ul class="tabs-ulcheckbox">
@@ -500,6 +501,7 @@ if(auth()->user() != null) {
 														</ul>
 													</div>
 												</td>
+												--}}
 												<td id='price'>
 													{{$item->unit_price}}
 													<input type="hidden" name="price[]" value="{{$item->unit_price}}">
@@ -716,7 +718,7 @@ if(auth()->user() != null) {
 				</div>
 				<div class="form_rights_inner p-20 animated fadeIn">
 					<a class="dcompinfo_anchor" href="#1">
-						<div class="dcomp_imag"><img src="{{static_asset('assets_web/img/pipes1.jpg')}}" class="dcomp_imgbox " alt="Ebuild Bazaar"> <span class="dcomp_thumb_icon ebuild_icon"></span> </div>
+						<div class="dcomp_imag"><img src="{{uploaded_asset($detailedProduct->thumbnail_img)}}" class="dcomp_imgbox " alt="Ebuild Bazaar"> <span class="dcomp_thumb_icon ebuild_icon"></span> </div>
 					</a>
 					<div class="dcomp_foll mt-10">
 						<button class="dcomp_follbtn font11 fw600 color414">Follow</button>
