@@ -100,7 +100,7 @@
 
 <div class="services_sectionssd">
    <!-- Service section start  -->
-   <section class="product-csteogry">
+   <!-- <section class="product-csteogry">
       <div class="trend servoce_dops service_sections45 pb-0">
          <div class="container">
             <div class="row">
@@ -138,7 +138,7 @@
             </div>
          </div>
       </div>
-   </section>
+   </section> -->
    <!-- Service section end  -->
 
    <!-- Category section start  -->

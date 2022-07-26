@@ -2,57 +2,64 @@
 
 @section('content')
 <!-- form end here -->
+<section class="pageTitle product-detail_banner" style="background-image:url(https://orrish.org/ebb_dev/public/assets_web/img/orderbanner.png)">
+   <div class="container"> </div>
+</section>
     <section class="bannerslid mb-5 pt-5 animated animate__fadeInUp wow">
-        <div class="container">
-           
-            <div class="rowwwwww">
-                <div class="row">
-
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <img src="{{static_asset('assets_web/img/trackme.jpg')}}" class="loadimg center-block" alt="">
-                    </div><!-- col-md-4 -->
-
-                    <div class="col-md-6 col-sm-12 col-xs-12">
- 
-
-
-
-                            <div class="colampoxe ml-3 background-white">
-                                <div class="border-bottom1 border-color-111 mt-0 mb-3">
-                                    <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Track your
-                                        shipment</h3>
-                                    <div class="deals">
-                                        <hr>
-                                    </div>
-                                </div>
-                                
-                                <form action="{{ route('orders.track') }}" method="GET" class="js-validate">
-                                    <div class="js-form-message form-group">
-									<input type="text" class="form-control" @isset($ocode) value="{{ $ocode }}" @endisset name="order_code" required id="signinSrEmailExample3" placeholder="Order Code *">
-									</div>
-                                   
-                                    <div class="js-form-message">
-                                        
-                                        <div class="mt-3">
-                                            <button class="btn btn-primary-dark-w px-5 mb-2 ">
-                                               Track Order
-                                            </button>
-                                             
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-
-                    </div><!-- col-md-8 -->
-
-
-
-
-
-                </div>
-            </div>
-        </div>
+        <div class="table-crack-border">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
+  <tr>
+    <td colspan="2" style="font-size:22px;">All Sellers</th>
+    <td colspan="2"><h5 style="float:right;"><img src="https://orrish.org/ebb_dev/public/uploads/all/XW8wwHduFJ111hkmvQjuRDIpuWd1bytoExc7hMoe.png" width="50" style="float:right;"><span style="float:right; text-align:right; padding-right:10px;">White Cement<br />(340)</span></h5> </th>
+  </tr>
+  <tr class="footable-header">
+    <th>Seller</th>
+    <th>Price</th>
+    <th>Delivery</th>
+    <th>&nbsp;</th>
+  </tr>
+  <tr style="border-bottom:1px solid #e5e5e5;">
+    <td><span><strong>Host Company</strong> </span><br/>
+    &bull; Cash On Delivery available<br/>
+&bull; 7 Days Replacement Policy</td>
+    <td>₹ 440.00</td>
+    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
+  </tr>
+   <tr style="border-bottom:1px solid #e5e5e5;">
+    <td><span><strong>Host Company</strong> </span><br/>
+    &bull; Cash On Delivery available<br/>
+&bull; 7 Days Replacement Policy</td>
+    <td>₹ 630.00</td>
+    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
+  </tr>
+   <tr style="border-bottom:1px solid #e5e5e5;">
+    <td><span><strong>Find Company</strong> </span><br/>
+    &bull; Cash On Delivery available<br/>
+&bull; 7 Days Replacement Policy</td>
+    <td>₹ 240.00</td>
+    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
+  </tr>
+   <tr style="border-bottom:1px solid #e5e5e5;">
+    <td><span><strong>Delta Company</strong> </span><br/>
+    &bull; Cash On Delivery available<br/>
+&bull; 7 Days Replacement Policy</td>
+    <td>₹ 410.00</td>
+    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
+  </tr>
+   <tr style="border-bottom:1px solid #e5e5e5;">
+    <td><span><strong>Alfa Company</strong> </span><br/>
+    &bull; Cash On Delivery available<br/>
+&bull; 7 Days Replacement Policy</td>
+    <td>₹ 640.00</td>
+    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
+  </tr>
+</table>
+</div>
 		@isset($order)
 		<div class="container details-product">
                 <div class="row">

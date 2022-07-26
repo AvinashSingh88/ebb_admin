@@ -12,7 +12,9 @@
                             <div class="border-bottom1 border-color-111 mt-3 mb-3">
                                 
                                 <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">
-                                    @if($value->category_attribute == "building_materials")
+                                    @if($value->category_attribute == "service_offered")
+                                        Service Offered
+                                    @elseif($value->category_attribute == "building_materials")
                                         Building Material
                                     @elseif($value->category_attribute == "furnishing_material")
                                         Furnishing Material

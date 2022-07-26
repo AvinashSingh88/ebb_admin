@@ -308,7 +308,7 @@
                         </form>
                        
                      
-					  <div class=" position-absolute end-0 bottom-0 justify-content-end w-70">
+					  <div class=" position-absolute end-0 bottom-0 justify-content-end w-75">
 					  <div class="discrptions_button">
                            <input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
                            <input type="hidden" id="total_product_price" class="prod_price">
@@ -316,10 +316,72 @@
                            <button class="out-of-stock background-gray">Out of stock</button>
                            <!--<h6><a href="quote.php">Get Quote</a></h6>-->
                            <button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons">Bulk Order</button>
+                           <button type="button" class="bulk-order-buttons" onclick="window.location.href='{{ url('more-seller') }}'">More Sellers</button>
+                           
                         </div>
                         </div>
+                        
 						</div>
-                     <h4 id="">
+                        
+                        
+                        <!--<div id="myModal" class="modal fade prolidneis" role="dialog">
+            <div class="modal-dialog w-50" id="modal-dialog45">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="border-bottom1 border-color-111 mt-0 w-100">
+                                          <h3 class="section-title section-title__sm mb-0 pb-0 font-size-18 mt-0">Other Sellers on EBB</h3>
+                                          <div class="deals">
+                                             <hr class="mt-2">
+                                          </div>
+                                       </div>  
+                        
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                       
+               
+               
+                
+              <div class="table-crack-border">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
+  <tr class="footable-header">
+    <th>Sold By</th>
+    <th>Price</th>
+    <th>&nbsp;</th>
+  </tr>
+  <tr>
+    <td><span>Host company </span><br/>Free Shipping Available</td>
+    <td>₹ 340.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+   <tr>
+    <td><span>Remote company </span><br/>Free Shipping Available</td>
+    <td>₹ 300.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+   <tr>
+    <td><span>Pankaj company </span><br/>Free Shipping Available</td>
+    <td>₹ 240.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+   <tr>
+    <td><span>xyz company </span><br/>Free Shipping Available</td>
+    <td>₹ 340.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+</table>
+</div>
+              
+              
+              
+              
+              
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        
+                     <h4 id="" class="stockquantity">
                         @if($detailedProduct->stock_visibility_state == 'quantity')
                         <span id="available-quantity">Only {{ $qty }} Items Left!</span>
                         {{ translate('available')}}

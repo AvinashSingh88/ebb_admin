@@ -573,7 +573,8 @@ if (!function_exists('uploaded_asset')) {
     function uploaded_asset($id)
     {
         if (($asset = \App\Models\Upload::find($id)) != null) {
-            return my_asset($asset->file_name);
+            $user_type = \App\Models\User::select('user_type')->find($asset->user_id);
+            return my_asset($asset->file_name, $user_type->user_type);
         }
         return null;
     }
@@ -587,12 +588,18 @@ if (!function_exists('my_asset')) {
      * @param bool|null $secure
      * @return string
      */
-    function my_asset($path, $secure = null)
+    function my_asset($path, $user_type, $secure = null)
     {
         if (env('FILESYSTEM_DRIVER') == 's3') {
             return Storage::disk('s3')->url($path);
         } else {
-            return app('url')->asset('public/' . $path, $secure);
+            if($user_type == "seller"){
+                $vendor = env('VENDOR_BASE_URL') . '/' . $path;
+                // dd($vendor);
+                // die;
+            }else{
+                return app('url')->asset('public/' . $path, $secure);
+            }
         }
     }
 }

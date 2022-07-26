@@ -20726,10 +20726,16 @@ ul.megamenusubs {
 }
 .editphotobtn {
    position: absolute;
-    left: 40px;
-    top: 125px;
+    left: 75px;
+    top: 100px;
 	border:0px;
-	padding:0 5px;
+	z-index:99;
+	background:#36C;
+	border-radius:100%;
+	padding:5px;
+	color:#fff;
+	font-size:20px;
+	border:2px solid #fff;
 }
 
 .reservation000225 .user_name .userf-name {
@@ -21564,7 +21570,7 @@ p.delivery_full-detail.text-dark.fs-7.mb-0 {
 
 .products_list input.quantity.quantity-field.border-0.text-center.w-25 {
     height: 35px;
-    width: 55px !important;
+    width: 35px !important;
     margin: 0px !important;
 }
 
@@ -22409,10 +22415,11 @@ h3.section-title.section-title__sm.mb-0.pb-0.mt-3.font-size-18 {
 }
 
 .text-truncate-2 {
-    overflow: hidden;
+    overflow: hidden!Important;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+	width:110px;
 }
 
 .bannerslid .service-pros .bounceIn.animated h4::after {
@@ -22443,7 +22450,7 @@ select.form-control.form-control-sm.aiz-selectpicker {
 
 .products_list input.quantity.quantity-field.border-0.text-center.w-25 {
     height: 35px;
-    width: 55px !important;
+    width: 40px !important;
     margin: 0px !important;
 }
 
@@ -22755,7 +22762,7 @@ select.form-control.form-control-sm.aiz-selectpicker {
 .addtocartbut {
     background: #1274c0;
     font-size: 13px;
-    padding: 5px 20px;
+    padding: 5px 10px;
     border-radius: 50px;
     color: #fff !important;
     height: 45px;
@@ -22997,7 +23004,7 @@ button.close.absolute-top-right.btn-icon.close.z-1 {
 button.bulk-order-buttons {
     background: #ff6c00;
     font-size: 13px;
-    padding: 5px 30px;
+    padding: 5px 10px;
     border-radius: 50px;
     color: #fff !important;
     height: 45px;
@@ -23005,7 +23012,7 @@ button.bulk-order-buttons {
     display: block;
     font-weight: 400;
     letter-spacing: 0.5px;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-top: 0px;
     border: none;
 }
@@ -23265,3 +23272,20 @@ input[type=number] {
 .strong-password{background-color: #12CC1A;border:#0FA015 1px solid;}
 
 #password_strength {padding: 5px 10px;color: #FFFFFF; border-radius:4px;margin-top:5px;}
+.minheight{
+	min-height:20px;
+}
+.table-crack-border{
+	border-bottom:1px solid #e5e5e5;
+}
+.stockquantity{
+	background: #fbfbfb!important;
+    padding: 5px 10px!important;
+    font-size: 14px!important;
+    font-weight: 600!important;
+    margin: 10px 0px!important;
+    border-top: 1px solid #e1e1e1!important;
+    border-bottom: 1px solid #e1e1e1!important;
+	text-align:center!important;
+	color:#090!important;
+}

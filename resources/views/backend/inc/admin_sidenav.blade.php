@@ -284,6 +284,77 @@
                     </li>
                 @endif
 
+                <!-- Reports -->
+                @if(Auth::user()->user_type == 'admin' || in_array('10', json_decode(Auth::user()->staff->role->permissions)))
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-file-alt aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{ translate('Reports') }}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('in_house_sale_report.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['in_house_sale_report.index'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('In House Product Sale') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('seller_sale_report.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['seller_sale_report.index'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('Seller Products Sale') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('stock_report.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['stock_report.index'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('Products Stock') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('wish_report.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['wish_report.index'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('Products wishlist') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('user_search_report.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['user_search_report.index'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('User Searches') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('commission-log.index') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Commission History') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('wallet-history.index') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{ translate('Wallet Recharge History') }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                
+                <!--Blog System-->
+                @if(Auth::user()->user_type == 'admin' || in_array('23', json_decode(Auth::user()->staff->role->permissions)))
+                    <li class="aiz-side-nav-item">
+                        <a href="#" class="aiz-side-nav-link">
+                            <i class="las la-bullhorn aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{{ translate('Blog System') }}</span>
+                            <span class="aiz-side-nav-arrow"></span>
+                        </a>
+                        <ul class="aiz-side-nav-list level-2">
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('blog.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['blog.create', 'blog.edit'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('All Posts') }}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
+                                <a href="{{ route('blog-category.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['blog-category.create', 'blog-category.edit'])}}">
+                                    <span class="aiz-side-nav-text">{{ translate('Categories') }}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                  <!-- marketing -->
                  @if(Auth::user()->user_type == 'admin' || in_array('11', json_decode(Auth::user()->staff->role->permissions)))
                     <li class="aiz-side-nav-item">

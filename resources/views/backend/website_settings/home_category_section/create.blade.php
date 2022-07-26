@@ -24,6 +24,7 @@
 				<div class="col-sm-10">
 					<select type="text" class="form-control aiz-selectpicker" placeholder="{{translate('Title')}}" name="category_attribute" data-live-search="true">
 						<option selected disabled>Select Category Attribute</option>
+						<option value="service_offered">Service Offered</option>
 						<option value="building_materials">Building Materials</option>
 						<option value="furnishing_material">Furnishing Material</option>
 						<option value="sanitary_items">Sanitary Items</option>
