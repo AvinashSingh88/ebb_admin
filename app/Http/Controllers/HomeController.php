@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -1069,10 +1070,9 @@ class HomeController extends Controller
 
         
     }
-	public function moreSeller()
+   
+    public function moreSeller()
     {
        return view('frontend.more_seller');
     }
 }
-
-
