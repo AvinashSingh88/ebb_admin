@@ -13,6 +13,7 @@
                            <ul class="ulines-dps     justify-content-start">
                              <li class="ukine  "><a href="{{url('profile')}}">My Profile</li>
                               <li class="ukine active4"><a href="{{url('my_addressbook')}}">My Address Book  </a></li>
+                              <li class="ukine"><a href="{{url('my-bank-details')}}">Bank Details</a></li>
                               <li class="ukine "><a href="{{url('change-password')}}">Change Password </a></li>
                               <li class="ukine "> <a href="{{url('manage-payments')}}""> Manage Payments</a> </li> 
                            </ul>
