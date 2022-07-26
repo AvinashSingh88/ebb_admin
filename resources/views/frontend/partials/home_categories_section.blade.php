@@ -1,5 +1,5 @@
 @php
-    $get_attributes = \App\Models\HomeCategorySection::groupBy('category_attribute')->get();
+    $get_attributes = \App\Models\HomeCategorySection::groupBy('category_attribute')->orderBy('id')->get();
 @endphp
 
 @if(count($get_attributes)> 0 )
