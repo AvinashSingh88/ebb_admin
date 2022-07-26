@@ -175,6 +175,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::post('/flash_deals/product_discount', 'FlashDealController@product_discount')->name('flash_deals.product_discount');
     Route::post('/flash_deals/product_discount_edit', 'FlashDealController@product_discount_edit')->name('flash_deals.product_discount_edit');
 
+    Route::get('flash_deals_items', 'FlashDealController@flash_deal_item')->name('flash_deals_item.index');
+    Route::get('flash_deals_items_create', 'FlashDealController@flash_deals_items_create')->name('flash_deals_item.create');
+    Route::post('flash_deals_items_store', 'FlashDealController@flash_deals_items_store')->name('flash_deals_item.store');
+     Route::post('flash_deals_items_update', 'FlashDealController@flash_deals_items_update')->name('flash_deals_item.update');
+    Route::get('/flash_deals_item/destroy/{id}', 'FlashDealController@flash_deals_item_destroy')->name('flash_deals_item.destroy');
+    Route::get('/flash_deals_item/edit/{id}', 'FlashDealController@flash_deals_item_edit')->name('flash_deals_item.edit');
+
     //Subscribers
     Route::get('/subscribers', 'SubscriberController@index')->name('subscribers.index');
     Route::get('/subscribers/destroy/{id}', 'SubscriberController@destroy')->name('subscriber.destroy');

@@ -38,6 +38,65 @@ class FlashDealController extends Controller
         return view('backend.marketing.flash_deals.create');
     }
 
+
+     public function flash_deal_item(Request $request)
+    {
+        $flash_deals_item = DealItem::orderBy('created_at', 'desc');
+        $flash_deals_item = $flash_deals_item->paginate(15);
+         return view('backend.marketing.flash_deals.dealitemindex', compact('flash_deals_item'));
+    }
+
+    public function flash_deals_items_create(Request $request)
+    {
+      return view('backend.marketing.flash_deals.dealitemcreate');
+    }
+
+  public function flash_deals_items_store(Request $request)
+  {
+    $deal_item = new DealItem;
+    $deal_item->deal_id = $request->deal_id;
+    $deal_item->title = $request->title;
+    $deal_item->sub_title = $request->sub_title;
+    $deal_item->page_link = $request->page_link;
+    $deal_item->image = $request->banner;
+    $deal_item->save();
+
+    flash(translate('Flash Deal Item has been inserted successfully'))->success();
+    return redirect()->route('flash_deals_item.index');
+
+  }
+
+  public function flash_deals_item_destroy($id)
+  {
+        DealItem::destroy($id);
+        flash(translate('FlashDeal Item has been deleted successfully'))->success();
+        return redirect()->route('flash_deals_item.index');
+  }
+
+  public function flash_deals_item_edit($id)
+  {
+    $deal_item = DealItem::find($id);
+    return view('backend.marketing.flash_deals.dealitemedit', compact('deal_item'));
+  }
+
+
+  public function flash_deals_items_update(Request $request)
+  {
+    $deal_item = DealItem::find($request->id);
+    $deal_item->deal_id = $request->deal_id;
+    $deal_item->title = $request->title;
+    $deal_item->sub_title = $request->sub_title;
+    $deal_item->page_link = $request->page_link;
+    $deal_item->image = $request->banner;
+    $deal_item->save();
+
+    flash(translate('Flash Deal Item has been updated successfully'))->success();
+    return redirect()->route('flash_deals_item.index');
+
+
+  }
+
+
     /**
      * Store a newly created resource in storage.
      *
