@@ -360,6 +360,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::resource('shops', 'ShopController');
 Route::get('/track-your-order', 'HomeController@trackOrder')->name('orders.track');
+Route::get('/more-seller', 'HomeController@moreSeller')->name('moreSeller');
 
 Route::get('/instamojo/payment/pay-success', 'InstamojoController@success')->name('instamojo.success');
 
