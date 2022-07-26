@@ -40,16 +40,24 @@
                     </div>
 
                     <div class="row">
-                        @foreach ($flash_deal->flash_deal_products as $key => $flash_deal_product)
-                            @php
-                                $product = \App\Models\Product::find($flash_deal_product->product_id);
-                            @endphp
-                            @if ($product->published != 0)
-                                <div class="col-md-5c">
-                                    @include('frontend.partials.product_box_1',['product' => $product])
-                                </div>
-                            @endif
-                        @endforeach
+                      
+                        @php 
+                     $branddealitems = \App\Models\DealItem::where('deal_id',$flash_deal->id)->get();
+                        @endphp
+                        @foreach($branddealitems as $branddeal)
+                       
+                           <div style="margin-bottom:50px" class="col-md-3">
+                              <a href="{{  $branddeal->page_link  }}">
+                                 <img class="lazy loaded img-fluid" src="{{ uploaded_asset($branddeal->image) }}"
+                                    alt="{{$branddeal->title}}" >
+<br><br>
+                                 <h3 style="color:#ff7713;text-align:center">{{$branddeal->title}}</h3>
+                                  <h4 style="text-align:center">{{$branddeal->sub_title}}</h4>
+                              </a>
+                           </div>
+                          
+                           @endforeach
+                    
                     </div>
                     
                 </div>
