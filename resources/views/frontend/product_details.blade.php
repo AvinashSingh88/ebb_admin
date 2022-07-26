@@ -316,7 +316,7 @@
                            <button class="out-of-stock background-gray">Out of stock</button>
                            <!--<h6><a href="quote.php">Get Quote</a></h6>-->
                            <button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons">Bulk Order</button>
-                           <button type="button" class="bulk-order-buttons"  data-toggle="modal" data-target="#myModal">More Sellers</button>
+                           <button type="button" class="bulk-order-buttons" onclick="window.location.href='{{ url('more-seller') }}'">More Sellers</button>
                            
                         </div>
                         </div>
@@ -324,7 +324,7 @@
 						</div>
                         
                         
-                        <div id="myModal" class="modal fade prolidneis" role="dialog">
+                        <!--<div id="myModal" class="modal fade prolidneis" role="dialog">
             <div class="modal-dialog w-50" id="modal-dialog45">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -350,18 +350,18 @@
     <th>&nbsp;</th>
   </tr>
   <tr>
-    <td><span>xyz company </span><br/>Free Shipping Available</td>
+    <td><span>Host company </span><br/>Free Shipping Available</td>
     <td>₹ 340.00</td>
     <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
   </tr>
    <tr>
-    <td><span>xyz company </span><br/>Free Shipping Available</td>
-    <td>₹ 340.00</td>
+    <td><span>Remote company </span><br/>Free Shipping Available</td>
+    <td>₹ 300.00</td>
     <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
   </tr>
    <tr>
-    <td><span>xyz company </span><br/>Free Shipping Available</td>
-    <td>₹ 340.00</td>
+    <td><span>Pankaj company </span><br/>Free Shipping Available</td>
+    <td>₹ 240.00</td>
     <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
   </tr>
    <tr>
@@ -379,7 +379,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         
                      <h4 id="" class="stockquantity">
                         @if($detailedProduct->stock_visibility_state == 'quantity')
