@@ -1069,4 +1069,10 @@ class HomeController extends Controller
 
         
     }
+	public function moreSeller()
+    {
+       return view('frontend.more_seller');
+    }
 }
+
+
