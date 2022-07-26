@@ -170,7 +170,7 @@
             </div>
          </div>
 
-         <div class="boxoodod">
+        <div class="boxoodod">
             <div class="row">
                @foreach($primium_offers as $featured_deal)
                @if($featured_deal != null && strtotime(date('Y-m-d H:i:s')) >= $featured_deal->start_date &&
@@ -192,22 +192,23 @@
                         </h6>
 
                         <ul class="image-productsll">
-
-                           @foreach ($featured_deal->flash_deal_get_products($featured_deal->id, 3) as $key =>
+                     @php 
+                     $dealitems = \App\Models\DealItem::where('deal_id', $featured_deal->id)->get();
+                     @endphp
+                           @foreach ($dealitems as $key =>
                            $flash_deal_product)
-                           @php
-                           $product = \App\Models\Product::find($flash_deal_product->product_id);
-                           @endphp
-                           @if ($product->published != 0)
+               
+                          
                            <li>
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{  $product->getTranslation('name')  }}">
+                            <a href="{{  $flash_deal_product->page_link  }}">  <img src="{{ uploaded_asset($flash_deal_product->image) }}"
+                                 alt="{{  $flash_deal_product->title  }}">
                               <div class="discrptions">
-                                 <h6>{{ home_discounted_base_price($product) }}</h6>
-                                 <h5 class="text-truncate-2"> {{ $product->getTranslation('name') }} </h5>
+                                 <h6 class="garage-title">{{  $flash_deal_product->title  }}</h6>
+                                 <h5> {{  $flash_deal_product->sub_title  }} </h5>
                               </div>
+                              </a>
                            </li>
-                           @endif
+                        
                            @endforeach
 
                         </ul>
@@ -396,34 +397,38 @@
    <!-- banner 1 section end -->
 
    <!-- CONSUMER ELECTRONICS end -->
-   <div class="other-categories">
+ <div class="other-categories">
       <div class="container">
          <div class="other-categories-list">
             <div class="row">
                @php
                $category_offers = \App\Models\FlashDeal::where('type', '=', 'category_section')->where('status',
-               1)->where('is_home', 1)->take(4)->get();
+               1)->where('id', 25)->get()->first();
                @endphp
-               @if(count($category_offers) > 0)
+               @if($category_offers)
                <div class="col-md-4">
                   <div class="category-wrpr">
-                     <p>Shop Deals in Product Category | <span>Upto 55% OFF</span></p>
+                     <p>{{ $category_offers->title }} | <span>Upto 55% OFF</span></p>
                      <ul class="category-list row">
-                        @foreach($category_offers as $deal)
-                        @if($deal != null && strtotime(date('Y-m-d H:i:s')) >= $deal->start_date &&
-                        strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
+
+                     
+                     @php 
+                     $catdealitems = \App\Models\DealItem::where('deal_id',25)->get();
+                        @endphp
+                        @foreach($catdealitems as $catdeal)
+                       
                            <li class="col-6">
-                              <a href="{{ route('flash-deal-details', $deal->slug) }}">
-                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
-                                    alt="{{$deal->title}}">
-                                 <span>{{$deal->title}}</span>
+                              <a href="{{  $catdeal->page_link  }}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($catdeal->image) }}"
+                                    alt="{{$catdeal->title}}">
+                                 <span>{{$catdeal->title}}</span>
                               </a>
                            </li>
-                           @endif
+                          
                            @endforeach
                      </ul>
 
-                     <a href="{{ route('flash-deals') }}" class="view-link">
+                     <a href="{{ route('flash-deal-details', $category_offers->slug) }}" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
@@ -437,27 +442,29 @@
 
                @php
                $service_offers = \App\Models\FlashDeal::where('type', '=', 'service_section')->where('status',
-               1)->where('is_home', 1)->take(4)->get();
+               1)->where('id', 26)->get()->first();
                @endphp
-               @if(count($service_offers) > 0)
+               @if($service_offers)
                <div class="col-md-4">
                   <div class="category-wrpr">
-                     <p class="orange-text">Top Deals on Services Offers | <span>Upto 40% OFF</span></p>
+                     <p class="orange-text">{{ $service_offers->title }} | <span>Upto 40% OFF</span></p>
                      <ul class="category-list row">
-                        @foreach($service_offers as $deal)
-                        @if($deal != null && strtotime(date('Y-m-d H:i:s')) >= $deal->start_date &&
-                        strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
+                       @php 
+                     $servdealitems = \App\Models\DealItem::where('deal_id',26)->get();
+                        @endphp
+                        @foreach($servdealitems as $servdeal)
+                       
                            <li class="col-6">
-                              <a href="{{ route('flash-deal-details', $deal->slug) }}">
-                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
-                                    alt="{{$deal->title}}">
-                                 <span>{{$deal->title}}</span>
+                             <a href="{{  $servdeal->page_link  }}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($servdeal->image) }}"
+                                    alt="{{$servdeal->title}}">
+                                 <span>{{$servdeal->title}}</span>
                               </a>
                            </li>
-                           @endif
+                          
                            @endforeach
                      </ul>
-                     <a href="{{ route('flash-deals') }}" class="view-link">
+                     <a href="{{ route('flash-deal-details', $service_offers->slug) }}" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
@@ -470,27 +477,29 @@
 
                @php
                $brand_offers = \App\Models\FlashDeal::where('type', '=', 'brand_section')->where('status',
-               1)->where('is_home', 1)->take(4)->get();
+               1)->where('id', 27)->get()->first();
                @endphp
-               @if(count($brand_offers) > 0)
+               @if($brand_offers)
                <div class="col-md-4">
                   <div class="category-wrpr">
-                     <p>Best Brand Offers | <span>Upto 35% OFF</span> </p>
+                     <p>{{ $brand_offers->title }} | <span>Upto 35% OFF</span> </p>
                      <ul class="category-list row">
-                        @foreach($brand_offers as $deal)
-                        @if($deal != null && strtotime(date('Y-m-d H:i:s')) >= $deal->start_date &&
-                        strtotime(date('Y-m-d H:i:s')) <= $deal->end_date)
+                        @php 
+                     $branddealitems = \App\Models\DealItem::where('deal_id',27)->get();
+                        @endphp
+                        @foreach($branddealitems as $branddeal)
+                       
                            <li class="col-6">
-                              <a href="{{ route('flash-deal-details', $deal->slug) }}">
-                                 <img class="lazy loaded" src="{{ uploaded_asset($deal->banner) }}"
-                                    alt="{{$deal->title}}">
-                                 <span>{{$deal->title}}</span>
+                              <a href="{{  $branddeal->page_link  }}">
+                                 <img class="lazy loaded" src="{{ uploaded_asset($branddeal->image) }}"
+                                    alt="{{$branddeal->title}}">
+                                 <span>{{$branddeal->title}}</span>
                               </a>
                            </li>
-                           @endif
+                          
                            @endforeach
                      </ul>
-                     <a href="{{ route('flash-deals') }}" class="view-link">
+                     <a href="{{ route('flash-deal-details', $brand_offers->slug) }}" class="view-link">
                         View all
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6.10059 3.8772L11.1006 8.87454L6.10059 13.8719" stroke="#515151" stroke-width="1.5"
@@ -512,13 +521,14 @@
    <!-- Category With Banner section end  -->
 
    <!-- Product relative Carousel -->
-   <div class=" headsections111 weekinliud dkjfksjjksdfjis">
+ <div class=" headsections111 weekinliud dkjfksjjksdfjis">
       <div class="container">
          <div class="row">
 
             @php
             $weekly_offers = \App\Models\FlashDeal::where('type', '=', 'weekly_section')->where('status',
             1)->where('is_home', 1)->first();
+             $woitems = \App\Models\DealItem::where('deal_id',$weekly_offers->id)->take(2)->get();
             @endphp
             @if($weekly_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
@@ -537,26 +547,24 @@
                <div class="bkdjfoskji">
                   <div class="row">
 
-                     @foreach ($weekly_offers->flash_deal_get_products($weekly_offers->id, 2) as $key =>
-                     $flash_deal_product)
-                     @php
-                     $product = \App\Models\Product::find($flash_deal_product->product_id);
-                     @endphp
-                     @if ($product->published != 0)
+               @foreach($woitems as $key => $woitemss)
+                    
                      <div class="col-md-6">
+                         <a href="{{  $woitemss->page_link  }}">
                         <div class="product-box">
                            <div class="imllskdon">
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{ $product->getTranslation('name') }}">
+                              <img src="{{ uploaded_asset($woitemss->image) }}"
+                                 alt="{{ $woitemss->title }}">
                            </div>
                            <div class="discrptions">
-                              <h5> {{ $product->getTranslation('name') }} </h5>
-                              <h6> {{ home_discounted_base_price($product) }} </h6>
+                              <h5> {{ $woitemss->title }} </h5>
+                              <h6> {{ $woitemss->sub_title }} </h6>
                            </div>
                         </div>
+                           </a>
                      </div>
-                     @endif
-                     @endforeach
+                    
+               @endforeach
 
                   </div>
                </div>
@@ -566,6 +574,7 @@
             @php
             $live_offers = \App\Models\FlashDeal::where('type', '=', 'live_section')->where('status',
             1)->where('is_home', 1)->first();
+             $loitems = \App\Models\DealItem::where('deal_id',$live_offers->id)->take(2)->get();
             @endphp
             @if($live_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
@@ -584,26 +593,24 @@
                <div class="bkdjfoskji">
                   <div class="row">
 
-                     @foreach ($live_offers->flash_deal_get_products($live_offers->id, 2) as $key =>
-                     $flash_deal_product)
-                     @php
-                     $product = \App\Models\Product::find($flash_deal_product->product_id);
-                     @endphp
-                     @if ($product->published != 0)
+                       @foreach($loitems as $key => $loitemss)
+                    
                      <div class="col-md-6">
+                          <a href="{{  $loitemss->page_link  }}">
                         <div class="product-box">
                            <div class="imllskdon">
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{ $product->getTranslation('name') }}">
+                              <img src="{{ uploaded_asset($loitemss->image) }}"
+                                 alt="{{ $loitemss->title }}">
                            </div>
                            <div class="discrptions">
-                              <h5> {{ $product->getTranslation('name') }} </h5>
-                              <h6> {{ home_discounted_base_price($product) }} </h6>
+                              <h5> {{ $loitemss->title }} </h5>
+                              <h6> {{ $loitemss->sub_title }} </h6>
                            </div>
                         </div>
+                              </a>
                      </div>
-                     @endif
-                     @endforeach
+                    
+               @endforeach
 
                   </div>
                </div>
@@ -613,6 +620,7 @@
             @php
             $small_comodity_offers = \App\Models\FlashDeal::where('type', '=',
             'small_comodity_section')->where('status', 1)->where('is_home', 1)->first();
+             $scoitems = \App\Models\DealItem::where('deal_id',$small_comodity_offers->id)->take(2)->get();
             @endphp
             @if($small_comodity_offers != null)
             <div class="col-md-4 col-sm-4 col-4">
@@ -631,26 +639,24 @@
                <div class="bkdjfoskji">
                   <div class="row">
 
-                     @foreach ($small_comodity_offers->flash_deal_get_products($small_comodity_offers->id, 2) as $key =>
-                     $flash_deal_product)
-                     @php
-                     $product = \App\Models\Product::find($flash_deal_product->product_id);
-                     @endphp
-                     @if ($product->published != 0)
+                      @foreach($scoitems as $key => $scoitemss)
+                    
                      <div class="col-md-6">
+                         <a href="{{  $scoitemss->page_link  }}">
                         <div class="product-box">
                            <div class="imllskdon">
-                              <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                 alt="{{ $product->getTranslation('name') }}">
+                              <img src="{{ uploaded_asset($scoitemss->image) }}"
+                                 alt="{{ $scoitemss->title }}">
                            </div>
                            <div class="discrptions">
-                              <h5> {{ $product->getTranslation('name') }} </h5>
-                              <h6> {{ home_discounted_base_price($product) }} </h6>
+                              <h5> {{ $scoitemss->title }} </h5>
+                              <h6> {{ $scoitemss->sub_title }} </h6>
                            </div>
                         </div>
+                        </a>
                      </div>
-                     @endif
-                     @endforeach
+                    
+               @endforeach
 
                   </div>
                </div>
@@ -727,26 +733,30 @@
 
             <div class="div-tab-dpsa sections">
                <div class="owl-carousel owl-theme trending0001">
+                  
+               @php 
+               $flashdeal = \App\Models\FlashDeal::where('status', 1)->where('featured', 1)->first();
+               $flshdd = \App\Models\DealItem::where('deal_id',$flashdeal->id)->take(20)->get();
+               @endphp
 
-                  @foreach ($flash_deal->flash_deal_products->take(20) as $key => $flash_deal_product)
-                  @php
-                  $product = \App\Models\Product::find($flash_deal_product->product_id);
-                  @endphp
-                  @if ($product != null && $product->published != 0)
+
+                   @foreach($flshdd as $ffdeal)
                   <div class="item">
+                       <a href="{{  $ffdeal->page_link  }}">
                      <div class="product-box">
                         <div class="imllskdon">
-                           <img src="{{ uploaded_asset($product->thumbnail_img) }}"
-                              alt="{{  $product->getTranslation('name')  }}">
+                           <img src="{{ uploaded_asset($ffdeal->image) }}"
+                              alt="{{  $ffdeal->title  }}">
                         </div>
                         <div class="discrptions">
-                           <h5> {{ $product->getTranslation('name') }} </h5>
-                           <h6> {{ home_discounted_base_price($product) }} </h6>
+                           <h5> {{ $ffdeal->title }} </h5>
+                           <h6> {{ $ffdeal->sub_title }} </h6>
                         </div>
 
                      </div>
+                     </a>
                   </div>
-                  @endif
+                 
                   @endforeach
 
                </div>
