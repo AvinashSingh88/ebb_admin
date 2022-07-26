@@ -30,7 +30,7 @@
                         <div class="hotel-form py-4 shadow-none">
 						  <ul class="ulines-dps-para">
                               <li class="ukine active4">
-							  <div class="d-flex position-relative">
+							  <div class="d-flex position-relative minheight">
                          @foreach ($mypaymentcard as $item)
                      <div class="hotel-form py-4 px-2 mb-3 mt-1 shadow-none w-33 pt-2 border">
 								<div class="px-2">
