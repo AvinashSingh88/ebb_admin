@@ -103,42 +103,66 @@ $meta_description = get_setting('meta_description');
                         </div>
                      </li>
                      <li class="listing-botoms">
-                     <!--Code for First category start-->
-                       @if (\App\Models\Category::find($category_id)->parent_id != 0)
-							  
-									 <b>{{ App\Models\Category::find(\App\Models\Category::find($category_id)->parent_id)->getTranslation('name')}}</b>
-							   @endif
-                        <ul class="list-unstyled dropdown-list listing_block filter">
-
-                           @if (!isset($category_id))
-                            @foreach (\App\Models\Category::where('parent_id', '=', '0')->where('type','1')->get() as $key => $category)
-                           <li><a class="dropdown-item1" href="{{ route('products.category', $category->slug) }}">{{$category->getTranslation('name') }}</a></li>
-                           @endforeach
-                           @else
-						<!--Code for First category end-->
-							
-							
-							<!--Code for Second category start-->
-                             
-						  @php
-								$getSecondCatParent = \App\Models\Category::where('id',$category_id)->first();
-								$getSecondCatParent = $getSecondCatParent->parent_id;
-							@endphp
-							 @foreach (\App\Models\Category::where('parent_id',$getSecondCatParent)->where('type','1')->orderBy('order_level', 'ASC')->limit(5)->get() as $key => $secondcategory)
-							  @php
-									$cat_id = $secondcategory->id;
-									$total_products = \App\Models\Product::where('category_id',$cat_id)->count();
-								@endphp
-						   <li><a class="dropdown-item1 {{ Request::is('category/'.$secondcategory->slug) ? 'active':'' }}" href="{{ route('products.category', $secondcategory->slug)}}">{{ $secondcategory->name }} ({{$total_products}})</a></li>
-                               
-							@endforeach
-							@foreach (\App\Models\Category::where('parent_id',$getSecondCatParent)->where('type','1')->orderBy('order_level', 'ASC')->take(50)->skip(5)->get() as $key => $secondcategory)
 							@php
-									$cat_id = $secondcategory->id;
-									$total_products = \App\Models\Product::where('category_id',$cat_id)->count();
+								$checkLevel = \App\Models\Category::find($category_id);
+								
+								if($checkLevel->level == 1){
+									$second_category = \App\Models\Category::find($category_id);
+									$first_category = \App\Models\Category::find($second_category->parent_id);
+									$third_category = null;
+								}elseif($checkLevel->level == 2){
+									$third_category = \App\Models\Category::find($category_id);
+									$second_category = \App\Models\Category::find($third_category->parent_id);
+									$first_category = \App\Models\Category::find($second_category->parent_id);
+								}else{
+									$first_category = null;
+									$second_category = null;
+									$third_category = null;
+									$all_third_category_first = 0;
+									$all_third_category_all = 0;
+									$all_second_category_first = 0;
+									$all_second_category_all = 0;
+								
+								}
+								
+								if($second_category != null && $first_category != null){
+									$all_third_category_first = \App\Models\Category::where('parent_id', $second_category->id)->orderBy('order_level', 'ASC')->where('type', 1)->limit(5)->get();
+									$all_third_category_all = \App\Models\Category::where('parent_id', $second_category->id)->orderBy('order_level', 'ASC')->where('type', 1)->take(50)->skip(5)->get();
+									
+									$all_second_category_first = \App\Models\Category::where('parent_id', $first_category->id)->orderBy('order_level', 'ASC')->where('type', 1)->limit(5)->get();
+									
+									$all_second_category_all = \App\Models\Category::where('parent_id', $first_category->id)->orderBy('order_level', 'ASC')->where('type', 1)->take(50)->skip(5)->get();
+								}
+
+								
+							@endphp
+							
+                     <!--Code for First category start-->
+							
+						@if($first_category)
+							<b>{{$first_category->name}}</b>
+						@endif
+						<!--Code for First category end-->
+                        <ul class="list-unstyled dropdown-list listing_block filter">
+							
+                            
+						<!--Code for Second category start-->
+						@if(count($all_second_category_first) > 0)	
+							@foreach($all_second_category_first as $secondcategory)
+								@php
+									$total_products = \App\Models\Product::where('category_id',$secondcategory->id)->count();
 								@endphp
-                                <li class="collapses3 {{ Request::is('category/'.$secondcategory->slug) ? 'active':'' }}"><a class="dropdown-item1" href="{{ route('products.category', $secondcategory->slug)}}">{{ $secondcategory->name }}({{$total_products}})</a></li>
-										@endforeach
+							   <li><a class="dropdown-item1 {{ Request::is('category/'.$secondcategory->slug) ? 'active':'' }}" href="{{ route('products.category', $secondcategory->slug)}}">{{ $secondcategory->name }} ({{$total_products}})</a></li>
+							@endforeach 
+						@endif
+                        @if(count($all_second_category_all)>0)	
+							@foreach($all_second_category_all as $secondcategory)
+								@php
+									$total_products = \App\Models\Product::where('category_id',$secondcategory->id)->count();
+								@endphp
+								<li class="collapses3"><a class="dropdown-item1 {{ Request::is('category/'.$secondcategory->slug) ? 'active':'' }}" href="{{ route('products.category', $secondcategory->slug)}}">{{ $secondcategory->name }}({{$total_products}})</a></li>
+							@endforeach 
+						@endif			 
                                  
                             
 						   <li> <a class="link link-collapse small font-size-13 text-gray-27 d-inline-flex mt-2" data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false" aria-controls="collapseBrand">
@@ -150,7 +174,10 @@ $meta_description = get_setting('meta_description');
                                     </a>
                                  </li>
                           <!--Code for Second category end-->
-                           @endif
+						  
+							 
+                          
+							 
 
                         </ul>
                      </li>
@@ -164,10 +191,22 @@ $meta_description = get_setting('meta_description');
 						  <li class="listing-botoms">
 							 <b> Third Category</b>
 							 <ul class="list-unstyled dropdown-list listing_block filter">
-								 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category_id) as $key =>$id)
-								<li><a class="dropdown-item1" href="{{ route('products.category', \App\Models\Category::find($id)->slug) }}">{{ \App\Models\Category::find($id)->getTranslation('name') }}</a></li>
-								@endforeach
-								 
+							 
+								 @if(count($all_third_category_first)>0)	
+									@foreach($all_third_category_first as $third)
+										@php
+											$total_products = \App\Models\Product::where('category_id',$third->id)->count();
+										@endphp
+										<li><a class="dropdown-item1 {{ Request::is('category/'.$third->slug) ? 'active':'' }}" href="{{ route('products.category', $third->slug) }}">{{ $third->name }} ({{$total_products}})</a></li>
+									@endforeach
+								@endif
+								 @if(count($all_third_category_all)>0)	
+									@foreach($all_third_category_all as $third)
+										<li class="ml-4 mb-2">
+											<a class="text-reset fs-14  {{ Request::is('category/'.$third->slug) ? 'active':'' }}" href="{{ route('products.category', $third->slug) }}">{{ $third->name }} ({{$total_products}})</a>
+										</li>
+                                    @endforeach
+								@endif              
 							 </ul>
 						  </li>
 					   </ul>
