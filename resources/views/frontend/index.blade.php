@@ -2,8 +2,6 @@
 @section('title')Home - @endsection
 @section('description') @endsection
 
-
-
 @section('content')
 <div class="banner-main">
    <div class="owl-carousel444 owl-carousel owl-theme">
