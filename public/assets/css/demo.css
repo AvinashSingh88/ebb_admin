@@ -15,16 +15,21 @@
     margin: 10px 0px 0px;
 }
 
-	body{font-size:14px;line-height:24px;    letter-spacing: 0.5px;}
-/* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
+body {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+}
 
+/* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
 
 /* Detached navbar */
 
-.layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {
+.layout-navbar-fixed
+    .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu)
+    .layout-page {
     padding-top: 76px !important;
 }
-
 
 /* Default navbar */
 
@@ -32,53 +37,50 @@
     padding-top: 64px !important;
 }
 
-
 /* Navbar page z-index issue solution */
 
 .content-wrapper .navbar {
     z-index: auto;
 }
 
-
 /*
 * Content
 ******************************************************************************/
 
-.demo-blocks>* {
+.demo-blocks > * {
     display: block !important;
 }
 
-.demo-inline-spacing>* {
+.demo-inline-spacing > * {
     margin: 1rem 0.375rem 0 0 !important;
 }
 
-
 /* ? .demo-vertical-spacing class is used to have vertical margins between elements. To remove margin-top from the first-child, use .demo-only-element class with .demo-vertical-spacing class. For example, we have used this class in forms-input-groups.html file. */
 
-.demo-vertical-spacing>* {
+.demo-vertical-spacing > * {
     margin-top: 1rem !important;
     margin-bottom: 0 !important;
 }
 
-.demo-vertical-spacing.demo-only-element> :first-child {
+.demo-vertical-spacing.demo-only-element > :first-child {
     margin-top: 0 !important;
 }
 
-.demo-vertical-spacing-lg>* {
+.demo-vertical-spacing-lg > * {
     margin-top: 1.875rem !important;
     margin-bottom: 0 !important;
 }
 
-.demo-vertical-spacing-lg.demo-only-element> :first-child {
+.demo-vertical-spacing-lg.demo-only-element > :first-child {
     margin-top: 0 !important;
 }
 
-.demo-vertical-spacing-xl>* {
+.demo-vertical-spacing-xl > * {
     margin-top: 5rem !important;
     margin-bottom: 0 !important;
 }
 
-.demo-vertical-spacing-xl.demo-only-element> :first-child {
+.demo-vertical-spacing-xl.demo-only-element > :first-child {
     margin-top: 0 !important;
 }
 
@@ -91,7 +93,6 @@
 [dir="rtl"] .rtl-only {
     display: block !important;
 }
-
 
 /*
 * Layout demo
@@ -147,4 +148,112 @@ th {
 table.dataTable td,
 table.dataTable th {
     border: 1px solid #ebebeb;
+}
+
+/*uuuuuuuuuuuuuuupppppppppppppppppp updated csssssssssssssssssssssssssssssssssssssssss */
+
+a#delete-link {
+    background: #5f61e6;
+}
+
+button.btn.btn-link.mt-2 {
+    border: 1px solid;
+}
+
+.px-15px.px-lg-25px .aiz-titlebar.text-left.mt-2.mb-3 {
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+.px-15px.px-lg-25px .col-xl-10.mx-auto h6.fw-600 {
+    margin: 0px;
+    padding: 30px 0px;
+}
+
+td.footable-first-visible {
+    display: flex !important;
+    border: none;
+}
+
+.aiz-main-wrapper {
+    position: relative;
+}
+
+.aiz-content-wrapper::before {
+    content: "";
+    width: 80%;
+    z-index: 99;
+    position: fixed;
+    height: 80px;
+    top: 0px;
+    right: 0;
+    background: #fff;
+}
+
+.aiz-topbar.px-15px.px-lg-25px.d-flex.align-items-stretch.justify-content-between {
+    z-index: 999;
+}
+
+.btn.btn-primary.mt-2.comfirm-link {
+    background: #696cff;
+}
+
+body.side-menu-open1.side-menu-closed .aiz-content-wrapper::before {
+    width: 92%;
+}
+
+.px-15px.px-lg-25px h6.text-muted {
+    margin-top: 15px;
+}
+
+.page-item.disabled .page-link {
+    background: #23344659;
+    font-weight: 700;
+    font-size: 25px;
+    color: #fff;
+    line-height: 33px;
+}
+
+ul.pagination li.page-item.disabled {
+    margin: 20px 5px;
+}
+
+.page-item.active .page-link {
+    background-color: rgb(105 108 255);
+    margin: 20px 0px;
+    z-index: 0;
+    box-shadow: 0 0.125rem 0.25rem rgb(105 108 255 / 40%);
+}
+
+.aiz-pagination .pagination a.page-link {
+    font-size: 13px !important;
+    font-weight: 500;
+    border: 1px solid #cccccc29 !important;
+    width: 35px;
+    height: 35px;
+    background: #f0f2f4;
+    margin: 20px 0px;
+}
+
+.aiz-pagination .pagination li:first-child a {
+    background-color: #0d6efd40;
+    color: #292dd1;
+    font-size: 30px !important;
+    line-height: 30px;
+}
+
+.aiz-pagination .pagination li:last-child a {
+    background-color: #dddddd;
+    color: #292dd1;
+    font-size: 30px !important;
+    line-height: 26px;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--primary) !important;
+    color: #fff !important;
+}
+
+.col.text-center.text-md-left h5.mb-md-0.h6 {
+    text-align: left;
 }
