@@ -95,20 +95,22 @@
         <div class="row gutters-10">
             <!-- Product graph Start -->
             <div class="col-6">
-                <div class="card">
+                <div class="card px-5 pb-3">
                     <div class="card-header">
                         <h6 class="mb-0 fs-14">{{ translate('Products') }}</h6>
                     </div>
                     <div class="card-body">
                         
                         <div class="d-flex justify-content-between align-items-center mb-4" style="position: relative;">
-                            <!-- <div class="d-flex flex-column align-items-center gap-1">
-                                <h2 class="mb-2">8,258</h2>
+                           <div class="d-flex flex-column align-items-center gap-1">
+                                <h2 class="mb-2">
+                                {{ \App\Models\Order::where('delivery_status', 'completed')->count() }}
+                                </h2>
                                 <span>Total Orders</span>
-                            </div> -->
+                            </div> 
 
-                            <div id="orderStatisticsChart" style="min-height: 137.55px;">
-                                <canvas id="pie-1" class="w-100" height="305"></canvas>
+                            <div id="orderStatisticsChart" style="min-height: 170px;width:200px">
+                                <canvas id="pie-1" class="w-10" width="200" height="200"></canvas>
                             </div>
                         </div>
 
@@ -192,7 +194,7 @@
                         <h6 class="mb-0 fs-14">{{ translate('Sellers') }}</h6>
                     </div>
                     <div class="card-body">
-                        <canvas id="pie-2" class="w-100" height="305"></canvas>
+                        <canvas id="pie-2" class="w-10" width="200px" height="200"></canvas>
                     </div>
                 </div>
             </div>
