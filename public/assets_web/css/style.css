@@ -12011,7 +12011,7 @@ article.content-entry.products_offers.open h4.article-title::after{ width: 0;
 .input-group {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     align-items: stretch;
     width: 100%;
 }
@@ -13465,7 +13465,7 @@ button#btn1 span.name {
 }
 
 .cart-add h6 {
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 5px !important;
     height: 35px;
     margin-right: 5px;
@@ -19959,7 +19959,9 @@ button.addto.btd {
     margin-top: 10px;
     margin-bottom: 12px;
 }
-
+.product-box.h-auto .discrptions h6 strike {
+    color:#999;
+}
 .theades th {
     padding: 10px 10px;
     font-size: 14px;
@@ -23249,7 +23251,7 @@ section.all_sub_brands .bg-white.shadow-sm.rounded.px-3.pt-3 {
 	width:30px;
 }
 .companyname {
-    background: #198754;
+    background: #aaaaaa;
     padding: 1px 4px;
     color: #fff;
     border-radius: 3px;
@@ -23288,4 +23290,7 @@ input[type=number] {
     border-bottom: 1px solid #e1e1e1!important;
 	text-align:center!important;
 	color:#090!important;
+}
+.col-cat-box{
+	width:20%!important;
 }
