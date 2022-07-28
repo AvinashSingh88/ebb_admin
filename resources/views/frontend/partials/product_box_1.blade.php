@@ -24,7 +24,7 @@
       <a href="{{ route('product', $product->slug) }}">
          <h5 class="text-truncate-2">{{ $product->getTranslation('name') }} </h5>
       </a>
-      <h6>MRP/- {{ home_discounted_base_price($product) }}</h6>
+      <h6><!--MRP/- -->{{ home_discounted_base_price($product) }} &nbsp;<strike>Rs300.00</strike></h6>
    </div>
    <!-- <ul class="ulproducts">
                               <li>In stock</li>
@@ -58,10 +58,11 @@
 							  <div class="cart-add cart-add3 products_list ">
                                  <div class="input-group quantity_input mb-0">
                                      <div class="input-group w-auto justify-content-end align-items-center packageadd">
-                                      <a href="{{url('cart')}}"> <h6 class="cart_buttons cart_icons1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6></a>
+                                     
                                        <input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 add_cart_button_plus" data-field="quantity">
                                        <input type="number" step="1" max="10" value="1" name="quantity" class="quantity quantity-field border-0 text-center w-25 input-number">
                                        <input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm lh-0 add_cart_button_plus" data-field="quantity">
+                                        <a href="{{url('cart')}}"> <h6 class="cart_buttons cart_icons1"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6></a>
                                     </div>
                                  </div>
                               </div>

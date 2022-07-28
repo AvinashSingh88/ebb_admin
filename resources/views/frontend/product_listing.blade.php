@@ -477,7 +477,7 @@ $meta_description = get_setting('meta_description');
                <div class="row">
 				
                   @foreach ($products as $key => $product)
-                  <div class="col-md-3">
+                  <div class="col-md-3 col-cat-box">
                      @include('frontend.partials.product_box_1',['product' => $product])
                   </div>
 				  
