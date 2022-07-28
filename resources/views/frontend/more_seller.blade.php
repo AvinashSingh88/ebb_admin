@@ -6,6 +6,7 @@
    <div class="container"> </div>
 </section>
     <section class="bannerslid mb-5 pt-5 animated animate__fadeInUp wow">
+    <div class="container details-product">
         <div class="table-crack-border">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
   <tr>
@@ -60,6 +61,7 @@
   </tr>
 </table>
 </div>
+		</div>
 		@isset($order)
 		<div class="container details-product">
                 <div class="row">
