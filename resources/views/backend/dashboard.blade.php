@@ -99,8 +99,8 @@
                     <div class="card-header">
                         <h6 class="mb-0 fs-14">{{ translate('Products') }}</h6>
                     </div>
+
                     <div class="card-body">
-                        
                         <div class="d-flex justify-content-between align-items-center mb-4" style="position: relative;">
                            <div class="d-flex flex-column align-items-center gap-1">
                                 <h2 class="mb-2">
@@ -108,7 +108,6 @@
                                 </h2>
                                 <span>Total Orders</span>
                             </div> 
-
                             <div id="orderStatisticsChart" style="min-height: 170px;width:200px">
                                 <canvas id="pie-1" class="w-10" width="200" height="200"></canvas>
                             </div>
@@ -189,13 +188,83 @@
 
             <!-- Seller graph Start -->
             <div class="col-6">
-                <div class="card">
+                <div class="card px-5 pb-3">
                     <div class="card-header">
                         <h6 class="mb-0 fs-14">{{ translate('Sellers') }}</h6>
                     </div>
+
                     <div class="card-body">
-                        <canvas id="pie-2" class="w-10" width="200px" height="200"></canvas>
+                        <div class="d-flex justify-content-between align-items-center mb-4" style="position: relative;">
+                           <div class="d-flex flex-column align-items-center gap-1">
+                                <h2 class="mb-2">
+                                {{ \App\Models\Order::where('delivery_status', 'completed')->count() }}
+                                </h2>
+                                <span>Total Orders</span>
+                            </div> 
+                            <div id="orderStatisticsChart" style="min-height: 170px;width:200px">
+                                <canvas id="pie-2" class="w-10" width="200" height="200"></canvas>
+                            </div>
+                        </div>
+
+                        <ul class="p-0 m-0">
+                            <li class="d-flex mb-4 pb-1">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    <span class="avatar-initial rounded bg-label-primary"><i
+                                            class="fa fa-mobile-alt"></i></span>
+                                </div>
+                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="me-2">
+                                        <h6 class="mb-0">Total </h6>
+                                        <small class="text-muted">Vendor</small>
+                                    </div>
+                                    <div class="user-progress">
+                                        <small class="fw-semibold">
+                                        {{ \App\Models\Seller::count() }}
+                                        </small>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        
+                        
+                    
+                            <li class="d-flex mb-4 pb-1">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    <span class="avatar-initial rounded bg-label-success"><i class="fa fa-cubes"></i></span>
+                                </div>
+                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="me-2">
+                                        <h6 class="mb-0">Total Approved</h6>
+                                        <small class="text-muted">Vendor</small>
+                                    </div>
+                                    <div class="user-progress">
+                                        <small class="fw-semibold">
+                                        {{ \App\Models\Seller::where('verification_status', 1)->count() }}
+                                        </small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex mb-4 pb-1">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    <span class="avatar-initial rounded bg-label-info"><i class="fa fa-home"></i></span>
+                                </div>
+                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="me-2">
+                                        <h6 class="mb-0">Total Pending</h6>
+                                        <small class="text-muted">Vendor</small>
+                                    </div>
+                                    <div class="user-progress">
+                                        <small class="fw-semibold">
+                                        {{ \App\Models\Seller::where('verification_status', 0)->count() }}
+                                        </small>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul>
                     </div>
+
+                   
                 </div>
             </div>
 
@@ -339,9 +408,10 @@
                         {{ \App\Models\Seller::where('verification_status', 0)->count() }}
                     ],
                     backgroundColor: [
-                        "#fd3995",
-                        "#34bfa3",
-                        "#5d78ff",
+                        "#696cff",
+                        "#8592a3",
+                        "#03c3ec",
+                        '#71dd37',
                         '#fdcb6e',
                         '#d35400',
                         '#8e44ad',
