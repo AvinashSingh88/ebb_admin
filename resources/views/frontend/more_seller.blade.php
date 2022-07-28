@@ -6,11 +6,11 @@
    <div class="container"> </div>
 </section>
     <section class="bannerslid mb-5 pt-5 animated animate__fadeInUp wow">
-    <div class="container details-product">
+    <div class="container">
         <div class="table-crack-border">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
   <tr>
-    <td colspan="2" style="font-size:22px;">All Sellers</th>
+    <td colspan="2" class="allsettertxt">All Sellers</th>
     <td colspan="2"><h5 class="fr"><img src="https://orrish.org/ebb_dev/public/uploads/all/XW8wwHduFJ111hkmvQjuRDIpuWd1bytoExc7hMoe.png" class="sellerproImg"><span class="sellerproTitle">White Cement<br /><span class="sellerprocount">(340)</span></span></h5> </th>
   </tr>
   <tr class="footable-header">
