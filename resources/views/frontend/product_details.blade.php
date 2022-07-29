@@ -71,7 +71,7 @@
                         </div>
                      </div>
                   </div>
-                  <!--Last code start--->{{--
+                  <!--Last code start---> 
                   <div id="accordion" class="accordion-container">
                      <article class="content-entry products_offers">
                         <h4 class="article-title"> Special offers <i class="fa fa-angle-right"
@@ -129,7 +129,7 @@
                         <!--/.accordion-content-->
                      </article>
                   </div>
-                  --}}
+                  
                   <!--Last code end--->
 				  <!---Brand section start--->
 					<div class="backtabs-dp_servicespros2 mt-2">
@@ -462,7 +462,7 @@
                   <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Complementary Products</h3>
                </div>
                <ul class="list-unstyled">
-                  @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
+                  @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(4)->get() as $key => $related_product)
                   <li class="mb-4">
                      <div class="row">
                         <div class="col-auto col-md-4"> <a href="{{ route('product', $related_product->slug) }}" class="d-block width-75">
