@@ -370,6 +370,11 @@
                                         <span class="aiz-side-nav-text">{{ translate('Flash deals') }}</span>
                                     </a>
                                 </li>
+                                 <li class="aiz-side-nav-item">
+                                    <a href="{{ route('flash_deals_item.index') }}" class="aiz-side-nav-link ">
+                                        <span class="aiz-side-nav-text">{{ translate('Flash deal Items') }}</span>
+                                    </a>
+                                </li>
                             @endif
                             <!-- @if(Auth::user()->user_type == 'admin' || in_array('7', json_decode(Auth::user()->staff->role->permissions)))
                                 <li class="aiz-side-nav-item">

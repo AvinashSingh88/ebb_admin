@@ -532,6 +532,11 @@ $('.wof_filter_button_wrapper').on('click', function() {
 $('.wof_sort_by_button_wrapper').on('click', function() {
     $('.sort-by-dropdown-content').toggle()
 });
+$('.buttonnone').on('click', function() {
+    $('.buttonnone').toggle()
+	$('.countnone').removeClass('countnone');
+});
+
 
 
 

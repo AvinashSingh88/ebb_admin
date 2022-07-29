@@ -6,11 +6,12 @@
    <div class="container"> </div>
 </section>
     <section class="bannerslid mb-5 pt-5 animated animate__fadeInUp wow">
+    <div class="container">
         <div class="table-crack-border">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
   <tr>
-    <td colspan="2" style="font-size:22px;">All Sellers</th>
-    <td colspan="2"><h5 style="float:right;"><img src="https://orrish.org/ebb_dev/public/uploads/all/XW8wwHduFJ111hkmvQjuRDIpuWd1bytoExc7hMoe.png" width="50" style="float:right;"><span style="float:right; text-align:right; padding-right:10px;">White Cement<br />(340)</span></h5> </th>
+    <td colspan="2" class="allsettertxt">All Sellers</th>
+    <td colspan="2"><h5 class="fr"><img src="https://orrish.org/ebb_dev/public/uploads/all/XW8wwHduFJ111hkmvQjuRDIpuWd1bytoExc7hMoe.png" class="sellerproImg"><span class="sellerproTitle">White Cement<br /><span class="sellerprocount">(340)</span></span></h5> </th>
   </tr>
   <tr class="footable-header">
     <th>Seller</th>
@@ -18,48 +19,111 @@
     <th>Delivery</th>
     <th>&nbsp;</th>
   </tr>
-  <tr style="border-bottom:1px solid #e5e5e5;">
+  <tr>
     <td><span><strong>Host Company</strong> </span><br/>
-    &bull; Cash On Delivery available<br/>
-&bull; 7 Days Replacement Policy</td>
-    <td>₹ 440.00</td>
-    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+     <ul>
+     <li>&bull; Cash On Delivery available</li>
+<li>&bull; 7 Days Replacement Policy</li>
+</ul></td>
+    <td><strong>₹ 440.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+   <ul>
+                                <li>&bull; 10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 5% Cashback on Flipkart Axis Bank Card</li>
+<li class="collapseli">&bull; Get extra ₹1200 off (price inclusive of discount)</li>
+<li class="collapseli">&bull; Get Google Nest hub at just ₹4999</li>
+<li class="collapseli">&bull; Google Nest mini- attach 1999</li>
+<li class="collapseli">&bull; Sign up for Flipkart Pay Later and get Flipkart Gift Card worth up to ₹500*</li>
+<li><span class="showoffer">6 more offers</span></li>
+</ul>
+    
+    </td>
+    <td><span class="deltxt">Usually delivered in 3 days Enter pincode for exact delivery dates/charges</span></td>
     <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
   </tr>
-   <tr style="border-bottom:1px solid #e5e5e5;">
+   <tr>
     <td><span><strong>Host Company</strong> </span><br/>
-    &bull; Cash On Delivery available<br/>
-&bull; 7 Days Replacement Policy</td>
-    <td>₹ 630.00</td>
-    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <ul>
+     <li>&bull; Cash On Delivery available</li>
+<li>&bull; 7 Days Replacement Policy</li>
+</ul></td>
+    <td><strong>₹ 630.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+   <ul>
+                                <li>&bull; 10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 5% Cashback on Flipkart Axis Bank Card</li>
+<li class="collapseli">&bull; Get extra ₹1200 off (price inclusive of discount)</li>
+<li class="collapseli">&bull; Get Google Nest hub at just ₹4999</li>
+<li class="collapseli">&bull; Google Nest mini- attach 1999</li>
+<li class="collapseli">&bull; Sign up for Flipkart Pay Later and get Flipkart Gift Card worth up to ₹500*</li>
+<li> <span class="showoffer">6 more offers</span></li>
+</ul></td>
+    <td><span class="deltxt">Usually delivered in 3 days Enter pincode for exact delivery dates/charges</span></td>
     <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
   </tr>
-   <tr style="border-bottom:1px solid #e5e5e5;">
+   <tr>
     <td><span><strong>Find Company</strong> </span><br/>
-    &bull; Cash On Delivery available<br/>
-&bull; 7 Days Replacement Policy</td>
-    <td>₹ 240.00</td>
-    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+   <ul>
+     <li>&bull; Cash On Delivery available</li>
+<li>&bull; 7 Days Replacement Policy</li>
+</ul></td>
+    <td><strong>₹ 240.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+   <ul>
+                                <li>&bull; 10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 5% Cashback on Flipkart Axis Bank Card</li>
+<li class="collapseli">&bull; Get extra ₹1200 off (price inclusive of discount)</li>
+<li class="collapseli">&bull; Get Google Nest hub at just ₹4999</li>
+<li class="collapseli">&bull; Google Nest mini- attach 1999</li>
+<li class="collapseli">&bull; Sign up for Flipkart Pay Later and get Flipkart Gift Card worth up to ₹500*</li>
+<li><span class="showoffer">6 more offers</span></li>
+</ul></td>
+    <td><span class="deltxt">Usually delivered in 3 days Enter pincode for exact delivery dates/charges</span></td>
     <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
   </tr>
-   <tr style="border-bottom:1px solid #e5e5e5;">
+   <tr>
     <td><span><strong>Delta Company</strong> </span><br/>
-    &bull; Cash On Delivery available<br/>
-&bull; 7 Days Replacement Policy</td>
-    <td>₹ 410.00</td>
-    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <ul>
+     <li>&bull; Cash On Delivery available</li>
+<li>&bull; 7 Days Replacement Policy</li>
+</ul></td>
+    <td><strong>₹ 410.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+   <ul>
+                                <li>&bull; 10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 5% Cashback on Flipkart Axis Bank Card</li>
+<li class="collapseli">&bull; Get extra ₹1200 off (price inclusive of discount)</li>
+<li class="collapseli">&bull; Get Google Nest hub at just ₹4999</li>
+<li class="collapseli">&bull; Google Nest mini- attach 1999</li>
+<li class="collapseli">&bull; Sign up for Flipkart Pay Later and get Flipkart Gift Card worth up to ₹500*</li>
+<li><span class="showoffer">6 more offers</span></li>
+</ul></td>
+    <td><span class="deltxt">Usually delivered in 3 days Enter pincode for exact delivery dates/charges</span></td>
     <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
   </tr>
-   <tr style="border-bottom:1px solid #e5e5e5;">
+   <tr>
     <td><span><strong>Alfa Company</strong> </span><br/>
-    &bull; Cash On Delivery available<br/>
-&bull; 7 Days Replacement Policy</td>
-    <td>₹ 640.00</td>
-    <td>Usually delivered in 3 days Enter pincode for exact delivery dates/charges</td>
+    <ul>
+     <li>&bull; Cash On Delivery available</li>
+<li>&bull; 7 Days Replacement Policy</li>
+</ul></td>
+    <td><strong>₹ 640.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+   <ul>
+                                <li>&bull; 10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
+<li class="collapseli">&bull; 5% Cashback on Flipkart Axis Bank Card</li>
+<li class="collapseli">&bull; Get extra ₹1200 off (price inclusive of discount)</li>
+<li class="collapseli">&bull; Get Google Nest hub at just ₹4999</li>
+<li class="collapseli">&bull; Google Nest mini- attach 1999</li>
+<li class="collapseli">&bull; Sign up for Flipkart Pay Later and get Flipkart Gift Card worth up to ₹500*</li>
+<li><span class="showoffer">6 more offers</span></li>
+</ul></td>
+    <td><span class="deltxt">Usually delivered in 3 days Enter pincode for exact delivery dates/charges</span></td>
     <td><button onclick="addToCart()" class="addtocartbut" style="float:left; margin-right:5px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button> <button onclick="addToCart()" class="bulk-order-buttons"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button></td>
   </tr>
 </table>
 </div>
+		</div>
 		@isset($order)
 		<div class="container details-product">
                 <div class="row">
