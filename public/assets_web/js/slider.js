@@ -1868,3 +1868,8 @@ $(".edit-address_1").click(function () {
 $(".edit-address1_1").click(function () {
 	$(".edit_address_form_new").hide();
 });
+
+$(".showoffer").on('click', function () {
+	$(this).parent().parent('ul').children("li").show();
+	$(this).hide();
+});

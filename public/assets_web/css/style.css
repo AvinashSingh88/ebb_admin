@@ -34,7 +34,12 @@ p {
 	float:left;
 	padding-right:15px;
 }
-
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
 /*sliders text*/
 
 .t_c.right-text {
@@ -11228,9 +11233,10 @@ section.banner-brand_product.banner-brand_product2 .bounceIn.animated h4 {
 }
 
 .pricebox .cutprice {
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: line-through;
     color: #888;
+	padding-left:5px;
 }
 
 .pricebox .offer {
@@ -11249,7 +11255,7 @@ section.banner-brand_product.banner-brand_product2 .bounceIn.animated h4 {
 }
 .pricebox .offertxt {
     color: green;
-	font-size:13px;
+	font-size:11px;
 }
 
 .optionbox {
@@ -23307,6 +23313,31 @@ input[type=number] {
 }
 .table-crack-border{
 	border-bottom:1px solid #e5e5e5;
+	color:#999!Important;
+	line-height:15px;
+}
+.table-crack-border tr td strong{
+	color:#1274c0!Important;
+	font-size:14px;
+}
+.table-crack-border tr{
+	border-bottom:1px solid #e5e5e5!Important;
+}
+.table-crack-border tr td{
+	vertical-align:top!Important;
+	line-height:24px;
+	color:#333;
+	padding:20px 10px!Important;
+}
+.table-crack-border tr th{
+	font-size: 16px!Important;
+}
+.table-crack-border tr td strike{
+	color:#aaaaaa;
+}
+.table-crack-border tr td ul li{
+	list-style:none;
+	padding:3px 0px;
 }
 .stockquantity{
 	background: #fbfbfb!important;
@@ -23367,4 +23398,35 @@ input[type=number] {
 }
 .countnone{
 	display:none!Important;
+}
+.deltxt{
+	color:#333;
+	font-weight:bold;
+}
+.showoffer{
+	cursor:pointer;
+	color:#060;
+	font-weight:bold;
+}
+.collapseli{
+	display:none;
+}
+.sellerproTitle{
+	float: right;
+    text-align: right;
+    padding-right: 10px;
+	padding-top:10px;
+}
+.sellerproImg{
+	float:right;
+	border:1px solid #CCC;
+	padding:5px;
+	width:60px;
+}
+.sellerprocount{
+	color:#666;
+}
+.allsettertxt{
+	font-size:22px;
+	line-height:50px!Important;
 }
