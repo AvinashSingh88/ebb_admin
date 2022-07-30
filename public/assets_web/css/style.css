@@ -22485,7 +22485,7 @@ select.form-control.form-control-sm.aiz-selectpicker {
     padding: 0px 10px;
     font-size: 13px;
     letter-spacing: 0.5px;
-	background: url(../img/downarrow.jpg) no-repeat right 15px;
+	/*background: url(../img/downarrow.jpg) no-repeat right 15px;*/
 }
 
 
@@ -23046,7 +23046,7 @@ button.bulk-order-buttons {
     background: #ff6c00;
     font-size: 13px!important;
     padding: 5px 10px!important;
-    border-radius: 50px!important;
+    border-radius: 50px;
     color: #fff !important;
     height: 45px;
     line-height: 34px;
@@ -23328,9 +23328,11 @@ input[type=number] {
 	min-height:20px;
 }
 .table-crack-border{
-	border-bottom:1px solid #e5e5e5;
+	/*border:1px solid #e5e5e5;*/
 	color:#999!Important;
 	line-height:15px;
+	border-radius:10px;
+	box-shadow:0px 0px 5px 1px #ccc;
 }
 .table-crack-border tr td strong{
 	color:#1274c0!Important;
@@ -23343,7 +23345,12 @@ input[type=number] {
 	vertical-align:top!Important;
 	line-height:24px;
 	color:#333;
-	padding:20px 10px!Important;
+	padding:20px 20px!Important;
+}
+.table-crack-border tr th{
+	vertical-align:top!Important;
+	line-height:24px;
+	padding:20px 20px!Important;
 }
 .table-crack-border tr th{
 	font-size: 16px!Important;
@@ -23353,7 +23360,9 @@ input[type=number] {
 }
 .table-crack-border tr td ul li{
 	list-style:none;
-	padding:3px 0px;
+	padding:3px 0px 3px 15px;
+	position:relative;
+	width:100%
 }
 .stockquantity{
 	background: #fbfbfb!important;
@@ -23424,6 +23433,12 @@ input[type=number] {
 	color:#060;
 	font-weight:bold;
 }
+.hideoffer{
+	cursor:pointer;
+	color:#060;
+	font-weight:bold;
+	display:none;
+}
 .collapseli{
 	display:none;
 }
@@ -23432,19 +23447,23 @@ input[type=number] {
     text-align: right;
     padding-right: 10px;
 	padding-top:10px;
+	line-height:23px;
 }
 .sellerproImg{
 	float:right;
 	border:1px solid #CCC;
 	padding:5px;
-	width:60px;
+	width:70px;
+	border-radius:5px;
 }
 .sellerprocount{
 	color:#666;
 }
 .allsettertxt{
 	font-size:22px;
-	line-height:50px!Important;
+	line-height:70px!Important;
+	color:#000!Important;
+	font-weight:bold;
 }
 .selectpicker{
 	background: url(../img/downarrow.jpg) no-repeat right 18px;
@@ -23452,7 +23471,50 @@ input[type=number] {
 .sortbytxt{
 	width:75%!Important;
 }
-<!--nouislider-->
-.noUi-horizontal {
-    height: 10px!Important;
+.table-crack-border tr td ul li:after {
+    content: "";
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    border-radius: 50%;
+    background: #666;
+}
+.sortbytxt:before {
+    content: "";
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    border-radius: 50%;
+    background: #666;
+}
+.thwidth{
+	width:30%!Important;
+}
+.addtocartn{
+	float:left;
+	margin-right:5px;
+	border-radius:3px!Important;
+	height:35px!Important;
+	line-height:26px!Important;
+}
+.bulkcartn{
+	border-radius:3px!Important;
+	height:35px!Important;
+	line-height:26px!Important;
+	white-space:nowrap;
+}
+.starrating {
+    background: #090;
+    padding: 1px 4px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+	margin-right:5px;
+}
+.brdrnone{
+	border:0px!Important;
 }
