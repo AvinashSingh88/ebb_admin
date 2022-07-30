@@ -182,6 +182,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        Buglinjo\LaravelWebp\WebpServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
@@ -251,7 +253,8 @@ return [
         'Str' => Illuminate\Support\Str::class,
         'Rave' => KingFlamez\Rave\Facades\Rave::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Webp' => Buglinjo\LaravelWebp\Facades\Webp::class
     ],
 
 ];
