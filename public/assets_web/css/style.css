@@ -23045,7 +23045,7 @@ button.close.absolute-top-right.btn-icon.close.z-1 {
 button.bulk-order-buttons {
     background: #ff6c00;
     font-size: 13px!important;
-    padding: 5px 10px!important;
+    padding: 5px 10px;
     border-radius: 50px;
     color: #fff !important;
     height: 45px;
@@ -23333,10 +23333,15 @@ input[type=number] {
 	line-height:15px;
 	border-radius:10px;
 	box-shadow:0px 0px 5px 1px #ccc;
+	padding:0 10px;
 }
 .table-crack-border tr td strong{
 	color:#1274c0!Important;
-	font-size:14px;
+	font-size:16px;
+}
+.table-crack-border tr td strong.pricestrong{
+	color:#333!Important;
+	font-size:16px!Important;
 }
 .table-crack-border tr{
 	border-bottom:1px solid #e5e5e5!Important;
@@ -23453,8 +23458,9 @@ input[type=number] {
 	float:right;
 	border:1px solid #CCC;
 	padding:5px;
-	width:70px;
+	width:105px;
 	border-radius:5px;
+	height:105px;
 }
 .sellerprocount{
 	color:#666;
@@ -23468,7 +23474,7 @@ input[type=number] {
 .selectpicker{
 	background: url(../img/downarrow.jpg) no-repeat right 18px;
 }
-.sortbytxt{
+select.sortbytxt{
 	width:75%!Important;
 }
 .table-crack-border tr td ul li:after {
@@ -23481,18 +23487,9 @@ input[type=number] {
     border-radius: 50%;
     background: #666;
 }
-.sortbytxt:before {
-    content: "";
-    height: 5px;
-    width: 5px;
-    position: absolute;
-    top: 12px;
-    left: 0;
-    border-radius: 50%;
-    background: #666;
-}
+
 .thwidth{
-	width:30%!Important;
+	width:33%!Important;
 }
 .addtocartn{
 	float:left;
@@ -23500,12 +23497,18 @@ input[type=number] {
 	border-radius:3px!Important;
 	height:35px!Important;
 	line-height:26px!Important;
+	padding-left:15px!Important;
+	padding-right:15px!Important;
+	white-space:nowrap;
 }
 .bulkcartn{
 	border-radius:3px!Important;
 	height:35px!Important;
 	line-height:26px!Important;
 	white-space:nowrap;
+	padding-left:15px!Important;
+	padding-right:15px!Important;
+	float:left;
 }
 .starrating {
     background: #090;
@@ -23517,4 +23520,18 @@ input[type=number] {
 }
 .brdrnone{
 	border:0px!Important;
+}
+.sortbytxt:after{
+ width:40px;
+ height:40px;
+ border:5px solid #222;
+ border-width:5px 5px 0 0;
+ transform:translateX(-14px) rotate(45deg);
+}
+.sortbytxt:before{
+ width:40px;
+ height:40px;
+ border:5px solid #222;
+ border-width:5px 5px 0 0;
+ transform:translateX(-14px) rotate(45deg);
 }
