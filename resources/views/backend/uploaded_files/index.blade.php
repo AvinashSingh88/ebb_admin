@@ -38,6 +38,10 @@
     </form>
     <div class="card-body">
     	<div class="row gutters-5">
+			@php
+				$auth_user_type = auth()->user()->user_type;
+			@endphp
+
     		@foreach($all_uploads as $key => $file)
     			@php
     				if($file->file_original_name == null){
@@ -74,7 +78,7 @@
     					<div class="card card-file aiz-uploader-select c-default" title="{{ $file_name }}.{{ $file->extension }}">
     						<div class="card-file-thumb">
     							@if($file->type == 'image')
-    								<img src="{{ my_asset($file->file_name) }}" class="img-fit">
+    								<img src="{{ my_asset($file->file_name, $auth_user_type) }}" class="img-fit">
     							@elseif($file->type == 'video')
     								<i class="las la-file-video"></i>
     							@else
