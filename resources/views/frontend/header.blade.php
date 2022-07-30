@@ -249,42 +249,34 @@
                                     
                                     
                                     <ul class="departmentdks">
-                                       <li class="buildings1a...1">
-                                          <a href="{{url('categories')}}">
-                                          <span class="img000"><img src="{{static_asset('assets_web/img/icona1.png')}}" alt="" /></span>
-                                          <span class="spand-line"><b>All Products</b></span>
+                                      <li class="buildings1a...1">
+                                             <a href="{{url('categories')}}">
+                                             <span class="img000"><img src="{{static_asset('assets_web/img/icona1.png')}}" alt="" /></span>
+                                             <span class="spand-line"><b>All Products</b></span>
+                                             </a>
+                                          </li>
+                                          
+                                         
+                                       @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
+                              
+                                       <li class="{{$category->slug}}">
+                                          <a href="{{ route('cat', $category->slug) }}">
+                                          <span class="img000"><img src="{{ uploaded_asset($category->icon) }}" alt="{{  $category->getTranslation('name') }}"></span>
+                                          <span class="spand-line">
+                                          {{  $category->getTranslation('name') }}
+                                           <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                           </span>
                                           </a>
                                        </li>
-                                          
-                                       @foreach (\App\Models\Category::where('level', 0)->where('type','1')->orderBy('order_level', 'ASC')->get()->take(11) as $key => $category)
-                                          <li class="{{$category->slug}}">
-                                             <a href="{{ route('cat', $category->slug) }}">
-                                                <span class="img000">
-                                                   <img src="{{ uploaded_asset($category->icon) }}" alt="{{  $category->getTranslation('name') }}">
-                                                </span>
-
-                                                <span class="spand-line">
-                                                   {{  $category->getTranslation('name') }}
-                                                   <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                </span>
-                                             </a>
-
-                                             @if(count(\App\Utility\CategoryUtility::get_immediate_children_ids($category->id))>0)
-                                                <div class="sub-cat-menu c-scrollbar-light rounded shadow-lg p-4">
-                                                      <div class="c-preloader text-center absolute-center">
-                                                         <i class="las la-spinner la-spin la-3x opacity-70"></i>
-                                                      </div>
-                                                </div>
-                                             @endif
-                                          </li>
                                        
-                                          <script> 
-                                             $(".top_ul .{{$category->slug}}").hover(function() {
-                                                $('.top_ul .{{$category->slug}}').css("display", "block");
-                                             }, function() {
-                                                $('.top_ul .top-megamenu.web-mega').css("display", "none");
-                                             });
-                                          </script>
+                                       
+                                       <script> 
+                                          $(".top_ul .{{$category->slug}}").hover(function() {
+                                             $('.top_ul .{{$category->slug}}').css("display", "block");
+                                          }, function() {
+                                             $('.top_ul .top-megamenu.web-mega').css("display", "none");
+                                          });
+                                       </script>
                                        @endforeach                                       
                                       
                                     </ul>
@@ -292,12 +284,94 @@
 									         <div class="dpeartmens">
                                     
                                     
-                                 
+                                    @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
+                                    <div class="top-megamenu web-mega {{$category->slug}}">
+                                          <!-- mega menu content start here -->
+                                          <div class="megamenu megamenu2" style="background: center top rgb(255, 255, 255); display:block ; opacity:1;">
+                                             <div class="row">
+                                                <div class="col-md-8" style="padding-right: 0px">
+                                                   <ul class="megamenusubs">
+                                                      @php
+                                                         $i=0;
+                                                      @endphp
+                                                      @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+                                                         <li>
+                                                            @php
+                                                               $i++;
+                                                               $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+                                                            @endphp
+                                                            <a href="{{ route('products.category', $subcatSlug) }}">
+                                                               <b class="webhead{{$i}}"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b>
+                                                            </a>
+                                                              
+                                                            <ul class="megamenusubs231 megamenusubs231a{{$i}}">
+                                                               @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($first_level_id) as $key => $second_level_id)                                                                     
+                                                                  <li>     
+                                                                     @php
+                                                                     $cat_icon =  \App\Models\Category::find($second_level_id);
+                                                                     $childcatSlug = \App\Models\Category::find($second_level_id)->slug;
+                                                                     @endphp
+                                                                     <a href="{{ route('products.category', $childcatSlug) }}">
+                                                                        @if($cat_icon->icon != null)
+                                                                        <img src="{{uploaded_asset($cat_icon->icon)}}" alt="{{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}"> 
+                                                                        @endif
+                                                                        {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
+                                                                     </a>
+                                                                  </li>
+                                                               @endforeach
+                                                               <li>
+			                                                          <a href="{{ route('products.category', $subcatSlug) }}" class="buildsing">View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+			                                                                                                </li>
+
+                                                            </ul>
+                                                         </li>
+                                                         @php
+                                                            if($i==5)
+                                                            {
+                                                               $i=0;
+                                                            }
+                                                         @endphp
+                                                      @endforeach
+                                                   </ul>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                   <div class="divcalimmega">
+                                                      <h3>Top Brands</h3>
+                                                      <ul class="brand-menus">
+                                                               @foreach (\App\Models\Category_wise_brand::where('category_id', $category->id)->get() as $key)
+                                                               <li><img src="{{ uploaded_asset( $key->brand->logo)}}" alt=""></li>
+                                                               @endforeach  
+                                                            </ul>
+                                                      
+                                                      <a class="hire-team-btn" href="javascript:void(0);" target="_self">View More</a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <!-- mega menu content end here -->
+										  
+                                       </div>
+                                       
+                                       @endforeach
+                                       
+                                       
+                                      
                                     </div>
 									
                                  </div>
                                  
+                                 @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
+                                 <script> 
+								 
+                                 $(".top_ul .{{$category->slug}}").hover(function() {
+									$('.top_ul .{{$category->slug}}').css("display", "block");
+								}, function() {
+									$('.top_ul .top-megamenu.web-mega').css("display", "none");
+								});
+								</script>
                                  
+                                @endforeach  
                                  
                                  
                                  
@@ -406,7 +480,62 @@
                                  <!-- mega sub menu end here -->
                               </li>
                               <!-- PRODUCT END HERE -->
-                              
+                              <li class="menulocationds menulocationds2 com">
+                                 <a href="#">Products </a>
+                                 <div class="megamenu megamenu2" style="
+                                    background-image: url({{static_asset('assets_web/img/megamenusbanner.png')}});
+                                    background-size: cover;
+                                    background: #fff;
+                                    background-position: top center;
+                                    ">
+                                    <div class="row">
+                                       <div class="col-md-12" style="padding-right: 0px">
+                                          <ul class="megamenusubs">
+                                          @php
+                                             $i=0;
+                                          @endphp
+                                             @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->get() as $key => $category)
+                                             <li>
+                                             @php
+                                                   $i++;
+                                                   $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+                                                @endphp
+                                                <a href="{{ route('cat', $category->slug) }}" style="    padding: 0px;">
+                                                <b class="webhead{{$i}}">{{  $category->getTranslation('name') }}</b>
+                                                </a>
+                                                <ul class="megamenusubs231 megamenusubs231a{{$i}}">
+													<li class="overflow-hidden m-0 p-0 h-96">
+														<ul class="m-0 p-0 d-block">
+														   @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+                                                   <li>
+                                                      @php
+                                                      $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
+                                                      @endphp
+                                                      <a href="{{ route('products.category', $subcatSlug) }}"><img src="{{static_asset('assets_web/img/mechanic-tools.png')}}" alt="" /> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}
+                                                      </a>
+                                                   </li>
+                                                   @endforeach
+														</ul>
+													</li>
+                                                
+                                                   <li class="mb-2">
+                                                      <a href="{{route('cat', $category->slug)}}" class="viewmorepro">  View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                                   </li>
+                                                </ul>
+                                             </li>
+                                             @php
+                                                            if($i==5)
+                                                            {
+                                                               $i=0;
+                                                            }
+                                                         @endphp
+                                                      @endforeach
+                                          </ul>
+                                       </div>
+                                       
+                                    </div>
+                                 </div>
+                              </li>
                               <li class="menulocationds menulocationds3 com">
                                  <a href="#s">Build Expertise </a>
                                  <div class="megamenu megamenu3" style="
@@ -717,7 +846,3 @@
       </div>
    </div>
 </header>
-
-@section('script') 
-
-@endsection
