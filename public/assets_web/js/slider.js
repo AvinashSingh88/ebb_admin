@@ -1870,6 +1870,12 @@ $(".edit-address1_1").click(function () {
 });
 
 $(".showoffer").on('click', function () {
-	$(this).parent().parent('ul').children("li").show();
+	$(this).parent('ul').children("li").show();
 	$(this).hide();
+	$(this).parent('ul').children(".hideoffer").show();
+});
+$(".hideoffer").on('click', function () {
+	$(this).parent('ul').children(".collapseli").hide();
+	$(this).hide();
+	$(this).parent('ul').children(".showoffer").show();
 });
