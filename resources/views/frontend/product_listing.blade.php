@@ -38,7 +38,8 @@ $meta_description = get_setting('meta_description');
 <!-- Price nouislider-filter cdn -->
       <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
       <link rel="stylesheet" href="{{static_asset('assets_web/css/nouislider.css')}}" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js" integrity="sha512-T5Bneq9hePRO8JR0S/0lQ7gdW+ceLThvC80UjwkMRz+8q+4DARVZ4dqKoyENC7FcYresjfJ6ubaOgIE35irf4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      
+      <script src="{{static_asset('assets_web/js/nouislider.min.js')}}" type="text/javascript"></script>
       
 <section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
  
@@ -457,7 +458,7 @@ $meta_description = get_setting('meta_description');
                         <div class="col-md-3">
 							<div class="d-flex">
 							      <label class="mb-0 opacity-50 w-20">{{ translate('Sort by')}}</label>
-                           <select class="form-control form-control-sm aiz-selectpicker" name="sort_by"
+                           <select class="form-control form-control-sm aiz-selectpicker sortbytxt" name="sort_by"
                               onchange="filter()">
                               <option value="newest" @isset($sort_by) @if ($sort_by=='newest' ) selected @endif
                                  @endisset>{{ translate('Newest')}}</option>

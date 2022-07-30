@@ -16830,7 +16830,7 @@ section.banner-brand_product.banner-brand_product2.brankdisections .border-botto
 
 .form-control {
     display: block;
-    width: 75%;
+    width: 100%;
     height: calc(1.5em + 1.34rem + 2px);
     padding: 0.67rem 1rem;
     font-size: 0.875rem;
@@ -23448,6 +23448,9 @@ input[type=number] {
 }
 .selectpicker{
 	background: url(../img/downarrow.jpg) no-repeat right 18px;
+}
+.sortbytxt{
+	width:75%!Important;
 }
 <!--nouislider-->
 .noUi-horizontal {
