@@ -36,7 +36,8 @@ $meta_description = get_setting('meta_description');
 
 @section('content')
 <!-- Price nouislider-filter cdn -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+      <link rel="stylesheet" href="{{static_asset('assets_web/css/nouislider.css')}}" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js" integrity="sha512-T5Bneq9hePRO8JR0S/0lQ7gdW+ceLThvC80UjwkMRz+8q+4DARVZ4dqKoyENC7FcYresjfJ6ubaOgIE35irf4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       
 <section class="pageTitle" style="background-image:url({{static_asset('assets_web/img/small_banner.jpg')}});">
@@ -441,7 +442,7 @@ $meta_description = get_setting('meta_description');
                   <div class="bounceIn animated">
                      <!-- <div class="our-latest-border" style="    margin: 0px;"></div>-->
                      <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                            <h5>
                               @if(isset($category_id))
                               Showing results for "{{ \App\Models\Category::find($category_id)->getTranslation('name')
@@ -453,7 +454,7 @@ $meta_description = get_setting('meta_description');
                               @endif
                            </h5>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
 							<div class="d-flex">
 							      <label class="mb-0 opacity-50 w-20">{{ translate('Sort by')}}</label>
                            <select class="form-control form-control-sm aiz-selectpicker" name="sort_by"
