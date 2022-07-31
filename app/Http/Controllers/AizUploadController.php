@@ -116,30 +116,51 @@ class AizUploadController extends Controller
                     }
                 }
 
-                $path = $request->file('aiz_file')->store('uploads/all', 'local');
-                $size = $request->file('aiz_file')->getSize();
+               
+                // // Return MIME type ala mimetype extension
+                // $finfo = finfo_open(FILEINFO_MIME_TYPE); 
 
-                // Return MIME type ala mimetype extension
-                $finfo = finfo_open(FILEINFO_MIME_TYPE); 
+                // // Get the MIME type of the file
+                // $file_mime = finfo_file($finfo, base_path('public/').$path);
 
-                // Get the MIME type of the file
-                $file_mime = finfo_file($finfo, base_path('public/').$path);
 
-                if($type[$extension] == 'image' && get_setting('disable_image_optimization') != 1){
+                
+                print_r($type[$extension]);
+                dd($type[$extension]);
+                die;
+
+                if($type[$extension] == 'image'){
                     try {
-                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode();
+
+
+                        // $image = $request->file('aiz_file');
+                        // $imageResize = Image::make($image)->encode('webp', 90);
+                        // if ($imageResize->width() > 380){
+                        //     $imageResize->resize(380, null, function ($constraint) {
+                        //         $constraint->aspectRatio();
+                        //     });
+                        // }
+
+                        // $destinationPath = public_path('/uploads/all/');
+                        // $imageResize->store($destinationPath.$name);
+                        
+                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode('webp', 90);
                         $height = $img->height();
                         $width = $img->width();
-                        if($width > $height && $width > 1500){
-                            $img->resize(1500, null, function ($constraint) {
+                        if($width > $height && $width > 380){
+                            $img->resize(380, null, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                        }elseif ($height > 1500) {
-                            $img->resize(null, 800, function ($constraint) {
+                        }elseif ($height > 380) {
+                            $img->resize(null, 380, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
                         }
                         $img->save(base_path('public/').$path);
+
+                        $path = $request->file('aiz_file')->store('uploads/all', 'local');
+                        $size = $request->file('aiz_file')->getSize();
+        
                         clearstatcache();
                         $size = $img->filesize();
 

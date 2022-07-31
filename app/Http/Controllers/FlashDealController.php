@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FlashDeal;
+use App\Models\DealItem;
 use App\Models\FlashDealTranslation;
 use App\Models\FlashDealProduct;
 use App\Models\Product;
