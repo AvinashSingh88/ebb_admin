@@ -260,7 +260,7 @@
                                        @foreach (\App\Models\Category::where('parent_id','0')->where('type','1')->orderBy('order_level', 'ASC')->get() as $key => $category)
                               
                                        <li class="{{$category->slug}}">
-                                          <a href="{{ route('cat', $category->slug) }}">
+                                          <a href="{{ route('cat', $category->slug) }}" class="firstnav">
                                           <span class="img000"><img src="{{ uploaded_asset($category->icon) }}" alt="{{  $category->getTranslation('name') }}"></span>
                                           <span class="spand-line">
                                           {{  $category->getTranslation('name') }}
@@ -289,7 +289,7 @@
                                           <!-- mega menu content start here -->
                                           <div class="megamenu megamenu2" style="background: center top rgb(255, 255, 255); display:block ; opacity:1;">
                                              <div class="row">
-                                                <div class="col-md-8" style="padding-right: 0px">
+                                                <div class="col-md-8 megamenuoverflow">
                                                    <ul class="megamenusubs">
                                                       @php
                                                          $i=0;
@@ -300,28 +300,27 @@
                                                                $i++;
                                                                $subcatSlug = \App\Models\Category::find($first_level_id)->slug;
                                                             @endphp
-                                                            <a href="{{ route('products.category', $subcatSlug) }}">
-                                                               <b class="webhead{{$i}}"> {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</b>
+                                                            <a href="{{ route('products.category', $subcatSlug) }}" class="secondnav">
+                                                               {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                                             </a>
                                                               
-                                                            <ul class="megamenusubs231 megamenusubs231a{{$i}}">
-                                                               @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($first_level_id) as $key => $second_level_id)                                                                     
+                                                            <ul class="megamenusubs231">
+                                                            <span class="morein">More In Cement</span>
+                                                               @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($first_level_id) as $key => $second_level_id)                                                                   
                                                                   <li>     
                                                                      @php
                                                                      $cat_icon =  \App\Models\Category::find($second_level_id);
                                                                      $childcatSlug = \App\Models\Category::find($second_level_id)->slug;
                                                                      @endphp
                                                                      <a href="{{ route('products.category', $childcatSlug) }}">
-                                                                        @if($cat_icon->icon != null)
-                                                                        <img src="{{uploaded_asset($cat_icon->icon)}}" alt="{{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}"> 
-                                                                        @endif
+                                                                       
                                                                         {{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}
                                                                      </a>
                                                                   </li>
                                                                @endforeach
-                                                               <li>
+                                                               <!--<li>
 			                                                          <a href="{{ route('products.category', $subcatSlug) }}" class="buildsing">View More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-			                                                                                                </li>
+			                                                                                                </li>-->
 
                                                             </ul>
                                                          </li>
@@ -713,7 +712,7 @@
                         </div>
                      </div>
                   </div>
-            </div>
+            
             </nav>
          </div>
       </div>

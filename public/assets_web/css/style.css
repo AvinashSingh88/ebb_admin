@@ -2054,8 +2054,7 @@ div#formRanking2a .owl-next span {
 ul.megamenusubs {
     display: block;
     width: 100%;
-    float: unset;
-    height: 100%;
+	float:left;
     padding: 15px 0px 15px 7px;
 }
 
@@ -2088,9 +2087,9 @@ li.menulocationds.menulocationds2.com ul.megamenusubs231 {
 }
 
 .megamenusubs li b {
-    color: #0a85ab;
+    color: #333;
     letter-spacing: 0px;
-    font-weight: 500;
+    font-weight:normal;
     font-size: 14px;
     margin-bottom: 0px;
     width: 100%;
@@ -3915,10 +3914,11 @@ li.shop i.fa.fa-angle-down {
     letter-spacing: 0.5px;
 }
 
-.top_ul ul li a:hover {
+.top_ul ul li:hover a.firstnav {
     color: #fff;
-    background: #ff7713 !important;
+    background: #ff7713;
 }
+
 
 .top_ul {
     position: absolute;
@@ -8001,7 +8001,7 @@ div.bhoechie-tab-menu ul.nav.nav-tabs li {
 }
 
 .top_ul ul li:nth-child(2n+2) a {
-    background: #f8f8f8;
+    /*background: #f8f8f8;*/
 }
 
 
@@ -8048,7 +8048,7 @@ div.bhoechie-tab-menu ul.nav.nav-tabs li {
 
 .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li ul li a {
     padding: 5px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
 }
 
@@ -9400,11 +9400,12 @@ li.gchoice_18_14_2 {
 
 .top_ul .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li {
     float: left;
-    width: 32%;
+    width: 100%;
 }
 
 .top_ul .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li ul li {
     width: 100%;
+	position:relative;
 }
 
 .product_submenu {
@@ -14290,6 +14291,8 @@ i.fa-solid.fa-house {
 
 .top-megamenu.web-mega .megamenu.megamenu2 ul:first-child {
     padding: 0px 10px 10px;
+	width:300px;
+	border-right:1px solid #cccccc;
 }
 
 .buildsing {
@@ -20571,7 +20574,7 @@ li.ukine.fs-5.py-2 {
 
 
 ul.megamenusubs {
-    height: 508px;
+    /*height: 508px;*/
     background-color: #fff;
 }
 
@@ -20702,6 +20705,12 @@ ul.megamenusubs {
 ul.megamenusubs231 {
     padding: 0px 0px;
     height: auto;
+	display:none;
+	position:absolute;
+	top:0px;
+	left:300px;
+	z-index:9999;
+	width:300px;
 }
 
 .megamenu .col-md-8 {
@@ -20713,9 +20722,9 @@ ul.megamenusubs231 {
 }
 
 .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li ul li a {
-    padding: 5px 0px !important;
+    padding: 5px 20px !important;
     height: 35px;
-    line-height: 22px;
+    line-height: 25px!important;
 }
 
 ul.megamenusubs231.megamenusubs231a a {
@@ -20731,7 +20740,7 @@ ul.megamenusubs::-moz-scrollbar {
 }
 
 ul.megamenusubs {
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 /* .top-megamenu.web-mega {
@@ -23170,6 +23179,7 @@ section.banner-brand_product.banner-brand_product2 .brandss {
 
 .top_ul .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li {
     margin: 0px;
+	position:relative;
 }
 
 .top_ul .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li a {
@@ -23534,4 +23544,42 @@ select.sortbytxt{
  border:5px solid #222;
  border-width:5px 5px 0 0;
  transform:translateX(-14px) rotate(45deg);
+}
+.megamenuoverflow{
+	height:485px;
+	overflow:auto;
+	padding-right:0px;
+	padding-top:10px!Important;
+	padding-bottom:10px!Important;
+}
+.megamenusubs li a{
+	border-bottom:0px!Important;
+	background:none!Important;
+	color:#333;
+}
+.megamenusubs li a i{
+	color:#fff;
+}
+.megamenusubs li:hover a i.fa-long-arrow-right, .megamenusubs li:hover a.secondnav, .megamenusubs li a:hover {
+	color:#ff0000!Important;
+	background:#f9f9f9!Important;
+}
+.megamenusubs li:hover a.secondnav {
+	background:#f9f9f9!Important;
+}
+.top_ul .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li ul li:after {
+    content: "";
+    height: 5px;
+    width: 5px;
+    position: absolute;
+    top: 14px;
+    left: 5px;
+    border-radius: 50%;
+    background: #333;
+}
+.morein{
+	font-size:13px;
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#999;
 }
