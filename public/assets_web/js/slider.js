@@ -1879,7 +1879,15 @@ $(".hideoffer").on('click', function () {
 	$(this).hide();
 	$(this).parent('ul').children(".showoffer").show();
 });
-$("li").hover(function() {
-	$(".megamenusubs231").hide();
+$(".megamenusubs li").hover(function() {
+	//$(".megamenusubs231").hide();
+	$(this).parent('ul').children("li").removeClass("orange_active");
+	$(this).parent('ul').children("li").children(".megamenusubs231").hide();
 	$(this).children(".megamenusubs231").show();
 });
+
+$(".megamenusubs li:first-child").addClass("orange_active");
+
+
+
+//$( "li" ).first().addClass( "orange_active" );
