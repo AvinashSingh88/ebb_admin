@@ -316,13 +316,21 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group row mb-3">
-							<label class="col-sm-3 control-label" for="products">{{translate('Products')}}</label>
+							<label class="col-sm-3 control-label" for="bought_prod">{{translate('Products (Maximum 2)')}}</label>
 							<div class="col-sm-9">
-								<select name="boughtproducts[]" id="products" class="form-control aiz-selectpicker" multiple required data-placeholder="{{ translate('Choose Products') }}" data-live-search="true" data-selected-text-format="count">
+								<select name="boughtproducts[]" data-max-options="2" id="bought_prod" class="form-control aiz-selectpicker" multiple required data-placeholder="{{ translate('Choose Products') }}" data-live-search="true" data-selected-text-format="count">
 									@foreach(\App\Models\Product::orderBy('created_at', 'desc')->get() as $product)
 										<option value="{{$product->id}}">{{ $product->getTranslation('name') }}</option>
 									@endforeach
 								</select>
+								<div class="alert alert-danger mt-2">
+									{{ translate('Selected Bought together products name will show here.') }}
+								</div>
+								<br>
+								
+								<div class="form-group" id="bought_toget_table">
+
+								</div>
 							</div>
 						</div>
                     </div>
@@ -340,6 +348,14 @@
 										<option value="{{$product->id}}">{{ $product->getTranslation('name') }}</option>
 									@endforeach
 								</select>
+								<div class="alert alert-danger mt-2">
+                        {{ translate('Selected Related products name will show here.') }}
+                    </div>
+                    <br>
+                    
+                    <div class="form-group" id="discount_table">
+
+                    </div>
 							</div>
 						</div>
                     </div>
@@ -691,8 +707,38 @@
 @endsection
 
 @section('script')
-
+ <script type="text/javascript">
+        $(document).ready(function(){
+            $('#products').on('change', function(){
+                var product_ids = $('#products').val();
+                if(product_ids.length > 0){
+                    $.post('{{ route('products.related_products') }}', {_token:'{{ csrf_token() }}', product_ids:product_ids}, function(data){
+                        $('#discount_table').html(data);
+                        AIZ.plugins.fooTable();
+                    });
+                }
+                else{
+                    $('#discount_table').html(null);
+                }
+            });
+        });
+		$(document).ready(function(){
+            $('#bought_prod').on('change', function(){
+                var bought_prod = $('#bought_prod').val();
+                if(bought_prod.length > 0){
+                    $.post('{{ route('products.bought_togethers') }}', {_token:'{{ csrf_token() }}', bought_prod:bought_prod}, function(data){
+                        $('#bought_toget_table').html(data);
+                        AIZ.plugins.fooTable();
+                    });
+                }
+                else{
+                    $('#bought_toget_table').html(null);
+                }
+            });
+        });
+    </script>
 <script type="text/javascript">
+
     $('form').bind('submit', function (e) {
         // Disable the submit button while evaluating if the form should be submitted
         $("button[type='submit']").prop('disabled', true);
