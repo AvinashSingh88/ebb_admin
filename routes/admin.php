@@ -40,6 +40,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::post('/products/approved', 'ProductController@updateProductApproval')->name('products.approved');
     Route::post('/products/get_products_by_subcategory', 'ProductController@get_products_by_subcategory')->name('products.get_products_by_subcategory');
     Route::post('/bulk-product-delete', 'ProductController@bulk_product_delete')->name('bulk-product-delete');
+
+    Route::post('/products/related_products', 'ProductController@relatedProductss')->name('products.related_products');
+    Route::post('/products/bought_togethers', 'ProductController@boughtTogethers')->name('products.bought_togethers');
+    Route::post('/products/related_products_edit', 'ProductController@related_products_edit')->name('products.related_products_edit');
+    Route::post('/products/bought_together_edit', 'ProductController@bought_together_edit')->name('products.bought_together_edit');
     //services blades routes
     Route::get('/services/all','ServiceController@all_services')->name('services.all');
     Route::get('/services/create','ServiceController@create')->name('services.create');
@@ -173,6 +178,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::post('/flash_deals/update_featured', 'FlashDealController@update_featured')->name('flash_deals.update_featured');
     Route::post('/flash_deals/update_on_home', 'FlashDealController@update_on_home')->name('flash_deals.update_on_home');
     Route::post('/flash_deals/product_discount', 'FlashDealController@product_discount')->name('flash_deals.product_discount');
+    
     Route::post('/flash_deals/product_discount_edit', 'FlashDealController@product_discount_edit')->name('flash_deals.product_discount_edit');
 
     Route::get('flash_deals_items', 'FlashDealController@flash_deal_item')->name('flash_deals_item.index');
