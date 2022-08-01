@@ -7,12 +7,11 @@ use App\Models\Upload;
 use Response;
 use Auth;
 use Storage;
-use Image;
+use Intervention\Image\ImageManagerStatic as Image;
+// use Image;
 
 class AizUploadController extends Controller
 {
-
-
     public function index(Request $request){
 
 
@@ -58,10 +57,10 @@ class AizUploadController extends Controller
             : view('backend.uploaded_files.create');
     }
 
-
     public function show_uploader(Request $request){
         return view('uploader.aiz-uploader');
     }
+
     public function upload(Request $request){
         $type = array(
             "jpg"=>"image",
@@ -116,51 +115,30 @@ class AizUploadController extends Controller
                     }
                 }
 
-               
-                // // Return MIME type ala mimetype extension
-                // $finfo = finfo_open(FILEINFO_MIME_TYPE); 
+                $path = $request->file('aiz_file')->store('uploads/all', 'local');
+                $size = $request->file('aiz_file')->getSize();
 
-                // // Get the MIME type of the file
-                // $file_mime = finfo_file($finfo, base_path('public/').$path);
+                // Return MIME type ala mimetype extension
+                $finfo = finfo_open(FILEINFO_MIME_TYPE); 
 
+                // Get the MIME type of the file
+                $file_mime = finfo_file($finfo, base_path('public/').$path);
 
-                
-                print_r($type[$extension]);
-                dd($type[$extension]);
-                die;
-
-                if($type[$extension] == 'image'){
+                if($type[$extension] == 'image' && get_setting('disable_image_optimization') != 1){
                     try {
-
-
-                        // $image = $request->file('aiz_file');
-                        // $imageResize = Image::make($image)->encode('webp', 90);
-                        // if ($imageResize->width() > 380){
-                        //     $imageResize->resize(380, null, function ($constraint) {
-                        //         $constraint->aspectRatio();
-                        //     });
-                        // }
-
-                        // $destinationPath = public_path('/uploads/all/');
-                        // $imageResize->store($destinationPath.$name);
-                        
-                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode('webp', 90);
+                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode();
                         $height = $img->height();
                         $width = $img->width();
-                        if($width > $height && $width > 380){
-                            $img->resize(380, null, function ($constraint) {
+                        if($width > $height && $width > 1500){
+                            $img->resize(1500, null, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                        }elseif ($height > 380) {
-                            $img->resize(null, 380, function ($constraint) {
+                        }elseif ($height > 1500) {
+                            $img->resize(null, 800, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
                         }
                         $img->save(base_path('public/').$path);
-
-                        $path = $request->file('aiz_file')->store('uploads/all', 'local');
-                        $size = $request->file('aiz_file')->getSize();
-        
                         clearstatcache();
                         $size = $img->filesize();
 
