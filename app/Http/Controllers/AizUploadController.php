@@ -115,7 +115,16 @@ class AizUploadController extends Controller
                     }
                 }
 
-                $path = $request->file('aiz_file')->store('uploads/all', 'local');
+                if($type[$extension] == 'image'){
+                    $temp_path = $request->file('aiz_file')->store('uploads/all', 'local');
+
+                    //Rename extension to webp and rename local file name
+                    $path = str_replace($extension,"webp",$temp_path);
+                    $rename_path = Storage::rename( $temp_path, $path );
+                }else{
+                    $path = $request->file('aiz_file')->store('uploads/all', 'local');
+                }
+                
                 $size = $request->file('aiz_file')->getSize();
 
                 // Return MIME type ala mimetype extension
@@ -126,21 +135,23 @@ class AizUploadController extends Controller
 
                 if($type[$extension] == 'image' && get_setting('disable_image_optimization') != 1){
                     try {
-                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode();
+                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode('webp', 70);
+                       
                         $height = $img->height();
                         $width = $img->width();
-                        if($width > $height && $width > 1500){
-                            $img->resize(1500, null, function ($constraint) {
+                        if($width > $height && $width > 400){
+                            $img->resize(400, null, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                        }elseif ($height > 1500) {
-                            $img->resize(null, 800, function ($constraint) {
+                        }elseif ($height > 300) {
+                            $img->resize(null, 300, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
                         }
                         $img->save(base_path('public/').$path);
                         clearstatcache();
                         $size = $img->filesize();
+                        $extension = "webp";
 
                     } catch (\Exception $e) {
                         //dd($e);
