@@ -25,7 +25,7 @@
      <li>Cash On Delivery available</li>
 <li>7 Days Replacement Policy</li>
 </ul></td>
-    <td><strong>₹ 440.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+    <td><strong class="pricestrong">₹ 440</strong> <strike>₹ 440</strike> <span class="starrating">30% Off</span><br />
    <ul>
                                 <li>10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
 <li class="collapseli">10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
@@ -48,7 +48,7 @@
      <li>Cash On Delivery available</li>
 <li>7 Days Replacement Policy</li>
 </ul></td>
-    <td><strong>₹ 630.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+    <td><strong class="pricestrong">₹ 630</strong> <strike>₹ 440</strike> <span class="starrating">30% Off</span><br />
    <ul>
                                 <li>10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
 <li class="collapseli">10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
@@ -69,7 +69,7 @@
      <li>Cash On Delivery available</li>
 <li>7 Days Replacement Policy</li>
 </ul></td>
-    <td><strong>₹ 240.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+    <td><strong class="pricestrong">₹ 240</strong> <strike>₹ 440</strike> <span class="starrating">30% Off</span><br />
    <ul>
                                 <li>10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
 <li class="collapseli">10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
@@ -90,7 +90,7 @@
      <li>Cash On Delivery available</li>
 <li>7 Days Replacement Policy</li>
 </ul></td>
-    <td><strong>₹ 410.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+    <td><strong class="pricestrong">₹ 410</strong> <strike>₹ 440</strike> <span class="starrating">30% Off</span><br />
    <ul>
                                 <li>10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
 <li class="collapseli">10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>
@@ -111,7 +111,7 @@
      <li>Cash On Delivery available</li>
 <li>7 Days Replacement Policy</li>
 </ul></td>
-    <td><strong>₹ 640.00</strong> <strike>Rs.440.00</strike> <span class="fnt12">30% Off</span><br />
+    <td><strong class="pricestrong">₹ 640</strong> <strike>₹ 440</strike> <span class="starrating">30% Off</span><br />
    <ul>
                                 <li>10% off on SBI Credit Card, up to ₹750. On orders of ₹5000 and above</li>
 <li class="collapseli">10% off on SBI Credit Card EMI Transactions, up to ₹1500. On orders of ₹5000 and above</li>

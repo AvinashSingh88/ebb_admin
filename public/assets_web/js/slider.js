@@ -1879,3 +1879,7 @@ $(".hideoffer").on('click', function () {
 	$(this).hide();
 	$(this).parent('ul').children(".showoffer").show();
 });
+$("li").hover(function() {
+	$(".megamenusubs231").hide();
+	$(this).children(".megamenusubs231").show();
+});
