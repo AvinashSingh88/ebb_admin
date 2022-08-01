@@ -1049,5 +1049,27 @@ class ProductController extends Controller
         $combinations = Combinations::makeCombinations($options);
         return view('backend.product.products.sku_combinations_edit', compact('combinations', 'unit_price', 'colors_active', 'product_name', 'product'));
     }
+    public function relatedProductss(Request $request)
+    {
+        $product_ids = $request->product_ids;
+        return view('backend.product.products.related_products', compact('product_ids'));
+    }
+    public function boughtTogethers(Request $request)
+    {
+        $product_ids = $request->bought_prod;
+        return view('backend.product.products.bought_togethers', compact('product_ids'));
+    }
+    public function related_products_edit(Request $request)
+    {
+        $product_ids = $request->product_ids;
+        $items_id = $request->items_id;
+        return view('backend.product.products.related_products_edit', compact('product_ids', 'items_id'));
+    }
+    public function bought_together_edit(Request $request)
+    {
+        $boughtproducts = $request->product_ids;
+        $items_id = $request->items_id;
+        return view('backend.product.products.bought_together_edit', compact('boughtproducts', 'items_id'));
+    }
 
 }
