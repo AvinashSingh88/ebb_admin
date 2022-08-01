@@ -13,6 +13,8 @@ use App\Models\AttributeValue;
 use App\Models\Cart;
 use App\Models\Color;
 use App\Models\User;
+use App\Models\BoughtTogether;
+use App\Models\RelatedProduct;
 use Auth;
 use Carbon\Carbon;
 use Combinations;
@@ -346,6 +348,32 @@ class ProductController extends Controller
             $flash_deal_product->product_id = $product->id;
             $flash_deal_product->save();
         }
+		
+		//Bought Togther Option Start
+		
+		if($request->boughtproducts) {
+			foreach ($request->boughtproducts as $key => $bproduct) {
+				$flash_deal_product = new BoughtTogether;
+				$flash_deal_product->items_id = $bproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Bought Togther Option End
+		
+		//Realated Products Option Start
+		
+		if($request->relatedproducts) {
+			foreach ($request->relatedproducts as $key => $releproduct) {
+				$flash_deal_product = new RelatedProduct;
+				$flash_deal_product->items_id = $releproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Realated Products Option End
 
         //combinations start
         $options = array();
@@ -752,6 +780,34 @@ class ProductController extends Controller
                 $product_tax->save();
             }
         }
+		
+		//Bought Togther Option Start
+		
+		if($request->boughtproducts) {
+			BoughtTogether::where('product_id', $product->id)->delete();
+			foreach ($request->boughtproducts as $key => $bproduct) {
+				$flash_deal_product = new BoughtTogether;
+				$flash_deal_product->items_id = $bproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Bought Togther Option End
+		
+		//Realated Products Option Start
+		
+		if($request->relatedproducts) {
+			RelatedProduct::where('product_id', $product->id)->delete();
+			foreach ($request->relatedproducts as $key => $releproduct) {
+				$flash_deal_product = new RelatedProduct;
+				$flash_deal_product->items_id = $releproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Realated Products Option End
 
         // Product Translations
         $product_translation                = ProductTranslation::firstOrNew(['lang' => $request->lang, 'product_id' => $product->id]);

@@ -122,6 +122,7 @@ Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
 Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');
 
 // Route::post('add-to-cart', [CartController::class,'addToCart']);
+Route::post('addBoughtTogether', 'CartController@addBoughtTogether')->name('cart.addBoughtTogether');
 Route::post('add-to-cart', [CartController::class,'addToUserCart']);
 Route::get('load-cart-data', [CartController::class,'cartCountFunction']);
 Route::post('dele-cart-item', [CartController::class,'deleteFromCart']);

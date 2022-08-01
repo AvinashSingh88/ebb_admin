@@ -667,4 +667,98 @@ class CartController extends Controller
             'nav_cart_view' => view('frontend.partials.cart')->render(),
         );
     }
+
+    public function addBoughtTogether(Request $request){
+			
+        if(Auth::user() != null) {
+        $user_id = Auth::user()->id;
+        $temp_user_id = null;
+    }else{
+        $user_id = null;
+        $temp_user_id = $request->session()->get('temp_user_id');
+
+        if($temp_user_id == null || $temp_user_id == ""){
+            $temp_user_id = bin2hex(random_bytes(10));
+            $request->session()->put('temp_user_id', $temp_user_id);
+        }
+    }
+    $productids =  $request->input('product_id', []);
+    $price =  $request->input('product_price', []);
+    $quantity =  1;
+    
+    if(auth()->user() != null) {
+        $user_id = Auth::user()->id;
+        $data['user_id'] = $user_id;
+        $carts = Cart::where('user_id', $user_id)->get();
+        $sameProductinCart = Cart::where('user_id', $user_id)->where('product_id',$request->product_id)->exists();
+        $sameProductinCartQuantity = Cart::where('user_id', $user_id)->where('product_id',$request->product_id)->first();
+    } else {
+        if($request->session()->get('temp_user_id')) {
+            $temp_user_id = $request->session()->get('temp_user_id');
+        } else {
+            $temp_user_id = bin2hex(random_bytes(10));
+            $request->session()->put('temp_user_id', $temp_user_id);
+        }
+        $data['temp_user_id'] = $temp_user_id;
+        $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+        $sameProductinCart = Cart::where('temp_user_id', $temp_user_id)->where('product_id',$request->product_id)->exists();
+        $sameProductinCartQuantity = Cart::where('temp_user_id', $temp_user_id)->where('product_id',$request->product_id)->first();
+    }
+       
+        if($sameProductinCart>=1){
+            $results = [];
+            // foreach ($request->productids as $index => $unit) {
+                foreach ($request->input('product_id', []) as $key => $product_id){
+                $results[] = [
+                    "product_id" => $productids[$key],
+                    "price" => $price[$key],
+                    "quantity" => $quantity,
+                    "temp_user_id" => $temp_user_id,
+                    "user_id" => $user_id,
+                    "total_price" => $quantity*$price[$key],
+                    "variation" => '',
+                    ];
+                    $cartupdate = Cart::where('product_id', $productids[$key])
+                    ->update([
+                            'quantity' => $quantity+$sameProductinCartQuantity->quantity,
+                            'total_price' => $quantity+$sameProductinCartQuantity->quantity*$price[$key],
+                        ]);
+            }
+            
+        }
+        else{
+            $results = [];
+             
+            foreach ($request->input('product_id', []) as $key => $product_id){
+                $results[] = [
+                        "product_id" => $productids[$key],
+                        "price" => $price[$key],
+                        "quantity" => $quantity,
+                        "temp_user_id" => $temp_user_id,
+                        "user_id" => $user_id,
+                        "total_price" => $quantity*$price[$key],
+                        "variation" => '',
+                    ];
+            }
+            Cart::insert($results);
+        }
+       
+        if(auth()->user() != null) {
+            $user_id = Auth::user()->id;
+            $carts = Cart::where('user_id', $user_id)->get();
+            $sumcartamount = Cart::where('user_id',$user_id)->sum('total_price');
+        } else {
+            // $temp_user_id = $request->session()->get('temp_user_id');
+            $carts = Cart::where('temp_user_id', $temp_user_id)->get();
+            $sumcartamount = Cart::where('temp_user_id',$temp_user_id)->sum('total_price');
+        }
+        return array(
+            'status' => 'Added To Cart!',
+            'cart_count' => count($carts),
+            'sum_cart_count' => $sumcartamount,
+            'nav_cart_view' => view('frontend.partials.cart')->render(),
+            'bought_together' => view('frontend.partials.bought_together')->render(),
+        );
+        
+    }
 }
