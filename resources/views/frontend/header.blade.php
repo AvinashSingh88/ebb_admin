@@ -30,22 +30,22 @@
                <div class="t_c right-text">
                   <ul>
                      <li>
-                        <a href="advertise.php"><i class="fas fa-volume-up"></i> Advertise</a>
+                        <a href="{{url('/advertise')}}"><i class="fas fa-volume-up"></i> Advertise</a>
                      </li>
                      <li>
                         <a href="javascript:void(0);"><i class="fa-solid fa-download animated infinite slideInDown"></i>Brochure</a>
                      </li>
                      <li>
-                        <a href="enquiry.php"><i class="far fa-question-circle"></i> Enquiry</a>
+                        <a href="{{url('/enquiry')}}"><i class="far fa-question-circle"></i> Enquiry</a>
                      </li>
                      <li>
-                        <a href="become_seller.php"><i class="fas fa-archway"></i> Become a Seller</a>
+                        <a href="{{url('/become-seller')}}"><i class="fas fa-archway"></i> Become a Seller</a>
                      </li>
                      <li>
-                        <a href="help_center.php"><i class="far fa-question-circle"></i> Help Center</a>
+                        <a href="{{url('/help-center')}}"><i class="far fa-question-circle"></i> Help Center</a>
                      </li>
                      <li class="cartonlog">
-                        <a href="#t.php">Appointment</a>
+                        <a href="{{url('/appointment')}}">Appointment</a>
                      </li>
                      <li>
                         <a href="bulk-order2.php"><i class="fas fa-truck"></i> Bulk Order</a>
@@ -72,7 +72,7 @@
                      <span></span>
                      <span></span>
                   </div>
-                  <a href="{{url('')}}"><img src="{{static_asset('assets_web/img/logo.png')}}" alt="" /></a>
+                  <a href="{{url('')}}"><img src="{{ asset('public/assets/img/logo.png')}}" alt="" /></a>
                </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -390,7 +390,7 @@
                                     <div class="submenu submenu4">
                                        <div class="submenu4_top">
                                           <div class="submenu4_top1" style="background-image: url({{static_asset('assets_web/img/web-icon15.png')}});background-size: 20px; background-position: top left;">
-                                             <a href="javascript:void(0);">
+                                             <a href="{{url('/about-us')}}">
                                                 <h3>About Us</h3>
                                                 <p>
                                                    ACSIUS, an ISO 9001:2015 certified Web Design Company.
@@ -575,7 +575,7 @@
                                        <div class="menuright menuright3">
                                           <ul>
                                              <li>
-                                                <a href="technology-expertise#tab2">
+                                                <a href="{{url('/residentilal')}}">
                                                 <img
                                                    class="lazyloaded"
                                                    src="{{static_asset('assets_web/img/technology-menu-icon.svg')}}"
@@ -583,13 +583,12 @@
                                                    alt="Technology"
                                                    width="44"
                                                    />
-                                                <span
-                                                   ><strong>Residential</strong> Home</span
+                                                <span><strong>Residential</strong> Home</span
                                                    ></a
                                                    >
                                              </li>
                                              <li>
-                                                <a href="4p"
+                                                <a href="{{url('/commercial')}}"
                                                    ><img
                                                    src="{{static_asset('assets_web/img/4p-menu-icon.svg')}}"
                                                    alt="4p"
@@ -602,7 +601,7 @@
                                                    >
                                              </li>
                                              <li>
-                                                <a href="models"
+                                                <a href="{{url('/architect')}}"
                                                    ><img
                                                    src="{{static_asset('assets_web/img/models-menu-icon.svg')}}"
                                                    alt="models"
@@ -613,7 +612,7 @@
                                                    >
                                              </li>
                                              <li>
-                                                <a href="agile-and-scrum"
+                                                <a href="{{url('/interior-exterior')}}"
                                                    ><img
                                                    class="lazyloaded"
                                                    src="{{static_asset('assets_web/img/agile-menu-icon.svg')}}"
@@ -625,7 +624,7 @@
                                                    ><strong>Interior / Exterior</strong>Designing</span></a>
                                              </li>
                                              <li>
-                                                <a href="valued-professionals"
+                                                <a href="{{url('/building')}}"
                                                    ><img
                                                    src="{{static_asset('assets_web/img/scrum-menu-icon.svg')}}"
                                                    alt="Valued Professionals"
@@ -636,7 +635,7 @@
                                                 </a>
                                              </li>
                                              <li>
-                                                <a href="valued-professionals"
+                                                <a href="{{url('/talk-to')}}"
                                                    ><img
                                                    src="{{static_asset('assets_web/img/scrum-menu-icon.svg')}}"
                                                    alt="Valued Professionals"
@@ -647,7 +646,7 @@
                                                 </a>
                                              </li>
                                              <li>
-                                                <a href="valued-professionals"
+                                                <a href="{{url('/plumber-electrician')}}"
                                                    ><img
                                                    src="{{static_asset('assets_web/img/scrum-menu-icon.svg')}}"
                                                    alt="Valued Professionals"
@@ -673,7 +672,7 @@
                                     <div class="submenu submenu4">
                                        <div class="submenu4_top">
                                           <div class="submenu4_top1">
-                                             <a href="javascript:void(0);">
+                                             <a href="{{url('/sales-partner')}}">
                                                 <h3>Sales Partner</h3>
                                                 <p>
                                                    Our prowess to create growth, generate productivity and help launch new business models.
@@ -681,7 +680,7 @@
                                              </a>
                                           </div>
                                           <div class="submenu4_top2">
-                                             <a href="javascript:void(0);">
+                                             <a href="{{url('/material-supplier')}}">
                                                 <h3>material Suppliers</h3>
                                                 <p>
                                                    A perspective to talk about new ideas, future technology and its impact on enterprises.
@@ -689,13 +688,13 @@
                                              </a>
                                           </div>
                                           <div class="submenu4_top3">
-                                             <a href="testimonials">
+                                             <a href="{{url('/labour-suppllier')}}">
                                                 <h3>Labour Suppliers</h3>
                                                 <p>See what people have to say about us.</p>
                                              </a>
                                           </div>
                                           <div class="submenu4_top4">
-                                             <a href="javascript:void(0);">
+                                             <a href="{{url('/engineer-architect-associates')}}">
                                                 <h3>Engineer and Architect Associates</h3>
                                                 <p>Knowing Us in Interesting Ways</p>
                                              </a>
@@ -725,8 +724,8 @@
                                        <li><a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/explorer.jpg')}}" alt=""> Design explorer</a></li>
                                        <li><a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/web-icon17.png')}}" alt=""> Testimonials</a></li>
                                        <li><a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/web-icon16.png')}}" alt=""> Blog </a></li>
-                                       <li><a href="javascript:void(0);"><img src="{{static_asset('assets_web/img/icona1.png')}}" alt=""> Career</a></li>
-                                       <li><a href="javascript:void(0);"><i class="fa-solid fa-address-book"></i> Contact Us</a></li>
+                                       <li><a href="{{url('/career')}}"><img src="{{static_asset('assets_web/img/icona1.png')}}" alt=""> Career</a></li>
+                                       <li><a href="{{url('/contact-us')}}"><i class="fa-solid fa-address-book"></i> Contact Us</a></li>
                                     </ul>
                                  </div>
                               </li>
