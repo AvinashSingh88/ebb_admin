@@ -594,7 +594,7 @@ if (!function_exists('my_asset')) {
             return Storage::disk('s3')->url($path);
         } else {
             if($user_type == "seller"){
-                return $vendor = env('VENDOR_BASE_URL') . '/' . $path;
+                return $vendor = env('VENDOR_BASE_URL') . '/public/' . $path;
             }else{
                 return app('url')->asset('public/' . $path, $secure);
             }
