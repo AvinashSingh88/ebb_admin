@@ -288,7 +288,7 @@
                                     <div class="top-megamenu web-mega {{$category->slug}}">
                                           <!-- mega menu content start here -->
                                           <div class="megamenu megamenu2" style="background: center top rgb(255, 255, 255); display:block ; opacity:1;">
-                                             <div class="row">
+                                             <div class="row posrel">
                                                 <div class="col-md-8 megamenuoverflow">
                                                    <ul class="megamenusubs">
                                                       @php
@@ -438,43 +438,65 @@
                                  <a href="#folio">Pro-Services</a>
                                  <!-- mega sub menu start here -->
                                  <div class="product_submenu">
-                                    <ul>
+                                 
+                                 <div class="col-md-8 fl megamenuoverflow">
+                                 
+                                 <!--<ul class="megamenusubs">
+                                 <li><a href="#" class="secondnav">Cement <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                 	
+                                    <ul class="megamenusubs231">
+                                                            <span class="morein">More In Cement</span>
+                                                                                                                                  
+                                                                  <li><a href="#">Black Cement</a>
+                                                                  </li>
+                                    </ul>
+                                                                  
+                                 </li>
+                                 </ul>-->
+                                 
+                                 
+                                    <ul class="megamenusubs">
 									
                                           @foreach (\App\Models\Category::where('parent_id','0')->where('type','2')->orderBy('order_level','asc')->get() as $key => $category)
                                           
                                        <li>
-                                          <div class="sub-menu-item">
-                                             <a href="{{ route('servicecat', $category->slug) }}" class="ProductLink">
-                                                <img src="{{uploaded_asset($category->home_image)}}" class="NavThumbnail" alt="{{$category->name}}" />
-                                                <h3>{{$category->name}} </h3>
+                                          
+                                             <a href="{{ route('servicecat', $category->slug) }}" class="secondnav">
+                                                <!--<img src="{{uploaded_asset($category->home_image)}}" class="NavThumbnail fl" alt="{{$category->name}}" />-->
+                                                <img src="https://ebb.orrish.org/public/uploads/all/FXBcyKoSKriEsuC6TQ5dViZC90rmwT5WUYxwA2Yi.svg" class="NavThumbnail fl" alt="{{$category->name}}" />
+                                                <span>{{$category->name}} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
                                              </a>
-                                             <ol>
+                                             <ul class="megamenusubs231">
+                                             <span class="morein">More In {{$category->name}}</span>
 											 @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
                                                 <li>
                                                    <a href="end_to_end_construction.php">  {{ \App\Models\Category::find($first_level_id)->getTranslation('name') }} </a>
                                                 </li>
 												@endforeach
                                                
-                                             </ol>
-                                          </div>
+                                             </ul>
+                                          
                                        </li>
 									   @endforeach
                                        
                                     </ul>
-                                    <div class="laminates-more">
-                                       <div class="submenu4_bot">
-                                          <div class="submenu4_botlt">
-                                             <h3>The Next Level Knowledge Awaits</h3>
-                                             <p>
-                                                Make your web presence impressive by getting precise web design, digital marketing, mobile responsive website, web development and complete IT solutions from certified experts.
-                                             </p>
-                                          </div>
-                                          <div class="submenu4_botrt">
-                                             <a href="contact-us" class="borderbtn1">Talk To Our Experts</a
-                                                >
-                                          </div>
-                                       </div>
                                     </div>
+                                    
+                                    
+                                    
+                                    <div class="col-md-4 fr">
+			                                                                <div class="divcalimmega">
+			                                                                    <h3>Hire Team</h3>
+			                                                                    <p>
+			                                                                        Hire our dedicated team who will prove to be
+			                                                                        the biggest sources to help your businesses
+			                                                                        with cost-effective method.
+			                                                                    </p>
+			                                                                    <img src="https://orrish.com/run-project/ebuild-bazaar-s7/img/service-banner-1.png">
+			                                                                    <a class="hire-team-btn" href="https://orrish.com/run-project/ebuild-bazaar-s7/javascript:void(0);" target="_self">Hire Team</a>
+			                                                                </div>
+			                                                            </div>
+                                    
                                  </div>
                                  <!-- mega sub menu end here -->
                               </li>
