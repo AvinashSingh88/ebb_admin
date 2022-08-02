@@ -1,9 +1,5 @@
-@php
-    $get_attributes = \App\Models\HomeCategorySection::groupBy('category_attribute')->orderBy('id')->get();
-@endphp
-
-@if(count($get_attributes)> 0 )
-    @foreach($get_attributes as $key => $value)
+@if(count($get_categories_atributes)> 0 )
+    @foreach($get_categories_atributes as $key => $value)
         <section class="product-csteogry">
             <div class="trend servoce_dops service_sections45 pb-0">
                 <div class="container">
@@ -29,15 +25,17 @@
                             </div>
                         </div>
                         <div class="owl-carousel owl-theme owl-carousel_sliders trending001">
-                            @foreach(\App\Models\HomeCategorySection::where('category_attribute', $value->category_attribute)->get() as $key => $home_cat_sec)
+                            @foreach($get_categories_data as $key => $home_cat_sec)
                                 <div class="item">
                                     <div class="colams_item">
-                                        <a href="{{$home_cat_sec->slug_url}}">
-                                            <div class="trend-theme">
-                                                <img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
-                                            </div>
-                                            <h3>{{$home_cat_sec->title}}</h3>
-                                        </a>
+                                        @if($value->category_attribute == $home_cat_sec->category_attribute)
+                                            <a href="{{$home_cat_sec->slug_url}}">
+                                                <div class="trend-theme">
+                                                    <img src="{{uploaded_asset($home_cat_sec->image)}}" alt="" />
+                                                </div>
+                                                <h3>{{$home_cat_sec->title}}</h3>
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
