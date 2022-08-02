@@ -1969,7 +1969,7 @@ div#formRanking2a .owl-next span {
 .megamenu {
     position: absolute;
     z-index: 999;
-    width: 800px;
+    width: 915px;
     border-radius: 10px;
     border-top: 5px solid #ff7713;
     opacity: 0;
@@ -14317,7 +14317,7 @@ i.fa-solid.fa-house {
 }
 
 .top-megamenu.web-mega {
-    height: 558px;
+    /*height: 558px;*/
     /*overflow: auto;*/
     width: 975px;
 }
@@ -20551,7 +20551,7 @@ li.ukine.fs-5.py-2 {
 }
 
 .top-megamenu.web-mega {
-    height: 548px;
+    /*height: 548px;*/
 }
 
 .top-megamenu.web-mega {
@@ -20706,7 +20706,7 @@ ul.megamenusubs231 {
     padding: 0px 0px;
     height: auto;
 	position:absolute;
-	top:10%;
+	top:15%;
 	left:300px;
 	z-index:9999;
 	width:250px;
@@ -23556,7 +23556,8 @@ select.sortbytxt{
 	overflow:auto;
 	padding-right:0px;
 	margin-top:50px!Important;
-	margin-bottom:50px!Important;	
+	margin-bottom:50px!Important;
+	padding-left:12px!Important;	
 }
 .posrel{
 	position:relative;
@@ -23576,6 +23577,8 @@ select.sortbytxt{
 .megamenusubs li:hover a.secondnav {
 	background:#f9f9f9!Important;
 }
+
+
 .top_ul .top-megamenu.web-mega .megamenu.megamenu2 ul.megamenusubs li ul li:after {
     content: "";
     height: 5px;
@@ -23608,4 +23611,8 @@ select.sortbytxt{
 .orange_active a.secondnav, .orange_active a i.fa-long-arrow-right{
 	color:#ff0000!Important;
 	background:#f9f9f9!Important;
+}
+.firstCatnav a{
+    color: #fff!Important;
+    background: #ff7713!Important;
 }
