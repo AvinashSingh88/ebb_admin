@@ -135,7 +135,7 @@ class AizUploadController extends Controller
 
                 if($type[$extension] == 'image' && get_setting('disable_image_optimization') != 1){
                     try {
-                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode('webp', 70);
+                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode('webp', 90);
                        
                         $height = $img->height();
                         $width = $img->width();
