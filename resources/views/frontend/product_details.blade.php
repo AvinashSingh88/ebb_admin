@@ -380,17 +380,18 @@
                            </div>
                               </div>
                            </div>
-                           <div class="discrptions_button cart-add d-block cart-add1 products_list ">
+						</form>   
+                           <div class="discrptions_button cart-add d-block cart-add1 products_list product_data">
                               <div class="input-group quantity_input mb-0">
                                  <div class="input-group w-100 justify-content-start align-items-center packageadd">
-                                    <input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0 countnone" data-field="quantity">
-                                    <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25 countnone">
-                                    <input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0 countnone" data-field="quantity">
+                                    <input type="button" value="-" class="button-minus add_cart_button_plus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0 countnone" data-field="quantity">
+                                    <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25 countnone input-number">
+                                    <input type="button" value="+" class="button-plus add_cart_button_plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0 countnone" data-field="quantity">
                                     
-                                   <input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
+                            <input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
                            <input type="hidden" id="total_product_price" class="prod_price">
-                           <button onclick="addToCart()" class="addtocartbut countnone"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button>
-                           <button class="addtocartbut buttonnone"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
+                           <button onclick="buyNow()" class="addtocartbut countnone"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button>
+                           <button onclick="addToCart()" class="addtocartbut buttonnone"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
                            <button class="out-of-stock background-gray">Out of stock</button>
                            <!--<h6><a href="quote.php">Get Quote</a></h6>-->
                            <button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons">Bulk Order</button>
@@ -399,7 +400,7 @@
                                  </div>
                               </div>
                            </div>
-                        </form>
+                        
                        
                      
 					  <div class=" position-absolute end-0 bottom-0 justify-content-end w-75">
