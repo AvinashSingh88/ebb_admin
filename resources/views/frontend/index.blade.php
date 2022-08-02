@@ -99,47 +99,6 @@
 </div>
 
 <div class="services_sectionssd">
-   <!-- Service section start  -->
-   <!-- <section class="product-csteogry">
-      <div class="trend servoce_dops service_sections45 pb-0">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12 col-12">
-                  <div class="border-bottom1 border-color-111 mt-3 mb-3">
-                     <div class="border-botb-3">
-                        <a href="{{route('servicecategories.all')}}" class="view-link"> View all <i
-                              class="fa-solid fa-chevron-right"></i>
-                        </a>
-                     </div>
-                     <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18"> Services Offered</h3>
-                     <div class="deals">
-                        <hr>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="owl-carousel owl-theme owl-carousel_sliders trending001">
-                  @foreach ($servicesoffered as $item)
-                     <div class="item">
-                        <div class="colams_item">
-                           <a href="{{ route('servicecat', $item->slug) }}">
-                              <div class="trend-theme">
-                                 <img src="{{uploaded_asset($item->home_image)}}" alt="" />
-                              </div>
-                              <h3>{{$item->name}}</h3>
-                           </a>
-                        </div>
-                     </div>
-                  @endforeach
-               </div>
-
-              
-               
-            </div>
-         </div>
-      </div>
-   </section> -->
-   <!-- Service section end  -->
 
    <!-- Category section start  -->
    @include('frontend.partials.home_categories_section')

@@ -43,13 +43,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $featured_categories = Cache::rememberForever('featured_categories', function () {
-            return Category::where('featured', 1)->get();
-        });
+        // $featured_categories = Cache::rememberForever('featured_categories', function () {
+        //     return Category::where('featured', 1)->get();
+        // });
 
-        $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
-            return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
-        });
+        // $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
+        //     return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
+        // });
+
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
 
         $categories_id = json_decode(get_setting('home_categories'));
@@ -59,7 +60,7 @@ class HomeController extends Controller
         $allblogs = Blog::limit(4)->get();
         $servicesoffered = Category::where('level', 0)->where('type',2)->orderBy('order_level', 'desc')->get();
       
-        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands','allblogs','servicesoffered'));
+        return view('frontend.index', compact('categories','cat_wise_brands','allblogs','servicesoffered'));
     }
 
     

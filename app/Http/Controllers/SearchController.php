@@ -26,7 +26,7 @@ class SearchController extends Controller
         $seller_id = $request->seller_id;
         $attributes = Attribute::all();
         $selected_attribute_values = array();
-        $first_five_color = Color::orderBy('id', 'desc')->limit(5)->get();;
+        $first_five_color = Color::orderBy('id', 'desc')->limit(5)->get();
         $colors = Color::all();
         $selected_color = null;
 
