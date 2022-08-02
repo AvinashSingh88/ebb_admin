@@ -11,7 +11,7 @@
 	@endphp
  
 <div class="product-box h-auto pb-3 product_data">
-   <div class="beachs">{{$product->discount}}% Off</div>
+   @if($product->discount!=null)<div class="beachs">{{$product->discount}}% Off</div>@endif
    <img src="{{ uploaded_asset($product->thumbnail_img) }}" alt="{{  $product->getTranslation('name')  }}"
       onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
 	<div class="discrptions">
@@ -20,11 +20,18 @@
 			<div class="companyname">{{$product->brand->name}}</div>
 		@endif
     </div>
+							@php
+                                $qty = 0;
+                                foreach ($product->stocks as $key => $stock) {
+                                    $qty += $stock->qty;
+                                }
+                            @endphp
    <div class="discrptions">
       <a href="{{ route('product', $product->slug) }}">
          <h5>{{ $product->getTranslation('name') }} </h5>
+         
       </a>
-      <h6><!--MRP/- -->{{ home_discounted_base_price($product) }} &nbsp;<strike>₹300</strike></h6>
+      <h6>{{ home_discounted_base_price($product) }} &nbsp;@if($product->discount!=null)<strike>₹{{$product->unit_price}}</strike>@endif</h6>
    </div>
    <!-- <ul class="ulproducts">
                               <li>In stock</li>
@@ -46,15 +53,13 @@
 			<div class="discrptions_button buddonjdk {{$product->id}} ">
 	
 
-		   <!--<button  type="button" id="{{$product->id}}" onclick="showAddToCartModals(this)" class="btn cart active">
-							  <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-							  <span class="name">Add to cart</span> 
-							  </button>--->
 							 
 							  <input type="hidden" value="{{$product->id}}" class="prod_id">
 								<input type="hidden" value="{{ $price }}" class="prod_price">
+					@if($qty>=1)
 							  <button id="btn1" type="button" class="btn cart active cart_buttons3 addToCartUButton"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="name">Add to cart</span> </button>
                               
+							  
 							  <div class="cart-add cart-add3 products_list ">
                                  <div class="input-group quantity_input mb-0">
                                      <div class="input-group w-auto justify-content-end align-items-center packageadd">
@@ -66,6 +71,10 @@
                                     </div>
                                  </div>
                               </div>
+					@else
+
+						<button type="button" class="btn bg-secondary"><span class="name">Out of Stock</span> </button>
+					@endif
 						
                            </div>
 

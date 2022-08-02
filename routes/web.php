@@ -14,7 +14,51 @@
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\StaticController;
 //demo
+
+//new and blog page leave kiya hal filal
+
+Route::get('/advertise', 'StaticController@advertise')->name('frontend.advertise');
+Route::get('/enquiry', 'StaticController@enquiry')->name('frontend.enquiry');
+Route::get('/become-seller', 'StaticController@seller')->name('frontend.selller');
+Route::get('/help-center', 'StaticController@helpcenter')->name('frontend.helpcenter');
+Route::get('/appointment', 'StaticController@appointment')->name('frontend.appointment');
+Route::get('/about-us', 'StaticController@aboutus')->name('frontend.aboutus');
+Route::get('/residentilal', 'StaticController@residentilal')->name('frontend.residentilal');
+Route::get('/commercial', 'StaticController@commercial')->name('frontend.commercial');
+Route::get('/architect', 'StaticController@architect')->name('frontend.architect');
+Route::get('/interior-exterior', 'StaticController@interior')->name('frontend.interior');
+Route::get('/building', 'StaticController@building')->name('frontend.building');
+Route::get('/blog', 'StaticController@blog')->name('frontend.blog');
+Route::get('/news-media', 'StaticController@news')->name('frontend.news');
+Route::get('/talk-to', 'StaticController@talkto')->name('frontend.talk');
+Route::get('/plumber-electrician', 'StaticController@plumber')->name('frontend.plumber');
+Route::get('/sales-partner', 'StaticController@salespartner')->name('frontend.sales');
+Route::get('/material-supplier', 'StaticController@material')->name('frontend.material');
+Route::get('/labour-suppllier', 'StaticController@labour')->name('frontend.labour');
+Route::get('/engineer-architect-associates', 'StaticController@engineerarchitect')->name('frontend.engineer');
+Route::get('/career', 'StaticController@career')->name('frontend.career');
+Route::get('/contact-us', 'StaticController@contact')->name('frontend.contact');
+
+
+
+
+// form route starts from here
+Route::post('addinteriorformdata', [StaticController::class,'addformdata']);
+Route::post('submitenquiryform', [StaticController::class,'addenquiryformdata']);
+Route::post('submitcareerform', [StaticController::class,'addcareerformdata']);
+
+//same route for every form 
+
+
+//route for career form
+//Route::post('addcareerformdata', [StaticController::class,'addcareerformdata']);
+
+
+
+
+
 Route::get('/demo/cron_1', 'DemoController@cron_1');
 Route::get('/demo/cron_2', 'DemoController@cron_2');
 Route::get('/convert_assets', 'DemoController@convert_assets');
@@ -132,6 +176,7 @@ Route::get('/cart', 'CartController@index')->name('cart');
 
 Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
 Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart');
+Route::post('/cart/buyNow', 'CartController@buyNow')->name('cart.buyNow');
 Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 Route::post('/cart/updateCartPlus', 'CartController@updateCartPlus')->name('cart.updateCartPlus');
