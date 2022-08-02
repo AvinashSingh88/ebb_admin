@@ -520,15 +520,24 @@ $('a.button.secondary.play').click(function () {
 $(".menulocationds5").hover(function () {
 	$('.menulocationds5 .product_submenu').css("opacity", "1");
 	$('.menulocationds5 .product_submenu').css("display", "block");
+	$('.top_ul').css("display", "none");	
 }, function () {
 	$('.menulocationds5 .product_submenu').css("display", "none");
 	$('.menulocationds5 .product_submenu').css("opacity", "0");
+});
+
+$(".more_tabs").hover(function () {
+	$('.top_ul').css("display", "none");	
+});
+$(".home").hover(function () {
+	$('.top_ul').css("display", "none");	
 });
 
 
 $(".menulocationds1").hover(function () {
 	$('.menulocationds1 .megamenu1').css("opacity", "1");
 	$('.menulocationds1 .megamenu1').css("display", "block");
+	$('.top_ul').css("display", "none");
 }, function () {
 	$('.menulocationds1 .megamenu1').css("display", "none");
 	$('.menulocationds1 .megamenu1').css("opacity", "0");
@@ -540,6 +549,7 @@ $(".menulocationds1").hover(function () {
 $(".menulocationds2").hover(function () {
 	$('.menulocationds2 .megamenu2').css("opacity", "1");
 	$('.menulocationds2 .megamenu2').css("display", "block");
+	$('.top_ul').css("display", "none");
 }, function () {
 	$('.menulocationds2 .megamenu2').css("display", "none");
 	$('.menulocationds2 .megamenu2').css("opacity", "0");
@@ -551,6 +561,7 @@ $(".menulocationds2").hover(function () {
 $(".menulocationds3").hover(function () {
 	$('.menulocationds3 .megamenu3').css("opacity", "1");
 	$('.menulocationds3 .megamenu3').css("display", "block");
+	$('.top_ul').css("display", "none");
 }, function () {
 	$('.menulocationds3 .megamenu3').css("display", "none");
 	$('.menulocationds3 .megamenu3').css("opacity", "0");
@@ -562,6 +573,7 @@ $(".menulocationds3").hover(function () {
 $(".menulocationds4").hover(function () {
 	$('.menulocationds4 .megamenu4').css("opacity", "1");
 	$('.menulocationds4 .megamenu4').css("display", "block");
+	$('.top_ul').css("display", "none");
 }, function () {
 	$('.menulocationds4 .megamenu4').css("display", "none");
 	$('.menulocationds4 .megamenu4').css("opacity", "0");
@@ -1886,8 +1898,76 @@ $(".megamenusubs li").hover(function() {
 	$(this).children(".megamenusubs231").show();
 });
 
+$(".departmentdks").hover(function() {
+	$(".megamenusubs li:first-child").addClass("orange_active");
+});
+
 $(".megamenusubs li:first-child").addClass("orange_active");
 
 
+$(".structural-material-d07p4 .megamenusubs").hover(function() {
+	$(".departmentdks .structural-material-d07p4").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});	
 
+$(".plumbing-ncytr .megamenusubs").hover(function() {
+	$(".departmentdks .plumbing-ncytr").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".electricals-kkcmg .megamenusubs").hover(function() {
+	$(".departmentdks .electricals-kkcmg").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".sanitary--bathrobes-ainya .megamenusubs").hover(function() {
+	$(".departmentdks .sanitary--bathrobes-ainya").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".home-appliances--furniture-5juan .megamenusubs").hover(function() {
+	$(".departmentdks .home-appliances--furniture-5juan").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".paints--surface-care-mgvvo .megamenusubs").hover(function() {
+	$(".departmentdks .paints--surface-care-mgvvo").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".wooden--hardware-tools-brcet .megamenusubs").hover(function() {
+	$(".departmentdks .wooden--hardware-tools-brcet").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".kitchen-pmhdd .megamenusubs").hover(function() {
+	$(".departmentdks .kitchen-pmhdd").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".tiles--floorings-eilug .megamenusubs").hover(function() {
+	$(".departmentdks .tiles--floorings-eilug").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".smart-home-z0cd4 .megamenusubs").hover(function() {
+	$(".departmentdks .smart-home-z0cd4").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
+
+$(".all-other-appliances-61gfq .megamenusubs").hover(function() {
+	$(".departmentdks .all-other-appliances-61gfq").addClass("firstCatnav");
+}, function () {
+	$(".departmentdks li").removeClass("firstCatnav");
+});
 //$( "li" ).first().addClass( "orange_active" );

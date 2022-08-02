@@ -276,6 +276,9 @@
                                           }, function() {
                                              $('.top_ul .top-megamenu.web-mega').css("display", "none");
                                           });
+										  
+										  								 
+										  
                                        </script>
                                        @endforeach                                       
                                       
@@ -289,7 +292,7 @@
                                           <!-- mega menu content start here -->
                                           <div class="megamenu megamenu2" style="background: center top rgb(255, 255, 255); display:block ; opacity:1;">
                                              <div class="row posrel">
-                                                <div class="col-md-8 megamenuoverflow">
+                                                <div class="col-md-7 megamenuoverflow">
                                                    <ul class="megamenusubs">
                                                       @php
                                                          $i=0;
@@ -305,7 +308,10 @@
                                                             </a>
                                                               
                                                             <ul class="megamenusubs231">
-                                                            <span class="morein">More In Cement</span>
+                                                            <span class="morein">
+                                                     More In Cement
+                                                     <!--{{ \App\Models\Category::find($first_level_id)->getTranslation('name') }} -->
+                                                            </span>
                                                                @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($first_level_id) as $key => $second_level_id)                                                                   
                                                                   <li>     
                                                                      @php
@@ -334,7 +340,7 @@
                                                    </ul>
                                                 </div>
 
-                                                <div class="col-md-4">
+                                                <div class="col-md-5">
                                                    <div class="divcalimmega">
                                                       <h3>Top Brands</h3>
                                                       <ul class="brand-menus">
