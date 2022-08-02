@@ -53,14 +53,14 @@
         <link rel="stylesheet" href="{{static_asset('assets_web/css/slick.css')}}" />
         <link rel="stylesheet" href="{{static_asset('assets_web/css/owl.theme.default.css')}}" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{static_asset('assets_web/css/reset.css')}}" /> 
-        <link rel="stylesheet" href="{{static_asset('assets_web/css/jquery-ui.css')}}" /> 
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/reset.css')}}" />
+        <link rel="stylesheet" href="{{static_asset('assets_web/css/jquery-ui.css')}}" />
         <link href="{{static_asset('assets_web/css/style.css')}}" media="all" rel="stylesheet" type="text/css" />
-      
+
    <script src="{{static_asset('assets_web/js/jquery.min.js')}}" type="text/javascript"></script>
    <script src="{{static_asset('assets_web/js/jquery-3.6.0.js')}}" type="text/javascript"></script>
    <script src="{{static_asset('assets_web/js/jquery-ui.js')}}" type="text/javascript"></script>
-   
+
    <script>
     $(document).ready(function() {
         toastr.options.timeOut = 5000;
@@ -77,7 +77,7 @@
       @if (get_setting('google_analytics') == 1)
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('TRACKING_ID') }}"></script>
-  
+
       <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -85,7 +85,7 @@
           gtag('config', '{{ env('TRACKING_ID') }}');
       </script>
   @endif
-  
+
   @if (get_setting('facebook_pixel') == 1)
       <!-- Facebook Pixel Code -->
       <script>
@@ -105,11 +105,11 @@
       </noscript>
       <!-- End Facebook Pixel Code -->
   @endif
-  
+
   @php
       echo get_setting('header_script');
   @endphp
- 
+
    </head>
    <body>
 		@include('frontend.header')
@@ -134,15 +134,15 @@
     </div>
 
     @yield('modal')
-	
+
 	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript">
-		
+
 		// function removeFromCartView(e, key){
             // e.preventDefault();
             // removeFromCart(key);
         // }
-		
+
 		// function removeFromCart(key){
             // $.post('{{ route('cart.removeFromCart') }}', {
                 // &_token  : '&_token={{csrf_token()}}',
@@ -161,9 +161,9 @@
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
-			var quantity = $(this).closest('.product_data').find('.input-number').val();			
+			var quantity = $(this).closest('.product_data').find('.input-number').val();
 			var id = $(this).closest('.product_data').find('.prod_id').val();
-				
+
 			 $.ajax({
 				url: '{{route('cart.updateCartPlus')}}',
 				method: "POST",
@@ -171,7 +171,7 @@
                        'quantity':quantity,
                        'id':id,
                     },
-					
+
 				success: function (response) {
 					toastr.info(response.status);
 					updateNavCart(response.nav_cart_view,response.cart_count,response.sum_cart_count);
@@ -180,7 +180,7 @@
 				}
 			});
 		});
-        
+
     $(".request-call-back").click(function(e){
 		e.preventDefault();
 		 // var data = $(this).serialize();
@@ -199,7 +199,7 @@
            url:url,
            method:'POST',
             data:{
-                  name:name, 
+                  name:name,
                   mobile:mobile,
                   email:email,
                 },
@@ -213,20 +213,20 @@
            error:function(error){
               console.log(error)
            }
-		
+
         });
     }
     else{
         // alert('Required');
-        document.getElementById("error_message").innerHTML="All fields are Required."; 
+        document.getElementById("error_message").innerHTML="All fields are Required.";
     }
 	});
-	
+
 	 $(".loginAgain").click(function(e){
 		e.preventDefault();
-		  
+
 		var login_password =  $('#login_password').val();
-         
+
     if(login_password!=='')
         {
         var url = '{{ url('checkLogin') }}';
@@ -239,23 +239,23 @@
            url:url,
            method:'POST',
             data:{
-                  login_password:login_password, 
+                  login_password:login_password,
 				},
            success:function(response){
             console.log(response.status);
 			  document.getElementById("login_error").innerHTML="";
 				$('#login_password').val('');
-                
+
 				 if(response.success==true){
 					 setTimeout(function() {
                         /*Redirect to payment page after 1 sec*/
                         window.location.href ='{{url('manage-payments')}}';
-                    }, 1000) 
+                    }, 1000)
                     console.log(response);
 				 }
 				 else if(response.status==false){
 					 /*setTimeout(function() {
-                       // Redirect to payment page after 1 sec 
+                       // Redirect to payment page after 1 sec
                         window.location.href ='{{url('')}}';
                     }, 1000) */
 					document.getElementById("login_error").innerHTML="Login Failed, pls check password";
@@ -263,17 +263,17 @@
            },
            error:function(error){
               console.log(error)
-			  
+
            }
-		
+
         });
     }
     else{
         // alert('Required');
-        document.getElementById("login_error").innerHTML="Field Required."; 
+        document.getElementById("login_error").innerHTML="Field Required.";
     }
 	});
-		
+
         $(document).ready(function() {
             $.ajax({
                 type: "GET",
@@ -282,14 +282,14 @@
                     $('#catewisebrands').html(response);
                 }
             });
-            
+
         });
 
 
 
 
 		 function showAddToCartModals(showAddToCartModals){
-        $('#addToCart').modal('show'); 
+        $('#addToCart').modal('show');
         let id = $(showAddToCartModals).attr('id');
         $('#userid').html(id);
         $.ajax({
@@ -303,11 +303,11 @@
             }
         })
     }
-		 
-    
+
+
 		function showCategoryWiseBrand(showCategoryWiseBrand)
     {
-		
+
         let address_id = $(showCategoryWiseBrand).attr('id');
         let datas = "";
         $.ajax({
@@ -315,37 +315,37 @@
             type: 'post',
             data:'address_id='+address_id+'&_token={{csrf_token()}}',
             success:function(respons){
-				
+
                 if (respons == '') {
-                        
+
                     } else{
-						
+
                         //  console.log(respons);
                         $.each(respons, function (i) {
                             datas += '<div class="item"><div class="product-box"><div class="box-elech"><img src="'+respons[i].brand_id+'" alt=""></div><div class="pro_img_mens"><img src="'+respons[i].image+'" alt=""></div><div class="discrptions"><h5>  '+respons[i].title+'</h5><h6 id="title"></h6></div><div class="discrptions_button"><h5><a href="product-detail.php">View Detail-cat-'+respons[i].category_id+'</a></h5></div></div></div>';
 
                              console.log(datas);
-							
-                          
-                        }); 
-						              
+
+
+                        });
+
                     }
-				$("#cat-list .catbrandslistss").html(datas); 	
+				$("#cat-list .catbrandslistss").html(datas);
                 $('#onloadactivecatbrand').addClass('d-none');
             }
         })
     }
-	
-	
-	
+
+
+
     $(document).ready(function() {
 	    getVariantPrice();
-		
+
     });
-    
+
 $('#option-choice-form input').on('change', function(){
             getVariantPrice();
-			
+
         });
 
         function getVariantPrice(){
@@ -377,7 +377,7 @@ $('#option-choice-form input').on('change', function(){
                            $('.addtocartbut').addClass('d-none');
                            $('.out-of-stock').removeClass('d-none');
                            // $('.ga-producttot').addClass('d-none');
-						   
+
                        }
                        else{
                            $('.bulk-order-buttons').removeClass('d-none');
@@ -409,7 +409,7 @@ $('#option-choice-form input').on('change', function(){
             $('#cart_items').html(view);
 		    $('.cart-amount').html(amount);
         }
-		
+
 		function addToCart(){
             if(checkAddToCartValidity()) {
 				$.ajaxSetup({
@@ -437,7 +437,7 @@ $('#option-choice-form input').on('change', function(){
                 AIZ.plugins.notify('warning', "{{ translate('Please choose all the options') }}");
             }
         }
-		
+
 		function buyNow(){
             if(checkAddToCartValidity()) {
 				$.ajaxSetup({
@@ -459,7 +459,7 @@ $('#option-choice-form input').on('change', function(){
 					   setTimeout(function() {
                         /*Redirect to payment page after 1 sec*/
                         window.location.href ='{{url('cart')}}';
-                    }, 1000) 
+                    }, 1000)
 					   toastr.info(data.status);
                        updateNavCart(data.nav_cart_view,data.cart_count,data.sum_cart_count);
                     }
@@ -472,13 +472,13 @@ $('#option-choice-form input').on('change', function(){
 
         $(document).ready(function() {
 			loadcart();
-			
+
         function loadcart(){
             $.ajax({
             method:"GET",
             url: '{{url('load-cart-data')}}',
             success: function (response) {
-                //   console.log(response.count);  
+                //   console.log(response.count);
                 $('.cart_count').html('');
                 $('.cart_count').html(response.count);
                 $('.cart_amount').html('');
@@ -486,8 +486,8 @@ $('#option-choice-form input').on('change', function(){
                 }
             });
         }
-		
-		$('.delete-cart-item').click(function (e) { 
+
+		$('.delete-cart-item').click(function (e) {
             e.preventDefault();
             $.ajaxSetup({
                     headers: {
@@ -495,7 +495,7 @@ $('#option-choice-form input').on('change', function(){
                     }
                 });
             var id =  $(this).closest('.product_data').find('.prod_id').val();
-             
+
             $.ajax({
                 method: "POST",
                 url: '{{ route('cart.removeFromCart') }}',
@@ -509,7 +509,7 @@ $('#option-choice-form input').on('change', function(){
                 }
             });
         });
-		
+
 		$(document).on('click', '.button-plus', function(e) {
 			e.preventDefault();
 				$.ajaxSetup({
@@ -517,8 +517,8 @@ $('#option-choice-form input').on('change', function(){
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
-			var quantity = $(this).closest('.product_data').find('.qty').val();			
-			var id = $(this).closest('.product_data').find('.prod_id').val();			
+			var quantity = $(this).closest('.product_data').find('.qty').val();
+			var id = $(this).closest('.product_data').find('.prod_id').val();
 			 $.ajax({
 				url: '{{route('cart.updateQuantity')}}',
 				method: "POST",
@@ -543,8 +543,8 @@ $('#option-choice-form input').on('change', function(){
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					}
 				});
-			var quantity = $(this).closest('.product_data').find('.qty').val();			
-			var id = $(this).closest('.product_data').find('.prod_id').val();			
+			var quantity = $(this).closest('.product_data').find('.qty').val();
+			var id = $(this).closest('.product_data').find('.prod_id').val();
 			 $.ajax({
 				url: '{{route('cart.updateQuantity')}}',
 				method: "POST",
@@ -561,12 +561,12 @@ $('#option-choice-form input').on('change', function(){
 				}
 			});
 		});
-		
-        
-		
-		
 
-		
+
+
+
+
+
             $('.category-nav-element').each(function(i, el) {
                 $(el).on('mouseover', function(){
                     if(!$(el).find('.sub-cat-menu').hasClass('loaded')){
@@ -603,13 +603,13 @@ $('#option-choice-form input').on('change', function(){
                     });
                 });
             }
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
         });
 
         $('#search').on('keyup', function(){
@@ -648,12 +648,12 @@ $('#option-choice-form input').on('change', function(){
             }
         }
 		//bulk add carts
-		
+
 $('.bulkaddcart').click(function(){
   var product_id = [];
   var product_price = [];
   var action = "add";
-  
+
   $('.select_product').each(function(){
 	   if($(this).prop('checked') == true)
 	   {
@@ -675,7 +675,7 @@ $('.bulkaddcart').click(function(){
     data:{product_id:product_id, product_price:product_price, action:action},
     success:function(data)
     {
-     
+
 	  toastr.info(data.status);
 	  updateNavCart(data.nav_cart_view,data.cart_count,data.sum_cart_count,data.bought_together);
 	  $('#product-box').html(data.product_box_view);
@@ -688,8 +688,8 @@ $('.bulkaddcart').click(function(){
   }
 
  });
- 
-		
+
+
 		function updateNavCart(view,count,amount,bought_together){
             $('.cart-count').html(count);
             $('#cart_items').html(view);
@@ -697,10 +697,10 @@ $('.bulkaddcart').click(function(){
 			$('#bought_together').html(bought_together);
         }
     </script>
-  
 
-  
-   
+
+
+
     <script src="{{static_asset('assets_web/js/password_check.js')}}"></script>
     <script src="{{static_asset('assets_web/js/bootstrap.mins.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -716,8 +716,8 @@ $('.bulkaddcart').click(function(){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
     <script src="{{static_asset('assets_web/js/jssor.slider-28.1.0.min.js')}}" type="text/javascript"></script>
     <script src="{{static_asset('assets_web/js/scripts.js')}}" type="text/javascript"></script>
-   
- 
+
+
    @yield('script')
 
 <script>
@@ -757,7 +757,7 @@ lowerSlider.oninput = function () {
 
 
 
-	
+
 </script>
     </body>
      </html>
