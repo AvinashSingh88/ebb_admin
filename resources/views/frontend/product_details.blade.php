@@ -90,6 +90,9 @@
                            </div>
                         </div>
                      </article>
+                     @php
+                     $proprice = $detailedProduct->unit_price - ($detailedProduct->unit_price * $detailedProduct->discount) / 100;
+                @endphp
                      <article  class="content-entry products_offers open">
                         <h4 class="article-title products_offersbto">Bought together <i
                            class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
@@ -123,9 +126,7 @@
                                              @if ($detailedProduct->discount!=null)
                                                 <span class="fnt12">{{$detailedProduct->discount}}% Off</span>
                                              @endif
-                                          @php
-                                             $proprice = $detailedProduct->unit_price - ($detailedProduct->unit_price * $detailedProduct->discount) / 100;
-                                        @endphp
+                                         
                                     </div>
                                     
 									<label><input type="checkbox" checked class="select_product" data-product_id="{{$detailedProduct->id}}" data-product_price="{{$proprice}}" value=""></label>
