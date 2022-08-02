@@ -1,12 +1,12 @@
 //custom jquery method for toggle attr
-$.fn.toggleAttr = function (attr, attr1, attr2) {
-    return this.each(function () {
+$.fn.toggleAttr = function(attr, attr1, attr2) {
+    return this.each(function() {
         var self = $(this);
         if (self.attr(attr) == attr1) self.attr(attr, attr2);
         else self.attr(attr, attr1);
     });
 };
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
@@ -26,8 +26,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             next_page_url: null,
             prev_page_url: null,
         },
-        removeInputValue: function (id, array, elem) {
-            var selected = array.filter(function (item) {
+        removeInputValue: function(id, array, elem) {
+            var selected = array.filter(function(item) {
                 return item !== id;
             });
             if (selected.length > 0) {
@@ -39,8 +39,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             }
             $(elem).find(".selected-files").val(selected);
         },
-        removeAttachment: function () {
-            $(document).on("click",'.remove-attachment', function () {
+        removeAttachment: function() {
+            $(document).on("click", '.remove-attachment', function() {
                 var value = $(this)
                     .closest(".file-preview-item")
                     .data("id");
@@ -56,21 +56,21 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     value,
                     selected,
                     $(this)
-                        .closest(".file-preview")
-                        .prev('[data-toggle="aizuploader"]')
+                    .closest(".file-preview")
+                    .prev('[data-toggle="aizuploader"]')
                 );
                 $(this).closest(".file-preview-item").remove();
             });
         },
-        deleteUploaderFile: function () {
-            $(".aiz-uploader-delete").each(function () {
-                $(this).on("click", function (e) {
+        deleteUploaderFile: function() {
+            $(".aiz-uploader-delete").each(function() {
+                $(this).on("click", function(e) {
                     e.preventDefault();
                     var id = $(this).data("id");
                     AIZ.uploader.data.clickedForDelete = id;
                     $("#aizUploaderDelete").modal("show");
 
-                    $(".aiz-uploader-confirmed-delete").on("click", function (
+                    $(".aiz-uploader-confirmed-delete").on("click", function(
                         e
                     ) {
                         e.preventDefault();
@@ -79,13 +79,12 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                 AIZ.uploader.data.allFiles[
                                     AIZ.uploader.data.allFiles.findIndex(
                                         (x) =>
-                                            x.id ===
-                                            AIZ.uploader.data.clickedForDelete
+                                        x.id ===
+                                        AIZ.uploader.data.clickedForDelete
                                     )
                                 ];
                             $.ajax({
-                                url:
-                                    AIZ.data.appUrl +
+                                url: AIZ.data.appUrl +
                                     "/aiz-uploader/destroy/" +
                                     AIZ.uploader.data.clickedForDelete,
                                 type: "DELETE",
@@ -95,18 +94,18 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                     _method: "DELETE",
                                     _token: AIZ.data.csrf,
                                 },
-                                success: function () {
+                                success: function() {
                                     AIZ.uploader.data.selectedFiles = AIZ.uploader.data.selectedFiles.filter(
-                                        function (item) {
+                                        function(item) {
                                             return (
                                                 item !==
                                                 AIZ.uploader.data
-                                                    .clickedForDelete
+                                                .clickedForDelete
                                             );
                                         }
                                     );
                                     AIZ.uploader.data.selectedFilesObject = AIZ.uploader.data.selectedFilesObject.filter(
-                                        function (item) {
+                                        function(item) {
                                             return (
                                                 item !== clickedForDeleteObject
                                             );
@@ -115,7 +114,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                     AIZ.uploader.updateUploaderSelected();
                                     AIZ.uploader.getAllUploads(
                                         AIZ.data.appUrl +
-                                            "/aiz-uploader/get_uploaded_files"
+                                        "/aiz-uploader/get_uploaded_files"
                                     );
                                     AIZ.uploader.data.clickedForDelete = null;
                                     $("#aizUploaderDelete").modal("hide");
@@ -126,10 +125,10 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             });
         },
-        uploadSelect: function () {
-            $(".aiz-uploader-select").each(function () {
+        uploadSelect: function() {
+            $(".aiz-uploader-select").each(function() {
                 var elem = $(this);
-                elem.on("click", function (e) {
+                elem.on("click", function(e) {
                     var value = $(this).data("value");
                     var valueObject =
                         AIZ.uploader.data.allFiles[
@@ -158,12 +157,12 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         AIZ.uploader.data.selectedFilesObject.push(valueObject);
                     } else {
                         AIZ.uploader.data.selectedFiles = AIZ.uploader.data.selectedFiles.filter(
-                            function (item) {
+                            function(item) {
                                 return item !== value;
                             }
                         );
                         AIZ.uploader.data.selectedFilesObject = AIZ.uploader.data.selectedFilesObject.filter(
-                            function (item) {
+                            function(item) {
                                 return item !== valueObject;
                             }
                         );
@@ -173,7 +172,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             });
         },
-        updateFileHtml: function (array) {
+        updateFileHtml: function(array) {
             var fileText = "";
             if (array.length > 1) {
                 var fileText = AIZ.local.files_selected;
@@ -182,13 +181,13 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             }
             return array.length + " " + fileText;
         },
-        updateUploaderSelected: function () {
+        updateUploaderSelected: function() {
             $(".aiz-uploader-selected").html(
                 AIZ.uploader.updateFileHtml(AIZ.uploader.data.selectedFiles)
             );
         },
-        clearUploaderSelected: function () {
-            $(".aiz-uploader-selected-clear").on("click", function () {
+        clearUploaderSelected: function() {
+            $(".aiz-uploader-selected-clear").on("click", function() {
                 AIZ.uploader.data.selectedFiles = [];
                 AIZ.uploader.addSelectedValue();
                 AIZ.uploader.addHiddenValue();
@@ -197,7 +196,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 AIZ.uploader.updateUploaderFiles();
             });
         },
-        resetFilter: function () {
+        resetFilter: function() {
             $('[name="aiz-uploader-search"]').val("");
             $('[name="aiz-show-selected"]').prop("checked", false);
             $('[name="aiz-uploader-sort"] option[value=newest]').prop(
@@ -205,7 +204,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 true
             );
         },
-        getAllUploads: function (url, search_key = null, sort_key = null) {
+        getAllUploads: function(url, search_key = null, sort_key = null) {
             $(".aiz-uploader-all").html(
                 '<div class="align-items-center d-flex h-100 justify-content-center w-100"><div class="spinner-border" role="status"></div></div>'
             );
@@ -215,13 +214,12 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             }
             if (sort_key != null && sort_key.length > 0) {
                 params["sort"] = sort_key;
-            }
-            else{
+            } else {
                 params["sort"] = 'newest';
             }
-            $.get(url, params, function (data, status) {
+            $.get(url, params, function(data, status) {
                 //console.log(data);
-                if(typeof data == 'string'){
+                if (typeof data == 'string') {
                     data = JSON.parse(data);
                 }
                 AIZ.uploader.data.allFiles = data.data;
@@ -244,8 +242,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        showSelectedFiles: function () {
-            $('[name="aiz-show-selected"]').on("change", function () {
+        showSelectedFiles: function() {
+            $('[name="aiz-show-selected"]').on("change", function() {
                 if ($(this).is(":checked")) {
                     // for (
                     //     var i = 0;
@@ -281,8 +279,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 AIZ.uploader.updateUploaderFiles();
             });
         },
-        searchUploaderFiles: function () {
-            $('[name="aiz-uploader-search"]').on("keyup", function () {
+        searchUploaderFiles: function() {
+            $('[name="aiz-uploader-search"]').on("keyup", function() {
                 var value = $(this).val();
                 AIZ.uploader.getAllUploads(
                     AIZ.data.appUrl + "/aiz-uploader/get_uploaded_files",
@@ -315,8 +313,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 //AIZ.uploader.updateUploaderFiles();
             });
         },
-        sortUploaderFiles: function () {
-            $('[name="aiz-uploader-sort"]').on("change", function () {
+        sortUploaderFiles: function() {
+            $('[name="aiz-uploader-sort"]').on("change", function() {
                 var value = $(this).val();
                 AIZ.uploader.getAllUploads(
                     AIZ.data.appUrl + "/aiz-uploader/get_uploaded_files",
@@ -356,41 +354,39 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 //AIZ.uploader.updateUploaderFiles();
             });
         },
-        addSelectedValue: function () {
+        addSelectedValue: function() {
             for (var i = 0; i < AIZ.uploader.data.allFiles.length; i++) {
-                if (
-                    !AIZ.uploader.data.selectedFiles.includes(
+                if (!AIZ.uploader.data.selectedFiles.includes(
                         AIZ.uploader.data.allFiles[i].id
-                    )
-                ) {
+                    )) {
                     AIZ.uploader.data.allFiles[i].selected = false;
                 } else {
                     AIZ.uploader.data.allFiles[i].selected = true;
                 }
             }
         },
-        addHiddenValue: function () {
+        addHiddenValue: function() {
             for (var i = 0; i < AIZ.uploader.data.allFiles.length; i++) {
                 AIZ.uploader.data.allFiles[i].aria_hidden = false;
             }
         },
-        allowedFileType: function () {
+        allowedFileType: function() {
             if (AIZ.uploader.data.type !== "all") {
                 AIZ.uploader.data.allFiles = AIZ.uploader.data.allFiles.filter(
-                    function (item) {
+                    function(item) {
                         return item.type === AIZ.uploader.data.type;
                     }
                 );
             }
         },
-        updateUploaderFiles: function () {
+        updateUploaderFiles: function() {
             $(".aiz-uploader-all").html(
                 '<div class="align-items-center d-flex h-100 justify-content-center w-100"><div class="spinner-border" role="status"></div></div>'
             );
 
             var data = AIZ.uploader.data.allFiles;
 
-            setTimeout(function () {
+            setTimeout(function() {
                 $(".aiz-uploader-all").html(null);
 
                 if (data.length > 0) {
@@ -469,16 +465,15 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 AIZ.uploader.deleteUploaderFile();
             }, 300);
         },
-        inputSelectPreviewGenerate: function (elem) {
+        inputSelectPreviewGenerate: function(elem) {
             elem.find(".selected-files").val(AIZ.uploader.data.selectedFiles);
             elem.next(".file-preview").html(null);
 
             if (AIZ.uploader.data.selectedFiles.length > 0) {
 
                 $.post(
-                    AIZ.data.appUrl + "/aiz-uploader/get_file_by_ids",
-                    { _token: AIZ.data.csrf, ids: AIZ.uploader.data.selectedFiles.toString() },
-                    function (data) {
+                    AIZ.data.appUrl + "/aiz-uploader/get_file_by_ids", { _token: AIZ.data.csrf, ids: AIZ.uploader.data.selectedFiles.toString() },
+                    function(data) {
 
                         elem.next(".file-preview").html(null);
 
@@ -487,9 +482,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                 AIZ.uploader.updateFileHtml(data)
                             );
                             for (
-                                var i = 0;
-                                i < data.length;
-                                i++
+                                var i = 0; i < data.length; i++
                             ) {
                                 var thumb = "";
                                 if (data[i].type === "image") {
@@ -539,7 +532,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         } else {
                             elem.find(".file-amount").html(AIZ.local.choose_file);
                         }
-                });
+                    });
             } else {
                 elem.find(".file-amount").html(AIZ.local.choose_file);
             }
@@ -606,12 +599,10 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             //     elem.find(".file-amount").html("Choose File");
             // }
         },
-        editorImageGenerate: function (elem) {
+        editorImageGenerate: function(elem) {
             if (AIZ.uploader.data.selectedFiles.length > 0) {
                 for (
-                    var i = 0;
-                    i < AIZ.uploader.data.selectedFiles.length;
-                    i++
+                    var i = 0; i < AIZ.uploader.data.selectedFiles.length; i++
                 ) {
                     var index = AIZ.uploader.data.allFiles.findIndex(
                         (x) => x.id === AIZ.uploader.data.selectedFiles[i]
@@ -629,13 +620,13 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             }
         },
-        dismissUploader: function () {
-            $("#aizUploaderModal").on("hidden.bs.modal", function () {
+        dismissUploader: function() {
+            $("#aizUploaderModal").on("hidden.bs.modal", function() {
                 $(".aiz-uploader-backdrop").remove();
                 $("#aizUploaderModal").remove();
             });
         },
-        trigger: function (
+        trigger: function(
             elem = null,
             from = "",
             type = "all",
@@ -662,15 +653,14 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
 
             if (multiple) {
                 AIZ.uploader.data.multiple = true;
-            }else{
+            } else {
                 AIZ.uploader.data.multiple = false;
             }
 
             // setTimeout(function() {
             $.post(
-                AIZ.data.appUrl + "/aiz-uploader",
-                { _token: AIZ.data.csrf },
-                function (data) {
+                AIZ.data.appUrl + "/aiz-uploader", { _token: AIZ.data.csrf },
+                function(data) {
                     $("body").append(data);
                     $("#aizUploaderModal").modal("show");
                     AIZ.plugins.aizUppy();
@@ -686,7 +676,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     AIZ.uploader.showSelectedFiles();
                     AIZ.uploader.dismissUploader();
 
-                    $("#uploader_next_btn").on("click", function () {
+                    $("#uploader_next_btn").on("click", function() {
                         if (AIZ.uploader.data.next_page_url != null) {
                             $('[name="aiz-show-selected"]').prop(
                                 "checked",
@@ -698,7 +688,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         }
                     });
 
-                    $("#uploader_prev_btn").on("click", function () {
+                    $("#uploader_prev_btn").on("click", function() {
                         if (AIZ.uploader.data.prev_page_url != null) {
                             $('[name="aiz-show-selected"]').prop(
                                 "checked",
@@ -710,13 +700,13 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         }
                     });
 
-                    $(".aiz-uploader-search i").on("click", function () {
+                    $(".aiz-uploader-search i").on("click", function() {
                         $(this).parent().toggleClass("open");
                     });
 
                     $('[data-toggle="aizUploaderAddSelected"]').on(
                         "click",
-                        function () {
+                        function() {
                             if (from === "input") {
                                 AIZ.uploader.inputSelectPreviewGenerate(elem);
                             } else if (from === "direct") {
@@ -729,8 +719,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             );
             // }, 50);
         },
-        initForInput: function () {
-            $(document).on("click",'[data-toggle="aizuploader"]', function (e) {
+        initForInput: function() {
+            $(document).on("click", '[data-toggle="aizuploader"]', function(e) {
                 if (e.detail === 1) {
                     var elem = $(this);
                     var multiple = elem.data("multiple");
@@ -739,9 +729,9 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
 
                     multiple = !multiple ? "" : multiple;
                     type = !type ? "" : type;
-                    oldSelectedFiles = !oldSelectedFiles
-                        ? ""
-                        : oldSelectedFiles;
+                    oldSelectedFiles = !oldSelectedFiles ?
+                        "" :
+                        oldSelectedFiles;
 
                     AIZ.uploader.trigger(
                         this,
@@ -753,15 +743,14 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        previewGenerate: function(){
-            $('[data-toggle="aizuploader"]').each(function () {
+        previewGenerate: function() {
+            $('[data-toggle="aizuploader"]').each(function() {
                 var $this = $(this);
                 var files = $this.find(".selected-files").val();
-                if(files != ""){
+                if (files != "") {
                     $.post(
-                        AIZ.data.appUrl + "/aiz-uploader/get_file_by_ids",
-                        { _token: AIZ.data.csrf, ids: files },
-                        function (data) {
+                        AIZ.data.appUrl + "/aiz-uploader/get_file_by_ids", { _token: AIZ.data.csrf, ids: files },
+                        function(data) {
 
                             $this.next(".file-preview").html(null);
 
@@ -770,9 +759,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                     AIZ.uploader.updateFileHtml(data)
                                 );
                                 for (
-                                    var i = 0;
-                                    i < data.length;
-                                    i++
+                                    var i = 0; i < data.length; i++
                                 ) {
                                     var thumb = "";
                                     if (data[i].type === "image") {
@@ -822,26 +809,26 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                             } else {
                                 $this.find(".file-amount").html(AIZ.local.choose_file);
                             }
-                    });
+                        });
                 }
             });
         }
     };
     AIZ.plugins = {
-        metismenu: function () {
+        metismenu: function() {
             $('[data-toggle="aiz-side-menu"]').metisMenu();
         },
-        bootstrapSelect: function (refresh = "") {
-            $(".aiz-selectpicker").each(function (el) {
+        bootstrapSelect: function(refresh = "") {
+            $(".aiz-selectpicker").each(function(el) {
                 var $this = $(this);
-                if(!$this.parent().hasClass('bootstrap-select')){
+                if (!$this.parent().hasClass('bootstrap-select')) {
                     var selected = $this.data('selected');
-                    if( typeof selected !== 'undefined' ){
+                    if (typeof selected !== 'undefined') {
                         $this.val(selected);
                     }
                     $this.selectpicker({
                         size: 5,
-                        noneSelectedText: AIZ.local.nothing_selected,                     
+                        noneSelectedText: AIZ.local.nothing_selected,
                         virtualScroll: false
                     });
                 }
@@ -853,8 +840,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        tagify: function () {
-            $(".aiz-tag-input").not(".tagify").each(function () {
+        tagify: function() {
+            $(".aiz-tag-input").not(".tagify").each(function() {
                 var $this = $(this);
 
                 var maxTags = $this.data("max-tags");
@@ -877,34 +864,33 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     var callback = '';
                 }
                 if (typeof callback == 'function') {
-                    $this.on('removeTag',function(){
+                    $this.on('removeTag', function() {
                         callback();
                     });
-                    $this.on('add',function(){
+                    $this.on('add', function() {
                         callback();
                     });
                 }
             });
         },
-        textEditor: function () {
-            $(".aiz-text-editor").each(function (el) {
+        textEditor: function() {
+            $(".aiz-text-editor").each(function(el) {
                 var $this = $(this);
                 var buttons = $this.data("buttons");
                 var minHeight = $this.data("min-height");
                 var placeholder = $this.attr("placeholder");
                 var format = $this.data("format");
 
-                buttons = !buttons
-                    ? [
-                          ["font", ["bold", "underline", "italic", "clear"]],
-                          ["para", ["ul", "ol", "paragraph"]],
-                          ["style", ["style"]],
-                          ["color", ["color"]],
-                          ["table", ["table"]],
-                          ["insert", ["link", "picture", "video"]],
-                          ["view", ["fullscreen", "undo", "redo"]],
-                      ]
-                    : buttons;
+                buttons = !buttons ? [
+                        ["font", ["bold", "underline", "italic", "clear"]],
+                        ["para", ["ul", "ol", "paragraph"]],
+                        ["style", ["style"]],
+                        ["color", ["color"]],
+                        ["table", ["table"]],
+                        ["insert", ["link", "picture", "video"]],
+                        ["view", ["fullscreen", "undo", "redo"]],
+                    ] :
+                    buttons;
                 placeholder = !placeholder ? "" : placeholder;
                 minHeight = !minHeight ? 200 : minHeight;
                 format = (typeof format == 'undefined') ? false : format;
@@ -914,11 +900,11 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     placeholder: placeholder,
                     height: minHeight,
                     callbacks: {
-                        onImageUpload: function (data) {
+                        onImageUpload: function(data) {
                             data.pop();
                         },
-                        onPaste: function (e) {
-                            if(format){
+                        onPaste: function(e) {
+                            if (format) {
                                 var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
                                 e.preventDefault();
                                 document.execCommand('insertText', false, bufferText);
@@ -929,17 +915,16 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
 
                 var nativeHtmlBuilderFunc = $this.summernote('module', 'videoDialog').createVideoNode;
 
-                $this.summernote('module', 'videoDialog').createVideoNode =  function(url) 
-                {   
+                $this.summernote('module', 'videoDialog').createVideoNode = function(url) {
                     var wrap = $('<div class="embed-responsive embed-responsive-16by9"></div>');
                     var html = nativeHtmlBuilderFunc(url);
-                        html = $(html).addClass('embed-responsive-item');
+                    html = $(html).addClass('embed-responsive-item');
                     return wrap.append(html)[0];
                 };
             });
         },
-        dateRange: function () {
-            $(".aiz-date-range").each(function () {
+        dateRange: function() {
+            $(".aiz-date-range").each(function() {
                 var $this = $(this);
                 var today = moment().startOf("day");
                 var value = $this.val();
@@ -1001,26 +986,26 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     },
                 });
                 if (single) {
-                    $this.on("apply.daterangepicker", function (ev, picker) {
+                    $this.on("apply.daterangepicker", function(ev, picker) {
                         $this.val(picker.startDate.format(format));
                     });
                 } else {
-                    $this.on("apply.daterangepicker", function (ev, picker) {
+                    $this.on("apply.daterangepicker", function(ev, picker) {
                         $this.val(
                             picker.startDate.format(format) +
-                                separator +
-                                picker.endDate.format(format)
+                            separator +
+                            picker.endDate.format(format)
                         );
                     });
                 }
 
-                $this.on("cancel.daterangepicker", function (ev, picker) {
+                $this.on("cancel.daterangepicker", function(ev, picker) {
                     $this.val("");
                 });
             });
         },
-        timePicker: function () {
-            $(".aiz-time-picker").each(function () {
+        timePicker: function() {
+            $(".aiz-time-picker").each(function() {
                 var $this = $(this);
 
                 var minuteStep = $this.data("minute-step");
@@ -1041,8 +1026,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             });
         },
-        fooTable: function () {
-            $(".aiz-table").each(function () {
+        fooTable: function() {
+            $(".aiz-table").each(function() {
                 var $this = $(this);
 
                 var empty = $this.data("empty");
@@ -1058,7 +1043,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     },
                     cascade: true,
                     on: {
-                        "ready.ft.table": function (e, ft) {
+                        "ready.ft.table": function(e, ft) {
                             AIZ.extra.deleteConfirm();
                             AIZ.plugins.bootstrapSelect("refresh");
                         },
@@ -1067,38 +1052,34 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             });
         },
-        notify: function (type = "dark", message = "") {
-            $.notify(
-                {
-                    // options
-                    message: message,
+        notify: function(type = "dark", message = "") {
+            $.notify({
+                // options
+                message: message,
+            }, {
+                // settings
+                showProgressbar: true,
+                delay: 2500,
+                mouse_over: "pause",
+                placement: {
+                    from: "bottom",
+                    align: "left",
                 },
-                {
-                    // settings
-                    showProgressbar: true,
-                    delay: 2500,
-                    mouse_over: "pause",
-                    placement: {
-                        from: "bottom",
-                        align: "left",
-                    },
-                    animate: {
-                        enter: "animated fadeInUp",
-                        exit: "animated fadeOutDown",
-                    },
-                    type: type,
-                    template:
-                        '<div data-notify="container" class="aiz-notify alert alert-{0}" role="alert">' +
-                        '<button type="button" aria-hidden="true" data-notify="dismiss" class="close"><i class="las la-times"></i></button>' +
-                        '<span data-notify="message">{2}</span>' +
-                        '<div class="progress" data-notify="progressbar">' +
-                        '<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-                        "</div>" +
-                        "</div>",
-                }
-            );
+                animate: {
+                    enter: "animated fadeInUp",
+                    exit: "animated fadeOutDown",
+                },
+                type: type,
+                template: '<div data-notify="container" class="aiz-notify alert alert-{0}" role="alert">' +
+                    '<button type="button" aria-hidden="true" data-notify="dismiss" class="close"><i class="las la-times"></i></button>' +
+                    '<span data-notify="message">{2}</span>' +
+                    '<div class="progress" data-notify="progressbar">' +
+                    '<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                    "</div>" +
+                    "</div>",
+            });
         },
-        aizUppy: function () {
+        aizUppy: function() {
             if ($("#aiz-upload-files").length > 0) {
                 var uppy = Uppy.Core({
                     autoProceed: true,
@@ -1116,7 +1097,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         strings: {
                             addMoreFiles: AIZ.local.add_more_files,
                             addingMoreFiles: AIZ.local.adding_more_files,
-                            dropPaste: AIZ.local.drop_files_here_paste_or+' %{browse}',
+                            dropPaste: AIZ.local.drop_files_here_paste_or + ' %{browse}',
                             browse: AIZ.local.browse,
                             uploadComplete: AIZ.local.upload_complete,
                             uploadPaused: AIZ.local.upload_paused,
@@ -1125,16 +1106,16 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                             retryUpload: AIZ.local.retry_upload,
                             cancelUpload: AIZ.local.cancel_upload,
                             xFilesSelected: {
-                                0: '%{smart_count} '+AIZ.local.file_selected,
-                                1: '%{smart_count} '+AIZ.local.files_selected
+                                0: '%{smart_count} ' + AIZ.local.file_selected,
+                                1: '%{smart_count} ' + AIZ.local.files_selected
                             },
                             uploadingXFiles: {
-                                0: AIZ.local.uploading+' %{smart_count} '+AIZ.local.file,
-                                1: AIZ.local.uploading+' %{smart_count} '+AIZ.local.files
+                                0: AIZ.local.uploading + ' %{smart_count} ' + AIZ.local.file,
+                                1: AIZ.local.uploading + ' %{smart_count} ' + AIZ.local.files
                             },
                             processingXFiles: {
-                                0: AIZ.local.processing+' %{smart_count} '+AIZ.local.file,
-                                1: AIZ.local.processing+' %{smart_count} '+AIZ.local.files
+                                0: AIZ.local.processing + ' %{smart_count} ' + AIZ.local.file,
+                                1: AIZ.local.processing + ' %{smart_count} ' + AIZ.local.files
                             },
                             uploading: AIZ.local.uploading,
                             complete: AIZ.local.complete,
@@ -1149,34 +1130,34 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                         'X-CSRF-TOKEN': AIZ.data.csrf,
                     },
                 });
-                uppy.on("upload-success", function () {
+                uppy.on("upload-success", function() {
                     AIZ.uploader.getAllUploads(
                         AIZ.data.appUrl + "/aiz-uploader/get_uploaded_files"
                     );
                 });
             }
         },
-        tooltip: function () {
-            $('body').tooltip({selector: '[data-toggle="tooltip"]'}).click(function () {
+        tooltip: function() {
+            $('body').tooltip({ selector: '[data-toggle="tooltip"]' }).click(function() {
                 $('[data-toggle="tooltip"]').tooltip("hide");
             });
         },
-        countDown: function () {
+        countDown: function() {
             if ($(".aiz-count-down").length > 0) {
-                $(".aiz-count-down").each(function () {
+                $(".aiz-count-down").each(function() {
 
                     var $this = $(this);
                     var date = $this.data("date");
                     // console.log(date)
 
-                    $this.countdown(date).on("update.countdown", function (event) {
+                    $this.countdown(date).on("update.countdown", function(event) {
                         var $this = $(this).html(
                             event.strftime(
                                 "" +
-                                    '<div class="countdown-item"><span class="countdown-digit">%-D</span></div><span class="countdown-separator">:</span>' +
-                                    '<div class="countdown-item"><span class="countdown-digit">%H</span></div><span class="countdown-separator">:</span>' +
-                                    '<div class="countdown-item"><span class="countdown-digit">%M</span></div><span class="countdown-separator">:</span>' +
-                                    '<div class="countdown-item"><span class="countdown-digit">%S</span></div>'
+                                '<div class="countdown-item"><span class="countdown-digit">%-D</span></div><span class="countdown-separator">:</span>' +
+                                '<div class="countdown-item"><span class="countdown-digit">%H</span></div><span class="countdown-separator">:</span>' +
+                                '<div class="countdown-item"><span class="countdown-digit">%M</span></div><span class="countdown-separator">:</span>' +
+                                '<div class="countdown-item"><span class="countdown-digit">%S</span></div>'
                             )
                         );
                     });
@@ -1184,8 +1165,8 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             }
         },
-        slickCarousel: function () {
-            $(".aiz-carousel").not(".slick-initialized").each(function () {
+        slickCarousel: function() {
+            $(".aiz-carousel").not(".slick-initialized").each(function() {
                 var $this = $(this);
 
 
@@ -1266,12 +1247,9 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     focusOnSelect: focusOnSelect,
                     adaptiveHeight: adaptiveHeight,
                     slidesToScroll: 1,
-                    prevArrow:
-                        '<button type="button" class="slick-prev"><i class="las la-angle-left"></i></button>',
-                    nextArrow:
-                        '<button type="button" class="slick-next"><i class="las la-angle-right"></i></button>',
-                    responsive: [
-                        {
+                    prevArrow: '<button type="button" class="slick-prev"><i class="las la-angle-left"></i></button>',
+                    nextArrow: '<button type="button" class="slick-next"><i class="las la-angle-right"></i></button>',
+                    responsive: [{
                             breakpoint: 1500,
                             settings: {
                                 slidesToShow: slidesPerViewXl,
@@ -1315,61 +1293,60 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             });
         },
-        chart: function (selector, config) {
+        chart: function(selector, config) {
             if (!$(selector).length) return;
 
-            $(selector).each(function () {
+            $(selector).each(function() {
                 var $this = $(this);
 
                 var aizChart = new Chart($this, config);
             });
         },
-        noUiSlider: function(){
+        noUiSlider: function() {
             if ($(".aiz-range-slider")[0]) {
-                $(".aiz-range-slider").each(function () {
+                $(".aiz-range-slider").each(function() {
                     var c = document.getElementById("input-slider-range"),
-                    d = document.getElementById("input-slider-range-value-low"),
-                    e = document.getElementById("input-slider-range-value-high"),
-                    f = [d, e];
+                        d = document.getElementById("input-slider-range-value-low"),
+                        e = document.getElementById("input-slider-range-value-high"),
+                        f = [d, e];
 
                     noUiSlider.create(c, {
-                        start: [
-                            parseInt(d.getAttribute("data-range-value-low")),
-                            parseInt(e.getAttribute("data-range-value-high")),
-                        ],
-                        connect: !0,
-                        range: {
-                            min: parseInt(c.getAttribute("data-range-value-min")),
-                            max: parseInt(c.getAttribute("data-range-value-max")),
-                        },
-                    }),
-                    
-                    c.noUiSlider.on("update", function (a, b) {
-                        f[b].textContent = a[b];
-                    }),
-                    c.noUiSlider.on("change", function (a, b) {
-                        rangefilter(a);
-                    });
+                            start: [
+                                parseInt(d.getAttribute("data-range-value-low")),
+                                parseInt(e.getAttribute("data-range-value-high")),
+                            ],
+                            connect: !0,
+                            range: {
+                                min: parseInt(c.getAttribute("data-range-value-min")),
+                                max: parseInt(c.getAttribute("data-range-value-max")),
+                            },
+                        }),
+
+                        c.noUiSlider.on("update", function(a, b) {
+                            f[b].textContent = a[b];
+                        }),
+                        c.noUiSlider.on("change", function(a, b) {
+                            rangefilter(a);
+                        });
                 });
             }
         },
-        zoom: function(){
-            if($('.img-zoom')[0]){
+        zoom: function() {
+            if ($('.img-zoom')[0]) {
                 $('.img-zoom').zoom({
-                    magnify:1.5
+                    magnify: 1.5
                 });
-                if((('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))){
+                if ((('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))) {
                     $('.img-zoom').trigger('zoom.destroy');
                 }
             }
         },
-        jsSocials: function(){
-            if($('.aiz-share')[0]){
+        jsSocials: function() {
+            if ($('.aiz-share')[0]) {
                 $('.aiz-share').jsSocials({
                     showLabel: false,
                     showCount: false,
-                    shares: [
-                        {
+                    shares: [{
                             share: "email",
                             logo: "lar la-envelope"
                         },
@@ -1395,31 +1372,31 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
         }
     };
     AIZ.extra = {
-        refreshToken: function (){
-            $.get(AIZ.data.appUrl+'/refresh-csrf').done(function(data){
+        refreshToken: function() {
+            $.get(AIZ.data.appUrl + '/refresh-csrf').done(function(data) {
                 AIZ.data.csrf = data;
             });
             // console.log(AIZ.data.csrf);
         },
-        mobileNavToggle: function () {
-            if(window.matchMedia('(max-width: 1200px)').matches){
+        mobileNavToggle: function() {
+            if (window.matchMedia('(max-width: 1200px)').matches) {
                 $('body').addClass('side-menu-closed')
             }
-            $('[data-toggle="aiz-mobile-nav"]').on("click", function () {
+            $('[data-toggle="aiz-mobile-nav"]').on("click", function() {
                 if ($("body").hasClass("side-menu-open")) {
                     $("body").addClass("side-menu-closed").removeClass("side-menu-open");
-                } else if($("body").hasClass("side-menu-closed")) {
+                } else if ($("body").hasClass("side-menu-closed")) {
                     $("body").removeClass("side-menu-closed").addClass("side-menu-open");
-                }else{
+                } else {
                     $("body").removeClass("side-menu-open").addClass("side-menu-closed");
                 }
             });
-            $(".aiz-sidebar-overlay").on("click", function () {
+            $(".aiz-sidebar-overlay").on("click", function() {
                 $("body").removeClass("side-menu-open").addClass('side-menu-closed');
             });
         },
-        initActiveMenu: function () {
-            $('[data-toggle="aiz-side-menu"] a').each(function () {
+        initActiveMenu: function() {
+            $('[data-toggle="aiz-side-menu"] a').each(function() {
                 var pageUrl = window.location.href.split(/[?#]/)[0];
                 if (this.href == pageUrl || $(this).hasClass("active")) {
                     $(this).addClass("active");
@@ -1435,29 +1412,29 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        deleteConfirm: function () {
-            $(".confirm-delete").click(function (e) {
+        deleteConfirm: function() {
+            $(".confirm-delete").click(function(e) {
                 e.preventDefault();
                 var url = $(this).data("href");
                 $("#delete-modal").modal("show");
                 $("#delete-link").attr("href", url);
             });
 
-            $(".confirm-cancel").click(function (e) {
+            $(".confirm-cancel").click(function(e) {
                 e.preventDefault();
                 var url = $(this).data("href");
                 $("#cancel-modal").modal("show");
                 $("#cancel-link").attr("href", url);
             });
 
-            $(".confirm-complete").click(function (e) {
+            $(".confirm-complete").click(function(e) {
                 e.preventDefault();
                 var url = $(this).data("href");
                 $("#complete-modal").modal("show");
                 $("#comfirm-link").attr("href", url);
             });
 
-            $(".confirm-alert").click(function (e) {
+            $(".confirm-alert").click(function(e) {
                 e.preventDefault();
                 var url = $(this).data("href");
                 var target = $(this).data("target");
@@ -1466,31 +1443,31 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 $("#comfirm-link").attr("href", url);
             });
         },
-        bytesToSize: function (bytes) {
+        bytesToSize: function(bytes) {
             var sizes = ["Bytes", "KB", "MB", "GB", "TB"];
             if (bytes == 0) return "0 Byte";
             var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
             return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
         },
-        multiModal: function () {
-            $(document).on("show.bs.modal", ".modal", function (event) {
+        multiModal: function() {
+            $(document).on("show.bs.modal", ".modal", function(event) {
                 var zIndex = 1040 + 10 * $(".modal:visible").length;
                 $(this).css("z-index", zIndex);
-                setTimeout(function () {
+                setTimeout(function() {
                     $(".modal-backdrop")
                         .not(".modal-stack")
                         .css("z-index", zIndex - 1)
                         .addClass("modal-stack");
                 }, 0);
             });
-            $(document).on('hidden.bs.modal', function () {
-                if($('.modal.show').length > 0){
+            $(document).on('hidden.bs.modal', function() {
+                if ($('.modal.show').length > 0) {
                     $('body').addClass('modal-open');
                 }
             });
         },
-        bsCustomFile: function () {
-            $(".custom-file input").change(function (e) {
+        bsCustomFile: function() {
+            $(".custom-file input").change(function(e) {
                 var files = [];
                 for (var i = 0; i < $(this)[0].files.length; i++) {
                     files.push($(this)[0].files[i].name);
@@ -1506,30 +1483,30 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        stopPropagation: function(){
-            $(document).on('click', '.stop-propagation', function (e) {
+        stopPropagation: function() {
+            $(document).on('click', '.stop-propagation', function(e) {
                 e.stopPropagation();
             });
         },
-        outsideClickHide: function(){
-            $(document).on('click', function (e) {
+        outsideClickHide: function() {
+            $(document).on('click', function(e) {
                 $('.document-click-d-none').addClass('d-none');
             });
         },
-        inputRating: function () {
-            $(".rating-input").each(function () {
+        inputRating: function() {
+            $(".rating-input").each(function() {
                 $(this)
                     .find("label")
                     .on({
-                        mouseover: function (event) {
+                        mouseover: function(event) {
                             $(this).find("i").addClass("hover");
                             $(this).prevAll().find("i").addClass("hover");
                         },
-                        mouseleave: function (event) {
+                        mouseleave: function(event) {
                             $(this).find("i").removeClass("hover");
                             $(this).prevAll().find("i").removeClass("hover");
                         },
-                        click: function (event) {
+                        click: function(event) {
                             $(this).siblings().find("i").removeClass("active");
                             $(this).find("i").addClass("active");
                             $(this).prevAll().find("i").addClass("active");
@@ -1555,13 +1532,13 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        scrollToBottom: function () {
-            $(".scroll-to-btm").each(function (i, el) {
+        scrollToBottom: function() {
+            $(".scroll-to-btm").each(function(i, el) {
                 el.scrollTop = el.scrollHeight;
             });
         },
-        classToggle: function () {
-            $(document).on('click','[data-toggle="class-toggle"]',function () {
+        classToggle: function() {
+            $(document).on('click', '[data-toggle="class-toggle"]', function() {
                 var $this = $(this);
                 var target = $this.data("target");
                 var sameTriggers = $this.data("same");
@@ -1575,14 +1552,14 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 } else {
                     $(target).addClass("active");
                     $this.addClass("active");
-                    if(backdrop == 'static'){
+                    if (backdrop == 'static') {
                         $('body').addClass("overflow-hidden");
                     }
                 }
             });
         },
-        collapseSidebar: function () {
-            $(document).on('click','[data-toggle="collapse-sidebar"]',function (i, el) {
+        collapseSidebar: function() {
+            $(document).on('click', '[data-toggle="collapse-sidebar"]', function(i, el) {
                 var $this = $(this);
                 var target = $(this).data("target");
                 var sameTriggers = $(this).data("siblings");
@@ -1607,14 +1584,14 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        autoScroll: function () {
+        autoScroll: function() {
             if ($(".aiz-auto-scroll").length > 0) {
-                $(".aiz-auto-scroll").each(function () {
+                $(".aiz-auto-scroll").each(function() {
                     var options = $(this).data("options");
 
-                    options = !options
-                        ? '{"delay" : 2000 ,"amount" : 70 }'
-                        : options;
+                    options = !options ?
+                        '{"delay" : 2000 ,"amount" : 70 }' :
+                        options;
 
                     options = JSON.parse(options);
 
@@ -1626,22 +1603,20 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     this.iHeight = this.autoScroll.height();
 
                     var self = this;
-                    this.timerId = setInterval(function () {
+                    this.timerId = setInterval(function() {
                         if (
                             self.iScrollTop + self.iHeight <
                             self.iScrollHeight
                         ) {
                             self.iScrollTop = self.autoScroll.prop("scrollTop");
                             self.iScrollTop += self.amount;
-                            self.autoScroll.animate(
-                                { scrollTop: self.iScrollTop },
+                            self.autoScroll.animate({ scrollTop: self.iScrollTop },
                                 "slow",
                                 "linear"
                             );
                         } else {
                             self.iScrollTop -= self.iScrollTop;
-                            self.autoScroll.animate(
-                                { scrollTop: "0px" },
+                            self.autoScroll.animate({ scrollTop: "0px" },
                                 "fast",
                                 "swing"
                             );
@@ -1650,24 +1625,24 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             }
         },
-        addMore: function () {
-            $('[data-toggle="add-more"]').each(function () {
+        addMore: function() {
+            $('[data-toggle="add-more"]').each(function() {
                 var $this = $(this);
                 var content = $this.data("content");
                 var target = $this.data("target");
 
-                $this.on("click", function (e) {
+                $this.on("click", function(e) {
                     e.preventDefault();
                     $(target).append(content);
                     AIZ.plugins.bootstrapSelect();
                 });
             });
         },
-        removeParent: function () {
+        removeParent: function() {
             $(document).on(
                 "click",
                 '[data-toggle="remove-parent"]',
-                function () {
+                function() {
                     var $this = $(this);
                     var parent = $this.data("parent");
                     $this.closest(parent).remove();
@@ -1690,17 +1665,17 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 });
             });
         },
-        plusMinus: function(){
+        plusMinus: function() {
             $('.aiz-plus-minus input').each(function() {
                 var $this = $(this);
                 var min = parseInt($(this).attr("min"));
                 var max = parseInt($(this).attr("max"));
                 var value = parseInt($(this).val());
-                if(value <= min){
-                    $this.siblings('[data-type="minus"]').attr('disabled',true)
+                if (value <= min) {
+                    $this.siblings('[data-type="minus"]').attr('disabled', true)
                 }
-                if(value >= max){
-                    $this.siblings('[data-type="plus"]').attr('disabled',true)
+                if (value >= max) {
+                    $this.siblings('[data-type="plus"]').attr('disabled', true)
                 }
             });
             $('.aiz-plus-minus button').on('click', function(e) {
@@ -1731,7 +1706,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     input.val(0);
                 }
             });
-            $('.aiz-plus-minus input').on('change', function () {
+            $('.aiz-plus-minus input').on('change', function() {
                 var minValue = parseInt($(this).attr("min"));
                 var maxValue = parseInt($(this).attr("max"));
                 var valueCurrent = parseInt($(this).val());
@@ -1751,18 +1726,18 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 }
             });
         },
-        hovCategoryMenu: function(){
+        hovCategoryMenu: function() {
             $("#category-menu-icon, #category-sidebar")
-                .on("mouseover", function (event) {
+                .on("mouseover", function(event) {
                     $("#hover-category-menu").addClass('active').removeClass('d-none');
                 })
-                .on("mouseout", function (event) {
+                .on("mouseout", function(event) {
                     $("#hover-category-menu").addClass('d-none').removeClass('active');
                 });
         },
-        trimAppUrl: function(){
-            if(AIZ.data.appUrl.slice(-1) == '/'){
-                AIZ.data.appUrl = AIZ.data.appUrl.slice(0, AIZ.data.appUrl.length -1);
+        trimAppUrl: function() {
+            if (AIZ.data.appUrl.slice(-1) == '/') {
+                AIZ.data.appUrl = AIZ.data.appUrl.slice(0, AIZ.data.appUrl.length - 1);
                 // console.log(AIZ.data.appUrl);
             }
         },
@@ -1787,7 +1762,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             }
             return "";
         },
-        acceptCookie: function(){
+        acceptCookie: function() {
             if (!AIZ.extra.getCookie("acceptCookies")) {
                 $(".aiz-cookie-alert").addClass("show");
             }
@@ -1796,7 +1771,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 $(".aiz-cookie-alert").removeClass("show");
             });
         },
-        setSession: function(){
+        setSession: function() {
             $('.set-session').each(function() {
                 var $this = $(this);
                 var key = $this.data('key');
@@ -1808,12 +1783,12 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     expiry: now.getTime() + 3600000,
                 };
 
-                $this.on('click', function(){
+                $this.on('click', function() {
                     localStorage.setItem(key, JSON.stringify(item));
                 });
             });
         },
-        showSessionPopup: function(){
+        showSessionPopup: function() {
             $('.removable-session').each(function() {
                 var $this = $(this);
                 var key = $this.data('key');
@@ -1824,14 +1799,14 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                     item = JSON.parse(item);
                 }
                 const now = new Date()
-                if (typeof item.expiry == 'undefined' || now.getTime() > item.expiry){
+                if (typeof item.expiry == 'undefined' || now.getTime() > item.expiry) {
                     $this.removeClass('d-none');
                 }
             });
         }
     };
 
-    setInterval(function(){
+    setInterval(function() {
         AIZ.extra.refreshToken();
     }, 3600000);
 
@@ -1882,3 +1857,34 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
     // });
 
 })(jQuery);
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////
+////////////////////////
+// $(document).on('click', '.table-werost td button', function() {
+//     var id = '#' + $(this).attr("id");
+//     $(this).addClass('show').siblings().removeClass('show');
+//     $('.table-werost').children(id).addClass('show').siblings().removeClass('show');
+// });
+
+// $(this).click(function() {
+//     $('.button0001').hide();
+//     $('td .dropdown .dropdown-menu.drop-downs1').toggle();
+// });
+// $(this).click(function() {
+//     $('.button0001').hide();
+//     $('td .dropdown .dropdown-menu.drop-downs2').toggle();
+// });
+$(document).on('click', '.table-werost td button', function(e) {
+    e.preventDefault();
+    $(this).closest('.dropdown').toggleClass('dropdown-togles');
+});
+
+jQuery('#sort_orders').parent('div').css('margin-top', '25px');

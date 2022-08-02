@@ -682,6 +682,7 @@ class HomeController extends Controller
 
         $product_stock = $product->stocks->where('variant', $str)->first();
         $price = $product_stock->price;
+        $sku = $product_stock->sku;
 
         if ($product->wholesale_product) {
             $wholesalePrice = $product_stock->wholesalePrices->where('min_qty', '<=', $request->quantity)->where('max_qty', '>=', $request->quantity)->first();
@@ -742,6 +743,7 @@ class HomeController extends Controller
         return array(
             'price' => single_price($price * $request->quantity),
             'total_price' => $price * $request->quantity,
+            'sku' => $sku,
             'quantity' => $quantity,
             'digital' => $product->digital,
             'variation' => $str,

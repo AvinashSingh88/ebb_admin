@@ -21,12 +21,14 @@
 	</div>
 	<div class="form-group text-center">
 		@php
+			$auth_user_type = auth()->user()->user_type;
+
 			if($file->file_original_name == null){
 			    $file_name = translate('Unknown');
 			}else{
 				$file_name = $file->file_original_name;
 			}
 		@endphp
-		<a class="btn btn-secondary" href="{{ my_asset($file->file_name) }}" target="_blank" download="{{ $file_name }}.{{ $file->extension }}">{{ translate('Download') }}</a>
+		<a class="btn btn-secondary" href="{{ my_asset($file->file_name, $auth_user_type) }}" target="_blank" download="{{ $file_name }}.{{ $file->extension }}">{{ translate('Download') }}</a>
 	</div>
 </div>

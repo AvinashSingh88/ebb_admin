@@ -384,7 +384,68 @@
 
                     </div>
                 </div>-->
+				<div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 h6">{{translate('Add Bought Together Option')}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row mb-3">
+							<label class="col-sm-3 control-label" for="products">{{translate('Products (Maximum 2)')}}</label>
+							<div class="col-sm-9">
+								<select name="boughtproducts[]" id="boughtproducts" data-max-options="2" class="form-control aiz-selectpicker" multiple data-placeholder="{{ translate('Choose Products') }}" data-live-search="true" data-selected-text-format="count">
+									{{--@foreach(\App\Models\Product::orderBy('created_at', 'desc')->get() as $Bought)
+										<option value="{{$Bought->id}}">{{ $Bought->getTranslation('name') }}</option>
+									@endforeach--}}
+								@foreach(\App\Models\Product::all() as $reproductss)
+                                    @php
+                                        $boughttogether__products = \App\Models\BoughtTogether::where('product_id', $product->id)->where('items_id',$reproductss->id)->first();
+										
+                                    @endphp
+                                    <option value="{{$reproductss->id}}" <?php if($boughttogether__products != null) echo "selected";?> >{{ $reproductss->getTranslation('name') }}</option>
+                                @endforeach
+									
+								</select>
+								<div class="alert alert-danger mt-2">
+									{{ translate('Selected Bought Together products name will show here.') }}
+								</div>
+								<br>
+                    
+                    <div class="form-group" id="bought_ed">
 
+                    </div>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 h6">{{translate('Add Related Products')}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row mb-3">
+							<label class="col-sm-3 control-label" for="products">{{translate('Select Products')}}</label>
+							<div class="col-sm-9">
+								<select name="relatedproducts[]" id="releproducts" class="form-control aiz-selectpicker" multiple data-placeholder="{{ translate('Choose Products') }}" data-live-search="true" data-selected-text-format="count">
+									@foreach(\App\Models\Product::all() as $productss)
+										@php
+											$proRelated__products = \App\Models\RelatedProduct::where('product_id', $product->id)->where('items_id',$productss->id)->first();
+											
+										@endphp
+										<option value="{{$productss->id}}" <?php if($proRelated__products != null) echo "selected";?> >{{ $productss->getTranslation('name') }}</option>
+									@endforeach
+								</select>
+								<div class="alert alert-danger mt-2">
+									{{ translate('Selected Related products name will show here.') }}
+								</div>
+								<br>
+                    
+                    <div class="form-group" id="discount_table">
+
+                    </div>
+							</div>
+						</div>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0 h6">{{translate('PDF Specification')}}</h5>
@@ -887,6 +948,50 @@
         update_sku();
     });
 
+//related products edit
+		$(document).ready(function(){
+
+            get_related_products_edit();
+
+            $('#releproducts').on('change', function(){
+                get_related_products_edit();
+            });
+
+            function get_related_products_edit(){
+                var product_ids = $('#releproducts').val();
+                if(product_ids.length > 0){
+                    $.post('{{ route('products.related_products_edit') }}', {_token:'{{ csrf_token() }}', product_ids:{{ $productss->id }}, items_id:product_ids}, function(data){
+                        $('#discount_table').html(data);
+                        AIZ.plugins.fooTable();
+                    });
+                }
+                else{
+                    $('#discount_table').html(null);
+                }
+            }
+        });
+		
+		$(document).ready(function(){
+
+            get_bought_together_products_edit();
+
+            $('#boughtproducts').on('change', function(){
+                get_bought_together_products_edit();
+            });
+
+            function get_bought_together_products_edit(){
+                var boughtproducts = $('#boughtproducts').val();
+                if(boughtproducts.length > 0){
+                    $.post('{{ route('products.bought_together_edit') }}', {_token:'{{ csrf_token() }}', product_ids:{{ $reproductss->id }}, items_id:boughtproducts}, function(data){
+                        $('#bought_ed').html(data);
+                        AIZ.plugins.fooTable();
+                    });
+                }
+                else{
+                    $('#bought_ed').html(null);
+                }
+            }
+        });
 </script>
 
 @endsection

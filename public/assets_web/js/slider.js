@@ -1868,3 +1868,18 @@ $(".edit-address_1").click(function () {
 $(".edit-address1_1").click(function () {
 	$(".edit_address_form_new").hide();
 });
+
+$(".showoffer").on('click', function () {
+	$(this).parent('ul').children("li").show();
+	$(this).hide();
+	$(this).parent('ul').children(".hideoffer").show();
+});
+$(".hideoffer").on('click', function () {
+	$(this).parent('ul').children(".collapseli").hide();
+	$(this).hide();
+	$(this).parent('ul').children(".showoffer").show();
+});
+$("li").hover(function() {
+	$(".megamenusubs231").hide();
+	$(this).children(".megamenusubs231").show();
+});

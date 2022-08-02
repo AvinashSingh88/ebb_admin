@@ -166,6 +166,7 @@ Route::get('/shop/{slug}', 'HomeController@shop')->name('shop.visit');
 Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visit.type');
 
 // Route::post('add-to-cart', [CartController::class,'addToCart']);
+Route::post('addBoughtTogether', 'CartController@addBoughtTogether')->name('cart.addBoughtTogether');
 Route::post('add-to-cart', [CartController::class,'addToUserCart']);
 Route::get('load-cart-data', [CartController::class,'cartCountFunction']);
 Route::post('dele-cart-item', [CartController::class,'deleteFromCart']);
@@ -175,6 +176,7 @@ Route::get('/cart', 'CartController@index')->name('cart');
 
 Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
 Route::post('/cart/addtocart', 'CartController@addToCart')->name('cart.addToCart');
+Route::post('/cart/buyNow', 'CartController@buyNow')->name('cart.buyNow');
 Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart.removeFromCart');
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 Route::post('/cart/updateCartPlus', 'CartController@updateCartPlus')->name('cart.updateCartPlus');

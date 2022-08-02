@@ -13,6 +13,8 @@ use App\Models\AttributeValue;
 use App\Models\Cart;
 use App\Models\Color;
 use App\Models\User;
+use App\Models\BoughtTogether;
+use App\Models\RelatedProduct;
 use Auth;
 use Carbon\Carbon;
 use Combinations;
@@ -346,6 +348,32 @@ class ProductController extends Controller
             $flash_deal_product->product_id = $product->id;
             $flash_deal_product->save();
         }
+		
+		//Bought Togther Option Start
+		
+		if($request->boughtproducts) {
+			foreach ($request->boughtproducts as $key => $bproduct) {
+				$flash_deal_product = new BoughtTogether;
+				$flash_deal_product->items_id = $bproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Bought Togther Option End
+		
+		//Realated Products Option Start
+		
+		if($request->relatedproducts) {
+			foreach ($request->relatedproducts as $key => $releproduct) {
+				$flash_deal_product = new RelatedProduct;
+				$flash_deal_product->items_id = $releproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Realated Products Option End
 
         //combinations start
         $options = array();
@@ -752,6 +780,34 @@ class ProductController extends Controller
                 $product_tax->save();
             }
         }
+		
+		//Bought Togther Option Start
+		
+		if($request->boughtproducts) {
+			BoughtTogether::where('product_id', $product->id)->delete();
+			foreach ($request->boughtproducts as $key => $bproduct) {
+				$flash_deal_product = new BoughtTogether;
+				$flash_deal_product->items_id = $bproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Bought Togther Option End
+		
+		//Realated Products Option Start
+		
+		if($request->relatedproducts) {
+			RelatedProduct::where('product_id', $product->id)->delete();
+			foreach ($request->relatedproducts as $key => $releproduct) {
+				$flash_deal_product = new RelatedProduct;
+				$flash_deal_product->items_id = $releproduct;
+				$flash_deal_product->product_id = $product->id;
+				$flash_deal_product->save();
+			}
+        }
+		
+		//Realated Products Option End
 
         // Product Translations
         $product_translation                = ProductTranslation::firstOrNew(['lang' => $request->lang, 'product_id' => $product->id]);
@@ -992,6 +1048,28 @@ class ProductController extends Controller
 
         $combinations = Combinations::makeCombinations($options);
         return view('backend.product.products.sku_combinations_edit', compact('combinations', 'unit_price', 'colors_active', 'product_name', 'product'));
+    }
+    public function relatedProductss(Request $request)
+    {
+        $product_ids = $request->product_ids;
+        return view('backend.product.products.related_products', compact('product_ids'));
+    }
+    public function boughtTogethers(Request $request)
+    {
+        $product_ids = $request->bought_prod;
+        return view('backend.product.products.bought_togethers', compact('product_ids'));
+    }
+    public function related_products_edit(Request $request)
+    {
+        $product_ids = $request->product_ids;
+        $items_id = $request->items_id;
+        return view('backend.product.products.related_products_edit', compact('product_ids', 'items_id'));
+    }
+    public function bought_together_edit(Request $request)
+    {
+        $boughtproducts = $request->product_ids;
+        $items_id = $request->items_id;
+        return view('backend.product.products.bought_together_edit', compact('boughtproducts', 'items_id'));
     }
 
 }
