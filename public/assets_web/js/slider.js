@@ -479,6 +479,10 @@ $(document).ready(function () {
 		$("#rotatezero span").toggleClass("rotatezero");
 		$(".menu-overlay").removeClass('add-overlay');
 	});
+	$(".menu-overlay").click(function () {
+		$(".popmenu-container").toggleClass("opened");
+		$(".menu-overlay").removeClass('add-overlay');
+	});
 
 });
 var owl = $('.owl-carousel444');
