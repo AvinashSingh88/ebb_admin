@@ -45,11 +45,11 @@ Route::get('/contact-us', 'StaticController@contact')->name('frontend.contact');
 
 
 // form route starts from here
-Route::post('addinteriorformdata', [StaticController::class,'addformdata']);
-Route::post('submitenquiryform', [StaticController::class,'addenquiryformdata']);
-Route::post('submitcareerform', [StaticController::class,'addcareerformdata']);
+Route::post('addinteriorformdata', [StaticController::class, 'addformdata']);
+Route::post('submitenquiryform', [StaticController::class, 'addenquiryformdata']);
+Route::post('submitcareerform', [StaticController::class, 'addcareerformdata']);
 
-//same route for every form 
+//same route for every form
 
 
 //route for career form
@@ -73,7 +73,7 @@ Route::get('/refresh-csrf', function () {
 });
 
 
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('config:cache');
     Artisan::call('config:clear');
@@ -139,7 +139,7 @@ Route::get('/customer-packages', 'HomeController@premium_package_index')->name('
 //Rana routes
 Route::get('/cat/{catslug}', 'CatController@subCatbyCat')->name('cat');
 Route::post('makeEnquiry', 'HomeController@makeEnquiry')->name('makeEnquiry');
-Route::get('servicecat/{catslug}/','ServiceCatController@ServiceSubCatbyCat')->name('servicecat');
+Route::get('servicecat/{catslug}/', 'ServiceCatController@ServiceSubCatbyCat')->name('servicecat');
 Route::get('/servicecategories', 'HomeController@all_service_category')->name('servicecategories.all');
 
 Route::get('/search', 'ServiceSearchController@index')->name('search');
@@ -167,11 +167,11 @@ Route::get('/shop/{slug}/{type}', 'HomeController@filter_shop')->name('shop.visi
 
 // Route::post('add-to-cart', [CartController::class,'addToCart']);
 Route::post('addBoughtTogether', 'CartController@addBoughtTogether')->name('cart.addBoughtTogether');
-Route::post('add-to-cart', [CartController::class,'addToUserCart']);
-Route::get('load-cart-data', [CartController::class,'cartCountFunction']);
-Route::post('dele-cart-item', [CartController::class,'deleteFromCart']);
-Route::post('update-cart-qty-plus', [CartController::class,'updateCartPlus']);
-Route::post('update-cart-qty-minus', [CartController::class,'updateCartMinus']);
+Route::post('add-to-cart', [CartController::class, 'addToUserCart']);
+Route::get('load-cart-data', [CartController::class, 'cartCountFunction']);
+Route::post('dele-cart-item', [CartController::class, 'deleteFromCart']);
+Route::post('update-cart-qty-plus', [CartController::class, 'updateCartPlus']);
+Route::post('update-cart-qty-minus', [CartController::class, 'updateCartMinus']);
 Route::get('/cart', 'CartController@index')->name('cart');
 
 Route::post('/cart/show-cart-modal', 'CartController@showCartModal')->name('cart.showCartModal');
@@ -181,7 +181,7 @@ Route::post('/cart/removeFromCart', 'CartController@removeFromCart')->name('cart
 Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart.updateQuantity');
 Route::post('/cart/updateCartPlus', 'CartController@updateCartPlus')->name('cart.updateCartPlus');
 
-Route::post('add-bulk-product-to-cart','BulkCartController@addCarts')->name('bulkproduct.addCarts');
+Route::post('add-bulk-product-to-cart', 'BulkCartController@addCarts')->name('bulkproduct.addCarts');
 Route::get('/bulk-cart', 'BulkCartController@index')->name('bulk-cart');
 //Checkout Routes
 Route::group(['prefix' => 'checkout', 'middleware' => ['user', 'verified', 'unbanned']], function () {
@@ -240,44 +240,44 @@ Route::get('/supportpolicy', 'HomeController@supportpolicy')->name('supportpolic
 Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolicy');
 
-Route::get('email-verify','HomeController@verifyEmail')->name('email-verify');
-Route::post('verifyOtpOfEmail','HomeController@verifyOtpOfEmail')->name('verifyOtpOfEmail');
+Route::get('email-verify', 'HomeController@verifyEmail')->name('email-verify');
+Route::post('verifyOtpOfEmail', 'HomeController@verifyOtpOfEmail')->name('verifyOtpOfEmail');
 
 Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
 
-    
+
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'HomeController@profile')->name('profile');
     Route::post('/new-user-verification', 'HomeController@new_verify')->name('user.new.verify');
     Route::post('/new-user-email', 'HomeController@update_email')->name('user.change.email');
 
     Route::post('/user/update-profile', 'HomeController@userProfileUpdate')->name('user.profile.update');
-    Route::get('edit_profile','HomeController@editProfile')->name('edit_profile');
-    Route::post('updateProfile','HomeController@updateProfile')->name('updateProfile');
-    Route::get('my_addressbook','HomeController@myAddressBook')->name('my_addressbook');
-    Route::get('my-bank-details','HomeController@bankDetail')->name('my-bank-details');
-    Route::post('addAddress','HomeController@addAddress')->name('addAddress');
-    Route::post('checkLogin','HomeController@checkLogin')->name('checkLogin');
-    Route::post('getaddressdetails','HomeController@getaddressdetails')->name('getaddressdetails');
-    Route::post('updateAddressDetails','HomeController@updateAddressDetails')->name('updateAddressDetails');
-    Route::post('setDefaultAddress','HomeController@setDefaultAddress')->name('setDefaultAddress');
-    Route::post('removeMyAddress','HomeController@removeMyAddress')->name('removeMyAddress');
-    Route::get('manage-payments','HomeController@managePayments')->name('manage-payments');
-    Route::post('addPaymentCards','HomeController@addPaymentCards')->name('addPaymentCards');
-    Route::get('change-password','HomeController@changePassword')->name('change-password');
-    Route::post('userPasswordChange','HomeController@userPasswordChange')->name('userPasswordChange');
+    Route::get('edit_profile', 'HomeController@editProfile')->name('edit_profile');
+    Route::post('updateProfile', 'HomeController@updateProfile')->name('updateProfile');
+    Route::get('my_addressbook', 'HomeController@myAddressBook')->name('my_addressbook');
+    Route::get('my-bank-details', 'HomeController@bankDetail')->name('my-bank-details');
+    Route::post('addAddress', 'HomeController@addAddress')->name('addAddress');
+    Route::post('checkLogin', 'HomeController@checkLogin')->name('checkLogin');
+    Route::post('getaddressdetails', 'HomeController@getaddressdetails')->name('getaddressdetails');
+    Route::post('updateAddressDetails', 'HomeController@updateAddressDetails')->name('updateAddressDetails');
+    Route::post('setDefaultAddress', 'HomeController@setDefaultAddress')->name('setDefaultAddress');
+    Route::post('removeMyAddress', 'HomeController@removeMyAddress')->name('removeMyAddress');
+    Route::get('manage-payments', 'HomeController@managePayments')->name('manage-payments');
+    Route::post('addPaymentCards', 'HomeController@addPaymentCards')->name('addPaymentCards');
+    Route::get('change-password', 'HomeController@changePassword')->name('change-password');
+    Route::post('userPasswordChange', 'HomeController@userPasswordChange')->name('userPasswordChange');
 
     Route::resource('purchase_history', 'PurchaseHistoryController');
     Route::get('order-details/{id}', 'PurchaseHistoryController@orderDetails')->name('order-details');
     Route::post('/purchase_history/details', 'PurchaseHistoryController@purchase_history_details')->name('purchase_history.details');
     Route::get('/purchase_history/destroy/{id}', 'PurchaseHistoryController@destroy')->name('purchase_history.destroy');
-    Route::get('product_return','PurchaseHistoryController@productReturn')->name('product_return');
-    Route::get('help_support','PurchaseHistoryController@helpSupport')->name('help_support');
-    Route::get('favourite_store','PurchaseHistoryController@favouriteStore')->name('favourite_store');
-    Route::get('feedback','PurchaseHistoryController@feedback')->name('feedback');
-    Route::get('ebbbucks-balance','PurchaseHistoryController@ebbbucksBalance')->name('ebbbucks-balance');
-    Route::get('ebbbucks-cluesbucks','PurchaseHistoryController@cluesBucks')->name('chat');
-    Route::get('chat','PurchaseHistoryController@chat')->name('ebbbucks-cluesbucks');
+    Route::get('product_return', 'PurchaseHistoryController@productReturn')->name('product_return');
+    Route::get('help_support', 'PurchaseHistoryController@helpSupport')->name('help_support');
+    Route::get('favourite_store', 'PurchaseHistoryController@favouriteStore')->name('favourite_store');
+    Route::get('feedback', 'PurchaseHistoryController@feedback')->name('feedback');
+    Route::get('ebbbucks-balance', 'PurchaseHistoryController@ebbbucksBalance')->name('ebbbucks-balance');
+    Route::get('ebbbucks-cluesbucks', 'PurchaseHistoryController@cluesBucks')->name('chat');
+    Route::get('chat', 'PurchaseHistoryController@chat')->name('ebbbucks-cluesbucks');
     Route::resource('wishlists', 'WishlistController');
     Route::post('/wishlists/remove', 'WishlistController@remove')->name('wishlists.remove');
 
@@ -286,7 +286,7 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function () {
     Route::get('bulk-order-details/{id}', 'BulkPurchaseHistoryController@orderDetails')->name('bulk-order-details');
     Route::post('/purchase_history/details', 'BulkPurchaseHistoryController@purchase_history_details')->name('purchase_history.details');
     Route::get('/purchase_history/destroy/{id}', 'BulkPurchaseHistoryController@destroy')->name('purchase_history.destroy');
-    
+
     Route::get('/wallet', 'WalletController@index')->name('wallet.index');
     Route::post('/recharge', 'WalletController@recharge')->name('wallet.recharge');
 
@@ -349,12 +349,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/products/add-more-choice-option', 'ProductController@add_more_choice_option')->name('products.add-more-choice-option');
     Route::get('invoice/{order_id}', 'InvoiceController@invoice_download')->name('invoice.download');
-    
+
     //services routes
     Route::post('/services/store/', 'ServiceController@store')->name('services.store');
     Route::post('/services/update/{id}', 'ServiceController@update')->name('services.update');
     Route::get('/services/destroy/{id}', 'ServiceController@destroy')->name('services.destroy');
-    
+
     Route::resource('orders', 'OrderController');
     Route::get('/orders/destroy/{id}', 'OrderController@destroy')->name('orders.destroy');
     Route::post('/orders/details', 'OrderController@order_details')->name('orders.details');
@@ -407,6 +407,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::resource('shops', 'ShopController');
 Route::get('/track-your-order', 'HomeController@trackOrder')->name('orders.track');
 Route::get('/more-seller', 'HomeController@moreSeller')->name('moreSeller');
+
 Route::get('/instamojo/payment/pay-success', 'InstamojoController@success')->name('instamojo.success');
 
 Route::post('rozer/payment/pay-success', 'RazorpayController@payment')->name('payment.rozer');
@@ -485,3 +486,6 @@ Route::get('/mobile-page/{slug}', 'PageController@mobile_custom_page')->name('mo
 
 //Custom page
 Route::get('/{slug}', 'PageController@show_custom_page')->name('custom-pages.show_custom_page');
+
+
+Route::get('/more-seller/{id}', 'HomeController@relatedProduct')->name('related-product');
