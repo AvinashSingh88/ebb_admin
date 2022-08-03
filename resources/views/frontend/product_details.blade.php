@@ -71,27 +71,14 @@
                         </div>
                      </div>
                   </div>
-                  <!--Last code start---> 
+                  
                   <div id="accordion" class="accordion-container">
-                     <article class="content-entry products_offers">
-                        <h4 class="article-title"> Special offers <i class="fa fa-angle-right"
-                           aria-hidden="true" style="    line-height: 35px;"></i></h4>
-                        <div class="accordion-content">
-                           <div class="offer-section">
-                              <!--<span class="title-head">Special offers</span>-->
-                              <ul>
-                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Big Saving</b> - Apply Coupon SAVEBIG &amp; Get 20% Off (price inclusive of discount) <span class="terms">T&amp;C</span> </li>
-                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>5% Instant Discount - </b> on HDFC Bank Credit Cards &amp; EMI <span class="terms">T&amp;C</span> </li>
-                                 <li class="offerlist"> <i class="fa fa-angle-right" aria-hidden="true"></i> <b>No Cost EMI - Starting from Rs.
-                                    1,214</b> on ICICI, Axis, Kotak, HDFC &amp; <span class="terms">More</span> 
-                                 </li>
-                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Store Discount</b> - Visit our nearest store and get instant extra discount <span class="terms">T&amp;C</span> </li>
-                              </ul>
-                           </div>
-                        </div>
-                     </article>
+                     
+                     @php
+                     $proprice = $detailedProduct->unit_price - ($detailedProduct->unit_price * $detailedProduct->discount) / 100;
+                @endphp
                      <article  class="content-entry products_offers open">
-                        <h4 class="article-title products_offersbto">Bought together <i
+                        <h4 class="article-title">Bought together <i
                            class="fa fa-angle-right" aria-hidden="true" style="    line-height: 35px;"></i>
                         </h4>
                         @php
@@ -104,7 +91,7 @@
                      @endphp
                      @if(count($boughttogether)>0)
                      <!--/.accordion- content start-->
-                        <div class="accordion-content">
+                        <div class="accordion-content accordion-containerblock">
                            <div id="ga-product_bought_together" data-title="Bought together" class="ga ga-template_2 ga-products-box  ga-template_themeid_0">
                               <!--<h2 class="ga-title section-title "><span>Bought together</span></h2>-->
                               {{-- <div class="ga-subtitle">Get 5% off when you add one or more products.</div> --}}
@@ -123,12 +110,11 @@
                                              @if ($detailedProduct->discount!=null)
                                                 <span class="fnt12">{{$detailedProduct->discount}}% Off</span>
                                              @endif
-                                          @php
-                                             $proprice = $detailedProduct->unit_price - ($detailedProduct->unit_price * $detailedProduct->discount) / 100;
-                                        @endphp
+                                         
+                                    <label><input type="checkbox" checked class="select_product" data-product_id="{{$detailedProduct->id}}" data-product_price="{{$proprice}}" value=""></label>
                                     </div>
                                     
-									<label><input type="checkbox" checked class="select_product" data-product_id="{{$detailedProduct->id}}" data-product_price="{{$proprice}}" value=""></label>
+									
 									@php
 										$total_price = 0;
 									@endphp
@@ -136,9 +122,10 @@
 										@php
                                              $price = $items->unitPrice - ($items->unitPrice * $items->discounts) / 100;
                                         @endphp
-									<label><input type="checkbox" checked class="select_product" data-product_id="{{$items->items_id}}" data-product_price="{{$price}}" value=""></label>
+									
                                       
                                        <div class="ga-product ">
+                                       <label><input type="checkbox" checked class="select_product" data-product_id="{{$items->items_id}}" data-product_price="{{$price}}" value=""></label>
                                           <a href="{{ route('product', $items->slugs) }}">
                                              <img class="ga-22" id="ga-22" src="{{uploaded_asset($items->thumb)}}" alt=""> 
                                              <br />{{$items->proName}}
@@ -188,12 +175,12 @@
 						
                                  <div id="bought_together" class="ga-products_image">
 									@if(count($sameidCount)>=1)
-                                    <div class="ga-producttot last1">
-	  <button class="displaynone"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Added to Cart</button>
+                                    <div class="ga-producttot last1" style="padding-right:0px;">
+	  <button class="displaynone addtocartbut addtocartn mrgnlftnone w-100"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Added to Cart</button>
 	</div>
 									@else
-										<div class="ga-producttot last1">
-                                      <button class="displaynone bulkaddcart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add 3 Items to Cart</button>
+										<div class="ga-producttot last1" style="padding-right:0px;">
+                                      <button class="displaynone bulkaddcart addtocartbut addtocartn mrgnlftnone w-100"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add 3 Items to Cart</button>
                                     </div>
 									@endif
                                  </div>
@@ -206,7 +193,6 @@
                      </article>
                   </div>
                   
-                  <!--Last code end--->
 				  <!---Brand section start--->
 					<div class="backtabs-dp_servicespros2 mt-2">
                    
@@ -325,7 +311,35 @@
                         </div>
                      </div>
                      <img class="w-100 mb-2" src="{{static_asset('assets_web/img/productcoupon.jpg')}}" alt="">
+                     <!--Last code start---> 
+                  
+                  <div id="accordion1" class="accordion-container">
+                     <article class="content-entry products_offers">
+                        <h4 class="article-title"> Special offers <i class="fa fa-angle-right"
+                           aria-hidden="true" style="    line-height: 35px;"></i></h4>
+                        <div class="accordion-content accordion-containerblock">
+                           <div class="offer-section">
+                              <!--<span class="title-head">Special offers</span>-->
+                              <ul>
+                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Big Saving</b> - Apply Coupon SAVEBIG &amp; Get 20% Off (price inclusive of discount) <span class="terms">T&amp;C</span> </li>
+                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>5% Instant Discount - </b> on HDFC Bank Credit Cards &amp; EMI <span class="terms">T&amp;C</span> </li>
+                                 <li class="offerlist collapseli"> <i class="fa fa-angle-right" aria-hidden="true"></i> <b>No Cost EMI - Starting from Rs.
+                                    1,214</b> on ICICI, Axis, Kotak, HDFC &amp; <span class="terms">More</span> 
+                                 </li>
+                                 <li class="offerlist collapseli"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Store Discount</b> - Visit our nearest store and get instant extra discount <span class="terms">T&amp;C</span> </li>
+                                 <span class="showoffer">&plus; Show More</span>
+<span class="hideoffer">&minus; Hide More</span>
+                              </ul>
+                           </div>
+                        </div>
+                     </article>
+                     
+                  </div>
+                  <!--Last code end--->
                      <div class="d-block position-relative">
+                     
+                     
+                     
                         @php $qty = 0; foreach ($detailedProduct->stocks as $key => $stock) { $qty += $stock->qty; } @endphp
                         <form id="option-choice-form" class="d-block w-100">
                            @csrf
@@ -384,21 +398,23 @@
                            <div class="discrptions_button cart-add d-block cart-add1 products_list product_data">
                               <div class="input-group quantity_input mb-0">
                                  <div class="input-group w-100 justify-content-start align-items-center packageadd">
-                                    <input type="button" value="-" class="button-minus add_cart_button_plus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0 countnone" data-field="quantity">
+                                    <input type="button" value="&minus;" class="button-minus add_cart_button_plus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0 countnone"  data-field="quantity">
                                     <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25 countnone input-number">
-                                    <input type="button" value="+" class="button-plus add_cart_button_plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0 countnone" data-field="quantity">
+                                    <input type="button" value="&plus;" class="button-plus add_cart_button_plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0 countnone" data-field="quantity">
                                     
                             <input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
                            <input type="hidden" id="total_product_price" class="prod_price">
-                           <button onclick="buyNow()" class="addtocartbut countnone"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button>
-                           <button onclick="addToCart()" class="addtocartbut buttonnone"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
-                           <button class="out-of-stock background-gray">Out of stock</button>
+                           
+                           <button onclick="addToCart()" class="addtocartbut buttonnone addtocartn mrgnlftnone btnneww"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
+                           <button onclick="buyNow()" class="addtocartbut addtocartn mrgnlftnone btnneww"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button>
+                           <button class="out-of-stock background-gray displaynones btnneww">Out of stock</button>
                            <!--<h6><a href="quote.php">Get Quote</a></h6>-->
-                           <button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons">Bulk Order</button>
-                           <button type="button" class="bulk-order-buttons" onclick="window.location.href='{{ url('more-seller') }}'">More Sellers</button>  
+                           <button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons bulkcartn mrgnlftnonebulk btnneww">Bulk Order</button>
+                            
                                     
                                  </div>
                               </div>
+                              <button type="button" class="bulk-order-buttons bulkcartn moresellerw" onclick="window.location.href='{{ url('more-seller') }}'">More Sellers</button> 
                            </div>
                         
                        
@@ -413,62 +429,7 @@
 						</div>
                         
                         
-                        <!--<div id="myModal" class="modal fade prolidneis" role="dialog">
-            <div class="modal-dialog w-50" id="modal-dialog45">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="border-bottom1 border-color-111 mt-0 w-100">
-                                          <h3 class="section-title section-title__sm mb-0 pb-0 font-size-18 mt-0">Other Sellers on EBB</h3>
-                                          <div class="deals">
-                                             <hr class="mt-2">
-                                          </div>
-                                       </div>  
                         
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                    </div>
-                    <div class="modal-body">
-                       
-               
-               
-                
-              <div class="table-crack-border">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
-  <tr class="footable-header">
-    <th>Sold By</th>
-    <th>Price</th>
-    <th>&nbsp;</th>
-  </tr>
-  <tr>
-    <td><span>Host company </span><br/>Free Shipping Available</td>
-    <td>₹ 340.00</td>
-    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
-  </tr>
-   <tr>
-    <td><span>Remote company </span><br/>Free Shipping Available</td>
-    <td>₹ 300.00</td>
-    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
-  </tr>
-   <tr>
-    <td><span>Pankaj company </span><br/>Free Shipping Available</td>
-    <td>₹ 240.00</td>
-    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
-  </tr>
-   <tr>
-    <td><span>xyz company </span><br/>Free Shipping Available</td>
-    <td>₹ 340.00</td>
-    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
-  </tr>
-</table>
-</div>
-              
-              
-              
-              
-              
-                    </div>
-                </div>
-            </div>
-        </div>-->
         
                      <h4 id="" class="stockquantity">
                         @if($detailedProduct->stock_visibility_state == 'quantity')
@@ -701,6 +662,7 @@
                   <div class="dcomp_text mt-10 mb-5 font15 fw400 color788">For more details on products</div>
                   <button class="dcomp_ebtn mt-10"> <span class="font15 fw400 color007">Contact Supplier</span></button>
                   <button class="dcomp_fbtn mt-10 font15 fw400 colorFFF">Get Best Price</button>
+                  <button type="button" class="bulk-order-buttons bulkcartn moresellerw" onclick="window.location.href='{{ url('more-seller') }}'">More Sellers</button>
                </div>
             </div>
          </div>
