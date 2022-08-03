@@ -68,14 +68,26 @@
             <div class="col-md-2 col-sm-2 col-xs-12">
                <div class="logo-img">
                   <div class="nav-trigger" id="rotatezero">
-                     <span></span>
-                     <span></span>
-                     <span></span>
-                  </div>
+					<ul class="ulist-menus border border-1 border-primary rounded-pill d-flex text-center">
+						<li>
+								 <span class="border border-1 border-primary rounded-circle"><b>M</b></span>
+						</li>
+						<li>
+							  <a href="#" class="nav-open js-nav-open">
+								  <span class="nav-open__inner">
+									  <span class="bar"></span>
+									  <span class="bar"></span>
+									  <span class="bar"></span>
+								  </span>
+								  <span class="text">Menu</span>
+							  </a>
+						</li>
+					</ul>
+</div>
                   <a href="{{url('')}}"><img src="{{ asset('public/assets/img/logo.png')}}" alt="" /></a>
                </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-5 col-sm-6 col-xs-12">
                <div class="search-box">
                   <div class="select-box custom-select">
                      <select class="form-control">
@@ -100,7 +112,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-4 col-xs-12">
+            <div class="col-md-5 col-xs-12">
                <div class="right-menu">
                   <ul>
                     
@@ -164,8 +176,8 @@
                      </li>
                      @endif
                      <li class="border-zero flot-right">
-                        <a href="javascript:void(0);" id="imgrotate"><img
-                           src="{{static_asset('assets_web/img/services-arrow.png')}}" alt="" /></a>
+                        <a href="javascript:void(0);" id="imgrotate"> 
+													<img src="{{static_asset('assets_web/img/services-arrow.png')}}" alt="" /> <span>Register Now</span></a>
                            
                            <div class="right-sidemenu">
     <div class="top-button">

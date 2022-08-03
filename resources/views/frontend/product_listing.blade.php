@@ -458,6 +458,7 @@ $meta_description = get_setting('meta_description');
                         <div class="col-md-3">
 							<div class="d-flex">
 							      <label class="mb-0 opacity-50 w-20">{{ translate('Sort by')}}</label>
+                                  <i class="fa fa-angle-down" aria-hidden="true"></i>
                            <select class="form-control form-control-sm aiz-selectpicker sortbytxt" name="sort_by"
                               onchange="filter()">
                               <option value="newest" @isset($sort_by) @if ($sort_by=='newest' ) selected @endif

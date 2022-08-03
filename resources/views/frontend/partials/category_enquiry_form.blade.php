@@ -28,7 +28,8 @@
             </div>
             <!-- form-group -->	
             <div class="form-group">
-               <div class="dropdown1 bootstrap-select1 form-control1">
+               <div class="dropdown1 bootstrap-select1 form-control1" style="position:relative;">
+               <i class="fa fa-angle-down" aria-hidden="true" style="top:15px;"></i>
                   <select required name="user_type" class="selectpicker form-control" title="Select">
                      <option class="bs-title-option" value="">Selected</option>
                      <option value="buyer">I'm a buyer</option>
