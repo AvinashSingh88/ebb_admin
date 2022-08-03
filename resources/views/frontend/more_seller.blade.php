@@ -25,7 +25,7 @@
 
 
   <tr>
-    <td><span><strong>{{$item->name}}</strong> </span><br/>
+    <td><span><strong>{{$item->name}}</strong></span><br/>
      <ul>
         @if ($item->cash_on_delivery == 1)
         <li>Cash On Delivery available</li>
@@ -58,3 +58,6 @@
 </table>
 </div>
 		</div>
+        </section>
+        
+        @endsection
