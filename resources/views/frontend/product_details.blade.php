@@ -50,13 +50,13 @@
                   <div class="product-box mb-0 zoom-left_hegt">
                      <!--<div class="beachs">10% Off</div>-->
                      <div class="zoom-left">
-                        @php 
-                        $photos = explode(',', $detailedProduct->photos); 
-                        @endphp 
-                        <img id="zoom_03" src="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" data-zoom-image="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" /> 
+                        @php
+                        $photos = explode(',', $detailedProduct->photos);
+                        @endphp
+                        <img id="zoom_03" src="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" data-zoom-image="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" />
                         <div class="clearfix"></div>
                         <div id="gallery_01">
-                           @foreach ($photos as $key => $photo) 
+                           @foreach ($photos as $key => $photo)
                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ uploaded_asset($photo) }}" data-zoom-image="{{ uploaded_asset($photo) }}">
                            <img src="{{ uploaded_asset($photo) }}" width="100" />
                            </a>
@@ -67,13 +67,30 @@
                            <img src="{{ uploaded_asset($stock->image) }}" width="100"  />
                            </a>
                            @endif
-                           @endforeach 
+                           @endforeach
                         </div>
                      </div>
                   </div>
-                  
+
+                  <!--Last code start--->
                   <div id="accordion" class="accordion-container">
-                     
+                     <article class="content-entry products_offers">
+                        <h4 class="article-title"> Special offers <i class="fa fa-angle-right"
+                           aria-hidden="true" style="    line-height: 35px;"></i></h4>
+                        <div class="accordion-content">
+                           <div class="offer-section">
+                              <!--<span class="title-head">Special offers</span>-->
+                              <ul>
+                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Big Saving</b> - Apply Coupon SAVEBIG &amp; Get 20% Off (price inclusive of discount) <span class="terms">T&amp;C</span> </li>
+                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>5% Instant Discount - </b> on HDFC Bank Credit Cards &amp; EMI <span class="terms">T&amp;C</span> </li>
+                                 <li class="offerlist"> <i class="fa fa-angle-right" aria-hidden="true"></i> <b>No Cost EMI - Starting from Rs.
+                                    1,214</b> on ICICI, Axis, Kotak, HDFC &amp; <span class="terms">More</span>
+                                 </li>
+                                 <li class="offerlist"><i class="fa fa-angle-right" aria-hidden="true"></i> <b>Store Discount</b> - Visit our nearest store and get instant extra discount <span class="terms">T&amp;C</span> </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </article>
                      @php
                      $proprice = $detailedProduct->unit_price - ($detailedProduct->unit_price * $detailedProduct->discount) / 100;
                 @endphp
@@ -99,14 +116,14 @@
                               <div class="ga-products">
                                  <div class="ga-products_image">
                                     <div class="ga-product ">
-                                       <a href="{{ route('product', $detailedProduct->slug) }}"> 
-                                          <img class="ga-33" id="ga-33" src="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" alt=""> 
+                                       <a href="{{ route('product', $detailedProduct->slug) }}">
+                                          <img class="ga-33" id="ga-33" src="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" alt="">
                                              <br />{{$detailedProduct->name}}
                                        </a>
                                              <span class="boughtpice"><br /><strong>{{home_discounted_base_price($detailedProduct)}}</strong><br />
-                                            
+
                                                 <strike>Rs {{$detailedProduct->unit_price}}</strike></span>
-                                             <br/> 
+                                             <br/>
                                              @if ($detailedProduct->discount!=null)
                                                 <span class="fnt12">{{$detailedProduct->discount}}% Off</span>
                                              @endif
@@ -115,6 +132,7 @@
                                     </div>
                                     
 									
+
 									@php
 										$total_price = 0;
 									@endphp
@@ -122,15 +140,14 @@
 										@php
                                              $price = $items->unitPrice - ($items->unitPrice * $items->discounts) / 100;
                                         @endphp
-									
-                                      
+
                                        <div class="ga-product ">
                                        <label><input type="checkbox" checked class="select_product" data-product_id="{{$items->items_id}}" data-product_price="{{$price}}" value=""></label>
                                           <a href="{{ route('product', $items->slugs) }}">
-                                             <img class="ga-22" id="ga-22" src="{{uploaded_asset($items->thumb)}}" alt=""> 
+                                             <img class="ga-22" id="ga-22" src="{{uploaded_asset($items->thumb)}}" alt="">
                                              <br />{{$items->proName}}
                                           </a>
-                                          
+
                                           <span class="boughtpice"><br />
                                              <strong>Rs {{$price}}</strong><br />
                                              <strike>Rs{{$items->unitPrice}}</strike>
@@ -141,11 +158,11 @@
                                              $total_price = $total_price+$price;
                                         @endphp
                                     @endforeach
-                                    
+
                                  </div>
-                                 
-                                 
-                                 
+
+
+
                                  <div class="ga-products_image">
                                     <div class="ga-producttot ">
                                        1 Item<br /><strong>{{home_discounted_base_price($detailedProduct)}}</strong>
@@ -157,22 +174,22 @@
                                        Total<br /><strong>Rs {{$total_price+$proprice}}</strong>
                                     </div>
                                  </div>
-                                 
+
     @php
-	
+
 		if(auth()->user() != null) {
             $user_id = Auth::user()->id;
             $sameidCount = \App\Models\Cart::where('user_id', $user_id)->where('product_id',$detailedProduct->id)->get();
-            
+
         } else {
             $temp_user_id = Session::get('temp_user_id');
             $sameidCount = \App\Models\Cart::where('temp_user_id', $temp_user_id)->where('product_id',$detailedProduct->id)->get();
-			 
-            
+
+
         }
-		
+
 	@endphp
-						
+
                                  <div id="bought_together" class="ga-products_image">
 									@if(count($sameidCount)>=1)
                                     <div class="ga-producttot last1" style="padding-right:0px;">
@@ -185,17 +202,19 @@
 									@endif
                                  </div>
                               </div>
-                           </div>   
+                           </div>
                            </div>
                         </div>
                         <!--/.accordion-content-->
                         @endif
                      </article>
                   </div>
-                  
+
+
+                  <!--Last code end--->
 				  <!---Brand section start--->
 					<div class="backtabs-dp_servicespros2 mt-2">
-                   
+
 
 						  <div class="optionbox">
                               <div class="clear-fix"></div>
@@ -203,7 +222,7 @@
                               <h4 class="dthd">Brands : <span><a href="#1" style="color: inherit;text-decoration: none;">{{$detailedProduct->brand->name}}</a></span> </h4>
 								@endif
                               <ul class="optbrand">
-									@if ($detailedProduct->brand != null)	
+									@if ($detailedProduct->brand != null)
                                  <!--for current product-->
                                  <li>
                                     <a href="javascript:void(0);" class="detbrand selected">
@@ -225,13 +244,13 @@
                                     <span class="price">{{home_discounted_base_price($brandproducts)}}</span></a><!-- detbrand -->
                                  </li>
 								   @endforeach
-                                 
-                                  
+
+
                               </ul>
                            </div>
                            <hr/>
-                        
-                        
+
+
                      </div>
 				  <!---Brand section end--->
                </div>
@@ -265,9 +284,9 @@
                                  <div class="col-auto"> <a href="{{ route('products.brand',$detailedProduct->brand->slug) }}">
                                     <img height="60" class="icon-imagw mx-2" src="{{ uploaded_asset($detailedProduct->brand->logo) }}"
                                        alt="{{ $detailedProduct->brand->getTranslation('name') }}">
-                                    </a> 
+                                    </a>
                                  </div>
-                                 @endif 
+                                 @endif
                               </div>--}}
                            </div>
                            <div class="clearfix"></div>
@@ -276,7 +295,7 @@
                               <div class="price w-100 mb-0 pb-0">
                                  <h3 class="price_actual mb-0 pb-0"><span>Price : </span><i class="fa fa-inr"></i> {{ $proprice }}
 								 <span class="cutprice">₹{{$detailedProduct->unit_price}}</span>
-								 <span class="offertxt" style="border:none">You Save 
+								 <span class="offertxt" style="border:none">You Save
 								 <i class="fa fa-inr"></i> {{$detailedProduct->unit_price-$proprice}}  ( {{$detailedProduct->discount}}% ) </span></h3>
                               </div>
                               {{-- @if($detailedProduct->unit != null)
@@ -296,17 +315,17 @@
                               Total Price:
                               <div id="total_price" class=""></div>
                            </div>
-                           
+
                            <div class="title">Inclusive of all taxes</div>
                            <p class="col-cpvc-2">CPVC SDR 11 CPVC Pipes 40 mm 1.50 <a href="#descriptions1">More
-                              Details</a> 
+                              Details</a>
                            </p>
 						   {{--@php
 								$shortInfo = strlen($detailedProduct->description) > 200 ? substr($detailedProduct->description, 0, 200) . " ..." : $detailedProduct->description;
 							@endphp
                            <div class="title">Inclusive of all taxes</div>
                            <p class="col-cpvc-2">{!! html_entity_decode($shortInfo) !!} </p><a href="#descriptions1">More
-                              Details</a> 
+                              Details</a>
                            </p>--}}
                         </div>
                      </div>
@@ -354,7 +373,7 @@
                                        <label class="aiz-megabox pl-0 mr-2">
                                        <input class="opacity" type="radio" name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}" @if($key==0) checked @endif> <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-0 mt-0 mx-2">
                                        {{ $value }}
-                                       </span> </label> @endforeach 
+                                       </span> </label> @endforeach
                                     </div>
                                  </div>
                               </div>
@@ -371,7 +390,7 @@
                                     <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ \App\Models\Color::where('code', $color)->first()->name }}">
                                     <input class="opacity" type="radio" name="color" value="{{ \App\Models\Color::where('code', $color)->first()->name }}" @if($key==0) checked @endif> <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-0 mt-0 mx-2">
                                     <span class="size-30px d-inline-block rounded" style="background:{{ $color }};"></span> </span>
-                                    </label> @endforeach 
+                                    </label> @endforeach
                                  </div>
                               </div>
                            </div>
@@ -388,13 +407,13 @@
                                  <div class="input-group w-100 justify-content-start align-items-center packageadd">
                                     <input type="button" value="-" class="button-minus border rounded-circle quantity-left-minus icon-shape icon-sm mx-1 m-0" data-field="quantity">
                                     <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25">
-                                    <input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0" data-field="quantity"> 
+                                    <input type="button" value="+" class="button-plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0" data-field="quantity">
                                  </div>
                               </div>
                            </div>
                               </div>
                            </div>
-						</form>   
+						</form>
                            <div class="discrptions_button cart-add d-block cart-add1 products_list product_data">
                               <div class="input-group quantity_input mb-0">
                                  <div class="input-group w-100 justify-content-start align-items-center packageadd">
@@ -402,6 +421,7 @@
                                     <input type="number" step="1" min="{{ $detailedProduct->min_qty }}" max="10" value="{{ $detailedProduct->min_qty }}" name="quantity" class="quantity quantity-field border-0 text-center m-0 w-25 countnone input-number">
                                     <input type="button" value="&plus;" class="button-plus add_cart_button_plus border rounded-circle quantity-right-plus icon-shape icon-sm m-0 lh-0 countnone" data-field="quantity">
                                     
+
                             <input type="hidden" value="{{$detailedProduct->id}}" class="prod_id">
                            <input type="hidden" id="total_product_price" class="prod_price">
                            
@@ -409,28 +429,85 @@
                            <button onclick="buyNow()" class="addtocartbut addtocartn mrgnlftnone btnneww"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Buy Now</button>
                            <button class="out-of-stock background-gray displaynones btnneww">Out of stock</button>
                            <!--<h6><a href="quote.php">Get Quote</a></h6>-->
-                           <button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons bulkcartn mrgnlftnonebulk btnneww">Bulk Order</button>
-                            
-                                    
+
+                           <button onclick="window.location.href='{{ route('bulkorder', $detailedProduct->slug) }}'" class="bulk-order-buttons">Bulk Order</button>
+                           <a href="{{url('/more-seller/'.$detailedProduct->id)}}" ><button type="button" class="bulk-order-buttons"  '">More Sellers</button></a>
+
                                  </div>
                               </div>
                               <button type="button" class="bulk-order-buttons bulkcartn moresellerw" onclick="window.location.href='{{ url('more-seller') }}'">More Sellers</button> 
                            </div>
-                        
-                       
-                     
+
+
+
 					  <div class=" position-absolute end-0 bottom-0 justify-content-end w-75">
 					  <div class="discrptions_button">
-                          
-                           
+
+
                         </div>
                         </div>
-                        
+
 						</div>
-                        
-                        
-                        
-        
+
+
+
+                        <!--<div id="myModal" class="modal fade prolidneis" role="dialog">
+            <div class="modal-dialog w-50" id="modal-dialog45">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="border-bottom1 border-color-111 mt-0 w-100">
+                                          <h3 class="section-title section-title__sm mb-0 pb-0 font-size-18 mt-0">Other Sellers on EBB</h3>
+                                          <div class="deals">
+                                             <hr class="mt-2">
+                                          </div>
+                                       </div>
+
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+
+
+
+
+              <div class="table-crack-border">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
+  <tr class="footable-header">
+    <th>Sold By</th>
+    <th>Price</th>
+    <th>&nbsp;</th>
+  </tr>
+  <tr>
+    <td><span>Host company </span><br/>Free Shipping Available</td>
+    <td>₹ 340.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+   <tr>
+    <td><span>Remote company </span><br/>Free Shipping Available</td>
+    <td>₹ 300.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+   <tr>
+    <td><span>Pankaj company </span><br/>Free Shipping Available</td>
+    <td>₹ 240.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+   <tr>
+    <td><span>xyz company </span><br/>Free Shipping Available</td>
+    <td>₹ 340.00</td>
+    <td><button onclick="addToCart()" class="addtocartbut"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button></td>
+  </tr>
+</table>
+</div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
                      <h4 id="" class="stockquantity">
                         @if($detailedProduct->stock_visibility_state == 'quantity')
                         <span id="available-quantity">Only {{ $qty }} Items Left!</span>
@@ -496,7 +573,7 @@
                   <span class="title"><i class="fa fa-map-marker"></i>Delivery by {{$deliver_date}}</span>
 					@endif
                   <form>
-                     <input type="number" name="pincode" value="670002" placeholder="Enter Pincode"> <a href="javascript:void(0);" class="change">Change</a> 
+                     <input type="number" name="pincode" value="670002" placeholder="Enter Pincode"> <a href="javascript:void(0);" class="change">Change</a>
                   </form>
                   <ul class="row delivery">
                      <li class="col-md-4"> <img src="{{static_asset('assets_web/img/shipping.svg')}}" class="loadimg delimg" alt=""> <span class="name">Priority</span> <span class="status">Delivery</span> </li>
@@ -514,7 +591,7 @@
                             ->join('products', 'products.id', '=', 'related_products.items_id')
                             ->select(['related_products.*', 'products.name as proName','products.thumbnail_img as thumb','products.slug as slugs'])
                             ->get();
-                           
+
             @endphp
             <div class="mb-8">
                <div class="border-bottom border-color-1 mb-3">
@@ -523,13 +600,13 @@
                <ul class="list-unstyled">
                   @if(count($proRelated__products)>0)
                      @foreach ($proRelated__products as $related_product)
-                       
+
                         <li class="mb-4">
                            <div class="row">
                               <div class="col-auto col-md-4"> <a href="{{ route('product', $related_product->slugs) }}" class="d-block width-75">
                                  <img class="img-fluid" src="{{ uploaded_asset($related_product->thumb) }}"
                                     alt="{{ $related_product->proName }}">
-                                 </a> 
+                                 </a>
                               </div>
                               <div class="col col-md-8">
                                  <h3 class="text-lh-1dot2 compldy font-size-14 mb-0"><a
@@ -538,7 +615,7 @@
                               </div>
                            </div>
                         </li>
-                     @endforeach 
+                     @endforeach
                   @endif
                </ul>
             </div>
@@ -563,12 +640,12 @@
                      <img src="{{static_asset('assets_web/img/in.jpg')}}" alt="alt"
                         style="    border-radius: 50px;  width: 25px;  height: 25px;">
                      IND
-                     </span> <span class="font15 fw400 color414">Noida</span> 
+                     </span> <span class="font15 fw400 color414">Noida</span>
                   </div>
                </a>
                <div class="dcomp_rati mt-5">
                   <a class="dcomp_rati" href="#12">
-                     <span class="dcomp_rtext mr-10 font16 fw600 color363">4.1</span> 
+                     <span class="dcomp_rtext mr-10 font16 fw600 color363">4.1</span>
                      <span class="dcomp_rstar mr-10 ">
                         <svg width="100%" height="100%" viewBox="0 0 1000 200">
                            <polygon id="star8371" points="100,10 40,198 190,78 10,78 160,198" fill="#FFE372"></polygon>
@@ -588,7 +665,7 @@
                               style="fill: rgb(255, 110, 0); height: 100%;"></rect>
                         </svg>
                      </span>
-                     <span class="dcomp_rnumb font15 fw400 color788">129 Ratings</span> 
+                     <span class="dcomp_rnumb font15 fw400 color788">129 Ratings</span>
                   </a>
                </div>
                <a class="dcompinfo_anchor" href="#1">
@@ -654,7 +731,7 @@
                            </g>
                         </svg>
                      </span>
-                     <span class="dcomp_yers font11 fw700 color414">41 YRS</span> 
+                     <span class="dcomp_yers font11 fw700 color414">41 YRS</span>
                   </div>
                </a>
                <hr>
@@ -692,11 +769,11 @@
                </div>
                <div class="discrptions_button">
                   <h5><a href="{{ route('product', $related_product->slug) }}">View Detail</a></h5>
-                  <!--<h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>--> 
+                  <!--<h6><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h6>-->
                </div>
             </div>
          </div>
-         @endforeach 
+         @endforeach
       </div>
    </div>
 </div>

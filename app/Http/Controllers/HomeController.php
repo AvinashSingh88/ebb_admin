@@ -43,26 +43,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $featured_categories = Cache::rememberForever('featured_categories', function () {
-            return Category::where('featured', 1)->get();
-        });
+        // $featured_categories = Cache::rememberForever('featured_categories', function () {
+        //     return Category::where('featured', 1)->get();
+        // });
 
-        $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
-            return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
-        });
+        // $todays_deal_products = Cache::rememberForever('todays_deal_products', function () {
+        //     return filter_products(Product::where('published', 1)->where('todays_deal', '1'))->get();
+        // });
+
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
 
         $categories_id = json_decode(get_setting('home_categories'));
 
         $cat_wise_brands = Category::whereIn('id', $categories_id)->get();
-		
+
         $allblogs = Blog::limit(4)->get();
-        $servicesoffered = Category::where('level', 0)->where('type',2)->orderBy('order_level', 'desc')->get();
-      
-        return view('frontend.index', compact('featured_categories', 'todays_deal_products', 'categories','cat_wise_brands','allblogs','servicesoffered'));
+        $servicesoffered = Category::where('level', 0)->where('type', 2)->orderBy('order_level', 'desc')->get();
+
+        return view('frontend.index', compact('categories', 'cat_wise_brands', 'allblogs', 'servicesoffered'));
     }
 
-    
+
 
     public function login()
     {
@@ -70,7 +71,7 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
-        return view('frontend.user_login',compact('categories'));
+        return view('frontend.user_login', compact('categories'));
     }
 
     public function registration(Request $request)
@@ -78,7 +79,7 @@ class HomeController extends Controller
         if (Auth::check()) {
             return redirect()->route('home');
         }
-        
+
         if ($request->has('referral_code') && addon_is_activated('affiliate_system')) {
             try {
                 $affiliate_validation_time = AffiliateConfig::where('type', 'validation_time')->first();
@@ -96,7 +97,7 @@ class HomeController extends Controller
             }
         }
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
-        return view('frontend.user_registration',compact('categories'));
+        return view('frontend.user_registration', compact('categories'));
     }
 
     public function cart_login(Request $request)
@@ -150,31 +151,35 @@ class HomeController extends Controller
 
     public function profile(Request $request)
     {
-        $address = Address::where('user_id',Auth::user()->id)->first();
+        $address = Address::where('user_id', Auth::user()->id)->first();
         // dd($address);die;
         if (Auth::user()->user_type == 'delivery_boy') {
             return view('delivery_boys.frontend.profile');
         } else {
-            return view('frontend.user.profile',compact('address'));
+            return view('frontend.user.profile', compact('address'));
         }
     }
-    public function editProfile(){
+    public function editProfile()
+    {
         return view('frontend.user.edit_profile');
     }
-    public function myAddressBook(){
+    public function myAddressBook()
+    {
         $userid = Auth::user()->id;
-        $myaddress = Address::where('user_id',$userid)->get();
+        $myaddress = Address::where('user_id', $userid)->get();
         return view('frontend.user.my-addressbook', compact('myaddress'));
     }
-    public function bankDetail(){
+    public function bankDetail()
+    {
         return view('frontend.user.mybankdetail');
     }
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         $request->validate([
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'phone'=>'required',
-            'email'=>'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
             // 'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024|dimensions:width=500,height=500',
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
@@ -182,74 +187,76 @@ class HomeController extends Controller
         if ($request->hasfile('file')) {
             $file = $request->file('file');
             $extenstion = $file->getClientOriginalExtension();
-            $filename = 'user-ava-'.time().'.'.$extenstion;
+            $filename = 'user-ava-' . time() . '.' . $extenstion;
             $file->move(public_path('uploads/user'), $filename);
         }
         //  dd($filename);die;
         $userid = Auth::user()->id;
-        $name = $request->first_name.' '.$request->last_name;
+        $name = $request->first_name . ' ' . $request->last_name;
         $upate_profile_details = User::where('id', $userid)
-                            ->update([
-                                    'first_name' => $request->first_name,
-                                    'last_name' => $request->last_name,
-                                    'name' => $name,
-                                    'phone' => $request->phone,
-                                    'email' => $request->email,
-                                    'email' => $request->email,
-                                    'gender' => $request->gender,
-                                    'avatar' => $filename,
-                                ]);
+            ->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'name' => $name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'email' => $request->email,
+                'gender' => $request->gender,
+                'avatar' => $filename,
+            ]);
         if ($upate_profile_details) {
             return redirect()->back()->with(session()->flash('alert-success', 'Profile Updated Successfully!.'));
         }
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));
     }
-    public function updateAddressDetails(Request $request){
+    public function updateAddressDetails(Request $request)
+    {
         $request->validate([
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'phone'=>'required',
-            'pin'=>'required',
-            'area'=>'required',
-            'house_no'=>'required',
-            'user_id'=>'required',
-            'state'=>'required',
-            'city'=>'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'pin' => 'required',
+            'area' => 'required',
+            'house_no' => 'required',
+            'user_id' => 'required',
+            'state' => 'required',
+            'city' => 'required',
         ]);
         $userid = Auth::user()->id;
-        $name = $request->first_name.' '.$request->last_name;
-        $upate_profile_details = Address::where('id', $request->id)->where('user_id',$request->user_id)
-                            ->update([
-                                    'first_name' => $request->first_name,
-                                    'last_name' => $request->last_name,
-                                    'phone' => $request->phone,
-                                    'state' => $request->state,
-                                    'city' => $request->city,
-                                    'address' => $request->address,
-                                    'house_no' => $request->house_no,
-                                    'area' => $request->area,
-                                    'pin' => $request->pin,
-                                ]);
+        $name = $request->first_name . ' ' . $request->last_name;
+        $upate_profile_details = Address::where('id', $request->id)->where('user_id', $request->user_id)
+            ->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'phone' => $request->phone,
+                'state' => $request->state,
+                'city' => $request->city,
+                'address' => $request->address,
+                'house_no' => $request->house_no,
+                'area' => $request->area,
+                'pin' => $request->pin,
+            ]);
         if ($upate_profile_details) {
             return redirect()->back()->with(session()->flash('alert-success', 'Address Updated Successfully!.'));
         }
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));
     }
-    public function addAddress(Request $request){
+    public function addAddress(Request $request)
+    {
         $request->validate([
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'phone'=>'required',
-            'pin'=>'required',
-            'house_no'=>'required',
-            'area'=>'required',
-            'city'=>'required',
-            'state'=>'required',
-            'address_type'=>'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'pin' => 'required',
+            'house_no' => 'required',
+            'area' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'address_type' => 'required',
 
         ]);
         $addresspost = Address::create([
-           "first_name" => "$request->first_name",
+            "first_name" => "$request->first_name",
             "last_name" => "$request->last_name",
             "phone" => "$request->phone",
             "pin" => "$request->pin",
@@ -264,25 +271,27 @@ class HomeController extends Controller
         if ($addresspost) {
             return redirect()->back()->with(session()->flash('alert-success', 'Address Added Successfully!.'));
         }
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));
     }
-    public function managePayments(){
+    public function managePayments()
+    {
         $userid = Auth::user()->id;
-        $mypaymentcard = Customer_payment_card::where('user_id',$userid)->get();
+        $mypaymentcard = Customer_payment_card::where('user_id', $userid)->get();
         return view('frontend.user.manage-payments', compact('mypaymentcard'));
     }
-    public function addPaymentCards(Request $request){
+    public function addPaymentCards(Request $request)
+    {
         // dd($request);
         // die;
         $request->validate([
-            'credit_debit'=>'required',
-            'card_no'=>'required|max:16',
-            'expiry_month'=>'required',
-            'expiry_year'=>'required',
+            'credit_debit' => 'required',
+            'card_no' => 'required|max:16',
+            'expiry_month' => 'required',
+            'expiry_year' => 'required',
         ]);
-       
+
         $addcard = Customer_payment_card::create([
-           "credit_debit" => "$request->credit_debit",
+            "credit_debit" => "$request->credit_debit",
             "card_no" => "$request->card_no",
             "expiry_month" => "$request->expiry_month",
             "expiry_year" => "$request->expiry_year",
@@ -291,13 +300,14 @@ class HomeController extends Controller
         if ($addcard) {
             return redirect()->back()->with(session()->flash('alert-success', 'Payment Card Added Successfully!.'));
         }
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
-    
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));
     }
-    public function changePassword(){
+    public function changePassword()
+    {
         return view('frontend.user.change-password');
     }
-    public function userPasswordChange(Request $request){
+    public function userPasswordChange(Request $request)
+    {
         $request->validate([
             // 'old_password' => 'required',
             'new_password' => 'required',
@@ -305,52 +315,54 @@ class HomeController extends Controller
         ]);
         $userid = Auth::user()->id;
         if ($request->new_password === $request->confirm_password) {
-           
-                $uppassdata = User::where('id', '=', $userid)
-                                    ->update([
-                                        'password' => Hash::make($request->new_password),
-                                    ]);
-                if ($uppassdata) {
-                    return redirect()->back()->with(session()->flash('alert-success', 'Congratulations! You have successfully changed your password.'));
-                } else{
-                    return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
-                }
+
+            $uppassdata = User::where('id', '=', $userid)
+                ->update([
+                    'password' => Hash::make($request->new_password),
+                ]);
+            if ($uppassdata) {
+                return redirect()->back()->with(session()->flash('alert-success', 'Congratulations! You have successfully changed your password.'));
+            } else {
+                return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+            }
             // } else {
             //     return redirect()->back()->with(session()->flash('alert-warning', 'Please! enter correct old password.'));
             // }
-            
-        } else{
+
+        } else {
             return redirect()->back()->with(session()->flash('alert-warning', 'New Password and Confirm Password not matched.'));
         }
         return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
     }
 
-    public function setDefaultAddress(Request $request){
+    public function setDefaultAddress(Request $request)
+    {
         $request->validate([
-            'userid'=>'required',
-            'address_id'=>'required',
+            'userid' => 'required',
+            'address_id' => 'required',
         ]);
-            
-      
+
+
         $update = Address::where('user_id', '=', $request->userid)->update(['set_default' => '0']);
-        
-        $addressid = Address::where('id', '=', $request->address_id)->where('user_id','=',$request->userid)
-                ->update([
-                    'set_default' => '1',
-                ]);
-            if ($update && $addressid) {
-                return redirect()->back()->with(session()->flash('alert-success', 'Default Address Set'));
-            } else{
-                return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
-            }
-    return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+
+        $addressid = Address::where('id', '=', $request->address_id)->where('user_id', '=', $request->userid)
+            ->update([
+                'set_default' => '1',
+            ]);
+        if ($update && $addressid) {
+            return redirect()->back()->with(session()->flash('alert-success', 'Default Address Set'));
+        } else {
+            return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
+        }
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please! try again later.'));
     }
-    public function removeMyAddress(Request $request){
+    public function removeMyAddress(Request $request)
+    {
         $request->validate([
-            'userid'=>'required',
-            'address_id'=>'required',
+            'userid' => 'required',
+            'address_id' => 'required',
         ]);
-        $addressdelete = Address::where('id', '=', $request->address_id)->where('user_id','=',$request->userid)->delete();
+        $addressdelete = Address::where('id', '=', $request->address_id)->where('user_id', '=', $request->userid)->delete();
         if ($addressdelete) {
             return redirect()->back()->with(session()->flash('alert-success', 'Address Removed Successfully'));
         } else {
@@ -359,15 +371,17 @@ class HomeController extends Controller
     }
 
     //Address Details Get start
-    public function getaddressdetails(Request $request){
+    public function getaddressdetails(Request $request)
+    {
         $address_id = $request->post('address_id');
         $addressesss = Address::where('id', $address_id)->get()->toJson();
         return $addressesss;
     }
-    public function getcategorybrands(Request $request){
+    public function getcategorybrands(Request $request)
+    {
         $address_id = $request->post('address_id');
         $catebrabddetailsss = Category_wise_brand::where('category_id', $address_id)->get();
-        foreach($catebrabddetailsss AS $cat){
+        foreach ($catebrabddetailsss as $cat) {
             $brand = \App\Models\Brand::find($cat->brand_id);
             $cat->brand_id = uploaded_asset($brand->logo);
             $cat->image = uploaded_asset($cat->image);
@@ -411,15 +425,16 @@ class HomeController extends Controller
         return back();
     }
 
-    public function makeEnquiry(Request $request){
+    public function makeEnquiry(Request $request)
+    {
         $request->validate([
-            'name'=>'required',
-            'phone'=>'required',
-            'email'=>'required',
-            'message'=>'required',
-            'user_type'=>'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+            'user_type' => 'required',
         ]);
-       
+
         $addcard = Enquiry::create([
             "name" => "$request->name",
             "phone" => "$request->phone",
@@ -430,8 +445,7 @@ class HomeController extends Controller
         if ($addcard) {
             return redirect()->back()->with(session()->flash('alert-success', 'Thank you for enquiry with us!.'));
         }
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));        
-    
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));
     }
 
     public function flash_deal_details($slug)
@@ -479,7 +493,7 @@ class HomeController extends Controller
             $ocode = $request->order_code;
             $order = Order::where('code', $request->order_code)->first();
             if ($order != null) {
-                return view('frontend.track_order', compact('order','ocode'));
+                return view('frontend.track_order', compact('order', 'ocode'));
             }
         }
         return view('frontend.track_order');
@@ -487,7 +501,7 @@ class HomeController extends Controller
 
     public function product(Request $request, $slug)
     {
-        $detailedProduct  = Product::with('category','reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
+        $detailedProduct  = Product::with('category', 'reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
         if ($detailedProduct != null && $detailedProduct->published) {
             if ($request->has('product_referral_code') && addon_is_activated('affiliate_system')) {
@@ -506,9 +520,9 @@ class HomeController extends Controller
                 $affiliateController->processAffiliateStats($referred_by_user->id, 1, 0, 0, 0);
             }
             if ($detailedProduct->digital == 1) {
-                return view('frontend.digital_product_details', compact('detailedProduct','categories'));
+                return view('frontend.digital_product_details', compact('detailedProduct', 'categories'));
             } else {
-                return view('frontend.product_details', compact('detailedProduct','categories'));
+                return view('frontend.product_details', compact('detailedProduct', 'categories'));
             }
         }
         abort(404);
@@ -516,7 +530,7 @@ class HomeController extends Controller
 
     public function bulkOrder(Request $request, $slug)
     {
-        $detailedProduct  = Product::with('category','reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
+        $detailedProduct  = Product::with('category', 'reviews', 'brand', 'stocks', 'user', 'user.shop')->where('auction_product', 0)->where('slug', $slug)->where('approved', 1)->first();
         $categories = Category::where('level', 0)->orderBy('order_level', 'desc')->get();
         if ($detailedProduct != null && $detailedProduct->published) {
             if ($request->has('product_referral_code') && addon_is_activated('affiliate_system')) {
@@ -535,9 +549,9 @@ class HomeController extends Controller
                 $affiliateController->processAffiliateStats($referred_by_user->id, 1, 0, 0, 0);
             }
             if ($detailedProduct->digital == 1) {
-                return view('frontend.digital_product_details', compact('detailedProduct','categories'));
+                return view('frontend.digital_product_details', compact('detailedProduct', 'categories'));
             } else {
-                return view('frontend.bulk_order_details', compact('detailedProduct','categories'));
+                return view('frontend.bulk_order_details', compact('detailedProduct', 'categories'));
             }
         }
         abort(404);
@@ -568,7 +582,7 @@ class HomeController extends Controller
 
     public function all_categories(Request $request)
     {
-        $categories = Category::where('level', 0)->where('type','1')->orderBy('order_level', 'asc')->get();
+        $categories = Category::where('level', 0)->where('type', '1')->orderBy('order_level', 'asc')->get();
         return view('frontend.all_category', compact('categories'));
     }
     public function all_brands(Request $request)
@@ -576,8 +590,9 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('frontend.all_brand', compact('categories'));
     }
-    public function all_service_category(Request $request){
-        $servicecategories = Category::where('level', 0)->where('type','2')->orderBy('order_level', 'asc')->get();
+    public function all_service_category(Request $request)
+    {
+        $servicecategories = Category::where('level', 0)->where('type', '2')->orderBy('order_level', 'asc')->get();
         return view('frontend.all_service_category', compact('servicecategories'));
     }
 
@@ -908,7 +923,7 @@ class HomeController extends Controller
 
         // <!-- flash(translate('Email was not verified. Please resend your mail!'))->error(); -->
         // flash('alert-danger', 'Email was not verified. Please resend your mail!');
-		return redirect()->route('dashboard')->with(session()->flash('alert-danger', 'Email was not verified. Please resend your mail.'));
+        return redirect()->route('dashboard')->with(session()->flash('alert-danger', 'Email was not verified. Please resend your mail.'));
         // return redirect()->route('dashboard');
     }
 
@@ -924,7 +939,7 @@ class HomeController extends Controller
 
                 // flash(translate('Password updated successfully'))->success();
                 flash('alert-danger', 'Password updated successfully!');
-                
+
 
                 if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'staff') {
                     return redirect()->route('admin.dashboard');
@@ -973,17 +988,18 @@ class HomeController extends Controller
         return view('frontend.inhouse_products', compact('products'));
     }
 
-    public function productRequestQuote(Request $request){
+    public function productRequestQuote(Request $request)
+    {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|email',
-            'phone'=>'required|min:11|numeric',
-            'price_range'=>'required|numeric',
-            'message'=>'required',
-            'category'=>'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|min:11|numeric',
+            'price_range' => 'required|numeric',
+            'message' => 'required',
+            'category' => 'required',
         ]);
-    //    dd($request->name);
-    //    die;
+        //    dd($request->name);
+        //    die;
         $add_product_request_enquiry = ProductQuoteEnquiry::create([
             "name" => "$request->name",
             "email" => "$request->email",
@@ -996,85 +1012,100 @@ class HomeController extends Controller
         if ($add_product_request_enquiry) {
             return redirect()->back()->with(session()->flash('alert-success', 'Thank you for enquiry with us!.'));
         }
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.')); 
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong. Please try again.'));
     }
-    public function insertCallRequest(Request $request){
+    public function insertCallRequest(Request $request)
+    {
         $add_product_request_enquiry = CallRequest::create([
             "name" => "$request->name",
             "email" => "$request->email",
             "mobile" => "$request->mobile",
-            
+
         ]);
         response()->json(['status' => "Call Request sent successfully"]);
     }
 
-    public function getcatWiseBrands(){
+    public function getcatWiseBrands()
+    {
         $output = '
-    
+
         <p>hi Rana sharma</p>
-        
+
         ';
         return $output;
     }
-    public function verifyEmail(){
-        
+    public function verifyEmail()
+    {
+
         return view('frontend.emailverify');
     }
-	public function verifyOtpOfEmail(Request $request){
-		 if(session()->get('user_email')!=null){
-		 $this->validate($request,[
-            'otp' => 'required|min:6|max:6',          
-            'email' => 'required',          
+    public function verifyOtpOfEmail(Request $request)
+    {
+        if (session()->get('user_email') != null) {
+            $this->validate($request, [
+                'otp' => 'required|min:6|max:6',
+                'email' => 'required',
             ]);
-			$email_in_session = session()->get('user_email');
-			
-			$getstoredotp = User::where('email',$email_in_session)->first();
-			$getstoredotp = $getstoredotp->verification_code;
-			// dd($getstoredotp->verification_code);die;
-			$email = $request->email;
-        $otp = $request->otp;
-        $email_in_session = session()->get('user_email');
-        $otp_in_session = session()->get('ver_code');
-			if ($email == $email_in_session && $otp == $otp_in_session && $otp == $getstoredotp) {
-					$otp_verification = User::where('email', $email_in_session)
-					->update([
-							'email_verified_at' => date('Y-m-d H:m:s'),
-							'is_verified' => 1,
-						   
-						]);
-						session()->forget(['user_email', 'ver_code']);
-						if ($otp_verification) {
-							return redirect('users/login')->with(session()->flash('alert-success', 'Thank your! Your OTP is Verified.'));
-						}
-					return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong.'));
-				}
-			else{
-				 return redirect()->back()->with(session()->flash('alert-danger', 'That is not the OTP that we have sent. Please check and try again.'));
-			 }
-		}else{
-				return redirect('users/login')->back()->with(session()->flash('alert-success', 'Thank your! Your OTP is Verified.'));
-			}
-	}
+            $email_in_session = session()->get('user_email');
 
-    public function checkLogin(Request $request){
+            $getstoredotp = User::where('email', $email_in_session)->first();
+            $getstoredotp = $getstoredotp->verification_code;
+            // dd($getstoredotp->verification_code);die;
+            $email = $request->email;
+            $otp = $request->otp;
+            $email_in_session = session()->get('user_email');
+            $otp_in_session = session()->get('ver_code');
+            if ($email == $email_in_session && $otp == $otp_in_session && $otp == $getstoredotp) {
+                $otp_verification = User::where('email', $email_in_session)
+                    ->update([
+                        'email_verified_at' => date('Y-m-d H:m:s'),
+                        'is_verified' => 1,
+
+                    ]);
+                session()->forget(['user_email', 'ver_code']);
+                if ($otp_verification) {
+                    return redirect('users/login')->with(session()->flash('alert-success', 'Thank your! Your OTP is Verified.'));
+                }
+                return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong.'));
+            } else {
+                return redirect()->back()->with(session()->flash('alert-danger', 'That is not the OTP that we have sent. Please check and try again.'));
+            }
+        } else {
+            return redirect('users/login')->back()->with(session()->flash('alert-success', 'Thank your! Your OTP is Verified.'));
+        }
+    }
+
+    public function checkLogin(Request $request)
+    {
         $request->validate([
             'login_password' => 'required',
         ]);
-        $getPassword = User::where('id',Auth::user()->id)->first();
+        $getPassword = User::where('id', Auth::user()->id)->first();
         $getPass = $getPassword->password;
 
         if (!Hash::check($request->login_password, $getPass)) {
-            return response()->json(['success'=>false, 'message' => 'Login Fail, pls check password']);
-        }else{
+            return response()->json(['success' => false, 'message' => 'Login Fail, pls check password']);
+        } else {
             // return response()->json(['status'=>'2']);
-            return response()->json(['success'=>true, 'message' => 'Login Success!']);
+            return response()->json(['success' => true, 'message' => 'Login Success!']);
         }
-
-        
     }
-   
+
     public function moreSeller()
     {
-       return view('frontend.more_seller');
+        return view('frontend.more_seller');
+    }
+
+    public function relatedProduct($id)
+    {
+
+        $product = Product::find($id);
+        $related_category_products = array();
+        if ($product->category_id != null) {
+            $related_category_products =  Product::where(['category_id' => $product->category_id, 'brand_id' => $product->brand_id])->orderBy('unit_price', 'asc')->get();
+        }
+
+
+        return view('frontend.more_seller', ['products' => $related_category_products, 'pro' => $product]);
     }
 }

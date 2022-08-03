@@ -48,8 +48,8 @@ class ForgotPasswordController extends Controller
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             $user = User::where('email', $request->email)->first();
             if ($user != null) {
-                $user->verification_code = 123456;
-                // $user->verification_code = rand(100000,999999);
+                // $user->verification_code = 123456;
+                $user->verification_code = rand(100000,999999);
                 $user->save();
 
                 $array['view'] = 'emails.verification';
@@ -57,7 +57,7 @@ class ForgotPasswordController extends Controller
                 $array['subject'] = translate('Password Reset');
                 $array['content'] = translate('Verification Code is ').$user->verification_code;
 
-                // Mail::to($user->email)->queue(new SecondEmailVerifyMailManager($array));
+                Mail::to($user->email)->queue(new SecondEmailVerifyMailManager($array));
 
                 return view('auth.passwords.reset');
             }
